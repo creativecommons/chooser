@@ -1,0 +1,12 @@
+{
+    "name": "cc-chooser",
+    "description": "GSoC 2019 - The new and improved CC license chooser [WIP]",
+    "scripts": 
+    {
+
+    },
+    "devDependencies": 
+    {
+        "jest": "^24.8.0"
+    }
+}
