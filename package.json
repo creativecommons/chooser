@@ -1,5 +1,6 @@
 {
     "name": "cc-chooser",
+    "license": "MIT",
     "description": "GSoC 2019 - The new and improved CC license chooser [WIP]",
     "scripts": 
     {
@@ -8,5 +9,10 @@
     "devDependencies": 
     {
         "jest": "^24.8.0"
+    },
+    "repository": 
+    {
+        "type": "git",
+        "url": "https://github.com/creativecommons/cc-chooser.git"
     }
 }
