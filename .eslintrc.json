@@ -19,7 +19,6 @@
     ],
     "rules": {
         "quotes": ["warn", "double"],
-        "brace-style": ["warn", "allman"],
         "comma-spacing": ["warn", {"before": false, "after": true}],
         "no-unused-vars": ["warn"]
     }
