@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:vue/essential"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+    ],
+    "rules": {
+        "quotes": ["warn", "double"],
+        "brace-style": ["warn", "allman"],
+        "comma-spacing": ["warn", {"before": false, "after": true}],
+        "no-unused-vars": ["warn"]
+    }
+}
