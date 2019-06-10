@@ -3,11 +3,15 @@
     "license": "MIT",
     "description": "GSoC 2019 - The new and improved CC license chooser [WIP]",
     "scripts": {
-        "lint": "./node_modules/.bin/eslint *.js"
+        "css-build": "node-sass --omit-source-map-url src/styles/sass/bulma-mods.scss src/styles/bulma-mods.css",
+        "lint": "./node_modules/.bin/eslint src/*.js",
+        "build": "npm run css-build && npm run lint"
     },
     "devDependencies": {
+        "bulma": "^0.7.5",
         "eslint": "^5.16.0",
-        "jest": "^24.8.0"
+        "jest": "^24.8.0",
+        "node-sass": "^4.12.0"
     },
     "repository": {
         "type": "git",

@@ -18,6 +18,8 @@ Please consult the `README` if there is one, it should contain or link to
 project documentation. If there is no `README`, please file a GitHub issue to
 create one.
 
+When making changes to anything in `src/styles/sass/`, you need to run `npm run css-build` to build the changes made.
+
 
 ## How to Contribute
 
