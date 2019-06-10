@@ -6,6 +6,16 @@
 .modal-icon {
     width: 30px;
     vertical-align: middle;
+    display: inline;
+}
+
+a.modal-icon {
+    vertical-align: middle;
+    display: inline;
+}
+
+img.chooser-license-icon {
+    width: 15%;
 }
 
 header {

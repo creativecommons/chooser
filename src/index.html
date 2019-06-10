@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
         <link rel="stylesheet" href="styles/bulma-mods.css"> <!--ALWAYS import this after bulma.min.css-->
+        <link rel="stylesheet" href="../node_modules/cool-checkboxes-for-bulma.io/dist/css/bulma-radio-checkbox.css">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 
         <noscript>
@@ -43,7 +44,7 @@
                     </div>
                     <div class="column columns" id="questions-buttons">
                         <div class="column is-one-half">
-                            <a class="button is-light is-fullwidth">EEE</a><br>
+                            <a class="button is-light is-fullwidth" onclick="spawn_modal('allow_commercial')">EEE</a><br>
                             <a class="button is-light is-fullwidth">T2</a><br>
                             <a class="button is-light is-fullwidth">T3</a>
                         </div>
@@ -61,6 +62,67 @@
                 <button onclick="spawn_modal('allow_adaptations')" data-target="testmodal">Test</button>
             </div>
             <hr>
+            <div class="container" id="license-chooser">
+                <p align="center">
+                    Have a work you want to license with the Creative Commons plaform, <br>
+                    but not sure which one is right for you? Use our license chooser!
+                </p>
+                <h1 class="title is-2" align="center">Choose a License</h1>
+                <div class="columns">
+                    <div class="column">
+                            <p align="center">Changes to the options below will affect the license choice to the right.</p> <br>
+                        <div id="license-chooser-allow-adaptations">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow adaptations of your work? 
+                                    <a class="modal-icon"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%">
+                                <label class="radio">
+                                    <input type="radio" name="allow-adaptations-radio">
+                                    Yes
+                                </label> <br>
+                                <label class="radio">
+                                    <input type="radio" name="allow-adaptations-radio">
+                                    No
+                                </label> <br>
+                                <label class="radio">
+                                    <input type="radio" name="allow-adaptations-radio">
+                                    Yes, as long as others share alike
+                                </label> <br>
+                            </div>
+                        </div> <br>
+                        <div class="license-chooser-allow-commercial">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow commercial uses of your work?
+                                    <a class="modal-icon"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%">
+                                <label class="radio">
+                                    <input type="radio" name="allow-commercial-radio">
+                                    Yes
+                                </label> <br>
+                                <label class="radio">
+                                    <input type="radio" name="allow-commercial-radio">
+                                    No
+                                </label> <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h3 class="title is-3" align="center">Your License!</h3>
+                        <p align="center">[License Name]</p> <br><br>
+                        <div id="license-chooser-icons" align="center">
+                            <img src="assets/cc.svg" class="chooser-license-icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            
             <!--
                 This is the only modal element in the site, contents are set
                 based on which button spawns it. Contents and titles can be found

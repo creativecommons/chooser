@@ -23,6 +23,7 @@
         "url": "https://github.com/creativecommons/cc-chooser.git"
     },
     "dependencies": {
+        "cool-checkboxes-for-bulma.io": "^1.1.0",
         "lodash": "^4.17.11",
         "vue": "^2.6.10"
     }
