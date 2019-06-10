@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <title>GSOC - Choose A License</title>
+        <link id="favicon" rel="shortcut icon" type="image/png" href="assets/favicon.ico.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles/bulma-mods.css"> <!--ALWAYS import this after bulma.min.css-->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-        <link rel="stylesheet" href="styles/bulma-mods.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <noscript>
+            Sorry, but the Creative Commons License Chooser requires JavaScript to work :(
+            <style>
+            .site-container{
+                opacity: 0;
+            }
+            </style>
+        </noscript>
     </head>
     <body>
-        <div class="container" id="chooser-app">
+        <header style="padding-bottom: 1%">
+            <br>
+            <img src="assets/cc-logo_white.png" style="width: 20%; margin-left: 5%">
+        </header>
+        <div class="container site-container" id="chooser-app">
+            <br>
             <div class="container" id="education-content">
                 <div class="columns">
                     <div class="column is-one-third" id="icons-explanation">
                         <p>
                             Creative Commons licenses can be represented by their names, their
                             associated icons, or both.
-                        </p>
+                        </p> <br>
                         <div class="edu-icons-icon">
                             <img src="assets/license-icons/cc-by_icon.svg"> CC BY <br>
                             <img src="assets/license-icons/cc-nd_icon.svg"> CC ND <br>
@@ -44,6 +61,11 @@
                 <button onclick="spawn_modal('allow_adaptations')" data-target="testmodal">Test</button>
             </div>
             <hr>
+            <!--
+                This is the only modal element in the site, contents are set
+                based on which button spawns it. Contents and titles can be found
+                in src/index.js
+            -->
             <div id="modal" v-bind:class="modals.modal_toggle">
                 <div class="modal-background" onclick="destroy_modal()"></div>
                 <div class="modal-card">
@@ -65,4 +87,4 @@
         <script type="text/javascript" src="scripts/scripts.js"></script>
     </body>
 </html>
-<!--:)-->
+<!-- </> by Ari Madian :)-->
