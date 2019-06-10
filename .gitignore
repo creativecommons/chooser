@@ -1,3 +1,4 @@
 node_modules/
 src/styles/bulma-mods.css
+dist/
 *.code-workspace
