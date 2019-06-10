@@ -29,6 +29,7 @@
         <div class="container site-container" id="chooser-app">
             <br>
             <div class="container" id="education-content">
+                <h1 class="title is-1">[Some Title]</h1>
                 <div class="columns">
                     <div class="column is-one-third" id="icons-explanation">
                         <p>
@@ -36,30 +37,38 @@
                             associated icons, or both.
                         </p> <br>
                         <div class="edu-icons-icon">
-                            <img src="assets/license-icons/cc-by_icon.svg"> CC BY <br>
-                            <img src="assets/license-icons/cc-nd_icon.svg"> CC ND <br>
-                            <img src="assets/license-icons/cc-sa_icon.svg"> CC SA <br>
-                            <img src="assets/license-icons/cc-nc_icon.svg"> CC NC <br>
+                            <div class="edu-icons-section">
+                                <img src="assets/license-icons/cc-by_icon.svg"> CC BY <br>
+                            </div>
+                            <div class="edu-icons-section">
+                                <img src="assets/license-icons/cc-nd_icon.svg"> CC ND <br>
+                            </div>
+                            <div class="edu-icons-section">
+                                <img src="assets/license-icons/cc-sa_icon.svg"> CC SA <br>
+                            </div>
+                            <div class="edu-icons-section">
+                                <img src="assets/license-icons/cc-nc_icon.svg"> CC NC <br>
+                            </div>
                         </div>
                     </div>
                     <div class="column columns" id="questions-buttons">
                         <div class="column is-one-half">
-                            <a class="button is-light is-fullwidth" onclick="spawn_modal('allow_commercial')">EEE</a><br>
-                            <a class="button is-light is-fullwidth">T2</a><br>
-                            <a class="button is-light is-fullwidth">T3</a>
+                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('allow_commercial')">Question 1</a><br>
+                            <a class="button is-light is-large is-fullwidth">Question 2</a><br>
+                            <a class="button is-light is-large is-fullwidth">Question 3</a>
                         </div>
                         <div class="column is-one-half">
-                            <a class="button is-light is-fullwidth">T1</a><br>
-                            <a class="button is-light is-fullwidth">T2</a><br>
-                            <a class="button is-light is-fullwidth">T3</a>
+                            <a class="button is-light is-large is-fullwidth">Question 4</a><br>
+                            <a class="button is-light is-large is-fullwidth">Question 5</a><br>
+                            <a class="button is-light is-large is-fullwidth">Question 6</a>
                         </div>
                     </div>
                 </div>
                 <div align="center">
-                    <b>Tip:</b> You can click any <img class="modal-icon" src="assets/info-icon.svg">
+                    <b>Tip:</b> You can click any <img class="modal-icon" src="assets/info-icon.svg" title="Except this one ;)">
                     icons you see to get more information!
                 </div>
-                <button onclick="spawn_modal('allow_adaptations')" data-target="testmodal">Test</button>
+                <button onclick="spawn_modal('allow_adaptations')" data-target="testmodal" hidden>Test</button>
             </div>
             <hr>
             <div class="container" id="license-chooser">
@@ -67,7 +76,7 @@
                     Have a work you want to license with the Creative Commons plaform, <br>
                     but not sure which one is right for you? Use our license chooser!
                 </p>
-                <h1 class="title is-2" align="center">Choose a License</h1>
+                <h1 class="title is-2">Choose a License</h1>
                 <div class="columns">
                     <div class="column">
                             <p align="center">Changes to the options below will affect the license choice to the right.</p> <br>
@@ -75,7 +84,7 @@
                             <span>
                                 <h4 class="title is-4">
                                     Do you want to allow adaptations of your work? 
-                                    <a class="modal-icon"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
                                 </h4>
                             </span>
                             <div class="control" style="margin-left: 9%">
@@ -97,7 +106,7 @@
                             <span>
                                 <h4 class="title is-4">
                                     Do you want to allow commercial uses of your work?
-                                    <a class="modal-icon"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
                                 </h4>
                             </span>
                             <div class="control" style="margin-left: 9%">
@@ -113,7 +122,7 @@
                         </div>
                     </div>
                     <div class="column">
-                        <h3 class="title is-3" align="center">Your License!</h3>
+                        <h3 class="title is-3">Your License!</h3>
                         <p align="center">[License Name]</p> <br><br>
                         <div id="license-chooser-icons" align="center">
                             <img src="assets/cc.svg" class="chooser-license-icon">
@@ -122,7 +131,90 @@
                 </div>
             </div>
             <hr>
-            
+            <div class="" id="html-generator-dropdown">
+
+            </div>
+            <div class="" id="html-generator">
+                <div id="html-generator-generated">
+                    <h1 class="title is-2">Have a web page? Embed your license info!</h1>
+                    <div class="control" id="html-generator-generated-HTML-container">
+                        <textarea class="textarea" readonly>Some HTML</textarea>
+                    </div>
+                    <a class="button is-link generator-copy-button">Copy HTML to Clipboard</a>
+                </div> <br>
+                <div class="html-generator-metadata">
+                    <p align="center">
+                        Filling out these boxes is optional, but it adds machine-readable 
+                        metadata to the generated HTML above!
+                    </p>
+                    <div class="columns" style="padding-top: 1%">
+                        <div class="column">
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Title of Work</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <p class="control">
+                                            <input class="input">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Attribute work to URL</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <p class="control">
+                                            <input class="input">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">More Permissions URL</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <p class="control">
+                                            <input class="input">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Who Made this Work?</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <p class="control">
+                                            <input class="input">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Source Work URL</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <p class="control">
+                                            <input class="input">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <br><br><br><br><br><br><br><br><br>
             <!--
                 This is the only modal element in the site, contents are set
                 based on which button spawns it. Contents and titles can be found

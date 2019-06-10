@@ -7,3 +7,7 @@ function spawn_modal(modal_id) {
 function destroy_modal() {
     app_state.modals.modal_toggle = "modal"
 }
+
+function copy_text_to_clipboard() {
+    
+}

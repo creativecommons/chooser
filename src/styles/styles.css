@@ -1,7 +1,12 @@
-.edu-icons-icon img {
+.edu-icons-section {
+    margin-top: 1.5%;
+}
+
+.edu-icons-section img {
     width: 40px;
     vertical-align: middle;
 }
+
 
 .modal-icon {
     width: 30px;
@@ -18,6 +23,22 @@ img.chooser-license-icon {
     width: 15%;
 }
 
+a.generator-copy-button {
+    margin-top: .9%;
+}
+
 header {
     background: #ef9421;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
 }
