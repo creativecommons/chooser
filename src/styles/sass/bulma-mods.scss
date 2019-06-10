@@ -1,5 +1,12 @@
 @charset "utf-8";
 
+@import url("https://creativecommons.slack.com/archives/DJ4LKCCBC/p1560175486000200");
+
+$cc-orange: #ef9421;
+$light-grey: #a7a9ac;
+
+$primary: $cc-orange;
+
 // Import only what you need from Bulma
 @import "../../../node_modules/bulma/sass/utilities/_all.sass";
 @import "../../../node_modules/bulma/sass/base/_all.sass";

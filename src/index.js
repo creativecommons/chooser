@@ -2,19 +2,49 @@ var app_state = new Vue({ // eslint-disable-line
     el: "#chooser-app",
     data: {
         message: "Hello Vue!",
-        image: "cc-logo_large_black.png",
         modal_toggle: "modal",
-        modal_content: "",
-        modal_contents: {
-            "allow_adaptations": "TEST 1",
-            "allow_commercial": "TEST 2",
-            "selected_license": "T3",
-            "work_attribute_to_name": "T4",
-            "work_attribute_to_url": "T5",
-            "work_source_url": "T6",
-            "work_more_permissions_url": "T7",
-            "license_mark": "T8",
-            "have_a_webpage": "T9"
+        modals: {
+            modal_toggle: "modal",
+            modal_content: "",
+            modal_title: "",
+            modal_packs: {
+                "allow_adaptations": {
+                    "title": "Allowing Adaptations",
+                    "content": "Test 1"
+                },
+                "allow_commercial": {
+                    "title": "Allowing Commercial Use",
+                    "content": ""
+                },
+                "selected_license": {
+                    "title": "Selected License",
+                    "content": ""
+                },
+                "work_attribute_to_name": {
+                    "title": "",
+                    "content": ""
+                },
+                "work_attribute_to_url": {
+                    "title": "",
+                    "content": ""
+                },
+                "work_source_url": {
+                    "title": "",
+                    "content": ""
+                },
+                "work_more_permissions_url": {
+                    "title": "",
+                    "content": ""
+                },
+                "license_mark": {
+                    "title": "",
+                    "content": ""
+                },
+                "have_a_webpage": {
+                    "title": "",
+                    "content": ""
+                }
+            }
         },
         chooser: {
             inputs: {

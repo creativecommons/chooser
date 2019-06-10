@@ -1,21 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="styles/bulma-mods.css">
         <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
         <meta charset="utf-8">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <link rel="stylesheet" href="styles/bulma-mods.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <div class="container" id="chooser-app">
-            <div class="container columns" id="education-content">
-                <div>
-                    
+            <div class="container" id="education-content">
+                <div class="columns">
+                    <div class="column is-one-third" id="icons-explanation">
+                        <p>
+                            Creative Commons licenses can be represented by their names, their
+                            associated icons, or both.
+                        </p>
+                        <div class="edu-icons-icon">
+                            <img src="assets/license-icons/cc-by_icon.svg"> CC BY <br>
+                            <img src="assets/license-icons/cc-nd_icon.svg"> CC ND <br>
+                            <img src="assets/license-icons/cc-sa_icon.svg"> CC SA <br>
+                            <img src="assets/license-icons/cc-nc_icon.svg"> CC NC <br>
+                        </div>
+                    </div>
+                    <div class="column columns" id="questions-buttons">
+                        <div class="column is-one-half">
+                            <a class="button is-light is-fullwidth">EEE</a><br>
+                            <a class="button is-light is-fullwidth">T2</a><br>
+                            <a class="button is-light is-fullwidth">T3</a>
+                        </div>
+                        <div class="column is-one-half">
+                            <a class="button is-light is-fullwidth">T1</a><br>
+                            <a class="button is-light is-fullwidth">T2</a><br>
+                            <a class="button is-light is-fullwidth">T3</a>
+                        </div>
+                    </div>
+                </div>
+                <div align="center">
+                    <b>Tip:</b> You can click any <img class="modal-icon" src="assets/info-icon.svg">
+                    icons you see to get more information!
+                </div>
+                <button onclick="spawn_modal('allow_adaptations')" data-target="testmodal">Test</button>
+            </div>
+            <hr>
+            <div id="modal" v-bind:class="modals.modal_toggle">
+                <div class="modal-background" onclick="destroy_modal()"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">{{modals.modal_title}}</p>
+                        <button class="delete" aria-label="close" onclick="destroy_modal()"></button>
+                    </header>
+                    <section class="modal-card-body">
+                        <!-- Content ... -->
+                        {{modals.modal_content}}
+                    </section>
                 </div>
             </div>
         </div>
         <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="scripts/page-controls.js"></script>
+        <script type="text/javascript" src="scripts/HTML-generator.js"></script>
+        <script type="text/javascript" src="scripts/choose-a-license.js"></script>
+        <script type="text/javascript" src="scripts/scripts.js"></script>
     </body>
 </html>
 <!--:)-->

@@ -22,6 +22,7 @@
         "comma-spacing": ["warn", {"before": false, "after": true}],
         "no-unused-vars": ["warn"],
         "indent": ["error", 4, {"SwitchCase": 1}],
-        "brace-style": ["error", "stroustrup", {"allowSingleLine": true}]
+        "brace-style": ["error", "stroustrup", {"allowSingleLine": true}],
+        "no-console": ["off"]
     }
 }

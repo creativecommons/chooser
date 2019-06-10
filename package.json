@@ -4,10 +4,10 @@
     "description": "GSoC 2019 - The new and improved CC license chooser [WIP]",
     "private": true,
     "scripts": {
-        "css-build": "node-sass --omit-source-map-url src/styles/sass/bulma-mods.scss src/styles/bulma-mods.css",
+        "build-css": "node-sass --omit-source-map-url src/styles/sass/bulma-mods.scss src/styles/bulma-mods.css",
         "lint": "./node_modules/.bin/eslint src/*.js",
         "build-prod": "npx webpack --config webpack.config.js && npm run build",
-        "build": "npm run css-build && npm run lint"
+        "build": "npm run build-css && npm run lint"
     },
     "devDependencies": {
         "bulma": "^0.7.5",
