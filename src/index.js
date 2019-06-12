@@ -47,6 +47,7 @@ var app_state = new Vue({ // eslint-disable-line
             }
         },
         chooser: {
+            selected_license: "[License Name]",
             inputs: {
                 share_alike: false,
                 allow_adaptations: true,
