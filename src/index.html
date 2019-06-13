@@ -7,9 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="styles/styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-        <link rel="stylesheet" href="styles/bulma-mods.css"> <!--ALWAYS import this after bulma.min.css-->
-        <link rel="stylesheet" href="../node_modules/cool-checkboxes-for-bulma.io/dist/css/bulma-radio-checkbox.css">
+        <link rel="stylesheet" href="styles/bulma-mods.css"> <!--ALWAYS import this last-->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 
         <noscript>
@@ -78,6 +76,7 @@
                 </p>
                 <h1 class="title is-2">Choose a License</h1>
                 <div class="columns">
+                    <!--
                     <div class="column">
                             <p align="center">Changes to the options below will affect the license choice to the right.</p> <br>
                         <div id="license-chooser-allow-adaptations">
@@ -120,6 +119,51 @@
                                 </label> <br>
                             </div>
                         </div>
+                    </div>-->
+                    <div class="column">
+                            <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
+                        <div id="license-chooser-allow-adaptations">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow adaptations of your work? 
+                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
+                                <div class="columns is-gapless">
+                                    <div class="field column is-one-fifth">
+                                        <label for="allow-adaptations-switch">No</label>
+                                        <input id="allow-adaptations-switch" type="checkbox" name="allow-adaptations-switch" class="switch is-thin" checked="checked">
+                                        <label for="allow-adaptations-switch">Yes</label>
+                                    </div>
+                                    <div class="field column is-pulled-left" style="display: inline;">
+                                        <p class="control is-pulled-left">
+                                            <div class="b-checkbox is-primary" style="display: inline;">
+                                                <input id="checkbox" class="styled" checked type="checkbox">
+                                                <label for="checkbox">
+                                                    SA Checkbox
+                                                </label>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <br><br>
+                        <div class="license-chooser-allow-commercial">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow commercial uses of your work?
+                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
+                                <div class="field">
+                                    <label for="allow-commercial-switch">No</label>
+                                    <input id="allow-commercial-switch" type="checkbox" name="allow-commercial-switch" class="switch is-thin" checked="checked">
+                                    <label for="allow-commercial-switch">Yes</label>
+                                </div>
+                            </div>
+                        </div> <br><br>
                     </div>
                     <div class="column">
                         <h3 class="title is-3">Your License!</h3>
@@ -215,7 +259,7 @@
                     </div>
                     <div class="columns">
                         <div class="column">
-                            <div class="select">
+                            <div class="select is-pulled-right">
                                 <select>
                                   <option>Select dropdown</option>
                                   <option>With options</option>
