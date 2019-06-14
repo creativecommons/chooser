@@ -8,7 +8,6 @@
 
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/bulma-mods.css"> <!--ALWAYS import this last-->
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 
         <noscript>
             Sorry, but the Creative Commons License Chooser requires JavaScript to work :(
@@ -51,14 +50,14 @@
                     </div>
                     <div class="column columns" id="questions-buttons">
                         <div class="column is-one-half">
-                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('allow_commercial')">Question 1</a><br>
-                            <a class="button is-light is-large is-fullwidth">Question 2</a><br>
-                            <a class="button is-light is-large is-fullwidth">Question 3</a>
+                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q1')">What Are Creative Commons Licenses?</a><br>
+                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q3')">How do the Licenses Work?</a><br>
+                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q5')">Want Public Domain Instead?</a>
                         </div>
                         <div class="column is-one-half">
-                            <a class="button is-light is-large is-fullwidth">Question 4</a><br>
-                            <a class="button is-light is-large is-fullwidth">Question 5</a><br>
-                            <a class="button is-light is-large is-fullwidth">Question 6</a>
+                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q2')">Considerations Before Licensing</a><br>
+                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q4')">How do I Formally License my Work?</a><br>
+                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q6')">Question 6</a>
                         </div>
                     </div>
                 </div>
@@ -77,7 +76,7 @@
                 <h1 class="title is-2">Choose a License</h1>
                 <div class="columns">
                     <!--
-                    <div class="column">
+                    <div class="column" id="chooser-controls-radio">
                             <p align="center">Changes to the options below will affect the license choice to the right.</p> <br>
                         <div id="license-chooser-allow-adaptations">
                             <span>
@@ -119,8 +118,8 @@
                                 </label> <br>
                             </div>
                         </div>
-                    </div>-->
-                    <div class="column">
+                    </div>--><!--
+                    <div class="column" id="chooser-controls-switch">
                             <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
                         <div id="license-chooser-allow-adaptations">
                             <span>
@@ -164,6 +163,53 @@
                                 </div>
                             </div>
                         </div> <br><br>
+                    </div>-->
+                    <div class="column" id="chooser-controls-images">
+                        <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
+                        <div id="license-chooser-allow-adaptations">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow adaptations of your work? 
+                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
+                                <div class="columns is-gapless">
+                                    <div class="field column is-one-fifth">
+                                        <label for="allow-adaptations-switch">No</label>
+                                        <input id="allow-adaptations-switch" type="checkbox" name="allow-adaptations-switch" class="switch is-thin" checked="checked">
+                                        <label for="allow-adaptations-switch">Yes</label>
+                                    </div>
+                                    <div class="field column is-pulled-left" style="display: inline;">
+                                        <p class="control is-pulled-left">
+                                            <div class="b-checkbox is-primary" style="display: inline;">
+                                                <input id="checkbox" class="styled" checked type="checkbox">
+                                                <label for="checkbox">
+                                                    SA Checkbox
+                                                </label>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <br><br>
+                        <div class="license-chooser-allow-commercial">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow commercial uses of your work?
+                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
+                                <div class="field">
+                                    <p>Selected Example</p>
+                                    <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-controls-icons">
+
+                                    <p>Unselected Example</p>
+                                    <img src="assets/license-icons/cc-nc_icon.svg" class="unselected">
+                                </div>
+                            </div>
+                        </div> <br><br>
                     </div>
                     <div class="column">
                         <h3 class="title is-3">Your License!</h3>
@@ -175,17 +221,26 @@
                 </div>
             </div>
             <hr>
-            <div class="" id="html-generator-dropdown">
-
-            </div>
+            <div class="" id="html-generator-dropdown" style="border-width: 2px; border-style: solid; padding: 1.5%;">
+                <h1 class="title is-1">This is the dropdown click area</h1>
+            </div> <br>
             <div class="" id="html-generator">
                 <div id="html-generator-generated">
                     <h1 class="title is-2">Have a web page? Embed your license info!</h1>
+                    <span id="html-generator-generated-richtext-container">
+                        [Work] by [Author] is licenced under <a>CC BY NC 4.0</a>
+                        <span id="html-generator-richtext-container-icons">
+                            <img src="assets/license-icons/cc_icon.svg" style="width: 20px;">
+                            <img src="assets/license-icons/cc-by_icon.svg" style="width: 20px;">
+                            <img src="assets/license-icons/cc-nc_icon.svg" style="width: 20px;">
+                        </span>
+                    </span> <br>
+                    <a class="button is-link generator-copy-button">Copy Rich Text</a>
                     <div class="control" id="html-generator-generated-HTML-container">
                         <textarea class="textarea" readonly>Some HTML</textarea>
                     </div>
-                    <a class="button is-link generator-copy-button">Copy HTML to Clipboard</a>
-                </div> <br>
+                    <a class="button is-link generator-copy-button">Copy HTML</a>
+                </div>
                 <div class="html-generator-metadata">
                     <p align="center">
                         Filling out these boxes is optional, but it adds machine-readable 
@@ -193,86 +248,57 @@
                     </p>
                     <div class="columns" style="padding-top: 1%">
                         <div class="column">
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Title of Work</label>
+                            <div class="field">
+                                <label class="label">Title of Work</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Text input">
                                 </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <p class="control">
-                                            <input class="input">
-                                        </p>
-                                    </div>
-                                </div>
+                                <p class="help">The title of the work being licensed.</p>
                             </div>
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Attribute work to URL</label>
+                            <div class="field">
+                                <label class="label">Attribute Work to Name</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Text input">
                                 </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <p class="control">
-                                            <input class="input">
-                                        </p>
-                                    </div>
-                                </div>
+                                <p class="help">The name of the person who should receive attribution for the work.</p>
                             </div>
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">More Permissions URL</label>
+                            <div class="field">
+                                <label class="label">Attribute Work to URL</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Text input">
                                 </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <p class="control">
-                                            <input class="input">
-                                        </p>
-                                    </div>
-                                </div>
+                                <p class="help">The URL to which the work should be attributed.</p>
                             </div>
                         </div>
                         <div class="column">
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Who Made this Work?</label>
+                            <div class="field">
+                                <label class="label">Source Work URL</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Text input">
                                 </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <p class="control">
-                                            <input class="input">
-                                        </p>
-                                    </div>
-                                </div>
+                                <p class="help">The URL of the work upon which this work is based or derived.</p>
                             </div>
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Source Work URL</label>
+                            <div class="field">
+                                <label class="label">More Permissions URL</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Text input">
                                 </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <p class="control">
-                                            <input class="input">
-                                        </p>
-                                    </div>
-                                </div>
+                                <p class="help">A URL where a user can find information about obtaining rights that are not already permitted by the CC license.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="columns">
-                        <div class="column">
-                            <div class="select is-pulled-right">
-                                <select>
-                                  <option>Select dropdown</option>
-                                  <option>With options</option>
-                                </select>
-                              </div>
-                        </div>
-                        <div class="column">
-                            <div class="select">
-                                <select>
-                                  <option>Select dropdown</option>
-                                  <option>With options</option>
-                                </select>
-                              </div>
+                    <div class="field is-horizontal" style="margin-left: 35%; margin-right: 35%;">
+                        <label class="label">Format of Work&nbsp;&nbsp;</label>
+                        <div class="select">
+                            <select>
+                                <option>Other/ Multiple Formats</option>
+                                <option>Audio</option>
+                                <option>Video</option>
+                                <option>Image</option>
+                                <option>Text</option>
+                                <option>Dataset</option>
+                                <option>Interactive</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -292,10 +318,19 @@
                     <section class="modal-card-body">
                         <!-- Content ... -->
                         {{modals.modal_content}}
+
+                        <!--Will be hidden if no more_info_link defined for the modal in src/index.js-->
+                        <div id="modal-more-info">
+                            <p>
+                                For more information, please see 
+                                <a v-bind:href="modals.more_info_url">{{modals.more_info_text}}</a>.
+                            </p>
+                        </div>
                     </section>
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript" src="scripts/page-controls.js"></script>
         <script type="text/javascript" src="scripts/HTML-generator.js"></script>

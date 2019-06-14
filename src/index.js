@@ -7,42 +7,68 @@ var app_state = new Vue({ // eslint-disable-line
             modal_toggle: "modal",
             modal_content: "",
             modal_title: "",
+            more_info_url: "",
+            more_info_text: "",
             modal_packs: {
                 "allow_adaptations": {
                     "title": "Allowing Adaptations",
-                    "content": "Test 1"
+                    "content": "Test 1",
+                    "more_info_url": "",
+                    "more_info_text": ""
                 },
                 "allow_commercial": {
                     "title": "Allowing Commercial Use",
-                    "content": ""
+                    "content": "",
+                    "more_info_url": "",
+                    "more_info_text": ""
                 },
                 "selected_license": {
                     "title": "Selected License",
-                    "content": ""
-                },
-                "work_attribute_to_name": {
-                    "title": "",
-                    "content": ""
-                },
-                "work_attribute_to_url": {
-                    "title": "",
-                    "content": ""
-                },
-                "work_source_url": {
-                    "title": "",
-                    "content": ""
-                },
-                "work_more_permissions_url": {
-                    "title": "",
-                    "content": ""
-                },
-                "license_mark": {
-                    "title": "",
-                    "content": ""
+                    "content": "",
+                    "more_info_url": "",
+                    "more_info_text": ""
                 },
                 "have_a_webpage": {
                     "title": "",
-                    "content": ""
+                    "content": "",
+                    "more_info_url": "",
+                    "more_info_text": ""
+                },
+                "q1": {
+                    "title": "What Are Creative Commons Licenses?",
+                    "content": "",
+                    "more_info_url": "google.com",
+                    "more_info_text": "text"
+                },
+                "q2": {
+                    "title": "Considerations Before Licensing",
+                    "content": "",
+                    "more_info_url": "",
+                    "more_info_text": ""
+                },
+                "q3": {
+                    "title": "How do the Licenses Work?",
+                    "content": "",
+                    "more_info_url": "",
+                    "more_info_text": ""
+                },
+                "q4": {
+                    "title": "How do I Formally License my Work?",
+                    "content": "",
+                    "more_info_url": "",
+                    "more_info_text": ""
+                },
+                "q5": {
+                    "title": "Want Public Domain Instead?",
+                    "content": "",
+                    "more_info_url": "",
+                    "more_info_text": ""
+                },
+                "q6": {
+                    "title": "",
+                    "content": "",
+                    "more_info_url": "",
+                    "more_info_text": ""
                 }
             }
         },
