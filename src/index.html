@@ -140,7 +140,7 @@
                                 </label> <br>
                             </div>
                         </div>
-                    </div>--><!--
+                    </div>-->
                     <div class="column" id="chooser-controls-switch">
                             <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
                         <div id="license-chooser-allow-adaptations">
@@ -154,13 +154,15 @@
                                 <div class="columns is-gapless">
                                     <div class="field column is-one-fifth">
                                         <label for="allow-adaptations-switch">No</label>
-                                        <input id="allow-adaptations-switch" type="checkbox" name="allow-adaptations-switch" class="switch is-thin" checked="checked">
+                                        <input id="allow-adaptations-switch" type="checkbox" 
+                                        name="allow-adaptations-switch" class="switch is-thin" 
+                                        checked="checked" onchange="switch_callback(this)">
                                         <label for="allow-adaptations-switch">Yes</label>
                                     </div>
                                     <div class="field column is-pulled-left" style="display: inline;">
                                         <p class="control is-pulled-left">
-                                            <div class="b-checkbox is-primary" style="display: inline;">
-                                                <input id="checkbox" class="styled" checked type="checkbox">
+                                            <div class="b-checkbox is-primary" id="sa-checkbox" style="display: inline;">
+                                                <input id="checkbox" class="styled" type="checkbox">
                                                 <label for="checkbox">
                                                     SA Checkbox
                                                 </label>
@@ -185,7 +187,7 @@
                                 </div>
                             </div>
                         </div> <br><br>
-                    </div>-->
+                    </div><!--
                     <div class="column" id="chooser-controls-images">
                         <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
                         <div id="license-chooser-allow-adaptations">
@@ -232,10 +234,11 @@
                                 </div>
                             </div>
                         </div> <br><br>
-                    </div>
+                    </div>-->
                     <div class="column">
                         <h3 class="title is-3">Your License!</h3>
-                        <p align="center">{{chooser.selected_license}}</p> <br><br>
+                        <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
+                        <p>{{chooser.selected_license_short}}</p>
                         <div id="license-chooser-icons" align="center">
                             <img src="assets/cc.svg" class="chooser-license-icon">
                         </div>
