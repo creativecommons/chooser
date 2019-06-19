@@ -1,4 +1,5 @@
 function spawn_modal(modal_id) {
+    /* Deprecated, but I want to keep it for future reference.
     app_state.modals.modal_content = app_state.modals.modal_packs[modal_id].content // Update modal content
     app_state.modals.modal_title = app_state.modals.modal_packs[modal_id].title // Update modal title
     
@@ -11,11 +12,16 @@ function spawn_modal(modal_id) {
         app_state.modals.more_info_url = more_info_url
         app_state.modals.more_info_text = more_info_text
     }
-    app_state.modals.modal_toggle = "modal is-active" // Show modal
+    app_state.modals.modal_toggle = "modal is-active" // Show modal*/
+    const nmodal_id = "modal-" + modal_id
+    var element = document.getElementById(nmodal_id)
+    element.classList.add("is-active")
 }
 
-function destroy_modal() {
-    app_state.modals.modal_toggle = "modal"
+function destroy_modal(modal_id) {
+    const nmodal_id = "modal-" + modal_id
+    var element = document.getElementById(nmodal_id)
+    element.classList.remove("is-active")
 }
 
 function copy_text_to_clipboard() {
