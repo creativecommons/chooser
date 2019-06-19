@@ -77,7 +77,7 @@ var app_state = new Vue({ // eslint-disable-line
             selected_license_short: "[License Short]",
             selected_license_link: "",
             inputs: {
-                share_alike: true,
+                share_alike: false,
                 allow_adaptations: true,
                 allow_commercial_uses: true, 
             },

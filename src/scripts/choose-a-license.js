@@ -13,13 +13,13 @@ function set_license_text() {
 function gen_license_name() {
     var state = app_state.chooser
     var license_base = "Atribution"
-    if (state.inputs.allow_commercial_uses) {
+    if (!state.inputs.allow_commercial_uses) {
         license_base += "-NonCommercial"
     }
     if (state.inputs.share_alike) {
         license_base += "-ShareAlike"
     }
-    else {
+    else if (!state.inputs.allow_adaptations) {
         license_base += "-NoDerivatives"
     }
     license_base += " 4.0 International"
@@ -56,6 +56,7 @@ function set_license_link() {
  * @param {object} check The HTML SA Checkbox object
  */
 function sa_check_callback(check) {
+    console.log("Checkbox Toggled")
     app_state.chooser.inputs.share_alike = check.checked
     set_license()
 }
@@ -65,13 +66,17 @@ function sa_check_callback(check) {
  * @param {object} cb The HTML switch object
  */
 function switch_callback(cb) {
+    console.log("Switch Toggled - " + cb.id)
     var state = app_state.chooser.inputs
+    state.selected_license = ""
     switch (cb.id) {
         case "allow-adaptations-switch":
             state.allow_adaptations = cb.checked
             if (cb.checked) { // If allow adaptations
+                console.log("Is Allow Adaptations - " + cb.checked)
                 state.allow_adaptations = true
                 show_sa_check()
+                set_license()
             } 
             else { // If NOT allow adaptations
                 state.allow_adaptations = false
@@ -90,9 +95,11 @@ function switch_callback(cb) {
 }
 
 function hide_sa_check() {
+    console.log("SA Hidden")
     document.getElementById("sa-checkbox").style.display = "none";
 }
 
 function show_sa_check() {
+    console.log("SA Shown")
     document.getElementById("sa-checkbox").style.display = "block";
 }
