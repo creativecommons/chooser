@@ -1,13 +1,50 @@
 function set_license() {
     set_license_text()
+    set_license_icons()
 }
 
 function set_license_text() {
-    app_state.chooser.selected_license = "{0} ({1})".format(
-        gen_license_name(),
-        gen_shortened_name()
-    )
+    /*
+    var state = app_state.chooser
+    if (state.inputs.allow_adaptations == null &&
+        state.inputs.allow_commercial_uses == null) {
+        state.selected_license = "To Choose a License, Please Make Some Selections Using the Controls to the Left."
+    } else if (state.inputs.allow_adaptations == null &&
+        state.inputs.allow_commercial_uses != null) {
+        state.selected_license = "Please Select Whether or not to Allow Adaptations of Your Work."
+    }*/
+    app_state.chooser.selected_license = gen_license_name()
+    app_state.chooser.selected_license_short = gen_shortened_name()
     set_license_link()
+}
+
+function set_license_icons() {
+    var state = app_state.chooser
+    if (state.inputs.allow_adaptations) {
+        state.icons.nd_shown = false
+        state.icons.sa_shown = false
+        toggle_license_icon("nd-sa", false)
+        if (state.inputs.share_alike) {
+            state.icons.sa_shown = true
+            state.icons.nd_shown = false
+            state.icons.nd_sa_src = "cc-sa_icon.svg"
+            toggle_license_icon("nd-sa", true)
+        }
+    }
+    else if (!state.inputs.allow_adaptations) {
+        state.icons.nd_shown = true
+        state.icons.sa_shown = false
+        state.icons.nd_sa_src = "cc-nd_icon.svg"
+        toggle_license_icon("nd-sa", true)
+    }
+
+    if (state.inputs.allow_commercial_uses) {
+        state.icons.nc_shown = false
+        toggle_license_icon("nc", false)
+    } else {
+        state.icons.nc_shown = true
+        toggle_license_icon("nc", true)
+    }
 }
 
 function gen_license_name() {
@@ -16,8 +53,10 @@ function gen_license_name() {
     if (!state.inputs.allow_commercial_uses) {
         license_base += "-NonCommercial"
     }
-    if (state.inputs.share_alike) {
-        license_base += "-ShareAlike"
+    if (state.inputs.allow_adaptations) {
+        if (state.inputs.share_alike) {
+            license_base += "-ShareAlike"
+        }
     }
     else if (!state.inputs.allow_adaptations) {
         license_base += "-NoDerivatives"
@@ -81,7 +120,6 @@ function switch_callback(cb) {
             else { // If NOT allow adaptations
                 state.allow_adaptations = false
                 hide_sa_check()
-                state.share_alike = false
             }
             break;
         case "allow-commercial-switch":
@@ -94,12 +132,35 @@ function switch_callback(cb) {
     set_license()
 }
 
+function toggle_license_icon(icon, is_show) {
+    switch (icon) {
+        case "nd-sa":
+            if (!is_show) document.getElementById("adaptations-icon").style.display = "none" 
+            else document.getElementById("adaptations-icon").style.display = "inline"
+            break;
+        case "nc":
+            if (!is_show) document.getElementById("commercial-icon").style.display = "none" 
+            else document.getElementById("commercial-icon").style.display = "inline"
+            break;
+        default:
+            console.log("Whoops! This function isn't designed to handle that parameter.")
+            break;
+    }
+}
+
 function hide_sa_check() {
     console.log("SA Hidden")
-    document.getElementById("sa-checkbox").style.display = "none";
+    document.getElementById("sa-checkbox").style.display = "none"
 }
 
 function show_sa_check() {
     console.log("SA Shown")
-    document.getElementById("sa-checkbox").style.display = "block";
+    var element = document.getElementById("sa-checkbox")
+    if (app_state.chooser.inputs.share_alike) {
+        element.checked = "true"
+    } else {
+        element.checked = "false"
+    }
+
+    element.style.display = "block"
 }

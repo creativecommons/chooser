@@ -1,3 +1,5 @@
+import set_license from "../scripts/choose-a-license.js"
+
 function spawn_modal(modal_id) {
     app_state.modals.modal_content = app_state.modals.modal_packs[modal_id].content // Update modal content
     app_state.modals.modal_title = app_state.modals.modal_packs[modal_id].title // Update modal title
@@ -16,6 +18,11 @@ function spawn_modal(modal_id) {
 
 function destroy_modal() {
     app_state.modals.modal_toggle = "modal"
+}
+
+function on_page_load() {
+    set_license()
+    document.getElementById('sa-checkbox').checked = app_state.chooser.inputs.share_alike
 }
 
 function copy_text_to_clipboard() {

@@ -18,7 +18,7 @@
             </style>
         </noscript>
     </head>
-    <body>
+    <body onload="set_license()">
         <header style="padding-bottom: 1%">
             <br>
             <img src="assets/cc-logo_white.png" style="width: 20%; margin-left: 5%">
@@ -237,13 +237,16 @@
                             </div>
                         </div> <br><br>
                     </div>-->
-                    <div class="column">
-                        <h3 class="title is-3">Your License!</h3>
+                    <div class="column" align="center">
+                        <h3 class="title is-3">Your License!</h3> <br><br>
                         <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
-                        <p>{{chooser.selected_license_short}}</p>
-                        <div id="license-chooser-icons" align="center">
-                            <img src="assets/cc.svg" class="chooser-license-icon">
-                        </div>
+                        <p>{{chooser.selected_license_short}}</p> <br>
+                        <span id="license-chooser-icons">
+                            <img src="assets/cc.svg" class="chooser-license-icon" id="cc-logo-icon">
+                            <img src="assets/license-icons/cc-by_icon.svg" class="chooser-license-icon" id="attribution-icon">
+                            <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
+                            <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" class="chooser-license-icon" id="adaptations-icon">
+                        </span>
                     </div>
                 </div>
             </div>
