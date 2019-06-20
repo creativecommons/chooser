@@ -18,7 +18,7 @@
             </style>
         </noscript>
     </head>
-    <body>
+    <body onload="spawn_modal('q6')">
         <header style="padding-bottom: 1%">
             <br>
             <img src="assets/cc-logo_white.png" style="width: 20%; margin-left: 5%">
@@ -36,7 +36,7 @@
                         <div class="edu-icons-icon">
                             <div class="edu-icons-section">
                                 <img src="assets/license-icons/cc-by_icon.svg"> 
-                                CC BY; 
+                                Attribution (by)
                                 You must attribute the work in the manner specified by the author or licensor. <br>
                             </div>
                             <div class="edu-icons-section">
@@ -93,7 +93,7 @@
                                         <footer class="modal-card-foot">
                                             <p>
                                                 For more information, please see 
-                                                <a href="https://creativecommons.org/licenses/">About the Licenses</a>.
+                                                <a href="https://creativecommons.org/licenses/">About the Licenses</a>
                                             </p>
                                         </footer>
                                     </section>
@@ -147,7 +147,7 @@
                                         <footer class="modal-card-foot">
                                             <p>
                                                 For more information, please see 
-                                                <a href="https://creativecommons.org/licenses/">About the Licenses</a>.
+                                                <a href="https://creativecommons.org/licenses/">About the Licenses</a>
                                             </p>
                                         </footer>
                                     </section>
@@ -171,7 +171,7 @@
                                         <footer class="modal-card-foot">
                                             <p>
                                                 For more information on CC's public domain tools, please see 
-                                                <a href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>.
+                                                <a href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>
                                             </p>
                                         </footer>
                                     </section>
@@ -205,7 +205,7 @@
                                                 For more information, please see 
                                                 <a href="https://wiki.creativecommons.org/wiki/Before_Licensing">
                                                     the CC wiki's page on Considerations for Licensors and Licensees.
-                                                </a>.
+                                                </a>
                                             </p>
                                         </footer>
                                     </section>
@@ -231,40 +231,66 @@
                                             If you are interested in embedding license information on your 
                                             website, please see the "Have a Website?" dropdown at the bottom
                                             of this page for help.
+                                        </p> <br>
+                                        <p>
+                                            <b>Recourse Options</b> <br><br>
+                                            There are lots of recourse options! <br>
+                                            <ul>
+                                                <li>
+                                                    <b> - Resolve the Dispute Amicably</b>
+                                                    <p>
+                                                        First, we encourage you to contact the alleged violator, and 
+                                                        resolve the dispute amicalbly. Most disagreements are solved 
+                                                        in this manner, and it saves everyone time and money.
+                                                    </p>
+                                                </li> <br>
+                                                <li>
+                                                    <b> - Litigation</b>
+                                                    <p>
+                                                        If you determine that the disput cannot be resolved any other 
+                                                        way, you would then identify the alleged violation, contact a 
+                                                        lawyer, and begin building a case.
+                                                    </p>
+                                                </li>
+                                            </ul>
                                         </p>
                                     </section>
                                 </div>
                             </div>
-                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q6')">[Recourse Options?]</a>
+                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q6')">The Six CC Licenses</a>
                             <div id="modal-q6" class="modal">
                                 <div class="modal-background" onclick="destroy_modal('q6')"></div>
                                 <div class="modal-card">
                                     <header class="modal-card-head">
-                                        <p class="modal-card-title">Recourse Options for License Violations</p>
+                                        <p class="modal-card-title">The Six Creative Commons Licenses</p>
                                         <button class="delete" aria-label="close" onclick="destroy_modal('q6')"></button>
                                     </header>
                                     <section class="modal-card-body">
-                                        <p>
-                                            There are lots of recourse options!
-                                        </p> <br>
-                                        <ul>
-                                            <li>
-                                                <b> - Resolve the Dispute Amicably</b>
+                                        <div class="columns">
+                                            <div class="column is-two-thirds">
                                                 <p>
-                                                    First, we encourage you to contact the alleged violator, and 
-                                                    resolve the dispute amicalbly. Most disagreements are solved 
-                                                    in this manner, and it saves everyone time and money.
+                                                    There are six main licenses that Creative Commons offers. <br><br>
+
+                                                    In the diagram to the right, you can see the six main licenses
+                                                    and the public domain CC0 license, and how restrictive they are,
+                                                    with licenses at the top being the least restrictive, and licenses
+                                                    at the bottom being the most restrictive.<br><br>
+
+
                                                 </p>
-                                            </li> <br>
-                                            <li>
-                                                <b> - Litigation</b>
-                                                <p>
-                                                    If you determine that the disput cannot be resolved any other 
-                                                    way, you would then identify the alleged violation, contact a 
-                                                    lawyer, and begin building a case.
-                                                </p>
-                                            </li>
-                                        </ul>
+                                            </div>
+                                            <div class="column">
+                                                <img src="assets/license-openness-scale.png">
+                                            </div>
+                                        </div>
+                                        <footer class="modal-card-foot">
+                                            <p>
+                                                For more information, please see 
+                                                <a href="https://creativecommons.org/share-your-work/licensing-types-examples/">
+                                                    this page on Creative Commons licenses.
+                                                </a>
+                                            </p>
+                                        </footer>
                                     </section>
                                 </div>
                             </div>
@@ -275,7 +301,6 @@
                     <b>Tip:</b> You can click any <img class="modal-icon" src="assets/info-icon.svg" title="Except this one ;)">
                     icons you see to get more information!
                 </div>
-                <button onclick="spawn_modal('allow_adaptations')" data-target="testmodal" hidden>Test</button>
             </div>
             <hr>
             <div class="container" id="license-chooser">
