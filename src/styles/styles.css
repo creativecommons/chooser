@@ -54,3 +54,14 @@ h2 {
 h3 {
     text-align: center;
 }
+/*
+input[type="checkbox"] {
+    background: #ef9421;
+    text-align: center;
+}
+
+input[type="checkbox"]:checked {
+    background: #ef9421;
+    content: "\2713";
+    text-align: center;
+}*/
