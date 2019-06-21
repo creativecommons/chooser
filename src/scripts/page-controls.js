@@ -1,5 +1,3 @@
-import set_license from "../scripts/choose-a-license.js"
-
 function spawn_modal(modal_id) {
     /* Deprecated, but I want to keep it for future reference.
     app_state.modals.modal_content = app_state.modals.modal_packs[modal_id].content // Update modal content
@@ -24,11 +22,6 @@ function destroy_modal(modal_id) {
     const nmodal_id = "modal-" + modal_id
     var element = document.getElementById(nmodal_id)
     element.classList.remove("is-active")
-}
-
-function on_page_load() {
-    set_license()
-    document.getElementById('sa-checkbox').checked = app_state.chooser.inputs.share_alike
 }
 
 function copy_text_to_clipboard() {

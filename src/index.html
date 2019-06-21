@@ -18,14 +18,17 @@
             </style>
         </noscript>
     </head>
-    <body onload="set_license()">
+    <body onload="
+        set_license()
+        document.getElementById('sa-checkbox').checked = app_state.chooser.inputs.share_alike"
+    >
         <header style="padding-bottom: 1%">
             <br>
             <img src="assets/cc-logo_white.png" style="width: 20%; margin-left: 5%">
         </header>
         <div class="container site-container" id="chooser-app">
             <br>
-            <div class="container" id="education-content" hidden>
+            <div class="container" id="education-content">
                 <h1 class="title is-1">[Some Title]</h1>
                 <div class="columns">
                     <div class="column is-one-third" id="icons-explanation">
@@ -361,8 +364,37 @@
                             <span>
                                 <h4 class="title is-4">
                                     Do you want to allow adaptations of your work? 
-                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                    <a class="modal-icon" onclick="spawn_modal('allow-adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
                                 </h4>
+                                <div id="modal-allow-adaptations" class="modal">
+                                    <div class="modal-background" onclick="destroy_modal('allow-adaptations')"></div>
+                                    <div class="modal-card">
+                                        <header class="modal-card-head">
+                                            <p class="modal-card-title">Allowing Adaptations</p>
+                                            <button class="delete" aria-label="close" onclick="destroy_modal('allow-adaptations')"></button>
+                                        </header>
+                                        <section class="modal-card-body">
+                                            <b>Yes</b> <br>
+                                            <p>
+                                                You permit others to copy, distribute, display,
+                                                and perform the work, as well as make and distribute
+                                                derivative works based on it.
+                                            </p> <br>
+                                            <b>No</b> <br>
+                                            <p>
+                                                You permit others to copy, distribute, display,
+                                                and perform the work, but not distribute derivative
+                                                works based on it.
+                                            </p> <br>
+                                            <b>Yes, as but others must share under the same license</b> <br>
+                                            <p>
+                                                You permit others to create and distribute derivative works,
+                                                but only under the same or a 
+                                                <a href="https://creativecommons.org/compatiblelicenses">compatible</a> license.
+                                            </p> <br>
+                                        </section>
+                                    </div>
+                                </div>
                             </span>
                             <div class="control" style="margin-left: 9%; padding-top: 1%;">
                                 <div class="columns is-gapless">
@@ -391,8 +423,30 @@
                             <span>
                                 <h4 class="title is-4">
                                     Do you want to allow commercial uses of your work?
-                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                    <a class="modal-icon" onclick="spawn_modal('allow-commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
                                 </h4>
+                                <div id="modal-allow-commercial" class="modal">
+                                    <div class="modal-background" onclick="destroy_modal('allow-commercial')"></div>
+                                    <div class="modal-card">
+                                        <header class="modal-card-head">
+                                            <p class="modal-card-title">Considerations Before Licensing</p>
+                                            <button class="delete" aria-label="close" onclick="destroy_modal('allow-commercial')"></button>
+                                        </header>
+                                        <section class="modal-card-body">
+                                            <b>Yes</b> <br>
+                                            <p>
+                                                You permit others to copy, distribute, display,
+                                                and perform the work, including for commercial purposes. <br><br>
+                                            </p>
+                                            <b>No</b> <br>
+                                            <p>
+                                                You permit others to copy, distribute, display, 
+                                                and perform the work for non-commercial purposes
+                                                only.
+                                            </p> <br>
+                                        </section>
+                                    </div>
+                                </div>
                             </span>
                             <div class="control" style="margin-left: 9%; padding-top: 1%;">
                                 <div class="field">
