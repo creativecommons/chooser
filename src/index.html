@@ -25,7 +25,7 @@
         </header>
         <div class="container site-container" id="chooser-app">
             <br>
-            <div class="container" id="education-content">
+            <div class="container" id="education-content" hidden>
                 <h1 class="title is-1">[Some Title]</h1>
                 <div class="columns">
                     <div class="column is-one-third" id="icons-explanation">
@@ -354,7 +354,7 @@
                                 </label> <br>
                             </div>
                         </div>
-                    </div>--><!--
+                    </div>-->
                     <div class="column" id="chooser-controls-switch">
                             <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
                         <div id="license-chooser-allow-adaptations">
@@ -368,15 +368,18 @@
                                 <div class="columns is-gapless">
                                     <div class="field column is-one-fifth">
                                         <label for="allow-adaptations-switch">No</label>
-                                        <input id="allow-adaptations-switch" type="checkbox" name="allow-adaptations-switch" class="switch is-thin" checked="checked">
+                                        <input id="allow-adaptations-switch" type="checkbox" 
+                                        name="allow-adaptations-switch" class="switch is-thin" 
+                                        checked="checked" onchange="switch_callback(this)">
                                         <label for="allow-adaptations-switch">Yes</label>
                                     </div>
                                     <div class="field column is-pulled-left" style="display: inline;">
                                         <p class="control is-pulled-left">
-                                            <div class="b-checkbox is-primary" style="display: inline;">
-                                                <input id="checkbox" class="styled" checked type="checkbox">
+                                            <div class="b-checkbox is-primary" id="sa-checkbox" style="display: inline;">
+                                                <input id="checkbox" class="styled is-primary" 
+                                                type="checkbox" onchange="sa_check_callback(this)">
                                                 <label for="checkbox">
-                                                    SA Checkbox
+                                                    Yes, but others must share under the same license.
                                                 </label>
                                             </div>
                                         </p>
@@ -394,12 +397,14 @@
                             <div class="control" style="margin-left: 9%; padding-top: 1%;">
                                 <div class="field">
                                     <label for="allow-commercial-switch">No</label>
-                                    <input id="allow-commercial-switch" type="checkbox" name="allow-commercial-switch" class="switch is-thin" checked="checked">
+                                    <input id="allow-commercial-switch" type="checkbox" 
+                                    name="allow-commercial-switch" class="switch is-thin" 
+                                    checked="checked" onchange="switch_callback(this)">
                                     <label for="allow-commercial-switch">Yes</label>
                                 </div>
                             </div>
                         </div> <br><br>
-                    </div>-->
+                    </div><!--
                     <div class="column" id="chooser-controls-images">
                         <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
                         <div id="license-chooser-allow-adaptations">
@@ -446,13 +451,17 @@
                                 </div>
                             </div>
                         </div> <br><br>
-                    </div>
-                    <div class="column">
-                        <h3 class="title is-3">Your License!</h3>
-                        <p align="center">{{chooser.selected_license}}</p> <br><br>
-                        <div id="license-chooser-icons" align="center">
-                            <img src="assets/cc.svg" class="chooser-license-icon">
-                        </div>
+                    </div>-->
+                    <div class="column" align="center">
+                        <h3 class="title is-3">Your License!</h3> <br><br>
+                        <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
+                        <p>{{chooser.selected_license_short}}</p> <br>
+                        <span id="license-chooser-icons">
+                            <img src="assets/cc.svg" class="chooser-license-icon" id="cc-logo-icon">
+                            <img src="assets/license-icons/cc-by_icon.svg" class="chooser-license-icon" id="attribution-icon">
+                            <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
+                            <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" class="chooser-license-icon" id="adaptations-icon">
+                        </span>
                     </div>
                 </div>
             </div>
