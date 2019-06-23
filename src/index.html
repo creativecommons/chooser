@@ -34,269 +34,292 @@
                     <div class="column is-one-third" id="icons-explanation">
                         <p>
                             Creative Commons licenses can be represented by their names, their
-                            associated icons, or both.
+                            associated icons, or both. For example, a cc-by-nc license, which 
+                            requires attribution, and prohibits commercial use could be represented its:
+                            <br><br>
+                            <ul>
+                                <li>
+                                    <span>
+                                        <b>&nbsp;&nbsp;&nbsp;&nbsp; - Name: </b> CC-BY-NC, or Attribution-NonCommercial
+                                    </span>
+                                </li>
+                                <li>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR</p>
+                                </li>
+                                <li>
+                                    <span>
+                                        <b>&nbsp;&nbsp;&nbsp;&nbsp; - Icons: </b>
+                                        <span class="generated-icons">
+                                            <img src="assets/cc.svg">
+                                            <img src="assets/license-icons/cc-by_icon.svg">
+                                            <img src="assets/license-icons/cc-nc_icon.svg">
+                                        </span>
+                                    </span>
+                                </li>
+                            </ul>
                         </p> <br>
-                        <div class="edu-icons-icon">
-                            <div class="edu-icons-section">
-                                <img src="assets/license-icons/cc-by_icon.svg"> 
-                                Attribution (BY)
-                                You must attribute the work in the manner specified by the author or licensor. <br>
+                    </div>
+                    <div class="column is-one-third">
+                        <div class="edu-icons-section">
+                            <img src="assets/license-icons/cc-by_icon.svg"> 
+                            Attribution (BY) <br>
+                            <p>You must attribute the work in the manner specified by the author or licensor.</p> <br>
+                        </div>
+                        <div class="edu-icons-section">
+                            <img src="assets/license-icons/cc-nd_icon.svg"> 
+                            No Derivatives (ND)
+                            <p>
+                                You may not create derivatives of the licensed work.
+                            </p>
+                            <p hidden>
+                            The licensor permits others to copy, distribute and transmit only unaltered copies of the work -- 
+                            not derivative works based on it.</p><br>
+                        </div>
+                    </div>
+                    <div class="column is-one-third">
+                        <div class="edu-icons-section">
+                            <img src="assets/license-icons/cc-sa_icon.svg"> 
+                            Share-Alike (SA)
+                            <p>
+                                You may create and distribute derivative works, but only under the same or a compatible license.
+                            </p>
+                            <p hidden>
+                            The licensor permits others to distribute derivative works, only under the same
+                            license or one compatible with the one that governs the licensor's work.</p><br>
+                        </div>
+                        <div class="edu-icons-section">
+                            <img src="assets/license-icons/cc-nc_icon.svg"> 
+                            Non-Commercial (NC)
+                            <p>
+                            The licensor permits others to copy, distribute and transmit the work. In return,
+                            licensees may not use the work for commercial purposes -- unless they get the
+                            licensor's permission.</p><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns" id="questions-buttons">
+                    <div class="column is-one-half">
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q1')">What Are Creative Commons Licenses?</a><br>
+                        <div id="modal-q1" class="modal">
+                            <div class="modal-background" onclick="destroy_modal('q1')"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">What Are Creative Commons Licenses?</p>
+                                    <button class="delete" aria-label="close" onclick="destroy_modal('q1')"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <p>
+                                        The Creative Commons copyright licenses and tools forge a balance inside the tradional
+                                        "all rights reserved" setting that copyright law creates. Our licenses and tools give everyone from
+                                        individual creators to large companies a simple, standardized way to grant copyright permissions to
+                                        their creative work. <br><br>
+                
+                                        This helps you as a creator, because instead of having to hire a lawer to parse legalese and
+                                        create a license for you, you can save time and money, use Creative Commons licenses instead!
+                                    </p> <br>
+                                    <footer class="modal-card-foot">
+                                        <p>
+                                            For more information, please see 
+                                            <a href="https://creativecommons.org/licenses/">About the Licenses</a>
+                                        </p>
+                                    </footer>
+                                </section>
                             </div>
-                            <div class="edu-icons-section">
-                                <img src="assets/license-icons/cc-nd_icon.svg"> 
-                                No Derivatives (ND)
-                                <p>
-                                    You may not create derivatives of the licensed work.
-                                </p>
-                                <p hidden>
-                                The licensor permits others to copy, distribute and transmit only unaltered copies of the work -- 
-                                not derivative works based on it.</p><br>
+                        </div>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q3')">How do the Licenses Work?</a><br>
+                        <div id="modal-q3" class="modal">
+                            <div class="modal-background" onclick="destroy_modal('q3')"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">How do the Licenses Work?</p>
+                                    <button class="delete" aria-label="close" onclick="destroy_modal('q3')"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <b>License "Layers"</b> <br>
+                                    <p>Creative Commons licenses incorporate a unique and innovative "three-layer" design.</p><br>
+                                    <ul>
+                                        <li>
+                                            <b> - Legal Code: </b>
+                                            <p>
+                                                Each license begins as a traditional legal tool, in the kind of 
+                                                language and text formats that most lawyers know and love. We 
+                                                call this the Legal Code layer of each license.
+                                            </p>
+                                        </li> <br>
+                                        <li>
+                                            <b> - Human Readable: </b>
+                                            <p>
+                                                Since most creators, educators, and scientists are not in fact lawyers, 
+                                                we also make the licenses available in a format that normal people can read -- 
+                                                The Commons Deed (also known as the “human readable” version of the license).
+                                                This is a handy reference for licensors and licensees, summarizing some of the
+                                                most important terms and conditions. Think of the Commons Deed as a user-friendly
+                                                interface to the legal code beneath.
+                                            </p>
+                                        </li> <br>
+                                        <li>
+                                            <b> - Machine Readable: </b>
+                                            <p>
+                                                The final layer of the license design helps out software, from search engines
+                                                to office productivity, this software plays an enourmous role
+                                                in the creation, copying, and distribution of creative works. To help out this
+                                                software, we provide a "Machine Readable" version of the license. <br><br>
+
+                                                We developed a standardized way to describe licenses that software can
+                                                understand called <a href="https://wiki.creativecommons.org/Ccrel">CC Rights Expression language</a> 
+                                                (CC REL) to accomplish this.
+                                            </p>
+                                        </li> <br>
+                                    </ul>
+                                    <footer class="modal-card-foot">
+                                        <p>
+                                            For more information, please see 
+                                            <a href="https://creativecommons.org/licenses/">About the Licenses</a>
+                                        </p>
+                                    </footer>
+                                </section>
                             </div>
-                            <div class="edu-icons-section">
-                                <img src="assets/license-icons/cc-sa_icon.svg"> 
-                                Share-Alike (SA)
-                                <p>
-                                    You may create and distribute derivative works, but only under the same or a compatible license.
-                                </p>
-                                <p hidden>
-                                The licensor permits others to distribute derivative works, only under the same
-                                license or one compatible with the one that governs the licensor's work.</p><br>
-                            </div>
-                            <div class="edu-icons-section">
-                                <img src="assets/license-icons/cc-nc_icon.svg"> 
-                                Non-Commercial (NC)
-                                <p>
-                                The licensor permits others to copy, distribute and transmit the work. In return,
-                                licensees may not use the work for commercial purposes -- unless they get the
-                                licensor's permission.</p><br>
+                        </div>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q5')">Want Public Domain Instead?</a>
+                        <div id="modal-q5" class="modal">
+                            <div class="modal-background" onclick="destroy_modal('q5')"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">Want Public Domain Instead?</p>
+                                    <button class="delete" aria-label="close" onclick="destroy_modal('q5')"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <p>
+                                        Our Public Domain Tools help authors keep and manage their copyright
+                                        on terms they choose. Our public domain tools, on the other hand, enable
+                                        authors and copyright owners who want to dedicate their works to the 
+                                        worldwide public domain to do so.
+                                    </p>
+                                    <footer class="modal-card-foot">
+                                        <p>
+                                            For more information on CC's public domain tools, please see 
+                                            <a href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>
+                                        </p>
+                                    </footer>
+                                </section>
                             </div>
                         </div>
                     </div>
-                    <div class="column columns" id="questions-buttons">
-                        
-                        <div class="column is-one-half">
-                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q1')">What Are Creative Commons Licenses?</a><br>
-                            <div id="modal-q1" class="modal">
-                                <div class="modal-background" onclick="destroy_modal('q1')"></div>
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">What Are Creative Commons Licenses?</p>
-                                        <button class="delete" aria-label="close" onclick="destroy_modal('q1')"></button>
-                                    </header>
-                                    <section class="modal-card-body">
-                                        <p>
-                                            The Creative Commons copyright licenses and tools forge a balance inside the tradional
-                                            "all rights reserved" setting that copyright law creates. Our licenses and tools give everyone from
-                                            individual creators to large companies a simple, standardized way to grant copyright permissions to
-                                            their creative work. <br><br>
-                    
-                                            This helps you as a creator, because instead of having to hire a lawer to parse legalese and
-                                            create a license for you, you can save time and money, use Creative Commons licenses instead!
-                                        </p> <br>
-                                        <footer class="modal-card-foot">
-                                            <p>
-                                                For more information, please see 
-                                                <a href="https://creativecommons.org/licenses/">About the Licenses</a>
-                                            </p>
-                                        </footer>
-                                    </section>
-                                </div>
-                            </div>
-                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q3')">How do the Licenses Work?</a><br>
-                            <div id="modal-q3" class="modal">
-                                <div class="modal-background" onclick="destroy_modal('q3')"></div>
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">How do the Licenses Work?</p>
-                                        <button class="delete" aria-label="close" onclick="destroy_modal('q3')"></button>
-                                    </header>
-                                    <section class="modal-card-body">
-                                        <b>License "Layers"</b> <br>
-                                        <p>Creative Commons licenses incorporate a unique and innovative "three-layer" design.</p><br>
-                                        <ul>
-                                            <li>
-                                                <b> - Legal Code: </b>
-                                                <p>
-                                                    Each license begins as a traditional legal tool, in the kind of 
-                                                    language and text formats that most lawyers know and love. We 
-                                                    call this the Legal Code layer of each license.
-                                                </p>
-                                            </li> <br>
-                                            <li>
-                                                <b> - Human Readable: </b>
-                                                <p>
-                                                    Since most creators, educators, and scientists are not in fact lawyers, 
-                                                    we also make the licenses available in a format that normal people can read -- 
-                                                    The Commons Deed (also known as the “human readable” version of the license).
-                                                    This is a handy reference for licensors and licensees, summarizing some of the
-                                                    most important terms and conditions. Think of the Commons Deed as a user-friendly
-                                                    interface to the legal code beneath.
-                                                </p>
-                                            </li> <br>
-                                            <li>
-                                                <b> - Machine Readable: </b>
-                                                <p>
-                                                    The final layer of the license design helps out software, from search engines
-                                                    to office productivity, this software plays an enourmous role
-                                                    in the creation, copying, and distribution of creative works. To help out this
-                                                    software, we provide a "Machine Readable" version of the license. <br><br>
+                    <div class="column is-one-half">
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q2')">Considerations Before Licensing</a><br>
+                        <div id="modal-q2" class="modal">
+                            <div class="modal-background" onclick="destroy_modal('q2')"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">Considerations Before Licensing</p>
+                                    <button class="delete" aria-label="close" onclick="destroy_modal('q2')"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <p>
+                                        There are a number of things you should consider before you apply
+                                        a Creative Commons license to your work, or before using Creative 
+                                        Commons-licened material. <br><br>
 
-                                                    We developed a standardized way to describe licenses that software can
-                                                    understand called <a href="https://wiki.creativecommons.org/Ccrel">CC Rights Expression language</a> 
-                                                    (CC REL) to accomplish this.
-                                                </p>
-                                            </li> <br>
-                                        </ul>
-                                        <footer class="modal-card-foot">
-                                            <p>
-                                                For more information, please see 
-                                                <a href="https://creativecommons.org/licenses/">About the Licenses</a>
-                                            </p>
-                                        </footer>
-                                    </section>
-                                </div>
-                            </div>
-                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q5')">Want Public Domain Instead?</a>
-                            <div id="modal-q5" class="modal">
-                                <div class="modal-background" onclick="destroy_modal('q5')"></div>
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">Want Public Domain Instead?</p>
-                                        <button class="delete" aria-label="close" onclick="destroy_modal('q5')"></button>
-                                    </header>
-                                    <section class="modal-card-body">
+                                        <a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors">
+                                            Considerations for Licensors
+                                        </a> - If you are licensing your own work <br>
+                                        <a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees">
+                                            Considerations for Licensors
+                                        </a> - If you are licensing your own work
+                                    </p> <br>
+                                    <footer class="modal-card-foot">
                                         <p>
-                                            Our Public Domain Tools help authors keep and manage their copyright
-                                            on terms they choose. Our public domain tools, on the other hand, enable
-                                            authors and copyright owners who want to dedicate their works to the 
-                                            worldwide public domain to do so.
+                                            For more information, please see 
+                                            <a href="https://wiki.creativecommons.org/wiki/Before_Licensing">
+                                                the CC wiki's page on Considerations for Licensors and Licensees.
+                                            </a>
                                         </p>
-                                        <footer class="modal-card-foot">
-                                            <p>
-                                                For more information on CC's public domain tools, please see 
-                                                <a href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>
-                                            </p>
-                                        </footer>
-                                    </section>
-                                </div>
+                                    </footer>
+                                </section>
                             </div>
                         </div>
-                        <div class="column is-one-half">
-                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q2')">Considerations Before Licensing</a><br>
-                            <div id="modal-q2" class="modal">
-                                <div class="modal-background" onclick="destroy_modal('q2')"></div>
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">Considerations Before Licensing</p>
-                                        <button class="delete" aria-label="close" onclick="destroy_modal('q2')"></button>
-                                    </header>
-                                    <section class="modal-card-body">
-                                        <p>
-                                            There are a number of things you should consider before you apply
-                                            a Creative Commons license to your work, or before using Creative 
-                                            Commons-licened material. <br><br>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q4')">How do I Formally License my Work?</a><br>
+                        <div id="modal-q4" class="modal">
+                            <div class="modal-background" onclick="destroy_modal('q4')"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">How do I Formally License my Work?</p>
+                                    <button class="delete" aria-label="close" onclick="destroy_modal('q4')"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <p>
+                                        Formally licensing your work is as easy as marking your work
+                                        as being CC licensed, along with the specific license it is under.
+                                        This mark may be in the form of a watermark, or it may be somewhere 
+                                        around where your work is hosted or shared. This mark may be as 
+                                        simple as a bit of text stating the license, or as complex as 
+                                        embedding the license information on your website. <br><br>
 
-                                            <a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors">
-                                                Considerations for Licensors
-                                            </a> - If you are licensing your own work <br>
-                                            <a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees">
-                                                Considerations for Licensors
-                                            </a> - If you are licensing your own work
-                                        </p> <br>
-                                        <footer class="modal-card-foot">
-                                            <p>
-                                                For more information, please see 
-                                                <a href="https://wiki.creativecommons.org/wiki/Before_Licensing">
-                                                    the CC wiki's page on Considerations for Licensors and Licensees.
-                                                </a>
-                                            </p>
-                                        </footer>
-                                    </section>
-                                </div>
-                            </div>
-                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q4')">How do I Formally License my Work?</a><br>
-                            <div id="modal-q4" class="modal">
-                                <div class="modal-background" onclick="destroy_modal('q4')"></div>
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">How do I Formally License my Work?</p>
-                                        <button class="delete" aria-label="close" onclick="destroy_modal('q4')"></button>
-                                    </header>
-                                    <section class="modal-card-body">
-                                        <p>
-                                            Formally licensing your work is as easy as marking your work
-                                            as being CC licensed, along with the specific license it is under.
-                                            This mark may be in the form of a watermark, or it may be somewhere 
-                                            around where your work is hosted or shared. This mark may be as 
-                                            simple as a bit of text stating the license, or as complex as 
-                                            embedding the license information on your website. <br><br>
-
-                                            If you are interested in embedding license information on your 
-                                            website, please see the "Have a Website?" dropdown at the bottom
-                                            of this page for help.
-                                        </p> <br>
-                                        <p>
-                                            <b>Recourse Options</b> <br><br>
-                                            There are lots of recourse options! <br>
-                                            <ul>
-                                                <li>
-                                                    <b> - Resolve the Dispute Amicably</b>
-                                                    <p>
-                                                        First, we encourage you to contact the alleged violator, and 
-                                                        resolve the dispute amicalbly. Most disagreements are solved 
-                                                        in this manner, and it saves everyone time and money.
-                                                    </p>
-                                                </li> <br>
-                                                <li>
-                                                    <b> - Litigation</b>
-                                                    <p>
-                                                        If you determine that the disput cannot be resolved any other 
-                                                        way, you would then identify the alleged violation, contact a 
-                                                        lawyer, and begin building a case.
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                        </p>
-                                    </section>
-                                </div>
-                            </div>
-                            <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q6')">The Six CC Licenses</a>
-                            <div id="modal-q6" class="modal">
-                                <div class="modal-background" onclick="destroy_modal('q6')"></div>
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">The Six Creative Commons Licenses</p>
-                                        <button class="delete" aria-label="close" onclick="destroy_modal('q6')"></button>
-                                    </header>
-                                    <section class="modal-card-body">
-                                        <div class="columns">
-                                            <div class="column is-two-thirds">
+                                        If you are interested in embedding license information on your 
+                                        website, please see the "Have a Website?" dropdown at the bottom
+                                        of this page for help.
+                                    </p> <br>
+                                    <p>
+                                        <b>Recourse Options</b> <br><br>
+                                        There are lots of recourse options! <br>
+                                        <ul>
+                                            <li>
+                                                <b> - Resolve the Dispute Amicably</b>
                                                 <p>
-                                                    There are six main licenses that Creative Commons offers. <br><br>
-
-                                                    In the diagram to the right, you can see the six main licenses
-                                                    and the public domain CC0 license, and how restrictive they are,
-                                                    with licenses at the top being the least restrictive, and licenses
-                                                    at the bottom being the most restrictive.<br><br>
-
-                                                    If you are unsure about which one is right for you and your work,
-                                                    please see the "Choose a License" section below.
+                                                    First, we encourage you to contact the alleged violator, and 
+                                                    resolve the dispute amicalbly. Most disagreements are solved 
+                                                    in this manner, and it saves everyone time and money.
                                                 </p>
-                                            </div>
-                                            <div class="column">
-                                                <img src="assets/license-openness-scale.png">
-                                            </div>
-                                        </div>
-                                        <footer class="modal-card-foot">
+                                            </li> <br>
+                                            <li>
+                                                <b> - Litigation</b>
+                                                <p>
+                                                    If you determine that the disput cannot be resolved any other 
+                                                    way, you would then identify the alleged violation, contact a 
+                                                    lawyer, and begin building a case.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q6')">The Six CC Licenses</a>
+                        <div id="modal-q6" class="modal">
+                            <div class="modal-background" onclick="destroy_modal('q6')"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">The Six Creative Commons Licenses</p>
+                                    <button class="delete" aria-label="close" onclick="destroy_modal('q6')"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <div class="columns">
+                                        <div class="column is-two-thirds">
                                             <p>
-                                                For more information, please see 
-                                                <a href="https://creativecommons.org/share-your-work/licensing-types-examples/">
-                                                    this page on Creative Commons licenses.
-                                                </a>
+                                                There are six main licenses that Creative Commons offers. <br><br>
+
+                                                In the diagram to the right, you can see the six main licenses
+                                                and the public domain CC0 license, and how restrictive they are,
+                                                with licenses at the top being the least restrictive, and licenses
+                                                at the bottom being the most restrictive.<br><br>
+
+                                                If you are unsure about which one is right for you and your work,
+                                                please see the "Choose a License" section below.
                                             </p>
-                                        </footer>
-                                    </section>
-                                </div>
+                                        </div>
+                                        <div class="column">
+                                            <img src="assets/license-openness-scale.png">
+                                        </div>
+                                    </div>
+                                    <footer class="modal-card-foot">
+                                        <p>
+                                            For more information, please see 
+                                            <a href="https://creativecommons.org/share-your-work/licensing-types-examples/">
+                                                this page on Creative Commons licenses.
+                                            </a>
+                                        </p>
+                                    </footer>
+                                </section>
                             </div>
                         </div>
                     </div>
