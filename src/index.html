@@ -28,8 +28,228 @@
         </header>
         <div class="container site-container" id="chooser-app">
             <br>
+            <h1 class="title is-1">CC License Chooser</h1>
+            <div align="center">
+                <b>Tip:</b> You can click any <img class="modal-icon" src="assets/info-icon.svg" title="Except this one ;)">
+                icons you see to get more information!
+            </div> <br>
+            <div class="container" id="license-chooser">
+                <p align="center">
+                    Have a work you want to license with the Creative Commons plaform, <br>
+                    but not sure which one is right for you? Use our license chooser!
+                </p>
+                <p align="center" style="display: none;">
+                    Confused? Check out the "<b>Need Help?</b>" section just below!
+                </p> <br>
+                <div class="columns">
+                    <!--
+                    <div class="column" id="chooser-controls-radio">
+                            <p align="center">Changes to the options below will affect the license choice to the right.</p> <br>
+                        <div id="license-chooser-allow-adaptations">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow adaptations of your work? 
+                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%">
+                                <label class="radio">
+                                    <input type="radio" name="allow-adaptations-radio">
+                                    Yes
+                                </label> <br>
+                                <label class="radio">
+                                    <input type="radio" name="allow-adaptations-radio">
+                                    No
+                                </label> <br>
+                                <label class="radio">
+                                    <input type="radio" name="allow-adaptations-radio">
+                                    Yes, as long as others share alike
+                                </label> <br>
+                            </div>
+                        </div> <br>
+                        <div class="license-chooser-allow-commercial">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow commercial uses of your work?
+                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%">
+                                <label class="radio">
+                                    <input type="radio" name="allow-commercial-radio">
+                                    Yes
+                                </label> <br>
+                                <label class="radio">
+                                    <input type="radio" name="allow-commercial-radio">
+                                    No
+                                </label> <br>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="column" id="chooser-controls-switch">
+                        <p style="display: none" align="center">Changes to the options below will affect the license choice to the right.</p> <br>
+                        <div id="license-chooser-allow-adaptations">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow adaptations of your work? 
+                                    <a class="modal-icon" onclick="spawn_modal('allow-adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                                <div id="modal-allow-adaptations" class="modal">
+                                    <div class="modal-background" onclick="destroy_modal('allow-adaptations')"></div>
+                                    <div class="modal-card">
+                                        <header class="modal-card-head">
+                                            <p class="modal-card-title">Allowing Adaptations</p>
+                                            <button class="delete" aria-label="close" onclick="destroy_modal('allow-adaptations')"></button>
+                                        </header>
+                                        <section class="modal-card-body">
+                                            <b>Yes</b> <br>
+                                            <p>
+                                                You permit others to copy, distribute, display,
+                                                and perform the work, as well as make and distribute
+                                                derivative works based on it.
+                                            </p> <br>
+                                            <b>No</b> <br>
+                                            <p>
+                                                You permit others to copy, distribute, display,
+                                                and perform the work, but not distribute derivative
+                                                works based on it.
+                                            </p> <br>
+                                            <b>Yes, as but others must share under the same license</b> <br>
+                                            <p>
+                                                You permit others to create and distribute derivative works,
+                                                but only under the same or a 
+                                                <a href="https://creativecommons.org/compatiblelicenses">compatible</a> license.
+                                            </p> <br>
+                                        </section>
+                                    </div>
+                                </div>
+                            </span>
+                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
+                                <div class="columns is-gapless">
+                                    <div class="field column is-one-fifth">
+                                        <label for="allow-adaptations-switch">No</label>
+                                        <input id="allow-adaptations-switch" type="checkbox" 
+                                        name="allow-adaptations-switch" class="switch is-thin" 
+                                        checked="checked" onchange="switch_callback(this)">
+                                        <label for="allow-adaptations-switch">Yes</label>
+                                    </div>
+                                    <div class="field column is-pulled-left" style="display: inline;">
+                                        <p class="control is-pulled-left">
+                                            <div class="b-checkbox is-primary" id="sa-checkbox" style="display: inline;">
+                                                <input id="checkbox" class="styled is-primary" 
+                                                type="checkbox" onchange="sa_check_callback(this)">
+                                                <label for="checkbox">
+                                                    Yes, but others must share under the same license.
+                                                </label>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <br><br>
+                        <div class="license-chooser-allow-commercial">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow commercial uses of your work?
+                                    <a class="modal-icon" onclick="spawn_modal('allow-commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                                <div id="modal-allow-commercial" class="modal">
+                                    <div class="modal-background" onclick="destroy_modal('allow-commercial')"></div>
+                                    <div class="modal-card">
+                                        <header class="modal-card-head">
+                                            <p class="modal-card-title">Considerations Before Licensing</p>
+                                            <button class="delete" aria-label="close" onclick="destroy_modal('allow-commercial')"></button>
+                                        </header>
+                                        <section class="modal-card-body">
+                                            <b>Yes</b> <br>
+                                            <p>
+                                                You permit others to copy, distribute, display,
+                                                and perform the work, including for commercial purposes. <br><br>
+                                            </p>
+                                            <b>No</b> <br>
+                                            <p>
+                                                You permit others to copy, distribute, display, 
+                                                and perform the work for non-commercial purposes
+                                                only.
+                                            </p> <br>
+                                        </section>
+                                    </div>
+                                </div>
+                            </span>
+                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
+                                <div class="field">
+                                    <label for="allow-commercial-switch">No</label>
+                                    <input id="allow-commercial-switch" type="checkbox" 
+                                    name="allow-commercial-switch" class="switch is-thin" 
+                                    checked="checked" onchange="switch_callback(this)">
+                                    <label for="allow-commercial-switch">Yes</label>
+                                </div>
+                            </div>
+                        </div> <br><br>
+                    </div><!--
+                    <div class="column" id="chooser-controls-images">
+                        <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
+                        <div id="license-chooser-allow-adaptations">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow adaptations of your work? 
+                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
+                                <div class="columns is-gapless">
+                                    <div class="field column is-one-fifth">
+                                        <label for="allow-adaptations-switch">No</label>
+                                        <input id="allow-adaptations-switch" type="checkbox" name="allow-adaptations-switch" class="switch is-thin" checked="checked">
+                                        <label for="allow-adaptations-switch">Yes</label>
+                                    </div>
+                                    <div class="field column is-pulled-left" style="display: inline;">
+                                        <p class="control is-pulled-left">
+                                            <div class="b-checkbox is-primary" style="display: inline;">
+                                                <input id="checkbox" class="styled" checked type="checkbox">
+                                                <label for="checkbox">
+                                                    SA Checkbox
+                                                </label>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <br><br>
+                        <div class="license-chooser-allow-commercial">
+                            <span>
+                                <h4 class="title is-4">
+                                    Do you want to allow commercial uses of your work?
+                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                                </h4>
+                            </span>
+                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
+                                <div class="field">
+                                    <p>Selected Example</p>
+                                    <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-controls-icons">
+
+                                    <p>Unselected Example</p>
+                                    <img src="assets/license-icons/cc-nc_icon.svg" class="unselected">
+                                </div>
+                            </div>
+                        </div> <br><br>
+                    </div>-->
+                    <div class="column" align="center">
+                        <h3 class="title is-3">Your License!</h3> <br><br>
+                        <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
+                        <p>{{chooser.selected_license_short}}</p> <br>
+                        <span id="license-chooser-icons">
+                            <img src="assets/cc.svg" class="chooser-license-icon" id="cc-logo-icon">
+                            <img src="assets/license-icons/cc-by_icon.svg" class="chooser-license-icon" id="attribution-icon">
+                            <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
+                            <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" class="chooser-license-icon" id="adaptations-icon">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr>
             <div class="container" id="education-content">
-                <h1 class="title is-1">CC License Chooser</h1>
+                <h1 class="title is-1">Confused? Need Help?</h1>
                 <p align="center">You can click the buttons below to get answers to the questions on them!</p>
                 <br>
                 <div class="columns" id="questions-buttons">
@@ -195,13 +415,15 @@
                                         of this page for help.
                                     </p> <br>
                                     <p>
-                                        <b>Recourse Options</b> <br><br>
-                                        There are lots of recourse options! <br>
+                                        <b>Recourse Options</b> <br>
+                                        So what would I do if someone used my licensed work in a way
+                                        that the license does not permit? Well, there are lots of 
+                                        recourse options, but here are the two main ones: <br><br>
                                         <ul>
                                             <li>
                                                 <b> - Resolve the Dispute Amicably</b>
                                                 <p>
-                                                    First, we encourage you to contact the alleged violator, and 
+                                                    First, we encourage you to contact the alleged violator, and attempt to
                                                     resolve the dispute amicalbly. Most disagreements are solved 
                                                     in this manner, and it saves everyone time and money.
                                                 </p>
@@ -330,219 +552,6 @@
                 <div align="center">
                     <b>Tip:</b> You can click any <img class="modal-icon" src="assets/info-icon.svg" title="Except this one ;)">
                     icons you see to get more information!
-                </div>
-            </div>
-            <hr>
-            <div class="container" id="license-chooser">
-                <p align="center">
-                    Have a work you want to license with the Creative Commons plaform, <br>
-                    but not sure which one is right for you? Use our license chooser!
-                </p>
-                <h1 class="title is-2">Choose a License</h1>
-                <div class="columns">
-                    <!--
-                    <div class="column" id="chooser-controls-radio">
-                            <p align="center">Changes to the options below will affect the license choice to the right.</p> <br>
-                        <div id="license-chooser-allow-adaptations">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow adaptations of your work? 
-                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                            </span>
-                            <div class="control" style="margin-left: 9%">
-                                <label class="radio">
-                                    <input type="radio" name="allow-adaptations-radio">
-                                    Yes
-                                </label> <br>
-                                <label class="radio">
-                                    <input type="radio" name="allow-adaptations-radio">
-                                    No
-                                </label> <br>
-                                <label class="radio">
-                                    <input type="radio" name="allow-adaptations-radio">
-                                    Yes, as long as others share alike
-                                </label> <br>
-                            </div>
-                        </div> <br>
-                        <div class="license-chooser-allow-commercial">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow commercial uses of your work?
-                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                            </span>
-                            <div class="control" style="margin-left: 9%">
-                                <label class="radio">
-                                    <input type="radio" name="allow-commercial-radio">
-                                    Yes
-                                </label> <br>
-                                <label class="radio">
-                                    <input type="radio" name="allow-commercial-radio">
-                                    No
-                                </label> <br>
-                            </div>
-                        </div>
-                    </div>-->
-                    <div class="column" id="chooser-controls-switch">
-                            <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
-                        <div id="license-chooser-allow-adaptations">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow adaptations of your work? 
-                                    <a class="modal-icon" onclick="spawn_modal('allow-adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                                <div id="modal-allow-adaptations" class="modal">
-                                    <div class="modal-background" onclick="destroy_modal('allow-adaptations')"></div>
-                                    <div class="modal-card">
-                                        <header class="modal-card-head">
-                                            <p class="modal-card-title">Allowing Adaptations</p>
-                                            <button class="delete" aria-label="close" onclick="destroy_modal('allow-adaptations')"></button>
-                                        </header>
-                                        <section class="modal-card-body">
-                                            <b>Yes</b> <br>
-                                            <p>
-                                                You permit others to copy, distribute, display,
-                                                and perform the work, as well as make and distribute
-                                                derivative works based on it.
-                                            </p> <br>
-                                            <b>No</b> <br>
-                                            <p>
-                                                You permit others to copy, distribute, display,
-                                                and perform the work, but not distribute derivative
-                                                works based on it.
-                                            </p> <br>
-                                            <b>Yes, as but others must share under the same license</b> <br>
-                                            <p>
-                                                You permit others to create and distribute derivative works,
-                                                but only under the same or a 
-                                                <a href="https://creativecommons.org/compatiblelicenses">compatible</a> license.
-                                            </p> <br>
-                                        </section>
-                                    </div>
-                                </div>
-                            </span>
-                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
-                                <div class="columns is-gapless">
-                                    <div class="field column is-one-fifth">
-                                        <label for="allow-adaptations-switch">No</label>
-                                        <input id="allow-adaptations-switch" type="checkbox" 
-                                        name="allow-adaptations-switch" class="switch is-thin" 
-                                        checked="checked" onchange="switch_callback(this)">
-                                        <label for="allow-adaptations-switch">Yes</label>
-                                    </div>
-                                    <div class="field column is-pulled-left" style="display: inline;">
-                                        <p class="control is-pulled-left">
-                                            <div class="b-checkbox is-primary" id="sa-checkbox" style="display: inline;">
-                                                <input id="checkbox" class="styled is-primary" 
-                                                type="checkbox" onchange="sa_check_callback(this)">
-                                                <label for="checkbox">
-                                                    Yes, but others must share under the same license.
-                                                </label>
-                                            </div>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <br><br>
-                        <div class="license-chooser-allow-commercial">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow commercial uses of your work?
-                                    <a class="modal-icon" onclick="spawn_modal('allow-commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                                <div id="modal-allow-commercial" class="modal">
-                                    <div class="modal-background" onclick="destroy_modal('allow-commercial')"></div>
-                                    <div class="modal-card">
-                                        <header class="modal-card-head">
-                                            <p class="modal-card-title">Considerations Before Licensing</p>
-                                            <button class="delete" aria-label="close" onclick="destroy_modal('allow-commercial')"></button>
-                                        </header>
-                                        <section class="modal-card-body">
-                                            <b>Yes</b> <br>
-                                            <p>
-                                                You permit others to copy, distribute, display,
-                                                and perform the work, including for commercial purposes. <br><br>
-                                            </p>
-                                            <b>No</b> <br>
-                                            <p>
-                                                You permit others to copy, distribute, display, 
-                                                and perform the work for non-commercial purposes
-                                                only.
-                                            </p> <br>
-                                        </section>
-                                    </div>
-                                </div>
-                            </span>
-                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
-                                <div class="field">
-                                    <label for="allow-commercial-switch">No</label>
-                                    <input id="allow-commercial-switch" type="checkbox" 
-                                    name="allow-commercial-switch" class="switch is-thin" 
-                                    checked="checked" onchange="switch_callback(this)">
-                                    <label for="allow-commercial-switch">Yes</label>
-                                </div>
-                            </div>
-                        </div> <br><br>
-                    </div><!--
-                    <div class="column" id="chooser-controls-images">
-                        <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
-                        <div id="license-chooser-allow-adaptations">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow adaptations of your work? 
-                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                            </span>
-                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
-                                <div class="columns is-gapless">
-                                    <div class="field column is-one-fifth">
-                                        <label for="allow-adaptations-switch">No</label>
-                                        <input id="allow-adaptations-switch" type="checkbox" name="allow-adaptations-switch" class="switch is-thin" checked="checked">
-                                        <label for="allow-adaptations-switch">Yes</label>
-                                    </div>
-                                    <div class="field column is-pulled-left" style="display: inline;">
-                                        <p class="control is-pulled-left">
-                                            <div class="b-checkbox is-primary" style="display: inline;">
-                                                <input id="checkbox" class="styled" checked type="checkbox">
-                                                <label for="checkbox">
-                                                    SA Checkbox
-                                                </label>
-                                            </div>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <br><br>
-                        <div class="license-chooser-allow-commercial">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow commercial uses of your work?
-                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                            </span>
-                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
-                                <div class="field">
-                                    <p>Selected Example</p>
-                                    <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-controls-icons">
-
-                                    <p>Unselected Example</p>
-                                    <img src="assets/license-icons/cc-nc_icon.svg" class="unselected">
-                                </div>
-                            </div>
-                        </div> <br><br>
-                    </div>-->
-                    <div class="column" align="center">
-                        <h3 class="title is-3">Your License!</h3> <br><br>
-                        <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
-                        <p>{{chooser.selected_license_short}}</p> <br>
-                        <span id="license-chooser-icons">
-                            <img src="assets/cc.svg" class="chooser-license-icon" id="cc-logo-icon">
-                            <img src="assets/license-icons/cc-by_icon.svg" class="chooser-license-icon" id="attribution-icon">
-                            <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
-                            <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" class="chooser-license-icon" id="adaptations-icon">
-                        </span>
-                    </div>
                 </div>
             </div>
             <hr>
