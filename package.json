@@ -26,7 +26,6 @@
         "@creativebulma/bulma-collapsible": "^1.0.4",
         "bulma-switch": "^2.0.0",
         "cool-checkboxes-for-bulma.io": "^1.1.0",
-        "lodash": "^4.17.11",
         "vue": "^2.6.10"
     }
 }
