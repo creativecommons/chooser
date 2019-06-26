@@ -234,6 +234,34 @@
                             </div>
                         </div> <br><br>
                     </div>-->
+                    <div class="column">
+                        <div class="card">
+                            <h3 class="title is-3 selected-license-card-title" align="center">Your License!</h3>
+                            <div class="columns">
+                                <div class="column is-one-quarter">
+
+                                </div>
+                                <div class="column">
+                                    <p v-bind:href="chooser.selected_license_link" class="selected-license-name">
+                                    {{chooser.selected_license}} ({{chooser.selected_license_short}})
+                                    </p>
+                                    <p>
+                                        {{chooser.selected_license_description}}
+                                    </p> <br>
+                                    <div>
+                                        <p>{{chooser.selected_license_short}} attribution means you are free to</p>
+                                        <div id="selected-license-permissions-share">
+                                            <p><b>Share</b> the material in any medium or format, and</p>
+                                        </div>
+                                        <div id="selected-license-permissions-adapt">
+                                            <p><b>Adapt</b> {{chooser.selected_license_share_allowance}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
                     <div class="column" align="center">
                         <h3 class="title is-3">Your License!</h3> <br><br>
                         <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
@@ -244,7 +272,7 @@
                             <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
                             <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" class="chooser-license-icon" id="adaptations-icon">
                         </span>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <hr>
