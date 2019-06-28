@@ -255,9 +255,12 @@
                             </header>
                             <div class="card-content">
                                 <div class="columns">
-                                    <div class="column is-one-fifth" style="background-color: black">
-
-                                    </div>
+                                    <span class="column is-one-third generated-icons selected-generated-icons" id="selected-license-generated-icons">
+                                        <img src="assets/cc.svg" class="chooser-license-icon" id="cc-logo-icon">
+                                        <img src="assets/license-icons/cc-by_icon.svg" class="chooser-license-icon" id="attribution-icon">
+                                        <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
+                                        <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" class="chooser-license-icon" id="adaptations-icon">
+                                    </span>
                                     <div class="column">
                                         <b class="chooser-selected-title">{{chooser.selected_license}} ({{chooser.selected_license_short}})</b>
                                         <p>
@@ -265,8 +268,8 @@
                                         </p> <br>
 
                                         <p>{{chooser.selected_license_short_noversion}} attribution means you allow people to</p>
-                                        <p><b>Share</b> {{chooser.selected_license_share}}, and</p>
-                                        <p><b>Adapt</b> {{chooser.selected_license_adapt}}</p>
+                                        <p id="generated-license-share"><b>Share</b> the material in any medium or format, and</p>
+                                        <p id="generated-license-adapt"><b>Adapt</b> {{chooser.selected_license_adapt}}</p>
                                     </div>
                                 </div>
                             </div>

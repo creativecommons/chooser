@@ -41,33 +41,27 @@ var app_state = new Vue({ // eslint-disable-line
                 to distribute, remix, tweak, and build upon your \
                 work, even commercially, as long as they credit \
                 you for the original creation.",
-                "Share": "the material in any medium or format",
                 "Adapt": "it for any purpose, even commercially"
             },
             "by-sa": {
                 "description": "",
-                "Share": "",
-                "Adapt": ""
+                "Adapt": "it for any purpose, even commercially"
             },
             "by-nd": {
                 "description": "",
-                "Share": "",
-                "Adapt": ""
+                "Adapt": false
             },
             "by-nc": {
                 "description": "",
-                "Share": "",
-                "Adapt": ""
+                "Adapt": "it for any purpose, except commercially"
             },
             "by-nc-sa": {
                 "description": "",
-                "Share": "",
-                "Adapt": ""
+                "Adapt": "it for any purpose, except commercially"
             },
             "by-nc-nd": {
                 "description": "",
-                "Share": "",
-                "Adapt": ""
+                "Adapt": false
             },
         }
     }

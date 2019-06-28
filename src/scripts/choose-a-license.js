@@ -1,6 +1,6 @@
 function set_license() {
     set_license_text()
-    //set_license_icons()
+    set_license_icons()
     set_license_info()
 }
 
@@ -23,8 +23,13 @@ function set_license_info() {
     var chooser_state = app_state.chooser
     var pack = app_state.license_packs[chooser_state.selected_license_short_slugified]
     chooser_state.selected_license_desc = pack["description"]
-    chooser_state.selected_license_share = pack["Share"]
+
     chooser_state.selected_license_adapt = pack["Adapt"]
+    if (!pack["Adapt"]) { // If adaptations are not allowed
+        document.getElementById("generated-license-adapt").style.display = "none"
+    } else {
+        document.getElementById("generated-license-adapt").style.display = "block"
+    }
 }
 
 function set_license_icons() {

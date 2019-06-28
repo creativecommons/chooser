@@ -81,6 +81,16 @@ h3 {
     opacity: 1;
     filter: alpha(opacity=100); /* msie */
 }
+
+.selected-generated-icons {
+    width: 50%;
+    margin: 2% auto;
+    background-color: aqua;
+}
+
+.selected-generated-icons img {
+    width: 60px
+}
 /*
 input[type="checkbox"] {
     background: #ef9421;
