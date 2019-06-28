@@ -55,6 +55,15 @@ h3 {
     text-align: center;
 }
 
+.selected-license-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.selected-license-card-title {
+    padding-top: 2%;
+}
+
 .generated-icons img {
     vertical-align: middle;
     width: 25px;

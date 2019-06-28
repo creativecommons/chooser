@@ -1,6 +1,8 @@
 function set_license() {
     set_license_text()
-    set_license_icons()
+    //set_license_icons()
+    set_license_description()
+    set_license_shareallowance()
 }
 
 function set_license_text() {
@@ -16,6 +18,21 @@ function set_license_text() {
     app_state.chooser.selected_license = gen_license_name()
     app_state.chooser.selected_license_short = gen_shortened_name()
     set_license_link()
+}
+
+function set_license_description() {
+    const description = app_state.chooser.license_packs[app_state.chooser.selected_license_slugified]["description"]
+    app_state.chooser.selected_license_description = description
+}
+
+function set_license_shareallowance() {
+    const adapt = app_state.chooser.license_packs[app_state.chooser.selected_license_slugified]["Adapt"]
+    if (!adapt) {
+        document.getElementById("selected-license-permissions-adapt").style.display = "none"
+    } else {
+        app_state.chooser.selected_license_share_allowance = adapt
+        document.getElementById("selected-license-permissions-adapt").style.display = "block"
+    }
 }
 
 function set_license_icons() {
@@ -86,6 +103,7 @@ function gen_shortened_name(url_version = false) {
 
 function set_license_link() {
     const short_license = gen_shortened_name(true)
+    app_state.chooser.selected_license_slugified = short_license
     var url = "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
     app_state.chooser.selected_license_link = url
 }
