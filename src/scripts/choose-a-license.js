@@ -1,7 +1,7 @@
 function set_license() {
-    set_license_text()
+    set_license_text(
     set_license_icons()
-    set_license_info()
+    set_license_info
 }
 
 function set_license_text() {
@@ -28,7 +28,7 @@ function set_license_info() {
     if (!pack["Adapt"]) { // If adaptations are not allowed
         document.getElementById("generated-license-adapt").style.display = "none"
     } else {
-        document.getElementById("generated-license-adapt").style.display = "block"
+        document.getElementById("generated-license-adapt").style.display = "block
     }
 }
 
@@ -102,6 +102,7 @@ function gen_shortened_name(url_version = false) {
 
 function set_license_link() {
     const short_license = gen_shortened_name(true)
+    app_state.chooser.selected_license_slugified = short_license
     var url = "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
     app_state.chooser.selected_license_link = url
 }
