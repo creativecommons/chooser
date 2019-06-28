@@ -234,6 +234,7 @@
                             </div>
                         </div> <br><br>
                     </div>-->
+                    <!--
                     <div class="column" align="center">
                         <h3 class="title is-3">Your License!</h3> <br><br>
                         <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
@@ -244,6 +245,32 @@
                             <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
                             <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" class="chooser-license-icon" id="adaptations-icon">
                         </span>
+                    </div>-->
+                    <div class="column">
+                        <div class="card" class="chooser-selected" style="border-radius: 5px">
+                            <header class="card-header">
+                                <h2 class="title is-2 chooser-selected-card-title">
+                                    Your License!
+                                </h2>
+                            </header>
+                            <div class="card-content">
+                                <div class="columns">
+                                    <div class="column is-one-fifth" style="background-color: black">
+
+                                    </div>
+                                    <div class="column">
+                                        <b class="chooser-selected-title">{{chooser.selected_license}} ({{chooser.selected_license_short}})</b>
+                                        <p>
+                                            {{chooser.selected_license_desc}}
+                                        </p> <br>
+
+                                        <p>{{chooser.selected_license_short_noversion}} attribution means you allow people to</p>
+                                        <p><b>Share</b> {{chooser.selected_license_share}}, and</p>
+                                        <p><b>Adapt</b> {{chooser.selected_license_adapt}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

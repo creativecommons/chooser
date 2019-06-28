@@ -16,6 +16,14 @@
     width: 45px;
 }
 
+.chooser-selected-card-title {
+    margin: 1.5% auto;
+}
+
+.chooser-selected-title {
+    font-size: 1.5vw;
+}
+
 .unselected {
     width: 45px;
     opacity: 0.4;

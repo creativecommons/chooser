@@ -1,6 +1,7 @@
 function set_license() {
     set_license_text()
-    set_license_icons()
+    //set_license_icons()
+    set_license_info()
 }
 
 function set_license_text() {
@@ -16,6 +17,14 @@ function set_license_text() {
     app_state.chooser.selected_license = gen_license_name()
     app_state.chooser.selected_license_short = gen_shortened_name()
     set_license_link()
+}
+
+function set_license_info() {
+    var chooser_state = app_state.chooser
+    var pack = app_state.license_packs[chooser_state.selected_license_short_slugified]
+    chooser_state.selected_license_desc = pack["description"]
+    chooser_state.selected_license_share = pack["Share"]
+    chooser_state.selected_license_adapt = pack["Adapt"]
 }
 
 function set_license_icons() {
@@ -81,6 +90,8 @@ function gen_shortened_name(url_version = false) {
     } else if(license.includes("ShareAlike")) {
         short += "-SA"
     }
+    app_state.chooser.selected_license_short_noversion = short
+    app_state.chooser.selected_license_short_slugified = short.slice(3).toLowerCase()
     return (url_version ? short.slice(3).toLowerCase() : short += " 4.0")
 }
 

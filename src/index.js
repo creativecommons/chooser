@@ -5,6 +5,11 @@ var app_state = new Vue({ // eslint-disable-line
         chooser: {
             selected_license: "[License Name]",
             selected_license_short: "[License Short]",
+            selected_license_short_noversion: "[License Short NoVersion]",
+            selected_license_short_slugified: "[Slugified Short]",
+            selected_license_desc: "[Description]",
+            selected_license_share: "[Share]",
+            selected_license_adapt: "[Adapt]",
             selected_license_link: "",
             icons: {
                 nc_shown: false,
@@ -28,6 +33,42 @@ var app_state = new Vue({ // eslint-disable-line
                 normal_icon: true,
                 metadata_text: ""
             }
+        },
+        license_packs: {
+            "by": {
+                "description": "As the most accommodating of \
+                licenses offered, the CC BY license allows others \
+                to distribute, remix, tweak, and build upon your \
+                work, even commercially, as long as they credit \
+                you for the original creation.",
+                "Share": "the material in any medium or format",
+                "Adapt": "it for any purpose, even commercially"
+            },
+            "by-sa": {
+                "description": "",
+                "Share": "",
+                "Adapt": ""
+            },
+            "by-nd": {
+                "description": "",
+                "Share": "",
+                "Adapt": ""
+            },
+            "by-nc": {
+                "description": "",
+                "Share": "",
+                "Adapt": ""
+            },
+            "by-nc-sa": {
+                "description": "",
+                "Share": "",
+                "Adapt": ""
+            },
+            "by-nc-nd": {
+                "description": "",
+                "Share": "",
+                "Adapt": ""
+            },
         }
     }
 });
