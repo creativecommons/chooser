@@ -56,7 +56,8 @@ function set_license_icons() {
     if (state.inputs.allow_commercial_uses) {
         state.icons.nc_shown = false
         toggle_license_icon("nc", false)
-    } else {
+    } 
+    else {
         state.icons.nc_shown = true
         toggle_license_icon("nc", true)
     }
@@ -68,6 +69,7 @@ function gen_license_name() {
     if (!state.inputs.allow_commercial_uses) {
         license_base += "-NonCommercial"
     }
+    
     if (state.inputs.allow_adaptations) {
         if (state.inputs.share_alike) {
             license_base += "-ShareAlike"
@@ -91,9 +93,11 @@ function gen_shortened_name(url_version = false) {
     if (license.includes("NonCommercial")) {
         short += "-NC"
     }
+
     if (license.includes("NoDerivatives")) {
         short += "-ND"
-    } else if(license.includes("ShareAlike")) {
+    } 
+    else if(license.includes("ShareAlike")) {
         short += "-SA"
     }
     app_state.chooser.selected_license_short_noversion = short
