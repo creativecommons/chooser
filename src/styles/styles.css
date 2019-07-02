@@ -20,10 +20,6 @@
     margin: 1.5% auto;
 }
 
-.chooser-selected-title {
-    font-size: 1.5vw;
-}
-
 .unselected {
     width: 45px;
     opacity: 0.4;
@@ -91,15 +87,29 @@ h3 {
     filter: alpha(opacity=100); /* msie */
 }
 
-.selected-generated-icons {
-    width: 50%;
-    margin: 2% auto;
-    background-color: aqua;
+.chooser-selected-title {
+    margin-bottom: 3%;
 }
 
-.selected-generated-icons img {
-    width: 60px
+.chooser-selected-title b {
+    font-size: 1.5vw;
+    vertical-align: middle;
 }
+
+.chooser-selected-title img {
+    vertical-align: middle;
+    width: 42px;
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* msie */
+}
+
+.chooser-selected-title:hover img {
+    vertical-align: middle;
+    width: 42px;
+    opacity: 1;
+    filter: alpha(opacity=100); /* msie */
+}
+
 /*
 input[type="checkbox"] {
     background: #ef9421;

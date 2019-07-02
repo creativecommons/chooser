@@ -1,7 +1,7 @@
 function set_license() {
-    set_license_text(
+    set_license_text()
     set_license_icons()
-    set_license_info
+    set_license_info()
 }
 
 function set_license_text() {
@@ -28,7 +28,7 @@ function set_license_info() {
     if (!pack["Adapt"]) { // If adaptations are not allowed
         document.getElementById("generated-license-adapt").style.display = "none"
     } else {
-        document.getElementById("generated-license-adapt").style.display = "block
+        document.getElementById("generated-license-adapt").style.display = "block"
     }
 }
 
