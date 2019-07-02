@@ -175,7 +175,8 @@ function show_sa_check() {
     var element = document.getElementById("sa-checkbox")
     if (app_state.chooser.inputs.share_alike) {
         element.checked = "true"
-    } else {
+    } 
+    else {
         element.checked = "false"
     }
 

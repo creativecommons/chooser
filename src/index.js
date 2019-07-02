@@ -20,7 +20,7 @@ var app_state = new Vue({ // eslint-disable-line
             inputs: {
                 share_alike: false,
                 allow_adaptations: true,
-                allow_commercial_uses: true, 
+                allow_commercial_uses: false, 
             },
             metadata: {
                 work_title: "",
@@ -32,40 +32,6 @@ var app_state = new Vue({ // eslint-disable-line
                 license_mark: "",
                 normal_icon: true,
                 metadata_text: ""
-            },
-            license_packs: {
-                "by": {
-                    "description": "As the most accommodating of \
-                    the licenses offered, the CC BY license \
-                    allows others to distribute, remix, tweak, \
-                    and build upon your work, even commercially \
-                    , as long as they credit you for the \
-                    original creation.",
-                    "Adapt": "it for any purpose, even commercial."
-                },
-                "by-sa": {
-                    "description": "",
-                    "Adapt": "remix, transform, and build upon the \
-                    material for any purpose, even commercially."
-                },
-                "by-nd": {
-                    "description": "",
-                    "Adapt": false
-                },
-                "by-nc": {
-                    "description": "",
-                    "Adapt": "remix, transform, and build upon the material, \
-                    but not for commercial purposes."
-                },
-                "by-nc-sa": {
-                    "description": "",
-                    "Adapt": "remix, transform, and build upon the material, \
-                    but not for commercial purposes."
-                },
-                "by-nc-nd": {
-                    "description": "",
-                    "Adapt": false
-                }
             }
         },
         license_packs: {
@@ -78,23 +44,49 @@ var app_state = new Vue({ // eslint-disable-line
                 "Adapt": "it for any purpose, even commercially"
             },
             "by-sa": {
-                "description": "",
+                "description": "The CC BY-SA license is realtively \
+                accommodating. Similar to the CC BY license, BY-SA \
+                allows others to distribute, remix, tweak, and build \
+                upon your work, even commercially, as long as they \
+                credit you for the original creation, and share the \
+                derivative work under the same license.",
                 "Adapt": "it for any purpose, even commercially"
             },
             "by-nd": {
-                "description": "",
+                "description": "The CC BY-ND license begins to become \
+                less accommodating. BY-ND stipulates that people are \
+                free to distribute your work, even commercially, \
+                and must credit you with the original creation, but \
+                they are not allowed to remix, tweak, or build upon \
+                your work.",
                 "Adapt": false
             },
             "by-nc": {
-                "description": "",
-                "Adapt": "it for any purpose, except commercially"
+                "description": "The CC BY-NC license begins to become \
+                less accommodating. BY-NC stipulates that others may \
+                not use your work for commercial purposes. BY-NC allows \
+                others to distribute, remix, tweak, and build upon your \
+                work, as long as they credit you with the original creation.",
+                "Adapt": "it for any purpose, except commercially",
             },
             "by-nc-sa": {
-                "description": "",
-                "Adapt": "it for any purpose, except commercially"
+                "description": "The CC BY-NC-SA license is the second \
+                least accommodating license that CC offers. BY-NC-SA \
+                stipulates that others are free to distribute, remix, \
+                tweak, and build upon your work, as long as they share \
+                the derivative work under the same license, credit you \
+                with the original creation, and as long as the work \
+                is not used for commercial purposes.",
+                "Adapt": "it for any purpose, except commercially",
             },
             "by-nc-nd": {
-                "description": "",
+                "description": "The CC BY-NC-ND license is the \
+                least accommodating license that CC offers. BY-NC-ND \
+                stipulates that others are free to distribute your \
+                work, but not for commercial purposes, and that \
+                others may not remix, tweak, or build upon your \
+                work. BY-NC-ND also stipulates that others must \
+                credit you for the original creation.",
                 "Adapt": false
             },
         }

@@ -278,14 +278,13 @@
                                     </span>
                                     <div>
                                         <b>{{chooser.selected_license}}</b>
-                                        <p class="help">({{chooser.selected_license_short}})</p>
+                                        <a v-bind:href="chooser.selected_license_link" class="help">({{chooser.selected_license_short}})</a>
                                     </div>
                                 </div>
                                 <p>
                                     {{chooser.selected_license_desc}}
-                                </p>
-
-                                <p>{{chooser.selected_license_short_noversion}} attribution means you allow people to</p> <br>
+                                </p><br>
+                                <p>{{chooser.selected_license_short_noversion}} attribution means you allow people to</p>
                                 <p id="generated-license-share"><b>Share</b> the material in any medium or format, and</p>
                                 <p id="generated-license-adapt"><b>Adapt</b> {{chooser.selected_license_adapt}}</p>
                             </div>
@@ -559,8 +558,15 @@
                     </div>
                     <div class="column is-one-third">
                         <div class="edu-icons-section">
-                            <img src="assets/license-icons/cc-by_icon.svg"> 
-                            (BY) Attribution Credit Required <br>
+                            <div class="columns is-gapless">
+                                <div class="column is-1">
+                                        <img src="assets/license-icons/cc-by_icon.svg"> 
+                                </div>
+                                <div class="column edu-icons-section-icon_title">
+                                    <b>Attribution Required</b>
+                                    <p class="help">(BY)</p>
+                                </div>
+                            </div>
                             <p>
                                 All CC licenses require that others who use your work in any way must give
                                 you credit the way you request, but not in a way that suggests you endorse
@@ -569,8 +575,15 @@
                             </p>
                         </div>
                         <div class="edu-icons-section">
-                            <img src="assets/license-icons/cc-nd_icon.svg"> 
-                            (ND/NoDerivatives) Modifying Not Allowed
+                            <div class="columns is-gapless">
+                                <div class="column is-1">
+                                    <img src="assets/license-icons/cc-nd_icon.svg"> 
+                                </div>
+                                <div class="column edu-icons-section-icon_title">
+                                    <b>Modifying Not Allowed</b>
+                                    <p class="help">(ND/ NoDerivatives)</p>
+                                </div>
+                            </div>
                             <p>
                                 You let others copy, distribute, display, and perform, and modify your work,
                                 as long as they distribute any modified work, they must get your permission first.
@@ -583,24 +596,39 @@
                                 <div class="column is-1">
                                     <img src="assets/license-icons/cc-nc_icon.svg">
                                 </div>
-                                <div class="column" style="vertical-align: middle">
-                                    (NC/NonCommercial) <br>
-                                    Commercial use Not Allowed
+                                <div class="column edu-icons-section-icon_title">
+                                    <b>Commercial Use Not Allowed</b>
+                                    <p class="help">(NC/ NonCommercial)</p>
                                 </div>
                             </div>
-                            <p style="margin-bottom: 0%">
+                            <!--
+                            <img src="assets/license-icons/cc-nc_icon.svg">
+                            <div style="display: inline; vertical-align: middle">
+                                <b style="display: inline-block; padding-right: 25%">Commercial Use Not Allowed</b>
+                                <p class="help">help</p>
+                            </div>-->
+                            <p style="margin-bottom: 0%; margin-top: 0px;">
                                 You let others copy, distribute, display, perform, and (unless you have 
                                 chosen NoDerivatives) modify and use your work for any purpose other
                                 than commercially, unless they get your permission first.
                             </p>
                             <p class="help">
                                 Curious what qualifies as a Commercial Use? Check out the 
-                                <a>CC wiki page on interpretation of Commercial Uses.</a>
+                                <a href="https://wiki.creativecommons.org/wiki/NonCommercial_interpretation">
+                                    CC wiki page on interpretation of Commercial Uses.
+                                </a>
                             </p>
                         </div>
                         <div class="edu-icons-section">
-                            <img src="assets/license-icons/cc-sa_icon.svg"> 
-                            (SA/ShareAlike) Distributed on Same Terms
+                            <div class="columns is-gapless">
+                                <div class="column is-1">
+                                    <img src="assets/license-icons/cc-sa_icon.svg"> 
+                                </div>
+                                <div class="column edu-icons-section-icon_title">
+                                    <b>Distributed on Same Terms</b>
+                                    <p class="help">(SA/ ShareAlike)</p>
+                                </div>
+                            </div>
                             <p>
                                 You let others copy, distribute, perform, and modify your work, as long as
                                 they distribute any modified work on the same terms. If they want to 
