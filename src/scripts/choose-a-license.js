@@ -27,7 +27,8 @@ function set_license_info() {
     chooser_state.selected_license_adapt = pack["Adapt"]
     if (!pack["Adapt"]) { // If adaptations are not allowed
         document.getElementById("generated-license-adapt").style.display = "none"
-    } else {
+    } 
+    else {
         document.getElementById("generated-license-adapt").style.display = "block"
     }
 }

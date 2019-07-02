@@ -20,7 +20,7 @@ var app_state = new Vue({ // eslint-disable-line
             inputs: {
                 share_alike: false,
                 allow_adaptations: true,
-                allow_commercial_uses: false, 
+                allow_commercial_uses: true, 
             },
             metadata: {
                 work_title: "",
@@ -50,7 +50,8 @@ var app_state = new Vue({ // eslint-disable-line
                 upon your work, even commercially, as long as they \
                 credit you for the original creation, and share the \
                 derivative work under the same license.",
-                "Adapt": "it for any purpose, even commercially"
+                "Adapt": "it for any purpose, even commercially \
+                (must share under the same license)"
             },
             "by-nd": {
                 "description": "The CC BY-ND license begins to become \
@@ -58,8 +59,7 @@ var app_state = new Vue({ // eslint-disable-line
                 free to distribute your work, even commercially, \
                 and must credit you with the original creation, but \
                 they are not allowed to remix, tweak, or build upon \
-                your work.",
-                "Adapt": false
+                your work."
             },
             "by-nc": {
                 "description": "The CC BY-NC license begins to become \
@@ -77,7 +77,8 @@ var app_state = new Vue({ // eslint-disable-line
                 the derivative work under the same license, credit you \
                 with the original creation, and as long as the work \
                 is not used for commercial purposes.",
-                "Adapt": "it for any purpose, except commercially",
+                "Adapt": "it for any purpose, except commercially \
+                (must share under the same license)",
             },
             "by-nc-nd": {
                 "description": "The CC BY-NC-ND license is the \
@@ -87,7 +88,6 @@ var app_state = new Vue({ // eslint-disable-line
                 others may not remix, tweak, or build upon your \
                 work. BY-NC-ND also stipulates that others must \
                 credit you for the original creation.",
-                "Adapt": false
             },
         }
     }
