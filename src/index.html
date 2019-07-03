@@ -157,7 +157,7 @@
                                     <div class="modal-background" onclick="destroy_modal('allow-commercial')"></div>
                                     <div class="modal-card">
                                         <header class="modal-card-head">
-                                            <p class="modal-card-title">Considerations Before Licensing</p>
+                                            <p class="modal-card-title">Allowing Commercial Uses</p>
                                             <button class="delete" aria-label="close" onclick="destroy_modal('allow-commercial')"></button>
                                         </header>
                                         <section class="modal-card-body">
@@ -173,6 +173,14 @@
                                                 only.
                                             </p> <br>
                                         </section>
+                                        <footer class="modal-card-foot">
+                                            <p>
+                                                Curious what qualifies as a Commercial Use? Check out the 
+                                                <a href="https://wiki.creativecommons.org/wiki/NonCommercial_interpretation">
+                                                    CC wiki page on interpretation of Commercial Uses.
+                                                </a>
+                                            </p>
+                                        </footer>
                                     </div>
                                 </div>
                             </span>
@@ -255,21 +263,6 @@
                             </header>
                             <div class="card-content">
                                 <div class="chooser-selected-title">
-                                    <!--
-                                    <div class="columns is-gapless">
-                                        <div class="column is-one-quarter">
-                                            <span id="selected-license-generated-icons" style="display: inline">
-                                                <img src="assets/cc.svg" id="cc-logo-icon">
-                                                <img src="assets/license-icons/cc-by_icon.svg" id="attribution-icon">
-                                                <img src="assets/license-icons/cc-nc_icon.svg" id="commercial-icon">
-                                                <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" id="adaptations-icon">
-                                            </span>
-                                        </div>
-                                        <div class="column">
-                                            <b>{{chooser.selected_license}}</b>
-                                            <p class="help">({{chooser.selected_license_short}})</p>
-                                        </div>
-                                    </div>-->
                                     <span id="selected-license-generated-icons" style="display: inline">
                                         <img src="assets/cc.svg" id="cc-logo-icon">
                                         <img src="assets/license-icons/cc-by_icon.svg" id="attribution-icon">
@@ -277,8 +270,8 @@
                                         <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" id="adaptations-icon">
                                     </span>
                                     <div>
-                                        <b>{{chooser.selected_license}}</b>
-                                        <a v-bind:href="chooser.selected_license_link" class="help">({{chooser.selected_license_short}})</a>
+                                        <b>{{chooser.selected_license_short}}</b>
+                                        <a v-bind:href="chooser.selected_license_link" class="help">({{chooser.selected_license}})</a>
                                     </div>
                                 </div>
                                 <p>
