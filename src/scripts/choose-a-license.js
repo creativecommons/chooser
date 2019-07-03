@@ -1,8 +1,7 @@
 function set_license() {
     set_license_text()
-    //set_license_icons()
-    set_license_description()
-    set_license_shareallowance()
+    set_license_icons()
+    set_license_info()
 }
 
 function set_license_text() {
@@ -20,18 +19,17 @@ function set_license_text() {
     set_license_link()
 }
 
-function set_license_description() {
-    const description = app_state.chooser.license_packs[app_state.chooser.selected_license_slugified]["description"]
-    app_state.chooser.selected_license_description = description
-}
+function set_license_info() {
+    var chooser_state = app_state.chooser
+    var pack = app_state.license_packs[chooser_state.selected_license_short_slugified]
+    chooser_state.selected_license_desc = pack["description"]
 
-function set_license_shareallowance() {
-    const adapt = app_state.chooser.license_packs[app_state.chooser.selected_license_slugified]["Adapt"]
-    if (!adapt) {
-        document.getElementById("selected-license-permissions-adapt").style.display = "none"
-    } else {
-        app_state.chooser.selected_license_share_allowance = adapt
-        document.getElementById("selected-license-permissions-adapt").style.display = "block"
+    chooser_state.selected_license_adapt = pack["Adapt"]
+    if (!pack["Adapt"]) { // If adaptations are not allowed
+        document.getElementById("generated-license-adapt").style.display = "none"
+    } 
+    else {
+        document.getElementById("generated-license-adapt").style.display = "block"
     }
 }
 
@@ -58,7 +56,8 @@ function set_license_icons() {
     if (state.inputs.allow_commercial_uses) {
         state.icons.nc_shown = false
         toggle_license_icon("nc", false)
-    } else {
+    } 
+    else {
         state.icons.nc_shown = true
         toggle_license_icon("nc", true)
     }
@@ -70,6 +69,7 @@ function gen_license_name() {
     if (!state.inputs.allow_commercial_uses) {
         license_base += "-NonCommercial"
     }
+    
     if (state.inputs.allow_adaptations) {
         if (state.inputs.share_alike) {
             license_base += "-ShareAlike"
@@ -93,11 +93,15 @@ function gen_shortened_name(url_version = false) {
     if (license.includes("NonCommercial")) {
         short += "-NC"
     }
+
     if (license.includes("NoDerivatives")) {
         short += "-ND"
-    } else if(license.includes("ShareAlike")) {
+    } 
+    else if(license.includes("ShareAlike")) {
         short += "-SA"
     }
+    app_state.chooser.selected_license_short_noversion = short
+    app_state.chooser.selected_license_short_slugified = short.slice(3).toLowerCase()
     return (url_version ? short.slice(3).toLowerCase() : short += " 4.0")
 }
 
@@ -176,7 +180,8 @@ function show_sa_check() {
     var element = document.getElementById("sa-checkbox")
     if (app_state.chooser.inputs.share_alike) {
         element.checked = "true"
-    } else {
+    } 
+    else {
         element.checked = "false"
     }
 
