@@ -105,6 +105,14 @@ h3 {
     vertical-align: middle;
 }
 
+.chooser-selected-description {
+    font-size: .9em
+}
+
+.chooser-selected-share_adapt {
+    margin-bottom: 1em
+}
+
 .chooser-selected-title img {
     vertical-align: middle;
     width: 42px;
