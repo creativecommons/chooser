@@ -136,12 +136,12 @@ function switch_callback(cb) {
             if (cb.checked) { // If allow adaptations
                 console.log("Is Allow Adaptations - " + cb.checked)
                 state.allow_adaptations = true
-                show_sa_check()
+                //show_sa_check()
                 set_license()
             } 
             else { // If NOT allow adaptations
                 state.allow_adaptations = false
-                hide_sa_check()
+                //hide_sa_check()
             }
             break;
         case "allow-commercial-switch":
