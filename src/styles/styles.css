@@ -141,6 +141,14 @@ input[type=checkbox].css-checkbox:checked + label.css-label.is-commercial {
     background-image: url(../assets/license-icons/cc-nc_icon.svg)
 }
 
+.css-label.is-sa {
+    background-image: url(../assets/license-icons/cc-sa_icon.svg)
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label.is-sa {
+    background-image: url(../assets/license-icons/cc-sa_icon.svg)
+}
+
 .chooser-selected-title img {
     vertical-align: middle;
     width: 42px;

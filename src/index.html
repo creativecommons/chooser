@@ -153,10 +153,21 @@
                                     <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
                                 </h4>
                             </span>
-                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
-                                <input id="allow-adaptations-switch" type="checkbox" class="css-checkbox"
-                                onchange="switch_callback(this)" name="allow-adaptations-switch">
-                                <label for="allow-adaptations-switch" class="css-label"></label>
+                            <div class="columns" style="margin-left: 7%">
+                                <div class="column is-2">
+                                    <div class="control" style="margin-left: 9%; padding-top: 1%; display: inline">
+                                        <input id="allow-adaptations-switch" type="checkbox" class="css-checkbox"
+                                        onchange="switch_callback(this)" name="allow-adaptations-switch" checked="false">
+                                        <label for="allow-adaptations-switch" class="css-label" ></label>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div id="sa-control" class="control" style="margin-left: 9%; padding-top: 1%; display: inline">
+                                        <input id="sa-checkbox" type="checkbox" class="css-checkbox"
+                                        onchange="sa_check_callback(this)" name="sa-checkbox" checked="true">
+                                        <label for="sa-checkbox" class="css-label is-sa"></label>
+                                    </div>
+                                </div>
                             </div>
                         </div> <br><br>
                         <div class="license-chooser-allow-commercial">
@@ -170,7 +181,7 @@
                                 <div class="field">
                                     <input id="allow-commercial-switch" type="checkbox" class="css-checkbox is-commercial"
                                     onchange="switch_callback(this)" name="allow-commercial-switch"
-                                    style="background-image: url(assets/license-icons/cc-nc_icon.svg)">
+                                    checked="false">
                                     <label for="allow-commercial-switch" class="css-label is-commercial"></label>
                                 </div>
                             </div>

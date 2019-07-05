@@ -136,12 +136,12 @@ function switch_callback(cb) {
             if (cb.checked) { // If allow adaptations
                 console.log("Is Allow Adaptations - " + cb.checked)
                 state.allow_adaptations = true
-                //show_sa_check()
+                show_sa_check()
                 set_license()
             } 
             else { // If NOT allow adaptations
                 state.allow_adaptations = false
-                //hide_sa_check()
+                hide_sa_check()
             }
             break;
         case "allow-commercial-switch":
@@ -172,12 +172,12 @@ function toggle_license_icon(icon, is_show) {
 
 function hide_sa_check() {
     console.log("SA Hidden")
-    document.getElementById("sa-checkbox").style.display = "none"
+    document.getElementById("sa-control").style.display = "none"
 }
 
 function show_sa_check() {
     console.log("SA Shown")
-    var element = document.getElementById("sa-checkbox")
+    var element = document.getElementById("sa-control")
     if (app_state.chooser.inputs.share_alike) {
         element.checked = "true"
     } 
@@ -185,5 +185,5 @@ function show_sa_check() {
         element.checked = "false"
     }
 
-    element.style.display = "block"
+    element.style.display = "inline"
 }
