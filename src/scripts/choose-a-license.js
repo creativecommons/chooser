@@ -105,11 +105,14 @@ function gen_shortened_name(url_version = false) {
     return (url_version ? short.slice(3).toLowerCase() : short += " 4.0")
 }
 
-function set_license_link() {
+function gen_license_link() {
     const short_license = gen_shortened_name(true)
     app_state.chooser.selected_license_slugified = short_license
-    var url = "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
-    app_state.chooser.selected_license_link = url
+    return "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
+}
+
+function set_license_link() {
+    app_state.chooser.selected_license_link = gen_license_link()
 }
 
 /**
