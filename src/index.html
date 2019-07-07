@@ -26,21 +26,20 @@
             <br>
             <img src="assets/cc-logo_white.png" style="width: 20%; margin-left: 5%">
         </header>
-        <div class="container site-container" id="chooser-app">
-            <br>
-            <h1 class="title is-1">CC License Chooser</h1>
-            <div align="center">
+        <div class="site-container" id="chooser-app">
+            <h1 class="site-title">CC License Chooser</h1>
+            <div align="center" class="onmobile-hide" style="margin-bottom: .8%">
                 <b>Tip:</b> You can click any <img class="modal-icon" src="assets/info-icon.svg" title="Except this one ;)">
                 icons you see to get more information!
-            </div> <br>
+            </div>
             <div class="container" id="license-chooser">
-                <p align="center">
+                <p align="center" class="onmobile-hide">
                     Have a work you want to license with the Creative Commons plaform, <br>
                     but not sure which one is right for you? Use our license chooser!
                 </p>
                 <p align="center" style="display: none;">
                     Confused? Check out the "<b>Need Help?</b>" section just below!
-                </p> <br>
+                </p>
                 <div class="columns">
                     <!--
                     <div class="column" id="chooser-controls-radio">
@@ -126,12 +125,14 @@
                             </span>
                             <div class="control" style="margin-left: 9%; padding-top: 1%;">
                                 <div class="columns is-gapless">
-                                    <div class="field column is-one-fifth">
-                                        <label for="allow-adaptations-switch">No</label>
-                                        <input id="allow-adaptations-switch" type="checkbox" 
-                                        name="allow-adaptations-switch" class="switch is-thin" 
-                                        checked="checked" onchange="switch_callback(this)">
-                                        <label for="allow-adaptations-switch">Yes</label>
+                                    <div class="column is-one-fifth">
+                                        <div class="field choosercontrol-switch">
+                                            <label for="allow-adaptations-switch">No</label>
+                                            <input id="allow-adaptations-switch" type="checkbox" 
+                                            name="allow-adaptations-switch" class="switch is-thin" 
+                                            checked="checked" onchange="switch_callback(this)">
+                                            <label for="allow-adaptations-switch">Yes</label>
+                                        </div>
                                     </div>
                                     <div class="field column is-pulled-left" style="display: inline;">
                                         <p class="control is-pulled-left">
@@ -193,7 +194,7 @@
                                     <label for="allow-commercial-switch">Yes</label>
                                 </div>
                             </div>
-                        </div> <br><br>
+                        </div>
                     </div><!--
                     <div class="column" id="chooser-controls-images">
                         <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
@@ -246,8 +247,8 @@
                     <div class="column" align="center">
                         <h3 class="title is-3">Your License!</h3> <br><br>
                         <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
-                        <p>{{chooser.selected_license_short}}</p> <br>
-                        <span id="license-chooser-icons">
+                        <p>{{chooser.selected_license_short}}</p>
+                        <div id="license-chooser-icons" class="selected-license-icons">
                             <img src="assets/cc.svg" class="chooser-license-icon" id="cc-logo-icon">
                             <img src="assets/license-icons/cc-by_icon.svg" class="chooser-license-icon" id="attribution-icon">
                             <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
@@ -289,12 +290,16 @@
             </div>
             <hr>
             <div class="container" id="education-content">
-                <h1 class="title is-1">Confused? Need Help?</h1>
+                <h1 class="title site-title">Confused? Need Help?</h1>
                 <p align="center">You can click the buttons below to get answers to the questions on them!</p>
                 <br>
                 <div class="columns" id="questions-buttons">
                     <div class="column is-one-half">
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q1')">What Are Creative Commons Licenses?</a><br>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q1')">
+                            <p class="button-text">
+                                What Are Creative Commons Licenses?
+                            </p>
+                        </a><br>
                         <div id="modal-q1" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q1')"></div>
                             <div class="modal-card">
@@ -321,7 +326,11 @@
                                 </section>
                             </div>
                         </div>
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q3')">How do the Licenses Work?</a><br>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q3')">
+                            <p class="button-text">
+                                How do the Licenses Work?
+                            </p>
+                        </a><br>
                         <div id="modal-q3" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q3')"></div>
                             <div class="modal-card">
@@ -375,7 +384,11 @@
                                 </section>
                             </div>
                         </div>
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q5')">Want Public Domain Instead?</a>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q5')">
+                            <p class="button-text">
+                                Want Public Domain Instead?
+                            </p>
+                        </a>
                         <div id="modal-q5" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q5')"></div>
                             <div class="modal-card">
@@ -401,7 +414,11 @@
                         </div>
                     </div>
                     <div class="column is-one-half">
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q2')">Considerations Before Licensing</a><br>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q2')">
+                            <p class="button-text">
+                                Considerations Before Licensing
+                            </p>
+                        </a><br>
                         <div id="modal-q2" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q2')"></div>
                             <div class="modal-card">
@@ -433,7 +450,11 @@
                                 </section>
                             </div>
                         </div>
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q4')">How do I Formally License my Work?</a><br>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q4')">
+                            <p class="button-text">
+                                How do I Formally License my Work?
+                            </p>
+                        </a><br>
                         <div id="modal-q4" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q4')"></div>
                             <div class="modal-card">
@@ -481,7 +502,11 @@
                                 </section>
                             </div>
                         </div>
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q6')">The Six CC Licenses</a>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q6')">
+                            <p class="button-text">
+                                The Six CC Licenses
+                            </p>
+                        </a>
                         <div id="modal-q6" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q6')"></div>
                             <div class="modal-card">
@@ -634,12 +659,17 @@
                 </div>
             </div>
             <hr>
+            <button class="collapsible" id="html-generator-dropdown">
+                <p>
+                    Have a Web Page? Embed your License Info!
+                </p>
+            </button>
+            <!--
             <div class="" id="html-generator-dropdown" style="border-width: 2px; border-style: solid; padding: 1.5%;">
                 <h1 class="title is-1">This is the dropdown click area</h1>
-            </div> <br>
-            <div class="" id="html-generator">
+            </div> <br>-->
+            <div class="content" id="html-generator">
                 <div id="html-generator-generated">
-                    <h1 class="title is-2">Have a web page? Embed your license info!</h1>
                     <span id="html-generator-generated-richtext-container">
                         [Work] by [Author] is licenced under <a>CC BY NC 4.0</a>
                         <span id="html-generator-richtext-container-icons" class="generated-icons">
@@ -745,6 +775,7 @@
             </div>-->
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <script src="../node_modules/@creativebulma/bulma-collapsible/dist/js/bulma-collapsible.min.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript" src="scripts/page-controls.js"></script>
         <script type="text/javascript" src="scripts/HTML-generator.js"></script>

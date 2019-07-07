@@ -1,5 +1,10 @@
-@charset "utf-8";
+/* Helpful Links
+scss mixin syntax example: https://github.com/jgthms/bulma/issues/351
+https://github.com/jgthms/bulma/issues/1818
+*/
 
+@charset "utf-8";
+@import "../../../node_modules/bulma/sass/utilities/mixins.sass";
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
 
 $cc-orange: #ef9421;
@@ -8,6 +13,7 @@ $dark-grey: hsl(0, 0%, 0%);
 
 $primary: $cc-orange;
 $default: $cc-orange;
+
 
 // Import only what you need from Bulma
 @import "../../../node_modules/bulma/sass/utilities/_all.sass";

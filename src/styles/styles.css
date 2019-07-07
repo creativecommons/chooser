@@ -66,6 +66,11 @@ header {
     background: #ef9421;
 }
 
+.site-title {
+    font-size: 50px;
+    margin-bottom: 1%;
+}
+
 h1 {
     text-align: center;
 }
@@ -80,6 +85,12 @@ h3 {
 
 .selected-license-card-title {
     padding-top: 2%;
+.onmobile-hide {
+    display: block;
+}
+
+.choosercontrol-switch {
+    margin-bottom: 1%;
 }
 
 .generated-icons img {
@@ -132,10 +143,90 @@ h3 {
 input[type="checkbox"] {
     background: #ef9421;
     text-align: center;
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    margin-left: 20%;
+    margin-bottom: 1.5%;
+    cursor: pointer;
+    width: 60%;
+    border: none;
+    border-width: 2px; 
+    border-style: solid; 
+    padding: 1.5%;
 }
 
-input[type="checkbox"]:checked {
-    background: #ef9421;
-    content: "\2713";
-    text-align: center;
-}*/
+.collapsible p {
+    font-size: 32px;
+    font-weight: 450;
+}
+  
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+    background-color: #ccc;
+}
+  
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+}
+
+.selected-license {
+    margin-top: 2%
+}
+
+.selected-license-icons {
+    margin-top: 2%
+}
+
+@media only screen and (max-width: 600px) {
+    .site-container {
+        margin-left: 1.4%;
+        margin-right: 1.4%
+    }
+
+    .site-title {
+        font-size: 35px;
+    }
+
+    .choosercontrol-switch {
+        margin-bottom: 5%;
+    }
+
+    .onmobile-hide {
+        display: none;
+    }
+
+    .edu-icons-section-heading {
+        margin: auto;
+        width: 60%;
+        margin-bottom: 1%;
+    }
+
+    .button-text {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .modal-card {
+        margin-left: 10%;
+        margin-right: 10%
+    }
+
+    .collapsible {
+        margin-left: 1%;
+        margin-bottom: 4%;
+        cursor: pointer;
+        width: 98%;
+        border: none;
+        border-width: 2px; 
+        border-style: solid; 
+        padding: 3%;
+    }
+
+    .collapsible p {
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
