@@ -4,11 +4,34 @@
 
 .edu-icons-section img {
     width: 40px;
-    vertical-align: middle;
+}
+
+.edu-icons-section p {
+    margin-top: 2%;
+    margin-bottom: 6%;
+}
+
+.edu-icons-section-icon_title {
+    vertical-align: middle !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    margin-left: 2% !important;
+}
+
+.edu-icons-section-icon_title b {
+    padding-top: 0px;
+}
+
+.edu-icons-section-icon_title p {
+    margin: 0px;
 }
 
 .chooser-controls-icons {
     width: 45px;
+}
+
+.chooser-selected-card-title {
+    margin: 1.5% auto;
 }
 
 .unselected {
@@ -60,6 +83,8 @@ h3 {
     text-align: center;
 }
 
+.selected-license-card-title {
+    padding-top: 2%;
 .onmobile-hide {
     display: block;
 }
@@ -82,6 +107,42 @@ h3 {
     filter: alpha(opacity=100); /* msie */
 }
 
+.chooser-selected-title {
+    margin-bottom: 3%;
+}
+
+.chooser-selected-title b {
+    font-size: 1.8rem;
+    vertical-align: middle;
+}
+
+.chooser-selected-description {
+    font-size: .9em
+}
+
+.chooser-selected-share_adapt {
+    margin-bottom: 1em
+}
+
+.chooser-selected-title img {
+    vertical-align: middle;
+    width: 42px;
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* msie */
+}
+
+/*
+.chooser-selected-title:hover img {
+    vertical-align: middle;
+    width: 42px;
+    opacity: 1;
+    filter: alpha(opacity=100); 
+}*/
+
+/*
+input[type="checkbox"] {
+    background: #ef9421;
+    text-align: center;
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
     margin-left: 20%;

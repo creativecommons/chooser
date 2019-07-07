@@ -158,7 +158,7 @@
                                     <div class="modal-background" onclick="destroy_modal('allow-commercial')"></div>
                                     <div class="modal-card">
                                         <header class="modal-card-head">
-                                            <p class="modal-card-title">Considerations Before Licensing</p>
+                                            <p class="modal-card-title">Allowing Commercial Uses</p>
                                             <button class="delete" aria-label="close" onclick="destroy_modal('allow-commercial')"></button>
                                         </header>
                                         <section class="modal-card-body">
@@ -174,6 +174,14 @@
                                                 only.
                                             </p> <br>
                                         </section>
+                                        <footer class="modal-card-foot">
+                                            <p>
+                                                Curious what qualifies as a Commercial Use? Check out the 
+                                                <a href="https://wiki.creativecommons.org/wiki/NonCommercial_interpretation">
+                                                    CC wiki page on interpretation of Commercial Uses.
+                                                </a>
+                                            </p>
+                                        </footer>
                                     </div>
                                 </div>
                             </span>
@@ -235,8 +243,9 @@
                             </div>
                         </div> <br><br>
                     </div>-->
-                    <div class="column selected-license" align="center">
-                        <h3 class="title is-3">Your License!</h3>
+                    <!--
+                    <div class="column" align="center">
+                        <h3 class="title is-3">Your License!</h3> <br><br>
                         <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
                         <p>{{chooser.selected_license_short}}</p>
                         <div id="license-chooser-icons" class="selected-license-icons">
@@ -244,6 +253,37 @@
                             <img src="assets/license-icons/cc-by_icon.svg" class="chooser-license-icon" id="attribution-icon">
                             <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
                             <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" class="chooser-license-icon" id="adaptations-icon">
+                        </span>
+                    </div>-->
+                    <div class="column">
+                        <div class="card" class="chooser-selected" style="border-radius: 5px">
+                            <header class="card-header">
+                                <h2 class="title is-2 chooser-selected-card-title">
+                                    Your License!
+                                </h2>
+                            </header>
+                            <div class="card-content">
+                                <div class="chooser-selected-title">
+                                    <span id="selected-license-generated-icons" style="display: inline">
+                                        <img src="assets/cc.svg" id="cc-logo-icon">
+                                        <img src="assets/license-icons/cc-by_icon.svg" id="attribution-icon">
+                                        <img src="assets/license-icons/cc-nc_icon.svg" id="commercial-icon">
+                                        <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" id="adaptations-icon">
+                                    </span>
+                                    <div>
+                                        <b>{{chooser.selected_license_short}}</b>
+                                        <a v-bind:href="chooser.selected_license_link" class="help">{{chooser.selected_license}}</a>
+                                    </div>
+                                </div>
+                                <div class="chooser-selected-share_adapt">
+                                    <p>{{chooser.selected_license_short_noversion}} attribution means you allow people to</p>
+                                    <p id="generated-license-share"><b>Share</b> the material in any medium or format</p>
+                                    <p id="generated-license-adapt"><b>Adapt</b> {{chooser.selected_license_adapt}}</p>
+                                </div>
+                                <p class="chooser-selected-description">
+                                    {{chooser.selected_license_desc}}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -538,47 +578,82 @@
                     </div>
                     <div class="column is-one-third">
                         <div class="edu-icons-section">
-                            <div class="edu-icons-section-heading">
-                                <img src="assets/license-icons/cc-by_icon.svg"> 
-                                Attribution (BY) 
-                            </div>
-                            <p>You must attribute the work in the manner specified by the author or licensor.</p>
-                        </div>
-                        <div class="edu-icons-section">
-                            <div class="edu-icons-section-heading">
-                                <img src="assets/license-icons/cc-nd_icon.svg"> 
-                                NoDerivatives (ND)
+                            <div class="columns is-gapless">
+                                <div class="column is-1">
+                                        <img src="assets/license-icons/cc-by_icon.svg"> 
+                                </div>
+                                <div class="column edu-icons-section-icon_title">
+                                    <b>Attribution Required</b>
+                                    <p class="help">(BY)</p>
+                                </div>
                             </div>
                             <p>
-                                You may not create derivatives of the licensed work.
+                                All CC licenses require that others who use your work in any way must give
+                                you credit the way you request, but not in a way that suggests you endorse
+                                them or their use. If they want to use your work without giving credit for
+                                endorsement purposes, they must get your permission first.
                             </p>
-                            <p hidden>
-                            The licensor permits others to copy, distribute and transmit only unaltered copies of the work -- 
-                            not derivative works based on it.</p>
+                        </div>
+                        <div class="edu-icons-section">
+                            <div class="columns is-gapless">
+                                <div class="column is-1">
+                                    <img src="assets/license-icons/cc-nd_icon.svg"> 
+                                </div>
+                                <div class="column edu-icons-section-icon_title">
+                                    <b>Modifying Not Allowed</b>
+                                    <p class="help">(ND/ NoDerivatives)</p>
+                                </div>
+                            </div>
+                            <p>
+                                You let others copy, distribute, display, and perform, and modify your work,
+                                as long as they distribute any modified work, they must get your permission first.
+                            </p>
                         </div>
                     </div>
                     <div class="column is-one-third">
                         <div class="edu-icons-section">
-                            <div class="edu-icons-section-heading">
-                                <img src="assets/license-icons/cc-sa_icon.svg"> 
-                                ShareAlike (SA)
+                            <div class="columns is-gapless">
+                                <div class="column is-1">
+                                    <img src="assets/license-icons/cc-nc_icon.svg">
+                                </div>
+                                <div class="column edu-icons-section-icon_title">
+                                    <b>Commercial Use Not Allowed</b>
+                                    <p class="help">(NC/ NonCommercial)</p>
+                                </div>
                             </div>
-                            <p>
-                                You may create and distribute derivative works, but only under the same or a compatible license.
+                            <!--
+                            <img src="assets/license-icons/cc-nc_icon.svg">
+                            <div style="display: inline; vertical-align: middle">
+                                <b style="display: inline-block; padding-right: 25%">Commercial Use Not Allowed</b>
+                                <p class="help">help</p>
+                            </div>-->
+                            <p style="margin-bottom: 0%; margin-top: 0px;">
+                                You let others copy, distribute, display, perform, and (unless you have 
+                                chosen NoDerivatives) modify and use your work for any purpose other
+                                than commercially, unless they get your permission first.
                             </p>
-                            <p hidden>
-                            The licensor permits others to distribute derivative works, only under the same
-                            license or one compatible with the one that governs the licensor's work.</p>
+                            <p class="help">
+                                Curious what qualifies as a Commercial Use? Check out the 
+                                <a href="https://wiki.creativecommons.org/wiki/NonCommercial_interpretation">
+                                    CC wiki page on interpretation of Commercial Uses.
+                                </a>
+                            </p>
                         </div>
                         <div class="edu-icons-section">
-                            <div class="edu-icons-section-heading">
-                                <img src="assets/license-icons/cc-nc_icon.svg"> 
-                                NonCommercial (NC)
+                            <div class="columns is-gapless">
+                                <div class="column is-1">
+                                    <img src="assets/license-icons/cc-sa_icon.svg"> 
+                                </div>
+                                <div class="column edu-icons-section-icon_title">
+                                    <b>Distributed on Same Terms</b>
+                                    <p class="help">(SA/ ShareAlike)</p>
+                                </div>
                             </div>
                             <p>
-                            The licensor permits others to copy, distribute and transmit the work. In return,
-                            licensees may not use the work for commercial purposes -- unless they get the
-                            licensor's permission.</p>
+                                You let others copy, distribute, perform, and modify your work, as long as
+                                they distribute any modified work on the same terms. If they want to 
+                                distribute modified works under other terms, they must get your permission first.
+                            </p>
                         </div>
                     </div>
                 </div>
