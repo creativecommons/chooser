@@ -41,58 +41,14 @@
                     Confused? Check out the "<b>Need Help?</b>" section just below!
                 </p>
                 <div class="columns">
-                    <!--
-                    <div class="column" id="chooser-controls-radio">
-                            <p align="center">Changes to the options below will affect the license choice to the right.</p> <br>
-                        <div id="license-chooser-allow-adaptations">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow adaptations of your work? 
-                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                            </span>
-                            <div class="control" style="margin-left: 9%">
-                                <label class="radio">
-                                    <input type="radio" name="allow-adaptations-radio">
-                                    Yes
-                                </label> <br>
-                                <label class="radio">
-                                    <input type="radio" name="allow-adaptations-radio">
-                                    No
-                                </label> <br>
-                                <label class="radio">
-                                    <input type="radio" name="allow-adaptations-radio">
-                                    Yes, as long as others share alike
-                                </label> <br>
-                            </div>
-                        </div> <br>
-                        <div class="license-chooser-allow-commercial">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow commercial uses of your work?
-                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                            </span>
-                            <div class="control" style="margin-left: 9%">
-                                <label class="radio">
-                                    <input type="radio" name="allow-commercial-radio">
-                                    Yes
-                                </label> <br>
-                                <label class="radio">
-                                    <input type="radio" name="allow-commercial-radio">
-                                    No
-                                </label> <br>
-                            </div>
-                        </div>
-                    </div>-->
                     <div class="column" id="chooser-controls-switch">
-                        <p style="display: none" align="center">Changes to the options below will affect the license choice to the right.</p> <br>
-                        <div id="license-chooser-allow-adaptations">
+                        
+                        <div id="license-chooser-allow-adaptations" class="chooser-question">
                             <span>
-                                <h4 class="title is-4">
+                                <p class="chooser-question-title">
                                     Do you want to allow adaptations of your work? 
                                     <a class="modal-icon" onclick="spawn_modal('allow-adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
+                                </p>
                                 <div id="modal-allow-adaptations" class="modal">
                                     <div class="modal-background" onclick="destroy_modal('allow-adaptations')"></div>
                                     <div class="modal-card">
@@ -148,12 +104,12 @@
                                 </div>
                             </div>
                         </div> <br><br>
-                        <div class="license-chooser-allow-commercial">
+                        <div id="license-chooser-allow-commercial">
                             <span>
-                                <h4 class="title is-4">
+                                <p class="chooser-question-title">
                                     Do you want to allow commercial uses of your work?
                                     <a class="modal-icon" onclick="spawn_modal('allow-commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
+                                </p>
                                 <div id="modal-allow-commercial" class="modal">
                                     <div class="modal-background" onclick="destroy_modal('allow-commercial')"></div>
                                     <div class="modal-card">
@@ -578,11 +534,11 @@
                     </div>
                     <div class="column is-one-third">
                         <div class="edu-icons-section">
-                            <div class="columns is-gapless">
-                                <div class="column is-1">
+                            <div class="columns is-gapless is-inline-flex" id="heading">
+                                <div class="column is-1 is-one-fifth-mobile">
                                         <img src="assets/license-icons/cc-by_icon.svg"> 
                                 </div>
-                                <div class="column edu-icons-section-icon_title">
+                                <div class="column edu-icons-section-icon_title is-full-mobile">
                                     <b>Attribution Required</b>
                                     <p class="help">(BY)</p>
                                 </div>
@@ -595,11 +551,11 @@
                             </p>
                         </div>
                         <div class="edu-icons-section">
-                            <div class="columns is-gapless">
-                                <div class="column is-1">
+                            <div class="columns is-gapless is-inline-flex" id="heading">
+                                <div class="column is-1 is-one-fifth-mobile">
                                     <img src="assets/license-icons/cc-nd_icon.svg"> 
                                 </div>
-                                <div class="column edu-icons-section-icon_title">
+                                <div class="column edu-icons-section-icon_title is-full-mobile">
                                     <b>Modifying Not Allowed</b>
                                     <p class="help">(ND/ NoDerivatives)</p>
                                 </div>
@@ -612,11 +568,11 @@
                     </div>
                     <div class="column is-one-third">
                         <div class="edu-icons-section">
-                            <div class="columns is-gapless">
-                                <div class="column is-1">
+                            <div class="columns is-gapless is-inline-flex" id="heading">
+                                <div class="column is-1 is-one-fifth-mobile">
                                     <img src="assets/license-icons/cc-nc_icon.svg">
                                 </div>
-                                <div class="column edu-icons-section-icon_title">
+                                <div class="column edu-icons-section-icon_title is-full-mobile" style="margin-bottom: 0px">
                                     <b>Commercial Use Not Allowed</b>
                                     <p class="help">(NC/ NonCommercial)</p>
                                 </div>
@@ -640,11 +596,11 @@
                             </p>
                         </div>
                         <div class="edu-icons-section">
-                            <div class="columns is-gapless">
-                                <div class="column is-1">
+                            <div class="columns is-gapless is-inline-flex" id="heading">
+                                <div class="column is-1 is-one-fifth-mobile">
                                     <img src="assets/license-icons/cc-sa_icon.svg"> 
                                 </div>
-                                <div class="column edu-icons-section-icon_title">
+                                <div class="column edu-icons-section-icon_title is-full-mobile">
                                     <b>Distributed on Same Terms</b>
                                     <p class="help">(SA/ ShareAlike)</p>
                                 </div>
@@ -775,7 +731,6 @@
             </div>-->
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-        <script src="../node_modules/@creativebulma/bulma-collapsible/dist/js/bulma-collapsible.min.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript" src="scripts/page-controls.js"></script>
         <script type="text/javascript" src="scripts/HTML-generator.js"></script>
@@ -783,4 +738,7 @@
         <script type="text/javascript" src="scripts/scripts.js"></script>
     </body>
 </html>
-<!-- </> by Ari Madian :)-->
+<!-- 
+    </> by Ari Madian :)
+    https://github.com/akmadian
+-->
