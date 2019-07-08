@@ -58,11 +58,11 @@ function htmlgen_license_icons() {
     var template = '<a href="{0}" target="_blank" rel="noopener noreferrer"\
     style="display:inline-block;white-space:none;opacity:.7;margin-top:2px;\
     margin-left:3px;height:22px!important;"><img style="height:inherit;\
-    margin-right:3px;display:inline-block;" src="https://search.creativecommons.org/static/img/cc_icon.svg"/>\
-    <img style="height: inherit;margin-right: 3px;display: inline-block;" \
+    margin-right:3px;display:inline-block;vertical-align:middle" src="https://search.creativecommons.org/static/img/cc_icon.svg"/>\
+    <img style="height: inherit;margin-right:3px;display:inline-block;vertical-align:middle;" \
     src="https://search.creativecommons.org/static/img/cc-by_icon.svg"/>'
-    var icon_template = '<img style="height: inherit;margin-right: 3px;display: \
-    inline-block;" src="https://search.creativecommons.org/static/img/cc-{0}_icon.svg"/>'
+    var icon_template = '<img style="height:inherit;margin-right:3px;display: \
+    inline;" src="https://search.creativecommons.org/static/img/cc-{0}_icon.svg"/>'
     var icons = app_state.chooser.icons
 
     if (icons.nc_shown) {
