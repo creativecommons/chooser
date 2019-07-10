@@ -173,12 +173,12 @@ function toggle_license_icon(icon, is_show) {
 
 function hide_sa_check() {
     console.log("SA Hidden")
-    document.getElementById("sa-control").style.display = "none"
+    document.getElementById("sa-control-container").style.display = "none"
 }
 
 function show_sa_check() {
     console.log("SA Shown")
-    var element = document.getElementById("sa-control")
+    var element = document.getElementById("sa-control-container")
     if (app_state.chooser.inputs.share_alike) {
         element.checked = "true"
     } 
