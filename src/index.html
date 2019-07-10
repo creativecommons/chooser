@@ -18,10 +18,7 @@
             </style>
         </noscript>
     </head>
-    <body onload="
-        set_license()
-        document.getElementById('sa-checkbox').checked = app_state.chooser.inputs.share_alike"
-    >
+    <body onload="set_license()">
         <header style="padding-bottom: 1%">
             <br>
             <img src="assets/cc-logo_white.png" style="width: 20%; margin-left: 5%">
@@ -89,8 +86,8 @@
                     <div class="column">
                         <b>To change the selected license, click or tap the icons below</b>
                         <div class="columns">
-                            <div class="column">
-                                <div class="control" style="margin-left: 9%; padding-top: 1%; display: inline;">
+                            <div class="column is-narrow">
+                                <div id="control-icon-container" class="control">
                                     <input id="allow-commercial-switch" type="checkbox" class="css-checkbox is-commercial"
                                     onchange="switch_callback(this)" name="allow-commercial-switch"
                                     checked="false">
@@ -98,18 +95,49 @@
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="control" style="margin-left: 9%; padding-top: 1%; display: inline">
+                                <b>Commercial Uses Not Allowed</b>
+                                <p>
+                                    You let others copy, distribute, display, perform, 
+                                    and (unless you have chosen NoDerivatives) modify 
+                                    and use your work for any purpose other than 
+                                    commercially, unless they get your permission first.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column is-narrow">
+                                <div id="control-icon-container" class="control">
                                     <input id="allow-adaptations-switch" type="checkbox" class="css-checkbox"
                                     onchange="switch_callback(this)" name="allow-adaptations-switch" checked="false">
                                     <label for="allow-adaptations-switch" class="css-label" ></label>
                                 </div>
                             </div>
                             <div class="column">
-                                <div id="sa-control" class="control" style="margin-left: 9%; padding-top: 1%; display: inline">
+                                <b>Modifying Not Allowed</b>
+                                <p>
+                                    You let others copy, distribute, display, and perform, 
+                                    and modify your work, as long as they distribute any 
+                                    modified work, they must get your permission first.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column is-narrow">
+                                <div id="control-icon-container" id="sa-control">
                                     <input id="sa-checkbox" type="checkbox" class="css-checkbox"
                                     onchange="sa_check_callback(this)" name="sa-checkbox" checked="true">
-                                    <label for="sa-checkbox" class="css-label is-sa"></label>
+                                    <label for="sa-checkbox" class="css-label is-sa" chekced="true"></label>
                                 </div>
+                            </div>
+                            <div class="column">
+                                <b>Distributed on Same Terms</b>
+                                <p>
+                                    You let others copy, distribute, perform, and modify 
+                                    your work, as long as they distribute any modified 
+                                    work on the same terms. If they want to distribute 
+                                    modified works under other terms, they must get 
+                                    your permission first.
+                                </p>
                             </div>
                         </div>
                     </div>

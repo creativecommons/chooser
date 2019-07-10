@@ -118,6 +118,7 @@ function set_license_link() {
  */
 function sa_check_callback(check) {
     console.log("Checkbox Toggled")
+    console.log(check.checked)
     app_state.chooser.inputs.share_alike = check.checked
     set_license()
 }

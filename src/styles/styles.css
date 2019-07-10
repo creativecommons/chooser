@@ -116,12 +116,13 @@ h3 {
 input[type=checkbox].css-checkbox{ display: none; }
 
 .css-label {
-    padding-left: 20px;
     display: flex;
     height: 55px;
+    padding: 20px 50px 20px 20px;
     background-image: url(../assets/license-icons/cc-nd-icon.svg);
     background-repeat: no-repeat;
     background-size: contain;
+    cursor: pointer;
     opacity: 1;
     filter: alpha(opacity=100);
 }
@@ -142,18 +143,28 @@ input[type=checkbox].css-checkbox:checked + label.css-label.is-commercial {
 }
 
 .css-label.is-sa {
-    background-image: url(../assets/license-icons/cc-sa_icon.svg)
+    background-image: url(../assets/license-icons/cc-sa_icon.svg);
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
 }
 
 input[type=checkbox].css-checkbox:checked + label.css-label.is-sa {
-    background-image: url(../assets/license-icons/cc-sa_icon.svg)
+    background-image: url(../assets/license-icons/cc-sa_icon.svg);
+    opacity: 1;
+    filter: alpha(opacity=100);
 }
 
 .chooser-selected-title img {
     vertical-align: middle;
     width: 42px;
-    opacity: 0.7;
-    filter: alpha(opacity=70); /* msie */
+    opacity: 1;
+    filter: alpha(opacity=100); /* msie */
+}
+
+#control-icon-container {
+    margin-left: 9%;
+    padding-top: 1%;
+    display: inline;
 }
 
 /*
