@@ -144,7 +144,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label.is-commercial {
 
 .css-label.is-sa {
     background-image: url(../assets/license-icons/cc-sa_icon.svg);
-    opacity: 0.4;
+    opacity: .4;
     filter: alpha(opacity=40); /* msie */
 }
 

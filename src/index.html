@@ -18,7 +18,9 @@
             </style>
         </noscript>
     </head>
-    <body onload="set_license()">
+    <body onload="
+    set_license()
+    ">
         <header style="padding-bottom: 1%">
             <br>
             <img src="assets/cc-logo_white.png" style="width: 20%; margin-left: 5%">
@@ -121,12 +123,12 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="columns">
+                        <div class="columns" id="sa-control">
                             <div class="column is-narrow">
-                                <div id="control-icon-container" id="sa-control">
+                                <div id="control-icon-container" style="display: inline">
                                     <input id="sa-checkbox" type="checkbox" class="css-checkbox"
-                                    onchange="sa_check_callback(this)" name="sa-checkbox" checked="true">
-                                    <label for="sa-checkbox" class="css-label is-sa" chekced="true"></label>
+                                    onchange="sa_check_callback(this)" name="sa-checkbox">
+                                    <label for="sa-checkbox" class="css-label is-sa"></label>
                                 </div>
                             </div>
                             <div class="column">
