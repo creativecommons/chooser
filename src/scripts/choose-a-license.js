@@ -119,7 +119,7 @@ function set_license_link() {
 function sa_check_callback(check) {
     console.log("Checkbox Toggled")
     console.log(check.checked)
-    app_state.chooser.inputs.share_alike = check.checked
+    app_state.chooser.inputs.share_alike = !app_state.chooser.inputs.share_alike
     set_license()
 }
 
@@ -133,12 +133,10 @@ function switch_callback(cb) {
     state.selected_license = ""
     switch (cb.id) {
         case "allow-adaptations-switch":
-            state.allow_adaptations = cb.checked
-            if (cb.checked) { // If allow adaptations
-                console.log("Is Allow Adaptations - " + cb.checked)
+            if (!cb.checked) { // If allow adaptations
+                console.log("Is Allow Adaptations - " + !cb.checked)
                 state.allow_adaptations = true
                 show_sa_check()
-                set_license()
             } 
             else { // If NOT allow adaptations
                 state.allow_adaptations = false
@@ -146,7 +144,7 @@ function switch_callback(cb) {
             }
             break;
         case "allow-commercial-switch":
-            state.allow_commercial_uses = cb.checked
+            state.allow_commercial_uses = !state.allow_commercial_uses
             break;
         default:
             console.log("Whoops! This function isn't designed to handle that parameter.")

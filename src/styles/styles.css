@@ -122,32 +122,30 @@ input[type=checkbox].css-checkbox{ display: none; }
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
-    opacity: 1;
-    filter: alpha(opacity=100);
-}
-
-input[type=checkbox].css-checkbox:checked + label.css-label {
-    background-position: 0 0;
     opacity: 0.4;
     filter: alpha(opacity=40); /* msie */
 }
 
-input[type=checkbox].css-checkbox:hover + label.css-label {
+.css-checkbox:checked + .css-label {
+    background-position: 0 0;
+    opacity: 1;
+    filter: alpha(opacity=100); /* msie */
+}
+
+.css-checkbox:hover + .css-label {
     opacity: .5;
     filter: alpha(opacity=50);
 }
 
-input[type=checkbox].css-checkbox:checked + label.css-label:hover {
-    opacity: 1;
-    filter: alpha(opacity=100);
-}
 
 .css-label.is-adaptations {
     background-image: url(../assets/license-icons/cc-nd-icon.svg);
 }
 
-input[type=checkbox].css-checkbox:checked + label.css-label.css-label.is-adaptations {
+input[type=checkbox].css-checkbox:checked + label.css-label.is-adaptations {
     background-image: url(../assets/license-icons/cc-nd-icon.svg);
+    opacity: 1;
+    filter: alpha(opacity=100); /* msie */
 }
 
 .css-label.is-commercial {
@@ -155,19 +153,19 @@ input[type=checkbox].css-checkbox:checked + label.css-label.css-label.is-adaptat
 }
 
 input[type=checkbox].css-checkbox:checked + label.css-label.is-commercial {
-    background-image: url(../assets/license-icons/cc-nc_icon.svg)
+    background-image: url(../assets/license-icons/cc-nc_icon.svg);
+    opacity: 1;
+    filter: alpha(opacity=100); /* msie */
 }
 
 .css-label.is-sa {
     background-image: url(../assets/license-icons/cc-sa_icon.svg);
-    opacity: .4;
-    filter: alpha(opacity=40); /* msie */
 }
 
 input[type=checkbox].css-checkbox:checked + label.css-label.is-sa {
     background-image: url(../assets/license-icons/cc-sa_icon.svg);
     opacity: 1;
-    filter: alpha(opacity=100);
+    filter: alpha(opacity=100); /* msie */
 }
 
 .chooser-selected-title img {
