@@ -263,6 +263,10 @@ input[type="checkbox"] {
         margin-left: 5% !important;
         margin-right: 5% !important;
     }
+
+    p.modal-title {
+        font-size: 16px;
+    }
 }
 
 
