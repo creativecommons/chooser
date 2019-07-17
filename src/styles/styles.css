@@ -85,6 +85,8 @@ h3 {
 
 .selected-license-card-title {
     padding-top: 2%;
+}
+
 .onmobile-hide {
     display: block;
 }
@@ -180,10 +182,14 @@ input[type="checkbox"] {
     margin-top: 2%
 }
 
+.chooser-question {
+    font-size: 1.5rem;
+}
+
 @media only screen and (max-width: 600px) {
     .site-container {
-        margin-left: 1.4%;
-        margin-right: 1.4%
+        margin-left: 1.4% !important;
+        margin-right: 1.4% !important;
     }
 
     .site-title {
@@ -200,8 +206,31 @@ input[type="checkbox"] {
 
     .edu-icons-section-heading {
         margin: auto;
-        width: 60%;
-        margin-bottom: 1%;
+        width: 100%;
+        margin-bottom: 0%;
+    }
+
+    .edu-icons-section {
+        margin-bottom: 3%;
+    }
+
+    .edu-icons-section #heading {
+        width: 100%;
+        margin-bottom: 1.8%;
+    }
+
+    .chooser-question {
+        margin-bottom: 12%;
+    }
+
+    .chooser-question-title {
+         font-size: 16px;
+         font-weight: bold;
+         margin-bottom: 2%;
+    }
+
+    .chooser-question-title img {
+        width: 30px;
     }
 
     .button-text {
@@ -228,5 +257,27 @@ input[type="checkbox"] {
     .collapsible p {
         font-size: 16px;
         font-weight: 500;
+    }
+
+    .modal-add-margin {
+        margin-left: 5% !important;
+        margin-right: 5% !important;
+    }
+
+    p.modal-title {
+        font-size: 16px;
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+    .site-container {
+        margin-left: 1.4% !important;
+        margin-right: 1.4% !important;
+    }
+
+    .edu-icons-section #heading {
+        width: 100%;
+        margin-bottom: 1.8%;
     }
 }
