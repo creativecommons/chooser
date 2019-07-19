@@ -1,9 +1,15 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const css_loader = require("css-loader");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-    entry: "./src/index.js",
+    mode: "production",
+    entry: [
+        path.resolve(__dirname, "./bin/concatenated-js.js"),
+
+        "./src/styles/styles.css",
+        "./src/styles/bulma-mods.css"
+    ],
     output: {
         filename: "main.js",
         path: path.resolve(__dirname, "dist")
@@ -16,6 +22,10 @@ module.exports = {
             chunkFilename: "output.css",
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
+        new CopyWebpackPlugin([
+            {from: path.resolve(__dirname, "../src/assets"), to: "assets"},
+            {from: path.resolve(__dirname, "../src/index.html"), to: "."}
+        ])
     ],
     module: {
         rules: [

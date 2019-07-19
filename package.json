@@ -6,12 +6,14 @@
     "scripts": {
         "build-css": "node-sass --omit-source-map-url src/styles/sass/bulma-mods.scss src/styles/bulma-mods.css",
         "lint": "./node_modules/.bin/eslint src/*.js",
-        "build-prod": "npx webpack --config webpack.config.js && npm run build",
+        "build-prod": "npm run build && npm run webpack",
         "build": "npm run build-css && npm run lint",
-        "webpack": "npx webpack --config webpack.config.js"
+        "webpack": "node ./build/pre-webpack.js && npx webpack --config ./build/webpack.config.js"
     },
     "devDependencies": {
         "bulma": "^0.7.5",
+        "concat": "^1.0.3",
+        "copy-webpack-plugin": "^5.0.3",
         "css-loader": "^3.1.0",
         "eslint": "^5.16.0",
         "eslint-plugin-vue": "^5.2.2",
