@@ -6,6 +6,7 @@
         <link id="favicon" rel="shortcut icon" type="image/png" href="assets/favicon.ico.png">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" href="output.css">
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/bulma-mods.css"> <!--ALWAYS import this last-->
 
@@ -19,7 +20,6 @@
         </noscript>
     </head>
     <body onload="
-        set_license()
         document.getElementById('sa-checkbox').checked = app_state.chooser.inputs.share_alike"
     >
         <header style="padding-bottom: 1%">
@@ -730,6 +730,7 @@
             </div>-->
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <script type="text/javascript" src="main.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript" src="scripts/page-controls.js"></script>
         <script type="text/javascript" src="scripts/HTML-generator.js"></script>

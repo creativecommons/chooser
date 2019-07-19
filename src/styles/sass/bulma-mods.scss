@@ -7,6 +7,11 @@ https://github.com/jgthms/bulma/issues/1818
 @import "../../../node_modules/bulma/sass/utilities/mixins.sass";
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
 
+// Must be imported by url. If not, causes webpack build to fail.
+// Also, this import path does not resolve correctly from this
+// scss file, but does from the generated .css
+@import url("../../node_modules/cool-checkboxes-for-bulma.io/dist/css/bulma-radio-checkbox.css");
+
 $cc-orange: #ef9421;
 $light-grey: #a7a9ac;
 $dark-grey: hsl(0, 0%, 0%);
@@ -28,4 +33,3 @@ $default: $cc-orange;
 @import "../../../node_modules/bulma/sass/grid/_all.sass";
 @import "../../../node_modules/bulma/sass/layout/_all.sass";
 @import "../../../node_modules/bulma-switch/dist/css/bulma-switch.sass";
-@import "../../../node_modules/cool-checkboxes-for-bulma.io/dist/css/bulma-radio-checkbox.css";

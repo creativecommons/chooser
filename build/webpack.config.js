@@ -1,3 +1,5 @@
+/*eslint no-undef: 0*/
+
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
