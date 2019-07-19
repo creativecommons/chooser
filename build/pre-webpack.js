@@ -2,7 +2,6 @@
 
 const concat = require("concat");
 const path = require("path");
-const fs = require("fs");
 
 const jsOutFilePath = path.resolve(__dirname, "./bin/concatenated-js.js")
 

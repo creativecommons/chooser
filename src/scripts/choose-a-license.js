@@ -1,6 +1,4 @@
-set_license_text()
-set_license_icons()
-set_license_info()
+set_license()
 
 function set_license() {
     set_license_text()

@@ -21,7 +21,7 @@ module.exports = {
         "./src/styles/bulma-mods.css"
     ],
     output: {
-        filename: "scripts.js",
+        //filename: "prod.js", // Not imported, breaks some stuff.
         path: path.resolve(__dirname, "dist")
     },
     plugins: [
@@ -31,7 +31,11 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             {from: path.resolve(__dirname, "../src/assets"), to: "assets"},
-            {from: path.resolve(__dirname, "../src/index.html"), to: "."}
+            {from: path.resolve(__dirname, "../src/index.html"), to: "."},
+
+            // These two are temporary fixes
+            {from: path.resolve(__dirname, "../src/scripts/"), to: "./scripts/"},
+            {from: path.resolve(__dirname, "../src/index.js"), to: "."}
         ])
     ],
     module: {
