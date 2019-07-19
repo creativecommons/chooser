@@ -1,3 +1,6 @@
+import css from "../src/styles/styles.css";
+import bulma_css from "../src/styles/bulma-mods.css"
+
 var app_state = new Vue({ // eslint-disable-line
     el: "#chooser-app",
     data: {
