@@ -112,7 +112,9 @@ function gen_shortened_name(url_version = false) {
 function set_license_link() {
     const short_license = gen_shortened_name(true)
     app_state.chooser.selected_license_slugified = short_license
-    var url = "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
+    // Broken for some reason
+    //var url = "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
+    var url = "https://creativecommons.org/licenses/"+ short_license +"/4.0"
     app_state.chooser.selected_license_link = url
 }
 

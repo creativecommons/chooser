@@ -13,7 +13,7 @@ module.exports = {
             new OptimizeCSSAssetsPlugin({})
         ]
     },
-    entry: [ // Array defines multiple entry points
+    entry: [
         // js is concatenated prior to webpack build
         path.resolve(__dirname, "./bin/concatenated-js.js"),
 
@@ -27,8 +27,7 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "styles.min.css",
-            chunkFilename: "styles.min.css",
-            ignoreOrder: false, // Enable to remove warnings about conflicting order
+            chunkFilename: "styles.min.css"
         }),
         new CopyWebpackPlugin([
             {from: path.resolve(__dirname, "../src/assets"), to: "assets"},
