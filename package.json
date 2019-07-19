@@ -5,7 +5,7 @@
     "private": true,
     "scripts": {
         "build-css": "node-sass --omit-source-map-url src/styles/sass/bulma-mods.scss src/styles/bulma-mods.css",
-        "lint": "./node_modules/.bin/eslint src/*.js",
+        "lint": "eslint --ext .js .",
         "build-prod": "npm run build && npm run webpack",
         "build": "npm run build-css && npm run lint",
         "webpack": "node ./build/pre-webpack.js && npx webpack --config ./build/webpack.config.js"
@@ -20,6 +20,7 @@
         "jest": "^24.8.0",
         "mini-css-extract-plugin": "^0.8.0",
         "node-sass": "^4.12.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
         "style-loader": "^0.23.1",
         "webpack": "^4.33.0",
         "webpack-cli": "^3.3.3"
