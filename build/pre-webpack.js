@@ -7,6 +7,10 @@ const jsOutFilePath = path.resolve(__dirname, "./bin/concatenated-js.js")
 
 concatjs()
 
+/**
+ * concatjs concatenates all src js files into a single js file, which
+ * webpack uses as an entry point
+ */
 function concatjs() {
     console.log("Concatenating JS")
     concat([
