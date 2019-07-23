@@ -113,6 +113,10 @@ h3 {
     margin-bottom: 1em
 }
 
+.chooser-icon-column {
+    cursor: pointer;
+}
+
 input[type=checkbox].css-checkbox{ display: none; }
 
 .css-label {

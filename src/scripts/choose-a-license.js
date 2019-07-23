@@ -117,8 +117,8 @@ function set_license_link() {
  * @param {object} check The HTML SA Checkbox object
  */
 function sa_check_callback(check) {
-    console.log("Checkbox Toggled")
-    console.log(check.checked)
+    //console.log("Checkbox Toggled")
+    //console.log(check.checked)
     app_state.chooser.inputs.share_alike = !app_state.chooser.inputs.share_alike
     set_license()
 }
@@ -128,10 +128,13 @@ function sa_check_callback(check) {
  * @param {object} cb The HTML switch object
  */
 function switch_callback(cb) {
-    console.log("Switch Toggled - " + cb.id)
     var state = app_state.chooser.inputs
+    // If string is passed, id is string, else checkbox id is id
+    var id = typeof cb == "string" ? id = cb : id = cb.id
+    console.log("Switch Toggled - " + id)
     state.selected_license = ""
-    switch (cb.id) {
+
+    switch (id) {
         case "allow-adaptations-switch":
             if (!cb.checked) { // If allow adaptations
                 console.log("Is Allow Adaptations - " + !cb.checked)
@@ -170,12 +173,12 @@ function toggle_license_icon(icon, is_show) {
 }
 
 function hide_sa_check() {
-    console.log("SA Hidden")
+    //console.log("SA Hidden")
     document.getElementById("sa-control-container").style.display = "none"
 }
 
 function show_sa_check() {
-    console.log("SA Shown")
+    //console.log("SA Shown")
     var element = document.getElementById("sa-control-container")
     if (app_state.chooser.inputs.share_alike) {
         element.checked = "true"
