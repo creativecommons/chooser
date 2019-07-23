@@ -1,3 +1,5 @@
+set_license()
+
 function set_license() {
     set_license_text()
     set_license_icons()
@@ -108,11 +110,10 @@ function gen_shortened_name(url_version = false) {
 function gen_license_link() {
     const short_license = gen_shortened_name(true)
     app_state.chooser.selected_license_slugified = short_license
-    return "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
-}
-
-function set_license_link() {
-    app_state.chooser.selected_license_link = gen_license_link()
+    // Broken for some reason
+    //var url = "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
+    var url = "https://creativecommons.org/licenses/"+ short_license +"/4.0"
+    app_state.chooser.selected_license_link = url
 }
 
 /**
@@ -120,7 +121,7 @@ function set_license_link() {
  * @param {object} check The HTML SA Checkbox object
  */
 function sa_check_callback(check) {
-    console.log("Checkbox Toggled")
+    //console.log("Checkbox Toggled")
     app_state.chooser.inputs.share_alike = check.checked
     set_license()
 }
@@ -130,14 +131,14 @@ function sa_check_callback(check) {
  * @param {object} cb The HTML switch object
  */
 function switch_callback(cb) {
-    console.log("Switch Toggled - " + cb.id)
+    //console.log("Switch Toggled - " + cb.id)
     var state = app_state.chooser.inputs
     state.selected_license = ""
     switch (cb.id) {
         case "allow-adaptations-switch":
             state.allow_adaptations = cb.checked
             if (cb.checked) { // If allow adaptations
-                console.log("Is Allow Adaptations - " + cb.checked)
+                //console.log("Is Allow Adaptations - " + cb.checked)
                 state.allow_adaptations = true
                 show_sa_check()
                 set_license()
@@ -151,7 +152,7 @@ function switch_callback(cb) {
             state.allow_commercial_uses = cb.checked
             break;
         default:
-            console.log("Whoops! This function isn't designed to handle that parameter.")
+            //console.log("Whoops! This function isn't designed to handle that parameter.")
             break;
     }
     set_license()
@@ -174,12 +175,12 @@ function toggle_license_icon(icon, is_show) {
 }
 
 function hide_sa_check() {
-    console.log("SA Hidden")
+    //console.log("SA Hidden")
     document.getElementById("sa-checkbox").style.display = "none"
 }
 
 function show_sa_check() {
-    console.log("SA Shown")
+    //console.log("SA Shown")
     var element = document.getElementById("sa-checkbox")
     if (app_state.chooser.inputs.share_alike) {
         element.checked = "true"
