@@ -6,8 +6,9 @@
         <link id="favicon" rel="shortcut icon" type="image/png" href="assets/favicon.ico.png">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" href="styles.min.css"> <!--Dist CSS File-->
         <link rel="stylesheet" href="styles/styles.css">
-        <link rel="stylesheet" href="styles/bulma-mods.css"> <!--ALWAYS import this last-->
+        <link rel="stylesheet" href="styles/bulma-mods.css"> <!--bulma-mods.css must always be imported last-->
 
         <noscript>
             Sorry, but the Creative Commons License Chooser requires JavaScript to work :(
@@ -19,7 +20,6 @@
         </noscript>
     </head>
     <body onload="
-        set_license()
         document.getElementById('sa-checkbox').checked = app_state.chooser.inputs.share_alike"
     >
         <header style="padding-bottom: 1%">
@@ -42,7 +42,6 @@
                 </p>
                 <div class="columns">
                     <div class="column" id="chooser-controls-switch">
-                        
                         <div id="license-chooser-allow-adaptations" class="chooser-question">
                             <span>
                                 <p class="chooser-question-title">
@@ -104,7 +103,7 @@
                                 </div>
                             </div>
                         </div> <br><br>
-                        <div id="license-chooser-allow-commercial">
+                        <div id="license-chooser-allow-commercial" class="chooser-question">
                             <span>
                                 <p class="chooser-question-title">
                                     Do you want to allow commercial uses of your work?
