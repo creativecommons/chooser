@@ -623,7 +623,7 @@
             <div class="" id="html-generator-dropdown" style="border-width: 2px; border-style: solid; padding: 1.5%;">
                 <h1 class="title is-1">This is the dropdown click area</h1>
             </div> <br>-->
-            <div class="content" id="html-generator">
+            <div class="content" id="html-generator" style="display: block">
                 <div id="html-generator-generated">
                     <span id="html-generator-generated-richtext-container">
                         [Work] by [Author] is licenced under <a>CC BY NC 4.0</a>
@@ -635,9 +635,12 @@
                     </span> <br>
                     <a class="button is-link generator-copy-button">Copy Rich Text</a>
                     <div class="control" id="html-generator-generated-HTML-container">
-                        <textarea class="textarea" readonly>Some HTML</textarea>
+                        <textarea class="textarea" readonly>{{chooser.metadata["gen_html"]}}</textarea>
                     </div>
                     <a class="button is-link generator-copy-button">Copy HTML</a>
+                    <div id="ex-gen-html">
+
+                    </div>
                 </div>
                 <div class="html-generator-metadata">
                     <p align="center">
@@ -649,21 +652,24 @@
                             <div class="field">
                                 <label class="label">Title of Work</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
+                                    <input id="work_title" class="input" type="text" 
+                                    placeholder="Text input" onchange="field_update(this)">
                                 </div>
                                 <p class="help">The title of the work being licensed.</p>
                             </div>
                             <div class="field">
                                 <label class="label">Attribute Work to Name</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
+                                    <input id="work_attribute_to_name" class="input" type="text" 
+                                    placeholder="Text input" onchange="field_update(this)">
                                 </div>
                                 <p class="help">The name of the person who should receive attribution for the work.</p>
                             </div>
                             <div class="field">
                                 <label class="label">Attribute Work to URL</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
+                                    <input id="work_attribute_to_url" class="input" type="text" 
+                                    placeholder="Text input" onchange="field_update(this)">
                                 </div>
                                 <p class="help">The URL to which the work should be attributed.</p>
                             </div>
@@ -672,14 +678,16 @@
                             <div class="field">
                                 <label class="label">Source Work URL</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
+                                    <input id="work_source_url" class="input" type="text" 
+                                    placeholder="Text input" onchange="field_update(this)">
                                 </div>
                                 <p class="help">The URL of the work upon which this work is based or derived.</p>
                             </div>
                             <div class="field">
                                 <label class="label">More Permissions URL</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
+                                    <input id="work_more_permissions_url" class="input" type="text" 
+                                    placeholder="Text input" onchange="field_update(this)">
                                 </div>
                                 <p class="help">A URL where a user can find information about obtaining rights that are not already permitted by the CC license.</p>
                             </div>
@@ -732,7 +740,7 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript" src="scripts/page-controls.js"></script>
-        <script type="text/javascript" src="scripts/HTML-generator.js"></script>
+        <script type="text/javascript" type="module" src="scripts/HTML-generator.js"></script>
         <script type="text/javascript" src="scripts/choose-a-license.js"></script>
         <script type="text/javascript" src="scripts/scripts.js"></script>
     </body>

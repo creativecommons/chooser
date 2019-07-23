@@ -107,7 +107,7 @@ function gen_shortened_name(url_version = false) {
     return (url_version ? short.slice(3).toLowerCase() : short += " 4.0")
 }
 
-function set_license_link() {
+function gen_license_link() {
     const short_license = gen_shortened_name(true)
     app_state.chooser.selected_license_slugified = short_license
     // Broken for some reason
