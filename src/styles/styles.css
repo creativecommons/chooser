@@ -58,8 +58,8 @@ img.chooser-license-icon {
 }
 
 a.generator-copy-button {
-    margin-top: .4%;
-    margin-bottom: 1.3%;
+    margin-top: .7%;
+    margin-bottom: 1.6%;
 }
 
 header {
@@ -188,8 +188,8 @@ input[type="checkbox"] {
 
 @media only screen and (max-width: 600px) {
     .site-container {
-        margin-left: 1.4% !important;
-        margin-right: 1.4% !important;
+        margin-left: 1.8% !important;
+        margin-right: 1.8% !important;
     }
 
     .site-title {
@@ -209,7 +209,7 @@ input[type="checkbox"] {
         width: 100%;
         margin-bottom: 0%;
     }
-
+    
     .edu-icons-section {
         margin-bottom: 3%;
     }
@@ -266,6 +266,11 @@ input[type="checkbox"] {
 
     p.modal-title {
         font-size: 16px;
+    }
+
+    .chooser-selected-card-title {
+        margin: 1.5% auto;
+        font-size: 1px;
     }
 }
 

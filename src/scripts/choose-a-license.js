@@ -18,7 +18,7 @@ function set_license_text() {
     }*/
     app_state.chooser.selected_license = gen_license_name()
     app_state.chooser.selected_license_short = gen_shortened_name()
-    set_license_link()
+    gen_license_link()
 }
 
 function set_license_info() {

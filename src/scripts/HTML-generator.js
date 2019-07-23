@@ -5,7 +5,6 @@ function gen_html() {
         htmlgen_license_name(), htmlgen_license_icons()
     );
     document.getElementById("html-generator-generated-richtext-container").innerHTML = final
-    document.getElementById("ex-gen-html").innerHTML = final
     app_state.chooser.metadata["gen_html"] = final
 }
 
