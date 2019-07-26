@@ -2,9 +2,11 @@
     <div>
         <b-collapse :open="false" aria-id="contentIdForA11y1">
             <button
-                class="button is-primary"
+                class="button is-primary is-fullwidth"
                 slot="trigger"
-                aria-controls="contentIdForA11y1">Click me!</button>
+                aria-controls="contentIdForA11y1">
+                Click me!
+            </button>
             <div class="notification">
                 <div class="content">
                     <h3>
@@ -23,4 +25,3 @@
 <style>
 
 </style>
-

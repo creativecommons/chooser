@@ -6,6 +6,9 @@ import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import 'bulma/css/bulma.min.css'
 
+import '@creativecommons/vocabulary/root.css'
+import '@creativecommons/vocabulary/vocabulary.css'
+
 Vue.config.productionTip = false
 Vue.use(Buefy)
 
