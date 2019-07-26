@@ -1,10 +1,11 @@
 <template>
   <div class="hello">
-
   </div>
 </template>
 
 <script>
+import Buefy from 'buefy'
+
 export default {
   name: 'HelloWorld',
   data () {

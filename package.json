@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The new and improved Creative Commons License Chooser",
   "author": "Ari <akmadian@gmail.com>",
-  "private": false,
+  "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
@@ -14,11 +14,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@creativecommons/vocabulary": "0.0.0-alpha.9",
     "buefy": "^0.7.10",
     "bulma": "^0.7.5",
-    "bulma-switch": "^2.0.0",
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "sass-loader": "^7.1.0",
+    "vue": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
