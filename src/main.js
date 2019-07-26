@@ -4,13 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
+import 'bulma/css/bulma.min.css'
 
 Vue.config.productionTip = false
 Vue.use(Buefy)
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  components: { App },
-  template: '<App/>'
+    el: '#app',
+    components: { App },
+    template: '<App/>'
 })
