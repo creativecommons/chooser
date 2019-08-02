@@ -2,7 +2,7 @@
   "name": "cc-chooser",
   "version": "1.0.0",
   "description": "The new and improved Creative Commons License Chooser",
-  "author": "Ari <akmadian@gmail.com>",
+  "author": "akmadian <akmadian@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

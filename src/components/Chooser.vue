@@ -32,8 +32,8 @@
                             <div class="control" style="margin-left: 9%; padding-top: 1%;">
                                 <div class="field">
                                     <label for="allow-commercial-switch">No</label>
-                                    <input id="allow-commercial-switch" type="checkbox" 
-                                    name="allow-commercial-switch" class="switch is-thin" 
+                                    <input id="allow-commercial-switch" type="checkbox"
+                                    name="allow-commercial-switch" class="switch is-thin"
                                     checked="checked" onchange="switch_callback(this)">
                                     <label for="allow-commercial-switch">Yes</label>
                                 </div>
@@ -60,3 +60,8 @@ export default {
     ]
 }
 </script>
+<style>
+.switch-container label {
+    vertical-align: middle;
+}
+</style>

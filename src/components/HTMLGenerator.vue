@@ -2,10 +2,10 @@
     <div>
         <b-collapse :open="false" aria-id="contentIdForA11y1">
             <button
-                class="button is-primary is-fullwidth"
+                class="button is-primary is-fullwidth collapsible-button"
                 slot="trigger"
                 aria-controls="contentIdForA11y1">
-                Click me!
+                <h3 class="title is-3">Have a Website?</h3>
             </button>
             <div class="notification">
                 <div class="content">
@@ -23,5 +23,7 @@
     </div>
 </template>
 <style>
-
+.collapsible-button {
+    height: 70px;
+}
 </style>
