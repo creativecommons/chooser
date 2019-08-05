@@ -50,5 +50,6 @@ hr {
 
 #site-container {
     padding-top: 3%;
+    padding-bottom: 10%;
 }
 </style>

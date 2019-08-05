@@ -151,21 +151,22 @@
     </div>
 </template>
 <script>
+// eslint-disable-next-line
 const ModalForm = {
-template: `
-    <form action="">
-        <div class="modal-card" style="width: auto">
-            <header class="modal-card-head">
-                <p class="modal-card-title">Login</p>
-            </header>
-            <section class="modal-card-body">
+    template: `
+        <form action="">
+            <div class="modal-card" style="width: auto">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Login</p>
+                </header>
+                <section class="modal-card-body">
 
-            </section>
-            <footer class="modal-card-foot">
-                <button class="button" type="button" @click="$parent.close()">Close</button>
-            </footer>
-        </div>
-    </form>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button" type="button" @click="$parent.close()">Close</button>
+                </footer>
+            </div>
+        </form>
     `
 }
 export default {
