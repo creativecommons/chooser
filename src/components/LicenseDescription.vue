@@ -13,10 +13,13 @@
 <script>
 export default {
     name: 'LicenseDescription',
+    props: {
+        selectedLicense: String
+    },
     data() {
         return {
-            selected_license_adapt: "[selected-license_adapt]",
-            selected_license_description: "[selected-license_desc]"
+            selected_license_adapt: '[selected-license_adapt]',
+            selected_license_description: '[selected-license_desc]'
         }
     }
 }
@@ -24,5 +27,3 @@ export default {
 <style>
 
 </style>
-
-

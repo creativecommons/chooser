@@ -2,16 +2,16 @@
     <div id="component">
         <div class="columns chooser-icon-column">
             <div class="column is-narrow">
-                <input 
+                <input
                     id="selector-input"
                     type="checkbox"
                     class="css-checkbox"
                     v-model="isSelected">
-                <label 
+                <label
                     for="selector-input"
                     v-bind:class="icon">
                 </label>
-            </div>  
+            </div>
             <div class="column" id="icon-description">
                 <b>{{heading}}</b>
                 <p>{{description}}</p>
@@ -33,47 +33,34 @@ export default {
     computed: {
         description() {
             switch (this.icon) {
-                case 'nc':
-                    return 'You let others copy, distribute, display, \
-                            perform, and (unless you have chosen NoDerivatives) \
-                            modify and use your work for any purpose other than \
-                            commercially, unless they get your permission first.'
-                case 'nd':
-                    return 'You let others copy, distribute, display, and perform, \
-                            and modify your work, as long as they distribute any \
-                            modified work, they must get your permission first.'
-                case 'sa':
-                    return 'You let others copy, distribute, perform, and modify \
-                            your work, as long as they distribute any modified \
-                            work on the same terms. If they want to distribute \
-                            modified works under other terms, they must get your \
-                            permission first.'
-                    break;
-                default:
-                    break;
+            case 'nc': return 'You let others copy, distribute, display, perform, and (unless you have chosen NoDerivatives) modify and use your work for any purpose other than commercially, unless they get your permission first.'
+            case 'nd': return 'You let others copy, distribute, display, and perform, and modify your work, as long as they distribute any modified work, they must get your permission first.'
+            case 'sa': return 'You let others copy, distribute, perform, and modify your work, as long as they distribute any modified work on the same terms. If they want to distribute modified works under other terms, they must get your permission first.'
+            default: break
             }
         },
         heading() {
             switch (this.icon) {
-                case 'nd': return 'Modifying Not Allowed'
-                case 'nc': return 'Commercial Uses Not Allowed'
-                case 'sa': return 'Distributed on Same Terms'
-                default: return null;
+            case 'nd': return 'Modifying Not Allowed'
+            case 'nc': return 'Commercial Uses Not Allowed'
+            case 'sa': return 'Distributed on Same Terms'
+            default: return null
             }
         },
         imageSrc() {
             switch (this.icon) {
-                case 'nd': "../assets/license-icons/cc-nd-icon.svg"
-                case 'nc': "../assets/license-icons/cc-nc-icon.svg"
-                case 'sa': "../assets/license-icons/cc-sa-icon.svg"
-                default:
-                    break;
+            /* eslint-disable */
+            case 'nd': return "../assets/license-icons/cc-nd-icon.svg"
+            case 'nc': return "../assets/license-icons/cc-nc-icon.svg"
+            case 'sa': return "../assets/license-icons/cc-sa-icon.svg"
+            default: break
+            /* eslint-enable */
             }
         }
     }
 }
 </script>
-<style>
+<style scoped>
     #component {
         cursor: pointer;
         margin-top: 2%;
@@ -108,7 +95,6 @@ export default {
         opacity: .5;
         filter: alpha(opacity=50);
     }
-
 
     label.nd {
         background-image: url(../assets/license-icons/cc-nd-icon.svg);

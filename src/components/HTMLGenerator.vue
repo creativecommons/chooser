@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-collapse :open="false" aria-id="contentIdForA11y1">
+        <b-collapse :open="true" aria-id="contentIdForA11y1">
             <button
                 class="button is-primary is-fullwidth collapsible-button"
                 slot="trigger"
@@ -23,9 +23,15 @@
                                 @copied="onCopyAttribution">
                         Copy Rich Text
                     </CopyButton>
-                    <div class="control" id="generated-HTML-container">
+                    <div class="control" id="generated-html-container">
                         <textarea id="generated-html" class="textarea" readonly>chooser.metadata["gen_html"]</textarea>
                     </div>
+                    <CopyButton id="copy-html-btn"
+                                el="#generated-html"
+                                title="Copy the attribution to paste into your blog or document"
+                                @copied="onCopyAttribution">
+                        Copy HTML
+                    </CopyButton>
                     <div class="metadata-input-row">
                         <div class="columns">
                             <div class="column">
@@ -70,18 +76,17 @@
     </div>
 </template>
 <script>
-import CopyButton from '@/components/CopyButton'
+import CopyButton from './CopyButton'
 
 export default {
     name: 'HTMLGenerator',
-    components: [
+    components: {
         CopyButton
-    ]
+    }
 }
 </script>
-
 <style>
-.collapsible-button {
-    height: 70px;
-}
+    .collapsible-button {
+        height: 70px;
+    }
 </style>

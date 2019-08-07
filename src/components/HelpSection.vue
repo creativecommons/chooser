@@ -1,3 +1,4 @@
+<!-- eslint-disable no-trailing-spaces -->
 <template>
     <div>
         <h2 class="title is-2">Confused? Need Help?</h2>
