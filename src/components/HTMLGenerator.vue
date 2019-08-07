@@ -26,7 +26,6 @@
                     <div class="control" id="generated-HTML-container">
                         <textarea id="generated-html" class="textarea" readonly>chooser.metadata["gen_html"]</textarea>
                     </div>
-                    
                     <div class="metadata-input-row">
                         <div class="columns">
                             <div class="column">

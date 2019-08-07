@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header appName="cc-chooser"/>
+        <Header appName="cc-chooser TEST"/>
         <div class="container" id="site-container">
             <Chooser/>
             <hr>
@@ -11,25 +11,21 @@
         <Footer/>
     </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld'
 import Chooser from './components/Chooser'
 import HelpSection from './components/HelpSection'
 import HTMLGenerator from './components/HTMLGenerator'
-import SelectedLicense from './components/SelectedLicense'
-import { Header, Footer } from '@creativecommons/vocabulary/vocabulary.common'
+import { Header, Footer, LicenseIconography } from '@creativecommons/vocabulary'
 
 export default {
     name: 'App',
     components: {
-        HelloWorld,
         Chooser,
         HelpSection,
         HTMLGenerator,
         Header,
         Footer,
-        SelectedLicense
+        LicenseIconography
     }
 }
 </script>

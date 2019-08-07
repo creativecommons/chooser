@@ -8,6 +8,7 @@
     </button>
 </template>
 <script>
+/* eslint-disable */
 import Clipboard from 'clipboard'
 
 export default {
