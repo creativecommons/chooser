@@ -9,14 +9,6 @@
             </button>
             <div class="notification">
                 <div class="content">
-                    <span id="generated-richtext-container">
-                        [Work] by [Author] is licenced under <a>CC BY NC 4.0</a>
-                        <span id="richtext-container-icons" class="generated-icons">
-                            <img src="assets/license-icons/cc_icon.svg">
-                            <img src="assets/license-icons/cc-by_icon.svg">
-                            <img src="assets/license-icons/cc-nc_icon.svg">
-                        </span>
-                    </span><br>
                     <CopyButton id="copy-richtext-btn"
                                 el="#generated-richtext-container"
                                 title="Copy the attribution to paste into your blog or document"
@@ -77,11 +69,15 @@
 </template>
 <script>
 import CopyButton from './CopyButton'
+import LicenseIcons from './LicenseIcons'
+import attributionHtml from '@/utils/attributionHtml'
 
 export default {
     name: 'HTMLGenerator',
+    props: ['shortLicenseName'],
     components: {
-        CopyButton
+        CopyButton,
+        LicenseIcons
     }
 }
 </script>

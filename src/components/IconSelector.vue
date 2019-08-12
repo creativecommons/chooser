@@ -6,7 +6,8 @@
                     id="selector-input"
                     type="checkbox"
                     class="css-checkbox"
-                    v-model="isSelected">
+                    ref="input"
+                    @input="update()">
                 <label
                     for="selector-input"
                     v-bind:class="icon">
@@ -22,12 +23,10 @@
 <script>
 export default {
     name: 'IconSelector',
-    props: {
-        icon: String
-    },
-    data() {
-        return {
-            isSelected: false
+    props: ['icon', 'value'],
+    methods: {
+        update() {
+            this.$emit('input', this.$refs.input.checked)
         }
     },
     computed: {

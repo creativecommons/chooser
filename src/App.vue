@@ -1,12 +1,13 @@
 <template>
     <div id="app">
-        <Header appName="cc-chooser TEST"/>
+        <Header appName="cc-chooser"/>
         <div class="container" id="site-container">
-            <Chooser/>
+            <Chooser v-model="selected"/>
             <hr>
             <HelpSection/>
             <hr>
-            <HTMLGenerator/>
+            <HTMLGenerator
+                shortLicenseName="selectedLicense"/>
         </div>
         <Footer/>
     </div>
@@ -26,6 +27,14 @@ export default {
         Header,
         Footer,
         LicenseIconography
+    },
+    data() {
+        return {
+            selected: {
+                shortName: '',
+                fullName: ''
+            }
+        }
     }
 }
 </script>
