@@ -28,16 +28,11 @@ export default {
         LicenseDescription,
         LicenseIconography
     },
-    data() {
-        return {
-            selected_license_short_noversion: 'short-noversion',
-        }
-    },
     computed: {
         iconsList() {
             var base = ['']
-            var slicedName = shortLicenseName
-                .slice(3, shortLicenseName.length - 4)
+            var slicedName = this.$props.shortLicenseName
+                .slice(3, this.$props.shortLicenseName.length - 4)
             var extras = slicedName.toLowerCase().split('-')
             return base.concat(extras)
         }

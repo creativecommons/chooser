@@ -19,7 +19,9 @@
                 </IconSelector>
             </div>
             <div class="column">
-                <SelectedLicense/>
+                <SelectedLicense
+                    :fullLicenseName="fullLicenseName"
+                    :shortLicenseName="shortLicenseName"/>
             </div>
         </div>
     </div>
@@ -53,27 +55,16 @@ export default {
     computed: {
         shortLicenseName() {
             var base = "CC BY"
-            console.info('s1')
-            if (!allowCommercial) { base += "-NC" }
-            console.info('s2')
-            if (allowAdaptations && isShareAlike) { 
-                base += "-SA" 
-                }
-                else if (!allowAdaptations) { 
-                    base += "-ND" 
-                    }
+            if (!this.allowCommercial) { base += "-NC" }
+            if (this.allowAdaptations && this.isShareAlike) { base += "-SA" }
+                else if (!this.allowAdaptations) { base += "-ND" }
             return base += " 4.0"
         },
         fullLicenseName() {
             var base = "Atribution"
-            console.info('f1')
-            if (allowCommercial) { 
-                base += "-NonCommercial" 
-                }
-            console.info('f2')
-            if (allowAdaptations && isShareAlike) { console.info('f3'); base += "-ShareAlike" }
-                else if (!allowAdaptations) { console.info('f4'); base += "-NoDerivatives" }
-            console.info('f5')
+            if (this.allowCommercial) { base += "-NonCommercial" }
+            if (this.allowAdaptations && this.isShareAlike) { base += "-ShareAlike" }
+                else if (!this.allowAdaptations) { base += "-NoDerivatives" }
             return base += " 4.0 International"
         }
     }
