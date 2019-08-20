@@ -1,20 +1,21 @@
 <template>
     <div class="container">
         <div class="columns">
-            <div class="column" v-on:click="updateLicense()">
+            <div class="column">
                 <IconSelector
-                    id="nc-selector"
+                    id="nc"
                     icon="nc"
                     v-model="allowCommercial">
                 </IconSelector>
                 <IconSelector
-                    id="nd-selector"
+                    id="nd"
                     icon="nd"
                     v-model="allowAdaptations">
                 </IconSelector>
                 <IconSelector
-                    id="sa-selector"
+                    id="sa"
                     icon="sa"
+                    v-if="allowAdaptations"
                     v-model="isShareAlike">
                 </IconSelector>
             </div>
@@ -32,7 +33,6 @@ import IconSelector from './IconSelector'
 
 export default {
     name: 'Chooser',
-    props: ['value'],
     components: {
         SelectedLicense,
         IconSelector
@@ -45,10 +45,10 @@ export default {
         }
     },
     methods: {
-        updateLicense(e) {
-            this.$emit('input', {
-                shortName: shortLicenseName,
-                fullName: fullLicenseName
+        updateLicense() {
+            this.$emit('licenseUpdate', {
+                shortName: this.shortLicenseName,
+                fullName: this.fullLicenseName
             })
         }
     },
@@ -62,7 +62,7 @@ export default {
         },
         fullLicenseName() {
             var base = "Atribution"
-            if (this.allowCommercial) { base += "-NonCommercial" }
+            if (!this.allowCommercial) { base += "-NonCommercial" }
             if (this.allowAdaptations && this.isShareAlike) { base += "-ShareAlike" }
                 else if (!this.allowAdaptations) { base += "-NoDerivatives" }
             return base += " 4.0 International"

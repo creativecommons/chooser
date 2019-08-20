@@ -3,17 +3,17 @@
         <div class="columns chooser-icon-column">
             <div class="column is-narrow">
                 <input
-                    id="selector-input"
+                    :id="id"
                     type="checkbox"
                     class="css-checkbox"
                     ref="input"
                     @input="update()">
                 <label
-                    for="selector-input"
+                    :for="id"
                     v-bind:class="icon">
                 </label>
             </div>
-            <div class="column" id="icon-description">
+            <div class="column icon-description">
                 <b>{{heading}}</b>
                 <p>{{description}}</p>
             </div>
@@ -23,10 +23,11 @@
 <script>
 export default {
     name: 'IconSelector',
-    props: ['icon', 'value'],
+    props: ['id', 'icon', 'value'],
     methods: {
         update() {
-            this.$emit('input', this.$refs.input.checked)
+            console.info("clicked")
+            this.$emit('selectorUpdate', this.$refs.input.checked)
         }
     },
     computed: {
@@ -65,13 +66,10 @@ export default {
         margin-top: 2%;
         margin-bottom: 1.5%;
     }
-
-    #icon-description {
+    .icon-description {
         vertical-align: middle
     }
-
     input[type=checkbox].css-checkbox{ display: none; }
-
     label {
         display: flex;
         height: 65px;
@@ -83,42 +81,34 @@ export default {
         opacity: 0.4;
         filter: alpha(opacity=40); /* msie */
     }
-
     .css-checkbox:checked + label {
         background-position: 0 0;
         opacity: 1;
         filter: alpha(opacity=100); /* msie */
     }
-
     .css-checkbox:hover + label {
         opacity: .5;
         filter: alpha(opacity=50);
     }
-
     label.nd {
         background-image: url(../assets/license-icons/cc-nd-icon.svg);
     }
-
     input[type=checkbox].css-checkbox:checked + label.nd {
         background-image: url(../assets/license-icons/cc-nd-icon.svg);
         opacity: 1;
         filter: alpha(opacity=100); /* msie */
     }
-
     label.nc {
         background-image: url(../assets/license-icons/cc-nc_icon.svg)
     }
-
     input[type=checkbox].css-checkbox:checked + label.nc {
         background-image: url(../assets/license-icons/cc-nc_icon.svg);
         opacity: 1;
         filter: alpha(opacity=100); /* msie */
     }
-
     label.sa {
         background-image: url(../assets/license-icons/cc-sa_icon.svg);
     }
-
     input[type=checkbox].css-checkbox:checked + label.sa {
         background-image: url(../assets/license-icons/cc-sa_icon.svg);
         opacity: 1;

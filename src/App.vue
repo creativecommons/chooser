@@ -2,7 +2,7 @@
     <div id="app">
         <Header appName="cc-chooser"/>
         <div class="container" id="site-container">
-            <Chooser v-model="selected"/>
+            <Chooser @clicked="onLicenseUpdate"/>
             <hr>
             <HelpSection/>
             <hr>
@@ -31,9 +31,14 @@ export default {
     data() {
         return {
             selected: {
-                shortName: '',
-                fullName: ''
+                shortName: "",
+                fullName: ""
             }
+        }
+    },
+    methods: {
+        onLicenseUpdate(e) {
+            this.selected = e
         }
     }
 }

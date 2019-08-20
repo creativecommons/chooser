@@ -6,7 +6,7 @@
             </header>
             <div class="card-content">
                 <div>
-                    <LicenseIconography v-bind:iconList="iconsList"/>
+                    <LicenseIconography :iconList="iconsList"/>
                     <div class="selected-license-names">
                         <b class="selected-license-name">{{shortLicenseName}}</b>
                         <a href="chooser.selected_license_link" class="help">{{fullLicenseName}}</a>
