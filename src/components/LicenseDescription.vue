@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="chooser-selected-share_adapt">
+        <div id="chooser-selected-share_adapt">
             <p>{{license_noVersion}} attribution means you allow people to</p>
             <p id="generated-license-share"><b>Share</b> the material in any medium or format</p>
             <p id="generated-license-adapt" v-if="licenseInfo.adapt"><b>Adapt</b> {{licenseInfo.adapt}}</p>
         </div>
-        <p class="chooser-selected-description">
+        <p id="chooser-selected-description">
             {{licenseInfo.description}}
         </p>
     </div>
@@ -94,6 +94,12 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
+    #chooser-selected-share_adapt {
+        margin-top: .6rem;
+    }
 
+    #chooser-selected-description {
+        margin-top: .4rem;
+    }
 </style>
