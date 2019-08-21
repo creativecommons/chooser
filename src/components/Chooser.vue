@@ -50,7 +50,10 @@ export default {
                 shortName: this.shortLicenseName,
                 fullName: this.fullLicenseName
             })
-        }
+        },
+        selectorCallback(event) {
+            console.log(event)
+        } 
     },
     computed: {
         shortLicenseName() {

@@ -1,4 +1,4 @@
-function attributionHtml(form, ccLicenseURL, fullLicenseName) {
+/*function attributionHtml(form, ccLicenseURL, fullLicenseName) {
     const baseAssetsPath = 'https://search.creativecommons.org/static/img'
     const imgLink = `<a href="${form.foreign_landing_url}">"${form.title}"</a>`
     let creator = ''
@@ -21,3 +21,4 @@ function attributionHtml(form, ccLicenseURL, fullLicenseName) {
 }
 
 export default attributionHtml
+*/

@@ -27,7 +27,7 @@ export default {
     methods: {
         update() {
             console.info("clicked")
-            this.$emit('selectorUpdate', this.$refs.input.checked)
+            this.$emit('input', !this.$refs.input.checked)
         }
     },
     computed: {

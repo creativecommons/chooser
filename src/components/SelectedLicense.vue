@@ -12,7 +12,8 @@
                         <a href="chooser.selected_license_link" class="help">{{fullLicenseName}}</a>
                     </div>
                 </div>
-                <LicenseDescription/>
+                <LicenseDescription
+                    :selectedLicense="shortLicenseName"/>
             </div>
         </div>
     </div>
