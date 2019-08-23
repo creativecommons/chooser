@@ -7,8 +7,32 @@
                 aria-controls="contentIdForA11y1">
                 <h3 class="title is-3">Have a Website?</h3>
             </button>
-            <div class="notification">
                 <div class="content">
+                    <span id="attribution" class="photo_usage-attribution" ref="photoAttribution">
+                        <a :href="workLocation"
+                            v-if="workTitle && workLocation"
+                            target="_blank"
+                            rel="noopener">"{{ workTitle }}"
+                        </a>
+                        <p v-if="!workTitle">This work</p>
+                        <p v-if="workTitle && !workLocation">{{ workTitle }}</p>
+                        <span v-if="attributeToName">
+                            by
+                            <a v-if="attributeToURL"
+                                :href="attributeToURL"
+                                target="_blank"
+                                rel="noopener">{{ attributeToName }}</a>
+                            <span v-else>{{ attributeToName }}</span>
+                        </span>
+                        is licensed under
+                        <a class="photo_license" :href="licenseURL" target="_blank" rel="noopener">
+                        {{ shortLicenseName }}
+                        </a>
+                    </span>
+                    <LicenseIcons
+                        :url="licenseURL"
+                        :iconsArr="iconsArr"
+                    />
                     <CopyButton id="copy-richtext-btn"
                                 el="#generated-richtext-container"
                                 title="Copy the attribution to paste into your blog or document"
@@ -101,22 +125,24 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </b-collapse>
     </div>
 </template>
 <script>
 import CopyButton from './CopyButton'
 import LicenseIcons from './LicenseIcons'
+import LicenseIconography from '@creativecommons/vocabulary/vocabulary.common'
 import attributionHtml from '@/utils/attributionHtml'
 import licenseUrl from '@/utils/licenseUrl'
+import shortNameToIconsArray from '@/utils/licenseUtils'
 
 export default {
     name: 'HTMLGenerator',
     props: ['shortLicenseName'],
     components: {
         CopyButton,
-        LicenseIcons
+        LicenseIcons,
+        LicenseIconography
     },
     data() {
         return {
@@ -136,9 +162,17 @@ export default {
                     attributeToName: this.attributeToName,
                     attributeToURL: this.attributeToURL,
                 },
-                licenseUrl(this.$props.shortLicenseName), 
+                this.licenseURL, 
                 this.$props.shortLicenseName
             );
+        }
+    },
+    computed: {
+        licenseURL() {
+            return licenseUrl(this.$props.shortLicenseName)
+        },
+        iconsArr() {
+            return this.$props.shortLicenseName.toLowerCase().slice(3, this.$props.shortLicenseName.length - 4).split('-')
         }
     }
 }
@@ -159,5 +193,9 @@ export default {
 
     .field {
         margin-bottom: 0px;
+    }
+
+    #attribution p {
+        display: inline
     }
 </style>

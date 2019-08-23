@@ -16,4 +16,12 @@ function fullToShort(fullLicenseName) {
     return base += " 4.0"
 }
 
-export default { shortToFull, fullToShort }
+function shortNameToIconsArray(shortLicenseName) {
+    return shortLicenseName
+        /*
+        .toLowerCase()
+        .slice(3, shortLicenseName.length - 4)
+        .split('-')*/
+}
+
+export default { shortToFull, fullToShort, shortNameToIconsArray }

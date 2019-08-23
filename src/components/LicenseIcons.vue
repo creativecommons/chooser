@@ -1,13 +1,13 @@
 <template>
-  <a :href="getLicenseURL(image)"
+  <a :href="url"
       @click.stop="() => false"
      class="photo-license-icons"
      target="_blank"
      rel="noopener noreferrer">
     <img class="photo-license-icon" src="../assets/license-icons/cc_icon.svg"><img
-          v-for="(license, index) in onGetLicenseIcon(image.license)"
-          v-if="license" class="photo-license-icon"
-          :src="require(`@/assets/cc-${license.toLowerCase()}_icon.svg`)"
+          v-for="(license, index) in iconsArr"
+          class="photo-license-icon"
+          :src="require(`../assets/license-icons/cc-${license.toLowerCase()}_icon.svg`)"
           :key="index">
   </a>
 </template>
@@ -16,38 +16,7 @@
 const LicenseIcons = {
   name: 'license-icons',
   components: {},
-  props: {
-    image: '',
-    shouldWrapInLink: false,
-  },
-  methods: {
-    onGetLicenseIcon(license) {
-      let licenses = [];
-      if (license) {
-        licenses = license.split('-');
-      }
-      return licenses;
-    },
-    getLicenseURL(image) {
-      if (!image) {
-        return '';
-      }
-      const BASE_URL = 'https://creativecommons.org';
-      let url = `${BASE_URL}/licenses/${image.license}/${image.license_version}`;
-      let license = '';
-      if (image.license) {
-        license = image.license;
-      }
-      if (license === 'cc0') {
-        this.image.license_version = '1.0';
-        url = `${BASE_URL}/publicdomain/zero/1.0/`;
-      }
-      else if (image.license === 'pdm') {
-        url = `${BASE_URL}/publicdomain/mark/1.0/`;
-      }
-      return url;
-    },
-  },
+  props: [ 'url', 'iconsArr' ],
 };
 export default LicenseIcons;
 </script>
