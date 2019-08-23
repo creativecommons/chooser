@@ -7,7 +7,7 @@
             <HelpSection/>
             <hr>
             <HTMLGenerator
-                shortLicenseName="selectedLicense"/>
+                shortLicenseName="CC BY-NC-SA 4.0"/>
         </div>
         <Footer/>
     </div>

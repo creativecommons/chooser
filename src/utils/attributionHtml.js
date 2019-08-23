@@ -11,7 +11,7 @@ function attributionHtml(form, ccLicenseURL, shortLicenseName) {
 
     let licenseIcons = `<img style="height: inherit;margin-right: 3px;display: inline-block;" src="${baseAssetsPath}/cc_icon.svg" />` // eslint-disable-line global-require, import/no-dynamic-require
     if (shortLicenseName) {
-        licenseIcons += shortLicenseName.license.split('-').map(license =>
+        licenseIcons += shortLicenseName.slice(3, shortLicenseName.length - 4).split('-').map(license =>
             `<img style="height: inherit;margin-right: 3px;display: inline-block;" src="${baseAssetsPath}/cc-${license.toLowerCase()}_icon.svg" />` // eslint-disable-line global-require, import/no-dynamic-require
         ).join('')
     }
