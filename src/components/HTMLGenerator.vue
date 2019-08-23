@@ -24,42 +24,53 @@
                                 @copied="onCopyAttribution">
                         Copy HTML
                     </CopyButton>
-                    <div class="metadata-input-row">
-                        <div class="columns">
-                            <div class="column">
-                                <b-field label="Title of Work">
-                                    <b-input value="Kevin Garvey"></b-input>
-                                </b-field>
-                            </div>
-                            <div class="column">
-                                <b-field label="Attribute Work to Name">
-                                    <b-input value="Kevin Garvey"></b-input>
-                                </b-field>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metadata-input-row">
-                        <div class="columns">
-                            <div class="column">
-                                <b-field label="Attribute Work to URL">
-                                    <b-input value="Kevin Garvey"></b-input>
-                                </b-field>
-                            </div>
-                            <div class="column">
-                                <b-field label="Source Work URL">
-                                    <b-input value="Kevin Garvey"></b-input>
-                                </b-field>
+                    <div id="generator-meta-inputs">
+                        <b align="center">
+                            Filling out these boxes is optional, but it adds more data
+                            to the generated HTML and rich text above!
+                        </b>
+                        <div class="metadata-input-row">
+                            <div class="columns">
+                                <div class="column">
+                                    <b-field label="Title of Work">
+                                        <b-input></b-input>
+                                    </b-field>
+                                    <p class="help">The title of the work being licensed.</p>
+                                </div>
+                                <div class="column">
+                                    <b-field label="Attribute Work to Name">
+                                        <b-input></b-input>
+                                    </b-field>
+                                    <p class="help">The name of the person who should receive attribution for the work.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="metadata-input-row">
-                        <div class="columns">
-                            <div class="column">
-                                <b-field label="More Permissions URL">
-                                    <b-input value="Kevin Garvey"></b-input>
-                                </b-field>
+                        <div class="metadata-input-row">
+                            <div class="columns">
+                                <div class="column">
+                                    <b-field label="Attribute Work to URL">
+                                        <b-input></b-input>
+                                    </b-field>
+                                    <p class="help">The URL to which the work should be attributed.</p>
+                                </div>
+                                <div class="column">
+                                    <b-field label="Source Work URL">
+                                        <b-input></b-input>
+                                    </b-field>
+                                    <p class="help">The URL of the work upon which this work is based or derived.</p>
+                                </div>
                             </div>
-                            <div class="column"></div>
+                        </div>
+                        <div class="metadata-input-row">
+                            <div class="columns">
+                                <div class="column">
+                                    <b-field label="More Permissions URL">
+                                        <b-input></b-input>
+                                    </b-field>
+                                    <p class="help">A URL where a user can find information about obtaining rights that are not already permitted by the CC license.</p>
+                                </div>
+                                <div class="column"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,8 +92,21 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
     .collapsible-button {
         height: 70px;
+        background-color: #ef9421 !important;
+    }
+
+    #generator-meta-inputs {
+        margin-top: 1rem;
+    }
+
+    b {
+        text-align: center;
+    }
+
+    .field {
+        margin-bottom: 0px;
     }
 </style>

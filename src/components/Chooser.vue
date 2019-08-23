@@ -2,6 +2,7 @@
     <div class="container">
         <div class="columns">
             <div class="column">
+                <b>To change the selected license, click the icons below</b>
                 <IconSelector
                     id="nc"
                     icon="nc"
@@ -73,8 +74,12 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .selected-license-names b {
     font-size: 1.8rem;
+}
+
+b {
+    text-align: center;
 }
 </style>

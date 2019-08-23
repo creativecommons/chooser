@@ -62,4 +62,11 @@ hr {
     padding-top: 3%;
     padding-bottom: 10%;
 }
+
+@media only screen and (max-width: 670px) {
+    #site-container {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+}
 </style>

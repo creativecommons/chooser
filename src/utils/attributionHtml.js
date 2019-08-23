@@ -1,17 +1,17 @@
-/*function attributionHtml(form, ccLicenseURL, fullLicenseName) {
+function attributionHtml(form, ccLicenseURL, shortLicenseName) {
     const baseAssetsPath = 'https://search.creativecommons.org/static/img'
-    const imgLink = `<a href="${form.foreign_landing_url}">"${form.title}"</a>`
+    const imgLink = `<a href="${form.workLocation}">"${form.workTitle}"</a>`
     let creator = ''
-    if (image.creator && image.creator_url) {
-        creator = `<span>by <a href="${image.creator_url}">${image.creator}</a></span>`
-    } else if (image.creator && !image.creator_url) {
-        creator = `<span> by <span>${image.creator}</span></span>`
+    if (form.attributeToName && form.attributeToURL) {
+        creator = `<span> by <a href="${form.attributeToURL}">${form.attributeToName}</a></span>`
+    } else if (form.attributeToName && !form.attributeToURL) {
+        creator = `<span> by <span>${form.attributeToName}</span></span>`
     }
-    const licenseLink = ` is licensed under <a href="${ccLicenseURL}" style="margin-right: 5px;">${fullLicenseName.toUpperCase()}</a>`
+    const licenseLink = ` is licensed under <a href="${ccLicenseURL}" style="margin-right: 5px;">${shortLicenseName.toUpperCase()}</a>`
 
     let licenseIcons = `<img style="height: inherit;margin-right: 3px;display: inline-block;" src="${baseAssetsPath}/cc_icon.svg" />` // eslint-disable-line global-require, import/no-dynamic-require
-    if (image.license) {
-        licenseIcons += image.license.split('-').map(license =>
+    if (shortLicenseName) {
+        licenseIcons += shortLicenseName.license.split('-').map(license =>
             `<img style="height: inherit;margin-right: 3px;display: inline-block;" src="${baseAssetsPath}/cc-${license.toLowerCase()}_icon.svg" />` // eslint-disable-line global-require, import/no-dynamic-require
         ).join('')
     }
@@ -21,4 +21,3 @@
 }
 
 export default attributionHtml
-*/

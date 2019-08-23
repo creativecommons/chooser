@@ -1,7 +1,7 @@
 <template>
     <div id="component">
         <div class="columns chooser-icon-column">
-            <div class="column is-narrow">
+            <div class="column is-narrow is-one-fifth-mobile">
                 <input
                     :id="id"
                     type="checkbox"
@@ -10,10 +10,10 @@
                     @input="update()">
                 <label
                     :for="id"
-                    v-bind:class="icon">
+                    :class="icon">
                 </label>
             </div>
-            <div class="column icon-description">
+            <div class="column icon-description is-four-fifths-mobile">
                 <b>{{heading}}</b>
                 <p>{{description}}</p>
             </div>
@@ -113,5 +113,16 @@ export default {
         background-image: url(../assets/license-icons/cc-sa_icon.svg);
         opacity: 1;
         filter: alpha(opacity=100); /* msie */
+    }
+
+    @media only screen and (max-width: 670px) {
+        label { 
+            height: 50px;
+            margin-top: 0px;
+        }
+
+        b, p {
+            font-size: 14px;
+        }
     }
 </style>
