@@ -2,12 +2,11 @@
     <div id="app">
         <Header appName="cc-chooser"/>
         <div class="container" id="site-container">
-            <Chooser @clicked="onLicenseUpdate"/>
+            <Chooser v-model="selected"/>
             <hr>
             <HelpSection/>
             <hr>
-            <HTMLGenerator
-                shortLicenseName="CC BY-NC-SA 4.0"/>
+            <HTMLGenerator :shortLicenseName="selected.shortName"/>
         </div>
         <Footer/>
     </div>
@@ -31,8 +30,8 @@ export default {
     data() {
         return {
             selected: {
-                shortName: "",
-                fullName: ""
+                shortName: "CC BY 4.0",
+                fullName: "Attribution 4.0 International"
             }
         }
     },

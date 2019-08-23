@@ -14,7 +14,11 @@
                             target="_blank"
                             rel="noopener">"{{ workTitle }}"
                         </a>
-                        <p v-if="!workTitle">This work</p>
+                        <a v-if="!workTitle && workLocation"
+                            :href="workLocation">
+                            This work
+                        </a>
+                        <p v-if="!workTitle && !workLocation">This work</p>
                         <p v-if="workTitle && !workLocation">{{ workTitle }}</p>
                         <span v-if="attributeToName">
                             by

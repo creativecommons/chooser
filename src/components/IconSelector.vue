@@ -26,7 +26,6 @@ export default {
     props: ['id', 'icon', 'value'],
     methods: {
         update() {
-            console.info("clicked")
             this.$emit('input', !this.$refs.input.checked)
         }
     },

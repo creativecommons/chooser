@@ -1,7 +1,8 @@
 <template>
     <div class="container">
         <div class="columns">
-            <div class="column">
+            <div class="column"
+                v-on:change="updateLicense()">
                 <b>To change the selected license, click the icons below</b>
                 <IconSelector
                     id="nc"
@@ -34,6 +35,7 @@ import IconSelector from './IconSelector'
 
 export default {
     name: 'Chooser',
+    props: ['value'],
     components: {
         SelectedLicense,
         IconSelector
@@ -47,14 +49,11 @@ export default {
     },
     methods: {
         updateLicense() {
-            this.$emit('licenseUpdate', {
+            this.$emit('input', {
                 shortName: this.shortLicenseName,
                 fullName: this.fullLicenseName
             })
-        },
-        selectorCallback(event) {
-            console.log(event)
-        } 
+        }
     },
     computed: {
         shortLicenseName() {
