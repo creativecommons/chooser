@@ -62,6 +62,14 @@ hr {
     padding-bottom: 10%;
 }
 
+.desktop-hide { display: none; }
+.desktop-show { display: block; }
+
+@media only screen and (max-width: 1025px) {
+    .mobile-hide { display: none; }
+    .mobile-show { display: block; }
+}
+
 @media only screen and (max-width: 670px) {
     #site-container {
         margin-left: 3%;

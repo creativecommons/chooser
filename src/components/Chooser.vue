@@ -3,7 +3,8 @@
         <div class="columns">
             <div class="column"
                 v-on:change="updateLicense()">
-                <b>To change the selected license, click the icons below</b>
+                <b class="desktop-show mobile-hide">To change the selected license, click the icons below</b>
+                <b class="mobile-show desktop-hide">To change the selected license, tap the icons below</b>
                 <IconSelector
                     id="nc"
                     icon="nc"

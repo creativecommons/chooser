@@ -7,29 +7,29 @@
             <div class="column">
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal1Active = true">
-                    1 - What Are Creative Commons Licenses?
+                    What Are Creative Commons Licenses?
                 </button>
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal2Active = true">
-                    2 - How do the Licenses Work?
+                    How do the Licenses Work?
                 </button>
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal3Active = true">
-                    3 - Want Public Domain Instead?
+                    Want Public Domain Instead?
                 </button>
             </div>
             <div class="column">
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal4Active = true">
-                    4 - Considerations Before Licensing
+                    Considerations Before Licensing
                 </button>
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal5Active = true">
-                    5 - How do I Formally License my Work?
+                    How do I Formally License my Work?
                 </button>
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal6Active = true">
-                    6 - The Six CC Licenses
+                    The Six CC Licenses
                 </button>
             </div>
         </div>

@@ -38,7 +38,7 @@
                         :iconsArr="iconsArr"
                     />
                     <CopyButton id="copy-richtext-btn"
-                                el="#attribution richtext"
+                                el="#attribution-richtext"
                                 title="Copy the attribution to paste into your blog or document">
                         Copy Rich Text
                     </CopyButton>
