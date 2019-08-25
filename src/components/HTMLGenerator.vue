@@ -8,7 +8,7 @@
                 <h3 class="title is-3">Have a Website?</h3>
             </button>
                 <div class="content">
-                    <span id="attribution" class="photo_usage-attribution" ref="photoAttribution">
+                    <span id="attribution-richtext" class="photo_usage-attribution" ref="photoAttribution">
                         <a :href="workLocation"
                             v-if="workTitle && workLocation"
                             target="_blank"
@@ -38,9 +38,8 @@
                         :iconsArr="iconsArr"
                     />
                     <CopyButton id="copy-richtext-btn"
-                                el="#generated-richtext-container"
-                                title="Copy the attribution to paste into your blog or document"
-                                @copied="onCopyAttribution">
+                                el="#attribution richtext"
+                                title="Copy the attribution to paste into your blog or document">
                         Copy Rich Text
                     </CopyButton>
                     <div class="control" id="generated-html-container">
@@ -51,9 +50,8 @@
                         </textarea>
                     </div>
                     <CopyButton id="copy-html-btn"
-                                el="#generated-html"
-                                title="Copy the attribution to paste into your blog or document"
-                                @copied="onCopyAttribution">
+                                el="#attribution-html"
+                                title="Copy the attribution to paste into your blog or document">
                         Copy HTML
                     </CopyButton>
                     <div id="generator-meta-inputs">
@@ -199,7 +197,11 @@ export default {
         margin-bottom: 0px;
     }
 
-    #attribution p {
+    #attribution-richtext p {
         display: inline
+    }
+
+    #generated-html-container {
+        margin-top: 1.5rem
     }
 </style>

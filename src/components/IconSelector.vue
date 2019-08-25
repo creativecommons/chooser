@@ -1,20 +1,20 @@
 <template>
-    <div id="component">
+    <div id="component"
+        v-on:click="update()">
         <div class="columns chooser-icon-column">
             <div class="column is-narrow is-one-fifth-mobile">
                 <input
                     :id="id"
                     type="checkbox"
                     class="css-checkbox"
-                    ref="input"
-                    @input="update()">
+                    ref="input">
                 <label
                     :for="id"
                     :class="icon">
                 </label>
             </div>
             <div class="column icon-description is-four-fifths-mobile">
-                <b>{{heading}}</b>
+                <b ref="heading">heading</b>
                 <p>{{description}}</p>
             </div>
         </div>
@@ -26,7 +26,14 @@ export default {
     props: ['id', 'icon', 'value'],
     methods: {
         update() {
-            this.$emit('input', !this.$refs.input.checked)
+            var toggle = this.$refs.input
+            toggle.checked = !toggle.checked
+
+            this.$emit('input', !toggle.checked)
+            this.$refs.heading.innerHTML 
+                = 'Click to ' + (toggle.checked
+                ? this.heading_allow
+                : this.heading_disallow)
         }
     },
     computed: {
@@ -38,11 +45,19 @@ export default {
             default: break
             }
         },
-        heading() {
+        heading_disallow() {
             switch (this.icon) {
-            case 'nd': return 'Modifying Not Allowed'
-            case 'nc': return 'Commercial Uses Not Allowed'
-            case 'sa': return 'Distributed on Same Terms'
+            case 'nd': return 'Disallow Modifications of Your Work'
+            case 'nc': return 'Disallow Commercial Uses of Your Work'
+            case 'sa': return 'Require Disribution on Same Terms'
+            default: return null
+            }
+        },
+        heading_allow() {
+            switch (this.icon) {
+            case 'nd': return 'Allow Others to Modify Your Work'
+            case 'nc': return 'Allow Commercial Uses of Your Work'
+            case 'sa': return 'Not Require Distribution on Same Terms'
             default: return null
             }
         },
@@ -55,7 +70,15 @@ export default {
             default: break
             /* eslint-enable */
             }
-        }
+        },
+        isChecked() { return this.$refs.input }
+    },
+    mounted: function() {
+        console.log(this.$refs)
+        this.$refs.heading.innerHTML 
+            = 'Click to ' + (this.$refs.input.checked 
+            ? this.heading_sallow
+            : this.heading_disallow)
     }
 }
 </script>

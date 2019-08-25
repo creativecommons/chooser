@@ -53,7 +53,11 @@ export default {
     .photo_copy-btn {
         width: 10rem;
         display: block;
-        margin-top: 1rem;
+        margin-top: .5rem;
+    }
+
+    button {
+        cursor: pointer;
     }
 </style>
 
