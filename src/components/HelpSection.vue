@@ -35,7 +35,28 @@
         </div>
         <div class="columns">
             <div class="column is-one-third">
-
+                <p>
+                    Creative Commons licenses can be represented by their names, their
+                    associated icons, or both. For example, a cc-by-nc license, which 
+                    requires attribution, and prohibits commercial use could be represented its:
+                    <br><br>
+                    <ul>
+                        <li>
+                            <span>
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp; - Name: </b> CC-BY-NC, or Attribution-NonCommercial
+                            </span>
+                        </li>
+                        <li>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR</p>
+                        </li>
+                        <li>
+                            <span>
+                                <b>&nbsp;&nbsp;&nbsp;&nbsp; - Icons: </b>
+                                <LicenseIconography :icon-list="['by', 'nc', 'nd', 'sa']"/>
+                            </span>
+                        </li>
+                    </ul>
+                </p>
             </div>
             <div class="column is-one-third">
                 <div class="edu-icons-section">
@@ -122,7 +143,6 @@
         <b-modal :active.sync="isModal1Active">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">What Are Creative Commons Licenses?</p>
-                <button class="delete" aria-label="close" onclick="destroy_modal('q1')"></button>
             </header>
             <section class="modal-card-body">
                 <p>
@@ -145,7 +165,6 @@
         <b-modal :active.sync="isModal2Active">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">How do the Licenses Work?</p>
-                <button class="delete" aria-label="close" onclick="destroy_modal('q3')"></button>
             </header>
             <section class="modal-card-body">
                 <b>License "Layers"</b> <br>
@@ -195,7 +214,6 @@
         <b-modal :active.sync="isModal3Active">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">Want Public Domain Instead?</p>
-                <button class="delete" aria-label="close" onclick="destroy_modal('q5')"></button>
             </header>
             <section class="modal-card-body">
                 <p>
@@ -215,7 +233,6 @@
         <b-modal :active.sync="isModal4Active">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">Considerations Before Licensing</p>
-                <button class="delete" aria-label="close" onclick="destroy_modal('q2')"></button>
             </header>
             <section class="modal-card-body">
                 <p>
@@ -243,7 +260,6 @@
         <b-modal :active.sync="isModal5Active">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">How do I Formally License my Work?</p>
-                <button class="delete" aria-label="close" onclick="destroy_modal('q4')"></button>
             </header>
             <section class="modal-card-body">
                 <p>
@@ -287,7 +303,6 @@
         <b-modal :active.sync="isModal6Active">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">The Six Creative Commons Licenses</p>
-                <button class="delete" aria-label="close" onclick="destroy_modal('q6')"></button>
             </header>
             <section class="modal-card-body">
                 <div class="columns">
@@ -321,6 +336,8 @@
     </div>
 </template>
 <script>
+import LicenseIconography from '@creativecommons/vocabulary'
+
 // eslint-disable-next-line
 const ModalForm = {
     template: `
@@ -341,6 +358,9 @@ const ModalForm = {
 }
 export default {
     // eslint-disable-next-line
+    components: {
+        LicenseIconography
+    },
     data() {
         return {
             isModal1Active: false,

@@ -8,35 +8,36 @@
                 <h3 class="title is-3">Have a Website?</h3>
             </button>
                 <div class="content">
-                    <span id="attribution-richtext" class="photo_usage-attribution" ref="photoAttribution">
-                        <a :href="workLocation"
-                            v-if="workTitle && workLocation"
-                            target="_blank"
-                            rel="noopener">"{{ workTitle }}"
-                        </a>
-                        <a v-if="!workTitle && workLocation"
-                            :href="workLocation">
-                            This work
-                        </a>
-                        <p v-if="!workTitle && !workLocation">This work</p>
-                        <p v-if="workTitle && !workLocation">{{ workTitle }}</p>
-                        <span v-if="attributeToName">
-                            by
-                            <a v-if="attributeToURL"
-                                :href="attributeToURL"
+                    <span id="attribution-richtext-container">
+                        <span id="attribution-richtext" class="photo_usage-attribution" ref="photoAttribution">
+                            <a :href="workLocation"
+                                v-if="workTitle && workLocation"
                                 target="_blank"
-                                rel="noopener">{{ attributeToName }}</a>
-                            <span v-else>{{ attributeToName }}</span>
+                                rel="noopener">"{{ workTitle }}"
+                            </a>
+                            <a v-if="!workTitle && workLocation"
+                                :href="workLocation">
+                                This work
+                            </a>
+                            <p v-if="!workTitle && !workLocation">This work</p>
+                            <p v-if="workTitle && !workLocation">{{ workTitle }}</p>
+                            <span v-if="attributeToName">
+                                by
+                                <a v-if="attributeToURL"
+                                    :href="attributeToURL"
+                                    target="_blank"
+                                    rel="noopener">{{ attributeToName }}</a>
+                                <span v-else>{{ attributeToName }}</span>
+                            </span>
+                            is licensed under
+                            <a class="photo_license" :href="licenseURL" target="_blank" rel="noopener">
+                            {{ shortLicenseName }}
+                            </a>
                         </span>
-                        is licensed under
-                        <a class="photo_license" :href="licenseURL" target="_blank" rel="noopener">
-                        {{ shortLicenseName }}
-                        </a>
+                        <LicenseIcons
+                            :url="licenseURL"
+                            :iconsArr="iconsArr"/>
                     </span>
-                    <LicenseIcons
-                        :url="licenseURL"
-                        :iconsArr="iconsArr"
-                    />
                     <CopyButton id="copy-richtext-btn"
                                 el="#attribution-richtext"
                                 title="Copy the attribution to paste into your blog or document">
@@ -55,8 +56,8 @@
                         Copy HTML
                     </CopyButton>
                     <div id="generator-meta-inputs">
-                        <b align="center">
-                            Filling out these boxes is optional, but it adds more data
+                        <b id="generator-meta-inputs-heading">
+                            Filling out the boxes below is optional, but it adds more data
                             to the generated HTML and rich text above!
                         </b>
                         <div class="metadata-input-row">
@@ -185,8 +186,9 @@ export default {
         background-color: #ef9421 !important;
     }
 
-    #generator-meta-inputs {
-        margin-top: 1rem;
+    #generator-meta-inputs-heading {
+        margin-bottom: 1rem;
+        display: block;
     }
 
     b {
@@ -195,6 +197,17 @@ export default {
 
     .field {
         margin-bottom: 0px;
+    }
+
+    #attribution-richtext-container {
+        margin-top: 1rem;
+        display: block;
+    }
+
+    #attribution-richtext-container .photo-license-icons {
+        vertical-align: middle;
+        margin-top: 0px;
+        margin-left: 2px;
     }
 
     #attribution-richtext p {

@@ -1,6 +1,12 @@
+/**
+ * This function is mostly a copy of that in the
+ * ccsearch-frontend repo, with some modifications
+ * to work with the cc chooser
+ */
+
 function attributionHtml(form, ccLicenseURL, shortLicenseName) {
     const baseAssetsPath = 'https://search.creativecommons.org/static/img'
-    const imgLink = `<a href="${form.workLocation}">"${form.workTitle}"</a>`
+    const imgLink = `<a href="${form.workLocation}">"${form.workTitle ? form.workTitle : 'This work'}"</a>`
     let creator = ''
     if (form.attributeToName && form.attributeToURL) {
         creator = `<span> by <a href="${form.attributeToURL}">${form.attributeToName}</a></span>`
