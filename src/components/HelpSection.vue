@@ -52,7 +52,7 @@
                         <li>
                             <span>
                                 <b>&nbsp;&nbsp;&nbsp;&nbsp; - Icons: </b>
-                                <LicenseIconography :icon-list="['by', 'nc', 'nd', 'sa']"/>
+                                <LicenseIconography :icon-list="['', 'by', 'nc']"/>
                             </span>
                         </li>
                     </ul>
@@ -336,7 +336,7 @@
     </div>
 </template>
 <script>
-import LicenseIconography from '@creativecommons/vocabulary'
+import LicenseIconography from './LicenseIconography'
 
 // eslint-disable-next-line
 const ModalForm = {
