@@ -1,3 +1,5 @@
+set_license()
+
 function set_license() {
     set_license_text()
     set_license_icons()
@@ -16,7 +18,7 @@ function set_license_text() {
     }*/
     app_state.chooser.selected_license = gen_license_name()
     app_state.chooser.selected_license_short = gen_shortened_name()
-    set_license_link()
+    gen_license_link()
 }
 
 function set_license_info() {
@@ -105,10 +107,12 @@ function gen_shortened_name(url_version = false) {
     return (url_version ? short.slice(3).toLowerCase() : short += " 4.0")
 }
 
-function set_license_link() {
+function gen_license_link() {
     const short_license = gen_shortened_name(true)
     app_state.chooser.selected_license_slugified = short_license
-    var url = "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
+    // Broken for some reason
+    //var url = "https://creativecommons.org/licenses/{0}/4.0".format(short_license)
+    var url = "https://creativecommons.org/licenses/"+ short_license +"/4.0"
     app_state.chooser.selected_license_link = url
 }
 
@@ -150,7 +154,7 @@ function switch_callback(cb) {
             state.allow_commercial_uses = !state.allow_commercial_uses
             break;
         default:
-            console.log("Whoops! This function isn't designed to handle that parameter.")
+            //console.log("Whoops! This function isn't designed to handle that parameter.")
             break;
     }
     set_license()

@@ -6,8 +6,9 @@
         <link id="favicon" rel="shortcut icon" type="image/png" href="assets/favicon.ico.png">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" href="styles.min.css"> <!--Dist CSS File-->
         <link rel="stylesheet" href="styles/styles.css">
-        <link rel="stylesheet" href="styles/bulma-mods.css"> <!--ALWAYS import this last-->
+        <link rel="stylesheet" href="styles/bulma-mods.css"> <!--bulma-mods.css must always be imported last-->
 
         <noscript>
             Sorry, but the Creative Commons License Chooser requires JavaScript to work :(
@@ -31,13 +32,13 @@
                 icons you see to get more information!
             </div>
             <div class="container" id="license-chooser">
-                <p align="center">
+                <p align="center" class="onmobile-hide">
                     Have a work you want to license with the Creative Commons plaform, <br>
                     but not sure which one is right for you? Use our license chooser!
                 </p>
                 <p align="center" style="display: none;">
                     Confused? Check out the "<b>Need Help?</b>" section just below!
-                </p> <br>
+                </p>
                 <div class="columns">
                     <div class="column">
                         <b style="margin-bottom: 5%">To change the selected license, click the icons below.</b>
@@ -133,17 +134,21 @@
             </div>
             <hr>
             <div class="container" id="education-content">
-                <h1 class="title is-1">Confused? Need Help?</h1>
+                <h1 class="title site-title">Confused? Need Help?</h1>
                 <p align="center">You can click the buttons below to get answers to the questions on them!</p>
                 <br>
                 <div class="columns" id="questions-buttons">
                     <div class="column is-one-half">
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q1')">What Are Creative Commons Licenses?</a><br>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q1')">
+                            <p class="button-text">
+                                What Are Creative Commons Licenses?
+                            </p>
+                        </a><br>
                         <div id="modal-q1" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q1')"></div>
                             <div class="modal-card">
                                 <header class="modal-card-head">
-                                    <p class="modal-card-title">What Are Creative Commons Licenses?</p>
+                                    <p class="modal-card-title modal-title">What Are Creative Commons Licenses?</p>
                                     <button class="delete" aria-label="close" onclick="destroy_modal('q1')"></button>
                                 </header>
                                 <section class="modal-card-body">
@@ -165,12 +170,16 @@
                                 </section>
                             </div>
                         </div>
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q3')">How do the Licenses Work?</a><br>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q3')">
+                            <p class="button-text">
+                                How do the Licenses Work?
+                            </p>
+                        </a><br>
                         <div id="modal-q3" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q3')"></div>
                             <div class="modal-card">
                                 <header class="modal-card-head">
-                                    <p class="modal-card-title">How do the Licenses Work?</p>
+                                    <p class="modal-card-title modal-title">How do the Licenses Work?</p>
                                     <button class="delete" aria-label="close" onclick="destroy_modal('q3')"></button>
                                 </header>
                                 <section class="modal-card-body">
@@ -219,12 +228,16 @@
                                 </section>
                             </div>
                         </div>
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q5')">Want Public Domain Instead?</a>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q5')">
+                            <p class="button-text">
+                                Want Public Domain Instead?
+                            </p>
+                        </a>
                         <div id="modal-q5" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q5')"></div>
                             <div class="modal-card">
                                 <header class="modal-card-head">
-                                    <p class="modal-card-title">Want Public Domain Instead?</p>
+                                    <p class="modal-card-title modal-title">Want Public Domain Instead?</p>
                                     <button class="delete" aria-label="close" onclick="destroy_modal('q5')"></button>
                                 </header>
                                 <section class="modal-card-body">
@@ -245,12 +258,16 @@
                         </div>
                     </div>
                     <div class="column is-one-half">
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q2')">Considerations Before Licensing</a><br>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q2')">
+                            <p class="button-text">
+                                Considerations Before Licensing
+                            </p>
+                        </a><br>
                         <div id="modal-q2" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q2')"></div>
                             <div class="modal-card">
                                 <header class="modal-card-head">
-                                    <p class="modal-card-title">Considerations Before Licensing</p>
+                                    <p class="modal-card-title modal-title">Considerations Before Licensing</p>
                                     <button class="delete" aria-label="close" onclick="destroy_modal('q2')"></button>
                                 </header>
                                 <section class="modal-card-body">
@@ -277,12 +294,16 @@
                                 </section>
                             </div>
                         </div>
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q4')">How do I Formally License my Work?</a><br>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q4')">
+                            <p class="button-text">
+                                How do I Formally License my Work?
+                            </p>
+                        </a><br>
                         <div id="modal-q4" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q4')"></div>
                             <div class="modal-card">
                                 <header class="modal-card-head">
-                                    <p class="modal-card-title">How do I Formally License my Work?</p>
+                                    <p class="modal-card-title modal-title">How do I Formally License my Work?</p>
                                     <button class="delete" aria-label="close" onclick="destroy_modal('q4')"></button>
                                 </header>
                                 <section class="modal-card-body">
@@ -325,12 +346,16 @@
                                 </section>
                             </div>
                         </div>
-                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q6')">The Six CC Licenses</a>
+                        <a class="button is-light is-large is-fullwidth" onclick="spawn_modal('q6')">
+                            <p class="button-text">
+                                The Six CC Licenses
+                            </p>
+                        </a>
                         <div id="modal-q6" class="modal">
                             <div class="modal-background" onclick="destroy_modal('q6')"></div>
-                            <div class="modal-card">
+                            <div class="modal-card modal-add-margin" style="margin-left: 5%">
                                 <header class="modal-card-head">
-                                    <p class="modal-card-title">The Six Creative Commons Licenses</p>
+                                    <p class="modal-card-title modal-title">The Six Creative Commons Licenses</p>
                                     <button class="delete" aria-label="close" onclick="destroy_modal('q6')"></button>
                                 </header>
                                 <section class="modal-card-body">
@@ -397,11 +422,11 @@
                     </div>
                     <div class="column is-one-third">
                         <div class="edu-icons-section">
-                            <div class="columns is-gapless">
-                                <div class="column is-1">
-                                        <img src="assets/license-icons/cc-by_icon.svg"> 
+                            <div class="columns is-gapless is-inline-flex" id="heading">
+                                <div class="column is-one-quarter-desktop is-narrow-mobile">
+                                    <img src="assets/license-icons/cc-by_icon.svg"> 
                                 </div>
-                                <div class="column edu-icons-section-icon_title">
+                                <div class="column edu-icons-section-icon_title is-full">
                                     <b>Attribution Required</b>
                                     <p class="help">(BY)</p>
                                 </div>
@@ -414,11 +439,11 @@
                             </p>
                         </div>
                         <div class="edu-icons-section">
-                            <div class="columns is-gapless">
-                                <div class="column is-1">
+                            <div class="columns is-gapless is-inline-flex" id="heading">
+                                <div class="column is-one-quarter-desktop is-narrow-mobile">
                                     <img src="assets/license-icons/cc-nd_icon.svg"> 
                                 </div>
-                                <div class="column edu-icons-section-icon_title">
+                                <div class="column edu-icons-section-icon_title is-full">
                                     <b>Modifying Not Allowed</b>
                                     <p class="help">(ND/ NoDerivatives)</p>
                                 </div>
@@ -431,11 +456,11 @@
                     </div>
                     <div class="column is-one-third">
                         <div class="edu-icons-section">
-                            <div class="columns is-gapless">
-                                <div class="column is-1">
+                            <div class="columns is-gapless is-inline-flex" id="heading">
+                                <div class="column is-one-quarter-desktop is-narrow-mobile">
                                     <img src="assets/license-icons/cc-nc_icon.svg">
                                 </div>
-                                <div class="column edu-icons-section-icon_title">
+                                <div class="column edu-icons-section-icon_title is-full">
                                     <b>Commercial Use Not Allowed</b>
                                     <p class="help">(NC/ NonCommercial)</p>
                                 </div>
@@ -459,11 +484,11 @@
                             </p>
                         </div>
                         <div class="edu-icons-section">
-                            <div class="columns is-gapless">
-                                <div class="column is-1">
+                            <div class="columns is-gapless is-inline-flex" id="heading">
+                                <div class="column is-one-quarter-desktop is-narrow-mobile">
                                     <img src="assets/license-icons/cc-sa_icon.svg"> 
                                 </div>
-                                <div class="column edu-icons-section-icon_title">
+                                <div class="column edu-icons-section-icon_title is-full">
                                     <b>Distributed on Same Terms</b>
                                     <p class="help">(SA/ ShareAlike)</p>
                                 </div>
@@ -478,12 +503,17 @@
                 </div>
             </div>
             <hr>
+            <button class="collapsible" id="html-generator-dropdown">
+                <p>
+                    Have a Web Page? Click Here to Embed your License Info!
+                </p>
+            </button>
+            <!--
             <div class="" id="html-generator-dropdown" style="border-width: 2px; border-style: solid; padding: 1.5%;">
                 <h1 class="title is-1">This is the dropdown click area</h1>
-            </div> <br>
-            <div class="" id="html-generator">
+            </div> <br>-->
+            <div class="content container" id="html-generator">
                 <div id="html-generator-generated">
-                    <h1 class="title is-2">Have a web page? Embed your license info!</h1>
                     <span id="html-generator-generated-richtext-container">
                         [Work] by [Author] is licenced under <a>CC BY NC 4.0</a>
                         <span id="html-generator-richtext-container-icons" class="generated-icons">
@@ -491,73 +521,81 @@
                             <img src="assets/license-icons/cc-by_icon.svg">
                             <img src="assets/license-icons/cc-nc_icon.svg">
                         </span>
-                    </span> <br>
-                    <a class="button is-link generator-copy-button">Copy Rich Text</a>
+                    </span>
+                    <a class="button is-link generator-copy-button" 
+                    data-clipboard-target="#html-generator-generated-richtext-container">
+                        Copy Rich Text to Clipboard
+                    </a>
                     <div class="control" id="html-generator-generated-HTML-container">
-                        <textarea class="textarea" readonly>Some HTML</textarea>
+                        <textarea id="generated-html" class="textarea" readonly>{{chooser.metadata["gen_html"]}}</textarea>
                     </div>
-                    <a class="button is-link generator-copy-button">Copy HTML</a>
+                    <a class="button is-link generator-copy-button" data-clipboard-target="#generated-html">Copy HTML to Clipboard</a>
                 </div>
                 <div class="html-generator-metadata">
                     <p align="center">
                         Filling out these boxes is optional, but it adds machine-readable 
                         metadata to the generated HTML above!
                     </p>
-                    <div class="columns" style="padding-top: 1%">
-                        <div class="column">
-                            <div class="field">
-                                <label class="label">Title of Work</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
+                    <div class="metadata-input-row">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Title of Work</label>
+                                    <div class="control">
+                                        <input id="work_title" class="input" type="text" 
+                                        placeholder="Text input" onkeyup="field_update(this)">
+                                    </div>
+                                    <p class="help">The title of the work being licensed.</p>
                                 </div>
-                                <p class="help">The title of the work being licensed.</p>
                             </div>
-                            <div class="field">
-                                <label class="label">Attribute Work to Name</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Attribute Work to Name</label>
+                                    <div class="control">
+                                        <input id="work_attribute_to_name" class="input" type="text" 
+                                        placeholder="Text input" onkeyup="field_update(this)">
+                                    </div>
+                                    <p class="help">The name of the person who should receive attribution for the work.</p>
                                 </div>
-                                <p class="help">The name of the person who should receive attribution for the work.</p>
-                            </div>
-                            <div class="field">
-                                <label class="label">Attribute Work to URL</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
-                                </div>
-                                <p class="help">The URL to which the work should be attributed.</p>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="field">
-                                <label class="label">Source Work URL</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
+                    </div>
+                    <div class="metadata-input-row">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Attribute Work to URL</label>
+                                    <div class="control">
+                                        <input id="work_attribute_to_url" class="input" type="text" 
+                                        placeholder="Text input" onkeyup="field_update(this)">
+                                    </div>
+                                    <p class="help">The URL to which the work should be attributed.</p>
                                 </div>
-                                <p class="help">The URL of the work upon which this work is based or derived.</p>
                             </div>
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Source Work URL</label>
+                                    <div class="control">
+                                        <input id="work_source_url" class="input" type="text" 
+                                        placeholder="Text input" onkeyup="field_update(this)">
+                                    </div>
+                                    <p class="help">The URL of the work upon which this work is based or derived.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div class="metadata-input-row">
+                    <div class="columns">
+                        <div class="column">
                             <div class="field">
                                 <label class="label">More Permissions URL</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input">
+                                    <input id="work_more_permissions_url" class="input" type="text" 
+                                    placeholder="Text input" onkeyup="field_update(this)">
                                 </div>
                                 <p class="help">A URL where a user can find information about obtaining rights that are not already permitted by the CC license.</p>
                             </div>
-                            <div class="field">
-                                <label class="label">Format of Work&nbsp;&nbsp;</label>
-                                <div class="select">
-                                    <select>
-                                        <option>Other/ Multiple Formats</option>
-                                        <option>Audio</option>
-                                        <option>Video</option>
-                                        <option>Image</option>
-                                        <option>Text</option>
-                                        <option>Dataset</option>
-                                        <option>Interactive</option>
-                                    </select>
-                                </div>
-                                <p class="help">The type of work being licensed.</p>
-                            </div>
                         </div>
+                        <div class="column"></div>
                     </div>
                 </div>
             </div> <br><br><br><br><br><br><br><br><br>
@@ -589,11 +627,15 @@
             </div>-->
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <script type="text/javascript" src="../node_modules/clipboard/dist/clipboard.min.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript" src="scripts/page-controls.js"></script>
-        <script type="text/javascript" src="scripts/HTML-generator.js"></script>
+        <script type="text/javascript" type="module" src="scripts/HTML-generator.js"></script>
         <script type="text/javascript" src="scripts/choose-a-license.js"></script>
         <script type="text/javascript" src="scripts/scripts.js"></script>
     </body>
 </html>
-<!-- </> by Ari Madian :)-->
+<!-- 
+    </> by Ari Madian :)
+    https://github.com/akmadian
+-->
