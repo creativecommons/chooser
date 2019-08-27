@@ -1,9 +1,27 @@
 # cc-chooser
-GSoC 2019 - The new and improved CC license selection tool (in progress)
 
-**How do I take a look at the site?**
-1. Clone the repo
-2. Switch to the branch of your choice
-3. Run `npm install`
-4. Run `npm run build-css`
-5. Open ./src/index.html
+## About
+Repository containing the source code for the new Creative Commons License Chooser.
+
+This site is built using [Vue.js](https://vuejs.org/), [Bulma](https://bulma.io/), [Buefy](https://buefy.org/), and [Webpack](https://webpack.js.org/).
+
+## Getting Started
+Run the following commands in order to have the code up and running on your machine:
+
+``` bash
+# installs dependencies
+$ npm install
+
+# Builds and serves assets with hot-reload
+$ npm run dev
+```
+You should now have the application running and accessible at http://localhost:8080 (note: will run on a different port if 8080 is occupied, most common alternative port is 8081).
+
+## Running Tests
+You can run tests by executing:
+
+```bash
+$ npm run test
+```
+(note: tests are not written yet, but it's in the works. 
+If you want to help out, check out [issue #25](https://github.com/creativecommons/cc-chooser/issues/25) and say that you're interested in helping out.)
