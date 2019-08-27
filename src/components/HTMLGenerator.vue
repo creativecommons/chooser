@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-collapse :open="true" aria-id="contentIdForA11y1">
+        <b-collapse aria-id="contentIdForA11y1">
             <button
                 class="button is-primary is-fullwidth collapsible-button"
                 slot="trigger"

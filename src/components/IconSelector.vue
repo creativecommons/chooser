@@ -29,7 +29,8 @@ export default {
             var toggle = this.$refs.input
             toggle.checked = !toggle.checked
 
-            this.$emit('input', !toggle.checked)
+            this.$emit('input', this.$props.id == 'sa' ? toggle.checked : !toggle.checked)
+
             this.$refs.heading.innerHTML 
                 = 'Click to ' + (toggle.checked
                 ? this.heading_allow

@@ -414,4 +414,8 @@ h2 {
 .edu-icons-section-icon_title p {
     margin: 0px;
 }
+
+.vocab.license-icons img {
+    width: 35px;
+}
 </style>
