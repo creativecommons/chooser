@@ -19,18 +19,15 @@
             </style>
         </noscript>
     </head>
-    <body onload="
-        gen_html();
-        new ClipboardJS('.button');
-        document.getElementById('sa-checkbox').checked = app_state.chooser.inputs.share_alike"
-    >
+    <body onload="set_license()">
         <header style="padding-bottom: 1%">
             <br>
             <img src="assets/cc-logo_white.png" style="width: 20%; margin-left: 5%">
         </header>
         <div class="container site-container" id="chooser-app">
-            <h1 class="site-title">CC License Chooser</h1>
-            <div align="center" class="onmobile-hide" style="margin-bottom: .8%">
+            <br>
+            <h1 class="title is-1">CC License Chooser</h1>
+            <div align="center" style="display: none;">
                 <b>Tip:</b> You can click any <img class="modal-icon" src="assets/info-icon.svg" title="Except this one ;)">
                 icons you see to get more information!
             </div>
@@ -43,175 +40,65 @@
                     Confused? Check out the "<b>Need Help?</b>" section just below!
                 </p>
                 <div class="columns">
-                    <div class="column" id="chooser-controls-switch">
-                        <div id="license-chooser-allow-adaptations" class="chooser-question">
-                            <span>
-                                <p class="chooser-question-title">
-                                    Do you want to allow adaptations of your work? 
-                                    <a class="modal-icon" onclick="spawn_modal('allow-adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </p>
-                                <div id="modal-allow-adaptations" class="modal">
-                                    <div class="modal-background" onclick="destroy_modal('allow-adaptations')"></div>
-                                    <div class="modal-card">
-                                        <header class="modal-card-head">
-                                            <p class="modal-card-title">Allowing Adaptations</p>
-                                            <button class="delete" aria-label="close" onclick="destroy_modal('allow-adaptations')"></button>
-                                        </header>
-                                        <section class="modal-card-body">
-                                            <b>Yes</b> <br>
-                                            <p>
-                                                You permit others to copy, distribute, display,
-                                                and perform the work, as well as make and distribute
-                                                derivative works based on it.
-                                            </p> <br>
-                                            <b>No</b> <br>
-                                            <p>
-                                                You permit others to copy, distribute, display,
-                                                and perform the work, but not distribute derivative
-                                                works based on it.
-                                            </p> <br>
-                                            <b>Yes, as but others must share under the same license</b> <br>
-                                            <p>
-                                                You permit others to create and distribute derivative works,
-                                                but only under the same or a 
-                                                <a href="https://creativecommons.org/compatiblelicenses">compatible</a> license.
-                                            </p> <br>
-                                        </section>
-                                    </div>
-                                </div>
-                            </span>
-                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
-                                <div class="columns is-gapless">
-                                    <div class="column is-one-fifth">
-                                        <div class="field choosercontrol-switch">
-                                            <label for="allow-adaptations-switch">No</label>
-                                            <input id="allow-adaptations-switch" type="checkbox" 
-                                            name="allow-adaptations-switch" class="switch is-thin" 
-                                            checked="checked" onchange="switch_callback(this)">
-                                            <label for="allow-adaptations-switch">Yes</label>
-                                        </div>
-                                    </div>
-                                    <div class="field column is-pulled-left" style="display: inline;">
-                                        <p class="control is-pulled-left">
-                                            <div class="b-checkbox is-primary" id="sa-checkbox" style="display: inline;">
-                                                <input id="checkbox" class="styled is-primary" 
-                                                type="checkbox" onchange="sa_check_callback(this)">
-                                                <label for="checkbox">
-                                                    Yes, but others must share under the same license.
-                                                </label>
-                                            </div>
-                                        </p>
-                                    </div>
+                    <div class="column">
+                        <b style="margin-bottom: 5%">To change the selected license, click the icons below.</b>
+                        <div class="columns chooser-icon-column" onclick="switch_callback('allow-commercial-switch')">
+                            <div class="column is-narrow">
+                                <div id="control-icon-container" class="control">
+                                    <input id="allow-commercial-switch" type="checkbox" class="css-checkbox is-commercial"
+                                    onchange="switch_callback(this)" name="allow-commercial-switch">
+                                    <label for="allow-commercial-switch" class="css-label is-commercial"></label>
                                 </div>
                             </div>
-                        </div> <br><br>
-                        <div id="license-chooser-allow-commercial" class="chooser-question">
-                            <span>
-                                <p class="chooser-question-title">
-                                    Do you want to allow commercial uses of your work?
-                                    <a class="modal-icon" onclick="spawn_modal('allow-commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
+                            <div class="column">
+                                <b>Commercial Uses Not Allowed</b>
+                                <p>
+                                    You let others copy, distribute, display, perform, 
+                                    and (unless you have chosen NoDerivatives) modify 
+                                    and use your work for any purpose other than 
+                                    commercially, unless they get your permission first.
                                 </p>
-                                <div id="modal-allow-commercial" class="modal">
-                                    <div class="modal-background" onclick="destroy_modal('allow-commercial')"></div>
-                                    <div class="modal-card">
-                                        <header class="modal-card-head">
-                                            <p class="modal-card-title">Allowing Commercial Uses</p>
-                                            <button class="delete" aria-label="close" onclick="destroy_modal('allow-commercial')"></button>
-                                        </header>
-                                        <section class="modal-card-body">
-                                            <b>Yes</b> <br>
-                                            <p>
-                                                You permit others to copy, distribute, display,
-                                                and perform the work, including for commercial purposes. <br><br>
-                                            </p>
-                                            <b>No</b> <br>
-                                            <p>
-                                                You permit others to copy, distribute, display, 
-                                                and perform the work for non-commercial purposes
-                                                only.
-                                            </p> <br>
-                                        </section>
-                                        <footer class="modal-card-foot">
-                                            <p>
-                                                Curious what qualifies as a Commercial Use? Check out the 
-                                                <a href="https://wiki.creativecommons.org/wiki/NonCommercial_interpretation">
-                                                    CC wiki page on interpretation of Commercial Uses.
-                                                </a>
-                                            </p>
-                                        </footer>
-                                    </div>
-                                </div>
-                            </span>
-                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
-                                <div class="field">
-                                    <label for="allow-commercial-switch">No</label>
-                                    <input id="allow-commercial-switch" type="checkbox" 
-                                    name="allow-commercial-switch" class="switch is-thin" 
-                                    checked="checked" onchange="switch_callback(this)">
-                                    <label for="allow-commercial-switch">Yes</label>
-                                </div>
                             </div>
                         </div>
-                    </div><!--
-                    <div class="column" id="chooser-controls-images">
-                        <p align="center">Changes to the options below will affect the license choice to the right.</p> <br><br>
-                        <div id="license-chooser-allow-adaptations">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow adaptations of your work? 
-                                    <a class="modal-icon" onclick="spawn_modal('allow_adaptations')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                            </span>
-                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
-                                <div class="columns is-gapless">
-                                    <div class="field column is-one-fifth">
-                                        <label for="allow-adaptations-switch">No</label>
-                                        <input id="allow-adaptations-switch" type="checkbox" name="allow-adaptations-switch" class="switch is-thin" checked="checked">
-                                        <label for="allow-adaptations-switch">Yes</label>
-                                    </div>
-                                    <div class="field column is-pulled-left" style="display: inline;">
-                                        <p class="control is-pulled-left">
-                                            <div class="b-checkbox is-primary" style="display: inline;">
-                                                <input id="checkbox" class="styled" checked type="checkbox">
-                                                <label for="checkbox">
-                                                    SA Checkbox
-                                                </label>
-                                            </div>
-                                        </p>
-                                    </div>
+                        <div class="columns">
+                            <div class="column is-narrow">
+                                <div id="control-icon-container" class="control">
+                                    <input id="allow-adaptations-switch" type="checkbox" class="css-checkbox"
+                                    onchange="switch_callback(this)" name="allow-adaptations-switch">
+                                    <label for="allow-adaptations-switch" class="css-label is-adaptations">
                                 </div>
                             </div>
-                        </div> <br><br>
-                        <div class="license-chooser-allow-commercial">
-                            <span>
-                                <h4 class="title is-4">
-                                    Do you want to allow commercial uses of your work?
-                                    <a class="modal-icon" onclick="spawn_modal('allow_commercial')"><img src="assets/info-icon.svg" class="modal-icon"></a>
-                                </h4>
-                            </span>
-                            <div class="control" style="margin-left: 9%; padding-top: 1%;">
-                                <div class="field">
-                                    <p>Selected Example</p>
-                                    <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-controls-icons">
-
-                                    <p>Unselected Example</p>
-                                    <img src="assets/license-icons/cc-nc_icon.svg" class="unselected">
+                            <div class="column">
+                                <b>Modifying Not Allowed</b>
+                                <p>
+                                    You let others copy, distribute, display, and perform, 
+                                    and modify your work, as long as they distribute any 
+                                    modified work, they must get your permission first.
+                                </p>
+                            </div>
+                        </div>
+                        <div id="sa-control-container">
+                            <div class="columns">
+                                <div class="column is-narrow">
+                                    <div id="control-icon-container">
+                                        <input id="sa-checkbox" type="checkbox" class="css-checkbox"
+                                        onchange="sa_check_callback(this)" name="sa-checkbox">
+                                        <label for="sa-checkbox" class="css-label is-sa"></label>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <b>Distributed on Same Terms</b>
+                                    <p>
+                                        You let others copy, distribute, perform, and modify 
+                                        your work, as long as they distribute any modified 
+                                        work on the same terms. If they want to distribute 
+                                        modified works under other terms, they must get 
+                                        your permission first.
+                                    </p>
                                 </div>
                             </div>
-                        </div> <br><br>
-                    </div>-->
-                    <!--
-                    <div class="column" align="center">
-                        <h3 class="title is-3">Your License!</h3> <br><br>
-                        <a v-bind:href="chooser.selected_license_link" align="center">{{chooser.selected_license}}</a> <br>
-                        <p>{{chooser.selected_license_short}}</p>
-                        <div id="license-chooser-icons" class="selected-license-icons">
-                            <img src="assets/cc.svg" class="chooser-license-icon" id="cc-logo-icon">
-                            <img src="assets/license-icons/cc-by_icon.svg" class="chooser-license-icon" id="attribution-icon">
-                            <img src="assets/license-icons/cc-nc_icon.svg" class="chooser-license-icon" id="commercial-icon">
-                            <img v-bind:src="'assets/license-icons/' + chooser.icons.nd_sa_src" class="chooser-license-icon" id="adaptations-icon">
-                        </span>
-                    </div>-->
+                        </div>  
+                    </div>
                     <div class="column">
                         <div class="card" class="chooser-selected" style="border-radius: 5px">
                             <header class="card-header">
@@ -266,12 +153,12 @@
                                 </header>
                                 <section class="modal-card-body">
                                     <p>
-                                        The Creative Commons copyright licenses and tools forge a balance inside the tradional
+                                        The Creative Commons copyright licenses and tools forge a balance inside the traditional
                                         "all rights reserved" setting that copyright law creates. Our licenses and tools give everyone from
                                         individual creators to large companies a simple, standardized way to grant copyright permissions to
                                         their creative work. <br><br>
                 
-                                        This helps you as a creator, because instead of having to hire a lawer to parse legalese and
+                                        This helps you as a creator, because instead of having to hire a lawyer to parse legalese and
                                         create a license for you, you can save time and money, use Creative Commons licenses instead!
                                     </p> <br>
                                     <footer class="modal-card-foot">

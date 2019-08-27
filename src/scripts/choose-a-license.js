@@ -122,7 +122,8 @@ function gen_license_link() {
  */
 function sa_check_callback(check) {
     //console.log("Checkbox Toggled")
-    app_state.chooser.inputs.share_alike = check.checked
+    //console.log(check.checked)
+    app_state.chooser.inputs.share_alike = !app_state.chooser.inputs.share_alike
     set_license()
 }
 
@@ -131,17 +132,18 @@ function sa_check_callback(check) {
  * @param {object} cb The HTML switch object
  */
 function switch_callback(cb) {
-    //console.log("Switch Toggled - " + cb.id)
     var state = app_state.chooser.inputs
+    // If string is passed, id is string, else checkbox id is id
+    var id = typeof cb == "string" ? id = cb : id = cb.id
+    console.log("Switch Toggled - " + id)
     state.selected_license = ""
-    switch (cb.id) {
+
+    switch (id) {
         case "allow-adaptations-switch":
-            state.allow_adaptations = cb.checked
-            if (cb.checked) { // If allow adaptations
-                //console.log("Is Allow Adaptations - " + cb.checked)
+            if (!cb.checked) { // If allow adaptations
+                console.log("Is Allow Adaptations - " + !cb.checked)
                 state.allow_adaptations = true
                 show_sa_check()
-                set_license()
             } 
             else { // If NOT allow adaptations
                 state.allow_adaptations = false
@@ -149,7 +151,7 @@ function switch_callback(cb) {
             }
             break;
         case "allow-commercial-switch":
-            state.allow_commercial_uses = cb.checked
+            state.allow_commercial_uses = !state.allow_commercial_uses
             break;
         default:
             //console.log("Whoops! This function isn't designed to handle that parameter.")
@@ -176,12 +178,12 @@ function toggle_license_icon(icon, is_show) {
 
 function hide_sa_check() {
     //console.log("SA Hidden")
-    document.getElementById("sa-checkbox").style.display = "none"
+    document.getElementById("sa-control-container").style.display = "none"
 }
 
 function show_sa_check() {
     //console.log("SA Shown")
-    var element = document.getElementById("sa-checkbox")
+    var element = document.getElementById("sa-control-container")
     if (app_state.chooser.inputs.share_alike) {
         element.checked = "true"
     } 
@@ -189,5 +191,5 @@ function show_sa_check() {
         element.checked = "false"
     }
 
-    element.style.display = "block"
+    element.style.display = "inline"
 }
