@@ -1,2 +1,6 @@
-/build/dist/
-/build/bin/
+/build/
+/config/
+/dist/
+/*.js
+/test/unit/coverage/
+/src/components/LicenseIconography.vue
