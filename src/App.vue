@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header appName="cc-chooser"/>
+        <Header :title="$t('chooser')"/>
         <div class="container" id="site-container">
             <Chooser v-model="selected"/>
             <hr>
@@ -8,14 +8,20 @@
             <hr>
             <HTMLGenerator :shortLicenseName="selected.shortName"/>
         </div>
-        <Footer/>
+        <Footer>
+            <Locale/>
+        </Footer>
     </div>
 </template>
 <script>
+// TODO Reduce custom styling in favour of Vocabulary styles
+import '@creativecommons/vocabulary/root.css'
+import '@creativecommons/vocabulary/vocabulary.css'
+
 import Chooser from './components/Chooser'
 import HelpSection from './components/HelpSection'
 import HTMLGenerator from './components/HTMLGenerator'
-import { Header, Footer, LicenseIconography } from '@creativecommons/vocabulary'
+import { Header, Footer, LicenseIconography, Locale } from '@creativecommons/vocabulary'
 
 export default {
     name: 'App',
@@ -25,13 +31,14 @@ export default {
         HTMLGenerator,
         Header,
         Footer,
-        LicenseIconography
+        LicenseIconography,
+        Locale
     },
     data() {
         return {
             selected: {
-                shortName: "CC BY 4.0",
-                fullName: "Attribution 4.0 International"
+                shortName: 'CC BY 4.0',
+                fullName: 'Attribution 4.0 International'
             }
         }
     },
@@ -77,3 +84,6 @@ hr {
     }
 }
 </style>
+
+<i18n src="./locales/App.json">
+</i18n>

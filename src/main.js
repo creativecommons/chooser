@@ -6,6 +6,7 @@ import Buefy from 'buefy'
 import VueHead from 'vue-head'
 import 'buefy/dist/buefy.css'
 import 'bulma/css/bulma.min.css'
+import i18n from './i18n'
 
 import '@creativecommons/vocabulary/root.css'
 import '@creativecommons/vocabulary/vocabulary.css'
@@ -16,6 +17,7 @@ Vue.use(VueHead)
 
 /* eslint-disable no-new */
 new Vue({
+    i18n,
     el: '#app',
     components: { App },
     template: '<App/>'
