@@ -329,7 +329,7 @@
                             at the bottom being the most restrictive.<br><br>
 
                             If you are unsure about which one is right for you and your work,
-                            please see the "Choose a License" section below.
+                            please see the "Choose a License" section above.
                         </p>
                     </div>
                     <div class="column">
@@ -448,6 +448,10 @@ table {
     padding-top: 0px !important;
 }
 
+#modal-buttons {
+    padding-bottom: 1.5rem;
+}
+
 @media only screen and (max-width: 1025px) {
     .tablet-hide { display: none; }
     .tablet-show { display: block; }
@@ -460,6 +464,12 @@ table {
     #modal-buttons {
         padding-top: 1rem;
         padding-bottom: 1rem;
+    }
+
+    .modal-title { font-size: 18px; }
+    .modal-content {
+        margin-left: 10%;
+        margin-right: 10%;
     }
 
     .mobile-hide { display: none; }
