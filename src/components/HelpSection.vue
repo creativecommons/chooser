@@ -34,28 +34,27 @@
             </div>
         </div>
         <div class="columns">
-            <div class="column is-one-third">
+            <div class="column is-one-third" id="name-to-icons">
                 <p>
                     Creative Commons licenses can be represented by their names, their
                     associated icons, or both. For example, a cc-by-nc license, which 
-                    requires attribution, and prohibits commercial use could be represented its:
-                    <br><br>
-                    <ul>
-                        <li>
-                            <span>
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp; - Name: </b> CC-BY-NC, or Attribution-NonCommercial
-                            </span>
-                        </li>
-                        <li>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR</p>
-                        </li>
-                        <li>
-                            <span>
-                                <b>&nbsp;&nbsp;&nbsp;&nbsp; - Icons: </b>
-                                <LicenseIconography :icon-list="['', 'by', 'nc']"/>
-                            </span>
-                        </li>
-                    </ul>
+                    requires attribution, and prohibits commercial use could be represented by its:
+                    <table class="table is-hoverable is-fullwidth">
+                        <tbody>
+                            <tr>
+                                <th>Full Name</th>
+                                <td>Attribution-NonCommercial</td>
+                            </tr>
+                            <tr>
+                                <th>Short Name</th>
+                                <td>CC BY-NC</td>
+                            </tr>
+                            <tr>
+                                <th>Icons</th>
+                                <td><LicenseIconography :icon-list="['', 'by', 'nc']"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </p>
             </div>
             <div class="column is-one-third">
@@ -375,7 +374,7 @@ export default {
 </script>
 <style>
 button {
-    margin-top: 3%;
+    margin-top: 3% !important;
 }
 
 h2 {
@@ -417,5 +416,16 @@ h2 {
 
 .vocab.license-icons img {
     width: 35px;
+}
+
+#name-to-icons svg {
+    width: 28px !important;
+    height: 28px !important;
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
+table {
+    margin-top: 1.5rem;
 }
 </style>

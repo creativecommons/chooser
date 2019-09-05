@@ -4,10 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import Buefy from 'buefy'
 import VueHead from 'vue-head'
+import i18n from './i18n'
 import 'buefy/dist/buefy.css'
 import 'bulma/css/bulma.min.css'
-import i18n from './i18n'
-
 import '@creativecommons/vocabulary/root.css'
 import '@creativecommons/vocabulary/vocabulary.css'
 

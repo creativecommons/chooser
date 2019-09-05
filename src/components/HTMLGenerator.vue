@@ -1,13 +1,15 @@
 <template>
     <div>
+        <!--
         <b-collapse aria-id="contentIdForA11y1">
             <button
                 class="button is-primary is-fullwidth collapsible-button"
                 slot="trigger"
                 aria-controls="contentIdForA11y1">
-                <h3 class="title is-3">Have a Website?</h3>
+                <h3 class="title is-3"></h3>
             </button>
-                <div class="content">
+                <div class="content">-->
+                    <h3 class="title is-3">Embed your License Attribution!</h3>
                     <span id="attribution-richtext-container">
                         <span id="attribution-richtext" class="photo_usage-attribution" ref="photoAttribution">
                             <a :href="workLocation"
@@ -127,8 +129,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-        </b-collapse>
+                <!--</div>
+        </b-collapse>-->
     </div>
 </template>
 <script>

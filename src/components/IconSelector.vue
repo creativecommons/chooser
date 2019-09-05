@@ -88,6 +88,9 @@ export default {
         cursor: pointer;
         margin-top: 2%;
         margin-bottom: 1.5%;
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
     }
     .icon-description {
         vertical-align: middle

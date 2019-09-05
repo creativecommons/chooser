@@ -9,6 +9,12 @@
             <HTMLGenerator :shortLicenseName="selected.shortName"/>
         </div>
         <Footer>
+            <p>
+                <a href="https://github.com/creativecommons/cc-chooser">Icons</a> by The Noun Project and FontAwesome.
+            </p>
+            <p>
+                View this page's source code <a href="https://github.com/creativecommons/cc-chooser">on Github</a>.
+            </p>
             <Locale/>
         </Footer>
     </div>
@@ -83,6 +89,11 @@ hr {
         margin-right: 3%;
     }
 }
+</style>
+<style scoped>
+    p {
+        margin-bottom: .5em;
+    }
 </style>
 
 <i18n src="./locales/App.json">
