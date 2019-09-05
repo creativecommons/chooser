@@ -2,42 +2,55 @@
 <template>
     <div>
         <h2 class="title is-2">Confused? Need Help?</h2>
-        <p align="center">You can click the buttons below to get answers to the questions on them!</p>
-        <div class="columns">
-            <div class="column">
+        <p align="center" class="mobile-hide desktop-show">You can click the buttons below to get answers to the questions on them!</p>
+        <p align="center" class="desktop-hide mobile-show">You can tap the buttons below to get answers to the questions on them!</p>
+        <div class="columns" id="modal-buttons">
+            <div class="column top-bottom-paddingless">
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal1Active = true">
-                    What Are Creative Commons Licenses?
+                    <p>
+                        What Are Creative Commons Licenses?
+                    </p>
                 </button>
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal2Active = true">
-                    How do the Licenses Work?
+                    <p>
+                        How do the Licenses Work?
+                    </p>
                 </button>
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal3Active = true">
-                    Want Public Domain Instead?
+                    <p>
+                        Want Public Domain Instead?
+                    </p>
                 </button>
             </div>
-            <div class="column">
+            <div class="column top-bottom-paddingless">
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal4Active = true">
-                    Considerations Before Licensing
+                    <p>
+                        Considerations Before Licensing
+                    </p>
                 </button>
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal5Active = true">
-                    How do I Formally License my Work?
+                    <p>
+                        How do I Formally License my Work?
+                    </p>
                 </button>
                 <button class="button is-light is-large is-fullwidth"
                     @click="isModal6Active = true">
-                    The Six CC Licenses
+                    <p>
+                        The Six CC Licenses
+                    </p>
                 </button>
             </div>
         </div>
         <div class="columns">
-            <div class="column is-one-third" id="name-to-icons">
+            <div class="column is-one-third top-bottom-paddingless" id="name-to-icons">
                 <p>
                     Creative Commons licenses can be represented by their names, their
-                    associated icons, or both. For example, a cc-by-nc license, which 
+                    associated icons, or both. For example, a CC BY-NC license, which 
                     requires attribution, and prohibits commercial use could be represented by its:
                     <table class="table is-hoverable is-fullwidth">
                         <tbody>
@@ -57,13 +70,14 @@
                     </table>
                 </p>
             </div>
-            <div class="column is-one-third">
+            <hr class="desktop-hide mobile-show">
+            <div class="column is-one-third top-bottom-paddingless">
                 <div class="edu-icons-section">
                     <div class="columns is-gapless is-inline-flex" id="heading">
                         <div class="column is-one-quarter-desktop is-narrow-mobile">
                             <img src="../assets/license-icons/cc-by_icon.svg">
                         </div>
-                        <div class="column is-full" id="title">
+                        <div class="column is-full is-full-mobile" id="title">
                             <b>Attribution Required</b>
                             <p class="help">(BY)</p>
                         </div>
@@ -80,7 +94,7 @@
                         <div class="column is-one-quarter-desktop is-narrow-mobile">
                             <img src="../assets/license-icons/cc-nd_icon.svg">
                         </div>
-                        <div class="column is-full" id="title">
+                        <div class="column is-full is-full-mobile" id="title">
                             <b>Modifying Not Allowed</b>
                             <p class="help">(ND/ NoDerivatives)</p>
                         </div>
@@ -91,13 +105,13 @@
                     </p>
                 </div>
             </div>
-            <div class="column is-one-third">
+            <div class="column is-one-third top-bottom-paddingless">
                 <div class="edu-icons-section">
                     <div class="columns is-gapless is-inline-flex" id="heading">
                         <div class="column is-one-quarter-desktop is-narrow-mobile">
                             <img src="../assets/license-icons/cc-nc_icon.svg">
                         </div>
-                        <div class="column is-full" id="title">
+                        <div class="column is-full is-full-mobile" id="title">
                             <b>Commercial Use Not Allowed</b>
                             <p class="help">(NC/ NonCommercial)</p>
                         </div>
@@ -125,7 +139,7 @@
                         <div class="column is-one-quarter-desktop is-narrow-mobile">
                             <img src="../assets/license-icons/cc-sa_icon.svg">
                         </div>
-                        <div class="column is-full" id="title">
+                        <div class="column is-full is-full-mobile" id="title">
                             <b>Distributed on Same Terms</b>
                             <p class="help">(SA/ ShareAlike)</p>
                         </div>
@@ -427,5 +441,28 @@ h2 {
 
 table {
     margin-top: 1.5rem;
+}
+
+.top-bottom-paddingless {
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+}
+
+@media only screen and (max-width: 1025px) {
+    .tablet-hide { display: none; }
+    .tablet-show { display: block; }
+}
+
+@media only screen and (max-width: 670px) {
+    h2 { font-size: 30px !important; }
+    button p { font-size: 18px; }
+
+    #modal-buttons {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .mobile-hide { display: none; }
+    .mobile-show { display: block; }
 }
 </style>

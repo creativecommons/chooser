@@ -79,6 +79,11 @@ hr {
 .desktop-show { display: block; }
 
 @media only screen and (max-width: 1025px) {
+    #site-container {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
     .mobile-hide { display: none; }
     .mobile-show { display: block; }
 }

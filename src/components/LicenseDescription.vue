@@ -102,4 +102,13 @@ export default {
     #chooser-selected-description {
         margin-top: .4rem;
     }
+
+    @media only screen and (max-width: 670px) {
+        p {
+            font-size: 14px;
+        }
+
+        .mobile-hide { display: none; }
+        .mobile-show { display: block; }
+    }
 </style>

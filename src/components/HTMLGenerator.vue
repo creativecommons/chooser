@@ -223,4 +223,9 @@ export default {
     #generated-html-container {
         margin-top: 1.5rem
     }
+
+    textarea {
+        word-break: break-all;
+        -ms-word-break: break-all;
+    }
 </style>

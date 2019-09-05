@@ -1,8 +1,8 @@
 <template>
     <div id="component"
         v-on:click="update()">
-        <div class="columns chooser-icon-column">
-            <div class="column is-narrow is-one-fifth-mobile">
+        <div class="columns chooser-icon-column is-gapless is-inline-flex">
+            <div class="column is-2-mobile is-2" id="icon-col">
                 <input
                     :id="id"
                     type="checkbox"
@@ -13,7 +13,7 @@
                     :class="icon">
                 </label>
             </div>
-            <div class="column icon-description is-four-fifths-mobile">
+            <div class="column icon-description is-9-mobile is-10">
                 <b ref="heading">heading</b>
                 <p>{{description}}</p>
             </div>
@@ -143,12 +143,18 @@ export default {
 
     @media only screen and (max-width: 670px) {
         label { 
-            height: 50px;
+            height: 55px !important;
+            width: 55px !important;
+            padding: 0;
             margin-top: 0px;
         }
 
         b, p {
             font-size: 14px;
+        }
+
+        #icon-col {
+            margin-right: 6px;
         }
     }
 </style>
