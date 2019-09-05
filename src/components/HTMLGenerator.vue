@@ -197,6 +197,10 @@ export default {
         text-align: center;
     }
 
+    button {
+        margin-top: .5rem !important
+    }
+
     .field {
         margin-bottom: 0px;
     }

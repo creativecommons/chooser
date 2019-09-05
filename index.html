@@ -7,8 +7,7 @@
     <link rel="icon" type="image/png" href="https://d15omoko64skxi.cloudfront.net/wp-content/uploads/2016/05/cc-site-icon-150x150.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://d15omoko64skxi.cloudfront.net/wp-content/uploads/2016/05/cc-site-icon-300x300.png" sizes="192x192">
     <link rel="apple-touch-icon-precomposed" href="https://d15omoko64skxi.cloudfront.net/wp-content/uploads/2016/05/cc-site-icon-300x300.png">
-    <title>Choose a License</title>
-
+    <title><%= htmlWebpackPlugin.options.title %></title>
     <meta property="og:title" content="Choose a License">
     <meta property="of:type" content="website">
     <meta property="og:url" content="creativecommons.org/choose/">
@@ -17,6 +16,15 @@
     <meta name="twitter:site" content="@creativecommons">
     <meta name="twitter:site" content="https://creativecommons.org">
     <meta name="twitter:card" content="summary_large_image">
+
+    <noscript>
+      Sorry, but the Creative Commons License Chooser requires that JavaSript be enabled to work.
+      <style>
+        #app {
+          opacity: 0 !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <div id="app"></div>

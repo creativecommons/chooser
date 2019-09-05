@@ -72,7 +72,7 @@ hr {
 
 #site-container {
     padding-top: 3%;
-    padding-bottom: 10%;
+    padding-bottom: 2%;
 }
 
 .desktop-hide { display: none; }
