@@ -1,6 +1,6 @@
 <template>
     <div id="feedback">
-        <b>The Creative Commons License Chooser is still in beta, if you encounter a bug of any kind, please <a href="#">report it to us here</a>!</b>
+        <b>The Creative Commons License Chooser is still in beta, if you would like to give us feedback, please <a href="#">fill out this short Google Form</a>!</b>
     </div>
 </template>
 <script>
