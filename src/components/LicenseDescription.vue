@@ -75,7 +75,7 @@ export default {
                     adapt: 'it for any purpose, except commercially \
                     (must share under the same license)'
                 }
-            case 'CC-BY-NC-ND 4.0':
+            case 'CC BY-NC-ND 4.0':
                 return {
                     description: 'The CC BY-NC-ND license is the \
                     least accommodating license that CC offers. BY-NC-ND \
@@ -86,7 +86,7 @@ export default {
                     credit you for the original creation.'
                 }
             default:
-                break
+                return null
             }
         },
         license_noVersion() {

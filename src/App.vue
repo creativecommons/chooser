@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <Header :title="$t('chooser')"/>
-        <Feedback/>
         <div class="container" id="site-container">
             <Chooser v-model="selected"/>
             <hr>
@@ -74,6 +73,7 @@ hr {
 }
 
 #site-container {
+    padding-top: 2rem;
     padding-bottom: 2%;
 }
 

@@ -14,6 +14,5 @@ export default {
         background-color: #eee;
         padding-top: 1rem;
         padding-bottom: 1rem;
-        margin-bottom: 2rem;
     }
 </style>
