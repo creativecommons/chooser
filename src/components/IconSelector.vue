@@ -31,8 +31,9 @@ export default {
 
             this.$emit('input', this.$props.id == 'sa' ? toggle.checked : !toggle.checked)
 
+            const clickOrTap = screen.width <= 768 ? 'Tap to ' : 'Click to '
             this.$refs.heading.innerHTML 
-                = 'Click to ' + (toggle.checked
+                = clickOrTap + (toggle.checked
                 ? this.heading_allow
                 : this.heading_disallow)
         }
@@ -144,7 +145,7 @@ export default {
     @media only screen and (max-width: 670px) {
         label { 
             height: 55px !important;
-            width: 55px !important;
+            width: auto !important;
             padding: 0;
             margin-top: 0px;
         }

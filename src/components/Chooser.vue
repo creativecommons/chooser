@@ -75,6 +75,7 @@ export default {
 }
 </script>
 <style scoped>
+
 .selected-license-names b {
     font-size: 1.8rem;
 }

@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <Header :title="$t('chooser')"/>
+        <Feedback/>
         <div class="container" id="site-container">
             <Chooser v-model="selected"/>
             <hr>
@@ -28,6 +29,7 @@ import Chooser from './components/Chooser'
 import HelpSection from './components/HelpSection'
 import HTMLGenerator from './components/HTMLGenerator'
 import { Header, Footer, LicenseIconography, Locale } from '@creativecommons/vocabulary'
+import Feedback from './components/Feedback'
 
 export default {
     name: 'App',
@@ -38,7 +40,8 @@ export default {
         Header,
         Footer,
         LicenseIconography,
-        Locale
+        Locale,
+        Feedback
     },
     data() {
         return {
@@ -71,7 +74,6 @@ hr {
 }
 
 #site-container {
-    padding-top: 3%;
     padding-bottom: 2%;
 }
 
