@@ -13,6 +13,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 const LicenseIcons = {
   name: 'license-icons',
   components: {},

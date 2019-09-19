@@ -29,13 +29,13 @@ export default {
             var toggle = this.$refs.input
             toggle.checked = !toggle.checked
 
-            this.$emit('input', this.$props.id == 'sa' ? toggle.checked : !toggle.checked)
+            this.$emit('input', this.$props.id === 'sa' ? toggle.checked : !toggle.checked)
 
             const clickOrTap = screen.width <= 768 ? 'Tap to ' : 'Click to '
-            this.$refs.heading.innerHTML 
-                = clickOrTap + (toggle.checked
-                ? this.heading_allow
-                : this.heading_disallow)
+            this.$refs.heading.innerHTML =
+                clickOrTap + (toggle.checked
+                    ? this.heading_allow
+                    : this.heading_disallow)
         }
     },
     computed: {
@@ -77,10 +77,10 @@ export default {
     },
     mounted: function() {
         console.log(this.$refs)
-        this.$refs.heading.innerHTML 
-            = 'Click to ' + (this.$refs.input.checked 
-            ? this.heading_sallow
-            : this.heading_disallow)
+        this.$refs.heading.innerHTML =
+            'Click to ' + (this.$refs.input.checked
+                ? this.heading_sallow
+                : this.heading_disallow)
     }
 }
 </script>
@@ -143,7 +143,7 @@ export default {
     }
 
     @media only screen and (max-width: 670px) {
-        label { 
+        label {
             height: 55px !important;
             width: auto !important;
             padding: 0;

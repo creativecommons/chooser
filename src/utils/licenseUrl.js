@@ -3,6 +3,7 @@ function licenseUrl(licenseName) {
     return 'https://creativecommons.org/licenses/' + licenseName + '/4.0/?ref=ccchooser'
 }
 
+// eslint-disable-next-line
 function isFullName(licenseName) {
     licenseName.toLowerCase()
     if (licenseName.includes('attribution') || licenseName.includes('noderivatives') ||
