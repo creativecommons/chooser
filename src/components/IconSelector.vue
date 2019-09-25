@@ -72,21 +72,19 @@ export default {
             default: break
             /* eslint-enable */
             }
-        },
-        isChecked() { return this.$refs.input }
+        }
     },
     mounted: function() {
-        // When the ND selector is toggled, the SA selector instance is 
-        // destroyed, and its state is reset, but this reset is not reflected
-        // in the chooser component instance. This method sets the proper 
-        // selector state on mount 
-        if (this.$props.id === "sa" && this.$props.value ) {
+        // When the ND selector is toggled, the SA selector instance is
+        // destroyed, and its state is reset. This reset is not reflected
+        // in the chooser component instance. This method sets the proper
+        // selector state on mount
+        if (this.$props.id === 'sa' && this.$props.value) {
             this.$refs.input.checked = true
             this.$refs.heading.innerHTML = 'Click to ' + this.heading_allow
         } else {
             this.$refs.heading.innerHTML = 'Click to ' + this.heading_disallow
         }
-
     }
 }
 </script>

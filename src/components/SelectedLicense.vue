@@ -9,7 +9,7 @@
                     <LicenseIconography :iconList="iconsList"/>
                     <div class="selected-license-names">
                         <b class="selected-license-name">{{shortLicenseName}}</b>
-                        <a href="chooser.selected_license_link" class="help">{{fullLicenseName}}</a>
+                        <a ref="license_link" class="help">{{fullLicenseName}}</a>
                     </div>
                 </div>
                 <LicenseDescription
@@ -21,6 +21,7 @@
 <script>
 import LicenseDescription from './LicenseDescription'
 import LicenseIconography from './LicenseIconography'
+import licenseUrl from '@/utils/licenseUrl'
 
 export default {
     name: 'SelectedLicense',
@@ -36,6 +37,14 @@ export default {
                 .slice(3, this.$props.shortLicenseName.length - 4)
             var extras = slicedName.toLowerCase().split('-')
             return base.concat(extras)
+        }
+    },
+    mounted: function() {
+        this.$refs.license_link.href = licenseUrl(this.$props.shortLicenseName)
+    },
+    watch: {
+        shortLicenseName: function(newVal, oldVal) {
+            this.$refs.license_link.href = licenseUrl(this.$props.shortLicenseName)
         }
     }
 }
