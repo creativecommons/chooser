@@ -8,7 +8,6 @@ yarn-error.log*
 /test/e2e/reports/
 /src/styles/bulma-mods.css
 selenium-debug.log
-/test
 
 # Editor directories and files
 .idea
