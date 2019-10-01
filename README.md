@@ -23,5 +23,3 @@ You can run tests by executing:
 ```bash
 $ npm run test
 ```
-(note: tests are not written yet, but it's in the works. 
-If you want to help out, check out [issue #25](https://github.com/creativecommons/cc-chooser/issues/25) and say that you're interested in helping out.)
