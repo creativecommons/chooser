@@ -6,6 +6,7 @@ import CopyButton from '@/components/CopyButton.vue'
 import { doesNotThrow } from 'assert';
 
 const DOM_SOURCE_ID = 'el-test';
+const DOM_SOURCE_VALUE = 'test clipboard value'
 
 // mock dom source
 function _mockDOMSource(value) {
@@ -29,9 +30,8 @@ function _mockDomMethodsForClipboardJS(value) {
 }
 
 beforeEach(() => {
-  const domValue = 'test clipboard value'
-  _mockDOMSource(domValue)
-  _mockDomMethodsForClipboardJS(domValue)
+  _mockDOMSource(DOM_SOURCE_VALUE)
+  _mockDomMethodsForClipboardJS(DOM_SOURCE_VALUE)
 })
 
 describe('CopyButton.vue', () => {
@@ -48,7 +48,7 @@ describe('CopyButton.vue', () => {
     expect(wrapper.text()).toBe(slots.default);
   })
 
-  it('should change the text when clicked to Copied and 2 seconds after that come back to original text', done => {
+  it('should change the text when clicked to \'Copied!\' and 2 secs later swich back to the original text', done => {
     wrapper.trigger('click');
     expect(wrapper.text()).toBe('Copied!');
     setTimeout(() => {
@@ -56,4 +56,17 @@ describe('CopyButton.vue', () => {
       done();
     }, 2000);
   })
+
+  it('Testing button success', () => {
+    wrapper.trigger('click');
+    expect(wrapper.emitted().copied).toBeTruthy();
+  })
+
+  it('Testing value return of button when it have success', () => {
+    wrapper.trigger('click');
+    expect(wrapper.text()).toBe('Copied!');
+  })
 })
+
+
+
