@@ -6,7 +6,8 @@ import CopyButton from '@/components/CopyButton.vue'
 import { doesNotThrow } from 'assert';
 
 const DOM_SOURCE_ID = 'el-test';
-const DOM_SOURCE_VALUE = 'test clipboard value'
+const DOM_SOURCE_VALUE = 'test clipboard value';
+
 
 // mock dom source
 function _mockDOMSource(value) {
@@ -57,14 +58,13 @@ describe('CopyButton.vue', () => {
     }, 2000);
   })
 
-  it('Testing button success', () => {
+  it('should compare the \'copied\' event value when successful', () => {
     wrapper.trigger('click');
-    expect(wrapper.emitted().copied).toBeTruthy();
-  })
-
-  it('Testing value return of button when it have success', () => {
-    wrapper.trigger('click');
-    expect(wrapper.text()).toBe('Copied!');
+    const copied = wrapper.emitted().copied;
+    const copyFailed = wrapper.emitted().copyFailed;
+    expect(copyFailed).toBeFalsy();
+    expect(copied).toBeTruthy();
+    expect(copied[0][0].content).toBe(DOM_SOURCE_VALUE);
   })
 })
 
