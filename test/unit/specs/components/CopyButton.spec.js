@@ -1,6 +1,4 @@
 import Vue from 'vue'
-// ajuda a montar o componentes de teste de forma que possa
-// disparar eventos(simula evento de click nesse caso)
 import { mount } from '@vue/test-utils'
 import CopyButton from '@/components/CopyButton.vue'
 import { doesNotThrow } from 'assert';
@@ -8,6 +6,15 @@ import { doesNotThrow } from 'assert';
 const DOM_SOURCE_ID = 'el-test';
 const DOM_SOURCE_VALUE = 'test clipboard value';
 
+const slots = { default: 'Copy button' };
+const propsData = { id: 'copy-button', el: `#${DOM_SOURCE_ID}` }
+const defaults = {
+  slots,
+  propsData,
+  attachToDocument: true,
+}
+
+let wrapper
 
 // mock dom source
 function _mockDOMSource(value) {
@@ -21,8 +28,8 @@ function _mockDOMSource(value) {
 // mock dom methods
 function _mockDomMethodsForClipboardJS(value) {
   window.getSelection = () => ({
-    addRange: () => { },
-    removeAllRanges: () => { },
+    addRange: () => {},
+    removeAllRanges: () => {},
     toString: () => value,
   });
 
@@ -33,18 +40,14 @@ function _mockDomMethodsForClipboardJS(value) {
 beforeEach(() => {
   _mockDOMSource(DOM_SOURCE_VALUE)
   _mockDomMethodsForClipboardJS(DOM_SOURCE_VALUE)
+  wrapper = mount(CopyButton, defaults)
+})
+
+afterEach(() => {
+  wrapper.destroy()
 })
 
 describe('CopyButton.vue', () => {
-  const slots = { default: 'Copy button' };
-  const props = { id: 'copy-button', el: `#${DOM_SOURCE_ID}` }
-  const wrapper = mount(CopyButton, {
-    // slot é o conteudo que está cercado por um elemento nesse caso o botao
-    slots,
-    propsData: props,
-    attachToDocument: true,
-  })
-
   it('should render the right content text', () => {
     expect(wrapper.text()).toBe(slots.default);
   })
@@ -58,15 +61,24 @@ describe('CopyButton.vue', () => {
     }, 2000);
   })
 
-  it('should compare the \'copied\' event value when successful', () => {
+  it('should emit only the \'copied\' event with a valid value', () => {
     wrapper.trigger('click');
-    const copied = wrapper.emitted().copied;
-    const copyFailed = wrapper.emitted().copyFailed;
-    expect(copyFailed).toBeFalsy();
-    expect(copied).toBeTruthy();
-    expect(copied[0][0].content).toBe(DOM_SOURCE_VALUE);
+
+    const emittedEvents = wrapper.emitted()
+    expect(emittedEvents).toHaveProperty('copied');
+    expect(emittedEvents.copied).toBeTruthy();
+    expect(emittedEvents.copied.length).toBe(1);
+    expect(emittedEvents.copied[0].length).toBe(1);
+    expect(emittedEvents.copied[0][0].content).toBe(DOM_SOURCE_VALUE);
+    expect(emittedEvents.copyFailed).toBeFalsy();
+  })
+
+  it('should emit only the \'copyFailed\' event', () => {
+    document.execCommand = () => false // force error on clipboard.js
+    wrapper.trigger('click');
+
+    const emittedEvents = wrapper.emitted()
+    expect(emittedEvents).toHaveProperty('copyFailed');
+    expect(emittedEvents.copied).toBeFalsy();
   })
 })
-
-
-
