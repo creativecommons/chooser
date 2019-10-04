@@ -6,19 +6,19 @@
         <p align="center" class="desktop-hide mobile-show">You can tap the buttons below to get answers to the questions on them!</p>
         <div class="columns" id="modal-buttons">
             <div class="column top-bottom-paddingless">
-                <button class="button is-light is-large is-fullwidth"
+                <button id="cc_license_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal1Active = true">
                     <p>
                         What Are Creative Commons Licenses?
                     </p>
                 </button>
-                <button class="button is-light is-large is-fullwidth"
+                <button id="license_work_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal2Active = true">
                     <p>
                         How do the Licenses Work?
                     </p>
                 </button>
-                <button class="button is-light is-large is-fullwidth"
+                <button id="public_domain_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal3Active = true">
                     <p>
                         Want Public Domain Instead?
@@ -26,19 +26,19 @@
                 </button>
             </div>
             <div class="column top-bottom-paddingless">
-                <button class="button is-light is-large is-fullwidth"
+                <button id="consideration_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal4Active = true">
                     <p>
                         Considerations Before Licensing
                     </p>
                 </button>
-                <button class="button is-light is-large is-fullwidth"
+                <button id="formal_license_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal5Active = true">
                     <p>
                         How do I Formally License my Work?
                     </p>
                 </button>
-                <button class="button is-light is-large is-fullwidth"
+                <button id="license_description_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal6Active = true">
                     <p>
                         The Six CC Licenses
