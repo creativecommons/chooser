@@ -18,7 +18,7 @@ let wrapper
 
 // mock dom source
 function _mockDOMSource(value) {
-  // create the span and append to JSDOM
+  // creates the span and append to JSDOM
   const span = document.createElement('span')
   span.setAttribute('id', DOM_SOURCE_ID);
   span.textContent = value;
