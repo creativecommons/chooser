@@ -9,13 +9,17 @@
             <HTMLGenerator :shortLicenseName="selected.shortName"/>
         </div>
         <Footer>
-            <p>
-                <a href="https://github.com/creativecommons/cc-chooser">Icons</a> by The Noun Project and FontAwesome.
-            </p>
-            <p>
-                View this page's source code <a href="https://github.com/creativecommons/cc-chooser">on Github</a>.
-            </p>
-            <Locale/>
+            <div class="panel">
+               <div>
+                   <h6 class="vocab heading inherit-colored">Credits</h6>
+                   <span>Built using <a href="https://creativecommons.github.io/cc-vocabulary/">Vocabulary</a>.</span>
+                   <br>
+                   <span>Icons by <a href="https://fontawesome.com/">Font Awesome</a>.</span>
+                   <br>
+                   <span>Images from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>.</span>
+                </div>
+                <Locale/>
+            </div>
         </Footer>
     </div>
 </template>
@@ -96,10 +100,39 @@ hr {
         margin-right: 3%;
     }
 }
+.vocab-container .vocab-grid .panel {
+ height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    }
+    .vocab.select-field.normal-sized {
+        font-size: 1rem;
+    }
+    .vocab.select-field>.field.has-addons {
+        padding-left: calc(1em + var(--select-field-addons-space));
+        margin-bottom: 0;
+        min-width: 10em;
+    }
+    .vocab.select-field>.field>option[disabled] {
+        opacity: 0.6;
+    }
 </style>
-<style scoped>
-    p {
-        margin-bottom: .5em;
+<style  scoped>
+    p { margin-bottom: .5em; }
+    #custom .panel > div:first-child {
+        margin-bottom: 10vh;
+    }
+    .vocab.footer {
+        font-family: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif;
+        line-height: 1.2;
     }
 </style>
 
