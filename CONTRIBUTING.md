@@ -19,9 +19,6 @@ project documentation. If you cannot find the documentation you're
 looking for, please file a GitHub issue with details of what
 you'd like to see documented.
 
-When making changes to anything in `src/styles/sass/`, you need to run `npm run css-build` to build the changes made.
-
-
 ## How to Contribute
 
 Please follow the processes in our general [Contributing Code][contributing]
