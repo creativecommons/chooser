@@ -11,12 +11,7 @@
         <Footer>
             <div class="panel">
                <div>
-                   <h6 class="vocab heading inherit-colored">Credits</h6>
-                   <span>Built using <a href="https://creativecommons.github.io/cc-vocabulary/">Vocabulary</a>.</span>
-                   <br>
-                   <span>Icons by <a href="https://fontawesome.com/">Font Awesome</a>.</span>
-                   <br>
-                   <span>Images from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>.</span>
+                   <span>View this page's source code <a href="https://github.com/creativecommons/cc-chooser">on Github</a>.</span>
                 </div>
                 <Locale/>
             </div>
