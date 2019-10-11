@@ -11,6 +11,7 @@
         <Footer>
             <div class="panel">
                <div>
+                   <span><a href="https://github.com/creativecommons/cc-chooser">Icons</a> by The Noun Project and FontAwesome.</span>
                    <span>View this page's source code <a href="https://github.com/creativecommons/cc-chooser">on Github</a>.</span>
                 </div>
                 <Locale/>
