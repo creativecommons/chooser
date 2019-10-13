@@ -16,17 +16,14 @@ const defaultLicenseURL = 'https://creativecommons.org/licenses/by/4.0/?ref=ccch
 const newObject = {
     workTitle: 'newWorkTitle',
     attributeToName: 'newAttributeToName',
-    attributeToURL: 'https://newAttributeToURL.com',
-    sourceWorkURL: 'https://newSourceWorkURL.com',
-    morePermsURL: 'https://newMorePermURL.com',
-    workLocation: 'https://newWorkLocation.com'
+    attributeToURL: 'https://new_attribute_to_url.com',
+    workLocation: 'https://new_work_location.com'
 }
 
 const localVue = createLocalVue()
 localVue.use(Buefy)
 
 describe('HTMLGenerator.vue', () => {
-
     const wrapper = shallowMount(HTMLGenerator, {
         localVue,
         propsData: {
