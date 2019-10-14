@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HTMLGenerator.vue renders the correct markup 1`] = `
+<div>
+  <h3
+    class="title is-3"
+  >
+    Embed your License Attribution!
+  </h3>
+   
+  <span
+    id="attribution-richtext-container"
+  >
+    <span
+      class="photo_usage-attribution"
+      id="attribution-richtext"
+    >
+      <!---->
+       
+      <!---->
+       
+      <p>
+        This work
+      </p>
+       
+      <!---->
+       
+      <!---->
+      
+                        is licensed under
+                        
+      <a
+        class="photo_license"
+        href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser"
+        rel="noopener"
+        target="_blank"
+      >
+        
+                        CC BY 4.0
+                        
+      </a>
+    </span>
+     
+    <licenseicons-stub
+      iconsarr="by"
+      url="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser"
+    />
+  </span>
+   
+  <copybutton-stub
+    el="#attribution-richtext"
+    id="copy-richtext-btn"
+    title="Copy the attribution to paste into your blog or document"
+  >
+    
+                    Copy Rich Text
+                
+  </copybutton-stub>
+   
+  <div
+    class="control"
+    id="generated-html-container"
+  >
+    <textarea
+      class="textarea"
+      id="attribution-html"
+      readonly="readonly"
+    />
+  </div>
+   
+  <copybutton-stub
+    el="#attribution-html"
+    id="copy-html-btn"
+    title="Copy the attribution to paste into your blog or document"
+  >
+    
+                    Copy HTML
+                
+  </copybutton-stub>
+   
+  <div
+    id="generator-meta-inputs"
+  >
+    <b
+      id="generator-meta-inputs-heading"
+    >
+      
+                        Filling out the boxes below is optional, but it adds more data
+                        to the generated HTML and rich text above!
+                    
+    </b>
+     
+    <div
+      class="metadata-input-row"
+    >
+      <div
+        class="columns"
+      >
+        <div
+          class="column"
+        >
+          <b-field-stub
+            addons="true"
+            label="Title of Work"
+          >
+            <b-input-stub
+              customclass=""
+              hascounter="true"
+              placeholder="workTitle"
+              type="text"
+              usehtml5validation="true"
+              value=""
+            />
+          </b-field-stub>
+           
+          <p
+            class="help"
+          >
+            The title of the work being licensed.
+          </p>
+        </div>
+         
+        <div
+          class="column"
+        >
+          <b-field-stub
+            addons="true"
+            label="Work Location"
+          >
+            <b-input-stub
+              customclass=""
+              hascounter="true"
+              placeholder="workLocation"
+              type="text"
+              usehtml5validation="true"
+              value=""
+            />
+          </b-field-stub>
+           
+          <p
+            class="help"
+          >
+            The URL where the work will be hosted or located.
+          </p>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      class="metadata-input-row"
+    >
+      <div
+        class="columns"
+      >
+        <div
+          class="column"
+        >
+          <b-field-stub
+            addons="true"
+            label="Attribute Work to URL"
+          >
+            <b-input-stub
+              customclass=""
+              hascounter="true"
+              placeholder="attributeToURL"
+              type="text"
+              usehtml5validation="true"
+              value=""
+            />
+          </b-field-stub>
+           
+          <p
+            class="help"
+          >
+            The URL to which the work should be attributed.
+          </p>
+        </div>
+         
+        <div
+          class="column"
+        >
+          <b-field-stub
+            addons="true"
+            label="Attribute Work to Name"
+          >
+            <b-input-stub
+              customclass=""
+              hascounter="true"
+              placeholder="attributeToName"
+              type="text"
+              usehtml5validation="true"
+              value=""
+            />
+          </b-field-stub>
+           
+          <p
+            class="help"
+          >
+            The name of the person who should receive attribution for the work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
