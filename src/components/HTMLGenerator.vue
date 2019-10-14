@@ -96,28 +96,6 @@
                                     <p class='help'>The URL to which the work should be attributed.</p>
                                 </div>
                                 <div class='column'>
-                                    <b-field label='Source Work URL'>
-                                        <b-input
-                                            v-model='sourceWorkURL'
-                                            placeholder='sourceWorkURL'
-                                        ></b-input>
-                                    </b-field>
-                                    <p class='help'>The URL of the work upon which this work is based or derived.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='metadata-input-row'>
-                            <div class='columns'>
-                                <div class='column'>
-                                    <b-field label='More Permissions URL'>
-                                        <b-input
-                                            v-model='morePermsURL'
-                                            placeholder='morePermsURL'
-                                        ></b-input>
-                                    </b-field>
-                                    <p class='help'>A URL where a user can find information about obtaining rights that are not already permitted by the CC license.</p>
-                                </div>
-                                <div class='column'>
                                     <b-field label='Attribute Work to Name'>
                                         <b-input
                                             v-model='attributeToName'
@@ -153,8 +131,6 @@ export default {
             workTitle: '',
             attributeToName: '',
             attributeToURL: '',
-            sourceWorkURL: '',
-            morePermsURL: '',
             workLocation: ''
         }
     },
