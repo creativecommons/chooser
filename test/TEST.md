@@ -11,6 +11,11 @@ If you want to run only unit tests, use:
 npm run unit
 ```
 
+If you want to run only e2e tests, use:
+``` bash
+npm run e2e
+```
+
 ### About Snapshots Test
 When updating some components, snapshots test may fail if the UI's changed. To prevent that from happening, press u while in watch mode to update your snapshots.
 
