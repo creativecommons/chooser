@@ -170,7 +170,7 @@
                 <footer class="modal-card-foot">
                     <p>
                         For more information, please see 
-                        <a id="license_redirector" href="https://creativecommons.org/licenses/">About the Licenses</a>
+                        <a id="license_link" href="https://creativecommons.org/licenses/">About the Licenses</a>
                     </p>
                 </footer>
             </section>
@@ -211,7 +211,7 @@
                             software, we provide a "Machine Readable" version of the license. <br><br>
 
                             We developed a standardized way to describe licenses that software can
-                            understand called <a id="cc_rights_redirector" href="https://wiki.creativecommons.org/Ccrel">CC Rights Expression language</a> 
+                            understand called <a id="cc_rights_link" href="https://wiki.creativecommons.org/Ccrel">CC Rights Expression language</a> 
                             (CC REL) to accomplish this.
                         </p>
                     </li> <br>
@@ -219,7 +219,7 @@
                 <footer class="modal-card-foot">
                     <p>
                         For more information, please see 
-                        <a id="license_redirector_2" href="https://creativecommons.org/licenses/">About the Licenses</a>
+                        <a id="license_link_2" href="https://creativecommons.org/licenses/">About the Licenses</a>
                     </p>
                 </footer>
             </section>
@@ -238,7 +238,7 @@
                 <footer class="modal-card-foot">
                     <p>
                         For more information on CC's public domain tools, please see 
-                        <a id="domain_redirector" href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>
+                        <a id="domain_link" href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>
                     </p>
                 </footer>
             </section>
@@ -253,17 +253,17 @@
                     a Creative Commons license to your work, or before using Creative 
                     Commons-licened material. <br><br>
 
-                    <a id="licensors_redirector" href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors">
+                    <a id="licensors_link" href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors">
                         Considerations for Licensors
                     </a> - If you are licensing your own work <br>
-                    <a id="licensees_redirector" href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees">
+                    <a id="licensees_link" href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees">
                         Considerations for Licensees
                     </a> - If you are using someone else's licensed work
                 </p> <br>
                 <footer class="modal-card-foot">
                     <p>
                         For more information, please see 
-                        <a id="wiki_redirector" href="https://wiki.creativecommons.org/wiki/Before_Licensing">
+                        <a id="wiki_link" href="https://wiki.creativecommons.org/wiki/Before_Licensing">
                             the CC wiki's page on Considerations for Licensors and Licensees.
                         </a>
                     </p>
@@ -339,7 +339,7 @@
                 <footer class="modal-card-foot">
                     <p>
                         For more information, please see 
-                        <a id="licensing_examples_redirector" href="https://creativecommons.org/share-your-work/licensing-types-examples/">
+                        <a id="licensing_examples_link" href="https://creativecommons.org/share-your-work/licensing-types-examples/">
                             this page on Creative Commons licenses.
                         </a>
                     </p>
