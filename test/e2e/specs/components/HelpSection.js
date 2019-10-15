@@ -1,10 +1,15 @@
 module.exports = {
-    'Common license pop up redirects to https://creativecommons.org/licenses/': function (browser) {
+
+    beforeEach: function(browser) {
         const devServer = browser.globals.devServerURL
 
         browser
             .url(devServer)
-            .waitForElementVisible('#app', 5000)
+            .waitForElementVisible('#app', 1000)
+    },
+
+    'Common license pop up redirects to https://creativecommons.org/licenses/': function (browser) {
+        browser
             .assert.elementPresent('#cc_license_btn')
             .click('#cc_license_btn')
             .assert.elementPresent('#license_link')
@@ -13,11 +18,7 @@ module.exports = {
     },
 
     'How do licenses work pop up redirects to https://creativecommons.org/licenses/': function (browser) {
-        const devServer = browser.globals.devServerURL
-
         browser
-            .url(devServer)
-            .waitForElementVisible('#app', 5000)
             .assert.elementPresent('#license_work_btn')
             .click('#license_work_btn')
             .assert.elementPresent('#license_link_2')
@@ -26,11 +27,7 @@ module.exports = {
     },
 
     'How do licenses work pop up redirects to https://wiki.creativecommons.org/wiki/CC_REL': function (browser) {
-        const devServer = browser.globals.devServerURL
-
         browser
-            .url(devServer)
-            .waitForElementVisible('#app', 5000)
             .assert.elementPresent('#license_work_btn')
             .click('#license_work_btn')
             .assert.elementPresent('#cc_rights_link')
@@ -39,11 +36,7 @@ module.exports = {
     },
 
     'Public domain pop up redirects to https://creativecommons.org/publicdomain/': function (browser) {
-        const devServer = browser.globals.devServerURL
-
         browser
-            .url(devServer)
-            .waitForElementVisible('#app', 5000)
             .assert.elementPresent('#public_domain_btn')
             .click('#public_domain_btn')
             .assert.elementPresent('#domain_link')
@@ -52,11 +45,7 @@ module.exports = {
     },
 
     'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors': function (browser) {
-        const devServer = browser.globals.devServerURL
-
         browser
-            .url(devServer)
-            .waitForElementVisible('#app', 5000)
             .assert.elementPresent('#consideration_btn')
             .click('#consideration_btn')
             .assert.elementPresent('#licensors_link')
@@ -65,11 +54,7 @@ module.exports = {
     },
 
     'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees': function (browser) {
-        const devServer = browser.globals.devServerURL
-
         browser
-            .url(devServer)
-            .waitForElementVisible('#app', 5000)
             .assert.elementPresent('#consideration_btn')
             .click('#consideration_btn')
             .assert.elementPresent('#licensees_link')
@@ -78,11 +63,7 @@ module.exports = {
     },
 
     'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees': function (browser) {
-        const devServer = browser.globals.devServerURL
-
         browser
-            .url(devServer)
-            .waitForElementVisible('#app', 5000)
             .assert.elementPresent('#consideration_btn')
             .click('#consideration_btn')
             .assert.elementPresent('#wiki_link')
@@ -91,11 +72,7 @@ module.exports = {
     },
 
     'License types pop up redirects to https://creativecommons.org/share-your-work/licensing-types-examples/': function (browser) {
-        const devServer = browser.globals.devServerURL
-
         browser
-            .url(devServer)
-            .waitForElementVisible('#app', 5000)
             .assert.elementPresent('#license_description_btn')
             .click('#license_description_btn')
             .assert.elementPresent('#licensing_examples_link')
