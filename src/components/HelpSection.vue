@@ -6,19 +6,19 @@
         <p align="center" class="desktop-hide mobile-show">You can tap the buttons below to get answers to the questions on them!</p>
         <div class="columns" id="modal-buttons">
             <div class="column top-bottom-paddingless">
-                <button class="button is-light is-large is-fullwidth"
+                <button id="cc_license_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal1Active = true">
                     <p>
                         What Are Creative Commons Licenses?
                     </p>
                 </button>
-                <button class="button is-light is-large is-fullwidth"
+                <button id="license_work_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal2Active = true">
                     <p>
                         How do the Licenses Work?
                     </p>
                 </button>
-                <button class="button is-light is-large is-fullwidth"
+                <button id="public_domain_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal3Active = true">
                     <p>
                         Want Public Domain Instead?
@@ -26,19 +26,19 @@
                 </button>
             </div>
             <div class="column top-bottom-paddingless">
-                <button class="button is-light is-large is-fullwidth"
+                <button id="consideration_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal4Active = true">
                     <p>
                         Considerations Before Licensing
                     </p>
                 </button>
-                <button class="button is-light is-large is-fullwidth"
+                <button id="formal_license_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal5Active = true">
                     <p>
                         How do I Formally License my Work?
                     </p>
                 </button>
-                <button class="button is-light is-large is-fullwidth"
+                <button id="license_description_btn" class="button is-light is-large is-fullwidth"
                     @click="isModal6Active = true">
                     <p>
                         The Six CC Licenses
@@ -170,7 +170,7 @@
                 <footer class="modal-card-foot">
                     <p>
                         For more information, please see 
-                        <a href="https://creativecommons.org/licenses/">About the Licenses</a>
+                        <a id="license_link" href="https://creativecommons.org/licenses/">About the Licenses</a>
                     </p>
                 </footer>
             </section>
@@ -211,7 +211,7 @@
                             software, we provide a "Machine Readable" version of the license. <br><br>
 
                             We developed a standardized way to describe licenses that software can
-                            understand called <a href="https://wiki.creativecommons.org/Ccrel">CC Rights Expression language</a> 
+                            understand called <a id="cc_rights_link" href="https://wiki.creativecommons.org/Ccrel">CC Rights Expression language</a> 
                             (CC REL) to accomplish this.
                         </p>
                     </li> <br>
@@ -219,7 +219,7 @@
                 <footer class="modal-card-foot">
                     <p>
                         For more information, please see 
-                        <a href="https://creativecommons.org/licenses/">About the Licenses</a>
+                        <a id="license_link_2" href="https://creativecommons.org/licenses/">About the Licenses</a>
                     </p>
                 </footer>
             </section>
@@ -238,7 +238,7 @@
                 <footer class="modal-card-foot">
                     <p>
                         For more information on CC's public domain tools, please see 
-                        <a href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>
+                        <a id="domain_link" href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>
                     </p>
                 </footer>
             </section>
@@ -253,17 +253,17 @@
                     a Creative Commons license to your work, or before using Creative 
                     Commons-licened material. <br><br>
 
-                    <a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors">
+                    <a id="licensors_link" href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors">
                         Considerations for Licensors
                     </a> - If you are licensing your own work <br>
-                    <a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees">
+                    <a id="licensees_link" href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees">
                         Considerations for Licensees
                     </a> - If you are using someone else's licensed work
                 </p> <br>
                 <footer class="modal-card-foot">
                     <p>
                         For more information, please see 
-                        <a href="https://wiki.creativecommons.org/wiki/Before_Licensing">
+                        <a id="wiki_link" href="https://wiki.creativecommons.org/wiki/Before_Licensing">
                             the CC wiki's page on Considerations for Licensors and Licensees.
                         </a>
                     </p>
@@ -339,7 +339,7 @@
                 <footer class="modal-card-foot">
                     <p>
                         For more information, please see 
-                        <a href="https://creativecommons.org/share-your-work/licensing-types-examples/">
+                        <a id="licensing_examples_link" href="https://creativecommons.org/share-your-work/licensing-types-examples/">
                             this page on Creative Commons licenses.
                         </a>
                     </p>
