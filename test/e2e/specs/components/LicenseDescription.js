@@ -1,5 +1,5 @@
 module.exports = {
-    'The section with information about the license has a title "Selected License  "': function (browser) {
+    'The section with information about the license has a title "Selected License  "': function(browser) {
         browser
             .url(browser.globals.devServerURL)
             .waitForElementVisible('#app', 5000)
@@ -9,7 +9,7 @@ module.exports = {
             .end()
     },
 
-    'The license information about the CC BY 4.0 is shown by default when a user goes to the home page': function (browser) {
+    'The license information about the CC BY 4.0 is shown by default when a user goes to the home page': function(browser) {
         browser
             .url(browser.globals.devServerURL)
             .waitForElementVisible('#app', 5000)
@@ -50,8 +50,5 @@ module.exports = {
             .assert.containsText('#chooser-selected-description', 'The CC BY-ND license begins to become less accommodating. BY-ND stipulates that people are free to distribute your work, even commercially, and must credit you with the original creation, but they are not allowed to remix, tweak, or build upon your work.')
             .end()
     }
-
-
-
 
 }

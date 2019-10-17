@@ -33,7 +33,6 @@ describe('LicenseDescription.vue', () => {
         expect(wrapper.text()).not.toContain('Adapt')
     })
 
-
     test('description is shown as expected depending on the license that has been selected', () => {
         const wrapper = mount(LicenseDescription, {propsData: {selectedLicense: 'CC BY 4.0'}})
         const sawrapper = mount(LicenseDescription, {propsData: {selectedLicense: 'CC BY-SA 4.0'}})
@@ -48,8 +47,5 @@ describe('LicenseDescription.vue', () => {
         expect(ndwrapper.text()).toContain('CC BY-ND  attribution means you allow people to Share the material in any medium or format')
         expect(ncsawrapper.text()).toContain('CC-BY-NC-SA  attribution means you allow people to Share the material in any medium or format Adapt it for any purpose, except commercially                     (must share under the same license)')
         expect(ncndwrapper.text()).toContain('The CC BY-NC-ND license is the                     least accommodating license that CC offers. BY-NC-ND                     stipulates that others are free to distribute your                     work, but not for commercial purposes, and that                     others may not remix, tweak, or build upon')
-
     })
-
-
 })

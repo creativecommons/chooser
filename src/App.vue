@@ -11,8 +11,15 @@
         <Footer>
             <div class="panel">
                <div>
-                   <span><a href="https://github.com/creativecommons/cc-chooser">Icons</a> by The Noun Project and FontAwesome.</span>
-                   <span>View this page's source code <a href="https://github.com/creativecommons/cc-chooser">on Github</a>.</span>
+                   <p>
+                       Built with <a href="https://creativecommons.github.io/cc-vocabulary/">Vocabulary</a>.
+                   </p>
+                   <p>
+                       <a href="https://github.com/creativecommons/cc-chooser">Icons</a> by The Noun Project and FontAwesome.
+                   </p>
+                   <p>
+                       View this page's source code <a href="https://github.com/creativecommons/cc-chooser">on Github</a>.
+                   </p>
                 </div>
                 <Locale/>
             </div>
@@ -120,6 +127,10 @@ hr {
     .vocab.select-field>.field>option[disabled] {
         opacity: 0.6;
     }
+
+.panel {
+    margin-top: 1rem;
+}
 </style>
 <style  scoped>
     p { margin-bottom: .5em; }

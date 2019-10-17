@@ -28,6 +28,8 @@ You can run tests by executing:
 ```bash
 $ npm run test
 ```
+To run e2e tests, you must have Java installed. [[download Java here](https://java.com/download/)]
+
 
 ## Deployment
 The source files for the beta deployment are contained in the `./docs/` dir, and are live. Any changes to this dir's contents will be automatically deployed, so please take care when making modifications to this location. 

@@ -8,7 +8,7 @@ module.exports = {
             .waitForElementVisible('#app', 1000)
     },
 
-    'Common license pop up redirects to https://creativecommons.org/licenses/': function (browser) {
+    'Common license pop up redirects to https://creativecommons.org/licenses/': function(browser) {
         browser
             .assert.elementPresent('#cc_license_btn')
             .click('#cc_license_btn')
@@ -17,7 +17,7 @@ module.exports = {
             .assert.urlEquals('https://creativecommons.org/licenses/')
     },
 
-    'How do licenses work pop up redirects to https://creativecommons.org/licenses/': function (browser) {
+    'How do licenses work pop up redirects to https://creativecommons.org/licenses/': function(browser) {
         browser
             .assert.elementPresent('#license_work_btn')
             .click('#license_work_btn')
@@ -26,7 +26,7 @@ module.exports = {
             .assert.urlEquals('https://creativecommons.org/licenses/')
     },
 
-    'How do licenses work pop up redirects to https://wiki.creativecommons.org/wiki/CC_REL': function (browser) {
+    'How do licenses work pop up redirects to https://wiki.creativecommons.org/wiki/CC_REL': function(browser) {
         browser
             .assert.elementPresent('#license_work_btn')
             .click('#license_work_btn')
@@ -35,7 +35,7 @@ module.exports = {
             .assert.urlEquals('https://wiki.creativecommons.org/wiki/CC_REL')
     },
 
-    'Public domain pop up redirects to https://creativecommons.org/publicdomain/': function (browser) {
+    'Public domain pop up redirects to https://creativecommons.org/publicdomain/': function(browser) {
         browser
             .assert.elementPresent('#public_domain_btn')
             .click('#public_domain_btn')
@@ -44,7 +44,7 @@ module.exports = {
             .assert.urlEquals('https://creativecommons.org/publicdomain/')
     },
 
-    'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors': function (browser) {
+    'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors': function(browser) {
         browser
             .assert.elementPresent('#consideration_btn')
             .click('#consideration_btn')
@@ -53,7 +53,7 @@ module.exports = {
             .assert.urlEquals('https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors')
     },
 
-    'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees': function (browser) {
+    'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees': function(browser) {
         browser
             .assert.elementPresent('#consideration_btn')
             .click('#consideration_btn')
@@ -62,7 +62,7 @@ module.exports = {
             .assert.urlEquals('https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees')
     },
 
-    'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees': function (browser) {
+    'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees': function(browser) {
         browser
             .assert.elementPresent('#consideration_btn')
             .click('#consideration_btn')
@@ -71,12 +71,12 @@ module.exports = {
             .assert.urlEquals('https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees')
     },
 
-    'License types pop up redirects to https://creativecommons.org/share-your-work/licensing-types-examples/': function (browser) {
+    'License types pop up redirects to https://creativecommons.org/share-your-work/licensing-types-examples/': function(browser) {
         browser
             .assert.elementPresent('#license_description_btn')
             .click('#license_description_btn')
             .assert.elementPresent('#licensing_examples_link')
             .click('#licensing_examples_link')
             .assert.urlEquals('https://creativecommons.org/share-your-work/licensing-types-examples/')
-    },
+    }
 }
