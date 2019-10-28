@@ -67,7 +67,7 @@ export default {
             return base += ' 4.0'
         },
         fullLicenseName() {
-            var base = 'Atribution'
+            var base = 'Attribution'
             if (!this.allowCommercial) { base += '-NonCommercial' }
             if (this.allowAdaptations && this.isShareAlike) { base += '-ShareAlike' } // eslint-disable-line brace-style
             else if (!this.allowAdaptations) { base += '-NoDerivatives' }
