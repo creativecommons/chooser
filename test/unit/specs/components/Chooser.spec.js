@@ -13,6 +13,12 @@ describe('Chooser.vue', () => {
                     wrapper.classes().includes('desktop-show') && wrapper.classes().includes('mobile-hide')
                 ).length)
                 .toEqual(1);
+            expect(wrapper
+                .findAll('b')
+                .filter(wrapper =>
+                    wrapper.classes().includes('mobile-show') && wrapper.classes().includes('desktop-hide')
+                ).length)
+                .toEqual(1);
         });
 
         it('renders all three icon selectors', () => {
@@ -22,9 +28,16 @@ describe('Chooser.vue', () => {
             expect(wrapper.find('#nd').exists()).toEqual(true);
             expect(wrapper.find('#sa').exists()).toEqual(true);
         });
+
+        it('initializes with base license names', () => {
+            const wrapper = shallowMount(Chooser);
+            
+            expect(wrapper.vm.shortLicenseName).toBe('CC BY 4.0');
+            expect(wrapper.vm.fullLicenseName).toBe('Attribution 4.0 International');
+        });
     });
 
-    describe('correctly handles internal components', () => {
+    describe('correctly handles changes on internal components', () => {
         it('removes shareAlike icon selector when adaptations are disabled', () => {
             const wrapper = shallowMount(Chooser);
 
@@ -37,13 +50,6 @@ describe('Chooser.vue', () => {
     });
 
     describe('correctly updates internal data when requested', () => {
-        it('initializes with base license names', () => {
-            const wrapper = shallowMount(Chooser);
-            
-            expect(wrapper.vm.shortLicenseName).toBe('CC BY 4.0');
-            expect(wrapper.vm.fullLicenseName).toBe('Attribution 4.0 International');
-        });
-        
         it('updates license names when setting allowCommercial value to false', () => {
             const wrapper = shallowMount(Chooser);
             const iconsContainer = wrapper.findAll('.column').at(0);
