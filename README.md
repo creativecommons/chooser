@@ -1,9 +1,20 @@
 # cc-chooser
 
+The Creative Commons License Chooser is meant to help people learn about CC licenses, and select the license that best fits their needs. The new version in this repo places greater importance on usability and an educational experience of the six CC licenses.
+
 ## About
 Repository containing the source code for the new Creative Commons License Chooser. The new chooser is still in beta, and a beta deployment can be found [here](https://chooser-beta.creativecommons.org/).
 
 This site is built using [Vue.js](https://vuejs.org/), [Bulma](https://bulma.io/), [Buefy](https://buefy.org/), and [Webpack](https://webpack.js.org/).
+
+#### Roadmap
+There is still some work to go before the new chooser is ready to replace the existing chooser. These tasks include:
+ - Improvments to the Chooser's UI
+ - Internationalization
+ - Legal reviews of the site's content
+ - Infrastructural work (Setting up analytics, monitoring, error logging)
+
+Tasks, issues, and discussion related to the release of the new chooser are tracked with the [`Launch Milestone`](https://github.com/creativecommons/cc-chooser/milestone/1).
 
 ## Getting Started
 Run the following commands in order to have the code up and running on your machine:

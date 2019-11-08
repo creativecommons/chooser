@@ -30,7 +30,7 @@ export default {
             toggle.checked = !toggle.checked
 
             this.$emit('input', this.$props.id === 'sa' ? toggle.checked : !toggle.checked)
-
+            
             const clickOrTap = screen.width <= 768 ? 'Tap to ' : 'Click to '
             this.$refs.heading.innerHTML =
                 clickOrTap + (toggle.checked
@@ -79,11 +79,12 @@ export default {
         // destroyed, and its state is reset. This reset is not reflected
         // in the chooser component instance. This method sets the proper
         // selector state on mount
+        const clickOrTap = screen.width <= 768 ? 'Tap to ' : 'Click to '
         if (this.$props.id === 'sa' && this.$props.value) {
             this.$refs.input.checked = true
-            this.$refs.heading.innerHTML = 'Click to ' + this.heading_allow
+            this.$refs.heading.innerHTML = clickOrTap + this.heading_allow
         } else {
-            this.$refs.heading.innerHTML = 'Click to ' + this.heading_disallow
+            this.$refs.heading.innerHTML = clickOrTap + this.heading_disallow
         }
     }
 }

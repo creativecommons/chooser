@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <Header :title="$t('chooser')"/>
+        <Feedback/>
         <div class="container" id="site-container">
             <Chooser v-model="selected"/>
             <hr>
