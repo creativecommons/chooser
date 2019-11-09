@@ -30,7 +30,7 @@ export default {
             toggle.checked = !toggle.checked
 
             this.$emit('input', this.$props.id === 'sa' ? toggle.checked : !toggle.checked)
-            
+
             const clickOrTap = screen.width <= 768 ? 'Tap to ' : 'Click to '
             this.$refs.heading.innerHTML =
                 clickOrTap + (toggle.checked
