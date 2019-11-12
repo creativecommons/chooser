@@ -1,14 +1,13 @@
-import { shallowMount } from "@vue/test-utils";
-import IconSelector from "@/components/IconSelector";
+import { shallowMount } from '@vue/test-utils'
+import IconSelector from '@/components/IconSelector'
 
-function createConfig (overrides) {
-  const mocks = {};
-  const propsData = { };
-  return Object.assign({ mocks, propsData }, overrides);
+function createConfig(overrides) {
+    const mocks = {}
+    const propsData = { }
+    return Object.assign({ mocks, propsData }, overrides)
 }
 
-describe("IconSelector.vue", () => {
-
+describe('IconSelector.vue', () => {
     describe('auto selection when mounting with different props', () => {
         const SA_TEXT_WHEN_ENABLED = 'Not Require Distribution on Same Terms'.toLowerCase()
         const SA_TEXT_WHEN_DISABLED = 'Require Disribution on Same Terms'.toLowerCase()
@@ -19,7 +18,6 @@ describe("IconSelector.vue", () => {
         const ND_TEXT_WHEN_ENABLED = 'Allow Others to Modify Your Work'.toLowerCase()
         const ND_TEXT_WHEN_DISABLED = 'Disallow Modifications of Your Work'.toLowerCase()
 
-
         describe('SA', () => {
             it('auto selected when mounting with props { value: true }', () => {
                 const config = createConfig({
@@ -28,12 +26,12 @@ describe("IconSelector.vue", () => {
                         icon: 'sa',
                         value: true
                     }
-                });
-        
-                const wrapper = shallowMount(IconSelector, config);
+                })
+
+                const wrapper = shallowMount(IconSelector, config)
                 expect(wrapper.text().toLowerCase()).toContain(SA_TEXT_WHEN_ENABLED)
             })
-    
+
             it('not auto selected when mounting with props { value: false }', () => {
                 const config = createConfig({
                     propsData: {
@@ -41,9 +39,9 @@ describe("IconSelector.vue", () => {
                         icon: 'sa',
                         value: false
                     }
-                });
-        
-                const wrapper = shallowMount(IconSelector, config);
+                })
+
+                const wrapper = shallowMount(IconSelector, config)
                 expect(wrapper.text().toLowerCase()).toContain(SA_TEXT_WHEN_DISABLED)
             })
         })
@@ -56,12 +54,12 @@ describe("IconSelector.vue", () => {
                         icon: 'nc',
                         value: true
                     }
-                });
-        
-                const wrapper = shallowMount(IconSelector, config);
+                })
+
+                const wrapper = shallowMount(IconSelector, config)
                 expect(wrapper.text().toLowerCase()).toContain(NC_TEXT_WHEN_DISABLED)
             })
-    
+
             it('not auto selected when mounting with props { value: false }', () => {
                 const config = createConfig({
                     propsData: {
@@ -69,9 +67,9 @@ describe("IconSelector.vue", () => {
                         icon: 'nc',
                         value: false
                     }
-                });
-        
-                const wrapper = shallowMount(IconSelector, config);
+                })
+
+                const wrapper = shallowMount(IconSelector, config)
                 expect(wrapper.text().toLowerCase()).toContain(NC_TEXT_WHEN_DISABLED)
             })
         })
@@ -84,12 +82,12 @@ describe("IconSelector.vue", () => {
                         icon: 'nd',
                         value: true
                     }
-                });
-        
-                const wrapper = shallowMount(IconSelector, config);
+                })
+
+                const wrapper = shallowMount(IconSelector, config)
                 expect(wrapper.text().toLowerCase()).toContain(ND_TEXT_WHEN_DISABLED)
             })
-    
+
             it('not auto selected when mounting with props { value: false }', () => {
                 const config = createConfig({
                     propsData: {
@@ -97,13 +95,12 @@ describe("IconSelector.vue", () => {
                         icon: 'nd',
                         value: false
                     }
-                });
-        
-                const wrapper = shallowMount(IconSelector, config);
+                })
+
+                const wrapper = shallowMount(IconSelector, config)
                 expect(wrapper.text().toLowerCase()).toContain(ND_TEXT_WHEN_DISABLED)
             })
         })
-
     })
 
     describe('render description for each license', () => {
@@ -111,11 +108,11 @@ describe("IconSelector.vue", () => {
             const config = createConfig({
                 propsData: {
                     id: 'sa',
-                    icon: 'sa',
+                    icon: 'sa'
                 }
-            });
-    
-            const wrapper = shallowMount(IconSelector, config);
+            })
+
+            const wrapper = shallowMount(IconSelector, config)
             expect(wrapper.find('.icon-description').text().length)
                 .toBeGreaterThan(0)
         })
@@ -124,11 +121,11 @@ describe("IconSelector.vue", () => {
             const config = createConfig({
                 propsData: {
                     id: 'nd',
-                    icon: 'nd',
+                    icon: 'nd'
                 }
-            });
-    
-            const wrapper = shallowMount(IconSelector, config);
+            })
+
+            const wrapper = shallowMount(IconSelector, config)
             expect(wrapper.find('.icon-description').text().length)
                 .toBeGreaterThan(0)
         })
@@ -137,39 +134,39 @@ describe("IconSelector.vue", () => {
             const config = createConfig({
                 propsData: {
                     id: 'nc',
-                    icon: 'nc',
+                    icon: 'nc'
                 }
-            });
-    
-            const wrapper = shallowMount(IconSelector, config);
+            })
+
+            const wrapper = shallowMount(IconSelector, config)
             expect(wrapper.find('.icon-description').text().length)
                 .toBeGreaterThan(0)
         })
 
-        it('description must differs between licenses', () => {    
+        it('description must differs between licenses', () => {
             const ncWrapper = shallowMount(IconSelector, {
                 propsData: {
                     id: 'nc',
-                    icon: 'nc',
+                    icon: 'nc'
                 }
-            });
-            const ncDescription = ncWrapper.find('.icon-description').text();
+            })
+            const ncDescription = ncWrapper.find('.icon-description').text()
 
             const ndWrapper = shallowMount(IconSelector, {
                 propsData: {
                     id: 'nd',
-                    icon: 'nd',
+                    icon: 'nd'
                 }
-            });
-            const ndDescription = ndWrapper.find('.icon-description').text();
+            })
+            const ndDescription = ndWrapper.find('.icon-description').text()
 
             const saWrapper = shallowMount(IconSelector, {
                 propsData: {
                     id: 'sa',
-                    icon: 'sa',
+                    icon: 'sa'
                 }
-            });
-            const saDescription = saWrapper.find('.icon-description').text();
+            })
+            const saDescription = saWrapper.find('.icon-description').text()
 
             expect(ncDescription).not.toEqual(ndDescription)
             expect(ncDescription).not.toEqual(saDescription)
@@ -184,10 +181,10 @@ describe("IconSelector.vue", () => {
                 icon: 'sa',
                 value: false
             }
-        });
-        const component = wrapper.find('#component');
-        component.trigger('click');
-        component.trigger('click');
+        })
+        const component = wrapper.find('#component')
+        component.trigger('click')
+        component.trigger('click')
 
         expect(wrapper.emitted().input[0][0]).toBe(true)
         expect(wrapper.emitted().input[1][0]).toBe(false)
@@ -200,10 +197,10 @@ describe("IconSelector.vue", () => {
                 icon: 'sa',
                 value: true
             }
-        });
-        const component = wrapper.find('#component');
-        component.trigger('click');
-        component.trigger('click');
+        })
+        const component = wrapper.find('#component')
+        component.trigger('click')
+        component.trigger('click')
 
         expect(wrapper.emitted().input[0][0]).toBe(false)
         expect(wrapper.emitted().input[1][0]).toBe(true)
@@ -216,10 +213,10 @@ describe("IconSelector.vue", () => {
                 icon: 'nd',
                 value: true
             }
-        });
-        const component = wrapper.find('#component');
-        component.trigger('click');
-        component.trigger('click');
+        })
+        const component = wrapper.find('#component')
+        component.trigger('click')
+        component.trigger('click')
 
         expect(wrapper.emitted().input[0][0]).toBe(false)
         expect(wrapper.emitted().input[1][0]).toBe(true)
@@ -232,13 +229,12 @@ describe("IconSelector.vue", () => {
                 icon: 'nc',
                 value: true
             }
-        });
-        const component = wrapper.find('#component');
-        component.trigger('click');
-        component.trigger('click');
+        })
+        const component = wrapper.find('#component')
+        component.trigger('click')
+        component.trigger('click')
 
         expect(wrapper.emitted().input[0][0]).toBe(false)
         expect(wrapper.emitted().input[1][0]).toBe(true)
     })
-
-});
+})
