@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectedLicense.spec.js has the expected html structure 1`] = `
+<div
+  id="SelectedLicense"
+>
+  <div
+    class="card chooser-selected"
+  >
+    <header
+      class="card-header"
+    >
+      <h2
+        class="title is-2"
+      >
+        Selected License
+      </h2>
+    </header>
+     
+    <div
+      class="card-content"
+    >
+      <div>
+        <licenseiconography-stub
+          iconlist=","
+        />
+         
+        <div
+          class="selected-license-names"
+        >
+          <b
+            class="selected-license-name"
+          >
+            BY
+          </b>
+           
+          <a
+            class="help"
+            href="https://creativecommons.org/licenses//4.0/?ref=ccchooser"
+          >
+            Attribution
+          </a>
+        </div>
+      </div>
+       
+      <licensedescription-stub
+        selectedlicense="BY"
+      />
+    </div>
+  </div>
+</div>
+`;
