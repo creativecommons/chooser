@@ -52,6 +52,11 @@ export default {
     },
     methods: {
         updateLicense() {
+            this.$ga.event({
+                eventCategory: 'license',
+                eventAction: 'updated',
+                eventLabel: this.shortLicenseName
+            })
             this.$emit('input', {
                 shortName: this.shortLicenseName,
                 fullName: this.fullLicenseName

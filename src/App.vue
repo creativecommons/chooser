@@ -62,6 +62,10 @@ export default {
         onLicenseUpdate(e) {
             this.selected = e
         }
+    },
+    created: function() {
+        // send home to google analytics
+        this.$ga.page('/')
     }
 }
 </script>

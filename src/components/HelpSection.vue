@@ -50,7 +50,7 @@
             <div class="column is-one-third top-bottom-paddingless" id="name-to-icons">
                 <p>
                     Creative Commons licenses can be represented by their names, their
-                    associated icons, or both. For example, a CC BY-NC license, which 
+                    associated icons, or both. For example, a CC BY-NC license, which
                     requires attribution, and prohibits commercial use could be represented by its:
                     <table class="table is-hoverable is-fullwidth">
                         <tbody>
@@ -169,7 +169,7 @@
                 </p> <br>
                 <footer class="modal-card-foot">
                     <p>
-                        For more information, please see 
+                        For more information, please see
                         <a id="license_link" href="https://creativecommons.org/licenses/">About the Licenses</a>
                     </p>
                 </footer>
@@ -186,16 +186,16 @@
                     <li>
                         <b> - Legal Code: </b>
                         <p>
-                            Each license begins as a traditional legal tool, in the kind of 
-                            language and text formats that most lawyers know and love. We 
+                            Each license begins as a traditional legal tool, in the kind of
+                            language and text formats that most lawyers know and love. We
                             call this the Legal Code layer of each license.
                         </p>
                     </li> <br>
                     <li>
                         <b> - Human Readable: </b>
                         <p>
-                            Since most creators, educators, and scientists are not in fact lawyers, 
-                            we also make the licenses available in a format that normal people can read -- 
+                            Since most creators, educators, and scientists are not in fact lawyers,
+                            we also make the licenses available in a format that normal people can read --
                             The Commons Deed (also known as the “human readable” version of the license).
                             This is a handy reference for licensors and licensees, summarizing some of the
                             most important terms and conditions. Think of the Commons Deed as a user-friendly
@@ -211,14 +211,14 @@
                             software, we provide a "Machine Readable" version of the license. <br><br>
 
                             We developed a standardized way to describe licenses that software can
-                            understand called <a id="cc_rights_link" href="https://wiki.creativecommons.org/Ccrel">CC Rights Expression language</a> 
+                            understand called <a id="cc_rights_link" href="https://wiki.creativecommons.org/Ccrel">CC Rights Expression language</a>
                             (CC REL) to accomplish this.
                         </p>
                     </li> <br>
                 </ul>
                 <footer class="modal-card-foot">
                     <p>
-                        For more information, please see 
+                        For more information, please see
                         <a id="license_link_2" href="https://creativecommons.org/licenses/">About the Licenses</a>
                     </p>
                 </footer>
@@ -232,12 +232,12 @@
                 <p>
                     Our Public Domain Tools help authors keep and manage their copyright
                     on terms they choose. Our public domain tools, on the other hand, enable
-                    authors and copyright owners who want to dedicate their works to the 
+                    authors and copyright owners who want to dedicate their works to the
                     worldwide public domain to do so.
                 </p>
                 <footer class="modal-card-foot">
                     <p>
-                        For more information on CC's public domain tools, please see 
+                        For more information on CC's public domain tools, please see
                         <a id="domain_link" href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>
                     </p>
                 </footer>
@@ -250,7 +250,7 @@
             <section class="modal-card-body">
                 <p>
                     There are a number of things you should consider before you apply
-                    a Creative Commons license to your work, or before using Creative 
+                    a Creative Commons license to your work, or before using Creative
                     Commons-licened material. <br><br>
 
                     <a id="licensors_link" href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors">
@@ -262,7 +262,7 @@
                 </p> <br>
                 <footer class="modal-card-foot">
                     <p>
-                        For more information, please see 
+                        For more information, please see
                         <a id="wiki_link" href="https://wiki.creativecommons.org/wiki/Before_Licensing">
                             the CC wiki's page on Considerations for Licensors and Licensees.
                         </a>
@@ -278,34 +278,34 @@
                 <p>
                     Formally licensing your work is as easy as marking your work
                     as being CC licensed, along with the specific license it is under.
-                    This mark may be in the form of a watermark, or it may be somewhere 
-                    around where your work is hosted or shared. This mark may be as 
-                    simple as a bit of text stating the license, or as complex as 
+                    This mark may be in the form of a watermark, or it may be somewhere
+                    around where your work is hosted or shared. This mark may be as
+                    simple as a bit of text stating the license, or as complex as
                     embedding the license information on your website. <br><br>
 
-                    If you are interested in embedding license information on your 
+                    If you are interested in embedding license information on your
                     website, please see the "Have a Website?" dropdown at the bottom
                     of this page for help.
                 </p> <br>
                 <p>
                     <b>Recourse Options</b> <br>
                     So what would I do if someone used my licensed work in a way
-                    that the license does not permit? Well, there are lots of 
+                    that the license does not permit? Well, there are lots of
                     recourse options, but here are the two main ones: <br><br>
                     <ul>
                         <li>
                             <b> - Resolve the Dispute Amicably</b>
                             <p>
                                 First, we encourage you to contact the alleged violator, and attempt to
-                                resolve the dispute amicalbly. Most disagreements are solved 
+                                resolve the dispute amicalbly. Most disagreements are solved
                                 in this manner, and it saves everyone time and money.
                             </p>
                         </li> <br>
                         <li>
                             <b> - Litigation</b>
                             <p>
-                                If you determine that the disput cannot be resolved any other 
-                                way, you would then identify the alleged violation, contact a 
+                                If you determine that the disput cannot be resolved any other
+                                way, you would then identify the alleged violation, contact a
                                 lawyer, and begin building a case.
                             </p>
                         </li>
@@ -338,7 +338,7 @@
                 </div>
                 <footer class="modal-card-foot">
                     <p>
-                        For more information, please see 
+                        For more information, please see
                         <a id="licensing_examples_link" href="https://creativecommons.org/share-your-work/licensing-types-examples/">
                             this page on Creative Commons licenses.
                         </a>
@@ -382,6 +382,50 @@ export default {
             isModal4Active: false,
             isModal5Active: false,
             isModal6Active: false
+        }
+    },
+    watch: {
+        isModal1Active: function() {
+            this.$ga.event({
+                eventCategory: 'helpsection',
+                eventAction: 'clicked',
+                eventLabel: 'What Are Creative Commons Licenses?'
+            })
+        },
+        isModal2Active: function() {
+            this.$ga.event({
+                eventCategory: 'helpsection',
+                eventAction: 'clicked',
+                eventLabel: 'How do the Licenses Work?'
+            })
+        },
+        isModal3Active: function() {
+            this.$ga.event({
+                eventCategory: 'helpsection',
+                eventAction: 'clicked',
+                eventLabel: 'Want Public Domain Instead?'
+            })
+        },
+        isModal4Active: function() {
+            this.$ga.event({
+                eventCategory: 'helpsection',
+                eventAction: 'clicked',
+                eventLabel: 'Considerations Before Licensing'
+            })
+        },
+        isModal5Active: function() {
+            this.$ga.event({
+                eventCategory: 'helpsection',
+                eventAction: 'clicked',
+                eventLabel: 'How do I Formally License my Work?'
+            })
+        },
+        isModal6Active: function() {
+            this.$ga.event({
+                eventCategory: 'helpsection',
+                eventAction: 'clicked',
+                eventLabel: 'The Six CC Licenses'
+            })
         }
     }
 }
