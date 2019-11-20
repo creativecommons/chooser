@@ -84,8 +84,8 @@
                     </div>
                     <p>
                         All CC licenses require that others who use your work in any way must give
-                        you credit the way you request, but not in a way that suggests you endorse
-                        them or their use. If they want to use your work without giving credit for
+                        you appropriate credit in a reasonable manner, but not in a way that suggests you endorse
+                        them or their use. If they want to use your work without giving credit or for
                         endorsement purposes, they must get your permission first.
                     </p>
                 </div>
@@ -100,8 +100,8 @@
                         </div>
                     </div>
                     <p>
-                        You let others copy, distribute, display, and perform, and modify your work,
-                        as long as they distribute any modified work, they must get your permission first.
+                        You let others copy, distribute, display, perform, use, and modify your work privately,
+                        but they may not hare any modified work without getting your permission first.
                     </p>
                 </div>
             </div>
@@ -123,9 +123,10 @@
                         <p class="help">help</p>
                     </div>-->
                     <p style="margin-bottom: 0%; margin-top: 0px;">
-                        You let others copy, distribute, display, perform, and (unless you have
-                        chosen NoDerivatives) modify and use your work for any purpose other
-                        than commercially, unless they get your permission first.
+                        You let others copy, distribute, display, perform, use, and 
+                        modify (but not share a modified work if you have chosen NoDerivatives)
+                        and use your work for any purpose other than commercially, 
+                        unless they get your permission first.
                     </p>
                     <p class="help">
                         Curious what qualifies as a Commercial Use? Check out the
@@ -145,8 +146,8 @@
                         </div>
                     </div>
                     <p>
-                        You let others copy, distribute, perform, and modify your work, as long as
-                        they distribute any modified work on the same terms. If they want to
+                        You let others copy, distribute, display, perform, use, and modify your work, as long as
+                        any modified work they distribute is on the same terms. If they want to
                         distribute modified works under other terms, they must get your permission first.
                     </p>
                 </div>

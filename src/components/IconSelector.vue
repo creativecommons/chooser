@@ -41,15 +41,15 @@ export default {
     computed: {
         description() {
             switch (this.icon) {
-            case 'nc': return 'You let others copy, distribute, display, perform, and (unless you have chosen NoDerivatives) modify and use your work for any purpose other than commercially, unless they get your permission first.'
-            case 'nd': return 'You let others copy, distribute, display, and perform, and modify your work, as long as they distribute any modified work, they must get your permission first.'
+            case 'nc': return 'You let others copy, distribute, display, perform, use, and modify (but not share a modified work if you have chosen NoDerivatives) your work for any purpose other than commercially, unless they get your permission first.'
+            case 'nd': return 'You let others copy, distribute, display, perform, use, and modify your work.';
             case 'sa': return 'You let others copy, distribute, perform, and modify your work, as long as they distribute any modified work on the same terms. If they want to distribute modified works under other terms, they must get your permission first.'
             default: break
             }
         },
         heading_disallow() {
             switch (this.icon) {
-            case 'nd': return 'Disallow Modifications of Your Work'
+            case 'nd': return 'Disallow Sharing of Adaptations of Your Work'
             case 'nc': return 'Disallow Commercial Uses of Your Work'
             case 'sa': return 'Require Disribution on Same Terms'
             default: return null
@@ -57,7 +57,7 @@ export default {
         },
         heading_allow() {
             switch (this.icon) {
-            case 'nd': return 'Allow Others to Modify Your Work'
+            case 'nd': return 'Allow Others to Share Adaptations of Your Work'
             case 'nc': return 'Allow Commercial Uses of Your Work'
             case 'sa': return 'Not Require Distribution on Same Terms'
             default: return null

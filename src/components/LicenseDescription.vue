@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id='chooser-selected-share_adapt'>
-            <p>{{license_noVersion}} attribution means you allow people to</p>
+            <p>{{license_noVersion}} means you allow people to</p>
             <p id='generated-license-share'><b>Share</b> the material in any medium or format</p>
             <p id='generated-license-adapt' v-if='licenseInfo.adapt'><b>Adapt</b> {{licenseInfo.adapt}}</p>
         </div>
@@ -27,63 +27,55 @@ export default {
             switch (this.$props.selectedLicense) {
             case 'CC BY 4.0':
                 return {
-                    description: 'As the most accommodating of \
-                    licenses offered, the CC BY license allows others \
-                    to distribute, remix, tweak, and build upon your \
+                    description: 'The CC BY license allows others \
+                    to distribute, remix, adapt, and build upon your \
                     work, even commercially, as long as they credit \
-                    you for the original creation.',
-                    adapt: 'it for any purpose, even commercially'
+                    you.',
+                    adapt: 'it for any purpose'
                 }
             case 'CC BY-SA 4.0':
                 return {
-                    description: 'The CC BY-SA license is realtively \
-                    accommodating. Similar to the CC BY license, BY-SA \
-                    allows others to distribute, remix, tweak, and build \
+                    description: 'Similar to the CC BY license, BY-SA \
+                    allows others to distribute, remix, adapt, and build \
                     upon your work, even commercially, as long as they \
                     credit you for the original creation, and share the \
                     derivative work under the same license.',
-                    adapt: 'it for any purpose, even commercially \
-                    (must share under the same license)'
+                    adapt: 'it for any purpose, however, shared adaptations must be under the same license'
                 }
             case 'CC BY-NC 4.0':
                 return {
-                    description: 'The CC BY-NC license begins to become \
-                    less accommodating. BY-NC stipulates that others may \
+                    description: 'BY-NC stipulates that others may \
                     not use your work for commercial purposes. BY-NC allows \
-                    others to distribute, remix, tweak, and build upon your \
-                    work, as long as they credit you with the original creation.',
-                    adapt: 'it for any purpose, except commercially'
+                    others to distribute, remix, adapt, and build upon your \
+                    work, as long as they credit you.',
+                    adapt: 'it for any purpose, however uses cannot be commercial'
                 }
             case 'CC BY-ND 4.0':
                 return {
-                    description: 'The CC BY-ND license begins to become \
-                    less accommodating. BY-ND stipulates that people are \
+                    description: 'BY-ND stipulates that people are \
                     free to distribute your work, even commercially, \
-                    and must credit you with the original creation, but \
-                    they are not allowed to remix, tweak, or build upon \
-                    your work.'
+                    and must credit you, but they are not allowed to \
+                    share any adaptations they make based on your work.',
+                    adapt: 'it for any purpose, however, adaptations that are made may not be shared'
                 }
             case 'CC-BY-NC-SA 4.0':
                 return {
-                    description: 'The CC BY-NC-SA license is the second \
-                    least accommodating license that CC offers. BY-NC-SA \
+                    description: 'BY-NC-SA \
                     stipulates that others are free to distribute, remix, \
-                    tweak, and build upon your work, as long as they share \
-                    the derivative work under the same license, credit you \
-                    with the original creation, and as long as the work \
+                    adapt, and build upon your work, as long as they credit you, \
+                    and as long as shared adaptations are shared under the same license, and as long as the work \
                     is not used for commercial purposes.',
-                    adapt: 'it for any purpose, except commercially \
-                    (must share under the same license)'
+                    adapt: 'it for any purpose, however, uses cannot be commercial, and shared adaptations must be under the same license'
                 }
             case 'CC BY-NC-ND 4.0':
                 return {
-                    description: 'The CC BY-NC-ND license is the \
-                    least accommodating license that CC offers. BY-NC-ND \
+                    description: 'BY-NC-ND \
                     stipulates that others are free to distribute your \
                     work, but not for commercial purposes, and that \
-                    others may not remix, tweak, or build upon your \
+                    others may not remix, adapt, or build upon your \
                     work. BY-NC-ND also stipulates that others must \
-                    credit you for the original creation.'
+                    credit you.',
+                    adapt: 'it for any purpose, however, adaptations that are made may not be shared, and uses may not be commercial'
                 }
             default:
                 return null
