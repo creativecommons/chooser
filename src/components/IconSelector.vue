@@ -42,7 +42,7 @@ export default {
         description() {
             switch (this.icon) {
             case 'nc': return 'You let others copy, distribute, display, perform, use, and modify (but not share a modified work if you have chosen NoDerivatives) your work for any purpose other than commercially, unless they get your permission first.'
-            case 'nd': return 'You let others copy, distribute, display, perform, use, and modify your work.';
+            case 'nd': return 'You let others copy, distribute, display, perform, use, and modify your work.'
             case 'sa': return 'You let others copy, distribute, perform, and modify your work, as long as they distribute any modified work on the same terms. If they want to distribute modified works under other terms, they must get your permission first.'
             default: break
             }

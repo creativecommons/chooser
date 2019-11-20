@@ -19,7 +19,7 @@
                        <a href="https://github.com/creativecommons/cc-chooser">Icons</a> by The Noun Project and FontAwesome.
                    </p>
                    <p>
-                       View this page's source code <a href="https://github.com/creativecommons/cc-chooser">on Github</a>.
+                       Contribute on <a href="https://github.com/creativecommons/cc-chooser">Github</a>.
                    </p>
                 </div>
                 <Locale/>

@@ -11,7 +11,6 @@ This site is built using [Vue.js](https://vuejs.org/), [Bulma](https://bulma.io/
 There is still some work to go before the new chooser is ready to replace the existing chooser. These tasks include:
  - Improvments to the Chooser's UI
  - Internationalization
- - Legal reviews of the site's content
  - Infrastructural work (Setting up analytics, monitoring, error logging)
 
 Tasks, issues, and discussion related to the release of the new chooser are tracked with the [`Launch Milestone`](https://github.com/creativecommons/cc-chooser/milestone/1).
@@ -32,6 +31,12 @@ You should now have the application running and accessible at http://localhost:8
 Before getting started on an issue, please comment on the issue you would like to work on to indicate that you are interested. Issues marked with the yellow `in progress` tag are already claimed, and are not up for grabs. 
 
 If you create a PR for your work, but you are not finished yet, please include `WIP:` in the beginning of your PR title. When your work on your PR is completed and you are ready for a final review, please remove the `WIP:` prefix from the title to indicate that your work is done.
+
+Here's a [handy link](https://github.com/creativecommons/cc-chooser/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22+-label%3A%22in+progress%22) that will show you all open issues in this repo that have the `help wanted` tag, but do not have the `in progress` tag. 
+All issues in this list are up for grabs! 
+If it says "No results matched your search", then there are no issues currently up for grabs.
+
+*If no progress has been made on an issue for seven days after assignment, the assignment will be removed to allow others to contribute.*
 
 ## Running Tests
 You can run tests by executing:
