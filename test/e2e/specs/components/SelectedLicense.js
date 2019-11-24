@@ -7,5 +7,6 @@ module.exports = {
             .assert.elementPresent('.title is-2')
             .assert.containsText('.title is-2', 'Selected License')
             .expect.element('.license-icons').to.be.present.after(1000)
+            .end()
     }
 }
