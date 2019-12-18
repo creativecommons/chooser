@@ -1,88 +1,49 @@
 <template>
     <div class='container'>
         <div class='columns'>
-            <div class='column'
-                v-on:change='updateLicense()'>
-                <b class='desktop-show mobile-hide'>To change the selected license, click the icons below</b>
-                <b class='mobile-show desktop-hide'>To change the selected license, tap the icons below</b>
-                <IconSelector
-                    id='nc'
-                    icon='nc'
-                    v-model='allowCommercial'>
-                </IconSelector>
-                <IconSelector
-                    id='nd'
-                    icon='nd'
-                    v-model='allowAdaptations'>
-                </IconSelector>
-                <IconSelector
-                    id='sa'
-                    icon='sa'
-                    v-if='allowAdaptations'
-                    v-model='isShareAlike'>
-                </IconSelector>
-            </div>
-            <div class='column'>
-                <SelectedLicense
-                    :fullLicenseName='fullLicenseName'
-                    :shortLicenseName='shortLicenseName'/>
-            </div>
+            <SelectionStepper
+                v-model="selected"
+            />
+            <SelectedLicenseCard
+                v-model="selected"
+            />
         </div>
     </div>
 </template>
 <script>
-/* eslint no-return-assign:0 */
 
-import SelectedLicense from './SelectedLicense'
-import IconSelector from './IconSelector'
+import SelectionStepper from './SelectionStepper'
+import SelectedLicenseCard from './SelectedLicenseCard'
 
 export default {
     name: 'Chooser',
-    props: ['value'],
     components: {
-        SelectedLicense,
-        IconSelector
+        SelectedLicenseCard,
+        SelectionStepper
     },
     data() {
         return {
-            allowAdaptations: true,
-            allowCommercial: true,
-            isShareAlike: false
-        }
-    },
-    methods: {
-        updateLicense() {
-            this.$emit('input', {
-                shortName: this.shortLicenseName,
-                fullName: this.fullLicenseName
-            })
-        }
-    },
-    computed: {
-        shortLicenseName() {
-            var base = 'CC BY'
-            if (!this.allowCommercial) { base += '-NC' }
-            if (this.allowAdaptations && this.isShareAlike) { base += '-SA' } // eslint-disable-line brace-style
-            else if (!this.allowAdaptations) { base += '-ND' }
-            return base += ' 4.0'
-        },
-        fullLicenseName() {
-            var base = 'Attribution'
-            if (!this.allowCommercial) { base += '-NonCommercial' }
-            if (this.allowAdaptations && this.isShareAlike) { base += '-ShareAlike' } // eslint-disable-line brace-style
-            else if (!this.allowAdaptations) { base += '-NoDerivatives' }
-            return base += ' 4.0 International'
+            selected: {
+                shortName: 'CC BY 4.0',
+                fullName: 'Attribution 4.0 International',
+                personalDetails: {
+                    authorName: '',
+                    workTitle: '',
+                    workUrl: '',
+                    sourceWorkUrl: ''
+                }
+            }
         }
     }
 }
 </script>
 <style scoped>
 
-.selected-license-names b {
-    font-size: 1.8rem;
-}
+    .selected-license-names b {
+        font-size: 1.8rem;
+    }
 
-b {
-    text-align: center;
-}
+    b {
+        text-align: center;
+    }
 </style>
