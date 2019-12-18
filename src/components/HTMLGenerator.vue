@@ -124,6 +124,7 @@ export default {
     components: {
         CopyButton,
         LicenseIcons,
+        // eslint-disable-next-line vue/no-unused-components
         LicenseIconography
     },
     data() {

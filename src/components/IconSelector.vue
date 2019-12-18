@@ -44,7 +44,7 @@ export default {
             case 'nc': return 'You let others copy, distribute, display, perform, use, and modify (but not share a modified work if you have chosen NoDerivatives) your work for any purpose other than commercially, unless they get your permission first.'
             case 'nd': return 'You let others copy, distribute, display, perform, use, and modify your work.'
             case 'sa': return 'You let others copy, distribute, perform, and modify your work, as long as they distribute any modified work on the same terms. If they want to distribute modified works under other terms, they must get your permission first.'
-            default: break
+            default: return null
             }
         },
         heading_disallow() {
@@ -69,7 +69,7 @@ export default {
             case 'nd': return "../assets/license-icons/cc-nd-icon.svg"
             case 'nc': return "../assets/license-icons/cc-nc-icon.svg"
             case 'sa': return "../assets/license-icons/cc-sa-icon.svg"
-            default: break
+            default: return null
             /* eslint-enable */
             }
         }
