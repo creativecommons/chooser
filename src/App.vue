@@ -57,7 +57,7 @@ export default {
 
     html {
         font-family: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif;
-        background-color: #e0e0e0;
+        background-color: #e0e0e0!important;
     }
     #app {
         -webkit-font-smoothing: antialiased;

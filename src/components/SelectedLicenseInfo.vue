@@ -29,12 +29,13 @@ export default {
         readableString(shortString) {
             const readableStrings = {
                 'cc0': 'Public Domain',
-                'by': 'Credit the Creator',
+                'by': 'The Creator Must be Credited',
                 'nc': 'Commercial Use not Permitted',
                 'nd': 'No Derivatives or Modification Permitted',
-                'sa': 'Share Only On the Same Conditions'
+                'sa': 'Share Allowed Only On the Same Conditions'
             }
-            return readableStrings[shortString]
+
+            return readableStrings[shortString] ? readableStrings[shortString] : 'Public Domain'
         }
     },
     computed: {
@@ -69,8 +70,11 @@ export default {
         margin: 1.5% auto;
         text-align: center;
     }
-    h4 {
+    #SelectedLicenseInfo h4 {
         line-height: 2;
+        font-weight: 500;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     .chooser-selected img {
@@ -93,6 +97,7 @@ export default {
     }
     .readable-string {
         vertical-align: top;
-        padding-left: 24px;
+        padding-left: 20px;
+        font-weight: 500;
     }
 </style>

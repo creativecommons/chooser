@@ -1,10 +1,11 @@
 <template>
     <div>
-        <p>If you already know which license you need, just select it in the dropdown below.</p>
+        <p
+            :class="'dropdown-instruction'">
+            If you already know which license you need, just select it in the dropdown below.</p>
         <b-field label="Current selection">
             <b-select placeholder="Creative Commons License"
-                      v-model="currentLicense"
-            >
+                      v-model="currentLicense">
                 <option
                     v-for="license in this.licenseList"
                     :value="license"
@@ -13,11 +14,9 @@
                 </option>
             </b-select>
         </b-field>
-
     </div>
 </template>
 <script>
-/* eslint no-return-assign:0 */
 
 export default {
     name: 'SelectedLicenseDropdown',
@@ -61,7 +60,28 @@ export default {
         display: grid;
     }
     label.label {
-        line-height: 2rem;
+        /*line-height: 2rem;*/
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 30px;
+        /* identical to box height, or 150% */
+        color: #333333;
+    }
+    p.dropdown-instruction {
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 19px;
+        /* identical to box height, or 146% */
+        color: #333333;
+        margin-bottom: 13px;
+    }
+    h4 {
+        margin-bottom: 0.8rem;
+        font-weight: 500;
     }
     span.select, select {
         width: 100%;

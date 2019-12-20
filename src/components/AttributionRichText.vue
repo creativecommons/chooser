@@ -1,6 +1,6 @@
 <template>
-    <span id='attribution-richtext-container'>
-        <span id='attribution-richtext' class='photo_usage-attribution' ref='photoAttribution'>
+    <div id='attribution-richtext-container'>
+        <div id='attribution-richtext' class='photo_usage-attribution' ref='photoAttribution'>
             <a :href='value.personalDetails.workUrl'
                v-if='value.personalDetails.workTitle && value.personalDetails.workUrl'
                target='_blank'
@@ -34,13 +34,13 @@
             <LicenseIcons
                 :url='licenseURL'
                 :iconsArr='iconsArr'/>
-        </span>
+        </div>
         <CopyButton id='copy-richtext-btn'
                     el='#attribution-richtext'
                     title='Copy the attribution to paste into your blog or document'>
                             Copy Rich Text
                  </CopyButton>
-    </span>
+    </div>
 </template>
 
 <script>

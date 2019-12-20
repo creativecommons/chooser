@@ -1,12 +1,13 @@
 <template>
-    <div class="card chooser-selected">
-        <div class="card-content">
+    <div class="chooser-selected">
+        <div>
             <p>{{ question }}</p>
             <div class="columns is-centered">
                 <div class="column is-3">
                     <b-button
                         icon-left="close"
                         :type=this.noButtonType
+                        :outlined=noButtonOutlined
                         @click="update(false)">
                         No
                     </b-button>
@@ -15,6 +16,7 @@
                     <b-button
                         icon-left="done"
                         :type=this.yesButtonType
+                        :outlined=yesButtonOutlined
                         @click="update(true)">
                         Yes
                     </b-button>
@@ -97,10 +99,16 @@ export default {
             }
         },
         yesButtonType() {
-            return this.isSelected ? 'is-dark' : 'is-light'
+            return this.isSelected ? 'is-dark' : ''
         },
         noButtonType() {
-            return this.isSelected ? 'is-light' : 'is-dark'
+            return this.isSelected ? '' : 'is-dark'
+        },
+        yesButtonOutlined() {
+            return !this.isSelected
+        },
+        noButtonOutlined() {
+            return this.isSelected
         }
     },
     watch: {

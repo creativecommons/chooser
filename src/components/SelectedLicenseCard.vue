@@ -2,7 +2,8 @@
     <div class='column'>
         <div class="card chooser-selected">
             <header class="card-header">
-                <Heading :level="5" color="blue">Your License</Heading>
+                <h2
+                :class="'vocab-h2'">Your License</h2>
             </header>
             <div class="card-content">
                 <SelectedLicenseDropdown
@@ -24,7 +25,6 @@
 import SelectedLicenseInfo from './SelectedLicenseInfo'
 import SelectedLicenseDropdown from './SelectedLicenseDropdown'
 import SelectedLicenseHTMLGenerator from './SelectedLicenseHTMLGenerator'
-import { Heading } from '@creativecommons/vocabulary'
 
 export default {
     name: 'SelectedLicenseCard',
@@ -32,8 +32,7 @@ export default {
     components: {
         SelectedLicenseHTMLGenerator,
         SelectedLicenseDropdown,
-        SelectedLicenseInfo,
-        Heading
+        SelectedLicenseInfo
     },
     methods: {
         updateLicense() {
@@ -54,6 +53,15 @@ export default {
     header.card-header {
         justify-content: center;
         padding-top: 1rem;
+    }
+    h2.vocab-h2{
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 38px;
+        /* identical to box height, or 152% */
+        color: #333333;
     }
     .card-content {
         padding-top: 0.5rem;

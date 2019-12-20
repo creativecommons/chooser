@@ -1,6 +1,10 @@
 <template>
     <div class='column'>
-        <Heading :level="5" color="blue" :class="'stepper-heading'">Select Your License</Heading>
+        <div class="card">
+        <h2
+            :class="'stepper-heading vocab-h2'">
+            Select Your License
+        </h2>
         <p :class="'stepper-instructions'">Follow the steps below to select your Creative Commons License</p>
         <b-steps size="is-small">
             <b-step-item
@@ -26,21 +30,19 @@
             </b-step-item>
         </b-steps>
     </div>
-
+    </div>
 </template>
 <script>
 
 import SelectionStep from './SelectionStep'
 import PersonalizationStep from './PersonalizationStep'
-import { Heading } from '@creativecommons/vocabulary'
 
 export default {
     name: 'SelectionStepper',
     props: ['value'],
     components: {
         SelectionStep,
-        PersonalizationStep,
-        Heading
+        PersonalizationStep
     },
     data() {
         return {
@@ -118,10 +120,19 @@ export default {
 }
 </script>
 <style>
-    h5.stepper-heading {
+    h2.stepper-heading {
         justify-content: center;
         padding-top: 1rem;
         text-align: center;
+    }
+    h2.vocab-h2{
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 38px;
+        /* identical to box height, or 152% */
+        color: #333333;
     }
 </style>
 <style scoped>

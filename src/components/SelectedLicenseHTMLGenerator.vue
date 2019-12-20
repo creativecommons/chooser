@@ -1,9 +1,14 @@
 <template>
     <div>
-        <Heading :level="5" color="blue">Use Your License</Heading>
+        <h2
+            :class="'vocab-h2'"
+            @click="logChildren()"
+        >
+            Use Your License</h2>
         <b-tabs
             class="attribution-tab"
-            v-model="activeTab">
+            v-on:change="updateCurrentSelection()"
+        >
             <b-tab-item label="Rich Text">
                 <AttributionRichText
                     v-model="value"/>
@@ -16,33 +21,37 @@
                               readonly>
                     </textarea>
                 </div>
-                <CopyButton id='copy-html-btn'
-                            el='#attribution-html'
-                            title='Copy the attribution to paste into your blog or document'>
-                    Copy HTML
-                </CopyButton>
+            </b-tab-item>
+            <b-tab-item
+                label = "Copy"
+                :id=this.btnId
+                @click.prevent="updateCurrentSelection"
+               >
+                <template slot="header">
+                    <li> <a> <span class="copyBtn"
+                                   :data-clipboard-target="this.clipboardTarget()">Copy </span></a></li>
+                </template>
             </b-tab-item>
         </b-tabs>
     </div>
 </template>
 <script>
-import CopyButton from './CopyButton'
+import Clipboard from 'clipboard'
 import attributionHtml from '@/utils/attributionHtml'
 import licenseUrl from '@/utils/licenseUrl'
-import { Heading } from '@creativecommons/vocabulary'
 import AttributionRichText from './AttributionRichText'
 
 export default {
     name: 'SelectedLicenseHTMLGenerator',
     props: ['value'],
     components: {
-        AttributionRichText,
-        CopyButton,
-        Heading
+        AttributionRichText
     },
     data() {
         return {
-            activeTab: 1
+            success: false,
+            clipboard: null,
+            currentTab: 0
         }
     },
     methods: {
@@ -56,6 +65,54 @@ export default {
             this.licenseURL,
             this.$props.value.shortName
             )
+        },
+        onCopySuccess(e) {
+            this.activeTab = this.currentTab
+            console.info('Action:', e.action)
+            console.info('Text:', e.text)
+            console.info('Trigger:', e.trigger)
+            this.success = true
+            this.$emit('copied', { content: e.text })
+            this.activeTab = this.currentTab
+            setTimeout(() => {
+                this.success = false
+            }, 2000)
+
+            e.clearSelection()
+        },
+        onCopyError(e) {
+            this.$emit('copyFailed')
+            e.clearSelection()
+        },
+        btnId() {
+            if (this.activeTab === 0) {
+                return 'copy-html-btn'
+            } else {
+                return 'copy-richtext-btn'
+            }
+        },
+        clipboardTarget() {
+            if (this.activeTab === 0) {
+                return '#attribution-html'
+            } else {
+                return '#attribution-richtext'
+            }
+        },
+        updateCurrentSelection() {
+            let activeTab = this.$children[0].activeTab
+            console.log('Child active tab: ', this.$children[0].activeTab)
+            if (activeTab !== 2) {
+                this.currentTab = activeTab
+            } else {
+                activeTab = this.currentTab
+            }
+            console.log('updating', activeTab, this.currentTab)
+        },
+        logChildren() {
+            this.$children[0].$children[2].activate(2, 0)
+            // this.$children[0].activeTab = 1
+            console.log(this.$children[0].activeTab)
+            // this.$children[0].activate(0)
         }
     },
     computed: {
@@ -65,6 +122,15 @@ export default {
         iconsArr() {
             return this.$props.value.shortName.toLowerCase().slice(3, this.$props.value.shortName.length - 4).split('-')
         }
+
+    },
+    mounted() {
+        this.clipboard = new Clipboard('.copyBtn')
+        this.clipboard.on('success', this.onCopySuccess)
+        this.clipboard.on('error', this.onCopyError)
+    },
+    destroyed() {
+        this.clipboard.destroy()
     }
 }
 </script>
@@ -72,6 +138,10 @@ export default {
     .collapsible-button {
         height: 70px;
         background-color: #ef9421 !important;
+    }
+    section.tab-content {
+        margin-top:0;
+        padding: 0;
     }
 
     #generator-meta-inputs-heading {
@@ -129,5 +199,17 @@ export default {
     }
     .b-tabs .tabs {
         margin-bottom: 0;
+    }
+    nav.tabs ul li a span {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 18px;
+        text-transform: uppercase;
+        /* identical to box height, or 150% */
+        color: #333333;
+    }
+    nav.tabs ul li:last-of-type {
+        margin-left: auto;
     }
 </style>
