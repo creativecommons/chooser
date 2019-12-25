@@ -7,12 +7,12 @@
             </header>
             <div class="card-content">
                 <SelectedLicenseDropdown
-                    v-model="value.shortName"
+                    v-model="currentLicense"
                 />
                 <SelectedLicenseInfo
                     v-model="value"
                 />
-                <SelectedLicenseHTMLGenerator
+                <SelectedLicenseCode
                     v-model="value"
                 />
             </div>
@@ -24,27 +24,24 @@
 
 import SelectedLicenseInfo from './SelectedLicenseInfo'
 import SelectedLicenseDropdown from './SelectedLicenseDropdown'
-import SelectedLicenseHTMLGenerator from './SelectedLicenseCode'
+import SelectedLicenseCode from './SelectedLicenseCode'
 
 export default {
     name: 'SelectedLicenseCard',
     props: ['value'],
     components: {
-        SelectedLicenseHTMLGenerator,
+        SelectedLicenseCode,
         SelectedLicenseDropdown,
         SelectedLicenseInfo
     },
-    methods: {
-        updateLicense() {
-            this.$emit('input', {
-                shortName: this.shortLicenseName,
-                fullName: this.fullLicenseName
-            })
-        }
-    },
-    watch: {
-        value() {
-            this.$emit('input', this.value)
+    computed: {
+        currentLicense: {
+            get() {
+                return this.value
+            },
+            set(currentLicense) {
+                this.$emit('input', currentLicense)
+            }
         }
     }
 }
