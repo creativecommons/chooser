@@ -3,7 +3,7 @@ const clipboardy = require('clipboardy')
 module.exports = {
     'Copybutton.vue - testing the #copy-richtext-btn flow': function(browser) {
         browser
-            .url(browser.globals.devServerURL)
+            .init()
             .waitForElementVisible('#app', 5000)
             .assert.elementPresent('#copy-richtext-btn')
             .assert.elementPresent('#attribution-richtext')
@@ -17,7 +17,7 @@ module.exports = {
 
     'Copybutton.vue - testing the #copy-html-btn flow': function(browser) {
         browser
-            .url(browser.globals.devServerURL)
+            .init()
             .waitForElementVisible('#app', 5000)
             .assert.elementPresent('#copy-html-btn')
             .assert.elementPresent('#attribution-html')

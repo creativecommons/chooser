@@ -2,7 +2,7 @@
 
 This file will be used to document some useful commands and tips for tests. Also, some common errors found that may prevent you from running them.
 
-## Unit Testing 
+## Unit Testing
 
 ### Useful Commands and Tips
 If you want to run only unit tests, use:
@@ -41,5 +41,8 @@ $ fs.inotify.max_user_watches=524288
 After running it you should be good to go!
 
 
- 
+
+1903 18362.535
+node 13.3.0
+npm 6.4.1
 
