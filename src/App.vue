@@ -3,11 +3,9 @@
         <Header :title="$t('chooser')"/>
         <Feedback/>
         <div class="container" id="site-container">
-            <Chooser v-model="selected"/>
+            <Chooser />
             <hr>
             <HelpSection/>
-            <hr>
-            <HTMLGenerator :shortLicenseName="selected.shortName"/>
         </div>
         <Footer>
             <div class="panel">
@@ -36,7 +34,6 @@ import '@creativecommons/vocabulary/vocabulary.css'
 
 import Chooser from './components/Chooser'
 import HelpSection from './components/HelpSection'
-import HTMLGenerator from './components/HTMLGenerator'
 import { Header, Footer, Locale } from '@creativecommons/vocabulary'
 import Feedback from './components/Feedback'
 
@@ -46,23 +43,9 @@ export default {
         Chooser,
         HelpSection,
         Feedback,
-        HTMLGenerator,
         Header,
         Footer,
         Locale
-    },
-    data() {
-        return {
-            selected: {
-                shortName: 'CC BY 4.0',
-                fullName: 'Attribution 4.0 International'
-            }
-        }
-    },
-    methods: {
-        onLicenseUpdate(e) {
-            this.selected = e
-        }
     }
 }</script>
 <style>
