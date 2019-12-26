@@ -52,7 +52,7 @@ export default {
         padding-top: 1rem;
     }
     h2.vocab-h2{
-        font-family: Source Sans Pro;
+        font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 25px;

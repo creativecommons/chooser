@@ -54,9 +54,6 @@ export default {
             return licenseUrl(this.$props.value.shortName)
         },
         iconsArr() {
-            if (typeof this.$props.value.shortName === 'undefined') {
-                console.log('html generator ERROR: shortlicense name is undefined: ', this.$props)
-            }
             return this.$props.value.shortName.toLowerCase().slice(3, this.$props.value.shortName.length - 4).split('-')
         }
     }

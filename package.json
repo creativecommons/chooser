@@ -52,7 +52,6 @@
     "stylus-loader": "^3.0.2",
     "vue-cli-plugin-i18n": "^0.6.0",
     "vue-template-compiler": "^2.6.10",
-    "clipboardy": "^2.1.0"
   },
     "jest": {
         "moduleFileExtensions": [
@@ -64,7 +63,8 @@
         },
         "transform": {
             "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-            ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+            ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+            "^.+\\.svg$": "<rootDir>/tests/unit/svgTransform.js"
         },
         "snapshotSerializers": [
             "<rootDir>/node_modules/jest-serializer-vue"

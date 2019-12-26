@@ -1,8 +1,7 @@
 <template>
-    <div>
+    <div class="license-code">
         <h2
             :class="'vocab-h2'"
-            @click="logChildren()"
         >
             Use Your License</h2>
         <b-tabs
@@ -22,11 +21,19 @@
                 </div>
             </b-tab-item>
             <b-tab-item
-                label = "Copy"
-                :id=this.btnId
                 icon-pack="fas"
                 icon="copy"
             >
+                <template slot="header">
+                    <a
+                        :class="'copyBtn'"
+                        :data-clipboard-target=this.clipboardTarget>
+                        <b-icon
+                            icon-pack="fas"
+                            icon="copy"/>
+                        {{ copyText }}
+                    </a>
+                </template>
                 <div class="dummy"></div>
             </b-tab-item>
         </b-tabs>
@@ -39,7 +46,7 @@ import licenseUrl from '@/utils/licenseUrl'
 import AttributionRichText from './AttributionRichText'
 
 export default {
-    name: 'SelectedLicenseHTMLGenerator',
+    name: 'SelectedLicenseCode',
     props: ['value'],
     components: {
         AttributionRichText
@@ -48,7 +55,8 @@ export default {
         return {
             success: false,
             clipboard: null,
-            currentTab: 0
+            currentTab: 0,
+            copyText: 'Copy'
         }
     },
     methods: {
@@ -69,49 +77,16 @@ export default {
             setTimeout(() => {
                 this.success = false
             }, 2000)
-
             e.clearSelection()
         },
         onCopyError(e) {
             this.$emit('copyFailed')
             e.clearSelection()
-        },
-        btnId() {
-            if (this.activeTab === 0) {
-                return 'copy-html-btn'
-            } else {
-                return 'copy-richtext-btn'
-            }
-        },
-        clipboardTarget() {
-            if (this.activeTab === 0) {
-                return '#attribution-html'
-            } else {
-                return '#attribution-richtext'
-            }
-        },
-        updateCurrentSelection() {
-            let activeTab = this.$children[0].activeTab
-            console.log('Child active tab: ', this.$children[0].activeTab)
-            if (activeTab !== 2) {
-                this.currentTab = activeTab
-            } else {
-                activeTab = this.currentTab
-            }
-        },
-        logChildren() {
-            this.$children[0].$children[2].activate(2, 0)
-            // this.$children[0].activeTab = 1
-            console.log(this.$children[0].activeTab)
-            // this.$children[0].activate(0)
         }
     },
     computed: {
         licenseURL() {
             return licenseUrl(this.$props.value.shortName)
-        },
-        iconsArr() {
-            return this.$props.value.shortName.toLowerCase().slice(3, this.$props.value.shortName.length - 4).split('-')
         },
         activeTab: {
             get() { return this.currentTab },
@@ -121,13 +96,23 @@ export default {
                 } else {
                     const tab = this.currentTab
                     this.currentTab = 2
+                    this.copyText = 'Copied!'
                     setTimeout(() => {
                         this.currentTab = tab
                     }, 1)
+                    setTimeout(() => {
+                        this.copyText = 'Copy'
+                    }, 2000)
                 }
             }
+        },
+        clipboardTarget() {
+            if (this.activeTab === 0) {
+                return '#attribution-richtext'
+            } else {
+                return '#attribution-html'
+            }
         }
-
     },
     mounted() {
         this.clipboard = new Clipboard('.copyBtn')
@@ -144,12 +129,23 @@ export default {
         height: 50px;
         background-color: #ef9421 !important;
     }
+    .license-code {
+        margin-top: 1rem;
+    }
     section.tab-content {
         margin-top:0;
         padding: 0;
     }
     div.tab-item {
         height: 70px;
+    }
+    h2.vocab-h2{
+        font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 38px;
+        color: #333333;
     }
     #generator-meta-inputs-heading {
         margin-bottom: 1rem;
@@ -175,7 +171,7 @@ export default {
 
     #attribution-richtext-container .photo-license-icons {
         vertical-align: middle;
-        margin-top: 0px;
+        margin-top: 0;
         margin-left: 2px;
     }
 
@@ -218,7 +214,6 @@ export default {
         font-size: 12px;
         line-height: 18px;
         text-transform: uppercase;
-        /* identical to box height, or 150% */
         color: #333333;
     }
     nav.tabs ul li:last-of-type {

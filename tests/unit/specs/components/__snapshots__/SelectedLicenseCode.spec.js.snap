@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectedLicenseCode.vue has the expected UI 1`] = `
+<div class="license-code">
+  <h2 class="vocab-h2">
+    Use Your License</h2>
+  <div class="b-tabs attribution-tab">
+    <nav class="tabs">
+      <ul>
+        <li class="is-active"><a>
+            <!----> <span>Rich Text</span></a></li>
+        <li class=""><a>
+            <!----> <span>HTML</span></a></li>
+        <li class=""><a><span><a data-clipboard-target="#attribution-richtext" class="copyBtn"><span class="icon" icon-pack="fas"><i class="mdi mdi-copy mdi-24px"></i></span>
+            Copy
+          </a></span></a></li>
+      </ul>
+    </nav>
+    <section class="tab-content">
+      <div class="tab-item" style="">
+        <div id="attribution-richtext-container">
+          <div id="attribution-richtext" class="photo_usage-attribution">
+            <!---->
+            <!---->
+            <p>This work</p>
+            <!---->
+            <!---->
+            is licensed under
+            <a href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser" target="_blank" rel="noopener" class="photo_license">
+              CC BY 4.0
+            </a>
+            <!----> <a href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img src="../assets/license-icons/cc_icon.svg" class="photo-license-icon"><img src="[object Object]" class="photo-license-icon"></a>
+          </div>
+        </div>
+      </div>
+      <div class="tab-item" style="display: none;">
+        <div id="generated-html-container" class="control"><textarea id="attribution-html" readonly="readonly" class="textarea"></textarea></div>
+      </div>
+      <div class="tab-item" style="display: none;">
+        <div class="dummy"></div>
+      </div>
+    </section>
+  </div>
+</div>
+`;
