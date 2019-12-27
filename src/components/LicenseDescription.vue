@@ -1,9 +1,11 @@
 <template>
     <div>
         <div id='chooser-selected-share_adapt'>
-            <p>{{license_noVersion}} means you allow people to</p>
-            <p id='generated-license-share'><b>Share</b> the material in any medium or format</p>
-            <p id='generated-license-adapt' v-if='licenseInfo.adapt'><b>Adapt</b> {{licenseInfo.adapt}}</p>
+            <p>{{license_noVersion}} means you allow people to
+                <span id='generated-license-share'>
+                <b>share</b> the material in any medium or format</span> and
+                <span id='generated-license-adapt' v-if='licenseInfo.adapt'><b>adapt</b> {{licenseInfo.adapt}}</span>.
+            </p>
         </div>
         <p id='chooser-selected-description'>
             {{licenseInfo.description}}
@@ -44,7 +46,7 @@ export default {
                 }
             case 'CC BY-NC 4.0':
                 return {
-                    description: 'BY-NC stipulates that others may \
+                    description: 'CC BY-NC stipulates that others may \
                     not use your work for commercial purposes. BY-NC allows \
                     others to distribute, remix, adapt, and build upon your \
                     work, as long as they credit you.',
@@ -52,7 +54,7 @@ export default {
                 }
             case 'CC BY-ND 4.0':
                 return {
-                    description: 'BY-ND stipulates that people are \
+                    description: 'CC BY-ND stipulates that people are \
                     free to distribute your work, even commercially, \
                     and must credit you, but they are not allowed to \
                     share any adaptations they make based on your work.',
@@ -60,7 +62,7 @@ export default {
                 }
             case 'CC-BY-NC-SA 4.0':
                 return {
-                    description: 'BY-NC-SA \
+                    description: 'CC BY-NC-SA \
                     stipulates that others are free to distribute, remix, \
                     adapt, and build upon your work, as long as they credit you, \
                     and as long as shared adaptations are shared under the same license, and as long as the work \
@@ -69,11 +71,11 @@ export default {
                 }
             case 'CC BY-NC-ND 4.0':
                 return {
-                    description: 'BY-NC-ND \
+                    description: 'CC BY-NC-ND \
                     stipulates that others are free to distribute your \
                     work, but not for commercial purposes, and that \
                     others may not remix, adapt, or build upon your \
-                    work. BY-NC-ND also stipulates that others must \
+                    work. CC BY-NC-ND also stipulates that others must \
                     credit you.',
                     adapt: 'it for any purpose, however, adaptations that are made may not be shared, and uses may not be commercial'
                 }
