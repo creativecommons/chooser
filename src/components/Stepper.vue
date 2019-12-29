@@ -26,7 +26,9 @@
                 <b-step-item
                     label="Personalize Your License"
                     :clickable=true
-                    icon="check">
+                    icon="check"
+                    :type="'personalization'"
+                >
                     <PersonalizationStep
                         v-model="value.personalDetails"
                     />
@@ -86,7 +88,6 @@ export default {
         updateLicense(itemId) {
             const attrs = { ...this.licenseAttributes }
             attrs[itemId] = !attrs[itemId]
-            console.log(attrs)
             this.$emit('input', {
                 shortName: this.shortLicenseName(attrs),
                 fullName: this.fullLicenseName(attrs),
@@ -122,11 +123,10 @@ export default {
             base += ' 4.0 International'
             return base
         },
-        attributeSelected(attrShort) {
-            return this.calculateAttributes(this.$props.value.shortName)[attrShort]
-        },
         attributeType(attrName) {
-            if (this.$props.value.shortName.includes(attrName)) { return 'selected' } else { return 'unselected' }
+            if (this.$props.value.shortName.includes(attrName)) {
+                return 'selected'
+            } else { return 'unselected' }
         }
     }
 }
@@ -189,6 +189,14 @@ export default {
     li.unselected>a>div>span>svg>path {
         fill: black;
         opacity: 30%;
+    }
+    li.personalization>a>div>span>svg{
+        border-radius: 50%;
+        padding:5px;
+        box-shadow: inset 0 0 0 2px #ED592F;
+    }
+    li.personalization>a>div>span>svg:hover{
+        box-shadow: inset 0 0 0 2px #FB7729;
     }
     li.step-item {
         background-color:white;
