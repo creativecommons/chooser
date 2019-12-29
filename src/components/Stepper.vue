@@ -14,6 +14,7 @@
                     :icon="item.icon"
                     v-bind:key="item.shortName"
                     :selected="licenseAttributes[item.shortName]"
+                    :visible="isStepVisible(item.shortName)"
                     :clickable=true
                     :type="attributeType(item.shortName)"
                 >
@@ -127,6 +128,9 @@ export default {
             if (this.$props.value.shortName.includes(attrName)) {
                 return 'selected'
             } else { return 'unselected' }
+        },
+        isStepVisible(attrName) {
+            return !(this.$props.value.shortName.includes('ND') && attrName === 'SA')
         }
     }
 }

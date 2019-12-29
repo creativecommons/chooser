@@ -6,6 +6,7 @@
             />
             <LicenseCard
                 v-model="selected"
+                @dropdown-clicked="goToPersonalization()"
             />
         </div>
     </div>
@@ -33,6 +34,11 @@ export default {
                     sourceWorkUrl: ''
                 }
             }
+        }
+    },
+    methods: {
+        goToPersonalization() {
+            this.$children[0].$children[0].changeStep(4)
         }
     }
 }

@@ -41,6 +41,7 @@ export default {
             },
             set(currentLicense) {
                 this.$emit('input', currentLicense)
+                this.$emit('dropdown-clicked')
             }
         }
     }
