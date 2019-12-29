@@ -48,6 +48,24 @@ export default {
         Locale
     }
 }</script>
+<style lang="scss">
+    // Import Bulma's core
+    @import "~bulma/sass/utilities/_all";
+    $primary: hsl(13, 84%, 56%);
+    $background: hsl(0, 0%, 88%);
+    $body-background-color:hsl(0,0%, 88%);
+
+    // Links
+    $link: $primary;
+    $link-focus-border: $primary;
+    // Fonts
+    $family-primary: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif;
+    $family-sans-serif: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif!important;
+
+    // Import Bulma and Buefy styles
+    @import "~bulma";
+    @import "~buefy/src/scss/buefy";
+</style>
 <style>
 
     @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
