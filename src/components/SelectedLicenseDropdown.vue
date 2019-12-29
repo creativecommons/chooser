@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="license-dropdown">
         <p
             :class="'dropdown-instruction'">
             If you already know which license you need, just select it in the dropdown below.</p>
@@ -58,42 +58,33 @@ export default {
 
 }
 </script>
-<style>
-    .selected-license-names b {
-        font-size: 1.8rem;
+<style lang="scss">
+    div.license-dropdown {
+        p.dropdown-instruction{
+            padding-bottom: 1.4rem;
+            text-align: center;
+            font-size: 0.875em;
+            opacity: 90%;
+        }
+        div.field {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 5px;
+            label.label {
+                font-style: normal;
+                font-weight: bold;
+                font-size: 20px;
+                line-height: 30px;
+                color: #333333;
+            }
+            div.control {
+                span.select {
+                    width: 100%;
+                    select {
+                        width: 100%;
+                    }
+                }
+            }
+        }
     }
-    b {
-        text-align: center;
-    }
-    div.field {
-        grid-template-columns: 1fr 2fr;
-        grid-gap: 5px;
-        display: grid;
-    }
-    label.label {
-        font-family: Source Sans Pro;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 30px;
-        /* identical to box height, or 150% */
-        color: #333333;
-    }
-    p.dropdown-instruction {
-        font-family: Source Sans Pro;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 13px;
-        line-height: 19px;
-        color: #333333;
-        margin-bottom: 13px;
-    }
-    h4 {
-        margin-bottom: 0.8rem;
-        font-weight: 500;
-    }
-    span.select, select {
-        width: 100%;
-    }
-
 </style>

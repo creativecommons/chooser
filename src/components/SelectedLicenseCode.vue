@@ -124,99 +124,73 @@ export default {
     }
 }
 </script>
-<style>
-    .collapsible-button {
-        height: 50px;
-        background-color: #ef9421 !important;
-    }
-    .license-code {
+<style lang="scss">
+    div.license-code {
         margin-top: 1rem;
-    }
-    section.tab-content {
-        margin-top:0;
-        padding: 0;
-    }
-    div.tab-item {
-        height: 70px;
-    }
-    h2.vocab-h2{
-        font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 25px;
-        line-height: 38px;
-        color: #333333;
-    }
-    #generator-meta-inputs-heading {
-        margin-bottom: 1rem;
-        display: block;
-    }
-
-    b {
-        text-align: center;
-    }
-
-    button {
-        margin-top: .5rem !important
-    }
-
-    .field {
-        margin-bottom: 0px;
-    }
-
-    #attribution-richtext-container {
-        margin-top: 1rem;
-        display: block;
-    }
-
-    #attribution-richtext-container .photo-license-icons {
-        vertical-align: middle;
-        margin-top: 0;
-        margin-left: 2px;
-    }
-
-    #attribution-richtext p {
-        display: inline
-    }
-
-    #generated-html-container {
-        /*margin-top: 1.5rem*/
-    }
-
-    textarea {
-        word-break: break-all;
-        -ms-word-break: break-all;
-    }
-    textarea#attribution-html {
-        min-height: 60px;
-        font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
-
-    }
-    nav  {
-        margin-bottom: 0;
-    }
-
-    div.attribution-tab {
-        margin-bottom: 0;
-    }
-    div.attribution-tab .tabs {
-        margin-bottom: 0;
-    }
-    div.attribution-tab nav {
-        margin-bottom: 0;
-    }
-    .b-tabs .tabs {
-        margin-bottom: 0;
-    }
-    nav.tabs ul li a span {
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 18px;
-        text-transform: uppercase;
-        color: #333333;
-    }
-    nav.tabs ul li:last-of-type {
-        margin-left: auto;
+        h2.vocab-h2{
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 38px;
+            color: #333333;
+        }
+        div.attribution-tab {
+            margin-bottom: 0;
+            nav.tabs {
+                margin-bottom: 0;
+                ul {
+                    li {
+                        a {
+                            span {
+                                font-style: normal;
+                                font-weight: 700;
+                                font-size: 12px;
+                                line-height: 18px;
+                                text-transform: uppercase;
+                                color: #333333;
+                            }
+                        }
+                        &:last-of-type{
+                            margin-left: auto;
+                            height:35px;
+                        }
+                        &.is-active {
+                            a {
+                                border-bottom-width: 3px;
+                            }
+                        }
+                    }
+                }
+            }
+            section.tab-content {
+                margin-top:0;
+                padding: 0;
+                div.tab-item {
+                    height: 60px;
+                    div#generated-html-container {
+                        padding-top:10px;
+                        padding-bottom: 10px;
+                        textarea {
+                            word-break: break-all;
+                            -ms-word-break: break-all;
+                            min-height: 60px;
+                            font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
+                            font-size:0.845rem;
+                        }
+                    }
+                    div#generated-richtext-container {
+                        margin-top: 1rem;
+                        display: block;
+                        .attribution-license-icons {
+                            vertical-align: middle;
+                            margin-top: 0;
+                            margin-left: 2px;
+                        }
+                        p {
+                            display: inline
+                        }
+                    }
+                }
+            }
+        }
     }
 </style>

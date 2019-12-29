@@ -1,10 +1,10 @@
 <template>
     <div class='column'>
-        <div class="card">
-            <h2
-                class="stepper-heading vocab-h2">
-                Select Your License
-            </h2>
+        <div id="stepper" class="card">
+            <header class="card-header">
+                <h2 :class="'vocab-h2'">Select Your License</h2>
+            </header>
+            <div class="card-content">
             <p :class="'stepper-instructions'">Follow the steps below to select your Creative Commons License</p>
             <b-steps size="is-small">
                 <b-step-item
@@ -35,6 +35,7 @@
                     />
                 </b-step-item>
             </b-steps>
+            </div>
         </div>
     </div>
 </template>
@@ -135,100 +136,141 @@ export default {
     }
 }
 </script>
-<style>
-    div.card {
-        font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
-    }
-    h2.stepper-heading {
-        justify-content: center;
-        padding-top: 1rem;
-        text-align: center;
-    }
-    h2.vocab-h2{
-        font-style: normal;
-        font-weight: bold;
-        font-size: 25px;
-        line-height: 38px;
-        /* identical to box height, or 152% */
-        color: #333333;
-    }
-    .step-content {
-        padding-bottom: 0;
-    }
-    nav.step-navigation {
-        display: flex;
-        padding-bottom: 1rem;
-    }
-    a.pagination-previous {
-        margin-left: auto;
-    }
-    a.pagination-next {
-        margin-right: 1rem;
-    }
-    hr {
-        margin-bottom: 0!important;
-        border: 1px solid #e0e0e0!important;
-    }
-    .card .b-steps .steps.is-small .step-link>.step-marker>.icon {
-        height: 2rem!important;
-        width: 2rem!important;
-    }
-    .card .b-steps .steps.is-small .step-link>.step-marker>.icon>svg{
-        height: 2em!important;
-        width: 2em!important;
-    }
-    .card  .b-steps .steps.is-small .step-item>.step-link>.step-marker {
-        width: 2.4rem;
-        height: 2.4rem;
-        left: calc(45% - 0.73rem);
-        top: -10%;
-    }
-    .b-steps svg path {
-        fill: black;
-    }
-    li.selected>a>div>span>svg>path {
-        fill: black;
-        opacity: 90%;
-    }
-    li.unselected>a>div>span>svg>path {
-        fill: black;
-        opacity: 30%;
-    }
-    li.personalization>a>div>span>svg{
-        border-radius: 50%;
-        padding:5px;
-        box-shadow: inset 0 0 0 2px #ED592F;
-    }
-    li.personalization>a>div>span>svg:hover{
-        box-shadow: inset 0 0 0 2px #FB7729;
-    }
-    li.step-item {
-        background-color:white;
-    }
-    .step-marker {
-        background:white!important;
-    }
-    .is-active>a>div>span>svg {
-        width:2rem!important;
-        height:2rem!important;
-    }
-    /*.icon svg {*/
-    /*    font-size: 2rem;*/
-    /*    width: 2rem!important;*/
-    /*    height: 2rem!important;*/
-    /*}*/
-</style>
-<style scoped>
-    .stepper-instructions {
-        padding-top: 1rem;
-        padding-bottom: 1.4rem;
-        text-align: center;
-    }
-    .selected-license-names b {
-        font-size: 1.8rem;
-    }
 
-    b {
-        text-align: center;
+<style lang="scss">
+    div#stepper.card{
+        div.card-content{
+            p.stepper-instructions {
+                padding-bottom: 1.4rem;
+                text-align: center;
+                font-size: 0.875em;
+                opacity: 90%;
+            }
+            div.b-steps{
+                nav.steps {
+                    ul.step-items {
+                        li.step-item {
+                            background-color:white;
+                            a.step-link {
+                                div.step-marker {
+                                    // This is the element that shows border/ circle
+                                    background:white!important;
+                                    width: 2.6rem;
+                                    height: 2.6rem;
+                                    left: calc(50% - 1.2rem);
+                                    top: -11%;
+                                    span.icon {
+                                        svg {
+                                            font-size:2rem;
+                                            path {
+                                                fill: black;
+                                                /*opacity: 60%;*/
+                                            }
+                                        }
+                                    }
+                                }
+                                div.step-details {
+                                    padding-top:0.6rem;
+                                    span.step-title {
+                                        font-size:0.875rem;
+                                        line-height:1;
+                                    }
+                                }
+                            }
+                            &.is-active {
+                                svg {
+                                    width:2.3rem!important;
+                                    height:2.3rem!important;
+                                    path {
+                                        fill: #ED592F!important;
+                                    }
+                                }
+                                div.step-details span.step-title {
+                                    font-weight: 800;
+                                    color: #ED592F;
+                                }
+                                &.unselected {
+                                    a div.step-marker{
+                                        border-color: #F6AC98;
+                                        border-width:2px;
+                                    }
+                                }
+                            }
+                            &.selected {
+                                a.step-link {
+                                    div.step-marker {
+                                        background:white!important;
+                                        span>svg>path {
+                                            opacity: 100%!important;
+                                        }
+                                    }
+                                }
+                                div.step-details span.step-title {
+                                    font-weight: 800;
+                                }
+                            }
+                            &.unselected {
+                                a.step-link{
+                                    div.step-marker {
+                                    /*background: #0e71de!important;*/
+                                    span > svg > path {
+                                        opacity: 50% !important;
+                                    }
+                                }
+                                    div.step-details span.step-title {
+                                        font-weight: 400;
+                                        opacity: 50%;
+                                    }
+                            }
+                        }
+                    }
+                }
+                section.step-content{
+                    padding-bottom: 0;
+                }
+                nav.step-navigation {
+                    display: flex;
+                    padding-bottom: 1rem;
+                    a.pagination-previous {
+                        margin-left: auto;
+                    }
+                    a.pagination-next {
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }}
+
+        hr {
+            margin-bottom: 0!important;
+            border: 1px solid #e0e0e0!important;
+        }
+
+        li.personalization {
+            a > div > span > svg {
+                font-size:1.5rem!important;
+                border-radius: 50%;
+                padding:5px;
+                box-shadow: inset 0 0 0 2px #4a4a4a;
+                &:hover {
+                    box-shadow: inset 0 0 0 3px #FB7729;
+                }
+                path {
+                    fill: #4a4a4a!important;
+                    &:hover {
+                        opacity: 30%;
+                    }
+                }
+            }
+            &.is-active {
+                svg {
+                    box-shadow: inset 0 0 0 2px #ED592F;
+                }
+            }
+        }
+
+        li.personalization>a>div>span>svg{
+
+        }
     }
 </style>

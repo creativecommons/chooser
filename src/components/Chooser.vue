@@ -43,13 +43,19 @@ export default {
     }
 }
 </script>
-<style scoped>
-
-.selected-license-names b {
-    font-size: 1.8rem;
-}
-
-b {
-    text-align: center;
-}
+<style lang="scss">
+    header.card-header {
+        justify-content: center;
+        h2.vocab-h2 {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 38px;
+            color: #333333;
+            margin: 1.5% auto;
+        }
+    }
+    div.card-content {
+        padding-top: 0.5rem;
+    }
 </style>

@@ -1,6 +1,5 @@
 <template>
-    <div class="chooser-selected">
-        <div>
+    <div>
             <p class="selection-question">{{ question }}</p>
             <div class="columns is-centered">
                 <div class="column is-3">
@@ -25,7 +24,6 @@
             <p v-html="currentText"/>
             <hr>
         </div>
-    </div>
 </template>
 
 <script>

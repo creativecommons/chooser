@@ -1,24 +1,32 @@
 <template>
-    <div class="chooser-selected">
         <section class="pers-form">
-            <b-field label="Work Author">
+            <b-field label="Work Author" label-position="inside">
                 <b-input
-                    v-model="value.authorName"/>
+                    v-model="value.authorName"
+                    placeholder="John Silver"
+                />
             </b-field>
-            <b-field label="Title of Work">
+            <b-field
+                label="Title of Work" label-position="inside"
+              >
                 <b-input
-                    v-model="value.workTitle"/>
+                    v-model="value.workTitle"
+                    placeholder="This work"
+                />
             </b-field>
-            <b-field label="Work URL">
+            <b-field label="Work URL" label-position="inside">
                 <b-input
-                    v-model="value.workUrl"/>
+                    v-model="value.workUrl"
+                    placeholder="https://www.example.com/image.jpg"
+                />
             </b-field>
-            <b-field label="URL of the Source Work">
+            <b-field label="URL of the Source Work" label-position="inside">
                 <b-input
-                    v-model="value.sourceWorkUrl"/>
+                    v-model="value.sourceWorkUrl"
+                    placeholder="https://www.example.com/source.jpg"
+                />
             </b-field>
         </section>
-    </div>
 </template>
 
 <script>
@@ -31,13 +39,8 @@ export default {
 }
 </script>
 
-<style>
-    .pers-form label.label {
-        font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1rem;
-        line-height: 38px;
-        color: #333333;
-    }
+<style lang="scss">
+label.label {
+    font-size: 0.845rem;
+}
 </style>
