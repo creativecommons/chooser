@@ -29,6 +29,7 @@
                     :clickable=true
                     icon="check"
                     :type="'personalization'"
+                    :visible="isStepVisible('')"
                 >
                     <PersonalizationStep
                         v-model="value.personalDetails"
@@ -131,6 +132,9 @@ export default {
             } else { return 'unselected' }
         },
         isStepVisible(attrName) {
+            if (this.$props.value.shortName.includes('CC0')) {
+                return attrName === 'BY'
+            }
             return !(this.$props.value.shortName.includes('ND') && attrName === 'SA')
         }
     }
