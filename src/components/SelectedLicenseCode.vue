@@ -27,11 +27,12 @@
                 <template slot="header">
                     <a
                         :class="'copyBtn'"
-                        :data-clipboard-target=this.clipboardTarget>
+                        :data-clipboard-target=this.clipboardTarget()>
                         <b-icon
                             icon-pack="fas"
                             icon="copy"/>
-                        {{ copyText }}
+                        <span class="button-text">{{ copyText }}
+                        </span>
                     </a>
                 </template>
                 <div class="dummy"></div>
@@ -56,7 +57,8 @@ export default {
             success: false,
             clipboard: null,
             currentTab: 0,
-            copyText: 'Copy'
+            copyText: 'Copy',
+            currentSelection: 'richtext'
         }
     },
     methods: {
@@ -82,6 +84,9 @@ export default {
         onCopyError(e) {
             this.$emit('copyFailed')
             e.clearSelection()
+        },
+        clipboardTarget() {
+            return `#attribution-${this.currentSelection}`
         }
     },
     computed: {
@@ -94,6 +99,7 @@ export default {
                 if (val !== 2) {
                     this.currentTab = val
                 } else {
+                    this.currentSelection = this.currentTab === 0 ? 'richtext' : 'html'
                     const tab = this.currentTab
                     this.currentTab = 2
                     this.copyText = 'Copied!'
@@ -104,13 +110,6 @@ export default {
                         this.copyText = 'Copy'
                     }, 2000)
                 }
-            }
-        },
-        clipboardTarget() {
-            if (this.activeTab === 0) {
-                return '#attribution-richtext'
-            } else {
-                return '#attribution-html'
             }
         }
     },
@@ -139,23 +138,38 @@ export default {
                 margin-bottom: 0;
                 ul {
                     li {
-                        a {
-                            span {
-                                font-style: normal;
-                                font-weight: 700;
-                                font-size: 12px;
-                                line-height: 18px;
-                                text-transform: uppercase;
-                                color: #333333;
+                        & > a {
+                            & > span {
+                                    font-style: normal;
+                                    font-weight: 700;
+                                    font-size: 12px;
+                                    line-height: 18px;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.5px;
+                                    color: #333333;
+                                    opacity:80%;
+
                             }
                         }
                         &:last-of-type{
                             margin-left: auto;
-                            height:35px;
+                            a {
+                                padding:0;
+                            }
+                            & > a {
+                                padding: 0.3em 1em;
+                                span a.copyBtn {
+                                    border-bottom: none;
+                                }
+                            }
                         }
                         &.is-active {
                             a {
                                 border-bottom-width: 3px;
+                                span{
+                                    font-weight: 700;
+                                    opacity:100%;
+                                }
                             }
                         }
                     }
