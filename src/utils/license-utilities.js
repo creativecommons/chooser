@@ -9,13 +9,13 @@ const LicenseUtilities = {
         }
 
         Vue.prototype.$shortToAttributes = function(shortLicenseName) {
-            const short = shortLicenseName.toLowerCase()
-            if (short.includes('cc0')) {
-                return { ...defaultLicenseAttributes, by: false }
+            const short = shortLicenseName
+            if (short.includes('CC0')) {
+                return { ...defaultLicenseAttributes, BY: false }
             }
-            const nc = short.includes('nc')
-            const nd = short.includes('nd')
-            const sa = short.includes('sa')
+            const nc = short.includes('NC')
+            const nd = short.includes('ND')
+            const sa = short.includes('SA')
             return { ...defaultLicenseAttributes, NC: nc, ND: nd, SA: sa }
         }
         Vue.prototype.$licenseUrl = function(shortLicenseName) {

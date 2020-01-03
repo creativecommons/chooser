@@ -13,13 +13,13 @@
                     :icon-pack="item['icon-pack']"
                     :icon="item.icon"
                     v-bind:key="item.shortName"
-                    :selected="licenseAttributes[item.shortName]"
+                    :selected="isStepSelected(item.shortName)"
                     :visible="isStepVisible(item.shortName)"
                     :clickable=true
                     :type="attributeType(item.shortName)"
                 >
                     <SelectionStep
-                        :selected="licenseAttributes[item.shortName]"
+                        :selected="isStepSelected(item.shortName)"
                         :stepId="item.shortName"
                         v-on:input="updateLicense(item.shortName)"
                     />
@@ -125,6 +125,9 @@ export default {
             if (this.$props.value.shortName.includes(attrName)) {
                 return 'selected'
             } else { return 'unselected' }
+        },
+        isStepSelected(attrName) {
+            return this.$props.value.shortName.includes(attrName)
         },
         isStepVisible(attrName) {
             if (this.$props.value.shortName.includes('CC0')) {
