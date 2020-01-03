@@ -122,4 +122,19 @@ export default {
         margin-bottom: 1rem;
         font-weight: 600;
     }
+    .selection-buttons {
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 2rem;
+        margin-bottom:1rem;
+    }
+    .selection-button {
+        align-self: center;
+    }
+    .selection-button-no {
+        justify-self: end;
+    }
+    .selection-button-yes {
+        justify-self: start;
+    }
 </style>

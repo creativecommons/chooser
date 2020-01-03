@@ -194,9 +194,9 @@ export default {
                                     color: #ED592F;
                                 }
                                 &.unselected {
-                                    a div.step-marker{
+                                    a div.step-marker {
                                         border-color: #F6AC98;
-                                        border-width:2px;
+                                        border-width: 2px;
                                     }
                                 }
                             }
@@ -214,7 +214,7 @@ export default {
                                 }
                             }
                             &.unselected {
-                                a.step-link{
+                                a.step-link {
                                     div.step-marker {
                                     /*background: #0e71de!important;*/
                                     span > svg > path {
@@ -225,25 +225,31 @@ export default {
                                         font-weight: 400;
                                         opacity: 50%;
                                     }
+                                }
+                            }
+
+                            &:nth-child(3) {
+                                .step-marker {
+                                    left: calc(50% - 1.3rem);
+                                }
                             }
                         }
                     }
                 }
-                section.step-content{
+                section.step-content {
                     padding-bottom: 0;
                 }
                 nav.step-navigation {
                     display: flex;
-                    padding-bottom: 1rem;
+                    margin: 0.5rem 1rem 0.5rem auto;
+                    justify-content: flex-end;
                     a.pagination-previous {
                         margin-left: auto;
                     }
-                    a.pagination-next {
-                        margin-right: 1rem;
-                    }
+
                 }
             }
-        }}
+        }
 
         hr {
             margin-bottom: 0!important;
