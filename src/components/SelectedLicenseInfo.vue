@@ -1,18 +1,34 @@
 <template>
-    <div id="SelectedLicenseInfo">
-        <h4>{{ value.fullName }}</h4>
-        <div>
-            <ul id="license-list">
-                <li v-for="item in iconsList"
-                    :key="item">
-                    <LicenseIconography
-                        :icon-list="[item]"/>
-                    <span class="readable-string">
-                        {{ readableString(item)}}
-                    </span>
-                </li>
+    <div class="selected-license-info">
+        <h4>
+            <a :href="this.$licenseUrl(value.shortName)">{{ value.fullName }}</a>
+        </h4>
+        <hr class="h4-underline"/>
+            <section class="license-visual-info">
+                <ul class="license-list">
+                <transition-group name="highlight">
+                    <li v-for="item in iconsList"
+                        :key="item">
+                        <LicenseIconography
+                            :icon-list="[item]"/>
+                        <span class="readable-string">
+                            {{ readableString(item)}}
+                        </span>
+                    </li>
+                </transition-group>
+
             </ul>
-        </div>
+                <a href="https://creativecommons.org/freeworks">
+                    <div v-if="this.freeWorkStatus" class="license-freeworks-status">
+                        <img src="../assets/license-icons/fc_approved_small.png" alt="">
+                        <p>Free Culture License</p>
+                    </div>
+                    <div v-else class="license-freeworks-status">
+                        <img v-if="!this.freeWorkStatus" src="../assets/license-icons/fc_dubious.png" alt="">
+                        <p>Not a Free Culture License</p>
+                    </div>
+                </a>
+            </section>
         <LicenseDescription
             :selectedLicense="value.shortName"/>
     </div>
@@ -37,7 +53,6 @@ export default {
                 nd: 'No derivatives or modification permitted',
                 sa: 'Share allowed only on the same conditions'
             }
-
             return readableStrings[shortString] ? readableStrings[shortString] : 'Public Domain'
         }
     },
@@ -52,40 +67,59 @@ export default {
     }
 }
 </script>
-<style>
-    .chooser-selected {
-        border-radius: 5px;
+<style lang="scss">
+    .highlight-enter-active, .highlight-leave-active {
+        transition: opacity .5s;
     }
+    .highlight-enter, .highlight-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+    div.selected-license-info {
+        h4 {
+            line-height: 2;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        hr.h4-underline {
+            margin: 0 0 0.5rem;
+            background-color: #ED592F;
+        }
+        section.license-visual-info {
+            display:grid;
+            grid-template-columns: 3fr 1fr;
+            ul.license-list {
+                height: 87px;
 
-    .chooser-selected h2 {
-        margin: 1.5% auto;
-        text-align: center;
-    }
-    #SelectedLicenseInfo h4 {
-        line-height: 2;
-        font-weight: 600;
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-    }
+                li {
+                    span.license-icons {
+                        svg {
+                            width: 25px !important;
+                            height: 25px !important;
+                        }
+                    }
 
-    .chooser-selected img {
-        display: inline;
-        vertical-align: top;
-    }
+                    span.readable-string {
+                        vertical-align: top;
+                        padding-left: 20px;
+                        font-weight: 500;
+                    }
+                }
 
-    .selected-license-names b {
-        font-size: 1.8rem;
-    }
-    .license-icons svg {
-        width: 25px!important;
-        height: 25px!important;
-    }
-    .switch-container p, b-switch {
-        display: inline;
-    }
-    .readable-string {
-        vertical-align: top;
-        padding-left: 20px;
-        font-weight: 500;
+            }
+            div.license-freeworks-status{
+                justify-content: center;
+                text-align:center;
+                img {
+                    width: 76px;
+                    height: 76px;
+                }
+                p {
+                    font-size: 13px;
+                    line-height: 19px;                }
+            }
+        }
+        div {
+            background-color:white;
+        }
     }
 </style>
