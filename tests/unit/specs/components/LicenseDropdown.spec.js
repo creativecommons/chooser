@@ -1,6 +1,7 @@
-import {createLocalVue, mount} from '@vue/test-utils'
+import { createLocalVue, mount } from '@vue/test-utils'
 import SelectedLicenseDropdown from '@/components/SelectedLicenseDropdown'
 import Buefy from 'buefy'
+import LicenseUtilities from '@/utils/license-utilities'
 
 const value = {
     shortName: 'CC BY 4.0',
@@ -18,6 +19,7 @@ describe('LicenseDropdown.vue', () => {
     beforeEach(() => {
         const localVue = createLocalVue()
         localVue.use(Buefy)
+        localVue.use(LicenseUtilities)
         wrapper = mount(SelectedLicenseDropdown, {
             localVue,
             propsData: {

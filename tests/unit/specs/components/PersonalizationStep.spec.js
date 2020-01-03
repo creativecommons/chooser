@@ -1,6 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils'
 import PersonalizationStep from '@/components/PersonalizationStep'
 import Buefy from 'buefy'
+import LicenseUtilities from '@/utils/license-utilities'
 
 describe('PersonalizationStep.vue', () => {
     let wrapper
@@ -9,6 +10,7 @@ describe('PersonalizationStep.vue', () => {
     beforeEach(() => {
         const localVue = createLocalVue()
         localVue.use(Buefy)
+        localVue.use(LicenseUtilities)
 
         wrapper = mount(PersonalizationStep, {
             localVue,

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectionStep.vue has the expected UI 1`] = `
+<div class="selection-step">
+  <p class="selection-question">question-by</p>
+  <div class="selection-buttons">
+    <div class="selection-button selection-button-no"><button type="button" class="button is-outlined"><span class="icon is-small"><i class="mdi mdi-times"></i></span> <span>
+                No
+            </span>
+        <!----></button></div>
+    <div class="selection-button selection-button-yes"><button type="button" class="button is-dark"><span class="icon is-small"><i class="mdi mdi-check"></i></span> <span>
+                Yes
+            </span>
+        <!----></button></div>
+  </div>
+  <p>short-description-selected-by</p>
+  <hr>
+</div>
+`;

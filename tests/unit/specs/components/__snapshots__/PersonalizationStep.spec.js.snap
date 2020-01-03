@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalizationStep.vue has the expected UI 1`] = `
+<section class="pers-form">
+  <div class="field is-floating-in-label"><label class="label">Work Author</label>
+    <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="John Silver" class="input">
+      <!---->
+      <!---->
+      <!---->
+    </div>
+    <!---->
+  </div>
+  <div class="field is-floating-in-label"><label class="label">Title of Work</label>
+    <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="This work" class="input">
+      <!---->
+      <!---->
+      <!---->
+    </div>
+    <!---->
+  </div>
+  <div class="field is-floating-in-label"><label class="label">Work URL</label>
+    <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="https://www.example.com/image.jpg" class="input">
+      <!---->
+      <!---->
+      <!---->
+    </div>
+    <!---->
+  </div>
+  <div class="field is-floating-in-label"><label class="label">URL of the Source Work</label>
+    <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="https://www.example.com/source.jpg" class="input">
+      <!---->
+      <!---->
+      <!---->
+    </div>
+    <!---->
+  </div>
+</section>
+`;

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper.vue has the expected UI 1`] = `
+<div class="column">
+  <div id="stepper" class="card">
+    <header class="card-header">
+      <h2 class="vocab-h2">Select Your License</h2>
+    </header>
+    <div class="card-content">
+      <p class="stepper-instructions">Follow the steps below to select your Creative Commons License</p>
+      <b-steps-stub size="is-small" animated="true" iconprev="chevron-left" iconnext="chevron-right" hasnavigation="true">
+        <b-step-item-stub label="Attribution" type="selected" icon="creative-commons-by" iconpack="fab" clickable="true" visible="true" selected="true">
+          <selectionstep-stub stepid="BY" selected="true"></selectionstep-stub>
+        </b-step-item-stub>
+        <b-step-item-stub label="Non Derivative" type="unselected" icon="creative-commons-nd" iconpack="fab" clickable="true" visible="true">
+          <selectionstep-stub stepid="ND"></selectionstep-stub>
+        </b-step-item-stub>
+        <b-step-item-stub label="Non Commercial" type="unselected" icon="creative-commons-nc" iconpack="fab" clickable="true" visible="true">
+          <selectionstep-stub stepid="NC"></selectionstep-stub>
+        </b-step-item-stub>
+        <b-step-item-stub label="Share-Alike" type="unselected" icon="creative-commons-sa" iconpack="fab" clickable="true" visible="true">
+          <selectionstep-stub stepid="SA"></selectionstep-stub>
+        </b-step-item-stub>
+        <b-step-item-stub label="Personalize Your License" type="personalization" icon="check" clickable="true" visible="true">
+          <personalizationstep-stub></personalizationstep-stub>
+        </b-step-item-stub>
+      </b-steps-stub>
+    </div>
+  </div>
+</div>
+`;

@@ -2,6 +2,7 @@ import { mount, createLocalVue } from '@vue/test-utils'
 import SelectedLicenseCode from '@/components/SelectedLicenseCode'
 import Buefy from 'buefy'
 import sinon from 'sinon'
+import LicenseUtilities from '@/utils/license-utilities'
 
 const value = {
     shortName: 'CC BY 4.0',
@@ -28,11 +29,12 @@ function _mockDomMethodsForClipboardJS(value) {
 describe('SelectedLicenseCode.vue', () => {
     let wrapper
     let spy
-    let clipboard
 
     beforeEach(() => {
         const localVue = createLocalVue()
         localVue.use(Buefy)
+        localVue.use(LicenseUtilities)
+
         _mockDomMethodsForClipboardJS()
         spy = sinon.stub()
         wrapper = mount(SelectedLicenseCode, {
@@ -91,15 +93,17 @@ describe('SelectedLicenseCode.vue', () => {
     // Test copying
     it('Copies text from active tab', () => {
         const copyLink = wrapper.findAll('li').at(2).find('a').find('span').find('a')
+
         expect(wrapper.vm.currentTab).toEqual(0)
-        expect(wrapper.vm.clipboardTarget).toEqual('#attribution-richtext')
-        wrapper.findAll('li').at(1).find('a').trigger('click')
-        expect(wrapper.vm.clipboardTarget).toEqual('#attribution-html')
+        expect(wrapper.vm.clipboardTarget()).toEqual('#attribution-richtext')
+        const htmlTab = wrapper.findAll('li').at(1).find('a')
+        htmlTab.trigger('click')
         copyLink.trigger('click')
-        expect(wrapper.vm.clipboardTarget).toEqual('#attribution-html')
+        expect(wrapper.vm.clipboardTarget()).toEqual('#attribution-html')
+        expect(wrapper.vm.currentSelection).toEqual('html')
+
         const emittedEvents = wrapper.emitted()
         expect(emittedEvents).toHaveProperty('copyFailed')
         expect(emittedEvents.copyFailed.length).toBe(1)
     })
-
 })

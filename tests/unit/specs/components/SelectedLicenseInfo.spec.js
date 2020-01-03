@@ -1,6 +1,7 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import SelectedLicenseInfo from '@/components/SelectedLicenseInfo'
 import Buefy from 'buefy'
+import LicenseUtilities from '@/utils/license-utilities'
 
 describe('SelectedLicenseInfo.vue', () => {
     let wrapper
@@ -9,6 +10,7 @@ describe('SelectedLicenseInfo.vue', () => {
     beforeEach(() => {
         const localVue = createLocalVue()
         localVue.use(Buefy)
+        localVue.use(LicenseUtilities)
 
         wrapper = shallowMount(SelectedLicenseInfo, {
             localVue,

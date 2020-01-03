@@ -1,6 +1,7 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import HelpSection from '@/components/HelpSection'
 import Buefy from 'buefy'
+import LicenseUtilities from '@/utils/license-utilities'
 
 describe('HelpSection.vue', () => {
     let wrapper
@@ -9,6 +10,7 @@ describe('HelpSection.vue', () => {
     beforeEach(() => {
         const localVue = createLocalVue()
         localVue.use(Buefy)
+        localVue.use(LicenseUtilities)
 
         wrapper = shallowMount(HelpSection, {
             localVue
