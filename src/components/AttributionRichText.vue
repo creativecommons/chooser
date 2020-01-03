@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import licenseUrl from '@/utils/licenseUrl'
 import LicenseIcons from './LicenseIcons'
 
 export default {
@@ -51,10 +50,10 @@ export default {
     },
     computed: {
         licenseURL() {
-            return licenseUrl(this.$props.value.shortName)
+            return this.$licenseUrl(this.$props.value.shortName)
         },
         iconsArr() {
-            return this.$props.value.shortName.toLowerCase().slice(3, this.$props.value.shortName.length - 4).split('-')
+            return this.$licenseIconsArr(this.$props.value.shortName)
         }
     }
 }

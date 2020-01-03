@@ -39,7 +39,11 @@ export default {
             if (!shortName.includes('BY')) { return 'CC0 1.0 Universal' }
             let base = 'Attribution'
             if (shortName.includes('NC')) { base += '-NonCommercial' }
-            if (!shortName.includes('ND') && shortName.includes('SA')) { base += '-ShareAlike' } else if (shortName.includes('ND')) { base += '-NoDerivatives' }
+            if (!shortName.includes('ND') && shortName.includes('SA')) {
+                base += '-ShareAlike'
+            } else if (shortName.includes('ND')) {
+                base += '-NoDerivatives'
+            }
             base += ' 4.0 International'
             return base
         }

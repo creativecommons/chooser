@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header :title="$t('chooser')"/>
+        <Header :title="$t('app-title')"/>
         <Feedback/>
         <div class="container" id="site-container">
             <Chooser />

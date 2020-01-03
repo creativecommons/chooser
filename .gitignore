@@ -1,3 +1,6 @@
 /tests/e2e/reports/
 /chromedriver.log
 /docs/
+.idea/
+coverage/
+node_modules/

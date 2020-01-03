@@ -20,7 +20,6 @@
 <script>
 import LicenseDescription from './LicenseDescription'
 import LicenseIconography from './LicenseIconography'
-import licenseUrl from '@/utils/licenseUrl'
 
 export default {
     name: 'SelectedLicenseInfo',
@@ -44,19 +43,11 @@ export default {
     },
     computed: {
         iconsList() {
-            const slicedName = this.$props.value.shortName
-                .slice(3, this.$props.value.shortName.length - 4)
-            return slicedName.toLowerCase().split('-')
-        }
-    },
-    mounted: function() {
-        console.log('SelectedLicenseInfo mounted, licenseUrl: ', this.$refs, licenseUrl)
-        // this.$refs.license_link.href = licenseUrl(this.$props.value.shortName)
-    },
-    watch: {
-        shortLicenseName: function(newVal, oldVal) {
-            console.log(newVal, oldVal, this.$refs)
-            // this.$refs.license_link.href = licenseUrl(this.$props.value.shortName)
+            return this.$licenseIconsArr(this.$props.value.shortName)
+        },
+        freeWorkStatus() {
+            const short = this.$props.value.shortName.toLowerCase()
+            return !(short.includes('nc') || short.includes('nd'))
         }
     }
 }

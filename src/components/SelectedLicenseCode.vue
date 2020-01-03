@@ -43,7 +43,6 @@
 <script>
 import Clipboard from 'clipboard'
 import attributionHtml from '@/utils/attributionHtml'
-import licenseUrl from '@/utils/licenseUrl'
 import AttributionRichText from './AttributionRichText'
 
 export default {
@@ -91,7 +90,7 @@ export default {
     },
     computed: {
         licenseURL() {
-            return licenseUrl(this.$props.value.shortName)
+            return this.$licenseUrl(this.$props.value.shortName)
         },
         activeTab: {
             get() { return this.currentTab },

@@ -84,7 +84,7 @@ export default {
     },
     computed: {
         licenseAttributes() {
-            return this.calculateAttributes(this.$props.value.shortName)
+            return this.$shortToAttributes(this.$props.value.shortName)
         }
     },
     methods: {
@@ -97,23 +97,15 @@ export default {
                 personalDetails: this.$props.value.personalDetails
             })
         },
-        calculateAttributes(shortName) {
-            if (shortName.includes('CC0')) {
-                return { BY: false, ND: false, NC: false, SA: false }
-            } else {
-                const by = true
-                const nd = !!shortName.includes('ND')
-                const nc = !!shortName.includes('NC')
-                const sa = !!shortName.includes('SA')
-                return { BY: by, ND: nd, NC: nc, SA: sa }
-            }
-        },
         shortLicenseName(attr) {
             if (!attr.BY) { return 'CC0 1.0' }
             let base = 'CC BY'
             if (attr.NC) { base += '-NC' }
-            if (!attr.ND && attr.SA) { base += '-SA' } // eslint-disable-line brace-style
-            else if (attr.ND) { base += '-ND' }
+            if (!attr.ND && attr.SA) {
+                base += '-SA'
+            } else if (attr.ND) {
+                base += '-ND'
+            }
             base += ' 4.0'
             return base
         },
@@ -121,8 +113,11 @@ export default {
             if (!attr.BY) { return 'CC0 1.0 Universal' }
             let base = 'Attribution'
             if (attr.NC) { base += '-NonCommercial' }
-            if (!attr.ND && attr.SA) { base += '-ShareAlike' } // eslint-disable-line brace-style
-            else if (attr.ND) { base += '-NoDerivatives' }
+            if (!attr.ND && attr.SA) {
+                base += '-ShareAlike'
+            } else if (attr.ND) {
+                base += '-NoDerivatives'
+            }
             base += ' 4.0 International'
             return base
         },
@@ -168,7 +163,6 @@ export default {
                                             font-size:2rem;
                                             path {
                                                 fill: black;
-                                                /*opacity: 60%;*/
                                             }
                                         }
                                     }
@@ -216,11 +210,10 @@ export default {
                             &.unselected {
                                 a.step-link {
                                     div.step-marker {
-                                    /*background: #0e71de!important;*/
-                                    span > svg > path {
-                                        opacity: 50% !important;
+                                        span > svg > path {
+                                            opacity: 50% !important;
+                                        }
                                     }
-                                }
                                     div.step-details span.step-title {
                                         font-weight: 400;
                                         opacity: 50%;
