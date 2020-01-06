@@ -17,7 +17,7 @@ exports[`SelectedLicenseCode.vue has the expected UI 1`] = `
     </nav>
     <section class="tab-content">
       <div class="tab-item" style="">
-        <div id="generated-richtext-container">
+        <div id="attribution-richtext-container">
           <div id="attribution-richtext" class="photo_usage-attribution">
             <!---->
             <!---->
@@ -28,7 +28,7 @@ exports[`SelectedLicenseCode.vue has the expected UI 1`] = `
             <a href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser" target="_blank" rel="noopener" class="photo_license">
               CC BY 4.0
             </a>
-            <!----> <a href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser" target="_blank" rel="noopener noreferrer" class="attribution-license-icons"><img src="../assets/license-icons/cc_icon.svg" class="attribution-license-icon"> <img src="[object Object]" class="attribution-license-icon"></a>
+            <!----> <a href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img src="../assets/license-icons/cc_icon.svg" class="photo-license-icon"><img src="[object Object]" class="photo-license-icon"></a>
           </div>
         </div>
       </div>

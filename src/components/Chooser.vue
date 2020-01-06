@@ -6,7 +6,7 @@
             />
             <LicenseCard
                 v-model="selected"
-                @dropdown-clicked="goToPersonalization()"
+                @dropdown-clicked="goToAttributionDetails()"
             />
         </div>
     </div>
@@ -27,17 +27,17 @@ export default {
             selected: {
                 shortName: 'CC BY 4.0',
                 fullName: 'Attribution 4.0 International',
-                personalDetails: {
-                    authorName: '',
+                attributionDetails: {
+                    creatorName: '',
+                    creatorProfileUrl: '',
                     workTitle: '',
-                    workUrl: '',
-                    sourceWorkUrl: ''
+                    workUrl: ''
                 }
             }
         }
     },
     methods: {
-        goToPersonalization() {
+        goToAttributionDetails() {
             this.$children[0].$children[0].changeStep(4)
         }
     }

@@ -4,27 +4,143 @@ exports[`Stepper.vue has the expected UI 1`] = `
 <div class="column">
   <div id="stepper" class="card">
     <header class="card-header">
-      <h2 class="vocab-h2">Select Your License</h2>
+      <h2 class="vocab-h2"></h2>
     </header>
     <div class="card-content">
-      <p class="stepper-instructions">Follow the steps below to select your Creative Commons License</p>
-      <b-steps-stub size="is-small" animated="true" iconprev="chevron-left" iconnext="chevron-right" hasnavigation="true">
-        <b-step-item-stub label="Attribution" type="selected" icon="creative-commons-by" iconpack="fab" clickable="true" visible="true" selected="true">
-          <selectionstep-stub stepid="BY" selected="true"></selectionstep-stub>
-        </b-step-item-stub>
-        <b-step-item-stub label="Non Derivative" type="unselected" icon="creative-commons-nd" iconpack="fab" clickable="true" visible="true">
-          <selectionstep-stub stepid="ND"></selectionstep-stub>
-        </b-step-item-stub>
-        <b-step-item-stub label="Non Commercial" type="unselected" icon="creative-commons-nc" iconpack="fab" clickable="true" visible="true">
-          <selectionstep-stub stepid="NC"></selectionstep-stub>
-        </b-step-item-stub>
-        <b-step-item-stub label="Share-Alike" type="unselected" icon="creative-commons-sa" iconpack="fab" clickable="true" visible="true">
-          <selectionstep-stub stepid="SA"></selectionstep-stub>
-        </b-step-item-stub>
-        <b-step-item-stub label="Personalize Your License" type="personalization" icon="check" clickable="true" visible="true">
-          <personalizationstep-stub></personalizationstep-stub>
-        </b-step-item-stub>
-      </b-steps-stub>
+      <p class="stepper-instructions"></p>
+      <div class="b-steps">
+        <nav class="steps is-small">
+          <ul class="step-items">
+            <li class="step-item selected is-active"><a class="step-link is-clickable">
+                <div class="step-marker"><span class="icon is-small"><i class="fab fa-creative-commons-by"></i></span></div>
+                <div class="step-details"><span class="step-title">Attribution</span></div>
+              </a></li>
+            <li class="step-item unselected"><a class="step-link is-clickable">
+                <div class="step-marker"><span class="icon is-small"><i class="fab fa-creative-commons-nd"></i></span></div>
+                <div class="step-details"><span class="step-title">NoDerivatives</span></div>
+              </a></li>
+            <li class="step-item unselected"><a class="step-link is-clickable">
+                <div class="step-marker"><span class="icon is-small"><i class="fab fa-creative-commons-nc"></i></span></div>
+                <div class="step-details"><span class="step-title">NonCommercial</span></div>
+              </a></li>
+            <li class="step-item unselected"><a class="step-link is-clickable">
+                <div class="step-marker"><span class="icon is-small"><i class="fab fa-creative-commons-sa"></i></span></div>
+                <div class="step-details"><span class="step-title">Share-Alike</span></div>
+              </a></li>
+            <li class="step-item attributionDetails"><a class="step-link is-clickable">
+                <div class="step-marker"><span class="icon is-small"><i class="mdi mdi-check"></i></span></div>
+                <div class="step-details"><span class="step-title">Attribution Details</span></div>
+              </a></li>
+          </ul>
+        </nav>
+        <section class="step-content">
+          <div class="step-item" style="" selected="selected">
+            <div class="selection-step">
+              <p class="selection-question">Do you want to require attribution for your work?</p>
+              <div class="selection-buttons">
+                <div class="selection-button selection-button-no"><button type="button" class="button is-outlined"><span class="icon is-small"><i class="mdi mdi-times"></i></span> <span>
+                No
+            </span>
+                    <!----></button></div>
+                <div class="selection-button selection-button-yes"><button type="button" class="button is-dark"><span class="icon is-small"><i class="mdi mdi-check"></i></span> <span>
+                Yes
+            </span>
+                    <!----></button></div>
+              </div>
+              <p>Anyone using your work must give <b>appropriate credit</b> to the author, provide a <b>link to the license</b>, and <b>indicate if changes were made.</b></p>
+              <hr>
+            </div>
+          </div>
+          <div class="step-item" style="display: none;">
+            <div class="selection-step">
+              <p class="selection-question">Do you want to prohibit others distributing your work if they remix, transform or build upon it?</p>
+              <div class="selection-buttons">
+                <div class="selection-button selection-button-no"><button type="button" class="button is-dark"><span class="icon is-small"><i class="mdi mdi-times"></i></span> <span>
+                No
+            </span>
+                    <!----></button></div>
+                <div class="selection-button selection-button-yes"><button type="button" class="button is-outlined"><span class="icon is-small"><i class="mdi mdi-check"></i></span> <span>
+                Yes
+            </span>
+                    <!----></button></div>
+              </div>
+              <p>Anyone may <b>remix, transform, or build upon your work and distribute</b> the modified material.</p>
+              <hr>
+            </div>
+          </div>
+          <div class="step-item" style="display: none;">
+            <div class="selection-step">
+              <p class="selection-question">Do you want to prohibit others commercial use of your work?</p>
+              <div class="selection-buttons">
+                <div class="selection-button selection-button-no"><button type="button" class="button is-dark"><span class="icon is-small"><i class="mdi mdi-times"></i></span> <span>
+                No
+            </span>
+                    <!----></button></div>
+                <div class="selection-button selection-button-yes"><button type="button" class="button is-outlined"><span class="icon is-small"><i class="mdi mdi-check"></i></span> <span>
+                Yes
+            </span>
+                    <!----></button></div>
+              </div>
+              <p>The licensor permits others to use the work, including for <b>commercial purposes.</b></p>
+              <hr>
+            </div>
+          </div>
+          <div class="step-item" style="display: none;">
+            <div class="selection-step">
+              <p class="selection-question">Do you want to prohibit sharing your work under other terms?</p>
+              <div class="selection-buttons">
+                <div class="selection-button selection-button-no"><button type="button" class="button is-dark"><span class="icon is-small"><i class="mdi mdi-times"></i></span> <span>
+                No
+            </span>
+                    <!----></button></div>
+                <div class="selection-button selection-button-yes"><button type="button" class="button is-outlined"><span class="icon is-small"><i class="mdi mdi-check"></i></span> <span>
+                Yes
+            </span>
+                    <!----></button></div>
+              </div>
+              <p>Anyone who remixes, transforms or builds upon your work can distribute their contributions <b>under a different license</b>.</p>
+              <hr>
+            </div>
+          </div>
+          <div class="step-item" style="display: none;">
+            <section class="pers-form">
+              <div class="field is-floating-in-label"><label class="label">Work Author</label>
+                <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="John Silver" class="input">
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+                <!---->
+              </div>
+              <div class="field is-floating-in-label"><label class="label">Title of Work</label>
+                <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="This work" class="input">
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+                <!---->
+              </div>
+              <div class="field is-floating-in-label"><label class="label">Work URL</label>
+                <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="https://www.example.com/image.jpg" class="input">
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+                <!---->
+              </div>
+              <div class="field is-floating-in-label"><label class="label">URL of the Source Work</label>
+                <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="https://www.example.com/source.jpg" class="input">
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+                <!---->
+              </div>
+            </section>
+          </div>
+        </section>
+        <nav class="step-navigation"><a role="button" disabled="disabled" class="pagination-previous"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-left mdi-24px"></i></span></a> <a role="button" class="pagination-next"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a></nav>
+      </div>
     </div>
   </div>
 </div>

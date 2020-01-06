@@ -1,39 +1,36 @@
 <template>
     <div id='attribution-richtext-container'>
         <div id='attribution-richtext' class='photo_usage-attribution' ref='photoAttribution'>
-            <a :href='value.personalDetails.workUrl'
-               v-if='value.personalDetails.workTitle && value.personalDetails.workUrl'
+            <p>
+            <a v-if='value.attributionDetails.workTitle && value.attributionDetails.workUrl'
+               :href='value.attributionDetails.workUrl'
                target='_blank'
-               rel='noopener'>'{{ value.personalDetails.workTitle }}'
+               rel='noopener'>'{{ value.attributionDetails.workTitle }}'
             </a>
-            <a v-if='!value.personalDetails.workTitle && value.personalDetails.workUrl'
-               :href='value.personalDetails.workUrl'>
+            <a v-if='!value.attributionDetails.workTitle && value.attributionDetails.workUrl'
+               :href='value.attributionDetails.workUrl'>
                 This work
             </a>
-            <p v-if='!value.personalDetails.workTitle && !value.personalDetails.workUrl'>This work</p>
-            <p v-if='value.personalDetails.workTitle && !value.personalDetails.workUrl'>{{ value.personalDetails.workTitle }}</p>
-            <span v-if='value.personalDetails.authorName'>
+                <span v-if='!value.attributionDetails.workTitle && !value.attributionDetails.workUrl'>This work</span>
+                <span v-if='value.attributionDetails.workTitle && !value.attributionDetails.workUrl'>{{ value.attributionDetails.workTitle }}</span>
+            <span v-if='value.attributionDetails.creatorName'>
                 by
-                <a v-if='value.personalDetails.attributeToURL'
-                   :href='value.personalDetails.attributeToURL'
+                <a v-if='value.attributionDetails.attributeToURL'
+                   :href='value.attributionDetails.attributeToURL'
                    target='_blank'
-                   rel='noopener'>{{ value.personalDetails.authorName }}
+                   rel='noopener'>{{ value.attributionDetails.creatorName }}
                 </a>
-                <span v-else>{{ value.personalDetails.authorName }}</span>
+                <span v-else>{{ value.attributionDetails.creatorName }}</span>
             </span>
             is licensed under
             <a class='photo_license' :href='licenseURL' target='_blank' rel='noopener'>
                 {{ value.shortName }}
             </a>
-            <span v-if="value.personalDetails.sourceWorkUrl">
-                Based on work at
-                <a :href="value.personalDetails.sourceWorkUrl">
-                    {{ value.personalDetails.sourceWorkUrl }}
-                </a>.
-            </span>
+
             <LicenseIcons
                 :url='licenseURL'
                 :iconsArr='iconsArr'/>
+        </p>
         </div>
 
     </div>

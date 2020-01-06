@@ -1,9 +1,9 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import PersonalizationStep from '@/components/PersonalizationStep'
+import AttributionDetailsStep from '@/components/AttributionDetailsStep'
 import Buefy from 'buefy'
 import LicenseUtilities from '@/utils/license-utilities'
 
-describe('PersonalizationStep.vue', () => {
+describe('AttributionDetailsStep.vue', () => {
     let wrapper
 
     // Always creates a shallow instance of component
@@ -12,7 +12,7 @@ describe('PersonalizationStep.vue', () => {
         localVue.use(Buefy)
         localVue.use(LicenseUtilities)
 
-        wrapper = mount(PersonalizationStep, {
+        wrapper = mount(AttributionDetailsStep, {
             localVue,
             propsData: {
                 value: {

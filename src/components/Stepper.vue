@@ -2,10 +2,10 @@
     <div class='column'>
         <div id="stepper" class="card">
             <header class="card-header">
-                <h2 :class="'vocab-h2'">Select Your License</h2>
+                <h2 :class="'vocab-h2'">{{ $t('select-license-heading') }}</h2>
             </header>
             <div class="card-content">
-            <p :class="'stepper-instructions'">Follow the steps below to select your Creative Commons License</p>
+            <p :class="'stepper-instructions'">{{ $t('select-license-instructions') }}</p>
             <b-steps size="is-small">
                 <b-step-item
                     v-for="item in this.licenses"
@@ -25,14 +25,14 @@
                     />
                 </b-step-item>
                 <b-step-item
-                    label="Personalize Your License"
+                    :label="this.$t('AttributionDetailsLabel')"
                     :clickable=true
                     icon="check"
-                    :type="'personalization'"
+                    :type="'attributionDetails'"
                     :visible="isStepVisible('')"
                 >
-                    <PersonalizationStep
-                        v-model="value.personalDetails"
+                    <AttributionDetailsStep
+                        v-model="value.attributionDetails"
                     />
                 </b-step-item>
             </b-steps>
@@ -43,38 +43,38 @@
 <script>
 
 import SelectionStep from './SelectionStep'
-import PersonalizationStep from './PersonalizationStep'
+import AttributionDetailsStep from './AttributionDetailsStep'
 
 export default {
-    name: 'SelectionStepper',
+    name: 'Stepper',
     props: ['value'],
     components: {
         SelectionStep,
-        PersonalizationStep
+        AttributionDetailsStep
     },
     data() {
         return {
             licenses: [
                 {
-                    label: 'Attribution',
+                    label: this.$t('AttributionLabel'),
                     shortName: 'BY',
                     'icon-pack': 'fab',
                     icon: 'creative-commons-by'
                 },
                 {
-                    label: 'Non Derivative',
+                    label: this.$t('NoDerivativesLabel'),
                     shortName: 'ND',
                     'icon-pack': 'fab',
                     icon: 'creative-commons-nd'
                 },
                 {
-                    label: 'Non Commercial',
+                    label: this.$t('NonCommercialLabel'),
                     shortName: 'NC',
                     'icon-pack': 'fab',
                     icon: 'creative-commons-nc'
                 },
                 {
-                    label: 'Share-Alike',
+                    label: this.$t('Share-AlikeLabel'),
                     shortName: 'SA',
                     'icon-pack': 'fab',
                     icon: 'creative-commons-sa'
@@ -252,7 +252,7 @@ export default {
             border: 1px solid #e0e0e0!important;
         }
 
-        li.personalization {
+        li.attributionDetails {
             a > div > span > svg {
                 font-size:1.5rem!important;
                 border-radius: 50%;
@@ -275,7 +275,7 @@ export default {
             }
         }
 
-        li.personalization>a>div>span>svg{
+        li.attributionDetails>a>div>span>svg{
 
         }
     }
