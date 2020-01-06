@@ -3,16 +3,16 @@
         <h2
             :class="'vocab-h2'"
         >
-            Use Your License</h2>
+            {{this.$t('use-license-heading')}}</h2>
         <b-tabs
             class="attribution-tab"
             v-model="activeTab"
         >
-            <b-tab-item label="Rich Text">
+            <b-tab-item :label="this.$t('rich-text-label')">
                 <AttributionRichText
                     v-model="value"/>
             </b-tab-item>
-            <b-tab-item label="HTML">
+            <b-tab-item :label="this.$t('html-label')">
                 <div class='control' id='generated-html-container'>
                     <textarea id='attribution-html'
                               class='textarea'
@@ -56,17 +56,17 @@ export default {
             success: false,
             clipboard: null,
             currentTab: 0,
-            copyText: 'Copy',
+            copyText: this.$t('copy-label'),
             currentSelection: 'richtext'
         }
     },
     methods: {
         attributionHTML() {
             return attributionHtml({
-                workUrl: this.$props.value.personalDetails.workUrl,
-                workTitle: this.$props.value.personalDetails.workTitle,
-                authorName: this.$props.value.personalDetails.authorName,
-                sourceWorkUrl: this.$props.value.personalDetails.sourceWorkUrl
+                workUrl: this.$props.value.attributionDetails.workUrl,
+                workTitle: this.$props.value.attributionDetails.workTitle,
+                creatorName: this.$props.value.attributionDetails.creatorName,
+                creatorProfileUrl: this.$props.value.attributionDetails.creatorProfileUrl
             },
             this.licenseURL,
             this.$props.value.shortName
@@ -101,7 +101,7 @@ export default {
                     this.currentSelection = this.currentTab === 0 ? 'richtext' : 'html'
                     const tab = this.currentTab
                     this.currentTab = 2
-                    this.copyText = 'Copied!'
+                    this.copyText = this.$t('copied-label')
                     setTimeout(() => {
                         this.currentTab = tab
                     }, 1)

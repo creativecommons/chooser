@@ -1,5 +1,15 @@
 {
     "app-title": "License Chooser",
+    "AttributionLabel": "Attribution",
+    "NoDerivativesLabel": "NoDerivatives",
+    "NonCommercialLabel": "NonCommercial",
+    "Share-AlikeLabel": "Share-Alike",
+    "AttributionDetailsLabel": "Attribution Details",
+    "select-license-heading": "Select your license",
+    "select-license-instructions": "Go through the steps to choose your license. By default, the most open license with attribution is shown, and you can select features to restrict it",
+    "selected-license-heading": "Your license",
+    "selected-license-instructions": "If you already know which license you need, just select it in the dropdown below.",
+    "use-license-heading": "Use your licesne",
     "question-by": "Do you want to require attribution for your work?",
     "question-nc": "Do you want to prohibit others commercial use of your work?",
     "question-nd": "Do you want to prohibit others distributing your work if they remix, transform or build upon it?",
@@ -18,5 +28,9 @@
     "cc-by-nd-description": "CC BY-ND means that people using your work may not share any adaptations of your work, but they are free to distribute your work, even commercially, and must credit you",
     "cc-by-sa-description": "Similar to the CC BY license, BY-SA  allows others to distribute, remix, adapt, and build  upon your work, even commercially, as long as they credit you for the original creation, and share the  derivative work under the same license.",
     "cc-by-nc-sa-description": "CC BY-NC-SA means that others are free to distribute, remix, adapt, and build upon your work, as long as they credit you, and adaptations are shared under the same license, and as long as the work  is not used for commercial purposes.",
-    "cc-by-nc-nd-description": "CC BY-NC-ND means that others are free to distribute your work, but not for commercial purposes, and that others may not remix, adapt, or build upon your work. Others must credit you when using your work."
+    "cc-by-nc-nd-description": "CC BY-NC-ND means that others are free to distribute your work, but not for commercial purposes, and that others may not remix, adapt, or build upon your work. Others must credit you when using your work.",
+    "rich-text-label": "Rich Text",
+    "html-label": "HTML",
+    "copy-label": "Copy",
+    "copied-label": "Copied!"
 }
