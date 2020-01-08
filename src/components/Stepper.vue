@@ -10,7 +10,7 @@
                 <b-step-item
                     v-for="item in this.steps"
                     :icon-pack="item['icon-pack']"
-                    :icon="item.icon"
+                    :icon="getIcon(item.shortName)"
                     :label=$t(item.label)
                     :key="item.shortName"
                     :selected="isStepSelected(item.shortName)"
@@ -26,6 +26,7 @@
                     />
                     <CopyrightWaiverStep
                     v-if="item.itemType==='CC0Attribute'"
+                    :selected="true"
                     />
 
                     <AttributionDetailsStep
@@ -59,43 +60,37 @@ export default {
                     label: 'stepper-label.Attribution',
                     shortName: 'BY',
                     'icon-pack': 'fab',
-                    itemType: 'licenseAttribute',
-                    icon: this.getAttributionIcon()
+                    itemType: 'licenseAttribute'
                 },
                 {
                     label: 'stepper-label.NoDerivatives',
                     shortName: 'ND',
                     'icon-pack': 'fab',
-                    itemType: 'licenseAttribute',
-                    icon: 'creative-commons-nd'
+                    itemType: 'licenseAttribute'
                 },
                 {
                     label: 'stepper-label.NonCommercial',
                     shortName: 'NC',
                     'icon-pack': 'fab',
-                    itemType: 'licenseAttribute',
-                    icon: 'creative-commons-nc'
+                    itemType: 'licenseAttribute'
                 },
                 {
                     label: 'stepper-label.Share-Alike',
                     shortName: 'SA',
                     'icon-pack': 'fab',
-                    itemType: 'licenseAttribute',
-                    icon: 'creative-commons-sa'
+                    itemType: 'licenseAttribute'
                 },
                 {
                     label: 'stepper-label.CopyrightWaiver',
                     shortName: 'wv',
                     'icon-pack': 'fas',
-                    itemType: 'CC0Attribute',
-                    icon: 'exclamation-circle'
+                    itemType: 'CC0Attribute'
                 },
                 {
                     label: 'stepper-label.AttributionDetails',
                     shortName: 'ad',
                     'icon-pack': 'fas',
-                    itemType: 'AttributionDetails',
-                    icon: 'check'
+                    itemType: 'AttributionDetails'
                 }
             ]
         }
@@ -107,7 +102,18 @@ export default {
     },
     methods: {
         getAttributionIcon() {
-            return this.isStepSelected('BY') ? 'creative-commons-by' : 'creative-commons-zero'
+            return this.$props.value.shortName.includes('BY') ? 'creative-commons-by' : 'creative-commons-zero'
+        },
+        getIcon(attrName) {
+            if (attrName === 'BY') {
+                return this.getAttributionIcon()
+            } else if (attrName === 'wv') {
+                return 'exclamation-circle'
+            } else if (attrName === 'ad') {
+                return 'check'
+            } else {
+                return `creative-commons-${attrName.toLowerCase()}`
+            }
         },
         updateLicense(itemId) {
             const attrs = { ...this.licenseAttributes }
@@ -143,7 +149,7 @@ export default {
             return base
         },
         attributeType(attrName) {
-            if (this.$props.value.shortName.includes(attrName)) {
+            if (attrName === 'BY' || attrName === 'wv' || attrName === 'ad' || this.$props.value.shortName.includes(attrName)) {
                 return 'selected'
             } else { return 'unselected' }
         },
