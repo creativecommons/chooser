@@ -48,5 +48,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+    div.card {
+        height: 540px;
+    }
+    @media only screen and (max-width: 670px) {
+        div.card {
+            height: auto;
+        }
+    }
 </style>

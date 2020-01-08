@@ -76,11 +76,6 @@ export default {
         color: #2c3e50;
     }
 
-    hr {
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-
     #site-container {
         padding-top: 2rem;
         padding-bottom: 2%;

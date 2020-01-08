@@ -141,6 +141,7 @@ export default {
 
 <style lang="scss">
     div#stepper.card{
+        height: 540px;
         div.card-content{
             p.stepper-instructions {
                 padding-bottom: 1.4rem;
@@ -234,6 +235,7 @@ export default {
                 }
                 section.step-content {
                     padding-bottom: 0;
+                    height: 300px;
                 }
                 nav.step-navigation {
                     display: flex;
@@ -274,9 +276,13 @@ export default {
                 }
             }
         }
-
-        li.personalization>a>div>span>svg{
-
+    }
+    @media only screen and (max-width: 670px) {
+        div.card {
+            height: auto;
+        }
+        section.step-content {
+            height: auto;
         }
     }
 </style>
