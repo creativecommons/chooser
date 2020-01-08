@@ -8,30 +8,28 @@
             <p :class="'stepper-instructions'">{{ $t('select-license-instructions') }}</p>
             <b-steps size="is-small">
                 <b-step-item
-                    v-for="item in this.licenses"
-                    :label="item.label"
+                    v-for="item in this.steps"
                     :icon-pack="item['icon-pack']"
                     :icon="item.icon"
-                    v-bind:key="item.shortName"
+                    :label=$t(item.label)
+                    :key="item.shortName"
                     :selected="isStepSelected(item.shortName)"
                     :visible="isStepVisible(item.shortName)"
                     :clickable=true
                     :type="attributeType(item.shortName)"
                 >
                     <SelectionStep
+                        v-if="item.itemType==='licenseAttribute'"
                         :selected="isStepSelected(item.shortName)"
                         :stepId="item.shortName"
                         v-on:input="updateLicense(item.shortName)"
                     />
-                </b-step-item>
-                <b-step-item
-                    :label="this.$t('AttributionDetailsLabel')"
-                    :clickable=true
-                    icon="check"
-                    :type="'attributionDetails'"
-                    :visible="isStepVisible('')"
-                >
+                    <CopyrightWaiverStep
+                    v-if="item.itemType==='CC0Attribute'"
+                    />
+
                     <AttributionDetailsStep
+                        v-if="item.itemType==='AttributionDetails'"
                         v-model="value.attributionDetails"
                     />
                 </b-step-item>
@@ -44,40 +42,60 @@
 
 import SelectionStep from './SelectionStep'
 import AttributionDetailsStep from './AttributionDetailsStep'
+import CopyrightWaiverStep from './CopyrightWaiverStep'
 
 export default {
     name: 'Stepper',
     props: ['value'],
     components: {
         SelectionStep,
-        AttributionDetailsStep
+        AttributionDetailsStep,
+        CopyrightWaiverStep
     },
     data() {
         return {
-            licenses: [
+            steps: [
                 {
-                    label: this.$t('AttributionLabel'),
+                    label: 'stepper-label.Attribution',
                     shortName: 'BY',
                     'icon-pack': 'fab',
-                    icon: 'creative-commons-by'
+                    itemType: 'licenseAttribute',
+                    icon: this.getAttributionIcon()
                 },
                 {
-                    label: this.$t('NoDerivativesLabel'),
+                    label: 'stepper-label.NoDerivatives',
                     shortName: 'ND',
                     'icon-pack': 'fab',
+                    itemType: 'licenseAttribute',
                     icon: 'creative-commons-nd'
                 },
                 {
-                    label: this.$t('NonCommercialLabel'),
+                    label: 'stepper-label.NonCommercial',
                     shortName: 'NC',
                     'icon-pack': 'fab',
+                    itemType: 'licenseAttribute',
                     icon: 'creative-commons-nc'
                 },
                 {
-                    label: this.$t('Share-AlikeLabel'),
+                    label: 'stepper-label.Share-Alike',
                     shortName: 'SA',
                     'icon-pack': 'fab',
+                    itemType: 'licenseAttribute',
                     icon: 'creative-commons-sa'
+                },
+                {
+                    label: 'stepper-label.CopyrightWaiver',
+                    shortName: 'wv',
+                    'icon-pack': 'fas',
+                    itemType: 'CC0Attribute',
+                    icon: 'exclamation-circle'
+                },
+                {
+                    label: 'stepper-label.AttributionDetails',
+                    shortName: 'ad',
+                    'icon-pack': 'fas',
+                    itemType: 'AttributionDetails',
+                    icon: 'check'
                 }
             ]
         }
@@ -88,13 +106,16 @@ export default {
         }
     },
     methods: {
+        getAttributionIcon() {
+            return this.isStepSelected('BY') ? 'creative-commons-by' : 'creative-commons-zero'
+        },
         updateLicense(itemId) {
             const attrs = { ...this.licenseAttributes }
             attrs[itemId] = !attrs[itemId]
             this.$emit('input', {
                 shortName: this.shortLicenseName(attrs),
                 fullName: this.fullLicenseName(attrs),
-                personalDetails: this.$props.value.personalDetails
+                attributionDetails: this.$props.value.attributionDetails
             })
         },
         shortLicenseName(attr) {
@@ -131,9 +152,9 @@ export default {
         },
         isStepVisible(attrName) {
             if (this.$props.value.shortName.includes('CC0')) {
-                return attrName === 'BY'
+                return (attrName === 'BY' || attrName === 'wv' || attrName === 'ad')
             }
-            return !(this.$props.value.shortName.includes('ND') && attrName === 'SA')
+            return !(this.$props.value.shortName.includes('ND') && attrName === 'SA') && !(attrName === 'wv')
         }
     }
 }
@@ -176,6 +197,7 @@ export default {
                                     span.step-title {
                                         font-size:0.875rem;
                                         line-height:1;
+                                        white-space: nowrap;
                                     }
                                 }
                             }
@@ -215,12 +237,12 @@ export default {
                                 a.step-link {
                                     div.step-marker {
                                         span > svg > path {
-                                            opacity: 50% !important;
+                                            opacity: 40% !important;
                                         }
                                     }
                                     div.step-details span.step-title {
-                                        font-weight: 400;
-                                        opacity: 50%;
+                                        font-weight: 500;
+                                        opacity: 60%;
                                     }
                                 }
                             }
@@ -235,11 +257,11 @@ export default {
                 }
                 section.step-content {
                     padding-bottom: 0;
-                    height: 300px;
+                    height: 280px;
                 }
                 nav.step-navigation {
                     display: flex;
-                    margin: 0.5rem 1rem 0.5rem auto;
+                    margin: 0 1rem 0.5rem auto;
                     justify-content: flex-end;
                     a.pagination-previous {
                         margin-left: auto;

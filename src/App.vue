@@ -68,7 +68,7 @@ export default {
 </style>
 <style>
 
-    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
+    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A%20400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
 
     #app {
         -webkit-font-smoothing: antialiased;

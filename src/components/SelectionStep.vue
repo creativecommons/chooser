@@ -1,6 +1,6 @@
 <template>
     <div class="selection-step">
-        <p class="selection-question">{{ question }}</p>
+        <p class="selection-question">{{ this.$t(question) }}</p>
         <div class="selection-buttons">
             <div class="selection-button selection-button-no">
                 <b-button
@@ -21,7 +21,7 @@
                 </b-button>
             </div>
         </div>
-        <p v-html="currentText"/>
+        <p v-html="$t(currentText)"/>
         <hr>
     </div>
 </template>
@@ -39,14 +39,11 @@ export default {
     },
     computed: {
         question() {
-            const keyToSelect = `question-${this.stepId.toLowerCase()}`
-            return this.$t(keyToSelect)
+            return `stepper-question.${this.stepId.toLowerCase()}`
         },
-
         currentText() {
             const selectedModifier = this.isSelected ? '' : 'not-'
-            const key = `short-description-${selectedModifier}selected-${this.stepId.toLowerCase()}`
-            return this.$t(key)
+            return `stepper-description.${this.stepId.toLowerCase()}.${selectedModifier}selected`
         },
         isSelected: {
             get() { return this.selected },
