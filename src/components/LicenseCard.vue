@@ -50,6 +50,7 @@ export default {
 <style lang="scss" scoped>
     div.card {
         height: 540px;
+        border-top: 10px solid #04A635;
     }
     @media only screen and (max-width: 670px) {
         div.card {

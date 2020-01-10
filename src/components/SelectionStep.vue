@@ -1,32 +1,42 @@
 <template>
     <div class="selection-step">
         <p class="selection-question">{{ this.$t(question) }}</p>
-        <div class="selection-buttons">
-            <div class="selection-button selection-button-no">
-                <b-button
-                    icon-left=times
-                    :type=this.noButtonType
-                    :outlined=noButtonOutlined
-                    @click="update(false)">
-                    No
-                </b-button>
-            </div>
-            <div class="selection-button selection-button-yes">
-                <b-button
-                    icon-left=check
-                    :type=this.yesButtonType
-                    :outlined=yesButtonOutlined
-                    @click="update(true)">
-                    Yes
-                </b-button>
-            </div>
+        <div class="selection-choice selection-yes"
+             :class="yesClass"
+             @click="update(true)">
+            <b-button
+                icon-left=check
+                type="is-primary"
+                inverted
+                outlined
+                @click="update(true)">
+                Yes
+            </b-button>
+            <p :class="yesClass"
+               v-html="$t(yesText)"/>
+
         </div>
-        <p v-html="$t(currentText)"/>
-        <hr>
+
+        <div class="selection-choice selection-no"
+             :class="noClass"
+             @click="update(false)">
+
+            <b-button
+                icon-left=times
+                type="is-primary"
+                inverted
+                outlined
+                @click="update(false)">
+                No
+            </b-button>
+            <p :class="noClass"
+                v-html="$t(noText)"/>
+        </div>
     </div>
 </template>
 
 <script>
+
 export default {
     name: 'SelectionStep',
     props: ['selected', 'stepId'],
@@ -41,9 +51,11 @@ export default {
         question() {
             return `stepper-question.${this.stepId.toLowerCase()}`
         },
-        currentText() {
-            const selectedModifier = this.isSelected ? '' : 'not-'
-            return `stepper-description.${this.stepId.toLowerCase()}.${selectedModifier}selected`
+        yesText() {
+            return `stepper-description.${this.stepId.toLowerCase()}.selected`
+        },
+        noText() {
+            return `stepper-description.${this.stepId.toLowerCase()}.not-selected`
         },
         isSelected: {
             get() { return this.selected },
@@ -62,6 +74,12 @@ export default {
         },
         noButtonOutlined() {
             return this.isSelected
+        },
+        yesClass() {
+            return this.isSelected ? 'selected' : 'not-selected'
+        },
+        noClass() {
+            return this.isSelected ? 'not-selected' : 'selected'
         }
     },
     watch: {
@@ -72,25 +90,31 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .selection-question {
-        text-align: center;
         margin-bottom: 1rem;
-        font-weight: 600;
+        color:white;
     }
-    .selection-buttons {
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 2rem;
-        margin-bottom:1rem;
+    .selection-choice {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        grid-gap: 1rem;
+        padding: 1rem 3rem;
+        margin-left: -3rem;
+        margin-right: -3rem;
+        border-top: 1px dotted white;
+        border-bottom: 1px dotted white;
+        &:hover {
+            background-color: #FB7729;
+         }
     }
-    .selection-button {
-        align-self: center;
+    p.selected {
+        color:white;
     }
-    .selection-button-no {
-        justify-self: end;
-    }
-    .selection-button-yes {
-        justify-self: start;
+    div.selection-choice.selected {
+        background-color: darken(#05B5DA, 10%);
+        &:hover {
+            background-color: #FB7729;
+        }
     }
 </style>

@@ -57,20 +57,20 @@ export default {
         return {
             steps: [
                 {
-                    label: 'stepper-label.Attribution',
+                    label: this.getAttributionName(),
                     shortName: 'BY',
-                    'icon-pack': 'fab',
-                    itemType: 'licenseAttribute'
-                },
-                {
-                    label: 'stepper-label.NoDerivatives',
-                    shortName: 'ND',
                     'icon-pack': 'fab',
                     itemType: 'licenseAttribute'
                 },
                 {
                     label: 'stepper-label.NonCommercial',
                     shortName: 'NC',
+                    'icon-pack': 'fab',
+                    itemType: 'licenseAttribute'
+                },
+                {
+                    label: 'stepper-label.NoDerivatives',
+                    shortName: 'ND',
                     'icon-pack': 'fab',
                     itemType: 'licenseAttribute'
                 },
@@ -103,6 +103,9 @@ export default {
     methods: {
         getAttributionIcon() {
             return this.$props.value.shortName.includes('BY') ? 'creative-commons-by' : 'creative-commons-zero'
+        },
+        getAttributionName() {
+            return this.$props.value.shortName.includes('BY') ? 'stepper-label.Attribution' : 'stepper-label.PublicDomain'
         },
         getIcon(attrName) {
             if (attrName === 'BY') {
@@ -167,12 +170,18 @@ export default {
 </script>
 
 <style lang="scss">
+    div#stepper .card-header {
+        border-top: 10px solid #05B5DA;
+        padding-bottom: 1rem;
+        box-shadow: none;
+        color:white;
+    }
     div#stepper.card{
         height: 540px;
+        background-color: #05B5DA;
         div.card-content{
             p.stepper-instructions {
                 padding-bottom: 1.4rem;
-                text-align: center;
                 font-size: 0.875em;
                 opacity: 90%;
             }
@@ -180,20 +189,16 @@ export default {
                 nav.steps {
                     ul.step-items {
                         li.step-item {
-                            background-color:white;
+                            background-color:#05B5DA;
                             a.step-link {
                                 div.step-marker {
                                     // This is the element that shows border/ circle
-                                    background:white!important;
-                                    width: 2.6rem;
-                                    height: 2.6rem;
-                                    left: calc(50% - 1.2rem);
-                                    top: -11%;
+                                    background-color:#05B5DA;
                                     span.icon {
                                         svg {
                                             font-size:2rem;
                                             path {
-                                                fill: black;
+                                                /*fill: black;*/
                                             }
                                         }
                                     }
@@ -208,28 +213,36 @@ export default {
                                 }
                             }
                             &.is-active {
+                                a div.step-marker {
+                                    background:white!important;
+                                    width: 2.6rem;
+                                    height: 2.6rem;
+                                    left: calc(50% - 1.2rem);
+                                    top: -11%;
+                                }
                                 svg {
                                     width:2.3rem!important;
                                     height:2.3rem!important;
                                     path {
-                                        fill: #ED592F!important;
+                                        /*fill: #ED592F!important;*/
                                     }
                                 }
                                 div.step-details span.step-title {
                                     font-weight: 800;
                                     color: #ED592F;
+                                    text-decoration: underline;
                                 }
                                 &.unselected {
                                     a div.step-marker {
-                                        border-color: #F6AC98;
-                                        border-width: 2px;
+                                        /*border-color: #F6AC98;*/
+                                        /*border-width: 2px;*/
                                     }
                                 }
                             }
                             &.selected {
                                 a.step-link {
                                     div.step-marker {
-                                        background:white!important;
+                                        /*background:white!important;*/
                                         span>svg>path {
                                             opacity: 100%!important;
                                         }
@@ -243,7 +256,7 @@ export default {
                                 a.step-link {
                                     div.step-marker {
                                         span > svg > path {
-                                            opacity: 40% !important;
+                                            /*opacity: 40% !important;*/
                                         }
                                     }
                                     div.step-details span.step-title {
@@ -312,5 +325,13 @@ export default {
         section.step-content {
             height: auto;
         }
+    }
+    .selection-question {
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 23px;
+        line-height: 33px;
+        color: #333333;
     }
 </style>

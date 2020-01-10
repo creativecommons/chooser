@@ -45,18 +45,24 @@ export default {
 }
 </script>
 <style lang="scss">
+    .column {
+        padding:0!important;
+    }
     header.card-header {
         justify-content: center;
+        padding-top:1rem;
         h2.vocab-h2 {
+            font-family: Roboto Condensed;
             font-style: normal;
             font-weight: bold;
-            font-size: 25px;
-            line-height: 38px;
-            color: #333333;
-            margin: 1.5% auto;
+            font-size: 28px;
+            line-height: 36px;
+            /* identical to box height, or 129% */
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
     }
     div.card-content {
-        padding-top: 0.5rem;
+        padding: 0.5rem 2rem 2rem;
     }
 </style>

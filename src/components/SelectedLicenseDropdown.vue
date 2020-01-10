@@ -1,9 +1,6 @@
 <template>
     <div class="license-dropdown">
-        <p
-            :class="'dropdown-instruction'">
-            If you already know which license you need, just select it in the dropdown below.</p>
-        <b-field label="Current selection">
+        <b-field label="You can select the license you need in the dropdown below:">
             <b-select placeholder="Creative Commons License"
                       v-model="currentLicense">
                 <option
@@ -64,31 +61,33 @@ export default {
 </script>
 <style lang="scss">
     div.license-dropdown {
-        p.dropdown-instruction{
-            padding-bottom: 1.4rem;
-            text-align: center;
-            font-size: 0.875em;
+        margin-top: 1rem;
+        label.label{
+            font-weight: normal;
             opacity: 90%;
         }
-        div.field {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            grid-gap: 5px;
-            label.label {
-                font-style: normal;
-                font-weight: bold;
-                font-size: 20px;
-                line-height: 30px;
-                color: #333333;
-            }
-            div.control {
-                span.select {
-                    width: 100%;
-                    select {
-                        width: 100%;
-                    }
-                }
-            }
+        span.select, select {
+            width: 100%;
         }
+        /*div.field {*/
+        /*    display: grid;*/
+        /*    grid-template-columns: 1fr 2fr;*/
+        /*    grid-gap: 5px;*/
+        /*    label.label {*/
+        /*        font-style: normal;*/
+        /*        font-weight: bold;*/
+        /*        font-size: 20px;*/
+        /*        line-height: 30px;*/
+        /*        color: #333333;*/
+        /*    }*/
+        /*    div.control {*/
+        /*        span.select {*/
+        /*            width: 100%;*/
+        /*            select {*/
+        /*                width: 100%;*/
+        /*            }*/
+        /*        }*/
+        /*    }*/
+        /*}*/
     }
 </style>

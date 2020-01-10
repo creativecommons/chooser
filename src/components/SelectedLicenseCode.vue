@@ -126,10 +126,14 @@ export default {
     div.license-code {
         margin-top: 1rem;
         h2.vocab-h2{
+            font-family: Roboto Condensed;
+            font-style: normal;
             font-weight: bold;
-            font-size: 25px;
-            line-height: 38px;
-            color: #333333;
+            font-size: 28px;
+            line-height: 36px;
+            /* identical to box height, or 129% */
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
         div.attribution-tab {
             margin-bottom: 0;
@@ -152,6 +156,7 @@ export default {
                         }
                         &:last-of-type{
                             margin-left: auto;
+                            margin-bottom: -1px;
                             a {
                                 padding:0;
                             }

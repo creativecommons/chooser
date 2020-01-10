@@ -3,21 +3,19 @@
         <h4>
             <a :href="this.$licenseUrl(value.shortName)">{{ value.fullName }}</a>
         </h4>
-        <hr class="h4-underline"/>
             <section class="license-visual-info">
                 <ul class="license-list">
-                <transition-group name="highlight">
-                    <li v-for="item in iconsList"
-                        :key="item">
-                        <LicenseIconography
-                            :icon-list="[item]"/>
-                        <span class="readable-string">
-                            {{ readableString(item)}}
-                        </span>
-                    </li>
-                </transition-group>
-
-            </ul>
+                    <transition-group name="highlight">
+                        <li v-for="item in iconsList"
+                            :key="item">
+                            <LicenseIconography
+                                :icon-list="[item]"/>
+                            <span class="readable-string">
+                                {{ readableString(item)}}
+                            </span>
+                        </li>
+                    </transition-group>
+                </ul>
                 <a href="https://creativecommons.org/freeworks">
                     <div v-if="this.freeWorkStatus" class="license-freeworks-status">
                         <img src="../assets/license-icons/fc_approved_small.png" alt="">
@@ -78,19 +76,20 @@ export default {
         h4 {
             line-height: 2;
             font-weight: 600;
-            margin-top: 1rem;
-        }
-        hr.h4-underline {
-            margin: 0 0 0.5rem;
-            background-color: #ED592F;
+            /*margin-top: 1rem;*/
+            margin-left:0.7rem;
+            a {
+                text-decoration: underline;
+            }
         }
         section.license-visual-info {
             display:grid;
             grid-template-columns: 3fr 1fr;
             ul.license-list {
                 height: 87px;
-
+                margin-top:0.5rem;
                 li {
+                    margin-left:0.7rem;
                     span.license-icons {
                         svg {
                             width: 25px !important;
@@ -100,7 +99,7 @@ export default {
 
                     span.readable-string {
                         vertical-align: top;
-                        padding-left: 20px;
+                        padding-left: 0.5rem;
                         font-weight: 500;
                     }
                 }

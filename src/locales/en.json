@@ -2,6 +2,7 @@
     "app-title": "License Chooser",
     "stepper-label": {
         "Attribution": "Attribution",
+        "PublicDomain": "Public Domain",
         "NoDerivatives": "NoDerivatives",
         "NonCommercial": "NonCommercial",
         "Share-Alike": "Share-Alike",
@@ -17,21 +18,21 @@
     },
     "stepper-description": {
         "by": {
-            "selected": "Anyone using your work must give <b>appropriate credit</b> to the author, provide a <b>link to the license</b>, and <b>indicate if changes were made.</b>",
-            "not-selected":"Anyone can copy, modify, distribute and perform the work, <b>even for commercial purposes</b>, all <b>without asking permission.</b>"
+            "selected": "Anyone using your work must give <b>appropriate credit</b>.",
+            "not-selected":"Others can use your work even <b>without attribution</b>."
         },
         "nc": {
-            "selected": "The licensor permits others to copy, distribute, display, and perform the work for <b>non-commercial purposes only.</b>",
-            "not-selected":"The licensor permits others to use the work, including for <b>commercial purposes.</b>"
+            "selected": "Others can use your work only for <b>non-commercial purposes</b>.",
+            "not-selected":"Others can use your work even for <b>commercial purposes</b>."
         },
         "nd": {
-            "selected":"Anyone using your work must give <b>appropriate credit</b> to the author, provide a <b>link to the license</b>, and <b>indicate if changes were made.</b>",
-            "not-selected": "Anyone may <b>remix, transform, or build upon your work and distribute</b> the modified material."
+            "selected":"Your work can only be used <b>as-is, without modifications</b>.",
+            "not-selected": "Others may <b>remix, transform, or build upon your work</b> and distribute the modified material."
 
         },
         "sa": {
-            "selected":  "Anyone who remixes, transforms or builds upon your work <b>must distribute</b> their contributions <b>under the same license</b> as the original.",
-            "not-selected": "Anyone who remixes, transforms or builds upon your work can distribute their contributions <b>under a different license</b>."
+            "selected":  "Anyone who changes your work <b>must share their contributions under the same license</b> as the original.",
+            "not-selected": "Anyone who changes your work can distribute their contributions <b>under a different license</b>."
         }
        },
 
@@ -40,7 +41,7 @@
     "selected-license-heading": "Your license",
     "selected-license-instructions": "If you already know which license you need, just select it in the dropdown below.",
     "use-license-heading": "Use your license",
-    "cc0-description": "",
+    "cc0-description": "By using CC0, you waive all copyright and related rights\ntogether with all associated claims and causes of action with\nrespect to this work to the extent possible under the law.\nYou let others copy, modify, distribute, and perform the work,\neven for commercial purposes, all without asking permission.",
     "cc-by-description": "The CC BY license allows others to distribute, remix, adapt, and build upon your work, even commercially, as long as they credit you.",
     "cc-by-nc-description": "CC BY-NC allows others non-commercial use, distribution, adaptation of your work, as long as they credit you.",
     "cc-by-nd-description": "CC BY-ND means that people using your work may not share any adaptations of your work, but they are free to distribute your work, even commercially, and must credit you",
