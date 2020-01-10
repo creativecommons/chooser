@@ -38,8 +38,6 @@ export default {
     },
     methods: {
         goToAttributionDetails() {
-            this.$children[0].$children[0].changeStep(4)
-        goToAttributionDetails() {
             const lastStep = this.$children[0].$children[0].stepItems.length - 1
             this.$children[0].$children[0].changeStep(lastStep)
         }
