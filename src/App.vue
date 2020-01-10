@@ -29,12 +29,12 @@
 
 <script>
 // TODO Reduce custom styling in favour of Vocabulary styles
-import '@creativecommons/vocabulary/root.css'
-import '@creativecommons/vocabulary/vocabulary.css'
+import '@creativecommons/vocabulary/css/root.css'
+import '@creativecommons/vocabulary/css/vocabulary.css'
 
 import Chooser from './components/Chooser'
 import HelpSection from './components/HelpSection'
-import { Header, Footer, Locale } from '@creativecommons/vocabulary'
+import { Header, Footer, Locale } from '@creativecommons/vue-vocabulary'
 import Feedback from './components/Feedback'
 
 export default {
