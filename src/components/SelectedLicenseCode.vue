@@ -16,8 +16,9 @@
                 <div class='control' id='generated-html-container'>
                     <textarea id='attribution-html'
                               class='textarea'
-                              :value='attributionHTML()'
-                              readonly/>
+                              :value="htmlElement()"
+                              readonly
+                    />
                 </div>
             </b-tab-item>
             <b-tab-item
@@ -42,7 +43,7 @@
 </template>
 <script>
 import Clipboard from 'clipboard'
-import attributionHtml from '@/utils/attributionHtml'
+import { workAuthor, workLicense } from '@/utils/attributionHtml'
 import AttributionRichText from './AttributionRichText'
 
 export default {
@@ -61,16 +62,38 @@ export default {
         }
     },
     methods: {
-        attributionHTML() {
-            return attributionHtml({
-                workUrl: this.$props.value.attributionDetails.workUrl,
-                workTitle: this.$props.value.attributionDetails.workTitle,
+        authorElement() {
+            return workAuthor({
                 creatorName: this.$props.value.attributionDetails.creatorName,
                 creatorProfileUrl: this.$props.value.attributionDetails.creatorProfileUrl
-            },
-            this.licenseURL,
-            this.$props.value.shortName
-            )
+            })
+        },
+        titleElement() {
+            const workUrl = this.$props.value.attributionDetails.workUrl
+            const workTitle = this.$props.value.attributionDetails.workTitle
+            if (!workTitle && !workUrl) {
+                return this.$t('this-work')
+            } else {
+                const titleSpan = workTitle ? `<span  rel="dc:title">${workTitle}</span>` : this.$t('this-work')
+                if (workUrl) {
+                    return `<a rel="cc:attributionURL" href="${workUrl}">${titleSpan}</a>`
+                } else {
+                    return titleSpan
+                }
+            }
+        },
+        workLicenseElement() {
+            return workLicense(this.licenseURL,
+                this.$props.value.shortName)
+        },
+        htmlElement() {
+            const licenseText = this.$t('license-text', {
+                workTitle: this.titleElement(),
+                byLine: this.authorElement()
+            })
+            const licenseIcons = `<span class="license-icons">${this.workLicenseElement()}</span>`
+            return `<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">${licenseText}${licenseIcons}
+                </p>`
         },
         onCopySuccess(e) {
             this.success = true
@@ -131,7 +154,6 @@ export default {
             font-weight: bold;
             font-size: 28px;
             line-height: 36px;
-            /* identical to box height, or 129% */
             letter-spacing: 0.02em;
             text-transform: uppercase;
         }

@@ -56,6 +56,11 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+    .photo_usage-attribution p {
+        margin-top: 1rem;
+    }
+.photo-license-icon {
+    vertical-align: text-bottom;
+}
 </style>
