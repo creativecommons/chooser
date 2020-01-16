@@ -3,56 +3,47 @@
         <h4>
             <a :href="this.$licenseUrl(value.shortName)">{{ value.fullName }}</a>
         </h4>
-            <section class="license-visual-info">
-                <ul class="license-list">
-                    <transition-group name="highlight">
-                        <li v-for="item in iconsList"
-                            :key="item">
-                            <LicenseIconography
-                                :icon-list="[item]"/>
-                            <span class="readable-string">
-                                {{ readableString(item)}}
-                            </span>
-                        </li>
-                    </transition-group>
-                </ul>
-                <a href="https://creativecommons.org/freeworks">
-                    <div v-if="this.freeWorkStatus" class="license-freeworks-status">
-                        <img src="../assets/license-icons/fc_approved_small.png" alt="">
-                        <p>Free Culture License</p>
-                    </div>
-                    <div v-else class="license-freeworks-status">
-                        <img v-if="!this.freeWorkStatus" src="../assets/license-icons/fc_dubious.png" alt="">
-                        <p>Not a Free Culture License</p>
-                    </div>
-                </a>
-            </section>
-        <LicenseDescription
-            :selectedLicense="value.shortName"/>
+        <p id='chooser-selected-description'>
+            <b>{{this.value.shortName.slice(0, this.value.shortName.length-3)}}</b> {{
+            this.$t("license-description.common") }} <span
+            v-if="!value.fullName.includes('CC0')">{{this.$t("license-description.non-cc0")
+            }}</span>
+        </p>
+        <section class="license-visual-info">
+            <ul class="license-list">
+                <transition-group name="highlight">
+                    <li v-for="item in iconsList"
+                        :key="item">
+                        <LicenseIconography
+                            :icon-list="[item]"/>
+                        <span class="readable-string">
+                            {{ $t(`license-description.${item}`)}}
+                        </span>
+                    </li>
+                </transition-group>
+            </ul>
+            <a href="https://creativecommons.org/freeworks">
+                <div v-if="this.freeWorkStatus" class="license-freeworks-status">
+                    <img src="../assets/license-icons/fc_approved_small.png" alt="">
+                    <p>Free Culture License</p>
+                </div>
+                <div v-else class="license-freeworks-status">
+                    <img v-if="!this.freeWorkStatus" src="../assets/license-icons/fc_dubious.png" alt="">
+                    <p>Not a Free Culture License</p>
+                </div>
+            </a>
+        </section>
+
     </div>
 </template>
 <script>
-import LicenseDescription from './LicenseDescription'
 import LicenseIconography from './LicenseIconography'
 
 export default {
     name: 'SelectedLicenseInfo',
     props: ['value'],
     components: {
-        LicenseDescription,
         LicenseIconography
-    },
-    methods: {
-        readableString(shortString) {
-            const readableStrings = {
-                cc0: 'Public Domain',
-                by: 'The creator must be credited',
-                nc: 'Commercial use not permitted',
-                nd: 'No derivatives or modification permitted',
-                sa: 'Share allowed only on the same conditions'
-            }
-            return readableStrings[shortString] ? readableStrings[shortString] : 'Public Domain'
-        }
     },
     computed: {
         iconsList() {
@@ -61,6 +52,10 @@ export default {
         freeWorkStatus() {
             const short = this.$props.value.shortName.toLowerCase()
             return !(short.includes('nc') || short.includes('nd'))
+        },
+        licenseDescription() {
+            const descriptionString = `${this.$licenseSlug(this.selectedLicense)}-description`
+            return this.$t(descriptionString)
         }
     }
 }
@@ -87,9 +82,8 @@ export default {
             grid-template-columns: 3fr 1fr;
             ul.license-list {
                 height: 87px;
-                margin-top:0.5rem;
+                margin-top:0.3rem;
                 li {
-                    margin-left:0.7rem;
                     span.license-icons {
                         svg {
                             width: 25px !important;
@@ -120,5 +114,16 @@ export default {
         div {
             background-color:white;
         }
+    }
+    #chooser-selected-description {
+        margin-top: 2rem;
+    }
+    @media only screen and (max-width: 670px) {
+        p {
+            font-size: 14px;
+        }
+
+        .mobile-hide { display: none; }
+        .mobile-show { display: block; }
     }
 </style>

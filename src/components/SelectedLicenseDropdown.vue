@@ -1,6 +1,6 @@
 <template>
     <div class="license-dropdown">
-        <b-field label="You can select the license you need in the dropdown below:">
+        <b-field :label="this.$t('license-dropdown-label')">
             <b-select placeholder="Creative Commons License"
                       v-model="currentLicense">
                 <option
@@ -64,30 +64,11 @@ export default {
         margin-top: 1rem;
         label.label{
             font-weight: normal;
-            opacity: 90%;
+            opacity: 80%;
+            font-size: 1em;
         }
         span.select, select {
             width: 100%;
         }
-        /*div.field {*/
-        /*    display: grid;*/
-        /*    grid-template-columns: 1fr 2fr;*/
-        /*    grid-gap: 5px;*/
-        /*    label.label {*/
-        /*        font-style: normal;*/
-        /*        font-weight: bold;*/
-        /*        font-size: 20px;*/
-        /*        line-height: 30px;*/
-        /*        color: #333333;*/
-        /*    }*/
-        /*    div.control {*/
-        /*        span.select {*/
-        /*            width: 100%;*/
-        /*            select {*/
-        /*                width: 100%;*/
-        /*            }*/
-        /*        }*/
-        /*    }*/
-        /*}*/
     }
 </style>
