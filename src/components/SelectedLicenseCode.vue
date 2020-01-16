@@ -124,7 +124,7 @@ export default {
 </script>
 <style lang="scss">
     div.license-code {
-        margin-top: 1rem;
+        margin-top: 0.4rem;
         h2.vocab-h2{
             font-family: Roboto Condensed;
             font-style: normal;

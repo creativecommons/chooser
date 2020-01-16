@@ -1,5 +1,5 @@
 <template>
-    <div class='column'>
+    <div class='column is-three-fifths-tablet is-half-desktop'>
         <div id="stepper" class="card">
             <header class="card-header">
                 <h2 :class="'vocab-h2'">{{ $t('select-license-heading') }}</h2>
@@ -170,153 +170,84 @@ export default {
 </script>
 
 <style lang="scss">
+    .card {
+        height: 580px;
+    }
     div#stepper .card-header {
         border-top: 10px solid #05B5DA;
+        background-color: #05B5DA;
         padding-bottom: 1rem;
         box-shadow: none;
         color:white;
     }
-    div#stepper.card{
-        height: 540px;
-        background-color: #05B5DA;
-        div.card-content{
-            p.stepper-instructions {
-                padding-bottom: 1.4rem;
-                font-size: 0.875em;
-                opacity: 90%;
-            }
-            div.b-steps{
-                nav.steps {
-                    ul.step-items {
-                        li.step-item {
-                            background-color:#05B5DA;
-                            a.step-link {
-                                div.step-marker {
-                                    // This is the element that shows border/ circle
-                                    background-color:#05B5DA;
-                                    span.icon {
-                                        svg {
-                                            font-size:2rem;
-                                            path {
-                                                /*fill: black;*/
-                                            }
-                                        }
-                                    }
-                                }
-                                div.step-details {
-                                    padding-top:0.6rem;
-                                    span.step-title {
-                                        font-size:0.875rem;
-                                        line-height:1;
-                                        white-space: nowrap;
-                                    }
-                                }
-                            }
-                            &.is-active {
-                                a div.step-marker {
-                                    background:white!important;
-                                    width: 2.6rem;
-                                    height: 2.6rem;
-                                    left: calc(50% - 1.2rem);
-                                    top: -11%;
-                                }
-                                svg {
-                                    width:2.3rem!important;
-                                    height:2.3rem!important;
-                                    path {
-                                        /*fill: #ED592F!important;*/
-                                    }
-                                }
-                                div.step-details span.step-title {
-                                    font-weight: 800;
-                                    color: #ED592F;
-                                    text-decoration: underline;
-                                }
-                                &.unselected {
-                                    a div.step-marker {
-                                        /*border-color: #F6AC98;*/
-                                        /*border-width: 2px;*/
-                                    }
-                                }
-                            }
-                            &.selected {
-                                a.step-link {
-                                    div.step-marker {
-                                        /*background:white!important;*/
-                                        span>svg>path {
-                                            opacity: 100%!important;
-                                        }
-                                    }
-                                }
-                                div.step-details span.step-title {
-                                    font-weight: 800;
-                                }
-                            }
-                            &.unselected {
-                                a.step-link {
-                                    div.step-marker {
-                                        span > svg > path {
-                                            /*opacity: 40% !important;*/
-                                        }
-                                    }
-                                    div.step-details span.step-title {
-                                        font-weight: 500;
-                                        opacity: 60%;
-                                    }
-                                }
-                            }
-
-                            &:nth-child(3) {
-                                .step-marker {
-                                    left: calc(50% - 1.3rem);
-                                }
-                            }
-                        }
-                    }
-                }
-                section.step-content {
-                    padding-bottom: 0;
-                    height: 280px;
-                }
-                nav.step-navigation {
-                    display: flex;
-                    margin: 0 1rem 0.5rem auto;
-                    justify-content: flex-end;
-                    a.pagination-previous {
-                        margin-left: auto;
-                    }
-
-                }
-            }
+    .steps {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    #stepper .b-steps .steps.is-small .step-items .step-item .step-details {
+        padding-top: 0.4em;
+    }
+    .step-title {
+        white-space: nowrap;
+    }
+    .step-content {
+        height: 270px;
+    }
+    nav.step-navigation {
+        margin-top: 0;
+    }
+    .steps.is-small .icon svg {
+        font-size: 2rem!important;
+    }
+    div#stepper .b-steps .steps .step-items {
+        flex-wrap: nowrap;
+    }
+    #stepper .b-steps .steps .step-items .step-item .step-marker {
+        left: 50%;
+        margin-left: -0.75rem;
+    }
+    #stepper .b-steps .steps .step-items .step-item.is-active .step-marker {
+        height: 2.4rem;
+        width: 2.4rem;
+        top: -12%;
+        background-color: white;
+        color: #04a635!important;
+        border-color: #04a635;
+        left: 50%;
+        margin-left: -1.2rem;
+    }
+    #stepper .b-steps .steps .step-items .step-item.is-step-not_selected .step-title {
+        font-weight: normal;
+        opacity: 70%;
+    }
+    #stepper .b-steps .steps .step-items .step-item.is-step-selected .step-title {
+        font-weight: 700;
+        opacity: 90%;
+    }
+    #stepper .b-steps .steps .step-items .step-item.is-step-not_selected.is-active .step-marker {
+        border-color: #68ca86;
+    }
+    #stepper .b-steps .steps .step-items .step-item:not(.is-previous):not(.is-active) .step-marker {
+        color: #b5b5b5!important;
+        background-color: white!important;
+    }
+    #stepper .b-steps .steps .step-items .step-item.is-step-not_selected:not(.is-active).is-previous .step-marker,
+    #stepper .b-steps .steps .step-items .step-item.is-step-not_selected.is-active .step-marker {
+        color: #ed5931;
+        background-color: white;
+        svg path {
+            fill-opacity: 70%;
         }
+    }
 
-        hr {
-            margin-bottom: 0!important;
-            border: 1px solid #e0e0e0!important;
-        }
-
-        li.attributionDetails {
-            a > div > span > svg {
-                font-size:1.5rem!important;
-                border-radius: 50%;
-                padding:5px;
-                box-shadow: inset 0 0 0 2px #4a4a4a;
-                &:hover {
-                    box-shadow: inset 0 0 0 3px #FB7729;
-                }
-                path {
-                    fill: #4a4a4a!important;
-                    &:hover {
-                        opacity: 30%;
-                    }
-                }
-            }
-            &.is-active {
-                svg {
-                    box-shadow: inset 0 0 0 2px #ED592F;
-                }
-            }
-        }
+    #stepper .b-steps .steps .step-items .step-item.is-step-selected.is-active .step-marker {
+        background-color: white;
+        border-color: #04a635;
+        color: #04a635;
+    }
+    .is-active .icon svg {
+        width: 2rem;
+        height: 2rem;
     }
     @media only screen and (max-width: 670px) {
         div.card {
@@ -325,13 +256,5 @@ export default {
         section.step-content {
             height: auto;
         }
-    }
-    .selection-question {
-        font-family: Source Sans Pro;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 23px;
-        line-height: 33px;
-        color: #333333;
     }
 </style>

@@ -118,6 +118,9 @@ export default {
     #chooser-selected-description {
         margin-top: 2rem;
     }
+    #chooser-selected-description span {
+        margin-left: -2px;
+    }
     @media only screen and (max-width: 670px) {
         p {
             font-size: 14px;
