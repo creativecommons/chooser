@@ -18,26 +18,24 @@
     },
     "stepper-description": {
         "by": {
-            "selected": "Anyone using your work must give <b>appropriate credit</b>.",
-            "not-selected":"Others can use your work even <b>without attribution</b>."
+            "selected": "<b>Yes</b>, anyone using my work must give me <b>appropriate credit</b>.",
+            "not-selected": "<b>No</b>, anyone can use my work even <b>without attribution</b>."
         },
         "nc": {
-            "selected": "Others can use your work only for <b>non-commercial purposes</b>.",
-            "not-selected":"Others can use your work even for <b>commercial purposes</b>."
+            "selected": "<b>Yes</b>, others <b>cannot</b> use my work for <b>commercial purposes</b>.",
+            "not-selected": "<b>No</b>, others can use my work for <b>commercial purposes</b>."
         },
         "nd": {
-            "selected":"Your work can only be used <b>as-is, without modifications</b>.",
-            "not-selected": "Others may <b>remix, transform, or build upon your work</b> and distribute the modified material."
-
+            "selected": "<b>Yes</b>, others can use and share my work only <b>as is, without modifications</b>.",
+            "not-selected": "<b>No</b>, others may share <b>modified version of your work</b>."
         },
         "sa": {
-            "selected":  "Anyone who changes your work <b>must share their contributions under the same license</b> as the original.",
-            "not-selected": "Anyone who changes your work can distribute their contributions <b>under a different license</b>."
+            "selected": "<b>Yes</b>, anyone who changes your work <b>must share their contributions under the same license</b> as the original.",
+            "not-selected": "<b>No</b>, anyone who changes your work can distribute their contributions <b>under a different license</b>."
         }
-       },
-
+    },
     "select-license-heading": "Select your license",
-    "select-license-instructions": "Go through the steps to choose your license. By default, the most open license with attribution is shown, and you can select features to restrict it",
+    "select-license-instructions": "Use the most open license with attribution requirement, or select other options to restrict it.",
     "selected-license-heading": "Your license",
     "selected-license-instructions": "If you already know which license you need, just select it in the dropdown below.",
     "use-license-heading": "Use your license",

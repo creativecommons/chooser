@@ -1,37 +1,18 @@
 <template>
     <div class="selection-step">
         <p class="selection-question">{{ this.$t(question) }}</p>
-        <div class="selection-choice selection-yes"
-             :class="yesClass"
-             @click="update(true)">
-            <b-button
-                icon-left=check
-                type="is-primary"
-                inverted
-                outlined
-                @click="update(true)">
-                Yes
-            </b-button>
-            <p :class="yesClass"
-               v-html="$t(yesText)"/>
-
-        </div>
-
-        <div class="selection-choice selection-no"
-             :class="noClass"
-             @click="update(false)">
-
-            <b-button
-                icon-left=times
-                type="is-primary"
-                inverted
-                outlined
-                @click="update(false)">
-                No
-            </b-button>
-            <p :class="noClass"
-                v-html="$t(noText)"/>
-        </div>
+                <div class="field" :class="yesSelected">
+                    <b-radio v-model="radio"
+                             native-value="yes">
+                        <span v-html="$t(yesText)" />
+                    </b-radio>
+                </div>
+                <div class="field" :class="noSelected">
+                    <b-radio v-model="radio"
+                             native-value="no">
+                        <span v-html="$t(noText)" />
+                    </b-radio>
+                </div>
     </div>
 </template>
 
@@ -40,14 +21,16 @@
 export default {
     name: 'SelectionStep',
     props: ['selected', 'stepId'],
-    methods: {
-        update(btn) {
-            if (btn !== this.selected) {
-                this.isSelected = btn
-            }
-        }
-    },
     computed: {
+        radio: {
+            get() {
+                return this.$props.selected ? 'yes' : 'no'
+            },
+            set(newVal) {
+                const returnValue = newVal === 'yes'
+                this.$emit('input', { selected: returnValue, stepId: this.stepId })
+            }
+        },
         question() {
             return `stepper-question.${this.stepId.toLowerCase()}`
         },
@@ -57,34 +40,19 @@ export default {
         noText() {
             return `stepper-description.${this.stepId.toLowerCase()}.not-selected`
         },
-        isSelected: {
-            get() { return this.selected },
-            set(selected) {
-                this.$emit('input', { selected: selected, stepId: this.stepId })
+        yesSelected() {
+            if (this.$props.selected) {
+                return 'selected'
+            } else {
+                return 'not-selected'
             }
         },
-        yesButtonType() {
-            return this.isSelected ? 'is-dark' : ''
-        },
-        noButtonType() {
-            return this.isSelected ? '' : 'is-dark'
-        },
-        yesButtonOutlined() {
-            return !this.isSelected
-        },
-        noButtonOutlined() {
-            return this.isSelected
-        },
-        yesClass() {
-            return this.isSelected ? 'selected' : 'not-selected'
-        },
-        noClass() {
-            return this.isSelected ? 'not-selected' : 'selected'
-        }
-    },
-    watch: {
-        value() {
-            this.$emit('input', this.selected)
+        noSelected() {
+            if (!this.$props.selected) {
+                return 'selected'
+            } else {
+                return 'not-selected'
+            }
         }
     }
 }
@@ -92,29 +60,23 @@ export default {
 
 <style lang="scss" scoped>
     .selection-question {
-        margin-bottom: 1rem;
-        color:white;
+        margin-bottom: 2rem;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 20px;
+        line-height: 26px;
+        color: #333333;
     }
-    .selection-choice {
-        display: grid;
-        grid-template-columns: 1fr 5fr;
-        grid-gap: 1rem;
-        padding: 1rem 3rem;
-        margin-left: -3rem;
-        margin-right: -3rem;
-        border-top: 1px dotted white;
-        border-bottom: 1px dotted white;
-        &:hover {
-            background-color: #FB7729;
-         }
+    .field.not-selected {
+        opacity: 70%;
     }
-    p.selected {
-        color:white;
+    .field:hover {
+        box-shadow: 0 10px 15px -3px rgba(237, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        -webkit-transform: scale(0.98);
+        -ms-transform: scale(.98);
+        transform: scale(.98);
     }
-    div.selection-choice.selected {
-        background-color: darken(#05B5DA, 10%);
-        &:hover {
-            background-color: #FB7729;
-        }
+    .field:active {
+        color:  #ED592F;
     }
 </style>

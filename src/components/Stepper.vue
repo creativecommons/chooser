@@ -15,7 +15,7 @@
                     :key="item.shortName"
                     :selected="isStepSelected(item.shortName)"
                     :visible="isStepVisible(item.shortName)"
-                    :clickable=true
+                    :clickable="isStepClickable(item.shortName)"
                     :type="attributeType(item.shortName)"
                 >
                     <SelectionStep
