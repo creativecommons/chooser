@@ -152,9 +152,12 @@ export default {
             return base
         },
         attributeType(attrName) {
-            if (attrName === 'BY' || attrName === 'wv' || attrName === 'ad' || this.$props.value.shortName.includes(attrName)) {
-                return 'selected'
-            } else { return 'unselected' }
+            if (this.$props.value.shortName.includes('CC0')) {
+                return 'is-step-selected'
+            }
+            if (attrName === 'wv' || attrName === 'ad' || !this.$props.value.shortName.includes(attrName)) {
+                return 'is-step-not_selected'
+            } else { return 'is-step-selected' }
         },
         isStepSelected(attrName) {
             return this.$props.value.shortName.includes(attrName)
@@ -163,7 +166,13 @@ export default {
             if (this.$props.value.shortName.includes('CC0')) {
                 return (attrName === 'BY' || attrName === 'wv' || attrName === 'ad')
             }
-            return !(this.$props.value.shortName.includes('ND') && attrName === 'SA') && !(attrName === 'wv')
+            return !(attrName === 'wv')
+        },
+        isStepClickable(attrName) {
+            if (this.$props.value.shortName.includes('ND')) {
+                return attrName !== 'SA'
+            }
+            return true
         }
     }
 }
