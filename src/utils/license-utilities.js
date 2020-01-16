@@ -20,6 +20,9 @@ const LicenseUtilities = {
         }
         Vue.prototype.$licenseUrl = function(shortLicenseName) {
             // Returns url to license
+            if (shortLicenseName.includes('CC0')) {
+                return 'https://creativecommons.org/publicdomain/zero/1.0/?ref=ccchooser'
+            }
             const short = shortLicenseName.toLowerCase().slice(3, shortLicenseName.length - 4)
             return 'https://creativecommons.org/licenses/' + short + '/4.0/?ref=ccchooser'
         }
@@ -31,6 +34,9 @@ const LicenseUtilities = {
                 .slice(0, shortLicenseName.length - 4)
         }
         Vue.prototype.$licenseIconsArr = function(shortLicenseName) {
+            if (shortLicenseName.includes('CC0')) {
+                return ['zero']
+            }
             return shortLicenseName
                 .toLowerCase()
                 .slice(3, shortLicenseName.length - 4)
