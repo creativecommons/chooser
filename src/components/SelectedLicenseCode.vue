@@ -9,14 +9,14 @@
             v-model="activeTab"
         >
             <b-tab-item :label="this.$t('rich-text-label')">
-                <AttributionRichText
-                    v-model="value"/>
+                <div id="attribution-richtext"
+                    v-html="this.htmlElement"/>
             </b-tab-item>
             <b-tab-item :label="this.$t('html-label')">
                 <div class='control' id='generated-html-container'>
                     <textarea id='attribution-html'
                               class='textarea'
-                              :value="htmlElement()"
+                              :value="htmlElement"
                               readonly
                     />
                 </div>
@@ -36,22 +36,27 @@
                         </span>
                     </a>
                 </template>
-                <div class="dummy"></div>
+                <div class="dummy" />
             </b-tab-item>
         </b-tabs>
+        <p class="use-license-hint">
+            <b-icon
+            pack="fas"
+            icon="question-circle"
+            size="is-medium"/>
+            <a href="https://wiki.creativecommons.org/wiki/Marking_your_work_with_a_CC_license">
+                {{$t('use-license-hint')}}
+            </a>
+        </p>
     </div>
 </template>
 <script>
 import Clipboard from 'clipboard'
 import { workAuthor, workLicense } from '@/utils/attributionHtml'
-import AttributionRichText from './AttributionRichText'
 
 export default {
     name: 'SelectedLicenseCode',
     props: ['value'],
-    components: {
-        AttributionRichText
-    },
     data() {
         return {
             success: false,
@@ -86,15 +91,6 @@ export default {
             return workLicense(this.licenseURL,
                 this.$props.value.shortName)
         },
-        htmlElement() {
-            const licenseText = this.$t('license-text', {
-                workTitle: this.titleElement(),
-                byLine: this.authorElement()
-            })
-            const licenseIcons = `<span class="license-icons">${this.workLicenseElement()}</span>`
-            return `<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">${licenseText}${licenseIcons}
-                </p>`
-        },
         onCopySuccess(e) {
             this.success = true
             this.$emit('copied', { content: e.text })
@@ -114,6 +110,14 @@ export default {
     computed: {
         licenseURL() {
             return this.$licenseUrl(this.$props.value.shortName)
+        },
+        htmlElement() {
+            const licenseText = this.$t('license-text', {
+                workTitle: this.titleElement(),
+                byLine: this.authorElement()
+            })
+            const licenseIcons = `<span class="license-icons">${this.workLicenseElement()}</span>`
+            return `<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">${licenseText}${licenseIcons}</p>`
         },
         activeTab: {
             get() { return this.currentTab },
@@ -146,6 +150,19 @@ export default {
 }
 </script>
 <style lang="scss">
+    #attribution-richtext p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .use-license-hint {
+        text-align: center;
+    }
+    .use-license-hint a {
+        text-decoration: underline;
+    }
+    .use-license-hint span {
+        vertical-align: middle;
+    }
     div.license-code {
         margin-top: 0.4rem;
         h2.vocab-h2{
@@ -158,7 +175,7 @@ export default {
             text-transform: uppercase;
         }
         div.attribution-tab {
-            margin-bottom: 0;
+            margin-bottom: 1rem;
             nav.tabs {
                 margin-bottom: 0;
                 ul {
@@ -231,6 +248,12 @@ export default {
                     }
                 }
             }
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .card {
+            height: auto!important;
         }
     }
 </style>
