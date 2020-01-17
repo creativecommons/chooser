@@ -6,14 +6,14 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 // internal icons
 import {
     faCheck, faCheckCircle, faInfoCircle, faExclamationTriangle, faExclamationCircle,
-    faArrowUp, faAngleRight, faAngleLeft, faAngleDown,
+    faArrowUp, faAngleRight, faAngleLeft, faAngleDown, faUserCircle, faQuestionCircle,
     faEye, faEyeSlash, faCaretDown, faCaretUp, faUpload, faCopy
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import LicenseUtilities from './utils/license-utilities'
 
 library.add(faCheck, faCheckCircle, faInfoCircle, faExclamationTriangle, faExclamationCircle,
-    faArrowUp, faAngleRight, faAngleLeft, faAngleDown,
+    faArrowUp, faAngleRight, faAngleLeft, faAngleDown, faUserCircle, faQuestionCircle,
     faEye, faEyeSlash, faCaretDown, faCaretUp, faUpload, faCopy)
 Vue.component('vue-fontawesome', FontAwesomeIcon)
 Vue.config.productionTip = false

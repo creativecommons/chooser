@@ -22,16 +22,16 @@
                     </li>
                 </transition-group>
             </ul>
-            <a href="https://creativecommons.org/freeworks">
-                <div v-if="this.freeWorkStatus" class="license-freeworks-status">
-                    <img src="../assets/license-icons/fc_approved_small.png" alt="">
-                    <p>Free Culture License</p>
-                </div>
-                <div v-else class="license-freeworks-status">
-                    <img v-if="!this.freeWorkStatus" src="../assets/license-icons/fc_dubious.png" alt="">
-                    <p>Not a Free Culture License</p>
-                </div>
-            </a>
+            <div class="freeworks-status__div">
+                <a href="https://creativecommons.org/freeworks">
+                    <img v-if="this.freeWorkStatus" src="../assets/license-icons/fc_approved_small.png" alt="" />
+                    <img v-else src="../assets/license-icons/fc_dubious.png" />
+                </a>
+            </div>
+            <p class="freeworks-status__p">
+                <a href="https://creativecommons.org/freeworks">
+                {{this.freeWorkStatusText}}</a>
+            </p>
         </section>
 
     </div>
@@ -52,6 +52,9 @@ export default {
         freeWorkStatus() {
             const short = this.$props.value.shortName.toLowerCase()
             return !(short.includes('nc') || short.includes('nd'))
+        },
+        freeWorkStatusText() {
+            return this.freeWorkStatus ? this.$t('free-culture-work.yes') : this.$t('free-culture-work.no')
         },
         licenseDescription() {
             const descriptionString = `${this.$licenseSlug(this.selectedLicense)}-description`
@@ -99,16 +102,21 @@ export default {
                 }
 
             }
-            div.license-freeworks-status{
+            .freeworks-status__div{
                 justify-content: center;
                 text-align:center;
                 img {
                     width: 76px;
                     height: 76px;
                 }
-                p {
-                    font-size: 13px;
-                    line-height: 19px;                }
+            }
+            .freeworks-status__p {
+                text-align:right;
+                grid-row:2;
+                grid-column: 1 / span 2;
+                a {
+                    text-decoration: underline;
+                }
             }
         }
         div {

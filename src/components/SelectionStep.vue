@@ -67,6 +67,10 @@ export default {
         line-height: 26px;
         color: #333333;
     }
+    .field {
+        padding: 1rem;
+        margin-bottom: 0;
+    }
     .field.not-selected {
         opacity: 70%;
     }
@@ -75,8 +79,16 @@ export default {
         -webkit-transform: scale(0.98);
         -ms-transform: scale(.98);
         transform: scale(.98);
+        border: 1px solid rgba(237,89,47, 0.5);
+        border-radius: 5px;
     }
     .field:active {
         color:  #ED592F;
+    }
+    .step-content {
+        height: 285px;
+    }
+    .step-navigation {
+        text-align: center;
     }
 </style>

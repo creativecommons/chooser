@@ -113,7 +113,7 @@ export default {
             } else if (attrName === 'wv') {
                 return 'exclamation-circle'
             } else if (attrName === 'ad') {
-                return 'check'
+                return 'user-circle'
             } else {
                 return `creative-commons-${attrName.toLowerCase()}`
             }
@@ -155,7 +155,7 @@ export default {
             if (this.$props.value.shortName.includes('CC0')) {
                 return 'is-step-selected'
             }
-            if (attrName === 'wv' || attrName === 'ad' || !this.$props.value.shortName.includes(attrName)) {
+            if (!this.$props.value.shortName.includes(attrName)) {
                 return 'is-step-not_selected'
             } else { return 'is-step-selected' }
         },
@@ -182,7 +182,7 @@ export default {
     .card {
         height: 580px;
     }
-    div#stepper .card-header {
+    #stepper .card-header {
         border-top: 10px solid #05B5DA;
         background-color: #05B5DA;
         padding-bottom: 1rem;
@@ -190,8 +190,7 @@ export default {
         color:white;
     }
     .steps {
-        margin-top: 2.5rem;
-        margin-bottom: 1rem;
+        margin: 1.5rem -2rem 1rem;
     }
     #stepper .b-steps .steps.is-small .step-items .step-item .step-details {
         padding-top: 0.4em;
@@ -204,6 +203,7 @@ export default {
     }
     nav.step-navigation {
         margin-top: 0;
+        text-align:center;
     }
     .steps.is-small .icon svg {
         font-size: 2rem!important;
@@ -254,9 +254,48 @@ export default {
         border-color: #04a635;
         color: #04a635;
     }
-    .is-active .icon svg {
-        width: 2rem;
-        height: 2rem;
+    .is-step-selected .icon svg {
+        font-size:2rem!important;
+        width: 2rem!important;
+        height: 2rem!important;
+    }
+    .is-step-selected .step-marker{
+        width: 2.5rem!important;
+        height:2.5rem!important;
+        left: 50%!important;
+        top: -17%;
+        margin-left: -1.25rem!important;
+    }
+    .pagination-next {
+        width: 200px;
+        background-color: #04A635;
+        color:white;
+    }
+    .pagination-next span {
+        margin-left: auto;
+    }
+    .pagination-next:after {
+        content:"Go to the next step";
+        color: white;
+        position: absolute;
+        top: 3.5px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .pagination-previous {
+        width: 200px;
+    }
+    .pagination-previous span {
+        margin-right: auto;
+    }
+    .pagination-previous:after {
+        content: "Change previous step";
+        position: absolute;
+        top: 3.5px;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
     @media only screen and (max-width: 670px) {
         div.card {
@@ -264,6 +303,13 @@ export default {
         }
         section.step-content {
             height: auto;
+        }
+
+    }
+    @media only screen and (max-width: 900px) {
+        .step-title {
+            white-space: normal;
+            line-height: 1;
         }
     }
 </style>
