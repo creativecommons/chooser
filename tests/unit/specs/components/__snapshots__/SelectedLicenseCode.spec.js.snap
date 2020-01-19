@@ -3,7 +3,7 @@
 exports[`SelectedLicenseCode.vue has the expected UI 1`] = `
 <div class="license-code">
   <h2 class="vocab-h2">
-    Use Your License</h2>
+    Use your license</h2>
   <div class="b-tabs attribution-tab">
     <nav class="tabs">
       <ul>
@@ -17,19 +17,8 @@ exports[`SelectedLicenseCode.vue has the expected UI 1`] = `
     </nav>
     <section class="tab-content">
       <div class="tab-item" style="">
-        <div id="attribution-richtext-container">
-          <div id="attribution-richtext" class="photo_usage-attribution">
-            <!---->
-            <!---->
-            <p>This work</p>
-            <!---->
-            <!---->
-            is licensed under
-            <a href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser" target="_blank" rel="noopener" class="photo_license">
-              CC BY 4.0
-            </a>
-            <!----> <a href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img src="../assets/license-icons/cc_icon.svg" class="photo-license-icon"><img src="[object Object]" class="photo-license-icon"></a>
-          </div>
+        <div id="attribution-richtext">
+          <p id="license-code" xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">{workTitle} {byLine} is licensed under <a rel="license" href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser" target="_blank" style="display: inline-block;">CC BY 4.0<span class="license-icons" style="opacity:.7"><img style="height: 22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc_icon.svg"><img style="margin-top: 2px;height: 22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg"></span></a></p>
         </div>
       </div>
       <div class="tab-item" style="display: none;">
@@ -40,5 +29,8 @@ exports[`SelectedLicenseCode.vue has the expected UI 1`] = `
       </div>
     </section>
   </div>
+  <p class="use-license-hint"><span class="icon is-medium"><i class="fas fa-question-circle fa-2x"></i></span> <a href="https://wiki.creativecommons.org/wiki/Marking_your_work_with_a_CC_license">
+      Learn more about how to use your license
+    </a></p>
 </div>
 `;

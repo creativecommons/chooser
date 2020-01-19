@@ -1,19 +1,21 @@
-import { mount, createLocalVue } from '@vue/test-utils'
-import SelectedLicenseCode from '@/components/SelectedLicenseCode'
+import { mount, createLocalVue, config } from '@vue/test-utils'
 import Buefy from 'buefy'
-import sinon from 'sinon'
+import SelectedLicenseCode from '@/components/SelectedLicenseCode'
 import LicenseUtilities from '@/utils/license-utilities'
+import Vue from 'vue'
+import VueI18n from 'vue-i18n'
 
 const value = {
     shortName: 'CC BY 4.0',
     fullName: 'Attribution 4.0 International',
-    personalDetails: {
-        authorName: '',
+    attributionDetails: {
+        creatorName: '',
+        creatorProfileUrl: '',
         workTitle: '',
-        workUrl: '',
-        sourceWorkUrl: ''
+        workUrl: ''
     }
 }
+
 // mock dom methods
 function _mockDomMethodsForClipboardJS(value) {
     window.getSelection = () => ({
@@ -28,24 +30,32 @@ function _mockDomMethodsForClipboardJS(value) {
 
 describe('SelectedLicenseCode.vue', () => {
     let wrapper
-    let spy
 
     beforeEach(() => {
         const localVue = createLocalVue()
         localVue.use(Buefy)
         localVue.use(LicenseUtilities)
+        Vue.use(VueI18n)
+        const messages = require('@/locales/en.json')
+        const i18n = new VueI18n({
+            locale: 'en',
+            fallbackLocale: 'en',
+            messages: messages
+        })
+
+        config.mocks.i18n = i18n
+
+        config.mocks.$t = (key) => {
+            return i18n.messages[key]
+        }
 
         _mockDomMethodsForClipboardJS()
-        spy = sinon.stub()
         wrapper = mount(SelectedLicenseCode, {
             localVue,
             propsData: {
                 value: value
             },
-            attachToDocument: true,
-            destroyed() {
-                spy()
-            }
+            attachToDocument: true
         })
     })
     // Snapshot tests
@@ -105,5 +115,21 @@ describe('SelectedLicenseCode.vue', () => {
         const emittedEvents = wrapper.emitted()
         expect(emittedEvents).toHaveProperty('copyFailed')
         expect(emittedEvents.copyFailed.length).toBe(1)
+    })
+
+    // Test generated HTML
+    it('Generates correct license HTML', () => {
+        const generatedHtml = wrapper.find('#license-code')
+        expect(generatedHtml.text()).toContain('is licensed under CC BY 4.0')
+        // check that icon links are correct
+        // There are two icons - CC & BY
+        expect(generatedHtml.findAll('img')).toHaveLength(2)
+        // There are three links: two icons and license name
+        expect(generatedHtml.findAll('a')).toHaveLength(1)
+        console.log(generatedHtml.find('a').attributes('href'))
+        expect(generatedHtml.find('a').attributes('href')).toEqual('https://creativecommons.org/licenses/by/4.0/?ref=ccchooser')
+        // check that the text is correct
+        console.log(wrapper.vm.authorElement)
+        // check that changing fields generate correct texts
     })
 })
