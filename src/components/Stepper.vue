@@ -1,6 +1,6 @@
 <template>
-    <div class='column is-three-fifths-tablet is-half-desktop'>
-        <div id="stepper" class="card">
+    <div class='column is-three-fifths-tablet is-half-desktop' id="stepper" >
+        <div class="card">
             <header class="card-header">
                 <h2 :class="'vocab-h2'">{{ $t('select-license-heading') }}</h2>
             </header>
@@ -181,6 +181,9 @@ export default {
 <style lang="scss">
     .card {
         height: 580px;
+    }
+    #stepper.column {
+        padding:0!important;
     }
     #stepper .card-header {
         border-top: 10px solid #05B5DA;

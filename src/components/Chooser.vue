@@ -45,9 +45,7 @@ export default {
 }
 </script>
 <style lang="scss">
-    .column {
-        padding:0!important;
-    }
+
     header.card-header {
         justify-content: center;
         padding-top:1rem;

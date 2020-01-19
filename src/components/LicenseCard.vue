@@ -48,6 +48,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    .column {
+        padding:0!important;
+    }
     div.card {
         height: 580px;
         border-top: 10px solid #04A635;

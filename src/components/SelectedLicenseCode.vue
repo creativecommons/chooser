@@ -67,30 +67,6 @@ export default {
         }
     },
     methods: {
-        authorElement() {
-            return workAuthor({
-                creatorName: this.$props.value.attributionDetails.creatorName,
-                creatorProfileUrl: this.$props.value.attributionDetails.creatorProfileUrl
-            })
-        },
-        titleElement() {
-            const workUrl = this.$props.value.attributionDetails.workUrl
-            const workTitle = this.$props.value.attributionDetails.workTitle
-            if (!workTitle && !workUrl) {
-                return this.$t('this-work')
-            } else {
-                const titleSpan = workTitle ? `<span  rel="dc:title">${workTitle}</span>` : this.$t('this-work')
-                if (workUrl) {
-                    return `<a rel="cc:attributionURL" href="${workUrl}">${titleSpan}</a>`
-                } else {
-                    return titleSpan
-                }
-            }
-        },
-        workLicenseElement() {
-            return workLicense(this.licenseURL,
-                this.$props.value.shortName)
-        },
         onCopySuccess(e) {
             this.success = true
             this.$emit('copied', { content: e.text })
@@ -111,13 +87,38 @@ export default {
         licenseURL() {
             return this.$licenseUrl(this.$props.value.shortName)
         },
+        workLicenseElement() {
+            return workLicense(this.licenseURL,
+                this.$props.value.shortName)
+        },
+        authorElement() {
+            return workAuthor({
+                creatorName: this.$props.value.attributionDetails.creatorName,
+                creatorProfileUrl: this.$props.value.attributionDetails.creatorProfileUrl
+            })
+        },
+        titleElement() {
+            const workUrl = this.$props.value.attributionDetails.workUrl
+            const workTitle = this.$props.value.attributionDetails.workTitle
+            if (!workTitle && !workUrl) {
+                return this.$t('this-work')
+            } else {
+                const titleSpan = workTitle ? `<span rel="dc:title">${workTitle}</span>` : this.$t('this-work')
+                if (workUrl) {
+                    return `<a rel="cc:attributionURL" href="${workUrl}">${titleSpan}</a>`
+                } else {
+                    return titleSpan
+                }
+            }
+        },
         htmlElement() {
             const licenseText = this.$t('license-text', {
-                workTitle: this.titleElement(),
-                byLine: this.authorElement()
+                workTitle: this.titleElement,
+                byLine: this.authorElement
             })
-            const licenseIcons = `<span class="license-icons">${this.workLicenseElement()}</span>`
-            return `<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">${licenseText}${licenseIcons}</p>`
+            const paragraphBeginning = '<p id="license-code" xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">'
+            const fullLicenseCode = `${paragraphBeginning}${licenseText}${this.workLicenseElement}</p>`
+            return fullLicenseCode
         },
         activeTab: {
             get() { return this.currentTab },
