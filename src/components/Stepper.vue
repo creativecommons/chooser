@@ -6,7 +6,11 @@
             </header>
             <div class="card-content">
             <p :class="'stepper-instructions'">{{ $t('select-license-instructions') }}</p>
-            <b-steps size="is-small">
+            <b-steps size="is-small"
+                     v-on:input="disableSAifND"
+                     v-model="currentStep"
+                     ref="steps"
+                    >
                 <b-step-item
                     v-for="item in this.steps"
                     :icon-pack="item['icon-pack']"
@@ -55,9 +59,10 @@ export default {
     },
     data() {
         return {
+            currentStep: 0,
             steps: [
                 {
-                    label: this.getAttributionName(),
+                    label: this.attributionName,
                     shortName: 'BY',
                     'icon-pack': 'fab',
                     itemType: 'licenseAttribute'
@@ -98,18 +103,25 @@ export default {
     computed: {
         licenseAttributes() {
             return this.$shortToAttributes(this.$props.value.shortName)
+        },
+        attributionIcon() {
+            return this.$props.value.shortName.includes('BY') ? 'creative-commons-by' : 'creative-commons-zero'
+        },
+        attributionName() {
+            return this.$props.value.shortName.includes('BY') ? 'stepper-label.Attribution' : 'stepper-label.PublicDomain'
         }
     },
     methods: {
-        getAttributionIcon() {
-            return this.$props.value.shortName.includes('BY') ? 'creative-commons-by' : 'creative-commons-zero'
-        },
-        getAttributionName() {
-            return this.$props.value.shortName.includes('BY') ? 'stepper-label.Attribution' : 'stepper-label.PublicDomain'
+        disableSAifND(payload) {
+            const attributionDetailsStep = 5
+            const ndStep = 3
+            if (payload === ndStep && this.$props.value.shortName.includes('ND')) {
+                this.currentStep = attributionDetailsStep
+            }
         },
         getIcon(attrName) {
             if (attrName === 'BY') {
-                return this.getAttributionIcon()
+                return this.attributionIcon
             } else if (attrName === 'wv') {
                 return 'exclamation-circle'
             } else if (attrName === 'ad') {
@@ -154,6 +166,9 @@ export default {
         attributeType(attrName) {
             if (this.$props.value.shortName.includes('CC0')) {
                 return 'is-step-selected'
+            }
+            if (this.$props.value.shortName.includes('ND') && attrName === 'SA') {
+                return 'is-step-not_selected is-step-with-tooltip'
             }
             if (!this.$props.value.shortName.includes(attrName)) {
                 return 'is-step-not_selected'
