@@ -1,54 +1,54 @@
 <!-- eslint-disable no-trailing-spaces -->
 <template>
     <div>
-        <h2 class="title is-2">Confused? Need Help?</h2>
-        <p align="center" class="mobile-hide desktop-show">You can click the buttons below to get answers to the
-            questions on them!</p>
-        <p align="center" class="desktop-hide mobile-show">You can tap the buttons below to get answers to the questions on them!</p>
+        <h2 class="title is-2 vocab-h2">Confused? Need Help?</h2>
+        <p class="help__instructions desktop-hide mobile-show">{{ $t('help.instructions.mobile') }}</p>
+        <p class="help__instructions mobile-hide desktop-show">{{ $t('help.instructions.desktop') }}</p>
+
         <div class="columns" id="modal-buttons">
             <div class="column top-bottom-paddingless">
-                <button id="cc_license_btn" class="button is-light is-large is-fullwidth"
+                <button id="cc_license_btn" class="button is-light is-large is-fullwidth help-button"
                     @click="isModal1Active = true">
                     <p>
-                        What Are Creative Commons Licenses?
+                        {{ $t('help.what_are_cc_licenses.heading') }}
                     </p>
                 </button>
-                <button id="license_work_btn" class="button is-light is-large is-fullwidth"
+                <button id="license_work_btn" class="button is-light is-large is-fullwidth help-button"
                     @click="isModal2Active = true">
                     <p>
-                        How do the Licenses Work?
+                        {{ $t('help.how_licenses_work.heading') }}
                     </p>
                 </button>
-                <button id="icons_meaning_btn" class="button is-light is-large is-fullwidth"
+                <button id="icons_meaning_btn" class="button is-light is-large is-fullwidth help-button"
                     @click="isModal3Active = true">
                     <p>
-                        What do the Icons Mean?
+                        {{ $t('help.what_icons_mean.heading') }}
                     </p>
                 </button>
-                <button id="license_communication_btn" class="button is-light is-large is-fullwidth"
+                <button id="license_communication_btn" class="button is-light is-large is-fullwidth help-button"
                     @click="isModal7Active = true">
                     <p>
-                        How are Licenses Communicated?
+                        {{ $t('help.how_licenses_communicated.heading') }}
                     </p>
                 </button>
             </div>
             <div class="column top-bottom-paddingless">
-                <button id="consideration_btn" class="button is-light is-large is-fullwidth"
+                <button id="consideration_btn" class="button is-light is-large is-fullwidth help-button"
                     @click="isModal4Active = true">
                     <p>
-                        Considerations Before Licensing
+                        {{ $t('help.considerations_before_licensing.heading') }}
                     </p>
                 </button>
-                <button id="formal_license_btn" class="button is-light is-large is-fullwidth"
+                <button id="formal_license_btn" class="button is-light is-large is-fullwidth help-button"
                     @click="isModal5Active = true">
                     <p>
-                        How do I Formally License my Work?
+                        {{ $t('help.how_formally_license.heading') }}
                     </p>
                 </button>
-                <button id="license_description_btn" class="button is-light is-large is-fullwidth"
+                <button id="license_description_btn" class="button is-light is-large is-fullwidth help-button"
                     @click="isModal6Active = true">
                     <p>
-                        The Six CC Licenses
+                        {{ $t('help.six_cc_licenses.heading') }}
                     </p>
                 </button>
             </div>
@@ -56,78 +56,31 @@
 
         <b-modal :active.sync="isModal1Active">
             <header class="modal-card-head">
-                <p class="modal-card-title modal-title">What Are Creative Commons Licenses?</p>
+                <p class="modal-card-title modal-title" v-html="this.$t('help.what_are_cc_licenses.heading')"/>
             </header>
             <section class="modal-card-body">
-                <p>
-                    The Creative Commons copyright licenses and tools forge a balance inside the traditional
-                    "all rights reserved" setting that copyright law creates. Our licenses and tools give everyone from
-                    individual creators to large companies a simple, standardized way to grant copyright permissions to
-                    their creative work. <br><br>
-
-                    This helps you as a creator, because instead of having to hire a lawyer to parse legalese and
-                    create a license for you, you can save time and money, use Creative Commons licenses instead!
-                </p> <br>
+                <article class="help-text" v-html="this.$t('help.what_are_cc_licenses.text')"/>
                 <footer class="modal-card-foot">
-                    <p>
-                        For more information, please see
-                        <a id="license_link" href="https://creativecommons.org/licenses/">About the Licenses</a>
-                    </p>
+                    <p v-html="this.$t('help.what_are_cc_licenses.footer')"/>
                 </footer>
             </section>
         </b-modal>
         <b-modal :active.sync="isModal2Active">
             <header class="modal-card-head">
-                <p class="modal-card-title modal-title">How do the Licenses Work?</p>
+                <p class="modal-card-title modal-title">
+                    {{ $t('help.how_licenses_work.heading') }}
+                </p>
             </header>
             <section class="modal-card-body">
-                <b>License "Layers"</b> <br>
-                <p>Creative Commons licenses incorporate a unique and innovative "three-layer" design.</p><br>
-                <ul>
-                    <li>
-                        <b> - Legal Code: </b>
-                        <p>
-                            Each license begins as a traditional legal tool, in the kind of
-                            language and text formats that most lawyers know and love. We
-                            call this the Legal Code layer of each license.
-                        </p>
-                    </li> <br>
-                    <li>
-                        <b> - Human Readable: </b>
-                        <p>
-                            Since most creators, educators, and scientists are not in fact lawyers,
-                            we also make the licenses available in a format that normal people can read --
-                            The Commons Deed (also known as the “human readable” version of the license).
-                            This is a handy reference for licensors and licensees, summarizing some of the
-                            most important terms and conditions. Think of the Commons Deed as a user-friendly
-                            interface to the legal code beneath.
-                        </p>
-                    </li> <br>
-                    <li>
-                        <b> - Machine Readable: </b>
-                        <p>
-                            The final layer of the license design helps out software, from search engines
-                            to office productivity, this software plays an enormous role
-                            in the creation, copying, and distribution of creative works. To help out this
-                            software, we provide a "Machine Readable" version of the license. <br><br>
-
-                            We developed a standardized way to describe licenses that software can
-                            understand called <a id="cc_rights_link" href="https://wiki.creativecommons.org/Ccrel">CC Rights Expression language</a>
-                            (CC REL) to accomplish this.
-                        </p>
-                    </li> <br>
-                </ul>
-                <footer class="modal-card-foot">
-                    <p>
-                        For more information, please see
-                        <a id="license_link_2" href="https://creativecommons.org/licenses/">About the Licenses</a>
-                    </p>
-                </footer>
+                <article v-html="this.$t('help.how_licenses_work.text')"/>
+                <footer class="modal-card-foot" v-html="this.$t('help.how_licenses_work.footer')"/>
             </section>
         </b-modal>
         <b-modal :active.sync="isModal3Active">
             <header class="modal-card-head">
-                <p class="modal-card-title modal-title">What do the Icons Mean?</p>
+                <p class="modal-card-title modal-title">
+                    {{ $t('help.what_icons_mean.heading') }}
+                </p>
             </header>
             <section class="modal-card-body">
                 <div class="columns">
@@ -136,28 +89,25 @@
                             <div class="edu-icons-title-section is-gapless">
                                 <img src="../assets/license-icons/cc-by_icon.svg">
                                 <div class="icon-title">
-                                    <b>Attribution Required</b>
-                                    <p class="help">(BY)</p>
+                                    <b>{{ $t('help.what_icons_mean.BY.long_name') }}</b>
+                                    <p class="help">{{ $t('help.what_icons_mean.BY.short_name') }}</p>
                                 </div>
                             </div>
                             <p>
-                                All CC licenses require that others who use your work in any way must give
-                                you appropriate credit in a reasonable manner, but not in a way that suggests you endorse
-                                them or their use. If they want to use your work without giving credit or for
-                                endorsement purposes, they must get your permission first.
+                                {{ $t('help.what_icons_mean.BY.text')}}
                             </p>
                         </div>
                         <div class="edu-icons-section is-gapless">
                             <div class="edu-icons-title-section">
                                 <img src="../assets/license-icons/cc-nd_icon.svg">
                                 <div class="icon-title">
-                                    <b>Modifying Not Allowed</b>
-                                    <p class="help">(ND/ NoDerivatives)</p>
+                                    <b>{{ $t('help.what_icons_mean.ND.long_name') }}</b>
+                                    <p class="help">{{ $t('help.what_icons_mean.ND.short_name') }}</p>
                                 </div>
                             </div>
                             <p>
-                                You let others copy, distribute, display, perform, use, and modify your work privately,
-                                but they may not hare any modified work without getting your permission first.
+                                {{ $t('help.what_icons_mean.ND.text') }}
+
                             </p>
                         </div>
                     </div>
@@ -166,183 +116,100 @@
                             <div class="edu-icons-title-section">
                                 <img class="icon-img" src="../assets/license-icons/cc-nc_icon.svg">
                                 <div class="icon-title">
-                                    <b>Commercial Use Not Allowed</b>
-                                    <p class="help">(NC/ NonCommercial)</p>
+                                    <b>{{ $t('help.what_icons_mean.NC.long_name') }}</b>
+                                    <p class="help">{{ $t('help.what_icons_mean.NC.short_name') }}</p>
                                 </div>
                             </div>
-
-                            <p style="margin-bottom: 0; margin-top: 0;">
-                                You let others copy, distribute, display, perform, use, and
-                                modify (but not share a modified work if you have chosen NoDerivatives)
-                                and use your work for any purpose other than commercially,
-                                unless they get your permission first.
-                            </p>
-                            <p class="help">
-                                Curious what qualifies as a Commercial Use? Check out the
-                                <a href="https://wiki.creativecommons.org/wiki/NonCommercial_interpretation">
-                                    CC wiki page on interpretation of Commercial Uses.
-                                </a>
-                            </p>
+                            <div v-html="this.$t('help.what_icons_mean.NC.text')"></div>
                         </div>
                         <div class="edu-icons-section">
                             <div class="edu-icons-title-section is-gapless">
                                 <img src="../assets/license-icons/cc-sa_icon.svg">
                                 <div class="icon-title">
-                                    <b>Distributed on Same Terms</b>
-                                    <p class="help">(SA/ ShareAlike)</p>
+                                    <b>{{ $t('help.what_icons_mean.SA.long_name') }}</b>
+                                    <p class="help">{{ $t('help.what_icons_mean.SA.short_name') }}</p>
                                 </div>
                             </div>
                             <p>
-                                You let others copy, distribute, display, perform, use, and modify your work, as long as
-                                any modified work they distribute is on the same terms. If they want to
-                                distribute modified works under other terms, they must get your permission first.
+                                {{ $t('help.what_icons_mean.SA.text') }}
                             </p>
                         </div>
                     </div>
                 </div>
-                <footer class="modal-card-foot">
-                    <p>
-                        For more information on CC's public domain tools, please see
-                        <a id="domain_link" href="https://creativecommons.org/publicdomain/">Our Public Domain Tools</a>
-                    </p>
+                <footer class="modal-card-foot" v-html="this.$t('help.what_icons_mean.footer')">
+
                 </footer>
             </section>
         </b-modal>
         <b-modal :active.sync="isModal4Active">
             <header class="modal-card-head">
-                <p class="modal-card-title modal-title">Considerations Before Licensing</p>
+                <p class="modal-card-title modal-title">
+                    {{ $t('help.considerations_before_licensing.heading') }}
+                    </p>
             </header>
             <section class="modal-card-body">
-                <p>
-                    There are a number of things you should consider before you apply
-                    a Creative Commons license to your work, or before using Creative
-                    Commons-licened material. <br><br>
-
-                    <a id="licensors_link" href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors">
-                        Considerations for Licensors
-                    </a> - If you are licensing your own work <br>
-                    <a id="licensees_link" href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees">
-                        Considerations for Licensees
-                    </a> - If you are using someone else's licensed work
-                </p> <br>
+                <article v-html="this.$t('help.considerations_before_licensing.text')" />
                 <footer class="modal-card-foot">
-                    <p>
-                        For more information, please see
-                        <a id="wiki_link" href="https://wiki.creativecommons.org/wiki/Before_Licensing">
-                            the CC wiki's page on Considerations for Licensors and Licensees.
-                        </a>
-                    </p>
+                    <p v-html="this.$t('help.considerations_before_licensing.footer')" />
                 </footer>
             </section>
         </b-modal>
         <b-modal :active.sync="isModal5Active">
             <header class="modal-card-head">
-                <p class="modal-card-title modal-title">How do I Formally License my Work?</p>
+                <p class="modal-card-title modal-title">
+                    {{ $t('help.how_formally_license.heading') }}
+                </p>
             </header>
             <section class="modal-card-body">
-                <p>
-                    Formally licensing your work is as easy as marking your work
-                    as being CC licensed, along with the specific license it is under.
-                    This mark may be in the form of a watermark, or it may be somewhere
-                    around where your work is hosted or shared. This mark may be as
-                    simple as a bit of text stating the license, or as complex as
-                    embedding the license information on your website. <br><br>
-
-                    If you are interested in embedding license information on your
-                    website, please see the "Have a Website?" dropdown at the bottom
-                    of this page for help.
-                </p> <br>
-                <p>
-                    <b>Recourse Options</b> <br>
-                    So what would I do if someone used my licensed work in a way
-                    that the license does not permit? Well, there are lots of
-                    recourse options, but here are the two main ones: <br><br>
-                    <ul>
-                        <li>
-                            <b> - Resolve the Dispute Amicably</b>
-                            <p>
-                                First, we encourage you to contact the alleged violator, and attempt to
-                                resolve the dispute amicably. Most disagreements are solved
-                                in this manner, and it saves everyone time and money.
-                            </p>
-                        </li>
-                        <br />
-                        <li>
-                            <b> - Litigation</b>
-                            <p>
-                                If you determine that the dispute cannot be resolved any other
-                                way, you would then identify the alleged violation, contact a
-                                lawyer, and begin building a case.
-                            </p>
-                        </li>
-                    </ul>
-                </p>
+                <article v-html="this.$t('help.how_formally_license.text')"/>
             </section>
         </b-modal>
         <b-modal :active.sync="isModal6Active">
             <header class="modal-card-head">
-                <p class="modal-card-title modal-title">The Six Creative Commons Licenses</p>
+                <p class="modal-card-title modal-title">
+                    {{ $t('help.six_cc_licenses.heading') }}
+                </p>
             </header>
             <section class="modal-card-body">
                 <div class="columns">
                     <div class="column is-two-thirds">
-                        <p>
-                            There are six main licenses that Creative Commons offers. <br><br>
-
-                            In the diagram to the right, you can see the six main licenses
-                            and the public domain CC0 license, and how restrictive they are,
-                            with licenses at the top being the least restrictive, and licenses
-                            at the bottom being the most restrictive.<br><br>
-
-                            If you are unsure about which one is right for you and your work,
-                            please see the "Choose a License" section above.
-                        </p>
+                        <article
+                            v-html="this.$t('help.six_cc_licenses.text')">
+                       </article>
                     </div>
                     <div class="column">
                         <img src="../assets/license-openness-scale.png">
                     </div>
                 </div>
+
                 <footer class="modal-card-foot">
-                    <p>
-                        For more information, please see
-                        <a id="licensing_examples_link" href="https://creativecommons.org/share-your-work/licensing-types-examples/">
-                            this page on Creative Commons licenses.
-                        </a>
-                    </p>
+                    <p v-html="this.$t('help.six_cc_licenses.footer')" />
                 </footer>
             </section>
         </b-modal>
         <b-modal :active.sync="isModal7Active">
             <header class="modal-card-head">
-                <p class="modal-card-title modal-title">How are Licenses Communicated? </p>
+                <p class="modal-card-title modal-title">{{ $t('help.how_licenses_communicated.heading') }}
+                </p>
             </header>
             <section class="modal-card-body">
-                <p>
-                    Creative Commons licenses can be represented by their names, their
-                    associated icons, or both. For example, a CC BY-NC license, which
-                    requires attribution, and prohibits commercial use could be represented by its: </p>
+                <p v-html="this.$t('help.how_licenses_communicated.text')" />
                 <table class="table is-hoverable is-fullwidth">
                     <tbody>
                     <tr>
-                        <th>Full Name</th>
-                        <td>Attribution-NonCommercial</td>
+                        <th>{{ $t('help.how_licenses_communicated.license_full_name') }}</th>
+                        <td>{{ $t('license_full_names.CC-BY-SA') }}</td>
                     </tr>
                     <tr>
-                        <th>Short Name</th>
+                        <th>{{ $t('help.how_licenses_communicated.license_short_name') }}</th>
                         <td>CC BY-NC</td>
                     </tr>
                     <tr>
-                        <th>Icons</th>
+                        <th>{{ $t('help.how_licenses_communicated.license_icons') }}</th>
                         <td><LicenseIconography :icon-list="['', 'by', 'nc']"/></td>
                     </tr>
                     </tbody>
                 </table>
-
-                <footer class="modal-card-foot">
-                    <p>
-
-                    </p>
-                </footer>
             </section>
         </b-modal>
     </div>
@@ -374,6 +241,7 @@ export default {
     },
     data() {
         return {
+            sixLicensesImg: '<img src="../assets/license-openness-scale.png">',
             isModal1Active: false,
             isModal2Active: false,
             isModal3Active: false,
@@ -385,97 +253,108 @@ export default {
     }
 }
 </script>
-<style>
-button {
-    margin-top: 3% !important;
-}
+<style scoped>
 
-h2 {
-    font-size: 50px;
-    text-align: center;
-    margin-bottom: 1%;
-}
+    table svg {
+        width: 28px !important;
+        height: 28px !important;
+        vertical-align: middle;
+        margin-right: 3px;
+    }
 
-.edu-icons-section {
-    margin-top: 1.5%;
-}
-.edu-icons-title-section {
-    display: grid;
-    grid-template-columns: 1fr 7fr;
-}
+    table {
+        margin-top: 1.5rem;
+    }
 
-.edu-icons-section img {
-    width: 45px;
-}
-
-.edu-icons-section p {
-    margin-bottom: 6%;
-}
-
-.edu-icons-section .title {
-    vertical-align: middle !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    margin-left: 2% !important;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 23px;
-    line-height: 27px;
-}
-
-.edu-icons-section b {
-    padding-top: 0;
-}
-
-.edu-icons-section-icon_title p {
-    margin: 0;
-}
-
-.vocab.license-icons img {
-    width: 35px;
-}
-
-table svg {
-    width: 28px !important;
-    height: 28px !important;
-    vertical-align: middle;
-    margin-right: 3px;
-}
-
-table {
-    margin-top: 1.5rem;
-}
-
-.top-bottom-paddingless {
-    padding-bottom: 0 !important;
-    padding-top: 0 !important;
-}
-
-#modal-buttons {
-    padding-bottom: 1.5rem;
-}
-
-@media only screen and (max-width: 1025px) {
-    .tablet-hide { display: none; }
-    .tablet-show { display: block; }
-}
-
-@media only screen and (max-width: 670px) {
-    h2 { font-size: 30px !important; }
-    button p { font-size: 18px; }
+    .top-bottom-paddingless {
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
+    }
 
     #modal-buttons {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-bottom: 1.5rem;
     }
 
-    .modal-title { font-size: 18px; }
-    .modal-content {
-        margin-left: 10%;
-        margin-right: 10%;
+    @media only screen and (max-width: 1025px) {
+        .tablet-hide { display: none; }
+        .tablet-show { display: block; }
     }
 
-    .mobile-hide { display: none; }
-    .mobile-show { display: block; }
-}
+    @media only screen and (max-width: 670px) {
+        h2 { font-size: 30px !important; }
+        button p { font-size: 18px; }
+
+        #modal-buttons {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .modal-title { font-size: 18px; }
+        .modal-content {
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        .mobile-hide { display: none; }
+        .mobile-show { display: block; }
+    }
+</style>
+<style lang="scss">
+    .help__instructions {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    .help-text {
+        margin-bottom: 1rem;
+    }
+    .help-button {
+        margin-top: 3% !important;
+    }
+    .help-h5 {
+        font-weight: bold;
+    }
+    .vocab-h2 {
+        font-size: 50px;
+        text-align: center;
+        margin-bottom: 1%;
+    }
+    .edu-icons-section {
+        margin-top: 1.5%;
+    }
+    .edu-icons-title-section {
+        display: grid;
+        grid-template-columns: 1fr 7fr;
+    }
+
+    .edu-icons-section img {
+        width: 45px;
+    }
+
+    .edu-icons-section p {
+        margin-bottom: 6%;
+    }
+
+    .edu-icons-section .title {
+        vertical-align: middle !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        margin-left: 2% !important;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 23px;
+        line-height: 27px;
+    }
+
+    .edu-icons-section b {
+        padding-top: 0;
+    }
+
+    .edu-icons-section-icon_title p {
+        margin: 0;
+    }
+
+    .vocab.license-icons img {
+        width: 35px;
+    }
+
 </style>
