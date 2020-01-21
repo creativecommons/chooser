@@ -1,13 +1,11 @@
 <template>
     <div id="app">
-        <Header :title="$t('chooser')"/>
+        <Header :title="$t('app-title')"/>
         <Feedback/>
         <div class="container" id="site-container">
-            <Chooser v-model="selected"/>
+            <Chooser />
             <hr>
             <HelpSection/>
-            <hr>
-            <HTMLGenerator :shortLicenseName="selected.shortName"/>
         </div>
         <Footer>
             <div class="panel">
@@ -31,13 +29,12 @@
 
 <script>
 // TODO Reduce custom styling in favour of Vocabulary styles
-import '@creativecommons/vocabulary/root.css'
-import '@creativecommons/vocabulary/vocabulary.css'
+import '@creativecommons/vocabulary/css/root.css'
+import '@creativecommons/vocabulary/css/index.css'
 
 import Chooser from './components/Chooser'
 import HelpSection from './components/HelpSection'
-import HTMLGenerator from './components/HTMLGenerator'
-import { Header, Footer, Locale } from '@creativecommons/vocabulary'
+import { Header, Footer, Locale } from '@creativecommons/vue-vocabulary'
 import Feedback from './components/Feedback'
 
 export default {
@@ -46,38 +43,37 @@ export default {
         Chooser,
         HelpSection,
         Feedback,
-        HTMLGenerator,
         Header,
         Footer,
         Locale
-    },
-    data() {
-        return {
-            selected: {
-                shortName: 'CC BY 4.0',
-                fullName: 'Attribution 4.0 International'
-            }
-        }
-    },
-    methods: {
-        onLicenseUpdate(e) {
-            this.selected = e
-        }
     }
 }</script>
+<style lang="scss">
+    // Import Bulma's core
+    @import "~bulma/sass/utilities/_all";
+    $primary: hsl(13, 84%, 56%);
+    $background: hsl(0, 0%, 88%);
+    $body-background-color:hsl(0,0%, 88%);
+
+    // Links
+    $link: $primary;
+    $link-focus-border: $primary;
+    // Fonts
+    $family-primary: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif;
+    $family-sans-serif: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif!important;
+
+    // Import Bulma and Buefy styles
+    @import "~bulma";
+    @import "~buefy/src/scss/buefy";
+</style>
 <style>
 
-    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
+    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A%20400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
 
     #app {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;
-    }
-
-    hr {
-        margin-left: 5%;
-        margin-right: 5%;
     }
 
     #site-container {

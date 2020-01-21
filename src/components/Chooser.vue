@@ -1,88 +1,66 @@
 <template>
     <div class='container'>
         <div class='columns'>
-            <div class='column'
-                v-on:change='updateLicense()'>
-                <b class='desktop-show mobile-hide'>To change the selected license, click the icons below</b>
-                <b class='mobile-show desktop-hide'>To change the selected license, tap the icons below</b>
-                <IconSelector
-                    id='nc'
-                    icon='nc'
-                    v-model='allowCommercial'>
-                </IconSelector>
-                <IconSelector
-                    id='nd'
-                    icon='nd'
-                    v-model='allowAdaptations'>
-                </IconSelector>
-                <IconSelector
-                    id='sa'
-                    icon='sa'
-                    v-if='allowAdaptations'
-                    v-model='isShareAlike'>
-                </IconSelector>
-            </div>
-            <div class='column'>
-                <SelectedLicense
-                    :fullLicenseName='fullLicenseName'
-                    :shortLicenseName='shortLicenseName'/>
-            </div>
+            <Stepper
+                v-model="selected"
+            />
+            <LicenseCard
+                v-model="selected"
+                @dropdown-clicked="goToAttributionDetails()"
+            />
         </div>
     </div>
 </template>
 <script>
-/* eslint no-return-assign:0 */
 
-import SelectedLicense from './SelectedLicense'
-import IconSelector from './IconSelector'
+import Stepper from './Stepper'
+import LicenseCard from './LicenseCard'
 
 export default {
     name: 'Chooser',
-    props: ['value'],
     components: {
-        SelectedLicense,
-        IconSelector
+        Stepper,
+        LicenseCard
     },
     data() {
         return {
-            allowAdaptations: true,
-            allowCommercial: true,
-            isShareAlike: false
+            selected: {
+                shortName: 'CC BY 4.0',
+                fullName: 'Attribution 4.0 International',
+                attributionDetails: {
+                    creatorName: '',
+                    creatorProfileUrl: '',
+                    workTitle: '',
+                    workUrl: ''
+                }
+            }
         }
     },
     methods: {
-        updateLicense() {
-            this.$emit('input', {
-                shortName: this.shortLicenseName,
-                fullName: this.fullLicenseName
-            })
-        }
-    },
-    computed: {
-        shortLicenseName() {
-            var base = 'CC BY'
-            if (!this.allowCommercial) { base += '-NC' }
-            if (this.allowAdaptations && this.isShareAlike) { base += '-SA' } // eslint-disable-line brace-style
-            else if (!this.allowAdaptations) { base += '-ND' }
-            return base += ' 4.0'
-        },
-        fullLicenseName() {
-            var base = 'Attribution'
-            if (!this.allowCommercial) { base += '-NonCommercial' }
-            if (this.allowAdaptations && this.isShareAlike) { base += '-ShareAlike' } // eslint-disable-line brace-style
-            else if (!this.allowAdaptations) { base += '-NoDerivatives' }
-            return base += ' 4.0 International'
+        goToAttributionDetails() {
+            const lastStep = this.$children[0].$children[0].stepItems.length - 1
+            this.$children[0].$children[0].changeStep(lastStep)
         }
     }
 }
 </script>
-<style scoped>
+<style lang="scss">
 
-.selected-license-names b {
-    font-size: 1.8rem;
-}
-
-b {
-    text-align: center;
-}
+    header.card-header {
+        justify-content: center;
+        padding-top:1rem;
+        h2.vocab-h2 {
+            font-family: Roboto Condensed;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 28px;
+            line-height: 36px;
+            /* identical to box height, or 129% */
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+    }
+    div.card-content {
+        padding: 0.5rem 2rem 2rem;
+    }
 </style>

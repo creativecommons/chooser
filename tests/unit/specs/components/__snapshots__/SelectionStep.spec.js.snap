@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectionStep.vue has the expected UI 1`] = `
+<div class="selection-step">
+  <p class="selection-question">stepper-question.by</p>
+  <div class="field selected"><label class="b-radio radio"><input type="radio" value="yes"> <span class="check"></span> <span class="control-label"><span>stepper-description.by.selected</span></span></label></div>
+  <div class="field not-selected"><label class="b-radio radio"><input type="radio" value="no"> <span class="check"></span> <span class="control-label"><span>stepper-description.by.not-selected</span></span></label></div>
+</div>
+`;
