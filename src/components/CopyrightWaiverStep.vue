@@ -21,9 +21,9 @@ export default {
 label.label {
     font-size: 0.845rem;
 }
-textarea.waiver-textarea {
+.waiver-textarea {
     width: 100%;
-    min-height: 150px;
+    min-height: 100px;
     margin: 1rem 0;
 }
 .b-checkbox {
