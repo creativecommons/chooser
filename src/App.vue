@@ -30,7 +30,7 @@
 <script>
 // TODO Reduce custom styling in favour of Vocabulary styles
 import '@creativecommons/vocabulary/css/root.css'
-import '@creativecommons/vocabulary/css/vocabulary.css'
+import '@creativecommons/vocabulary/css/index.css'
 
 import Chooser from './components/Chooser'
 import HelpSection from './components/HelpSection'
