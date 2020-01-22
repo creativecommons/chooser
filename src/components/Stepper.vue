@@ -105,8 +105,8 @@ export default {
             const attributionStepLabel = this.$props.value.shortName.includes('BY') ? 'Attribution' : 'PublicDomain'
             const stepLabels = [
                 `stepper-label.${attributionStepLabel}`,
-                'stepper-label.NoDerivatives',
                 'stepper-label.NonCommercial',
+                'stepper-label.NoDerivatives',
                 'stepper-label.Share-Alike',
                 'stepper-label.CopyrightWaiver',
                 'stepper-label.AttributionDetails'
