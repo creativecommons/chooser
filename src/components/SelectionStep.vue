@@ -72,7 +72,7 @@ export default {
         margin-bottom: 0;
     }
     .field.not-selected {
-        opacity: 70%;
+        opacity: 0.7;
     }
     .field:hover {
         box-shadow: 0 10px 15px -3px rgba(237, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);

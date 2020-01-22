@@ -12,10 +12,10 @@
                      ref="steps"
                     >
                 <b-step-item
-                    v-for="item in this.steps"
+                    v-for="(item, index) in this.steps"
                     :icon-pack="item['icon-pack']"
                     :icon="getIcon(item.shortName)"
-                    :label=$t(item.label)
+                    :label="$t(labels[index])"
                     :key="item.shortName"
                     :selected="isStepSelected(item.shortName)"
                     :visible="isStepVisible(item.shortName)"
@@ -62,37 +62,31 @@ export default {
             currentStep: 0,
             steps: [
                 {
-                    label: this.attributionName,
                     shortName: 'BY',
                     'icon-pack': 'fab',
                     itemType: 'licenseAttribute'
                 },
                 {
-                    label: 'stepper-label.NonCommercial',
                     shortName: 'NC',
                     'icon-pack': 'fab',
                     itemType: 'licenseAttribute'
                 },
                 {
-                    label: 'stepper-label.NoDerivatives',
                     shortName: 'ND',
                     'icon-pack': 'fab',
                     itemType: 'licenseAttribute'
                 },
                 {
-                    label: 'stepper-label.Share-Alike',
                     shortName: 'SA',
                     'icon-pack': 'fab',
                     itemType: 'licenseAttribute'
                 },
                 {
-                    label: 'stepper-label.CopyrightWaiver',
                     shortName: 'wv',
                     'icon-pack': 'fas',
                     itemType: 'CC0Attribute'
                 },
                 {
-                    label: 'stepper-label.AttributionDetails',
                     shortName: 'ad',
                     'icon-pack': 'fas',
                     itemType: 'AttributionDetails'
@@ -107,8 +101,17 @@ export default {
         attributionIcon() {
             return this.$props.value.shortName.includes('BY') ? 'creative-commons-by' : 'creative-commons-zero'
         },
-        attributionName() {
-            return this.$props.value.shortName.includes('BY') ? 'stepper-label.Attribution' : 'stepper-label.PublicDomain'
+        labels() {
+            const attributionStepLabel = this.$props.value.shortName.includes('BY') ? 'Attribution' : 'PublicDomain'
+            const stepLabels = [
+                `stepper-label.${attributionStepLabel}`,
+                'stepper-label.NoDerivatives',
+                'stepper-label.NonCommercial',
+                'stepper-label.Share-Alike',
+                'stepper-label.CopyrightWaiver',
+                'stepper-label.AttributionDetails'
+            ]
+            return stepLabels
         }
     },
     methods: {
@@ -129,6 +132,9 @@ export default {
             } else {
                 return `creative-commons-${attrName.toLowerCase()}`
             }
+        },
+        getAttributionName() {
+            return this.$props.value.shortName.includes('BY') ? 'stepper-label.Attribution' : 'stepper-label.PublicDomain'
         },
         updateLicense(itemId) {
             const attrs = { ...this.licenseAttributes }
@@ -245,11 +251,11 @@ export default {
     }
     #stepper .b-steps .steps .step-items .step-item.is-step-not_selected .step-title {
         font-weight: normal;
-        opacity: 70%;
+        opacity: 0.7;
     }
     #stepper .b-steps .steps .step-items .step-item.is-step-selected .step-title {
         font-weight: 700;
-        opacity: 90%;
+        opacity: 1;
     }
     #stepper .b-steps .steps .step-items .step-item.is-step-not_selected.is-active .step-marker {
         border-color: #68ca86;
@@ -263,7 +269,7 @@ export default {
         color: #ed5931;
         background-color: white;
         svg path {
-            fill-opacity: 70%;
+            fill-opacity: 0.7;
         }
     }
 

@@ -190,7 +190,7 @@ export default {
                                     text-transform: uppercase;
                                     letter-spacing: 0.5px;
                                     color: #333333;
-                                    opacity:80%;
+                                    opacity:0.8;
 
                             }
                         }
@@ -212,7 +212,7 @@ export default {
                                 border-bottom-width: 3px;
                                 span{
                                     font-weight: 700;
-                                    opacity:100%;
+                                    opacity:1;
                                 }
                             }
                         }
