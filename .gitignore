@@ -1,5 +1,6 @@
 /tests/e2e/reports/
 /chromedriver.log
 .idea/
+dist/
 coverage/
 node_modules/
