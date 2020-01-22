@@ -245,11 +245,11 @@ export default {
     }
     #stepper .b-steps .steps .step-items .step-item.is-step-not_selected .step-title {
         font-weight: normal;
-        opacity: 70%;
+        opacity: 0.7;
     }
     #stepper .b-steps .steps .step-items .step-item.is-step-selected .step-title {
         font-weight: 700;
-        opacity: 90%;
+        opacity: 1;
     }
     #stepper .b-steps .steps .step-items .step-item.is-step-not_selected.is-active .step-marker {
         border-color: #68ca86;
@@ -263,7 +263,7 @@ export default {
         color: #ed5931;
         background-color: white;
         svg path {
-            fill-opacity: 70%;
+            fill-opacity: 0.7;
         }
     }
 

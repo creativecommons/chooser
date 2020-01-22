@@ -64,7 +64,7 @@ export default {
         margin-top: 1rem;
         label.label{
             font-weight: normal;
-            opacity: 80%;
+            opacity: 0.8;
             font-size: 1em;
         }
         span.select, select {

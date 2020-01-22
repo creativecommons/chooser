@@ -24,7 +24,6 @@ export default LicenseIcons;
 <style lang="scss" scoped>
   .photo-license-icons {
     display: inline-block;
-    height: 32px;
     white-space: none;
     opacity: .7;
     margin-top: 2px;
