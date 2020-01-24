@@ -32,13 +32,13 @@ export default {
             }
         },
         question() {
-            return `stepper-question.${this.stepId.toLowerCase()}`
+            return `stepper.${this.stepId.toLowerCase()}.question`
         },
         yesText() {
-            return `stepper-description.${this.stepId.toLowerCase()}.selected`
+            return `stepper.${this.stepId.toLowerCase()}.selected`
         },
         noText() {
-            return `stepper-description.${this.stepId.toLowerCase()}.not-selected`
+            return `stepper.${this.stepId.toLowerCase()}.not-selected`
         },
         yesSelected() {
             if (this.$props.selected) {

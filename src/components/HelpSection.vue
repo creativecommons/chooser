@@ -197,15 +197,15 @@
                 <table class="table is-hoverable is-fullwidth">
                     <tbody>
                     <tr>
-                        <th>{{ $t('help.how_licenses_communicated.license_full_name') }}</th>
+                        <th>{{ $t('general.license_full_name') }}</th>
                         <td>{{ $t('license_full_names.CC-BY-SA') }}</td>
                     </tr>
                     <tr>
-                        <th>{{ $t('help.how_licenses_communicated.license_short_name') }}</th>
+                        <th>{{ $t('general.license_short_name') }}</th>
                         <td>CC BY-NC</td>
                     </tr>
                     <tr>
-                        <th>{{ $t('help.how_licenses_communicated.license_icons') }}</th>
+                        <th>{{ $t('general.license_icons') }}</th>
                         <td><LicenseIconography :icon-list="['', 'by', 'nc']"/></td>
                     </tr>
                     </tbody>

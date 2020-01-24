@@ -1,5 +1,10 @@
 {
     "app-title": "License Chooser",
+    "general": {
+        "license_full_name": "Full Name",
+        "license_short_name": "Short Name",
+        "license_icons": "Icons"
+    },
     "stepper-label": {
         "Attribution": "Attribution",
         "PublicDomain": "Public Domain",
@@ -13,61 +18,88 @@
     "license_full_names": {
         "CC-BY-SA": "Attribution-NonCommercial"
     },
-    "stepper-question": {
-        "by": "Do you want to require attribution for your work?",
-        "nc": "Do you want to prohibit others commercial use of your work?",
-        "nd": "Do you want to prohibit others distributing your work if they remix, transform or build upon it?",
-        "sa": "Do you want to prohibit sharing your work under other terms?"
-    },
-    "stepper-description": {
+    "stepper":
+    {
         "by": {
+            "question": "Do you want to require attribution for your work?",
             "selected": "<b>Yes</b>, anyone using my work must give me <b>appropriate credit</b>.",
             "not-selected": "<b>No</b>, anyone can use my work even <b>without attribution</b>."
         },
         "nc": {
+            "question": "Do you want to prohibit others commercial use of your work?",
             "selected": "<b>Yes</b>, others <b>cannot</b> use my work for <b>commercial purposes</b>.",
             "not-selected": "<b>No</b>, others can use my work for <b>commercial purposes</b>."
         },
         "nd": {
+            "question": "Do you want to prohibit others distributing your work if they remix, transform or build upon it?",
             "selected": "<b>Yes</b>, others can use and share my work only <b>as is, without modifications</b>.",
             "not-selected": "<b>No</b>, others may share <b>modified version of your work</b>."
         },
         "sa": {
+            "question": "Do you want to prohibit sharing your work under other terms?",
             "selected": "<b>Yes</b>, anyone who changes your work <b>must share their contributions under the same license</b> as the original.",
             "not-selected": "<b>No</b>, anyone who changes your work can distribute their contributions <b>under a different license</b>."
+        },
+        "attribution-details": {
+            "creator-name": {
+                "label": "Work Author",
+                "placeholder": "John Silver"
+            },
+            "creator-profile": {
+                "label": "URL of creator profile",
+                "placeholder": "www.author.com"
+            },
+            "work-title": {
+                "label": "Title of Work",
+                "placeholder": "This work"
+            },
+            "work-url": {
+                "label": "Work URL",
+                "placeholder": "www.author.com/work.jpg"
+            }
         }
     },
-    "select-license-heading": "Select your license",
-    "select-license-instructions": "Use the most open license with attribution requirement, or select other options to restrict it.",
-    "selected-license-heading": "Your license",
-    "selected-license-instructions": "If you already know which license you need, just select it in the dropdown below.",
-    "use-license-heading": "Use your license",
-    "license-description": {
-        "common": "allows others to share, distribute, remix, adapt, and build upon your work",
-        "non-cc0": ", provided that:",
-        "zero": "without restrictions (Public Domain)",
-        "by": "the creator is credited",
-        "nc": "the use is non-commercial",
-        "nd": "only the original work is shared",
-        "sa": "the work is shared on the same conditions"
+    "select-license": {
+        "heading": "Select your license",
+        "instructions": "Use the most open license with attribution requirement, or select other options to restrict it."
+    },
+    "selected-license": {
+        "heading": "Your license",
+        "instructions": "If you already know which license you need, just select it in the dropdown below.",
+        "description": {
+            "common": "allows others to share, distribute, remix, adapt, and build upon your work",
+            "non-cc0": ", provided that:",
+            "zero": "without restrictions (Public Domain)",
+            "by": "the creator is credited",
+            "nc": "the use is non-commercial",
+            "nd": "only the original work is shared",
+            "sa": "the work is shared on the same conditions"
+        }
+    },
+    "use-license": {
+        "heading": "Use your license",
+        "rich-text-label": "Rich Text",
+        "html-label": "HTML",
+        "copy-label": "Copy",
+        "copied-label": "Copied!",
+
+        "hint": "Learn more about how to use your license"
+    },
+    "code-text": {
+        "this-work": "This work",
+        "license-text": "{workTitle} {byLine} is licensed under "
     },
     "license-dropdown-label": "You can select the license you need in the dropdown below:",
-    "rich-text-label": "Rich Text",
-    "html-label": "HTML",
-    "copy-label": "Copy",
-    "copied-label": "Copied!",
     "cc0": {
         "copyright-waive-statement": "I hereby waive all copyright and related or neighboring rights together with all associated claims and causes of action with respect to this work to the extent possible under the law.",
         "confirm": "I have read and understand the terms and intended legal effect of CC0, and hereby voluntarily elect to apply it to this work.",
         "waiver": "Creative Commons Legal Code\n CC0 1.0 Universal\n Official translations of this legal tool are available\n CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE LEGAL SERVICES. DISTRIBUTION OF THIS DOCUMENT DOES NOT CREATE AN ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS INFORMATION ON AN 'AS-IS' BASIS. CREATIVE COMMONS MAKES NO WARRANTIES REGARDING THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED HEREUNDER, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED HEREUNDER.\n Statement of Purpose\n  The laws of most jurisdictions throughout the world automatically confer exclusive Copyright and Related Rights (defined below) upon the creator and subsequent owner(s) (each and all, an 'owner') of an original work of authorship and/or a database (each, a 'Work').\nCertain owners wish to permanently relinquish those rights to a Work for the purpose of contributing to a commons of creative, cultural and scientific works ('Commons') that the public can reliably and without fear of later claims of infringement build upon, modify, incorporate in other works, reuse and redistribute as freely as possible in any form whatsoever and for any purposes, including without limitation commercial purposes. These owners may contribute to the Commons to promote the ideal of a free culture and the further production of creative, cultural and scientific works, or to gain reputation or greater distribution for their Work in part through the use and efforts of others.\nFor these and/or other purposes and motivations, and without any expectation of additional consideration or compensation, the person associating CC0 with a Work (the 'Affirmer'), to the extent that he or she is an owner of Copyright and Related Rights in the Work, voluntarily elects to apply CC0 to the Work and publicly distribute the Work under its terms, with knowledge of his or her Copyright and Related Rights in the Work and the meaning and intended legal effect of CC0 on those rights.\n  1. Copyright and Related Rights. A Work made available under CC0 may be protected by copyright and related or neighboring rights ('Copyright and Related Rights'). Copyright and Related Rights include, but are not limited to, the following:\n the right to reproduce, adapt, distribute, perform, display, communicate, and translate a Work;\n moral rights retained by the original author(s) and/or performer(s);  publicity and privacy rights pertaining to a person's image or likeness depicted in a Work;\n rights protecting against unfair competition in regards to a Work, subject to the limitations in paragraph 4(a), below;\n  rights protecting the extraction, dissemination, use and reuse of data in a Work;\n database rights (such as those arising under Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, and under any national implementation thereof, including any amended or successor version of such directive); and  other similar, equivalent or corresponding rights throughout the world based on applicable law or treaty, and any national implementations thereof.\n 2. Waiver. To the greatest extent permitted by, but not in contravention of, applicable law, Affirmer hereby overtly, fully, permanently, irrevocably and unconditionally waives, abandons, and surrenders all of Affirmer's Copyright and Related Rights and associated claims and causes of action, whether now known or unknown (including existing as well as future claims and causes of action), in the Work (i) in all territories worldwide, (ii) for the maximum duration provided by applicable law or treaty (including future time extensions), (iii) in any current or future medium and for any number of copies, and (iv) for any purpose whatsoever, including without limitation commercial, advertising or promotional purposes (the 'Waiver'). Affirmer makes the Waiver for the benefit of each member of the public at large and to the detriment of Affirmer's heirs and successors, fully intending that such Waiver shall not be subject to revocation, rescission, cancellation, termination, or any other legal or equitable action to disrupt the quiet enjoyment of the Work by the public as contemplated by Affirmer's express Statement of Purpose.\n 3. Public License Fallback. Should any part of the Waiver for any reason be judged legally invalid or ineffective under applicable law, then the Waiver shall be preserved to the maximum extent permitted taking into account Affirmer's express Statement of Purpose. In addition, to the extent the Waiver is so judged Affirmer hereby grants to each affected person a royalty-free, non transferable, non sublicensable, non exclusive, irrevocable and unconditional license to exercise Affirmer's Copyright and Related Rights in the Work (i) in all territories worldwide, (ii) for the maximum duration provided by applicable law or treaty (including future time extensions), (iii) in any current or future medium and for any number of copies, and (iv) for any purpose whatsoever, including without limitation commercial, advertising or promotional purposes (the 'License'). The License shall be deemed effective as of the date CC0 was applied by Affirmer to the Work. Should any part of the License for any reason be judged legally invalid or ineffective under applicable law, such partial invalidity or ineffectiveness shall not invalidate the remainder of the License, and in such case Affirmer hereby affirms that he or she will not (i) exercise any of his or her remaining Copyright and Related Rights in the Work or (ii) assert any associated claims and causes of action with respect to the Work, in either case contrary to Affirmer's express Statement of Purpose.\n 4. Limitations and Disclaimers.\n No trademark or patent rights held by Affirmer are waived, abandoned, surrendered, licensed or otherwise affected by this document.\n Affirmer offers the Work as-is and makes no representations or warranties of any kind concerning the Work, express, implied, statutory or otherwise, including without limitation warranties of title, merchantability, fitness for a particular purpose, non infringement, or the absence of latent or other defects, accuracy, or the present or absence of errors, whether or not discoverable, all to the greatest extent permissible under applicable law.\n Affirmer disclaims responsibility for clearing rights of other persons that may apply to the Work or any use thereof, including without limitation any person's Copyright and Related Rights in the Work. Further, Affirmer disclaims responsibility for obtaining any necessary consents, permissions or other rights required for any use of the Work.\n Affirmer understands and acknowledges that Creative Commons is not a party to this document and has no duty or obligation with respect to this CC0 or use of the Work."
     },
-    "this-work": "This work",
-    "license-text": "{workTitle} {byLine} is licensed under ",
+
     "step-navigation" : {
         "previous": "Change earlier step" ,
         "next": ""
     },
-    "use-license-hint": "Learn more about how to use your license",
     "free-culture-work": {
         "yes": "Free Culture License",
         "no": "Not a Free Culture License"
@@ -114,10 +146,7 @@
         },
         "how_licenses_communicated": {
             "heading": "How are Licenses Communicated?",
-            "text": "Creative Commons licenses can be represented by their names, their associated icons, or both. For example, a CC BY-NC license, which requires attribution, and prohibits commercial use could be represented by its:",
-            "license_full_name": "Full Name",
-            "license_short_name": "Short Name",
-            "license_icons": "Icons"
+            "text": "Creative Commons licenses can be represented by their names, their associated icons, or both. For example, a CC BY-NC license, which requires attribution, and prohibits commercial use could be represented by its:"
         },
         "considerations_before_licensing": {
             "heading": "Considerations Before Licensing",

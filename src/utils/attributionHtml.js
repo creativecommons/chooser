@@ -10,7 +10,7 @@ function workTitle(form) {
     } else if (form.workUrl) {
 
     }
-    const titleSpan = form.workTitle ? `<span  rel="dc:title">${form.workTitle}</span>` : this.$t('this-work')
+    const titleSpan = form.workTitle ? `<span  rel="dc:title">${form.workTitle}</span>` : this.$t('code-text.this-work')
     if (form.workUrl) {
         return `<a rel="cc:attributionURL" href="${form.workUrl}">${titleSpan}</a>`
     } else {

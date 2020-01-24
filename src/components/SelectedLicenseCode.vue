@@ -3,16 +3,16 @@
         <h2
             :class="'vocab-h2'"
         >
-            {{this.$t('use-license-heading')}}</h2>
+            {{this.$t('use-license.heading')}}</h2>
         <b-tabs
             class="attribution-tab"
             v-model="activeTab"
         >
-            <b-tab-item :label="this.$t('rich-text-label')">
+            <b-tab-item :label="this.$t('use-license.rich-text-label')">
                 <div id="attribution-richtext"
                     v-html="this.htmlElement"/>
             </b-tab-item>
-            <b-tab-item :label="this.$t('html-label')">
+            <b-tab-item :label="this.$t('use-license.html-label')">
                 <div class='control' id='generated-html-container'>
                     <textarea id='attribution-html'
                               class='textarea'
@@ -45,7 +45,7 @@
             icon="question-circle"
             size="is-medium"/>
             <a href="https://wiki.creativecommons.org/wiki/Marking_your_work_with_a_CC_license">
-                {{$t('use-license-hint')}}
+                {{$t('use-license.hint')}}
             </a>
         </p>
     </div>
@@ -62,7 +62,7 @@ export default {
             success: false,
             clipboard: null,
             currentTab: 0,
-            copyText: this.$t('copy-label'),
+            copyText: this.$t('use-license.copy-label'),
             currentSelection: 'richtext'
         }
     },
@@ -101,9 +101,10 @@ export default {
             const workUrl = this.$props.value.attributionDetails.workUrl
             const workTitle = this.$props.value.attributionDetails.workTitle
             if (!workTitle && !workUrl) {
-                return this.$t('this-work')
+                return this.$t('code-text.this-work')
             } else {
-                const titleSpan = workTitle ? `<span rel="dc:title">${workTitle}</span>` : this.$t('this-work')
+                const titleSpan = workTitle ? `<span rel="dc:title">${workTitle}</span>`
+                    : this.$t('code-text.this-work')
                 if (workUrl) {
                     return `<a rel="cc:attributionURL" href="${workUrl}">${titleSpan}</a>`
                 } else {
@@ -112,7 +113,7 @@ export default {
             }
         },
         htmlElement() {
-            const licenseText = this.$t('license-text', {
+            const licenseText = this.$t('code-text.license-text', {
                 workTitle: this.titleElement,
                 byLine: this.authorElement
             })

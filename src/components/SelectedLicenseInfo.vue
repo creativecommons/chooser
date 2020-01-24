@@ -4,10 +4,11 @@
             <a :href="this.$licenseUrl(value.shortName)">{{ value.fullName }}</a>
         </h4>
         <p id='chooser-selected-description'>
-            <b>{{this.value.shortName.slice(0, this.value.shortName.length-3)}}</b> {{
-            this.$t("license-description.common") }} <span
-            v-if="!value.fullName.includes('CC0')">{{this.$t("license-description.non-cc0")
-            }}</span>
+            <b>{{this.value.shortName.slice(0, this.value.shortName.length-3)}}</b>
+            {{ this.$t("selected-license.description.common") }}
+            <span v-if="!value.fullName.includes('CC0')">
+                {{this.$t("selected-license.description.non-cc0") }}
+            </span>
         </p>
         <section class="license-visual-info">
             <ul class="license-list">
@@ -17,7 +18,7 @@
                         <LicenseIconography
                             :icon-list="[item]"/>
                         <span class="readable-string">
-                            {{ $t(`license-description.${item}`)}}
+                            {{ $t(`selected-license.description.${item}`)}}
                         </span>
                     </li>
                 </transition-group>
@@ -25,7 +26,7 @@
             <div class="freeworks-status__div">
                 <a href="https://creativecommons.org/freeworks">
                     <img v-if="this.freeWorkStatus" src="../assets/license-icons/fc_approved_small.png" alt="" />
-                    <img v-else src="../assets/license-icons/fc_dubious.png" />
+                    <img v-else src="../assets/license-icons/fc_dubious.png" alt=""/>
                 </a>
             </div>
             <p class="freeworks-status__p">

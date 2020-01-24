@@ -1,8 +1,7 @@
 <template>
     <div class="license-dropdown">
         <b-field :label="this.$t('license-dropdown-label')">
-            <b-select placeholder="Creative Commons License"
-                      v-model="currentLicense">
+            <b-select v-model="currentLicense">
                 <option
                     v-for="license in this.licenseList"
                     :value="license"
