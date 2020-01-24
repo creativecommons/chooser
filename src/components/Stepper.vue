@@ -139,11 +139,17 @@ export default {
         updateLicense(itemId) {
             const attrs = { ...this.licenseAttributes }
             attrs[itemId] = !attrs[itemId]
-            this.$emit('input', {
+            const licenseData = {
                 shortName: this.shortLicenseName(attrs),
                 fullName: this.fullLicenseName(attrs),
                 attributionDetails: this.$props.value.attributionDetails
+            }
+            this.$ga.event({
+                eventCategory: 'stepper',
+                eventAction: 'clicked',
+                eventLabel: licenseData.shortName
             })
+            this.$emit('input', licenseData)
         },
         shortLicenseName(attr) {
             if (!attr.BY) { return 'CC0 1.0' }

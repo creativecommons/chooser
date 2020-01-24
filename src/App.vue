@@ -46,6 +46,10 @@ export default {
         Header,
         Footer,
         Locale
+    },
+    created: function() {
+        // send home to google analytics
+        this.$ga.page('/')
     }
 }</script>
 <style lang="scss">
