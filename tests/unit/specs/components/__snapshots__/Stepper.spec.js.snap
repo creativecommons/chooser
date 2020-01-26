@@ -4,10 +4,10 @@ exports[`Stepper.vue has the expected UI 1`] = `
 <div id="stepper" class="column is-three-fifths-tablet is-half-desktop">
   <div class="card">
     <header class="card-header">
-      <h2 class="vocab-h2">Select your license</h2>
+      <h2 class="vocab-h2"></h2>
     </header>
     <div class="card-content">
-      <p class="stepper-instructions">Use the most open license with attribution requirement, or select other options to restrict it.</p>
+      <p class="stepper-instructions"></p>
       <div class="b-steps">
         <nav class="steps is-small">
           <ul class="step-items">
@@ -87,32 +87,36 @@ exports[`Stepper.vue has the expected UI 1`] = `
             <!---->
             <!---->
             <form class="attribution-details-form">
-              <div class="field is-floating-in-label"><label class="label">Work Author</label>
-                <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="John Silver" class="input">
+              <div class="field">
+                <!---->
+                <div class="control is-clearfix"><input type="text" autocomplete="on" class="input">
                   <!---->
                   <!---->
                   <!---->
                 </div>
                 <!---->
               </div>
-              <div class="field is-floating-in-label"><label class="label">URL of Creator Profile</label>
-                <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="Creator's blog/ twitter profile/ instagram profile etc" class="input">
+              <div class="field">
+                <!---->
+                <div class="control is-clearfix"><input type="text" autocomplete="on" class="input">
                   <!---->
                   <!---->
                   <!---->
                 </div>
                 <!---->
               </div>
-              <div class="field is-floating-in-label"><label class="label">Title of Work</label>
-                <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="This work" class="input">
+              <div class="field">
+                <!---->
+                <div class="control is-clearfix"><input type="text" autocomplete="on" class="input">
                   <!---->
                   <!---->
                   <!---->
                 </div>
                 <!---->
               </div>
-              <div class="field is-floating-in-label"><label class="label">Work URL</label>
-                <div class="control is-clearfix"><input type="text" autocomplete="on" placeholder="https://www.example.com/image.jpg" class="input">
+              <div class="field">
+                <!---->
+                <div class="control is-clearfix"><input type="text" autocomplete="on" class="input">
                   <!---->
                   <!---->
                   <!---->
