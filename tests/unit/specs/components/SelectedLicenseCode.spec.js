@@ -125,10 +125,8 @@ describe('SelectedLicenseCode.vue', () => {
         expect(generatedHtml.findAll('img')).toHaveLength(2)
         // There are three links: two icons and license name
         expect(generatedHtml.findAll('a')).toHaveLength(1)
-        console.log(generatedHtml.find('a').attributes('href'))
         expect(generatedHtml.find('a').attributes('href')).toEqual('https://creativecommons.org/licenses/by/4.0/?ref=ccchooser')
         // check that the text is correct
-        console.log(wrapper.vm.authorElement)
         // check that changing fields generate correct texts
     })
 })
