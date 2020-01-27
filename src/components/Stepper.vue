@@ -2,10 +2,10 @@
     <div class='column is-three-fifths-tablet is-half-desktop' id="stepper" >
         <div class="card">
             <header class="card-header">
-                <h2 :class="'vocab-h2'">{{ $t('select-license-heading') }}</h2>
+                <h2 :class="'vocab-h2'">{{ $t('select-license.heading') }}</h2>
             </header>
             <div class="card-content">
-            <p :class="'stepper-instructions'">{{ $t('select-license-instructions') }}</p>
+            <p :class="'stepper-instructions'">{{ $t('select-license.instructions') }}</p>
             <b-steps size="is-small"
                      v-on:input="disableSAifND"
                      v-model="currentStep"

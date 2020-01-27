@@ -1,27 +1,27 @@
 <template>
     <form class="attribution-details-form">
-        <b-field label="Work Author" label-position="inside">
+        <b-field :label="this.$t('stepper.attribution-details.creator-name.label')" label-position="inside">
             <b-input
                 v-model="value.creatorName"
-                placeholder="John Silver"
+                :placeholder="this.$t('stepper.attribution-details.creator-name.placeholder')"
             />
         </b-field>
-        <b-field label="URL of Creator Profile" label-position="inside">
+        <b-field :label="this.$t('stepper.attribution-details.creator-profile.label')" label-position="inside">
             <b-input
                 v-model="value.creatorProfileUrl"
-                placeholder="Creator's blog/ twitter profile/ instagram profile etc"
+                :placeholder="this.$t('stepper.attribution-details.creator-profile.placeholder')"
             />
         </b-field>
-        <b-field label="Title of Work" label-position="inside">
+        <b-field :label="this.$t('stepper.attribution-details.work-title.label')" label-position="inside">
             <b-input
                 v-model="value.workTitle"
-                placeholder="This work"
+                :placeholder="this.$t('stepper.attribution-details.work-title.placeholder')"
             />
         </b-field>
-        <b-field label="Work URL" label-position="inside">
+        <b-field :label="this.$t('stepper.attribution-details.work-url.label')" label-position="inside">
                 <b-input
                     v-model="value.workUrl"
-                    placeholder="https://www.example.com/image.jpg"
+                    :placeholder="this.$t('stepper.attribution-details.work-url.placeholder')"
                 />
             </b-field>
     </form>

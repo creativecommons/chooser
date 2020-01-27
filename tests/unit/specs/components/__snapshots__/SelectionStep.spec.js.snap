@@ -2,8 +2,8 @@
 
 exports[`SelectionStep.vue has the expected UI 1`] = `
 <div class="selection-step">
-  <p class="selection-question">stepper-question.by</p>
-  <div class="field selected"><label class="b-radio radio"><input type="radio" value="yes"> <span class="check"></span> <span class="control-label"><span>stepper-description.by.selected</span></span></label></div>
-  <div class="field not-selected"><label class="b-radio radio"><input type="radio" value="no"> <span class="check"></span> <span class="control-label"><span>stepper-description.by.not-selected</span></span></label></div>
+  <p class="selection-question">stepper.by.question</p>
+  <div class="field selected"><label class="b-radio radio"><input type="radio" value="yes"> <span class="check"></span> <span class="control-label"><span>stepper.by.selected</span></span></label></div>
+  <div class="field not-selected"><label class="b-radio radio"><input type="radio" value="no"> <span class="check"></span> <span class="control-label"><span>stepper.by.not-selected</span></span></label></div>
 </div>
 `;

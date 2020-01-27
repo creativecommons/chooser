@@ -1,4 +1,4 @@
-import {shallowMount, createLocalVue, config} from '@vue/test-utils'
+import { shallowMount, createLocalVue, config } from '@vue/test-utils'
 import SelectedLicenseInfo from '@/components/SelectedLicenseInfo'
 import Buefy from 'buefy'
 import LicenseUtilities from '@/utils/license-utilities'

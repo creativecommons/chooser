@@ -24,8 +24,10 @@
             </ul>
             <div class="freeworks-status__div">
                 <a href="https://creativecommons.org/freeworks">
-                    <img v-if="this.freeWorkStatus" src="../assets/license-icons/fc_approved_small.png" alt="" />
-                    <img v-else src="../assets/license-icons/fc_dubious.png" />
+                    <img v-if="this.freeWorkStatus" src="../assets/license-icons/fc_approved_small.png"
+                         alt="{{ $t('alt.free-works-icon') }}" />
+                    <img v-else src="../assets/license-icons/fc_dubious.png"
+                         alt="{{ $t('alt.non-free-works-icon') }}" />
                 </a>
             </div>
             <p class="freeworks-status__p">

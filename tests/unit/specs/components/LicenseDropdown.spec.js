@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import Buefy from 'buefy'
-import {config, createLocalVue, mount} from '@vue/test-utils'
+import { config, createLocalVue, mount } from '@vue/test-utils'
 import LicenseUtilities from '@/utils/license-utilities'
 import SelectedLicenseDropdown from '@/components/SelectedLicenseDropdown'
 

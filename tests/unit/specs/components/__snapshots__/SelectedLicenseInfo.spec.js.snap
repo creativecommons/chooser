@@ -3,7 +3,11 @@
 exports[`SelectedLicenseInfo.vue has the expected UI 1`] = `
 <div class="selected-license-info">
   <h4><a href="https://creativecommons.org/licenses/by/4.0/?ref=ccchooser">Attribution 4.0 International</a></h4>
-  <p id="chooser-selected-description"><b>CC BY </b> <span></span></p>
+  <p id="chooser-selected-description"><b>CC BY </b>
+
+    <span>
+
+        </span></p>
   <section class="license-visual-info">
     <ul class="license-list"><span name="highlight"><li><licenseiconography-stub iconlist="by"></licenseiconography-stub> <span class="readable-string">
                         

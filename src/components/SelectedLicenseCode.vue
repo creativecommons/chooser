@@ -3,20 +3,26 @@
         <h2
             :class="'vocab-h2'"
         >
-            {{this.$t('use-license-heading')}}</h2>
+            {{this.$t('use-license.heading')}}</h2>
         <b-tabs
             class="attribution-tab"
             v-model="activeTab"
         >
-            <b-tab-item :label="this.$t('rich-text-label')">
-                <div id="attribution-richtext"
-                    v-html="this.htmlElement"/>
+            <b-tab-item :label="this.$t('use-license.rich-text-label')">
+                <div id="attribution-richtext">
+                <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">
+                    <span v-html="this.licenseCodeTextSpan" />
+                    <LicenseIcons
+                        :url="this.$licenseUrl(this.$props.value.shortName)"
+                        :iconsArr="this.$licenseIconsArr(this.$props.value.shortName)"/>
+                </p>
+                </div>
             </b-tab-item>
-            <b-tab-item :label="this.$t('html-label')">
+            <b-tab-item :label="this.$t('use-license.html-label')">
                 <div class='control' id='generated-html-container'>
                     <textarea id='attribution-html'
                               class='textarea'
-                              :value="htmlElement"
+                              :value="htmlLicenseParagraph"
                               readonly
                     />
                 </div>
@@ -45,24 +51,27 @@
             icon="question-circle"
             size="is-medium"/>
             <a href="https://wiki.creativecommons.org/wiki/Marking_your_work_with_a_CC_license">
-                {{$t('use-license-hint')}}
+                {{$t('use-license.hint')}}
             </a>
         </p>
     </div>
 </template>
 <script>
 import Clipboard from 'clipboard'
-import { workAuthor, workLicense } from '@/utils/attributionHtml'
+import LicenseIcons from './LicenseIcons'
 
 export default {
     name: 'SelectedLicenseCode',
+    components: {
+        LicenseIcons
+    },
     props: ['value'],
     data() {
         return {
             success: false,
             clipboard: null,
             currentTab: 0,
-            copyText: this.$t('copy-label'),
+            copyText: this.$t('use-license.copy-label'),
             currentSelection: 'richtext'
         }
     },
@@ -87,23 +96,29 @@ export default {
         licenseURL() {
             return this.$licenseUrl(this.$props.value.shortName)
         },
-        workLicenseElement() {
-            return workLicense(this.licenseURL,
-                this.$props.value.shortName)
+        licenseLink() {
+            const short = this.$props.value.shortName.toUpperCase()
+            const attrs = 'target="_blank" rel="license noopener noreferrer" style="display: inline-block;">'
+            return `<a href="${this.licenseURL}" ${attrs}${short}</a>`
         },
         authorElement() {
-            return workAuthor({
-                creatorName: this.$props.value.attributionDetails.creatorName,
-                creatorProfileUrl: this.$props.value.attributionDetails.creatorProfileUrl
-            })
+            const name = this.$props.value.attributionDetails.creatorName
+            const profile = this.$props.value.attributionDetails.creatorProfileUrl
+            if (name) {
+                const creatorNameNoLink = `<span rel="cc:attributionName">${name}</span>`
+                return profile
+                    ? `by <a rel="cc:attributionURL"  href="${profile}">${creatorNameNoLink}</a>`
+                    : `by ${creatorNameNoLink}`
+            } else return ''
         },
         titleElement() {
             const workUrl = this.$props.value.attributionDetails.workUrl
             const workTitle = this.$props.value.attributionDetails.workTitle
             if (!workTitle && !workUrl) {
-                return this.$t('this-work')
+                return this.$t('code-text.this-work')
             } else {
-                const titleSpan = workTitle ? `<span rel="dc:title">${workTitle}</span>` : this.$t('this-work')
+                const titleSpan = workTitle ? `<span rel="dc:title">${workTitle}</span>`
+                    : this.$t('code-text.this-work')
                 if (workUrl) {
                     return `<a rel="cc:attributionURL" href="${workUrl}">${titleSpan}</a>`
                 } else {
@@ -111,14 +126,27 @@ export default {
                 }
             }
         },
-        htmlElement() {
-            const licenseText = this.$t('license-text', {
+        licenseCodeTextSpan() {
+            const attributionCode = this.$t('code-text.license-text', {
                 workTitle: this.titleElement,
                 byLine: this.authorElement
             })
-            const paragraphBeginning = '<p id="license-code" xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">'
-            const fullLicenseCode = `${paragraphBeginning}${licenseText}${this.workLicenseElement}</p>`
-            return fullLicenseCode
+            return `${attributionCode}${this.licenseLink}`
+        },
+        htmlLicenseParagraph() {
+            let short = this.$props.value.shortName
+            const iconStyle = 'style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;opacity:0.7;"'
+            const baseAssetsPath = 'https://search.creativecommons.org/static/img'
+            let licenseIcons = `<img ${iconStyle} src="${baseAssetsPath}/cc_icon.svg" />`
+            if (short.includes('CC0')) {
+                short = 'CC CC0 1.0'
+            }
+            licenseIcons += short.slice(3, short.length - 4).split('-').map(license =>
+                `<img  ${iconStyle} src="${baseAssetsPath}/cc-${license.toLowerCase()}_icon.svg" />`
+            ).join('')
+            const licenseIconsLink = `<a href="${this.licenseURL}">${licenseIcons}</a>`
+            const ccrelcode = 'xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#"'
+            return `<p ${ccrelcode}>${this.licenseCodeTextSpan}${licenseIconsLink}</p>`
         },
         activeTab: {
             get() { return this.currentTab },
@@ -129,7 +157,7 @@ export default {
                     this.currentSelection = this.currentTab === 0 ? 'richtext' : 'html'
                     const tab = this.currentTab
                     this.currentTab = 2
-                    this.copyText = this.$t('copied-label')
+                    this.copyText = this.$t('use-license.copied-label')
                     setTimeout(() => {
                         this.currentTab = tab
                     }, 1)
@@ -164,7 +192,7 @@ export default {
     .use-license-hint span {
         vertical-align: middle;
     }
-    div.license-code {
+    .license-code {
         margin-top: 0.4rem;
         h2.vocab-h2{
             font-family: Roboto Condensed;
