@@ -163,5 +163,9 @@
             "text": " <p class='help-text'>  There are six main licenses that Creative Commons offers.</p>   <p class='help-text'>In the diagram to the right, you can see the six main licenses and the public domain CC0 license, and how restrictive they are, with licenses at the top being the least restrictive, and licenses at the bottom being the most restrictive.</p>   <p class='help-text'> If you are unsure about which one is right for you and your work, please see the \"Choose a License\" section above. </p>",
             "footer": "For more information, please see <a id=\"licensing_examples_link\" href=\"https://creativecommons.org/share-your-work/licensing-types-examples/\">this page on Creative Commons licenses.</a>"
         }
+    },
+    "alt": {
+        "free-works-icon": "Free Works Icon",
+        "non-free-works-icon": "Icon for a non-Free Works License"
     }
 }
