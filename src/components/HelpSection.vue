@@ -8,25 +8,25 @@
         <div class="columns" id="modal-buttons">
             <div class="column top-bottom-paddingless">
                 <button id="cc_license_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="isModal1Active = true">
+                        @click="clickHandler(1)">
                     <p>
                         {{ $t('help.what_are_cc_licenses.heading') }}
                     </p>
                 </button>
                 <button id="license_work_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="isModal2Active = true">
+                    @click="clickHandler(2)">
                     <p>
                         {{ $t('help.how_licenses_work.heading') }}
                     </p>
                 </button>
                 <button id="icons_meaning_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="isModal3Active = true">
+                    @click="clickHandler(3)">
                     <p>
                         {{ $t('help.what_icons_mean.heading') }}
                     </p>
                 </button>
                 <button id="license_communication_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="isModal7Active = true">
+                    @click="clickHandler(7)">
                     <p>
                         {{ $t('help.how_licenses_communicated.heading') }}
                     </p>
@@ -34,19 +34,19 @@
             </div>
             <div class="column top-bottom-paddingless">
                 <button id="consideration_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="isModal4Active = true">
+                    @click="clickHandler(4)">
                     <p>
                         {{ $t('help.considerations_before_licensing.heading') }}
                     </p>
                 </button>
                 <button id="formal_license_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="isModal5Active = true">
+                    @click="clickHandler(5)">
                     <p>
                         {{ $t('help.how_formally_license.heading') }}
                     </p>
                 </button>
                 <button id="license_description_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="isModal6Active = true">
+                    @click="clickHandler(6)">
                     <p>
                         {{ $t('help.six_cc_licenses.heading') }}
                     </p>
@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <b-modal :active.sync="isModal1Active">
+        <b-modal :active.sync="modals[1].status">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title" v-html="this.$t('help.what_are_cc_licenses.heading')"/>
             </header>
@@ -65,7 +65,7 @@
                 </footer>
             </section>
         </b-modal>
-        <b-modal :active.sync="isModal2Active">
+        <b-modal :active.sync="modals[2].status">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">
                     {{ $t('help.how_licenses_work.heading') }}
@@ -76,7 +76,7 @@
                 <footer class="modal-card-foot" v-html="this.$t('help.how_licenses_work.footer')"/>
             </section>
         </b-modal>
-        <b-modal :active.sync="isModal3Active">
+        <b-modal :active.sync="modals[3].status">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">
                     {{ $t('help.what_icons_mean.heading') }}
@@ -141,7 +141,7 @@
                 </footer>
             </section>
         </b-modal>
-        <b-modal :active.sync="isModal4Active">
+        <b-modal :active.sync="modals[4].status">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">
                     {{ $t('help.considerations_before_licensing.heading') }}
@@ -154,7 +154,7 @@
                 </footer>
             </section>
         </b-modal>
-        <b-modal :active.sync="isModal5Active">
+        <b-modal :active.sync="modals[5].status">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">
                     {{ $t('help.how_formally_license.heading') }}
@@ -164,7 +164,7 @@
                 <article v-html="this.$t('help.how_formally_license.text')"/>
             </section>
         </b-modal>
-        <b-modal :active.sync="isModal6Active">
+        <b-modal :active.sync="modals[6].status">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">
                     {{ $t('help.six_cc_licenses.heading') }}
@@ -187,7 +187,7 @@
                 </footer>
             </section>
         </b-modal>
-        <b-modal :active.sync="isModal7Active">
+        <b-modal :active.sync="modals[7].status">
             <header class="modal-card-head">
                 <p class="modal-card-title modal-title">{{ $t('help.how_licenses_communicated.heading') }}
                 </p>
@@ -242,13 +242,46 @@ export default {
     data() {
         return {
             sixLicensesImg: '<img src="../assets/license-openness-scale.png">',
-            isModal1Active: false,
-            isModal2Active: false,
-            isModal3Active: false,
-            isModal4Active: false,
-            isModal5Active: false,
-            isModal6Active: false,
-            isModal7Active: false
+            modals: {
+                1: {
+                    status: false,
+                    title: 'what_are_cc_licenses'
+                },
+                2: {
+                    status: false,
+                    title: 'how_licenses_work'
+                },
+                3: {
+                    status: false,
+                    title: 'what_icons_mean'
+                },
+                4: {
+                    status: false,
+                    title: 'considerations_before_licensing'
+                },
+                5: {
+                    status: false,
+                    title: 'how_formally_license'
+                },
+                6: {
+                    status: false,
+                    title: 'six_cc_licenses'
+                },
+                7: {
+                    status: false,
+                    title: 'how_licenses_communicated'
+                }
+            }
+        }
+    },
+    methods: {
+        clickHandler(modalNumber) {
+            this.modals[modalNumber].status = true
+            this.$ga.event({
+                eventCategory: 'HelpSection',
+                eventAction: 'clicked',
+                eventLabel: this.modals[modalNumber].title
+            })
         }
     }
 }

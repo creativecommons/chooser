@@ -145,9 +145,10 @@ export default {
                 attributionDetails: this.$props.value.attributionDetails
             }
             this.$ga.event({
-                eventCategory: 'stepper',
+                eventCategory: 'Stepper',
                 eventAction: 'clicked',
-                eventLabel: licenseData.shortName
+                eventLabel: itemId,
+                eventValue: licenseData.shortName
             })
             this.$emit('input', licenseData)
         },

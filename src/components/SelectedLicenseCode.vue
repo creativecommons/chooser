@@ -78,6 +78,28 @@ export default {
     methods: {
         onCopySuccess(e) {
             this.success = true
+            this.$ga.event({
+                eventCategory: 'Attribution',
+                eventAction: 'copied',
+                // Label is either rich-text or html
+                eventLabel: this.currentSelection,
+                // Value is the license copied
+                eventValue: this.$props.value.shortName
+            })
+            const fieldsFilledIn = []
+            for (const detail in this.$props.value.attributionDetails) {
+                if (this.$props.value.attributionDetails[detail] !== '') {
+                    fieldsFilledIn.push(detail)
+                }
+            }
+            fieldsFilledIn.forEach((field) => {
+                this.$ga.event({
+                    eventCategory: 'AttributionDetails',
+                    eventAction: 'filledIn',
+                    // Label is the field that is not blank when a user copies the license
+                    eventLabel: field
+                })
+            })
             this.$emit('copied', { content: e.text })
             setTimeout(() => {
                 this.success = false
