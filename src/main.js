@@ -24,7 +24,7 @@ Vue.use(Buefy, {
 })
 
 Vue.use(VueAnalytics, {
-    id: 'UA-XXX-X',
+    id: 'UA-2010376-41',
     autoTracking: {
         screenview: true
     }
