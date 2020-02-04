@@ -1,7 +1,8 @@
 import Vue from 'vue'
-import App from './App.vue'
 import Buefy from 'buefy'
 import i18n from './i18n'
+import VueAnalytics from 'vue-analytics'
+import App from './App.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 // internal icons
 import {
@@ -21,6 +22,14 @@ Vue.use(Buefy, {
     defaultIconComponent: 'vue-fontawesome',
     defaultIconPack: 'fas'
 })
+
+Vue.use(VueAnalytics, {
+    id: 'UA-2010376-41',
+    autoTracking: {
+        screenview: true
+    }
+})
+
 Vue.use(LicenseUtilities)
 
 new Vue({
