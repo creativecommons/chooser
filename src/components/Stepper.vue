@@ -121,6 +121,16 @@ export default {
             if (payload === ndStep && this.$props.value.shortName.includes('ND')) {
                 this.currentStep = attributionDetailsStep
             }
+            if (this.currentStep === attributionDetailsStep) {
+                this.sendSelectedToGa()
+            }
+        },
+        sendSelectedToGa() {
+            this.$ga.event({
+                eventCategory: 'Stepper',
+                eventAction: 'licenseSelected',
+                eventLabel: this.$props.value.shortName
+            })
         },
         getIcon(attrName) {
             if (attrName === 'BY') {
@@ -144,12 +154,6 @@ export default {
                 fullName: this.fullLicenseName(attrs),
                 attributionDetails: this.$props.value.attributionDetails
             }
-            this.$ga.event({
-                eventCategory: 'Stepper',
-                eventAction: 'clicked',
-                eventLabel: itemId,
-                eventValue: licenseData.shortName
-            })
             this.$emit('input', licenseData)
         },
         shortLicenseName(attr) {

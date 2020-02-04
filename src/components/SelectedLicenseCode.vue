@@ -78,27 +78,20 @@ export default {
     methods: {
         onCopySuccess(e) {
             this.success = true
+            const fieldsFilled = {}
+            for (const detail in this.$props.value.attributionDetails) {
+                fieldsFilled[detail] = this.$props.value.attributionDetails[detail] !== ''
+            }
+            const copiedLicense = {
+                license: this.$props.value.shortName,
+                // codeType can be either rich-text or html
+                codeType: this.currentSelection,
+                fieldsFilled: fieldsFilled
+            }
             this.$ga.event({
                 eventCategory: 'Attribution',
                 eventAction: 'copied',
-                // Label is either rich-text or html
-                eventLabel: this.currentSelection,
-                // Value is the license copied
-                eventValue: this.$props.value.shortName
-            })
-            const fieldsFilledIn = []
-            for (const detail in this.$props.value.attributionDetails) {
-                if (this.$props.value.attributionDetails[detail] !== '') {
-                    fieldsFilledIn.push(detail)
-                }
-            }
-            fieldsFilledIn.forEach((field) => {
-                this.$ga.event({
-                    eventCategory: 'AttributionDetails',
-                    eventAction: 'filledIn',
-                    // Label is the field that is not blank when a user copies the license
-                    eventLabel: field
-                })
+                eventLabel: JSON.stringify(copiedLicense)
             })
             this.$emit('copied', { content: e.text })
             setTimeout(() => {

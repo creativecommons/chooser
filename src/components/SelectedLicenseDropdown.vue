@@ -52,9 +52,9 @@ export default {
             set(currentLicense) {
                 const fullLicenseName = this.fullLicenseName(currentLicense)
                 this.$ga.event({
-                    eventCategory: 'licenseDropdown',
-                    eventAction: 'clicked',
-                    eventLabel: 'License selected from the dropdown'
+                    eventCategory: 'LicenseDropdown',
+                    eventAction: 'licenseSelected',
+                    eventLabel: currentLicense
                 })
                 this.$emit('input', { ...this.$props.value, fullName: fullLicenseName, shortName: currentLicense })
             }
