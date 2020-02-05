@@ -49,7 +49,9 @@ export default {
     },
     created: function() {
         // send home to google analytics
-        this.$ga.page('/')
+        if (process.env.NODE_ENV === 'production') {
+            this.$ga.page('/')
+        }
     }
 }</script>
 <style lang="scss">
