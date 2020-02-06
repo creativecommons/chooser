@@ -57,9 +57,7 @@ export default {
 <style lang="scss">
     // Import Bulma's core
     @import "~bulma/sass/utilities/_all";
-    $primary: hsl(13, 84%, 56%);
-    $background: hsl(0, 0%, 88%);
-    $body-background-color:hsl(0,0%, 88%);
+    $primary: hsl(138, 95%, 33%);
 
     // Links
     $link: $primary;
@@ -71,9 +69,6 @@ export default {
     // Import Bulma and Buefy styles
     @import "~bulma";
     @import "~buefy/src/scss/buefy";
-</style>
-<style>
-
     @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A%20400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
 
     #app {
@@ -159,7 +154,6 @@ export default {
     }
 
     .vocab.footer {
-        font-family: Source Sans Pro, Noto Sans, Arial, Helvetica Neue, Helvetica, sans-serif;
         line-height: 1.2;
     }
 </style>
