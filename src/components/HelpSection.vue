@@ -277,11 +277,13 @@ export default {
     methods: {
         clickHandler(modalNumber) {
             this.modals[modalNumber].status = true
-            this.$ga.event({
-                eventCategory: 'HelpSection',
-                eventAction: 'clicked',
-                eventLabel: this.modals[modalNumber].title
-            })
+            if (process.env.NODE_ENV === 'production') {
+                this.$ga.event({
+                    eventCategory: 'HelpSection',
+                    eventAction: 'clicked',
+                    eventLabel: this.modals[modalNumber].title
+                })
+            }
         }
     }
 }

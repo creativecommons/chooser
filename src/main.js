@@ -22,13 +22,14 @@ Vue.use(Buefy, {
     defaultIconComponent: 'vue-fontawesome',
     defaultIconPack: 'fas'
 })
-
-Vue.use(VueAnalytics, {
-    id: 'UA-2010376-41',
-    autoTracking: {
-        screenview: true
-    }
-})
+if (process.env.NODE_ENV === 'production') {
+    Vue.use(VueAnalytics, {
+        id: 'UA-2010376-41',
+        autoTracking: {
+            screenview: true
+        }
+    })
+}
 
 Vue.use(LicenseUtilities)
 

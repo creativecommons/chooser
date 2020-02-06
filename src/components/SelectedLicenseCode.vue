@@ -78,21 +78,23 @@ export default {
     methods: {
         onCopySuccess(e) {
             this.success = true
-            const fieldsFilled = {}
-            for (const detail in this.$props.value.attributionDetails) {
-                fieldsFilled[detail] = this.$props.value.attributionDetails[detail] !== ''
+            if (process.env.NODE_ENV === 'production') {
+                const fieldsFilled = {}
+                for (const detail in this.$props.value.attributionDetails) {
+                    fieldsFilled[detail] = this.$props.value.attributionDetails[detail] !== ''
+                }
+                const copiedLicense = {
+                    license: this.$props.value.shortName,
+                    // codeType can be either rich-text or html
+                    codeType: this.currentSelection,
+                    fieldsFilled: fieldsFilled
+                }
+                this.$ga.event({
+                    eventCategory: 'Attribution',
+                    eventAction: 'copied',
+                    eventLabel: JSON.stringify(copiedLicense)
+                })
             }
-            const copiedLicense = {
-                license: this.$props.value.shortName,
-                // codeType can be either rich-text or html
-                codeType: this.currentSelection,
-                fieldsFilled: fieldsFilled
-            }
-            this.$ga.event({
-                eventCategory: 'Attribution',
-                eventAction: 'copied',
-                eventLabel: JSON.stringify(copiedLicense)
-            })
             this.$emit('copied', { content: e.text })
             setTimeout(() => {
                 this.success = false

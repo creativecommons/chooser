@@ -121,7 +121,7 @@ export default {
             if (payload === ndStep && this.$props.value.shortName.includes('ND')) {
                 this.currentStep = attributionDetailsStep
             }
-            if (this.currentStep === attributionDetailsStep) {
+            if (this.currentStep === attributionDetailsStep && process.env.NODE_ENV === 'production') {
                 this.sendSelectedToGa()
             }
         },
