@@ -1,58 +1,17 @@
-<!-- eslint-disable no-trailing-spaces -->
 <template>
-    <div>
-        <h2 class="title is-2 vocab-h2">Confused? Need Help?</h2>
-        <p class="help__instructions desktop-hide mobile-show">{{ $t('help.instructions.mobile') }}</p>
-        <p class="help__instructions mobile-hide desktop-show">{{ $t('help.instructions.desktop') }}</p>
-
-        <div class="columns" id="modal-buttons">
-            <div class="column top-bottom-paddingless">
-                <button id="cc_license_btn" class="button is-light is-large is-fullwidth help-button"
-                        @click="clickHandler(1)">
-                    <p>
-                        {{ $t('help.what_are_cc_licenses.heading') }}
-                    </p>
-                </button>
-                <button id="license_work_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="clickHandler(2)">
-                    <p>
-                        {{ $t('help.how_licenses_work.heading') }}
-                    </p>
-                </button>
-                <button id="icons_meaning_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="clickHandler(3)">
-                    <p>
-                        {{ $t('help.what_icons_mean.heading') }}
-                    </p>
-                </button>
-                <button id="license_communication_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="clickHandler(7)">
-                    <p>
-                        {{ $t('help.how_licenses_communicated.heading') }}
-                    </p>
-                </button>
-            </div>
-            <div class="column top-bottom-paddingless">
-                <button id="consideration_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="clickHandler(4)">
-                    <p>
-                        {{ $t('help.considerations_before_licensing.heading') }}
-                    </p>
-                </button>
-                <button id="formal_license_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="clickHandler(5)">
-                    <p>
-                        {{ $t('help.how_formally_license.heading') }}
-                    </p>
-                </button>
-                <button id="license_description_btn" class="button is-light is-large is-fullwidth help-button"
-                    @click="clickHandler(6)">
-                    <p>
-                        {{ $t('help.six_cc_licenses.heading') }}
-                    </p>
-                </button>
-            </div>
-        </div>
+    <div class="column top-bottom-paddingless">
+        <h3 class="vocab-h3">{{$t('help.heading')}}</h3>
+        <ul class="help-links">
+            <li class="help-link"
+                v-for="(modal, idx) in this.modals"
+                :key="idx">
+                <b-icon
+                    icon-pack="fas"
+                    icon="angle-right" />
+                <a class="vocab-body-big vocab-tomato"
+                    @click="clickHandler(idx)">{{$t(`help.${modal.title}.heading`)}}</a>
+            </li>
+        </ul>
 
         <b-modal :active.sync="modals[1].status">
             <header class="modal-card-head">
@@ -289,7 +248,17 @@ export default {
 }
 </script>
 <style scoped>
-
+    .help-links {
+        list-style-position: inside;
+    }
+    .help-link {
+        padding-bottom: 8px;
+    }
+    .help-link .icon {
+        vertical-align: text-bottom;
+        margin-left: -3px;
+        margin-right: 8px;
+    }
     table svg {
         width: 28px !important;
         height: 28px !important;
@@ -347,11 +316,6 @@ export default {
     }
     .help-h5 {
         font-weight: bold;
-    }
-    .vocab-h2 {
-        font-size: 50px;
-        text-align: center;
-        margin-bottom: 1%;
     }
     .edu-icons-section {
         margin-top: 1.5%;
