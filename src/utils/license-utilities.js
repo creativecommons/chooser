@@ -18,6 +18,30 @@ const LicenseUtilities = {
             const sa = short.includes('SA')
             return { ...defaultLicenseAttributes, NC: nc, ND: nd, SA: sa }
         }
+        Vue.prototype.$attrToShort = function(attr) {
+            if (!attr.BY) { return 'CC0 1.0' }
+            let base = 'CC BY'
+            if (attr.NC) { base += '-NC' }
+            if (!attr.ND && attr.SA) {
+                base += '-SA'
+            } else if (attr.ND) {
+                base += '-ND'
+            }
+            base += ' 4.0'
+            return base
+        }
+        Vue.prototype.$attrToFull = function(attr) {
+            if (!attr.BY) { return 'CC0 1.0 Universal' }
+            let base = 'Attribution'
+            if (attr.NC) { base += '-NonCommercial' }
+            if (!attr.ND && attr.SA) {
+                base += '-ShareAlike'
+            } else if (attr.ND) {
+                base += '-NoDerivatives'
+            }
+            base += ' 4.0 International'
+            return base
+        }
         Vue.prototype.$licenseUrl = function(shortLicenseName) {
             // Returns url to license
             if (shortLicenseName.includes('CC0')) {

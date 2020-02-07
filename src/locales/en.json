@@ -20,25 +20,46 @@
     },
     "stepper":
     {
+        "fs": {
+            "heading": "Help with choosing a license",
+            "question": "Do you know which license you need?",
+            "selected": "I know the license I need",
+            "not-selected": "I need help selecting the license"
+        },
         "by": {
+            "heading": "Attribution",
             "question": "Do you want to require attribution for your work?",
-            "selected": "<b>Yes</b>, anyone using my work must give me <b>appropriate credit</b>.",
-            "not-selected": "<b>No</b>, anyone can use my work even <b>without attribution</b>."
+            "selected": "Anyone using my work must give me appropriate credit.",
+            "not-selected": "Anyone can use my work even without attribution."
         },
         "nc": {
+            "heading": "Commercial Use",
             "question": "Do you want to prohibit others commercial use of your work?",
-            "selected": "<b>Yes</b>, others <b>cannot</b> use my work for <b>commercial purposes</b>.",
-            "not-selected": "<b>No</b>, others can use my work for <b>commercial purposes</b>."
+            "selected": "Others cannot use my work for commercial purposes.",
+            "not-selected": "Others can use my work for commercial purposes."
         },
         "nd": {
+            "heading": "Derivative Works",
             "question": "Do you want to prohibit others distributing your work if they remix, transform or build upon it?",
-            "selected": "<b>Yes</b>, others can use and share my work only <b>as is, without modifications</b>.",
-            "not-selected": "<b>No</b>, others may share <b>modified version of your work</b>."
+            "selected": "Others can use and share my work only as is, without modifications.",
+            "not-selected": "Others may share modified version of your work."
         },
         "sa": {
+            "heading": "Share on the Same Terms",
             "question": "Do you want to prohibit sharing your work under other terms?",
-            "selected": "<b>Yes</b>, anyone who changes your work <b>must share their contributions under the same license</b> as the original.",
-            "not-selected": "<b>No</b>, anyone who changes your work can distribute their contributions <b>under a different license</b>."
+            "selected": "Anyone who changes your work must share their contributions under the same license as the original.",
+            "not-selected": "Anyone who changes your work can distribute their contributions under a different license."
+        },
+        "cw": {
+            "heading": "Waive your Copyright"
+        },
+        "dd": {
+            "heading": "Creative Commons License",
+            "question": "Which license do you need?"
+        },
+        "ad": {
+            "heading": "Attribution Details",
+            "instructions": "Filling out this form is optional, but helps others attribute your work to you, and fills in machine-readable code"
         },
         "attribution-details": {
             "creator-name": {
@@ -78,6 +99,8 @@
     },
     "use-license": {
         "heading": "Use your license",
+        "instructions": "Choose what kind of work you are licensing to get appropriate license code",
+        "web-instructions": "If you are licensing one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page",
         "rich-text-label": "Rich Text",
         "html-label": "HTML",
         "copy-label": "Copy",
@@ -105,6 +128,7 @@
         "no": "Not a Free Culture License"
     },
     "help": {
+        "heading": "CONFUSED? NEED HELP?",
         "instructions": {
             "mobile": "You can tap the buttons below to get answers to the questions on them!",
             "desktop": "You can click the buttons below to get answers to the questions on them!"
@@ -167,5 +191,12 @@
     "alt": {
         "free-works-icon": "Free Works Icon",
         "non-free-works-icon": "Icon for a non-Free Works License"
-    }
+    },
+    "step": {
+        "previous-label": "BACK",
+        "next-label": "NEXT QUESTION",
+        "finish": "SEE THE LICENSE"
+    },
+    "yes": "Yes. ",
+    "no": "No. "
 }

@@ -1,9 +1,5 @@
 <template>
     <div class="license-code">
-        <h2
-            :class="'vocab-h2'"
-        >
-            {{this.$t('use-license.heading')}}</h2>
         <b-tabs
             class="attribution-tab"
             v-model="activeTab"
@@ -45,15 +41,6 @@
                 <div class="dummy" />
             </b-tab-item>
         </b-tabs>
-        <p class="use-license-hint">
-            <b-icon
-            pack="fas"
-            icon="question-circle"
-            size="is-medium"/>
-            <a href="https://wiki.creativecommons.org/wiki/Marking_your_work_with_a_CC_license">
-                {{$t('use-license.hint')}}
-            </a>
-        </p>
     </div>
 </template>
 <script>

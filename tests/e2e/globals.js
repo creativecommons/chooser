@@ -20,7 +20,7 @@ module.exports = {
     // expect assertions
     waitForConditionTimeout: 5000,
 
-    'default': {
+    default: {
     /*
     The globals defined here are available everywhere in any tests env
     */
@@ -32,7 +32,7 @@ module.exports = {
     */
     },
 
-    'firefox': {
+    firefox: {
     /*
     The globals defined here are available only when the chrome testing env is being used
        i.e. when running with --env firefox

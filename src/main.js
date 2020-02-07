@@ -8,14 +8,14 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
     faCheck, faCheckCircle, faInfoCircle, faExclamationTriangle, faExclamationCircle,
     faArrowUp, faAngleRight, faAngleLeft, faAngleDown, faUserCircle, faQuestionCircle,
-    faEye, faEyeSlash, faCaretDown, faCaretUp, faUpload, faCopy
+    faEye, faEyeSlash, faCaretDown, faCaretUp, faUpload, faCopy, faCircle
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import LicenseUtilities from './utils/license-utilities'
 
 library.add(faCheck, faCheckCircle, faInfoCircle, faExclamationTriangle, faExclamationCircle,
     faArrowUp, faAngleRight, faAngleLeft, faAngleDown, faUserCircle, faQuestionCircle,
-    faEye, faEyeSlash, faCaretDown, faCaretUp, faUpload, faCopy)
+    faEye, faEyeSlash, faCaretDown, faCaretUp, faUpload, faCopy, faCircle)
 Vue.component('vue-fontawesome', FontAwesomeIcon)
 Vue.config.productionTip = false
 Vue.use(Buefy, {

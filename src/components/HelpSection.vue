@@ -1,5 +1,5 @@
 <template>
-    <div class="column top-bottom-paddingless">
+    <div class="help-section">
         <h3 class="vocab-h3">{{$t('help.heading')}}</h3>
         <ul class="help-links">
             <li class="help-link"
