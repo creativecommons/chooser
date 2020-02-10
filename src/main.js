@@ -3,6 +3,8 @@ import Buefy from 'buefy'
 import i18n from './i18n'
 import VueAnalytics from 'vue-analytics'
 import App from './App.vue'
+import store from '../store'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 // internal icons
 import {
@@ -34,6 +36,7 @@ if (process.env.NODE_ENV === 'production') {
 Vue.use(LicenseUtilities)
 
 new Vue({
+    store,
     i18n,
     render: h => h(App)
 }).$mount('#app')
