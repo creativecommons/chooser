@@ -9,8 +9,8 @@
                 <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">
                     <span v-html="this.licenseCodeTextSpan" />
                     <LicenseIcons
-                        :url="this.$licenseUrl(this.$props.value.shortName)"
-                        :iconsArr="this.$licenseIconsArr(this.$props.value.shortName)"/>
+                        :url="this.licenseUrl"
+                        :iconsArr="this.iconsList"/>
                 </p>
                 </div>
             </b-tab-item>
@@ -46,6 +46,7 @@
 <script>
 import Clipboard from 'clipboard'
 import LicenseIcons from './LicenseIcons'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
     name: 'SelectedLicenseCode',
@@ -67,11 +68,11 @@ export default {
             this.success = true
             if (process.env.NODE_ENV === 'production') {
                 const fieldsFilled = {}
-                for (const detail in this.$props.value.attributionDetails) {
-                    fieldsFilled[detail] = this.$props.value.attributionDetails[detail] !== ''
+                for (const detail in this.attributionDetails) {
+                    fieldsFilled[detail] = this.attributionDetails[detail] !== ''
                 }
                 const copiedLicense = {
-                    license: this.$props.value.shortName,
+                    license: this.shortName,
                     // codeType can be either rich-text or html
                     codeType: this.currentSelection,
                     fieldsFilled: fieldsFilled
@@ -97,17 +98,16 @@ export default {
         }
     },
     computed: {
-        licenseURL() {
-            return this.$licenseUrl(this.$props.value.shortName)
-        },
+        ...mapState({ attributionDetails: state => state.attributionDetails }),
+        ...mapGetters(['shortName', 'fullName', 'iconsList', 'licenseUrl']),
         licenseLink() {
-            const short = this.$props.value.shortName.toUpperCase()
+            const short = this.shortName.toUpperCase()
             const attrs = 'target="_blank" rel="license noopener noreferrer" style="display: inline-block;">'
-            return `<a href="${this.licenseURL}" ${attrs}${short}</a>`
+            return `<a href="${this.licenseUrl}" ${attrs}${short}</a>`
         },
         authorElement() {
-            const name = this.$props.value.attributionDetails.creatorName
-            const profile = this.$props.value.attributionDetails.creatorProfileUrl
+            const name = this.attributionDetails.creatorName
+            const profile = this.attributionDetails.creatorProfileUrl
             if (name) {
                 const creatorNameNoLink = `<span rel="cc:attributionName">${name}</span>`
                 return profile
@@ -116,8 +116,8 @@ export default {
             } else return ''
         },
         titleElement() {
-            const workUrl = this.$props.value.attributionDetails.workUrl
-            const workTitle = this.$props.value.attributionDetails.workTitle
+            const workUrl = this.attributionDetails.workUrl
+            const workTitle = this.attributionDetails.workTitle
             if (!workTitle && !workUrl) {
                 return this.$t('code-text.this-work')
             } else {
@@ -138,7 +138,7 @@ export default {
             return `${attributionCode}${this.licenseLink}`
         },
         htmlLicenseParagraph() {
-            let short = this.$props.value.shortName
+            let short = this.shortName
             const iconStyle = 'style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;opacity:0.7;"'
             const baseAssetsPath = 'https://search.creativecommons.org/static/img'
             let licenseIcons = `<img ${iconStyle} src="${baseAssetsPath}/cc_icon.svg" />`

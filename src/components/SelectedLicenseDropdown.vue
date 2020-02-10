@@ -14,9 +14,10 @@
 </template>
 <script>
 
+import { mapGetters } from 'vuex'
+
 export default {
     name: 'SelectedLicenseDropdown',
-    props: ['value'],
     data() {
         return {
             licenseList: [
@@ -30,27 +31,14 @@ export default {
             ]
         }
     },
-    methods: {
-        fullLicenseName(shortName) {
-            if (!shortName.includes('BY')) { return 'CC0 1.0 Universal' }
-            let base = 'Attribution'
-            if (shortName.includes('NC')) { base += '-NonCommercial' }
-            if (!shortName.includes('ND') && shortName.includes('SA')) {
-                base += '-ShareAlike'
-            } else if (shortName.includes('ND')) {
-                base += '-NoDerivatives'
-            }
-            base += ' 4.0 International'
-            return base
-        }
-    },
     computed: {
+        ...mapGetters(['shortName', 'fullName']),
         currentLicense: {
             get() {
-                return this.value.shortName
+                return this.shortName
             },
             set(currentLicense) {
-                const fullLicenseName = this.fullLicenseName(currentLicense)
+                this.$store.commit('updateAttributesFromShort', currentLicense)
                 if (process.env.NODE_ENV === 'production') {
                     this.$ga.event({
                         eventCategory: 'LicenseDropdown',
@@ -58,7 +46,6 @@ export default {
                         eventLabel: currentLicense
                     })
                 }
-                this.$emit('input', { ...this.$props.value, fullName: fullLicenseName, shortName: currentLicense })
             }
         }
     }

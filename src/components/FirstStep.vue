@@ -3,7 +3,7 @@
         <div class="step-description" v-if="this.status==='previous'">
             {{$t(cardText)}}
         </div>
-        <div class="step-actions" v-if="this.status==='current'">
+        <div class="step-actions" v-else-if="this.status==='current'">
             <div class="field" :class="yesSelected">
                 <b-radio v-model="radio"
                          native-value="yes">
@@ -21,47 +21,46 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
     name: 'FirstStep',
     props: {
-        knowLicense: Boolean,
         status: String
     },
+    methods: {
+        ...mapActions(['updateSelected'])
+    },
     computed: {
+        ...mapState({ knowLicense: state => state.knowLicense }),
         cardText() {
-            return this.$props.knowLicense ? 'stepper.fs.selected' : 'stepper.fs.not-selected'
+            return this.knowLicense ? 'stepper.FS.selected' : 'stepper.FS.not-selected'
         },
         radio: {
             get() {
-                return this.$props.knowLicense ? 'yes' : 'no'
+                return this.knowLicense ? 'yes' : 'no'
             },
             set() {
-                console.log('Changing fs radio')
-                this.$emit('knowLicenseChanged')
+                this.updateSelected(['FS', this.knowLicense])
             }
         },
         question() {
-            return 'stepper.fs.question'
+            return 'stepper.FS.question'
         },
         yesText() {
-            return 'stepper.fs.selected'
+            return 'stepper.FS.selected'
         },
         noText() {
-            return 'stepper.fs.not-selected'
+            return 'stepper.FS.not-selected'
         },
         yesSelected() {
-            if (this.$props.knowLicense) {
-                return 'selected'
-            } else {
-                return 'not-selected'
-            }
+            return this.knowLicense
+                ? 'selected'
+                : 'not-selected'
         },
         noSelected() {
-            if (!this.$props.knowLicense) {
-                return 'selected'
-            } else {
-                return 'not-selected'
-            }
+            return this.knowLicense
+                ? 'not-selected'
+                : 'selected'
         }
     }
 }

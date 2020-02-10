@@ -4,20 +4,13 @@
         <Feedback/>
         <div class="container" id="site-container">
             <div class="columns">
-            <VerticalStepper
-                :selected="selected"
-                @openLicenseCard="openLicenseCard"
-                @toggleLicenseAttr="updateLicense"
-                @openLicenseUse="openLicenseUse"
-            />
-            <div class="column">
+            <VerticalStepper />
+            <div class="column" >
                 <SelectedLicenseCard
                     v-if="showLicense"
-                    :selected="selected"
                 />
                 <LicenseUseCard
                     v-if="showLicenseUse"
-                    v-model="selected"
                 />
                 <HelpSection />
             </div>
@@ -54,6 +47,7 @@ import SelectedLicenseCard from './components/SelectedLicenseCard'
 import LicenseUseCard from './components/LicenseUseCard'
 import { Header, Footer, Locale } from '@creativecommons/vue-vocabulary'
 import Feedback from './components/Feedback'
+import { mapState } from 'vuex'
 
 export default {
     name: 'App',
@@ -67,40 +61,14 @@ export default {
         Footer,
         Locale
     },
-    data() {
-        return {
-            showLicense: false,
-            showLicenseUse: false,
-            currentStep: 0,
-            selected: {
-                shortName: 'CC BY 4.0',
-                fullName: 'Attribution 4.0 International',
-                attributionDetails: {
-                    creatorName: '',
-                    creatorProfileUrl: '',
-                    workTitle: '',
-                    workUrl: ''
-                }
-            }
-        }
-    },
-    methods: {
-        openLicenseCard() {
-            this.showLicense = true
+    computed: {
+        ...mapState(['knowLicense', 'currentStepId']),
+        showLicense() {
+            return this.currentStepId > 0
         },
-        openLicenseUse() {
-            this.showLicenseUse = true
-        },
-        updateLicense(licenseAttribute) {
-            const attrUpper = licenseAttribute.toUpperCase()
-            const attributes = this.$shortToAttributes(this.selected.shortName)
-            const updatedAttributes = { ...attributes }
-            updatedAttributes[attrUpper] = !attributes[attrUpper]
-            this.selected = {
-                ...this.selected,
-                shortName: this.$attrToShort(updatedAttributes),
-                fullName: this.$attrToFull(updatedAttributes)
-            }
+        showLicenseUse() {
+            // If License Attribution details step (no.7) is open
+            return this.currentStepId === 7
         }
     },
     created: function() {
