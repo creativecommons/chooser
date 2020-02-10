@@ -10,7 +10,7 @@
       v-for="(icon, index) in processedIconList"
       :key="index"
       :icon="['fab', icon]"
-      style="width: 50px; height: 50px"/>
+      style="width: 35px; height: 35px"/>
   </span>
 </template>
 
