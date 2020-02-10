@@ -170,12 +170,11 @@ export default new Vuex.Store({
             state.currentStepId = previousStep
         },
         updateDisabledSteps(state, stepsToSetDisabled) {
-            console.log('Update disabled steps: ', stepsToSetDisabled)
             // Set disabled steps in the stepsToSetDisabled array
             for (const step of state.steps) {
-                if (stepsToSetDisabled.indexOf(step.name) > -1 && !step.enabled) {
+                if (stepsToSetDisabled.indexOf(step.name) > -1 && step.enabled) {
                     Vue.set(state.steps, step.id, { ...step, enabled: false })
-                } else if (stepsToSetDisabled.indexOf(step.name) === -1 && step.enabled) {
+                } else if (stepsToSetDisabled.indexOf(step.name) === -1 && !step.enabled) {
                     Vue.set(state.steps, step.id, { ...step, enabled: true })
                 }
             }
@@ -215,16 +214,13 @@ export default new Vuex.Store({
             const [stepName, isStepSelected] = payload
             if (stepName in visibleSetters) {
                 const visible = visibleSetters[stepName][isStepSelected]
-                console.log(visible, visibleSetters[stepName])
                 if (visible !== undefined) {
-                    console.log('Will set ', visible.toString(), ' visible')
                     context.commit('updateVisibleSteps', visible)
                 }
             }
             if (stepName in disabledSetters) {
                 const disabled = disabledSetters[stepName][isStepSelected]
                 if (disabled !== undefined) {
-                    console.log('Will set ', disabled, ' disabled because ', stepName, ' is selected? ', isStepSelected)
                     context.commit('updateDisabledSteps', disabled)
                 }
             }
@@ -236,7 +232,6 @@ export default new Vuex.Store({
             context.commit('updateStepStatus', currentStepName)
         },
         handlePrevious: (context, payload) => {
-            console.log('Handle previous: ', payload)
             const currentStepName = payload
             const isCurrentStepSelected = context.getters.isStepSelected(payload)
             context.dispatch('updateDisabledAndVisibleSteps', [currentStepName, isCurrentStepSelected])
@@ -246,10 +241,7 @@ export default new Vuex.Store({
             // On radio button click, Step's Selected parameter is toggled and Disabled/Visible
             // steps are updated
             const [currentStepName, isCurrentStepSelected] = payload
-            console.log('Updating selected, current step: ', currentStepName, ', selected: ', isCurrentStepSelected)
-            console.log('Steps before toggling: ', context.state.steps[1])
             context.commit('toggleSelected', currentStepName)
-            console.log('Steps after toggling: ', context.state.steps[1], context.state.currentLicenseAttributes)
             context.dispatch('updateDisabledAndVisibleSteps', [currentStepName, !isCurrentStepSelected])
         },
         setActiveStep: (context, payload) => {
@@ -275,4 +267,3 @@ export default new Vuex.Store({
         }
     }
 })
-// TODO: I'm calculating current Step Name in many places, sending a stepName parameter can be faster
