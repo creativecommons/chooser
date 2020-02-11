@@ -28,36 +28,36 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+
+import { mapState } from 'vuex'
 
 export default {
     name: 'VerticalStep',
     props: {
-        stepId: String,
+        stepName: String,
         status: String
     },
     methods: {
-        ...mapActions(['updateSelected'])
+        selected() {
+            return this.attributes(this.$props.stepName)
+        }
     },
     computed: {
-        ...mapGetters(['isStepSelected']),
+        ...mapState({ attributes: state => state.currentLicenseAttributes }),
         cardText() {
-            const prefix = `stepper.${this.$props.stepId}.${this.isSelected ? '' : 'not-'}`
+            const prefix = `stepper.${this.$props.stepName}.${this.selected ? '' : 'not-'}`
             return `${prefix}selected`
-        },
-        isSelected() {
-            return this.isStepSelected(this.$props.stepId)
         },
         radio: {
             get() {
-                return this.isSelected ? 'yes' : 'no'
+                return this.attributes[this.$props.stepName] ? 'yes' : 'no'
             },
-            set() {
-                this.updateSelected([this.$props.stepId, this.isSelected])
+            set(newVal) {
+                this.$store.commit('toggleSelected', this.$props.stepName)
             }
         },
         tPrefix() {
-            return 'stepper.' + this.stepId
+            return 'stepper.' + this.stepName
         },
         question() {
             return this.tPrefix + '.question'
@@ -69,10 +69,10 @@ export default {
             return this.tPrefix + '.not-selected'
         },
         yesSelected() {
-            return this.isSelected ? 'selected' : 'not-selected'
+            return this.selected ? 'selected' : 'not-selected'
         },
         noSelected() {
-            return !this.isSelected ? 'selected' : 'not-selected'
+            return !this.selected ? 'selected' : 'not-selected'
         }
     }
 }
@@ -91,6 +91,4 @@ export default {
          width: 100%;
          transition: opacity 200ms ease-in-out;
      }
-
-    .slide-enter-active { transition-delay: 100ms }
 </style>

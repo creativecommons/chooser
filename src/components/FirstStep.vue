@@ -21,30 +21,23 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
 export default {
     name: 'FirstStep',
     props: {
+        selected: Boolean,
         status: String
     },
-    methods: {
-        ...mapActions(['updateSelected'])
-    },
     computed: {
-        ...mapState({ knowLicense: state => state.knowLicense }),
         cardText() {
-            return this.knowLicense ? 'stepper.FS.selected' : 'stepper.FS.not-selected'
+            return this.$props.selected ? 'stepper.FS.selected' : 'stepper.FS.not-selected'
         },
         radio: {
             get() {
-                return this.knowLicense ? 'yes' : 'no'
+                return this.$props.selected ? 'yes' : 'no'
             },
-            set() {
-                this.updateSelected(['FS', this.knowLicense])
+            set(newVal) {
+                this.$emit('change', newVal === 'yes')
             }
-        },
-        question() {
-            return 'stepper.FS.question'
         },
         yesText() {
             return 'stepper.FS.selected'
@@ -53,12 +46,12 @@ export default {
             return 'stepper.FS.not-selected'
         },
         yesSelected() {
-            return this.knowLicense
+            return this.$props.selected
                 ? 'selected'
                 : 'not-selected'
         },
         noSelected() {
-            return this.knowLicense
+            return this.$props.selected
                 ? 'not-selected'
                 : 'selected'
         }

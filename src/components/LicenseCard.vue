@@ -3,7 +3,7 @@
         <div class="card">
             <header class="card-header">
                 <h2
-                    :class="'vocab-h2'">{{ $t('selected-license.heading') }}</h2>
+                    :class="'vocab-h2'">{{$t('selected-license.heading')}}</h2>
             </header>
             <div class="card-content">
                 <SelectedLicenseDropdown

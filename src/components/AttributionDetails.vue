@@ -3,25 +3,25 @@
         <div class="step-actions" v-if="this.status==='current'">
             <p class="attribution-details-instructions">{{$t('stepper.AD.instructions')}}</p>
             <form class="attribution-details-form">
-                <b-field :label="this.$t('stepper.attribution-details.creator-name.label')" label-position="inside">
+                <b-field :label="this.$t('stepper.attribution-details.creator-name.label')">
                     <b-input
                         v-model="creatorName"
                         :placeholder="this.$t('stepper.attribution-details.creator-name.placeholder')"
                     />
                 </b-field>
-                <b-field :label="this.$t('stepper.attribution-details.creator-profile.label')" label-position="inside">
+                <b-field :label="this.$t('stepper.attribution-details.creator-profile.label')">
                     <b-input
                         v-model="creatorProfileUrl"
                         :placeholder="this.$t('stepper.attribution-details.creator-profile.placeholder')"
                     />
                 </b-field>
-                <b-field :label="this.$t('stepper.attribution-details.work-title.label')" label-position="inside">
+                <b-field :label="this.$t('stepper.attribution-details.work-title.label')">
                     <b-input
                         v-model="workTitle"
                         :placeholder="this.$t('stepper.attribution-details.work-title.placeholder')"
                     />
                 </b-field>
-                <b-field :label="this.$t('stepper.attribution-details.work-url.label')" label-position="inside">
+                <b-field :label="this.$t('stepper.attribution-details.work-url.label')">
                     <b-input
                         v-model="workUrl"
                         :placeholder="this.$t('stepper.attribution-details.work-url.placeholder')"
@@ -37,9 +37,9 @@ import { mapMutations, mapState } from 'vuex'
 
 export default {
     name: 'AttributionDetails',
-    props: ['value', 'status'],
+    props: ['status'],
     methods: {
-        ...mapMutations(['setCreatorName'])
+        ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl'])
     },
     computed: {
         ...mapState({ attributionDetails: state => state.attributionDetails }),
@@ -67,14 +67,24 @@ export default {
                 this.setWorkUrl(newVal)
             }
         }
-    },
-    watch: {
-        value() { this.$emit('input', this.$props.value) }
     }
 
 }
 </script>
 
-<style scoped>
-
+<style>
+    .attribution-details-form {
+        margin-top: 1rem;
+    }
+.attribution-details-form label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+}
+    .field .control .input {
+        font-weight: 500;
+        font-size: 16px;
+    }
 </style>

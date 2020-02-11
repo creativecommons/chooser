@@ -4,7 +4,7 @@
         <Feedback/>
         <div class="container" id="site-container">
             <div class="columns">
-            <VerticalStepper />
+            <VerticalStepper v-model="currentStepId" />
             <div class="column" >
                 <SelectedLicenseCard
                     v-if="showLicense"
@@ -47,7 +47,6 @@ import SelectedLicenseCard from './components/SelectedLicenseCard'
 import LicenseUseCard from './components/LicenseUseCard'
 import { Header, Footer, Locale } from '@creativecommons/vue-vocabulary'
 import Feedback from './components/Feedback'
-import { mapState } from 'vuex'
 
 export default {
     name: 'App',
@@ -61,13 +60,16 @@ export default {
         Footer,
         Locale
     },
+    data() {
+        return {
+            currentStepId: 0
+        }
+    },
     computed: {
-        ...mapState(['knowLicense', 'currentStepId']),
         showLicense() {
             return this.currentStepId > 0
         },
         showLicenseUse() {
-            // If License Attribution details step (no.7) is open
             return this.currentStepId === 7
         }
     },

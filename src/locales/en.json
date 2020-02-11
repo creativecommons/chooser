@@ -198,5 +198,6 @@
         "finish": "SEE THE LICENSE"
     },
     "yes": "Yes. ",
-    "no": "No. "
+    "no": "No. ",
+    "disabled-tooltip.SA": "This step is disabled because you chose ND"
 }
