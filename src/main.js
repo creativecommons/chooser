@@ -3,7 +3,7 @@ import Buefy from 'buefy'
 import i18n from './i18n'
 import VueAnalytics from 'vue-analytics'
 import App from './App.vue'
-import store from '../store'
+import store from './store'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 // internal icons
@@ -13,7 +13,6 @@ import {
     faEye, faEyeSlash, faCaretDown, faCaretUp, faUpload, faCopy, faCircle
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import LicenseUtilities from './utils/license-utilities'
 
 library.add(faCheck, faCheckCircle, faInfoCircle, faExclamationTriangle, faExclamationCircle,
     faArrowUp, faAngleRight, faAngleLeft, faAngleDown, faUserCircle, faQuestionCircle,
@@ -32,8 +31,6 @@ if (process.env.NODE_ENV === 'production') {
         }
     })
 }
-
-Vue.use(LicenseUtilities)
 
 new Vue({
     store,
