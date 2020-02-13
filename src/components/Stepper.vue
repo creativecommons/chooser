@@ -153,7 +153,6 @@ export default {
         },
         handleFinish() {
             // TODO: Open license use card
-            console.log('Handling finish')
         },
         setActiveStep(clickedStepId) {
             if (!this.steps[clickedStepId].enabled) return

@@ -16,23 +16,7 @@
             </div>
             </div>
         </div>
-        <Footer>
-            <div class="panel">
-                <div>
-                    <p>
-                        Built with <a href="https://creativecommons.github.io/cc-vocabulary/">Vocabulary</a>.
-                    </p>
-                    <p>
-                        <a href="https://github.com/creativecommons/cc-chooser">Icons</a> by The Noun Project and
-                        FontAwesome.
-                    </p>
-                    <p>
-                        Contribute on <a href="https://github.com/creativecommons/cc-chooser">Github</a>.
-                    </p>
-                </div>
-                <Locale/>
-            </div>
-        </Footer>
+        <Footer />
     </div>
 </template>
 
@@ -45,8 +29,8 @@ import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
 import SelectedLicenseCard from './components/SelectedLicenseCard'
 import LicenseUseCard from './components/LicenseUseCard'
-import { Footer, Locale } from '@creativecommons/vue-vocabulary'
 import Header from './components/Header.vue'
+import Footer from './components/Footer'
 import LocaleChooser from './components/LocaleChooser'
 
 export default {
@@ -58,7 +42,6 @@ export default {
         LicenseUseCard,
         Header,
         Footer,
-        Locale,
         LocaleChooser
     },
     data() {

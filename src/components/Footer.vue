@@ -37,6 +37,8 @@ export default {
 .footer.chooser-footer {
     background-color: black;
     color: white;
+    padding: 3rem 1.5rem;
+    margin-top:5rem;
 }
 .chooser-footer .chooser-footer-container {
     display: grid;
