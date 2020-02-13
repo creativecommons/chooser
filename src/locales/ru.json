@@ -1,5 +1,5 @@
 {
-    "app-title": "License Chooser",
+    "app-title": "Выбор лицензии",
     "general": {
         "license_full_name": "Full Name",
         "license_short_name": "Short Name",
@@ -22,9 +22,9 @@
     {
         "FS": {
             "heading": "Help with choosing a license",
-            "question": "Do you know which license you need?",
-            "selected": "I know the license I need",
-            "not-selected": "I need help selecting the license"
+            "question": "Вы знаете, какая лицензия вам нужна?",
+            "selected": "Я знаю, какая лицензия мне нужна",
+            "not-selected": "Мне нужна помощь с выбором лицензии"
         },
         "BY": {
             "heading": "Attribution",

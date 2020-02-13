@@ -1,11 +1,11 @@
 <template>
     <div id="app">
         <Header :title="$t('app-title')"/>
-        <Feedback/>
         <div class="container" id="site-container">
             <div class="columns">
             <Stepper v-model="currentStepId" />
             <div class="column" >
+                <LocaleChooser />
                 <SelectedLicenseCard
                     v-if="showLicense"
                 />
@@ -45,8 +45,9 @@ import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
 import SelectedLicenseCard from './components/SelectedLicenseCard'
 import LicenseUseCard from './components/LicenseUseCard'
-import { Header, Footer, Locale } from '@creativecommons/vue-vocabulary'
-import Feedback from './components/Feedback'
+import { Footer, Locale } from '@creativecommons/vue-vocabulary'
+import Header from './components/Header.vue'
+import LocaleChooser from './components/LocaleChooser'
 
 export default {
     name: 'App',
@@ -55,10 +56,10 @@ export default {
         Stepper,
         SelectedLicenseCard,
         LicenseUseCard,
-        Feedback,
         Header,
         Footer,
-        Locale
+        Locale,
+        LocaleChooser
     },
     data() {
         return {

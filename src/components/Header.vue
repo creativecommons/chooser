@@ -1,0 +1,44 @@
+<template>
+    <b-navbar wrapperClass = "container">
+        <template slot="brand">
+            <b-navbar-item>
+                <img
+                    src="https://creativecommons.org/wp-content/uploads/2016/05/cc-site-icon-300x300.png"
+                    alt="Creative Commons License chooser"
+                >
+                <h1 class="app-heading">{{$t('app-title')}}</h1>
+            </b-navbar-item>
+        </template>
+        <template slot="end">
+            <b-navbar-item href="#" :class="'navbar-item-feedback'">
+                FEEDBACK
+            </b-navbar-item>
+        </template>
+    </b-navbar>
+</template>
+
+<script>
+export default {
+    name: 'Header'
+}
+</script>
+
+<style>
+.navbar-item-feedback {
+    padding-right: 30%;
+    font-family: Roboto Condensed;
+    font-size: 16px;
+    font-weight: bold;
+    color: #787878!important;
+}
+
+.app-heading {
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 33px;
+    color: #333333;
+    margin-left:5px;
+}
+</style>
