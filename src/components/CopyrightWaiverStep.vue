@@ -29,7 +29,4 @@ label.label {
 .b-checkbox {
     align-items: flex-start;
 }
-    nav.step-navigation {
-        margin-top:1.8rem;
-    }
 </style>

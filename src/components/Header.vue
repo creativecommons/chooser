@@ -10,7 +10,9 @@
             </b-navbar-item>
         </template>
         <template slot="end">
-            <b-navbar-item href="#" :class="'navbar-item-feedback'">
+            <b-navbar-item
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfF7MCKxlPsPuMn17v_sLYWMkxBkudQSPXCXoJKjh5GCtx63g/viewform"
+                :class="'navbar-item-feedback'">
                 FEEDBACK
             </b-navbar-item>
         </template>
@@ -23,7 +25,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .navbar-item-feedback {
     padding-right: 30%;
     font-family: Roboto Condensed;
@@ -40,5 +42,22 @@ export default {
     line-height: 33px;
     color: #333333;
     margin-left:5px;
+}
+.navbar-item-feedback {
+    &:hover {
+         color: #fb7729!important;
+     }
+    &:after {
+         display:block;
+         content: '';
+         border-bottom: solid 2px #fb7729;
+         transform: scaleX(0);
+         transition: transform 250ms ease-in-out;
+         transform-origin:100% 50%
+     }
+    &:hover:after {
+         transform: scaleX(1);
+         transform-origin:0 50%;
+     }
 }
 </style>

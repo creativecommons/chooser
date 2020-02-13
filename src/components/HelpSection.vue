@@ -5,9 +5,6 @@
             <li class="help-link"
                 v-for="(modal, idx) in this.modals"
                 :key="idx">
-                <b-icon
-                    icon-pack="fas"
-                    icon="angle-right" />
                 <a class="vocab-body-big vocab-tomato"
                     @click="clickHandler(idx)">{{$t(`help.${modal.title}.heading`)}}</a>
             </li>
@@ -250,6 +247,7 @@ export default {
 <style scoped>
     .help-links {
         list-style-position: inside;
+        list-style-image: url("../assets/arrow-right.png");
     }
     .help-link {
         padding-bottom: 8px;
