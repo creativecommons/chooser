@@ -145,11 +145,21 @@ export default {
         line-height: 27px;
         margin-bottom: 12px;
     }
+    .vocab-h4a {
+        font-family: Roboto Condensed;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 23px;
+        line-height: 30px;
+        letter-spacing: 0.02em;
+        padding-bottom: 8px;
+    }
     .vocab-h5 {
         font-style: normal;
         font-weight: bold;
         font-size: 20px;
         line-height: 26px;
+        padding-bottom: 8px;
     }
     .vocab-tomato {
         color: #ED592F!important;
@@ -170,6 +180,21 @@ export default {
         line-height: 25px;
         color: #333333;
         margin-bottom: 8px;
+        padding-bottom: 8px;
+    }
+    .vocab-body-normal {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+    }
+    .vocab-caption {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 19px;
         padding-bottom: 8px;
     }
     .normal-gray {
