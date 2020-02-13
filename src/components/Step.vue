@@ -1,12 +1,12 @@
 <template>
-    <div class="card-content step-card-content" v-if="!(this.status==='inactive')">
+    <transition name="slide" mode="out-in">
+        <div class="card-content step-card-content" v-if="!(this.status==='inactive')">
             <div class="step-description" v-if="this.status==='previous'">
                 <transition name="slide">
                 <p>{{$t(cardText)}}</p>
                 </transition>
             </div>
         <div class="step-actions" v-else-if="this.status==='current'">
-            <transition name="slide">
                 <div>
                     <div class="field" :class="yesSelected">
                         <b-radio v-model="radio"
@@ -21,10 +21,9 @@
                         </b-radio>
                     </div>
                 </div>
-            </transition>
-
         </div>
     </div>
+    </transition>
 </template>
 
 <script>
@@ -32,7 +31,7 @@
 import { mapState } from 'vuex'
 
 export default {
-    name: 'VerticalStep',
+    name: 'Step',
     props: {
         stepName: String,
         status: String
@@ -79,16 +78,5 @@ export default {
 </script>
 
 <style>
-    .slide-enter,
-    .slide-leave-to { opacity: 0 }
 
-    .slide-leave,
-    .slide-enter-to { opacity: 1 }
-
-    .slide-enter-active,
-    .slide-leave-active {
-         position: absolute;
-         width: 100%;
-         transition: opacity 200ms ease-in-out;
-     }
 </style>

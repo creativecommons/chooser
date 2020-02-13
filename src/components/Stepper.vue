@@ -9,7 +9,12 @@
             <span class="tooltiptext" v-if="!step.enabled">{{$t('disabled-tooltip.'+step.name)}}</span>
             <div :class="['card-header']"
                 @click="setActiveStep(step.id)">
-                <b-icon icon="circle" />
+
+                <span class="fa-layers fa-fw icon-outer-layer">
+                    <b-icon icon="circle" size="is-medium"/>
+                    <span class="fa-layers-text">{{idx+1}}</span>
+                </span>
+
                 <h5 class="vocab-h5">{{$t(headerText(step.name))}}</h5>
             </div>
             <FirstStep
@@ -18,13 +23,11 @@
                 @change="changeFirstStep"
                 :status="step.status"
             />
-            <transition name="slide">
-                <VerticalStep
-                    v-if="isLicenseAttribute(step.name)"
-                    :status="step.status"
-                    :stepName="step.name"
-                />
-            </transition>
+            <Step
+                v-if="isLicenseAttribute(step.name)"
+                :status="step.status"
+                :stepName="step.name"
+            />
             <CopyrightWaiverStep
                 v-if="step.name==='CW'" />
             <DropdownStep
@@ -35,7 +38,6 @@
                 v-if="step.name==='AD'"
                 :status="step.status"
             />
-
             <nav class="step-navigation" v-if="step.status==='current'">
                 <a
                     role="button"
@@ -65,7 +67,7 @@
 </template>
 
 <script>
-import VerticalStep from './VerticalStep'
+import Step from './Step'
 import FirstStep from './FirstStep'
 import AttributionDetails from './AttributionDetails'
 import DropdownStep from './DropdownStep'
@@ -74,12 +76,12 @@ import { mapGetters } from 'vuex'
 import CopyrightWaiverStep from './CopyrightWaiverStep'
 
 export default {
-    name: 'VerticalStepper',
+    name: 'Stepper',
     components: {
         CopyrightWaiverStep,
         DropdownStep,
         FirstStep,
-        VerticalStep,
+        Step,
         AttributionDetails
     },
     props: ['value'],
@@ -131,7 +133,6 @@ export default {
             this.currentStepId = nextStep
         },
         handlePrevious() {
-            // FIXME: SA step sometimes disappears. Figure out why and fix
             const currentStepName = this.steps[this.currentStepId].name
             const stepSelected = this.currentStepId === 0
                 ? this.steps[0].selected
@@ -150,19 +151,21 @@ export default {
             this.$set(this.steps, this.currentStepId, { ...this.steps[this.currentStepId], status: 'inactive' })
             this.currentStepId = previousStep
         },
+        handleFinish() {
+            // TODO: Open license use card
+            console.log('Handling finish')
+        },
         setActiveStep(clickedStepId) {
             if (!this.steps[clickedStepId].enabled) return
             if (clickedStepId > this.currentStepId) {
                 for (let i = this.currentStepId; i < clickedStepId; i++) {
                     this.$set(this.steps, i, { ...this.steps[i], status: 'previous' })
                 }
-                // TODO: shouldn't set a disabled step current
                 this.$set(this.steps, clickedStepId, { ...this.steps[clickedStepId], status: 'current' })
             } else {
                 for (let i = this.currentStepId; i > clickedStepId; i--) {
                     this.$set(this.steps, i, { ...this.steps[i], status: 'inactive' })
                 }
-                // TODO: shouldn't set a disabled step current
                 this.$set(this.steps, clickedStepId, { ...this.steps[clickedStepId], status: 'current' })
             }
             this.currentStepId = clickedStepId
@@ -217,11 +220,6 @@ export default {
             set(newVal) {
                 this.$emit('input', newVal)
             }
-        },
-        enabledAndVisibleSteps() {
-            return this.steps.filter(step => {
-                return step.visible && step.enabled
-            })
         }
     }
 }
@@ -247,13 +245,9 @@ export default {
     {
         color:  #B0B0B0;
     }
-    .icon {
-        margin-right: 16px;
-        vertical-align: text-bottom;
-    }
     .current .icon,
     .previous .icon {
-        color: hsl(138, 95%, 33%);
+        color: #04A635;
     }
     .step-navigation {
         margin-left: 33px;
@@ -312,5 +306,56 @@ export default {
         border-style: solid;
         border-color: gray transparent transparent transparent;
     }
+    .icon-outer-layer {
+        height: 2rem;
+        width: 2rem;
+    }
+    .icon.is-medium .fa-w-16 {
+        width: 32px;
+        height: 32px;
+    }
+    .fa-layers-text {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .current .fa-layers-text,
+    .previous .fa-layers-text {
+        color: white;
+    }
+    .inactive .fa-layers-text {
+        color: black;
+    }
+    .card-header .vocab-h5 {
+        line-height: 32px;
+        margin-left: 10px;
+    }
 
+    .slide-enter-active {
+        /*transition: all .3s ease;*/
+        animation: slide-down .5s;
+    }
+    .slide-leave-active {
+        /*transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);*/
+        animation: slide-down .5s reverse;
+    }
+    /*.slide-enter, .slide-leave-to {*/
+    /*    transform: translateY(-50px);*/
+    /*    opacity: 0;*/
+    /*}*/
+    @keyframes slide-down {
+        0% {
+            opacity: 0;
+            transform: translateY(-100px);
+        }
+
+        /*50% {*/
+        /*    transform: scaleY(0.5);*/
+        /*}*/
+
+        100% {
+            opacity: 1;
+            transform: translateY(0px);
+            /*transform: scaleY(1);*/
+        }
+    }
 </style>

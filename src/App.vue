@@ -4,7 +4,7 @@
         <Feedback/>
         <div class="container" id="site-container">
             <div class="columns">
-            <VerticalStepper v-model="currentStepId" />
+            <Stepper v-model="currentStepId" />
             <div class="column" >
                 <SelectedLicenseCard
                     v-if="showLicense"
@@ -42,7 +42,7 @@ import '@creativecommons/vocabulary/css/root.css'
 import '@creativecommons/vocabulary/css/index.css'
 
 import HelpSection from './components/HelpSection'
-import VerticalStepper from './components/VerticalStepper'
+import Stepper from './components/Stepper'
 import SelectedLicenseCard from './components/SelectedLicenseCard'
 import LicenseUseCard from './components/LicenseUseCard'
 import { Header, Footer, Locale } from '@creativecommons/vue-vocabulary'
@@ -52,7 +52,7 @@ export default {
     name: 'App',
     components: {
         HelpSection,
-        VerticalStepper,
+        Stepper,
         SelectedLicenseCard,
         LicenseUseCard,
         Feedback,
@@ -176,10 +176,8 @@ export default {
     }
     .selected-license-card {
         margin-bottom: 32px;
-        margin-top: 132px;
     }
     .help-section {
-        margin-top: 32px;
     }
 
     @media only screen and (max-width: 1025px) {

@@ -34,7 +34,7 @@ export default new Vuex.Store({
     },
     mutations: {
         toggleSelected(state, stepName) {
-            // Called when a radio button is clicked, either FirstStep or VerticalStep
+            // Called when a radio button is clicked, either FirstStep or Step
             if (['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1) {
                 state.currentLicenseAttributes = {
                     ...state.currentLicenseAttributes,
