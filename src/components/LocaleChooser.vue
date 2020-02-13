@@ -42,7 +42,7 @@ export default {
 .locale-chooser-field {
     width: 100%;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 .locale-chooser-field .label {
     justify-self: end;
@@ -55,5 +55,15 @@ export default {
 .locale-chooser-field .select,
 .locale-chooser-field select {
     width: 100%;
+}
+.control .select select {
+    padding-left:2.5em;
+}
+.control .select::before {
+    content: url("../assets/language.png");
+    position: absolute;
+    z-index: 10;
+    left:10px;
+    top:8px;
 }
 </style>
