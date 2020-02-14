@@ -23,7 +23,7 @@ Run the following commands in order to have the code up and running on your mach
 $ npm install
 
 # Builds and serves assets with hot-reload
-$ npm run dev
+$ npm run serve
 ```
 You should now have the application running and accessible at http://localhost:8080 (note: will run on a different port if 8080 is occupied, most common alternative port is 8081).
 
