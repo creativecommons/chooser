@@ -49,7 +49,12 @@ export default {
         },
         radio: {
             get() {
-                return this.attributes[this.$props.stepName] ? 'yes' : 'no'
+                const selected = this.attributes[this.$props.stepName]
+                if (selected === undefined) {
+                    return undefined
+                } else {
+                    return selected ? 'yes' : 'no'
+                }
             },
             set(newVal) {
                 this.$store.commit('toggleSelected', this.$props.stepName)

@@ -1,5 +1,6 @@
 const CC0Attributes = { BY: false, NC: false, ND: false, SA: false }
 const CCBYAttributes = { BY: true, NC: false, ND: false, SA: false }
+const defaultAttributes = { BY: undefined, NC: undefined, ND: undefined, SA: undefined }
 const visibleSetters = {
     FS: {
         true: ['FS', 'DD', 'AD'],
@@ -101,4 +102,4 @@ function licenseIconsArr(licenseAttributes) {
     return iconsArray
 }
 
-export { CC0Attributes, CCBYAttributes, visibleSetters, disabledSetters, shortToAttr, attrToShort, attrToFull, licenseUrl, licenseSlug, licenseIconsArr }
+export { defaultAttributes, CC0Attributes, CCBYAttributes, visibleSetters, disabledSetters, shortToAttr, attrToShort, attrToFull, licenseUrl, licenseSlug, licenseIconsArr }

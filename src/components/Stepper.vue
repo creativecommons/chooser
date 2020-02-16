@@ -49,7 +49,7 @@
                 <a
                     v-if="step.name!=='AD'"
                     role="button"
-                    class="pagination-next"
+                    :class="['pagination-next', nextButtonDisabled(idx)]"
                     @click="handleNext(step.name)">
                     {{$t('step.next-label')}}
                 </a>
@@ -96,12 +96,12 @@ export default {
                 // eg. When we choose BY, Copyright Waiver is not shown
                 // ENABLED: Steps are shown but disabled when they cannot be chosen
                 // eg. When we choose ND, SA is disabled
-                { id: 0, name: 'FS', visible: true, enabled: true, status: 'current', selected: false },
-                { id: 1, name: 'BY', visible: true, enabled: true, status: 'inactive', selected: true },
-                { id: 2, name: 'NC', visible: true, enabled: true, status: 'inactive', selected: false },
-                { id: 3, name: 'ND', visible: true, enabled: true, status: 'inactive', selected: false },
-                { id: 4, name: 'SA', visible: true, enabled: true, status: 'inactive', selected: false },
-                { id: 5, name: 'CW', visible: false, enabled: true, status: 'inactive', selected: false },
+                { id: 0, name: 'FS', visible: true, enabled: true, status: 'current', selected: undefined },
+                { id: 1, name: 'BY', visible: true, enabled: true, status: 'inactive', selected: undefined },
+                { id: 2, name: 'NC', visible: true, enabled: true, status: 'inactive', selected: undefined },
+                { id: 3, name: 'ND', visible: true, enabled: true, status: 'inactive', selected: undefined },
+                { id: 4, name: 'SA', visible: true, enabled: true, status: 'inactive', selected: undefined },
+                { id: 5, name: 'CW', visible: false, enabled: true, status: 'inactive', selected: undefined },
                 { id: 6, name: 'DD', visible: false, enabled: true, status: 'inactive', selected: undefined },
                 { id: 7, name: 'AD', visible: true, enabled: true, status: 'inactive', selected: undefined }
             ]
@@ -112,6 +112,13 @@ export default {
             const prefix = `stepper.${stepId}`
             return this.status === 'current' ? `${prefix}.question` : `${prefix}.heading`
         },
+        nextButtonDisabled(stepId) {
+            if (this.steps[stepId].selected === undefined) {
+                return 'disabled'
+            } else {
+                return ''
+            }
+        },
         changeFirstStep() {
             this.$set(this.steps, 0, { ...this.steps[0], selected: !this.steps[0].selected })
         },
@@ -119,6 +126,7 @@ export default {
             return ['BY', 'NC', 'ND', 'SA'].indexOf(stepId) > -1
         },
         handleNext() {
+            if (this.steps[this.currentStepId].selected === undefined) return
             const currentStepName = this.steps[this.currentStepId].name
             const stepSelected = this.currentStepId === 0
                 ? this.steps[0].selected
@@ -267,6 +275,14 @@ export default {
         font-weight: bold;
         font-size: 18px;
         line-height: 24px;
+    }
+    .pagination-next.disabled {
+        background-color: #D8D8D8;
+    }
+    .pagination-next.disabled:hover,
+    .pagination-next.disabled:active {
+        box-shadow: none;
+        border: 1px solid transparent;
     }
     /* Tooltip container */
     .tooltip {

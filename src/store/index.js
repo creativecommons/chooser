@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { CCBYAttributes, CC0Attributes, attrToShort, attrToFull, licenseUrl, licenseIconsArr } from '../utils/license-utilities.js'
+import { defaultAttributes, CC0Attributes, attrToShort, attrToFull, licenseUrl, licenseIconsArr } from '../utils/license-utilities.js'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        currentLicenseAttributes: { ...CCBYAttributes },
+        currentLicenseAttributes: { ...defaultAttributes },
         attributionDetails: {
             creatorName: '',
             creatorProfileUrl: '',

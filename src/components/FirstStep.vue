@@ -33,7 +33,11 @@ export default {
         },
         radio: {
             get() {
-                return this.$props.selected ? 'yes' : 'no'
+                if (this.$props.selected === undefined) {
+                    return undefined
+                } else {
+                    return this.$props.selected ? 'yes' : 'no'
+                }
             },
             set(newVal) {
                 this.$emit('change', newVal === 'yes')
