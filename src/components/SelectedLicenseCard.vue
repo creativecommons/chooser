@@ -1,8 +1,8 @@
 <template>
 <div class="selected-license-card">
-    <h3 class="vocab-h3">RECOMMENDED LICENSE</h3>
-    <h4 class="vocab-h4">
-        <a :href="licenseUrl">{{fullName}} ({{shortName}})
+    <h3 class="vocab ha h3a">{{$t('selected-license.heading')}}</h3>
+    <h4 class="vocab h4b hb">
+        <a :href="licenseUrl" class="license-name">{{fullName}} ({{shortName}})
             <LicenseIcons
                 :url="licenseUrl"
                 :iconsArr="iconsList"/>
