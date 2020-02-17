@@ -73,7 +73,7 @@ function attrToFull(attr) {
 // }
 function licenseUrl(attr) {
     // Returns url to license from short license name with version number (eg. 'CC BY 4.0')
-    if (!attr.BY) {
+    if (attr.BY === false) {
         return 'https://creativecommons.org/publicdomain/zero/1.0/?ref=ccchooser'
     }
     let short = attrToShort(attr).toLowerCase().slice(3)

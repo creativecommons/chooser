@@ -28,27 +28,27 @@
         },
         "BY": {
             "heading": "Attribution",
-            "question": "Do you want to require attribution for your work?",
-            "selected": "Anyone using my work must give me appropriate credit.",
-            "not-selected": "Anyone can use my work even without attribution."
+            "question": "Do you want attribution for your work?",
+            "selected": "Yes, anyone using my work must include proper attribution.",
+            "not-selected": "No, anyone can use my work, even without giving me attribution."
         },
         "NC": {
             "heading": "Commercial Use",
-            "question": "Do you want to prohibit others commercial use of your work?",
-            "selected": "Others cannot use my work for commercial purposes.",
-            "not-selected": "Others can use my work for commercial purposes."
+            "question": "Do you want to allow others to use your work commercially?",
+            "selected": "Yes, others can use my work, even for commercial purposes.",
+            "not-selected": "No, others can not use my work for commercial purposes."
         },
         "ND": {
             "heading": "Derivative Works",
-            "question": "Do you want to prohibit others distributing your work if they remix, transform or build upon it?",
-            "selected": "Others can use and share my work only as is, without modifications.",
-            "not-selected": "Others may share modified version of your work."
+            "question": "Do you want to allow others to remix, adapt, or build upon your work?",
+            "selected": "Yes, others can remix, adapt, or build upon my work.",
+            "not-selected": "No. If others remix, adapt, or build upon my work, they may not distribute the modified material."
         },
         "SA": {
             "heading": "Share on the Same Terms",
-            "question": "Do you want to prohibit sharing your work under other terms?",
-            "selected": "Anyone who changes your work must share their contributions under the same license as the original.",
-            "not-selected": "Anyone who changes your work can distribute their contributions under a different license."
+            "question": "Do you want to allow others to share adaptations under any terms?",
+            "selected": "Yes, others can share adaptations of my work under any terms.",
+            "not-selected": "No, others must license adaptations of my work under identical terms."
         },
         "CW": {
             "heading": "Waive your Copyright"
@@ -81,38 +81,45 @@
         }
     },
     "select-license": {
-        "heading": "Select your license",
+        "heading": "SELECT YOUR LICENSE",
         "instructions": "Use the most open license with attribution requirement, or select other options to restrict it."
     },
     "selected-license": {
         "heading": "RECOMMENDED LICENSE",
-        "instructions": "If you already know which license you need, just select it in the dropdown below.",
-        "description": {
-            "common": "allows others to share, distribute, remix, adapt, and build upon your work",
-            "non-cc0": ", provided that:",
-            "zero": "without restrictions (Public Domain)",
-            "by": "the creator is credited",
-            "nc": "the use is non-commercial",
-            "nd": "only the original work is shared",
-            "sa": "the work is shared on the same conditions"
+        "full-description": {
+            "cc0": "Marking your work with a CC0 public domain dedication allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes. By marking your with a CC0 public domain dedication you are giving up your copyright.",
+            "cc-by": "This license requires that reuses give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.",
+            "cc-by-sa": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes. If others remix, adapt, or build upon the material, they must license the modified material under identical terms.",
+            "cc-by-nd": "This license requires that reusers give credit to the creator. It allows reusers to copy and distribute the material in any medium or format, even for commercial purposes. If others remix, adapt, or build upon the material, they may not distribute the modified material.",
+            "cc-by-nc": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, for noncommercial purposes only.",
+            "cc-by-nc-sa": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, for noncommercial purposes only. If others modify or adapt the material, they must license the modified material under identical terms.",
+            "cc-by-nc-nd": "This license requires that reusers give credit to the creator. It allows reusers to copy and distribute the material in any medium or format, for noncommercial purposes only. If others remix, adapt, or build upon the material, they may not distribute the modified material."
+        },
+        "item-description": {
+            "zero": "This work has been marked as dedicated to the public domain.",
+            "by": "Credit must be given to you, the creator.",
+            "nc": "Only noncommercial use of your work is permitted.",
+            "nd": "No derivatives or adaptations of your work are permitted.",
+            "sa": "Adaptations must be shared under the same terms."
         }
     },
     "use-license": {
         "heading": "Use your license",
-        "instructions": "Choose what kind of work you are licensing to get appropriate license code",
+        "common-instructions": "Choose what kind of work you are licensing to get appropriate license code",
         "web-instructions": "If you are licensing one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page",
+        "print-instructions": "Copy the text below and paste it on the title and/or copyright page of your print work or presentation.",
+        "media-instructions": "TODO",
         "rich-text-label": "Rich Text",
         "html-label": "HTML",
         "copy-label": "Copy",
         "copied-label": "Copied!",
-
-        "hint": "Learn more about how to use your license"
+        "license-richtext": "{workTitle} {byLine} is licensed under {licenseName}"
     },
     "code-text": {
         "this-work": "This work",
         "license-text": "{workTitle} {byLine} is licensed under "
     },
-    "license-dropdown-placeholder": "You can select the license you need in the dropdown below:",
+    "license-dropdown-placeholder": "Select the license you need",
     "cc0": {
         "copyright-waive-statement": "I hereby waive all copyright and related or neighboring rights together with all associated claims and causes of action with respect to this work to the extent possible under the law.",
         "confirm": "I have read and understand the terms and intended legal effect of CC0, and hereby voluntarily elect to apply it to this work.",

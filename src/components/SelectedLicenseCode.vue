@@ -2,8 +2,7 @@
     <div class="license-code">
         <b-tabs
             class="attribution-tab"
-            v-model="activeTab"
-        >
+            v-model="activeTab">
             <b-tab-item :label="this.$t('use-license.rich-text-label')">
                 <div id="attribution-richtext">
                 <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">
@@ -183,6 +182,14 @@ export default {
 }
 </script>
 <style lang="scss">
+    .attribution-tab .photo-license-icon {
+        height: 26px;
+    }
+    #attribution-richtext>p>span,
+    #attribution-richtext>p>.photo-license-icons{
+        height: 26px;
+        vertical-align: middle;
+    }
     #attribution-richtext p {
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -207,14 +214,9 @@ export default {
                         & > a {
                             & > span {
                                     font-style: normal;
-                                    font-weight: 700;
-                                    font-size: 12px;
-                                    line-height: 18px;
-                                    text-transform: uppercase;
-                                    letter-spacing: 0.5px;
-                                    color: #333333;
-                                    opacity:0.8;
-
+                                    color: #B0B0B0;
+                                    font-size: 16px;
+                                    line-height: 24px;
                             }
                         }
                         &:last-of-type{

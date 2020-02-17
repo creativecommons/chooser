@@ -10,9 +10,7 @@
     </h4>
     <p id='chooser-selected-description'>
         <b>{{licenseSlug}}</b>
-        {{this.$t("selected-license.description.common") }}
-        <span v-if="!fullName.includes('CC0')">
-            {{this.$t("selected-license.description.non-cc0")}}</span>
+        {{$t(licenseKey)}}
     </p>
     <section class="license-visual-info">
         <ul class="license-list">
@@ -21,7 +19,9 @@
                     :class="['license-list-item', item]"
                     :key="item">
                     <span class="readable-string">
-                        <b>{{item.toUpperCase()}}:</b> {{$t(`selected-license.description.${item}`)}}
+                        <b v-if="item!=='zero'">{{item.toUpperCase()}}:</b>
+                        <b v-else>CC0:</b>
+                        {{$t(`selected-license.item-description.${item}`)}}
                     </span>
                 </li>
             </transition-group>
@@ -46,7 +46,10 @@ export default {
             return this.$t(descriptionString)
         },
         licenseSlug() {
-            return this.shortName.slice(0, this.shortName.length - 3)
+            return this.shortName.slice(0, this.shortName.length - 4)
+        },
+        licenseKey() {
+            return `selected-license.full-description.${this.licenseSlug.toLowerCase().replace(' ', '-')}`
         }
     }
 }
@@ -79,7 +82,7 @@ export default {
     }
     .license-list-item span b {
         display: inline-block;
-        width: 24px;
+        width: 36px;
     }
     .license-list-item::before{
         position: absolute;
@@ -91,6 +94,9 @@ export default {
         border-radius: 50%;
         content: "";
         background-size: 35px 35px;
+    }
+    .license-list-item.zero::before {
+        background-image: url("../assets/license-icons/cc-cc0_icon.svg");
     }
     .license-list-item.by::before {
         background-image: url("../assets/license-icons/cc-by_icon.svg");
