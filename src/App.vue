@@ -22,6 +22,7 @@
                     v-if="showLicenseUse"
                 />
                 <HelpSection />
+                </div>
             </div>
             </div>
         </div>
@@ -116,79 +117,70 @@ export default {
     .desktop-show {
         display: block;
     }
-    h2, h3 {
-        font-family: Roboto Condensed;
-        color: #333333;
-    }
-    .vocab-h2 {
-        font-style: normal;
+    .vocab.ha {
+        font-family: Roboto Condensed,sans-serif;
         font-weight: bold;
+        font-style: normal;
+        letter-spacing: 0.02em;
+        padding-bottom: 0.5rem;
+    }
+    .vocab.hb {
+        font-family: Source Sans Pro,sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        padding-bottom: 0.5rem;
+    }
+    .vocab.h2a {
+        color: black;
         font-size: 36px;
         line-height: 47px;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        padding-bottom: 8px;
     }
-    .vocab-h3 {
-        font-style: normal;
-        font-weight: bold;
+    .vocab.h3a {
         font-size: 28px;
         line-height: 36px;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        margin-bottom: 12px;
+        color: black;
     }
-    .vocab-h4 {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 23px;
-        line-height: 27px;
-        margin-bottom: 12px;
+    .vocab.h3b {
+        font-size: 28px;
+        line-height: 33px;
     }
-    .vocab-h4a {
-        font-family: Roboto Condensed;
-        font-style: normal;
-        font-weight: bold;
+    .vocab.h4a {
         font-size: 23px;
         line-height: 30px;
-        letter-spacing: 0.02em;
-        padding-bottom: 8px;
     }
-    .vocab-h5 {
-        font-style: normal;
-        font-weight: bold;
+    .vocab.h4b {
+        font-size: 23px;
+        line-height: 27px;
+    }
+    .vocab.h5a {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .vocab.h5b {
         font-size: 20px;
         line-height: 26px;
-        padding-bottom: 8px;
     }
     .vocab-tomato {
         color: #ED592F!important;
     }
-    .vocab-body-bigger {
+    .vocab-body {
         font-style: normal;
         font-weight: normal;
+        color: #333333;
+        padding-bottom: 8px;
+    }
+    .vocab-body.body-bigger {
         font-size: 23px;
         line-height: 33px;
-        color: #333333;
-        margin-bottom: 8px;
-        padding-bottom: 8px;
+        color: black;
     }
-    .vocab-body-big {
-        font-style: normal;
-        font-weight: normal;
+    .vocab-body.body-big {
         font-size: 18px;
         line-height: 25px;
-        color: #333333;
-        margin-bottom: 8px;
-        padding-bottom: 8px;
     }
-    .vocab-body-normal {
-        font-style: normal;
-        font-weight: normal;
+    .vocab-body.body-normal {
         font-size: 16px;
         line-height: 24px;
-        margin-bottom: 8px;
-        padding-bottom: 8px;
     }
     .vocab-caption {
         font-style: normal;
@@ -199,6 +191,9 @@ export default {
     }
     .normal-gray {
         color: #D8D8D8!important;
+    }
+    .slate-gray {
+        color: #333333;
     }
     .selected-license-card {
         margin-bottom: 32px;
@@ -258,18 +253,5 @@ export default {
 
     .panel {
         margin-top: 1rem;
-    }
-</style>
-<style scoped>
-    p {
-        margin-bottom: .5em;
-    }
-
-    #custom .panel > div:first-child {
-        margin-bottom: 10vh;
-    }
-
-    .vocab.footer {
-        line-height: 1.2;
     }
 </style>
