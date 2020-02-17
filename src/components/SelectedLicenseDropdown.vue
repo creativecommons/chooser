@@ -1,7 +1,8 @@
 <template>
     <div class="license-dropdown">
-        <b-field :label="this.$t('license-dropdown-label')">
-            <b-select v-model="currentLicense">
+        <b-field>
+            <b-select :placeholder="this.$t('license-dropdown-placeholder')" @input="setCurrentLicense"
+                      :value="this.shortName">
                 <option
                     v-for="license in this.licenseList"
                     :value="license"
@@ -28,26 +29,24 @@ export default {
                 'CC BY-NC 4.0',
                 'CC BY-NC-SA 4.0',
                 'CC BY-NC-ND 4.0'
-            ]
+            ],
+            currentLicense: undefined
+        }
+    },
+    methods: {
+        setCurrentLicense(currentLicense) {
+            this.$store.commit('updateAttributesFromShort', currentLicense)
+            if (process.env.NODE_ENV === 'production') {
+                this.$ga.event({
+                    eventCategory: 'LicenseDropdown',
+                    eventAction: 'licenseSelected',
+                    eventLabel: currentLicense
+                })
+            }
         }
     },
     computed: {
-        ...mapGetters(['shortName', 'fullName']),
-        currentLicense: {
-            get() {
-                return this.shortName
-            },
-            set(currentLicense) {
-                this.$store.commit('updateAttributesFromShort', currentLicense)
-                if (process.env.NODE_ENV === 'production') {
-                    this.$ga.event({
-                        eventCategory: 'LicenseDropdown',
-                        eventAction: 'licenseSelected',
-                        eventLabel: currentLicense
-                    })
-                }
-            }
-        }
+        ...mapGetters(['shortName', 'fullName'])
     }
 
 }

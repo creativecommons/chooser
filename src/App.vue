@@ -46,13 +46,11 @@ export default {
     },
     data() {
         return {
-            currentStepId: 0
+            currentStepId: 0,
+            showLicense: false
         }
     },
     computed: {
-        showLicense() {
-            return this.currentStepId > 0
-        },
         showLicenseUse() {
             return this.currentStepId === 7
         }
@@ -62,8 +60,14 @@ export default {
         if (process.env.NODE_ENV === 'production') {
             this.$ga.page('/')
         }
+        this.$store.subscribe((mutation, state) => {
+            if (mutation.type === 'updateAttributesFromShort' || mutation.type === 'setSelected') {
+                this.showLicense = true
+            }
+        })
     }
-}</script>
+}
+</script>
 <style lang="scss">
     // Import Bulma's core
     @import "~bulma/sass/utilities/_all";

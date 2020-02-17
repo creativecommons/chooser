@@ -28,36 +28,30 @@
 
 <script>
 
-import { mapState } from 'vuex'
-
 export default {
     name: 'Step',
     props: {
         stepName: String,
+        selected: Boolean,
+        stepId: Number,
         status: String
     },
-    methods: {
-        selected() {
-            return this.attributes(this.$props.stepName)
-        }
-    },
     computed: {
-        ...mapState({ attributes: state => state.currentLicenseAttributes }),
         cardText() {
             const prefix = `stepper.${this.$props.stepName}.${this.selected ? '' : 'not-'}`
             return `${prefix}selected`
         },
         radio: {
             get() {
-                const selected = this.attributes[this.$props.stepName]
-                if (selected === undefined) {
+                if (this.$props.selected === undefined) {
                     return undefined
                 } else {
-                    return selected ? 'yes' : 'no'
+                    return this.$props.selected ? 'yes' : 'no'
                 }
             },
             set(newVal) {
-                this.$store.commit('toggleSelected', this.$props.stepName)
+                const isSelected = newVal === 'yes'
+                this.$emit('change', this.$props.stepName, this.$props.stepId, isSelected)
             }
         },
         tPrefix() {

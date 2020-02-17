@@ -25,6 +25,7 @@ export default {
     name: 'FirstStep',
     props: {
         selected: Boolean,
+        stepId: Number,
         status: String
     },
     computed: {

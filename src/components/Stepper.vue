@@ -70,10 +70,10 @@
 import Step from './Step'
 import FirstStep from './FirstStep'
 import AttributionDetails from './AttributionDetails'
+import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
 import { disabledSetters, visibleSetters } from '../utils/license-utilities'
 import { mapGetters } from 'vuex'
-import CopyrightWaiverStep from './CopyrightWaiverStep'
 
 export default {
     name: 'Stepper',
@@ -108,45 +108,53 @@ export default {
         }
     },
     methods: {
-        headerText(stepId) {
+        headerText(stepId, stepStatus) {
             const prefix = `stepper.${stepId}`
-            return this.status === 'current' ? `${prefix}.question` : `${prefix}.heading`
+            if (stepId === 'AD' || stepId === 'CW') {
+                return prefix + '.heading'
+            }
+            return stepStatus === 'current' ? `${prefix}.question` : `${prefix}.heading`
         },
-        nextButtonDisabled(stepId) {
-            if (this.steps[stepId].selected === undefined) {
-                return 'disabled'
+        nextButtonDisabled: function(stepId) {
+            // Disable 'Next' button if on one of the first 4 steps
+            if (stepId <= 4) {
+                return this.steps[stepId].selected === undefined
+                    ? 'disabled'
+                    : ''
             } else {
+                if (stepId === 6 && this.$store.state.currentLicenseAttributes.BY === undefined) {
+                    return 'disabled'
+                }
                 return ''
             }
         },
-        changeFirstStep() {
-            this.$set(this.steps, 0, { ...this.steps[0], selected: !this.steps[0].selected })
+        changeFirstStep(isSelected) {
+            this.$set(this.steps, 0, { ...this.steps[0], selected: isSelected })
+        },
+        changeStepSelected(stepName, stepId, isSelected) {
+            this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isSelected })
+            this.$store.commit('setSelected', { stepName, isSelected })
+            console.log('Step selected changed, ', this.steps)
         },
         isLicenseAttribute(stepId) {
             return ['BY', 'NC', 'ND', 'SA'].indexOf(stepId) > -1
         },
-        handleNext() {
-            if (this.steps[this.currentStepId].selected === undefined) return
-            const currentStepName = this.steps[this.currentStepId].name
-            const stepSelected = this.currentStepId === 0
-                ? this.steps[0].selected
-                : this.isAttrSelected(currentStepName)
+        handleNext(stepName) {
+            const stepSelected = this.steps[this.currentStepId].selected
+            if (stepSelected === undefined && this.currentStepId <= 4) return
             // update steps enabled and visible properties
             // set the next enabled and visible step as current, and stepName as previous
-            this.updateDisabledAndVisibleSteps(currentStepName,
-                stepSelected)
+            this.updateDisabledAndVisibleSteps(stepName, stepSelected)
             const nextStep = this.steps.slice(this.currentStepId + 1).find(step => step.visible && step.enabled).id
             this.$set(this.steps, nextStep, { ...this.steps[nextStep], status: 'current' })
             this.$set(this.steps, this.currentStepId, { ...this.steps[this.currentStepId], status: 'previous' })
             this.currentStepId = nextStep
         },
-        handlePrevious() {
-            const currentStepName = this.steps[this.currentStepId].name
-            const stepSelected = this.currentStepId === 0
-                ? this.steps[0].selected
-                : this.isAttrSelected(currentStepName)
-            this.updateDisabledAndVisibleSteps(currentStepName,
-                stepSelected)
+        handlePrevious(stepName) {
+            const stepSelected = this.steps[this.currentStepId].selected
+            console.log('Handling previous: ', this.steps[this.currentStepId], stepSelected)
+            if (stepSelected === undefined && this.currentStepId <= 4) return
+            this.updateDisabledAndVisibleSteps(stepName, stepSelected)
             let previousStep = this.currentStepId
             for (let i = this.currentStepId - 1; i >= 0; i--) {
                 const thisStep = this.steps[i]

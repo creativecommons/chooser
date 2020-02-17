@@ -12,10 +12,12 @@ export default new Vuex.Store({
             creatorProfileUrl: '',
             workTitle: '',
             workUrl: ''
-        },
-        currentStepId: 0
+        }
     },
     getters: {
+        isLicenseSelected: state => {
+            return state.currentLicenseAttributes.BY !== undefined
+        },
         shortName: state => {
             return attrToShort(state.currentLicenseAttributes)
         },
@@ -33,14 +35,15 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        toggleSelected(state, stepName) {
-            // Called when a radio button is clicked, either FirstStep or Step
+        setSelected(state, { stepName, isSelected }) {
+            // When a Radio button is selected, either knowLicense or
+            // currentLicenseAttribute 'selected' attribute is updated
             if (['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1) {
                 state.currentLicenseAttributes = {
                     ...state.currentLicenseAttributes,
-                    [stepName]: !state.currentLicenseAttributes[stepName]
+                    [stepName]: isSelected
                 }
-            } else {
+            } else if (stepName === 'FS') {
                 state.knowLicense = !state.knowLicense
             }
         },
@@ -48,6 +51,7 @@ export default new Vuex.Store({
             if (shortName.includes('CC0')) {
                 state.currentLicenseAttributes = { ...CC0Attributes }
             } else {
+                state.currentLicenseAttributes.BY = true
                 state.currentLicenseAttributes.NC = !!shortName.includes('NC')
                 state.currentLicenseAttributes.ND = !!shortName.includes('ND')
                 state.currentLicenseAttributes.SA = !!shortName.includes('SA')

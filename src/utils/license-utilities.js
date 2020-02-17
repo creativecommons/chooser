@@ -37,6 +37,7 @@ function shortToAttr(shortLicenseName) {
 }
 
 function attrToShort(attr) {
+    if (attr.BY === undefined) return undefined
     if (!attr.BY) { return 'CC0 1.0' }
     let base = 'CC BY'
     if (attr.NC) { base += '-NC' }
