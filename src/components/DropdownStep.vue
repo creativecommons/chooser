@@ -1,5 +1,5 @@
 <template>
-    <div class="card-content step-card-content">
+    <div>
         <div class="step-description" v-if="this.status==='previous'">
             {{cardText}}
         </div>
@@ -7,6 +7,7 @@
             <SelectedLicenseDropdown />
         </div>
     </div>
+
 </template>
 
 <script>

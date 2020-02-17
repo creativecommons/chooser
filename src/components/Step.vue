@@ -1,29 +1,23 @@
 <template>
-    <transition name="slide" mode="out-in">
-        <div class="card-content step-card-content" v-if="!(this.status==='inactive')">
-            <div class="step-description" v-if="this.status==='previous'">
-                <transition name="slide">
-                <p>{{$t(cardText)}}</p>
-                </transition>
-            </div>
+    <div>
+        <div class="step-description vocab-body body-normal" v-if="this.status==='previous'">
+            <p class="vocab-body body-normal">{{$t(cardText)}}</p>
+        </div>
         <div class="step-actions" v-else-if="this.status==='current'">
-                <div>
-                    <div class="field" :class="yesSelected">
-                        <b-radio v-model="radio"
-                                 native-value="yes">
-                            <span>{{$t('yes')}}{{$t(yesText)}}</span>
-                        </b-radio>
-                    </div>
-                    <div class="field" :class="noSelected">
-                        <b-radio v-model="radio"
-                                 native-value="no">
-                            <span>{{$t('no')}}{{$t(noText)}}</span>
-                        </b-radio>
-                    </div>
-                </div>
+            <div class="field" :class="yesSelected">
+                <b-radio v-model="radio"
+                         native-value="yes">
+                    <span class="vocab-body body-normal">{{$t('yes')}}{{$t(yesText)}}</span>
+                </b-radio>
+            </div>
+            <div class="field" :class="noSelected">
+                <b-radio v-model="radio"
+                         native-value="no">
+                    <span class="vocab-body body-normal">{{$t('no')}}{{$t(noText)}}</span>
+                </b-radio>
+            </div>
         </div>
     </div>
-    </transition>
 </template>
 
 <script>

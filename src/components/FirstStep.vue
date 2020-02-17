@@ -1,19 +1,19 @@
 <template>
-    <div class="card-content step-card-content">
-        <div class="step-description" v-if="this.status==='previous'">
+    <div>
+        <p class="step-description vocab-body body-normal" v-if="this.status==='previous'">
             {{$t(cardText)}}
-        </div>
+        </p>
         <div class="step-actions" v-else-if="this.status==='current'">
             <div class="field" :class="yesSelected">
                 <b-radio v-model="radio"
                          native-value="yes">
-                    <span v-html="$t(yesText)" />
+                    <span class="vocab-body body-normal" v-html="$t(yesText)" />
                 </b-radio>
             </div>
             <div class="field" :class="noSelected">
                 <b-radio v-model="radio"
                          native-value="no">
-                    <span v-html="$t(noText)" />
+                    <span class="vocab-body body-normal" v-html="$t(noText)" />
                 </b-radio>
             </div>
         </div>

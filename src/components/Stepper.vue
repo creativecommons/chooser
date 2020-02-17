@@ -1,65 +1,55 @@
 <template>
 <div class="column vertical-stepper-container">
-    <h2 class="vocab-h2">{{$t('select-license.heading')}}</h2>
-    <p class="stepper-instructions vocab-body-bigger">{{$t('select-license.instructions')}}</p>
-    <div class="steps"
-        v-for="(step, idx) in visibleSteps()"
+    <div :class="['stepper-card', step.status, enabledQualifier(step.enabled)]"
+         v-for="(step, idx) in visibleSteps()"
          :key="idx">
-        <div :class="['step', 'card', 'tooltip', step.status, enabledQualifier(step.enabled)]">
-            <span class="tooltiptext" v-if="!step.enabled">{{$t('disabled-tooltip.'+step.name)}}</span>
-            <div :class="['card-header']"
-                @click="setActiveStep(step.id)">
-
-                <span class="fa-layers fa-fw icon-outer-layer">
-                    <b-icon icon="circle" size="is-medium"/>
-                    <span class="fa-layers-text">{{idx+1}}</span>
-                </span>
-
-                <h5 class="vocab-h5">{{$t(headerText(step.name))}}</h5>
-            </div>
+        <div :class="['stepper-card-header']"
+            @click="setActiveStep(step.id)">
+            <h5 class="vocab hb h5b stepper-header-h5">{{$t(headerText(step.name, step.status))}}</h5>
+        </div>
+        <div :class="['step-card-content', step.status]"
+             v-if="step.status!=='inactive'">
             <FirstStep
                 v-if="step.name==='FS'"
+                :step-id="step.id"
                 :selected="step.selected"
                 @change="changeFirstStep"
                 :status="step.status"
             />
             <Step
                 v-if="isLicenseAttribute(step.name)"
+                :step-id="step.id"
+                :selected="step.selected"
                 :status="step.status"
                 :stepName="step.name"
+                @change="changeStepSelected"
             />
             <CopyrightWaiverStep
-                v-if="step.name==='CW'" />
+                v-if="step.name==='CW'"
+                :step-id="step.id"
+            />
             <DropdownStep
                 v-if="step.name==='DD'"
+                :step-id="step.id"
                 :status="step.status"
                 />
             <AttributionDetails
                 v-if="step.name==='AD'"
+                :step-id="step.id"
                 :status="step.status"
             />
             <nav class="step-navigation" v-if="step.status==='current'">
-                <a
-                    role="button"
-                    class="pagination-previous"
-                    v-if="step.name!=='FS'"
-                    @click="handlePrevious(step.name)">
-                    {{$t('step.previous-label')}}
-                </a>
-                <a
-                    v-if="step.name!=='AD'"
-                    role="button"
-                    :class="['pagination-next', nextButtonDisabled(idx)]"
-                    @click="handleNext(step.name)">
-                    {{$t('step.next-label')}}
-                </a>
-                <a
-                    v-else
-                    role="button"
-                    class="pagination-next"
-                    @click="handleFinish()">
-                    {{$t('step.finish')}}
-                </a>
+                <a role="button" class="pagination-previous"
+                   v-if="step.name!=='FS'"
+                   @click="handlePrevious(step.name)">{{$t('step.previous-label')}}</a>
+                <a role="button"
+                   v-if="step.name!=='AD'"
+                   :class="['pagination-next', nextButtonDisabled(step.id)]"
+                   @click="handleNext(step.name)"
+                >{{$t('step.next-label')}}</a>
+                <a role="button" class="pagination-next"
+                   v-else
+                   @click="handleFinish()">{{$t('step.finish')}}</a>
             </nav>
         </div>
     </div>
@@ -241,40 +231,95 @@ export default {
 </script>
 
 <style>
+    .step-navigation .pagination-previous {
+        border: 2px solid #787878;
+        color: #787878;
+    }
+    .pagination-next {
+        background-color: #04a635;
+        color: #fff!important;
+        font-family: Roboto Condensed,sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .stepper-card {
+        background-color: white;
+        /*box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);*/
+        border: 2px solid  #D8D8D8;
+        border-bottom: none;
+        border-radius: 4px;
+        max-width: 100%;
+        position: relative;
+    }
+    .stepper-card:last-of-type {
+        border-bottom: 2px solid #D8D8D8;
+    }
+    .stepper-card-header {
+        background-color: transparent;
+        -webkit-box-align: stretch;
+        align-items: stretch;
+        box-shadow: 0 1px 2px rgba(10, 10, 10, 0.1);
+        display: -webkit-box;
+        display: flex;
+        position:relative;
+        margin: 24px 24px 8px;
+    }
+    .stepper-card-header .stepper-header-h5 {
+        margin-left: 45px;
+    }
+    .stepper-header-h5::before{
+        counter-increment: step-counter;
+        position: absolute;
+        left: 0;
+        display: inline-block;
+        font-weight: 700;
+        font-family: inherit;
+        content: counter(step-counter);
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background: #04A635;
+        border-radius: 50%;
+        text-align: center;
+        color: #fff;
+        top: 0;
+    }
+    .inactive .stepper-header-h5::before {
+        background-color: #D8D8D8;
+        color: #333333;
+    }
     .stepper-instructions {
         margin-bottom: 48px;
     }
-    .step {
-        padding: 24px;
+    .step-card-content {
+        margin-left: 69px;
+        padding-bottom:8px;
+        padding-right: 24px;
     }
-
+    .step-description {
+        color: #333333;
+    }
     .current,
     .previous {
         color: black;
     }
-    .inactive {
+    .inactive .vocab.h5b {
         color: #B0B0B0;
     }
-    .inactive .icon,
-    .inactive .vocab-h5
+    .inactive .icon
     {
-        color:  #B0B0B0;
+        color:  #D8D8D8;
     }
     .current .icon,
     .previous .icon {
         color: #04A635;
     }
     .step-navigation {
-        margin-left: 33px;
+        margin: 13px 0 13px -4px;
     }
-    .previous .step-card-content {
-        padding-top:8px;
-        padding-bottom: 0;
-        padding-left: 40px;
-    }
-    .card-content.step-card-content {
-             padding-left: 40px;
-         }
     .pagination-next {
         background-color: #04A635;
         color: white!important;
@@ -292,67 +337,6 @@ export default {
         box-shadow: none;
         border: 1px solid transparent;
     }
-    /* Tooltip container */
-    .tooltip {
-        position: relative;
-        width: 100%;
-        display: inline-block;
-    }
-
-    /* Tooltip text */
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 80%;
-        background-color: gray;
-        color: #fff;
-        text-align: center;
-        padding: 5px 0;
-        border-radius: 6px;
-
-        /* Position the tooltip text - see examples below! */
-        position: absolute;
-        z-index: 1;
-        top: -5px;
-    }
-
-    /* Show the tooltip text when you mouse over the tooltip container */
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-    }
-    .tooltip .tooltiptext::after {
-        content: " ";
-        position: absolute;
-        top: 100%; /* At the bottom of the tooltip */
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: gray transparent transparent transparent;
-    }
-    .icon-outer-layer {
-        height: 2rem;
-        width: 2rem;
-    }
-    .icon.is-medium .fa-w-16 {
-        width: 32px;
-        height: 32px;
-    }
-    .fa-layers-text {
-        font-size: 16px;
-        font-weight: bold;
-    }
-    .current .fa-layers-text,
-    .previous .fa-layers-text {
-        color: white;
-    }
-    .inactive .fa-layers-text {
-        color: black;
-    }
-    .card-header .vocab-h5 {
-        line-height: 32px;
-        margin-left: 10px;
-    }
-
     .slide-enter-active {
         /*transition: all .3s ease;*/
         animation: slide-down .5s;
