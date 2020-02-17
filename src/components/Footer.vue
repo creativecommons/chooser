@@ -9,18 +9,22 @@
                 <p class="vocab-body-normal"><a href="tel:+1-415-429-6753">+1-415-429-6753</a></p>
             </section>
             <section class="middle-column">
-                <p class="vocab-caption">
-                    Except where otherwise <a href="https://creativecommons.org/policies#license">noted</a>, content on this site is licensed under a
-                    <a href="#">Creative Commons Attribution 4.0 International license</a>. Icons by Noun Project.
-                </p>
+                <i18n path="footer.licensing.text" tag="p" :class="'vocab-caption'">
+                    <template v-slot:noted>
+                        <a :href="licensePoliciesUrl">{{ $t('footer.licensing.noted') }}</a>
+                    </template>
+                    <template v-slot:CCBY>
+                        <a :href="CCBYUrl">{{ $t('footer.licensing.CCBY') }}</a>
+                    </template>
+                </i18n>
                 <p class="footer-license-icons">
                     <img src="../assets/license-icons/icon-cc_white.png">
                     <img src="../assets/license-icons/icon-by-white.png">
                 </p>
             </section>
             <section class="donation-column">
-                <h4 class="vocab-h4a">OUR WORK RELIES ON YOU!</h4>
-                <p class="vocab-body-normal">Help us keep Internet free and open.</p>
+                <h4 class="vocab ha h4a">{{$t('footer.donation.header')}}</h4>
+                <p class="vocab-body-normal">{{$t('footer.donation.call')}}</p>
             </section>
         </div>
     </footer>
@@ -29,7 +33,13 @@
 <script>
 
 export default {
-    name: 'Footer'
+    name: 'Footer',
+    data() {
+        return {
+            licensePoliciesUrl: 'https://creativecommons.org/policies#license',
+            CCBYUrl: 'https://creativecommons.org/licenses/by/4.0/'
+        }
+    }
 }
 </script>
 

@@ -36,9 +36,9 @@ export default {
 </script>
 
 <style>
-    .locale-chooser {
-        height: 132px;
-    }
+.locale-chooser {
+    height: 132px;
+}
 .locale-chooser-field {
     width: 100%;
     display: grid;
@@ -56,10 +56,10 @@ export default {
 .locale-chooser-field select {
     width: 100%;
 }
-.control .select select {
+.locale-chooser-field .control .select select {
     padding-left:2.5em;
 }
-.control .select::before {
+.locale-chooser-field .control .select::before {
     content: url("../assets/language.png");
     position: absolute;
     z-index: 10;

@@ -1,11 +1,11 @@
 <template>
     <div class="help-section">
-        <h3 class="vocab-h3">{{$t('help.heading')}}</h3>
+        <h3 class="vocab ha h3a">{{$t('help.heading')}}</h3>
         <ul class="help-links">
             <li class="help-link"
                 v-for="(modal, idx) in this.modals"
                 :key="idx">
-                <a class="vocab-body-big vocab-tomato"
+                <a class="vocab-body body-big vocab-tomato"
                     @click="clickHandler(idx)">{{$t(`help.${modal.title}.heading`)}}</a>
             </li>
         </ul>
