@@ -85,7 +85,7 @@
         "instructions": "Use the most open license with attribution requirement, or select other options to restrict it."
     },
     "selected-license": {
-        "heading": "Your license",
+        "heading": "RECOMMENDED LICENSE",
         "instructions": "If you already know which license you need, just select it in the dropdown below.",
         "description": {
             "common": "allows others to share, distribute, remix, adapt, and build upon your work",
@@ -112,7 +112,7 @@
         "this-work": "This work",
         "license-text": "{workTitle} {byLine} is licensed under "
     },
-    "license-dropdown-label": "You can select the license you need in the dropdown below:",
+    "license-dropdown-placeholder": "You can select the license you need in the dropdown below:",
     "cc0": {
         "copyright-waive-statement": "I hereby waive all copyright and related or neighboring rights together with all associated claims and causes of action with respect to this work to the extent possible under the law.",
         "confirm": "I have read and understand the terms and intended legal effect of CC0, and hereby voluntarily elect to apply it to this work.",
@@ -200,5 +200,16 @@
     "yes": "Yes. ",
     "no": "No. ",
     "disabled-tooltip.SA": "This step is disabled because you chose ND",
-    "locale-chooser.label": "Languages available"
+    "locale-chooser.label": "Languages available",
+    "footer": {
+        "donation": {
+            "header": "OUR WORK RELIES ON YOU!",
+            "call": "Help us keep Internet free and open."
+        },
+        "licensing": {
+            "text": "Except where otherwise {noted}, content on this site is licensed under a {CCBY}. Icons by Noun Project.",
+            "noted": "noted",
+            "CCBY": "Creative Commons Attribution 4.0 International license"
+        }
+    }
 }

@@ -198,15 +198,6 @@ export default {
     }
     .license-code {
         margin-top: 0.4rem;
-        h2.vocab-h2{
-            font-family: Roboto Condensed;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 28px;
-            line-height: 36px;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
         div.attribution-tab {
             margin-bottom: 1rem;
             nav.tabs {

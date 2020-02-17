@@ -2,10 +2,19 @@
     <div id="app">
         <Header :title="$t('app-title')"/>
         <div class="container" id="site-container">
+            <div class="page-head columns">
+                <div class="column">
+                    <h2 class="vocab h2a ha">{{$t('select-license.heading')}}</h2>
+                    <p class="stepper-instructions vocab-body body-bigger">{{$t('select-license.instructions')}}</p>
+                </div>
+                <div class="column">
+                    <LocaleChooser />
+                </div>
+            </div>
             <div class="columns">
             <Stepper v-model="currentStepId" />
             <div class="column" >
-                <LocaleChooser />
+                <div class="fixed-right-column">
                 <SelectedLicenseCard
                     v-if="showLicense"
                 />
@@ -89,8 +98,12 @@ export default {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;
+        counter-reset: step-counter;
     }
-
+    .fixed-right-column {
+        position: sticky;
+        top: 10px;
+    }
     #site-container {
         padding-top: 2rem;
         padding-bottom: 2%;

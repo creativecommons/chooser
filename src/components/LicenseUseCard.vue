@@ -1,6 +1,6 @@
 <template>
 <div class="license-use-card">
-    <h4 class="vocab-h4">Use Your License</h4>
+    <h4 class="vocab h4b hb">Use Your License</h4>
     <p class="license-use-instructions">{{$t('use-license.instructions')}}</p>
     <b-tabs>
         <b-tab-item label="Website">

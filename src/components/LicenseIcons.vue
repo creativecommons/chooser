@@ -26,15 +26,10 @@ export default LicenseIcons
         display: inline-block;
         white-space: nowrap;
         vertical-align: text-bottom;
-        opacity: .7;
         margin-right:3px;
-        height: 22px !important;
-    &:hover {
-        opacity: 1;
     }
-  }
-  .photo-license-icon {
+    .photo-license-icon {
       height: inherit;
       margin-left: 3px;
-  }
+    }
 </style>
