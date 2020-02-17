@@ -124,7 +124,6 @@ export default {
         changeStepSelected(stepName, stepId, isSelected) {
             this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isSelected })
             this.$store.commit('setSelected', { stepName, isSelected })
-            console.log('Step selected changed, ', this.steps)
         },
         isLicenseAttribute(stepId) {
             return ['BY', 'NC', 'ND', 'SA'].indexOf(stepId) > -1
@@ -142,7 +141,6 @@ export default {
         },
         handlePrevious(stepName) {
             const stepSelected = this.steps[this.currentStepId].selected
-            console.log('Handling previous: ', this.steps[this.currentStepId], stepSelected)
             if (stepSelected === undefined && this.currentStepId <= 4) return
             this.updateDisabledAndVisibleSteps(stepName, stepSelected)
             let previousStep = this.currentStepId
