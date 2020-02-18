@@ -103,4 +103,47 @@ function licenseIconsArr(licenseAttributes) {
     return iconsArray
 }
 
-export { defaultAttributes, CC0Attributes, CCBYAttributes, visibleSetters, disabledSetters, shortToAttr, attrToShort, attrToFull, licenseUrl, licenseSlug, licenseIconsArr }
+function generateHTML(attributionDetails, shortLicenseName) {
+    const dataForHtmlGeneration = {
+        htmlString: '',
+        creator: '',
+        workTitle: '',
+        licenseIconsLink: ''
+    }
+    dataForHtmlGeneration.htmlString = '<p xmlns:dct="http://purl.org/dc/terms/"' +
+        ' xmlns:cc="http://creativecommons.org/ns#"' +
+        ' class="license-text">'
+    const iconStyle = 'style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;"'
+    const baseAssetsPath = 'https://search.creativecommons.org/static/img'
+    let licenseIcons = `<img ${iconStyle} src="${baseAssetsPath}/cc_icon.svg" />`
+    if (shortLicenseName.includes('CC0')) {
+        shortLicenseName = 'CC CC0 1.0'
+    }
+    licenseIcons += shortLicenseName.slice(3, shortLicenseName.length - 4).split('-').map(license =>
+        `<img  ${iconStyle} src="${baseAssetsPath}/cc-${license.toLowerCase()}_icon.svg" />`
+    ).join('')
+    dataForHtmlGeneration.licenseIconsLink = `<a href="${licenseUrl(shortToAttr(shortLicenseName))}">${licenseIcons}</a>`
+
+    if (attributionDetails.creatorName) {
+        const creatorSpan = `<span rel="cc:attributionName">${attributionDetails.creatorName}</span>`
+        if (attributionDetails.creatorProfileUrl) {
+            dataForHtmlGeneration.creator = `<a rel="cc:attributionURL" href="${attributionDetails.creatorProfileUrl}">${creatorSpan}</a>`
+        } else {
+            dataForHtmlGeneration.creator = creatorSpan
+        }
+    }
+    if (attributionDetails.workTitle) {
+        const workTitleSpan = `<span rel="dc:title">${attributionDetails.workTitle}</span>`
+        if (attributionDetails.workUrl) {
+            dataForHtmlGeneration.workTitle = `<a rel="cc:attributionURL" href="${attributionDetails.workUrl}">${workTitleSpan}</a>`
+        } else {
+            dataForHtmlGeneration.workTitle = workTitleSpan
+        }
+    }
+    return dataForHtmlGeneration
+}
+export {
+    defaultAttributes, CC0Attributes, CCBYAttributes, visibleSetters, disabledSetters,
+    shortToAttr, attrToShort, attrToFull, licenseUrl, licenseSlug, licenseIconsArr,
+    generateHTML
+}

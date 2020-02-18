@@ -20,10 +20,12 @@
 
 <script>
 import SelectedLicenseCode from './SelectedLicenseCode'
+import LicenseCode from './LicenseCode'
 export default {
     name: 'LicenseUseCard',
     props: ['value'],
     components: {
+        LicenseCode,
         SelectedLicenseCode
     }
 }

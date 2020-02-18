@@ -21,7 +21,7 @@
                     <span class="readable-string">
                         <b v-if="item!=='zero'">{{item.toUpperCase()}}:</b>
                         <b v-else>CC0:</b>
-                        {{$t(`selected-license.item-description.${item}`)}}
+                        {{$t(`license-details-card.item-description.${item}`)}}
                     </span>
                 </li>
             </transition-group>
@@ -35,7 +35,7 @@ import LicenseIcons from './LicenseIcons'
 import { mapGetters } from 'vuex'
 
 export default {
-    name: 'SelectedLicenseCard',
+    name: 'LicenseDetailsCard',
     components: {
         LicenseIcons
     },
@@ -49,7 +49,7 @@ export default {
             return this.shortName.slice(0, this.shortName.length - 4)
         },
         licenseKey() {
-            return `selected-license.full-description.${this.licenseSlug.toLowerCase().replace(' ', '-')}`
+            return `license-details-card.full-description.${this.licenseSlug.toLowerCase().replace(' ', '-')}`
         }
     }
 }

@@ -37,7 +37,7 @@ import '@creativecommons/vocabulary/css/index.css'
 
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
-import SelectedLicenseCard from './components/SelectedLicenseCard'
+import SelectedLicenseCard from './components/LicenseDetailsCard'
 import LicenseUseCard from './components/LicenseUseCard'
 import Header from './components/Header.vue'
 import Footer from './components/Footer'
