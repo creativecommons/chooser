@@ -2,7 +2,7 @@
     <footer class="footer chooser-footer">
         <div class="container chooser-footer-container">
             <section class="cc-info-column">
-                <img src="../assets/cc-logo_white.png" :alt="$t('cc-logo')" class="footer-cc-logo">
+                <img src="../assets/cc-logo_white.png" :alt="$t('alt.cc-logo')" class="footer-cc-logo">
                 <p class="vocab-body-normal no-bottom-margin">Creative Commons</p>
                 <p class="vocab-body-normal">PO Box 1866, Mountain View, CA 94042</p>
                 <p class="vocab-body-normal"><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>

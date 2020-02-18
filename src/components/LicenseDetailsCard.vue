@@ -1,6 +1,6 @@
 <template>
 <div class="selected-license-card">
-    <h3 class="vocab ha h3a">{{$t('selected-license.heading')}}</h3>
+    <h3 class="vocab ha h3a">{{$t('license-details-card.heading')}}</h3>
     <h4 class="vocab h4b hb">
         <a :href="licenseUrl" class="license-name">{{fullName}} ({{shortName}})
             <LicenseIcons

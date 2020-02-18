@@ -254,6 +254,7 @@ export default {
         border-radius: 4px;
         max-width: 100%;
         position: relative;
+        padding-bottom: 8px;
     }
     .stepper-card:last-of-type {
         border-bottom: 2px solid #D8D8D8;
@@ -262,7 +263,6 @@ export default {
         background-color: transparent;
         -webkit-box-align: stretch;
         align-items: stretch;
-        box-shadow: 0 1px 2px rgba(10, 10, 10, 0.1);
         display: -webkit-box;
         display: flex;
         position:relative;
@@ -325,9 +325,9 @@ export default {
     .pagination-next {
         background-color: #04A635;
         color: white!important;
-        font-family: Roboto Condensed;
+        font-family: Roboto Condensed,sans-serif;
         font-style: normal;
-        font-weight: bold;
+        font-weight: 500;
         font-size: 18px;
         line-height: 24px;
     }

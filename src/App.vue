@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header :title="$t('app-title')"/>
+        <Header :title="$t('app.title')"/>
         <div class="container" id="site-container">
             <div class="page-head columns">
                 <div class="column">
