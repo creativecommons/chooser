@@ -2,28 +2,28 @@
     <div class="step-actions" v-if="this.status==='current'">
         <p class="attribution-details-instructions">{{$t('stepper.AD.instructions')}}</p>
         <form class="attribution-details-form">
-            <b-field :label="this.$t('stepper.attribution-details.creator-name.label')">
+            <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
                 <b-input
                     v-model="creatorName"
-                    :placeholder="this.$t('stepper.attribution-details.creator-name.placeholder')"
+                    :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
                 />
             </b-field>
-            <b-field :label="this.$t('stepper.attribution-details.creator-profile.label')">
+            <b-field :label="this.$t('stepper.AD.form.creator-profile.label')">
                 <b-input
                     v-model="creatorProfileUrl"
-                    :placeholder="this.$t('stepper.attribution-details.creator-profile.placeholder')"
+                    :placeholder="this.$t('stepper.AD.form.creator-profile.placeholder')"
                 />
             </b-field>
-            <b-field :label="this.$t('stepper.attribution-details.work-title.label')">
+            <b-field :label="this.$t('stepper.AD.form.work-title.label')">
                 <b-input
                     v-model="workTitle"
-                    :placeholder="this.$t('stepper.attribution-details.work-title.placeholder')"
+                    :placeholder="this.$t('stepper.AD.form.work-title.placeholder')"
                 />
             </b-field>
-            <b-field :label="this.$t('stepper.attribution-details.work-url.label')">
+            <b-field :label="this.$t('stepper.AD.form.work-url.label')">
                 <b-input
                     v-model="workUrl"
-                    :placeholder="this.$t('stepper.attribution-details.work-url.placeholder')"
+                    :placeholder="this.$t('stepper.AD.form.work-url.placeholder')"
                 />
             </b-field>
         </form>

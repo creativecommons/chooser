@@ -6,14 +6,14 @@
                     src="https://creativecommons.org/wp-content/uploads/2016/05/cc-site-icon-300x300.png"
                     alt="Creative Commons License chooser"
                 >
-                <h1 class="app-heading">{{$t('app-title')}}</h1>
+                <h1 class="app-heading">{{$t('app.title')}}</h1>
             </b-navbar-item>
         </template>
         <template slot="end">
             <b-navbar-item
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfF7MCKxlPsPuMn17v_sLYWMkxBkudQSPXCXoJKjh5GCtx63g/viewform"
                 :class="'navbar-item-feedback'">
-                FEEDBACK
+                {{$t('header.nav-feedback')}}
             </b-navbar-item>
         </template>
     </b-navbar>
@@ -28,14 +28,14 @@ export default {
 <style lang="scss">
 .navbar-item-feedback {
     padding-right: 30%;
-    font-family: Roboto Condensed;
+    font-family: Roboto Condensed,sans-serif;
     font-size: 16px;
     font-weight: bold;
     color: #787878!important;
 }
 
 .app-heading {
-    font-family: Source Sans Pro;
+    font-family: Source Sans Pro,sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 28px;

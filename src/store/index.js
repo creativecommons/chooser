@@ -24,6 +24,9 @@ export default new Vuex.Store({
         fullName: state => {
             return attrToFull(state.currentLicenseAttributes)
         },
+        attributionDetails: state => {
+            return state.attributionDetails
+        },
         licenseUrl: state => {
             return licenseUrl(state.currentLicenseAttributes)
         },

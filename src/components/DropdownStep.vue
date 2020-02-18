@@ -4,7 +4,7 @@
             {{cardText}}
         </div>
         <div class="step-actions" v-else-if="this.status==='current'">
-            <SelectedLicenseDropdown />
+            <LicenseDropdown />
         </div>
     </div>
 
@@ -12,10 +12,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import SelectedLicenseDropdown from './SelectedLicenseDropdown'
+import LicenseDropdown from './LicenseDropdown'
 export default {
     name: 'DropdownStep',
-    components: { SelectedLicenseDropdown },
+    components: { LicenseDropdown },
     props: {
         status: String
     },

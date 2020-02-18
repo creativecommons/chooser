@@ -28,11 +28,15 @@ export default {
         stepName: String,
         selected: Boolean,
         stepId: Number,
-        status: String
+        status: String,
+        reversed: Boolean
     },
     computed: {
+        qualifier() {
+            return this.reversed ? !this.selected : this.selected
+        },
         cardText() {
-            const prefix = `stepper.${this.$props.stepName}.${this.selected ? '' : 'not-'}`
+            const prefix = `stepper.${this.$props.stepName}.${this.qualifier ? '' : 'not-'}`
             return `${prefix}selected`
         },
         radio: {
@@ -40,11 +44,12 @@ export default {
                 if (this.$props.selected === undefined) {
                     return undefined
                 } else {
-                    return this.$props.selected ? 'yes' : 'no'
+                    return this.qualifier ? 'yes' : 'no'
                 }
             },
             set(newVal) {
-                const isSelected = newVal === 'yes'
+                let isSelected = newVal === 'yes'
+                isSelected = this.reversed ? !isSelected : isSelected
                 this.$emit('change', this.$props.stepName, this.$props.stepId, isSelected)
             }
         },

@@ -5,7 +5,7 @@
          :key="idx">
         <div :class="['stepper-card-header']"
             @click="setActiveStep(step.id)">
-            <h5 class="vocab hb h5b stepper-header-h5">{{$t(headerText(step.name, step.status))}}</h5>
+            <h5 class="vocab hb h5b stepper-header-h5">{{$t(stepHeaderText(step.name, step.status))}}</h5>
         </div>
         <div :class="['step-card-content', step.status]"
              v-if="step.status!=='inactive'">
@@ -22,6 +22,7 @@
                 :selected="step.selected"
                 :status="step.status"
                 :stepName="step.name"
+                :reversed="isStepReversed(step.name)"
                 @change="changeStepSelected"
             />
             <CopyrightWaiverStep
@@ -33,7 +34,7 @@
                 :step-id="step.id"
                 :status="step.status"
                 />
-            <AttributionDetails
+            <AttributionDetailsStep
                 v-if="step.name==='AD'"
                 :step-id="step.id"
                 :status="step.status"
@@ -41,15 +42,15 @@
             <nav class="step-navigation" v-if="step.status==='current'">
                 <a role="button" class="pagination-previous"
                    v-if="step.name!=='FS'"
-                   @click="handlePrevious(step.name)">{{$t('step.previous-label')}}</a>
+                   @click="handlePrevious(step.name)">{{$t('stepper.nav.previous-label')}}</a>
                 <a role="button"
                    v-if="step.name!=='AD'"
                    :class="['pagination-next', nextButtonDisabled(step.id)]"
                    @click="handleNext(step.name)"
-                >{{$t('step.next-label')}}</a>
+                >{{$t('stepper.nav.next-label')}}</a>
                 <a role="button" class="pagination-next"
                    v-else
-                   @click="handleFinish()">{{$t('step.finish')}}</a>
+                   @click="handleFinish()">{{$t('stepper.nav.finish-label')}}</a>
             </nav>
         </div>
     </div>
@@ -59,7 +60,7 @@
 <script>
 import Step from './Step'
 import FirstStep from './FirstStep'
-import AttributionDetails from './AttributionDetails'
+import AttributionDetailsStep from './AttributionDetailsStep'
 import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
 import { disabledSetters, visibleSetters } from '../utils/license-utilities'
@@ -72,7 +73,7 @@ export default {
         DropdownStep,
         FirstStep,
         Step,
-        AttributionDetails
+        AttributionDetailsStep
     },
     props: ['value'],
     data() {
@@ -98,7 +99,7 @@ export default {
         }
     },
     methods: {
-        headerText(stepId, stepStatus) {
+        stepHeaderText(stepId, stepStatus) {
             const prefix = `stepper.${stepId}`
             if (stepId === 'AD' || stepId === 'CW') {
                 return prefix + '.heading'
@@ -127,6 +128,9 @@ export default {
         },
         isLicenseAttribute(stepId) {
             return ['BY', 'NC', 'ND', 'SA'].indexOf(stepId) > -1
+        },
+        isStepReversed(stepName) {
+            return stepName === 'NC' || stepName === 'ND'
         },
         handleNext(stepName) {
             const stepSelected = this.steps[this.currentStepId].selected
