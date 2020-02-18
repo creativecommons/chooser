@@ -3,7 +3,7 @@
         <i18n path="license-use.richtext.full-text" tag="span">
             <template v-slot:workTitle>
                 <a :href="workUrl" v-if="workUrl && isWeb" rel="cc:attributionURL">
-                    <span v-if="!workTitle">{{$t('license-use.license-richtext.workTitle')}}</span>
+                    <span v-if="!workTitle">{{$t('license-use.richtext.workTitle')}}</span>
                     <span v-else rel="dc:title">{{workTitle}}</span>
                 </a>
                 <span v-else-if="workTitle" rel="dc:title">{{workTitle}}</span>

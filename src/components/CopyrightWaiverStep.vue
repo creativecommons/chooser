@@ -1,9 +1,9 @@
 <template>
     <div>
         <b-checkbox>
-            {{$t('stepper.CW.copyright-waive-statement')}}
+            {{$t('stepper.CW.copyright-waive-agreement')}}
         </b-checkbox>
-        <textarea :value="this.$t('cc0-waiver-text')" :class="'waiver-textarea'" />
+        <textarea :value="this.$t('cc0-waiver.text')" :class="'waiver-textarea'" />
         <b-checkbox>
             {{$t("stepper.CW.copyright-waive-confirmation")}}
         </b-checkbox>
