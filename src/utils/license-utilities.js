@@ -2,14 +2,15 @@ const CC0Attributes = { BY: false, NC: false, ND: false, SA: false }
 const CCBYAttributes = { BY: true, NC: false, ND: false, SA: false }
 const defaultAttributes = { BY: undefined, NC: undefined, ND: undefined, SA: undefined }
 const visibleSetters = {
+    FSCC0: ['FS', 'DD', 'CW', 'AD'],
+    FSBY: ['FS', 'DD', 'AD'],
     FS: {
         true: ['FS', 'DD', 'AD'],
         false: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
     },
     BY: {
-        // Decide if NC/ND/SA should be disabled or removed on CC0
         true: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
-        false: ['FS', 'BY', 'CW', 'NC', 'ND', 'SA', 'AD']
+        false: ['FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
     },
     ND: {
         true: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']

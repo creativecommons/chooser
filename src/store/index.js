@@ -12,10 +12,16 @@ export default new Vuex.Store({
             creatorProfileUrl: '',
             workTitle: '',
             workUrl: ''
-        }
+        },
+        useDropdownForSelection: undefined
     },
     getters: {
         isLicenseSelected: state => {
+            /**
+             * By default, all four license attributes are undefined
+             * As soon as the first attribute(BY) is selected (true/false),
+             * we can show the recommended license
+             */
             return state.currentLicenseAttributes.BY !== undefined
         },
         shortName: state => {
@@ -24,22 +30,16 @@ export default new Vuex.Store({
         fullName: state => {
             return attrToFull(state.currentLicenseAttributes)
         },
-        attributionDetails: state => {
-            return state.attributionDetails
-        },
         licenseUrl: state => {
             return licenseUrl(state.currentLicenseAttributes)
         },
         iconsList: state => {
             return licenseIconsArr(state.currentLicenseAttributes)
-        },
-        isAttrSelected: (state) => (attrName) => {
-            return state.currentLicenseAttributes[attrName]
         }
     },
     mutations: {
         setSelected(state, { stepName, isSelected }) {
-            // When a Radio button is selected, either knowLicense or
+            // When a Radio button is selected, either useDropdownForSelection or
             // currentLicenseAttribute 'selected' attribute is updated
             if (['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1) {
                 state.currentLicenseAttributes = {
@@ -47,7 +47,7 @@ export default new Vuex.Store({
                     [stepName]: isSelected
                 }
             } else if (stepName === 'FS') {
-                state.knowLicense = !state.knowLicense
+                state.useDropdownForSelection = !state.useDropdownForSelection
             }
         },
         updateAttributesFromShort(state, shortName) {

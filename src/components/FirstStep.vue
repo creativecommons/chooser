@@ -41,7 +41,7 @@ export default {
                 }
             },
             set(newVal) {
-                this.$emit('change', newVal === 'yes')
+                this.$emit('change', 'FS', 0, newVal === 'yes')
             }
         },
         yesText() {

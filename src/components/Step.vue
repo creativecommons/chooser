@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div class="step-description vocab-body body-normal" v-if="this.status==='previous'">
+        <div class="step-description vocab-body body-normal"
+             v-if="this.status==='previous'||this.showDisabledDue">
             <p class="vocab-body body-normal">{{$t(cardText)}}</p>
         </div>
         <div class="step-actions" v-else-if="this.status==='current'">
@@ -29,13 +30,23 @@ export default {
         selected: Boolean,
         stepId: Number,
         status: String,
-        reversed: Boolean
+        reversed: Boolean,
+        enabled: Boolean,
+        disabledDue: String
     },
     computed: {
+        showDisabledDue() {
+            return !this.$props.enabled && this.$props.disabledDue !== undefined
+        },
         qualifier() {
             return this.reversed ? !this.selected : this.selected
         },
         cardText() {
+            if (this.$props.enabled === false) {
+                return this.$props.disabledDue === 'ND'
+                    ? 'stepper.disabled-text-ND'
+                    : 'stepper.disabled-text'
+            }
             const prefix = `stepper.${this.$props.stepName}.${this.qualifier ? '' : 'not-'}`
             return `${prefix}selected`
         },

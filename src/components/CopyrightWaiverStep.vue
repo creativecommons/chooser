@@ -1,19 +1,60 @@
 <template>
     <div>
-        <b-checkbox>
-            {{$t('stepper.CW.copyright-waive-agreement')}}
-        </b-checkbox>
-        <textarea :value="this.$t('cc0-waiver.text')" :class="'waiver-textarea'" />
-        <b-checkbox>
-            {{$t("stepper.CW.copyright-waive-confirmation")}}
-        </b-checkbox>
+        <div class="step-description vocab-body body-normal"
+             v-if="this.status==='previous'">
+            <p class="vocab-body body-normal">{{$t('stepper.CW.selected')}}</p>
+        </div>
+        <div class="step-actions" v-else-if="this.status==='current'">
+            <b-checkbox v-model="copyrightWaiverAgreed">
+                {{$t('stepper.CW.copyright-waive-agreement')}}
+            </b-checkbox>
+            <textarea :value="this.$t('cc0-waiver.text')" :class="'waiver-textarea'" />
+            <b-checkbox v-model="copyrightWaiverConfirmed">
+                {{$t("stepper.CW.copyright-waive-confirmation")}}
+            </b-checkbox>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
     name: 'CopyrightWaiverStep',
-    props: ['value']
+    props: {
+        stepId: Number,
+        stepName: String,
+        selected: Boolean,
+        status: String
+    },
+    data() {
+        return {
+            agreed: false,
+            confirmed: false
+        }
+    },
+    computed: {
+        copyrightWaiverAgreed: {
+            get() {
+                return this.agreed
+            },
+            set() {
+                this.agreed = !this.agreed
+                if (this.agreed && this.confirmed) {
+                    this.$emit('change', this.$props.stepName, this.$props.stepId, true)
+                }
+            }
+        },
+        copyrightWaiverConfirmed: {
+            get() {
+                return this.confirmed
+            },
+            set() {
+                this.confirmed = !this.confirmed
+                if (this.agreed && this.confirmed) {
+                    this.$emit('change', this.$props.stepName, this.$props.stepId, true)
+                }
+            }
+        }
+    }
 }
 </script>
 

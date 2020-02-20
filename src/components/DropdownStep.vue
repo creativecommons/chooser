@@ -4,7 +4,7 @@
             {{cardText}}
         </div>
         <div class="step-actions" v-else-if="this.status==='current'">
-            <LicenseDropdown />
+            <LicenseDropdown @input="updateSelected" />
         </div>
     </div>
 
@@ -17,7 +17,13 @@ export default {
     name: 'DropdownStep',
     components: { LicenseDropdown },
     props: {
-        status: String
+        status: String,
+        stepId: Number
+    },
+    methods: {
+        updateSelected() {
+            this.$emit('input', 'DD', this.$props.stepId, true)
+        }
     },
     computed: {
         ...mapGetters(['fullName']),

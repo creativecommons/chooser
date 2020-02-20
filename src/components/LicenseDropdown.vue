@@ -36,6 +36,7 @@ export default {
     methods: {
         setCurrentLicense(currentLicense) {
             this.$store.commit('updateAttributesFromShort', currentLicense)
+            this.$emit('input')
             if (process.env.NODE_ENV === 'production') {
                 this.$ga.event({
                     eventCategory: 'LicenseDropdown',

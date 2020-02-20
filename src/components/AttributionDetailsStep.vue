@@ -40,7 +40,7 @@ export default {
         ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl'])
     },
     computed: {
-        ...mapState({ attributionDetails: state => state.attributionDetails }),
+        ...mapState(['attributionDetails']),
         creatorName: {
             get() { return this.attributionDetails.creatorName },
             set(newVal) {
