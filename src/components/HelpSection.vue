@@ -168,6 +168,18 @@
                 </table>
             </section>
         </b-modal>
+        <b-modal :active.sync="modals[8].status">
+            <header class="modal-card-head">
+                <p class="modal-card-title modal-title">{{$t('help.what-free-culture-license.heading')}}
+                </p>
+            </header>
+            <section class="modal-card-body">
+                <p v-html="this.$t('help.what-free-culture-license.text')" />
+            </section>
+            <footer class="modal-card-foot">
+                <p v-html="this.$t('help.what-free-culture-license.footer')" />
+            </footer>
+        </b-modal>
     </div>
 </template>
 <script>
@@ -226,6 +238,10 @@ export default {
                 7: {
                     status: false,
                     title: 'how-licenses-communicated'
+                },
+                8: {
+                    status: false,
+                    title: 'what-free-culture-license'
                 }
             }
         }
