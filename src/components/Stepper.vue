@@ -81,6 +81,7 @@ export default {
         CopyrightWaiverStep,
         DropdownStep
     },
+    props: ['value'],
     data() {
         return {
             /** Data for 7 Stepper steps
@@ -232,23 +233,23 @@ export default {
         },
         setStepsVisible(stepsToSetVisible) {
             // sets steps in stepsToSetVisible array visible properties to true
-            for (const step of this.steps) {
+            this.steps.forEach((step) => {
                 if (stepsToSetVisible.indexOf(step.name) > -1 && !step.visible) {
                     this.$set(this.steps, step.id, { ...step, visible: true })
                 } else if (stepsToSetVisible.indexOf(step.name) === -1 && step.visible) {
                     this.$set(this.steps, step.id, { ...step, visible: false })
                 }
-            }
+            })
         },
         setStepsDisabled(stepsToSetDisabled) {
             // sets steps in stepsToSetDisabled array enabled properties to false
-            for (const step of this.steps) {
+            this.steps.forEach((step) => {
                 if (stepsToSetDisabled.indexOf(step.name) > -1 && step.enabled) {
                     this.$set(this.steps, step.id, { ...step, enabled: false })
                 } else if (stepsToSetDisabled.indexOf(step.name) === -1 && !step.enabled) {
                     this.$set(this.steps, step.id, { ...step, enabled: true })
                 }
-            }
+            })
         },
         updateDisabledAndVisibleSteps(stepName, isStepSelected) {
             /**
@@ -258,12 +259,10 @@ export default {
              */
             if (stepName in visibleSetters) {
                 let visible = []
-                if (stepName === 'BY') {
-                    if (this.useDropdownForSelection) {
-                        // If CC0 was selected from the dropdown, all licenseAttributes and CW should be visible
-                        // Otherwise, CopyrightWaiver shouldn't be visible
-                        visible = isStepSelected ? visibleSetters.FSBY : visibleSetters.FSCC0
-                    }
+                if (stepName === 'BY' && this.useDropdownForSelection) {
+                    // If CC0 was selected from the dropdown, all licenseAttributes and CW should be visible
+                    // Otherwise, CopyrightWaiver shouldn't be visible
+                    visible = isStepSelected ? visibleSetters.FSBY : visibleSetters.FSCC0
                 } else {
                     visible = visibleSetters[stepName][isStepSelected]
                 }

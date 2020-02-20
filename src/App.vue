@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="columns">
-            <Stepper />
+            <Stepper v-model="currentStepId" />
             <div class="column" >
                 <div class="fixed-right-column">
                 <SelectedLicenseCard
