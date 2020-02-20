@@ -92,7 +92,10 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['shortName', 'fullName', 'iconsList', 'licenseUrl', 'attributionDetails']),
+        ...mapGetters(['shortName', 'fullName', 'iconsList', 'licenseUrl']),
+        attributionDetails() {
+            return this.$store.state.attributionDetails
+        },
         htmlLicenseParagraph() {
             const data = generateHTML(this.attributionDetails, this.shortName)
             const licenseCodeSpan = this.$i18n.t('license-use.richtext.full-text', {

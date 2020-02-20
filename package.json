@@ -16,7 +16,7 @@
         "test:e2e": "vue-cli-service test:e2e",
         "lint": "vue-cli-service lint",
         "test": "vue-cli-service test:unit --coverage",
-        "i18n:report": "vue-cli-service i18n:report --src src/**/*.vue --locales src/locales/**.json"
+        "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json"
     },
     "dependencies": {
         "@creativecommons/vocabulary": "0.0.0-alpha.30",

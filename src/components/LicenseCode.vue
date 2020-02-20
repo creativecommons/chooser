@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import LicenseIcons from './LicenseIcons'
 
 export default {
@@ -49,7 +49,8 @@ export default {
         LicenseIcons
     },
     computed: {
-        ...mapGetters(['shortName', 'licenseUrl', 'iconsList', 'attributionDetails']),
+        ...mapGetters(['shortName', 'licenseUrl', 'iconsList']),
+        ...mapState(['attributionDetails']),
         byString() {
             return this.creatorName ? 'license-use.richtext.by' : ''
         },

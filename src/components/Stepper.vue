@@ -377,7 +377,7 @@ export default {
         color: #333333;
     }
     .stepper-instructions {
-        margin-bottom: 48px;
+        margin-bottom: 14px;
     }
     .step-card-content {
         margin-left: 69px;
