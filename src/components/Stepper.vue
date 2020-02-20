@@ -123,7 +123,7 @@ export default {
          */
         stepHeaderText(stepId, stepStatus) {
             const prefix = `stepper.${stepId}`
-            if (stepId === 'AD' || stepId === 'CW') {
+            if (stepId === 'AD') {
                 return prefix + '.heading'
             }
             return stepStatus === 'current' ? `${prefix}.question` : `${prefix}.heading`

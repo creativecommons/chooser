@@ -5,64 +5,63 @@
     "header": {
         "nav-feedback": "FEEDBACK"
     },
-    "locale-selector.label": "Languages available",
+    "locale-selector.label": "Selected language",
     "select-license": {
         "heading": "SELECT YOUR LICENSE",
-        "instructions": "Use the most open license with attribution requirement, or select other options to restrict it."
+        "instructions": "Follow the steps to select the appropriate license for your work"
     },
     "stepper":
     {
         "nav": {
             "previous-label": "BACK",
             "next-label": "NEXT QUESTION",
-            "finish-label": "SEE THE LICENSE"
+            "finish-label": "SEE LICENSE & ATTRIBUTION"
         },
         "yes": "Yes. ",
         "no": "No. ",
+        "disabled-text": "This step is disabled due to selecting waiver of copyright through use of CC0.",
+        "disabled-text-ND": "This step is disabled due to selecting ND, which does not allow for adaptations.",
         "FS": {
-            "heading": "Help with choosing a license",
+            "heading": "License Expertise",
             "question": "Do you know which license you need?",
-            "selected": "I know the license I need",
-            "not-selected": "I need help selecting the license"
+            "selected": "Yes, I know which license I need",
+            "not-selected": "No, I need help selecting a license"
         },
         "BY": {
             "heading": "Attribution",
             "question": "Do you want attribution for your work?",
             "selected": "Yes, anyone using my work must include proper attribution.",
-            "not-selected": "No, anyone can use my work, even without giving me attribution.",
-            "disabled-text": "This step is disabled due to selecting waiver of copyright through use of CC0."
+            "not-selected": "No, anyone can use my work, even without giving me attribution."
         },
         "NC": {
             "heading": "Commercial Use",
             "question": "Do you want to allow others to use your work commercially?",
             "selected": "Yes, others can use my work, even for commercial purposes.",
-            "not-selected": "No, others can not use my work for commercial purposes.",
-            "disabled-text": "This step is disabled due to selecting waiver of copyright through use of CC0."
+            "not-selected": "No, others can not use my work for commercial purposes."
         },
         "ND": {
             "heading": "Derivative Works",
             "question": "Do you want to allow others to remix, adapt, or build upon your work?",
             "selected": "Yes, others can remix, adapt, or build upon my work.",
-            "not-selected": "No. If others remix, adapt, or build upon my work, they may not distribute the modified material.",
-            "disabled-text": "This step is disabled due to selecting waiver of copyright through use of CC0."
+            "not-selected": "No, others may only use my work in unadapted form."
         },
         "SA": {
-            "heading": "Share on the Same Terms",
+            "heading": "Sharing Requirements",
             "question": "Do you want to allow others to share adaptations under any terms?",
             "selected": "Yes, others can share adaptations of my work under any terms.",
-            "not-selected": "No, others must license adaptations of my work under identical terms.",
-            "disabled-text": "This step is disabled due to selecting waiver of copyright through use of CC0.",
-            "disabled-text-ND": "This step is disabled due to selecting ND."
+            "not-selected": "No, others must license adaptations of my work under identical terms."
         },
         "CW": {
-            "heading": "Waive your Copyright",
+            "heading": "Copyright Waiver",
+            "question": "Waive Your Copyright",
+            "selected": "You waived your copyright",
             "copyright-waive-agreement": "I hereby waive all copyright and related or neighboring rights together with all associated claims and causes of action with respect to this work to the extent possible under the law.",
             "copyright-waive-confirmation": "I have read and understand the terms and intended legal effect of CC0, and hereby voluntarily elect to apply it to this work."
         },
         "DD": {
             "heading": "Creative Commons License",
             "question": "Which license do you need?",
-            "placeholder": "Select the license you need"
+            "placeholder": "Creative Commons License"
         },
         "AD": {
             "heading": "Attribution Details",
@@ -90,10 +89,10 @@
     "license-details-card": {
         "heading": "RECOMMENDED LICENSE",
         "full-description": {
-            "cc0": "Marking your work with a CC0 public domain dedication allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes. By marking your with a CC0 public domain dedication you are giving up your copyright.",
+            "cc0": "By marking your work with a CC0 public domain dedication, you are giving up your copyright and allowing reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.",
             "cc-by": "This license requires that reuses give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.",
             "cc-by-sa": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes. If others remix, adapt, or build upon the material, they must license the modified material under identical terms.",
-            "cc-by-nd": "This license requires that reusers give credit to the creator. It allows reusers to copy and distribute the material in any medium or format, even for commercial purposes. If others remix, adapt, or build upon the material, they may not distribute the modified material.",
+            "cc-by-nd": "This license requires that reusers give credit to the creator. It allows reusers to copy and distribute the material in any medium or format in unadapted form only, even for commercial purposes.",
             "cc-by-nc": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, for noncommercial purposes only.",
             "cc-by-nc-sa": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, for noncommercial purposes only. If others modify or adapt the material, they must license the modified material under identical terms.",
             "cc-by-nc-nd": "This license requires that reusers give credit to the creator. It allows reusers to copy and distribute the material in any medium or format, for noncommercial purposes only. If others remix, adapt, or build upon the material, they may not distribute the modified material."
@@ -110,7 +109,9 @@
         "heading": "Use your license",
         "common-instructions": "Choose what kind of work you are licensing to get appropriate license code",
         "web-instructions": "If you are licensing one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page",
-        "print-instructions": "Copy the text below and paste it on the title and/or copyright page of your print work or presentation.",
+        "web-tab-heading": "Website",
+        "print-media-tab-heading": "Print Work or Media",
+        "print-media-instructions": "Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.",
         "media-instructions": "TODO",
         "rich-text-label": "Rich Text",
         "html-label": "HTML",
@@ -121,14 +122,10 @@
             "workTitle": "This work",
             "by": "by",
             "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}."
-        }  
+        }
     },
     "help": {
         "heading": "CONFUSED? NEED HELP?",
-        "instructions": {
-            "mobile": "You can tap the buttons below to get answers to the questions on them!",
-            "desktop": "You can click the buttons below to get answers to the questions on them!"
-        },
         "what-are-cc-licenses": {
             "heading": "What Are Creative Commons Licenses?",
             "text": "<p class='help-text'>The Creative Commons copyright licenses and tools forge a balance inside the traditional \"all rights reserved\" setting that copyright law creates. Our licenses and tools give everyone from individual creators to large companies a simple, standardized way to grant copyright permissions to their creative work.</p><p class='help-text'>This helps you as a creator, because instead of having to hire a lawyer to parse legalese and create a license for you, you can save time and money, use Creative Commons licenses instead!</p>",
@@ -166,7 +163,7 @@
         },
         "how-licenses-communicated": {
             "heading": "How are Licenses Communicated?",
-            "text": "Creative Commons licenses can be represented by their names, their associated icons, or both. For example, a CC BY-NC license, which requires attribution, and prohibits commercial use could be represented by its:", 
+            "text": "Creative Commons licenses can be represented by their names, their associated icons, or both. For example, a CC BY-NC license, which requires attribution, and prohibits commercial use could be represented by its:",
             "full-name": "Full Name",
             "short-name": "Short Name",
             "license-icons": "Icons",
@@ -184,8 +181,13 @@
          },
         "six-cc-licenses": {
             "heading": "The Six Creative Commons Licenses",
-            "text": " <p class='help-text'>There are six main licenses that Creative Commons offers.</p> <p class='help-text'>In the diagram to the right, you can see the six main licenses and the public domain CC0 license, and how restrictive they are, with licenses at the top being the least restrictive, and licenses at the bottom being the most restrictive.</p> <p class='help-text'>If you are unsure about which one is right for you and your work, please select <strong>\"I need help selecting a license\"</strong> on the first question of this page.</p>",
+            "text": "<p class='help-text'>There are six main licenses that Creative Commons offers.</p> <p class='help-text'>In the diagram to the right, you can see the six main licenses and the public domain CC0 license, and how restrictive they are, with licenses at the top being the least restrictive, and licenses at the bottom being the most restrictive.</p> <p class='help-text'>If you are unsure about which one is right for you and your work, please select <strong>\"I need help selecting a license\"</strong> on the first question of this page.</p>",
             "footer": "For more information, please read more about  <a id='licensing_examples_link' href='https://creativecommons.org/share-your-work/licensing-types-examples/' target='_blank'>CC Licenses and Examples.</a>"
+        },
+        "what-free-culture-license": {
+            "heading": "What is a Free Culture License?",
+            "text": "<p class='help-text'>CC uses the definition of free cultural works at <a href='https://freedomdefined.org/Definition' target='_blank'>Freedom Defined</a> to categorize certain CC licenses as Free Culture Licenses. Freedom Defined is an open organization of free culture advocates and researchers; the definition was developed by its community as a parallel to efforts such as the Free Software Definition, to have a standard for defining Free Culture. Using that definition, material licensed under CC BY or BY-SA is a free cultural work, as is anything in the worldwide public domain marked with CC0 or the Public Domain Mark.",
+            "footer": "Read more about <a href='https://creativecommons.org/share-your-work/public-domain/freeworks' target='_blank'>Understanding Free Cultural Works</a></p>"
         }
     },
     "alt": {
@@ -211,5 +213,5 @@
         "yes": "Free Culture License",
         "no": "Not a Free Culture License"
     }
-   
+
 }
