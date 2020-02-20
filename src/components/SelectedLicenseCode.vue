@@ -141,7 +141,7 @@ export default {
         height: 26px;
     }
     #attribution-richtext>p>span,
-    #attribution-richtext>p>.photo-license-icons{
+    #attribution-richtext .photo-license-icons{
         height: 26px;
         vertical-align: middle;
     }
@@ -158,83 +158,66 @@ export default {
     .license-use-hint span {
         vertical-align: middle;
     }
-    .license-code {
-        margin-top: 0.4rem;
-        div.attribution-tab {
-            margin-bottom: 1rem;
-            nav.tabs {
-                margin-bottom: 0;
-                ul {
-                    li {
-                        & > a {
-                            & > span {
-                                    font-style: normal;
-                                    color: #B0B0B0;
-                                    font-size: 16px;
-                                    line-height: 24px;
-                            }
-                        }
-                        &:last-of-type{
-                            margin-left: auto;
-                            margin-bottom: -1px;
-                            a {
-                                padding:0;
-                            }
-                            & > a {
-                                padding: 0.3em 1em;
-                                span a.copyBtn {
-                                    border-bottom: none;
-                                }
-                            }
-                        }
-                        &.is-active {
-                            a {
-                                border-bottom-width: 3px;
-                                span{
-                                    font-weight: 700;
-                                    opacity:1;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            section.tab-content {
-                margin-top:0;
-                padding: 0;
-                div.tab-item {
-                    height: 60px;
-                    div#generated-html-container {
-                        padding-top:10px;
-                        padding-bottom: 10px;
-                        textarea {
-                            word-break: break-all;
-                            -ms-word-break: break-all;
-                            min-height: 60px;
-                            font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
-                            font-size:0.845rem;
-                        }
-                    }
-                    div#generated-richtext-container {
-                        margin-top: 1rem;
-                        display: block;
-                        .attribution-license-icons {
-                            vertical-align: middle;
-                            margin-top: 0;
-                            margin-left: 2px;
-                        }
-                        p {
-                            display: inline
-                        }
-                    }
+    .license-code .attribution-tab .tabs span {
+        font-style: normal;
+        color: #B0B0B0;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .license-code .attribution-tab li:last-of-type {
+        margin-left: auto;
+        margin-bottom: -1px;
+        a {
+            padding:0;
+        }
+        & > a {
+            padding: 0.5em 1em;
+            a.copyBtn {
+                border-bottom: none;
+                span, .button-text {
+                    color: #333333;
                 }
             }
         }
     }
 
-    @media only screen and (max-width: 1024px) {
-        .card {
-            height: auto!important;
+    .license-code {
+        margin-top: 0.4rem;
+        .attribution-tab {
+            margin-bottom: 1rem;
+            .tabs {
+                margin-bottom: 0;
+            }
+            .tab-content {
+                margin-top:0;
+                padding: 0;
+                .tab-item {
+                    height: 60px;
+                }
+            }
+        }
+    }
+    #generated-html-container {
+        padding-top:10px;
+        padding-bottom: 10px;
+        textarea {
+            word-break: break-all;
+            -ms-word-break: break-all;
+            min-height: 60px;
+            font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size:0.845rem;
+        }
+    }
+    #generated-richtext-container {
+        margin-top: 1rem;
+        display: block;
+        .attribution-license-icons {
+            vertical-align: middle;
+            margin-top: 0;
+            margin-left: 2px;
+        }
+        p {
+            display: inline
         }
     }
 </style>

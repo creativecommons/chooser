@@ -28,8 +28,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .tabs span {
     font-weight: bold;
 }
+    .license-use-card .tabs .is-active a {
+        margin-bottom: -2px;
+        border-bottom: 3px solid #04a434;
+        span {
+            font-weight: 700;
+            opacity:1;
+            color: black;
+        }
+    }
 </style>
