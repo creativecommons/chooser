@@ -158,6 +158,11 @@ export default {
              */
             if (this.isLicenseAttribute(stepName)) {
                 this.$store.commit('setSelected', { stepName, isSelected })
+                // When the user first selects a license attribute, the dropdown step's Next button should be enabled
+                // as the dropdown will be populated with the selected license from the state
+                if (this.steps[5].selected === undefined && stepName === 'BY') {
+                    this.steps[5].selected = true
+                }
             }
             this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isSelected })
             this.updateDisabledAndVisibleSteps(stepName, isSelected)
