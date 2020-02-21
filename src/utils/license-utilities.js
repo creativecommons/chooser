@@ -63,23 +63,17 @@ function attrToFull(attr) {
     base += ' 4.0 International'
     return base
 }
-// function licenseUrl(shortLicenseName) {
-//     Returns url to license from short license name with version number (eg. 'CC BY 4.0')
-//     TODO: check how it works: it doesn't use '-' to join elements ?
-//     if (shortLicenseName.includes('CC0')) {
-//         return 'https://creativecommons.org/publicdomain/zero/1.0/?ref=ccchooser'
-//     }
-//     const short = shortLicenseName.toLowerCase().slice(3, shortLicenseName.length - 4)
-//     return 'https://creativecommons.org/licenses/' + short + '/4.0/?ref=ccchooser'
-// }
-function licenseUrl(attr) {
+
+function licenseUrl(attr, mode) {
     // Returns url to license from short license name with version number (eg. 'CC BY 4.0')
+    // mode: web/ print (?ref=ccchooser is added to the end of the link if mode is web)
+    const linkRef = mode === 'web' ? '/?ref=ccchooser' : ''
     if (attr.BY === false) {
-        return 'https://creativecommons.org/publicdomain/zero/1.0/?ref=ccchooser'
+        return `https://creativecommons.org/publicdomain/zero/1.0${linkRef}`
     }
     let short = attrToShort(attr).toLowerCase().slice(3)
     short = short.slice(0, short.length - 4)
-    return 'https://creativecommons.org/licenses/' + short + '/4.0/?ref=ccchooser'
+    return `https://creativecommons.org/licenses/${short}/4.0${linkRef}`
 }
 
 function licenseSlug(shortLicenseName) {

@@ -30,8 +30,8 @@ export default new Vuex.Store({
         fullName: state => {
             return attrToFull(state.currentLicenseAttributes)
         },
-        licenseUrl: state => {
-            return licenseUrl(state.currentLicenseAttributes)
+        licenseUrl: state => (mode) => {
+            return licenseUrl(state.currentLicenseAttributes, mode)
         },
         iconsList: state => {
             return licenseIconsArr(state.currentLicenseAttributes)

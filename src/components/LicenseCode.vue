@@ -18,7 +18,7 @@
                 {{$t(byString)}}
             </template>
             <template v-slot:licenseName>
-                <a v-if="isWeb" :href="licenseUrl" target="_blank" rel="license noopener noreferrer"
+                <a v-if="isWeb" :href="licenseUrl('web')" target="_blank" rel="license noopener noreferrer"
                    style="display: inline-block;">{{shortName}}</a>
                 <span v-else>{{shortName}}</span>
                 <LicenseIcons
@@ -28,7 +28,7 @@
             </template>
         </i18n>
         <i18n path="license-use.richtext.print-instructions" tag="span" v-if="!isWeb">
-            <template v-slot:linkToLicenseDeed>{{licenseUrl}}</template>
+            <template v-slot:linkToLicenseDeed>{{licenseUrl('print')}}</template>
         </i18n>
     </p>
 </template>

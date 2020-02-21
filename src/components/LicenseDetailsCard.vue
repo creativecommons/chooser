@@ -2,9 +2,9 @@
 <div class="selected-license-card">
     <h3 class="vocab ha h3a">{{$t('license-details-card.heading')}}</h3>
     <h4 class="vocab h4b hb">
-        <a :href="licenseUrl" class="license-name">{{fullName}} ({{shortName}})
+        <a :href="licenseUrl('web')" class="license-name">{{fullName}} ({{shortName}})
             <LicenseIcons
-                :url="licenseUrl"
+                :url="licenseUrl('web')"
                 :iconsArr="iconsList"/>
         </a>
     </h4>
