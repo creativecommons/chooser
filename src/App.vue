@@ -2,14 +2,12 @@
     <div id="app">
         <Header :title="$t('app.title')"/>
         <div class="container" id="site-container">
-            <div class="page-head columns">
-                <div class="column">
+            <div class="page-head">
+                <div class="select-license-column">
                     <h2 class="vocab h2a ha">{{$t('select-license.heading')}}</h2>
                     <p class="stepper-instructions vocab-body body-bigger">{{$t('select-license.instructions')}}</p>
                 </div>
-                <div class="column">
-                    <LocaleChooser />
-                </div>
+                <LocaleChooser />
             </div>
             <div class="columns">
             <Stepper v-model="currentStepId" />
@@ -109,7 +107,17 @@ export default {
         padding-top: 2rem;
         padding-bottom: 2%;
     }
-
+    .page-head {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+    }
+    .select-license-column {
+        grid-column: 1;
+    }
+    .locale-chooser {
+        grid-column: 2;
+    }
     .desktop-hide {
         display: none;
     }
@@ -213,6 +221,24 @@ export default {
 
         .mobile-show {
             display: block;
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        #site-container {
+            padding-top: 0;
+        }
+        .page-head {
+            grid-template-columns: 100%;
+            grid-gap: 1rem;
+        }
+        .select-license-column {
+            order: 2;
+        }
+        .locale-chooser {
+            padding-top: 1rem;
+            height: auto;
+            grid-column: auto;
+            order: 1;
         }
     }
 
