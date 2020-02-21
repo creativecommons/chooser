@@ -24,32 +24,32 @@
         "FS": {
             "heading": "License Expertise",
             "question": "Do you know which license you need?",
-            "selected": "Yes, I know which license I need",
-            "not-selected": "No, I need help selecting a license"
+            "selected": "I know which license I need",
+            "not-selected": "I need help selecting a license"
         },
         "BY": {
             "heading": "Attribution",
             "question": "Do you want attribution for your work?",
-            "selected": "Yes, anyone using my work must include proper attribution.",
-            "not-selected": "No, anyone can use my work, even without giving me attribution."
+            "selected": "Anyone using my work must include proper attribution.",
+            "not-selected": "Anyone can use my work, even without giving me attribution."
         },
         "NC": {
             "heading": "Commercial Use",
             "question": "Do you want to allow others to use your work commercially?",
-            "selected": "Yes, others can use my work, even for commercial purposes.",
-            "not-selected": "No, others can not use my work for commercial purposes."
+            "selected": "Others can use my work, even for commercial purposes.",
+            "not-selected": "Others can not use my work for commercial purposes."
         },
         "ND": {
             "heading": "Derivative Works",
             "question": "Do you want to allow others to remix, adapt, or build upon your work?",
-            "selected": "Yes, others can remix, adapt, or build upon my work.",
-            "not-selected": "No, others may only use my work in unadapted form."
+            "selected": "Others can remix, adapt, or build upon my work.",
+            "not-selected": "Others may only use my work in unadapted form."
         },
         "SA": {
             "heading": "Sharing Requirements",
             "question": "Do you want to allow others to share adaptations under any terms?",
-            "selected": "Yes, others can share adaptations of my work under any terms.",
-            "not-selected": "No, others must license adaptations of my work under identical terms."
+            "selected": "Others can share adaptations of my work under any terms.",
+            "not-selected": "Others must license adaptations of my work under identical terms."
         },
         "CW": {
             "heading": "Copyright Waiver",

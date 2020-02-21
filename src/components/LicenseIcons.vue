@@ -25,7 +25,7 @@ export default LicenseIcons
     .photo-license-icons {
         display: inline-block;
         white-space: nowrap;
-        vertical-align: text-bottom;
+        vertical-align: middle;
         margin-right:3px;
     }
     .photo-license-icon {

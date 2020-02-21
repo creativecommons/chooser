@@ -136,10 +136,10 @@ export default {
         },
         isStepReversed(stepName) {
             /**
-             * NC and ND steps are reversed: unlike BY and SA, they are selected when the user
+             * NC, ND and SA steps are reversed: unlike BY, they are selected when the user
              * answers no, and not selected when the user answers yes
              */
-            return stepName === 'NC' || stepName === 'ND'
+            return ['NC', 'ND', 'SA'].indexOf(stepName) > -1
         },
         nextButtonEnabledState(stepId) {
             /**
@@ -160,8 +160,9 @@ export default {
                 this.$store.commit('setSelected', { stepName, isSelected })
                 // When the user first selects a license attribute, the dropdown step's Next button should be enabled
                 // as the dropdown will be populated with the selected license from the state
-                if (this.steps[5].selected === undefined && stepName === 'BY') {
-                    this.steps[5].selected = true
+                const DROPDOWNSTEP = 5
+                if (this.steps[DROPDOWNSTEP].selected === undefined && stepName === 'BY') {
+                    this.$set(this.steps, DROPDOWNSTEP, { ...this.steps[DROPDOWNSTEP], selected: true })
                 }
             }
             this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isSelected })
@@ -308,7 +309,7 @@ export default {
                     const stepId = this.steps[step].id
                     const stepName = this.steps[step].name
                     const isStepSelected = this.steps[step].selected
-                    const isAttrSelected = this.$store.state.currentLicenseAttributes[stepName]
+                    const isAttrSelected = state.currentLicenseAttributes[stepName]
                     if (this.isLicenseAttribute(stepName) && isStepSelected !== isAttrSelected) {
                         this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isAttrSelected })
                         this.updateDisabledAndVisibleSteps(stepName, isAttrSelected)
@@ -345,6 +346,7 @@ export default {
     }
     .stepper-card:last-of-type {
         border-bottom: 2px solid #D8D8D8;
+        margin-bottom: 15rem;
     }
     .stepper-card-header {
         background-color: transparent;
@@ -404,28 +406,34 @@ export default {
     .inactive .vocab.h5b {
         color: #B0B0B0;
     }
-    .step-navigation {
-        margin: 13px 0 13px -4px;
+    .stepper-card .b-radio.radio input[type=radio]:not(:disabled) + .check {
+        border-color: rgba(51, 51, 51, 0.2);
+        }
+    .stepper-card .b-radio.radio:hover input[type=radio]:not(:disabled) + .check {
+         border: 4px solid #0464E1;
     }
-    .pagination-next {
-        background-color: #04A635;
-        color: white!important;
-        font-family: Roboto Condensed,sans-serif;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 24px;
-    }
-    .pagination-next.disabled {
-        background-color: #D8D8D8;
-    }
-    .pagination-next.disabled:hover,
-    .pagination-next.disabled:active {
-        box-shadow: none;
-        border: 1px solid transparent;
-    }
-    .slide-enter-active {
-        /*transition: all .3s ease;*/
+        .step-navigation {
+            margin: 13px 0 13px -4px;
+        }
+        .pagination-next {
+            background-color: #04A635;
+            color: white!important;
+            font-family: Roboto Condensed,sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+        }
+        .pagination-next.disabled {
+            background-color: #D8D8D8;
+        }
+        .pagination-next.disabled:hover,
+        .pagination-next.disabled:active {
+            box-shadow: none;
+            border: 1px solid transparent;
+        }
+        .slide-enter-active {
+            /*transition: all .3s ease;*/
         animation: slide-down .5s;
     }
     .slide-leave-active {

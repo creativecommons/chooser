@@ -1,5 +1,5 @@
 <template>
-    <b-navbar wrapperClass = "container">
+    <b-navbar wrapperClass="container">
         <template slot="brand">
             <b-navbar-item>
                 <img
@@ -12,6 +12,7 @@
         <template slot="end">
             <b-navbar-item
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfF7MCKxlPsPuMn17v_sLYWMkxBkudQSPXCXoJKjh5GCtx63g/viewform"
+                title="Feedback"
                 :class="'navbar-item-feedback'">
                 {{$t('header.nav-feedback')}}
             </b-navbar-item>
