@@ -40,6 +40,8 @@ export default {
                 this.agreed = !this.agreed
                 if (this.agreed && this.confirmed) {
                     this.$emit('change', this.$props.stepName, this.$props.stepId, true)
+                } else if (!this.agreed) {
+                    this.$emit('change', this.$props.stepName, this.$props.stepId, undefined)
                 }
             }
         },
@@ -51,6 +53,8 @@ export default {
                 this.confirmed = !this.confirmed
                 if (this.agreed && this.confirmed) {
                     this.$emit('change', this.$props.stepName, this.$props.stepId, true)
+                } else if (!this.confirmed) {
+                    this.$emit('change', this.$props.stepName, this.$props.stepId, undefined)
                 }
             }
         }
