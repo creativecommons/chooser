@@ -28,7 +28,7 @@ function _mockDomMethodsForClipboardJS(value) {
     document.createRange = () => ({ selectNodeContents: () => { } })
 }
 
-describe('SelectedLicenseCode.vue', () => {
+describe('WebLicenseCode.vue', () => {
     let wrapper
 
     beforeEach(() => {

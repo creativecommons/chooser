@@ -5,7 +5,7 @@
             <li class="help-link"
                 v-for="(modal, idx) in this.modals"
                 :key="idx">
-                <a class="vocab-body body-big vocab-tomato"
+                <a class="vocab-body body-big help-link-a"
                     @click="clickHandler(idx)">{{$t(`help.${modal.title}.heading`)}}</a>
             </li>
         </ul>
@@ -150,7 +150,7 @@
             </header>
             <section class="modal-card-body">
                 <p v-html="this.$t('help.how-licenses-communicated.text')" />
-                <table class="table is-hoverable is-fullwidth">
+                <table class="table is-hoverable is-fullwidth help-section__table">
                     <tbody>
                     <tr>
                         <th>{{$t('help.how-licenses-communicated.full-name')}}</th>
@@ -261,18 +261,21 @@ export default {
 }
 </script>
 <style scoped>
+    .help-link {
+        padding-bottom: 8px;
+    }
+    .help-link .help-link-a {
+        color: #ED592F;
+    }
+    .help-links .help-link .help-link-a:hover {
+        font-weight: bold;
+        color:black!important;
+    }
     .help-links {
         list-style-position: inside;
         list-style-image: url("../assets/arrow-right.png");
     }
-    .help-link {
-        padding-bottom: 8px;
-    }
-    .help-link .icon {
-        vertical-align: text-bottom;
-        margin-left: -3px;
-        margin-right: 8px;
-    }
+
     table svg {
         width: 28px !important;
         height: 28px !important;
@@ -280,17 +283,13 @@ export default {
         margin-right: 3px;
     }
 
-    table {
+    .help-section__table {
         margin-top: 1.5rem;
     }
 
     .top-bottom-paddingless {
         padding-bottom: 0 !important;
         padding-top: 0 !important;
-    }
-
-    #modal-buttons {
-        padding-bottom: 1.5rem;
     }
 
     @media only screen and (max-width: 1025px) {
@@ -301,11 +300,6 @@ export default {
     @media only screen and (max-width: 670px) {
         h2 { font-size: 30px !important; }
         button p { font-size: 18px; }
-
-        #modal-buttons {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
 
         .modal-title { font-size: 18px; }
         .modal-content {
