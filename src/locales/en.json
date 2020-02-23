@@ -112,9 +112,9 @@
         "web-tab-heading": "Website",
         "print-media-tab-heading": "Print Work or Media",
         "print-media-instructions": "Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.",
-        "media-instructions": "TODO",
         "rich-text-label": "Rich Text",
         "html-label": "HTML",
+        "plain-text-label": "Plain Text",
         "copy-label": "Copy",
         "copied-label": "Copied!",
         "richtext": {

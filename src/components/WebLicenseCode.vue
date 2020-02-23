@@ -5,7 +5,7 @@
             v-model="activeTab">
             <b-tab-item :label="this.$t('license-use.rich-text-label')">
                 <div id="attribution-richtext">
-                <license-code ref="licenseCode" />
+                <LicenseCode ref="licenseCode" />
                 </div>
             </b-tab-item>
             <b-tab-item :label="this.$t('license-use.html-label')">
@@ -43,11 +43,13 @@ import LicenseCode from './LicenseCode'
 import { generateHTML } from '../utils/license-utilities'
 
 export default {
-    name: 'SelectedLicenseCode',
+    name: 'WebLicenseCode',
     components: {
         LicenseCode
     },
-    props: ['value'],
+    props: {
+        value: Object
+    },
     data() {
         return {
             success: false,

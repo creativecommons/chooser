@@ -5,25 +5,25 @@
     <b-tabs>
         <b-tab-item :label="$t('license-use.web-tab-heading')">
             {{$t('license-use.web-instructions')}}
-            <SelectedLicenseCode v-model="value"/>
+            <SelectedLicenseCode v-model="value" isWeb=true />
         </b-tab-item>
         <b-tab-item :label="$t('license-use.print-media-tab-heading')">
             {{$t('license-use.print-media-instructions')}}
-            <license-code attribution-type="print"/>
+            <PlaintextLicenseCode v-model="value" isWeb=false />
         </b-tab-item>
     </b-tabs>
 </div>
 </template>
 
 <script>
-import SelectedLicenseCode from './SelectedLicenseCode'
-import LicenseCode from './LicenseCode'
+import SelectedLicenseCode from './WebLicenseCode'
+import PlaintextLicenseCode from './PrintMediaLicenseCode'
 export default {
     name: 'LicenseUseCard',
     props: ['value'],
     components: {
-        LicenseCode,
-        SelectedLicenseCode
+        SelectedLicenseCode,
+        PlaintextLicenseCode
     }
 }
 </script>
