@@ -62,8 +62,25 @@ export default {
 .locale-chooser-field .control .select::before {
     content: url("../assets/language.png");
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     left:10px;
     top:8px;
+}
+.locale-chooser .select:not(.is-multiple):not(.is-loading)::after {
+     z-index: 0;
+ }
+@media only screen and (max-width: 768px) {
+    .locale-chooser {
+        height: auto;
+        margin-bottom: 1rem;
+    }
+    .locale-chooser-field {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 100%;
+    }
+    .locale-chooser-field .label {
+        justify-self: auto;
+    }
 }
 </style>
