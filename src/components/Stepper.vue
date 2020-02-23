@@ -264,24 +264,13 @@ export default {
              * Creates an array of steps that should be visible/enalbed based on data from steps array
              * and updates the steps array
              */
-            if (stepName in visibleSetters) {
-                let visible = []
-                if (stepName === 'BY' && this.useDropdownForSelection) {
-                    // If CC0 was selected from the dropdown, all licenseAttributes and CW should be visible
-                    // Otherwise, CopyrightWaiver shouldn't be visible
-                    visible = isStepSelected ? visibleSetters.FSBY : visibleSetters.FSCC0
-                } else {
-                    visible = visibleSetters[stepName][isStepSelected]
-                }
-                if (visible !== undefined) {
-                    this.setStepsVisible(visible)
-                }
-            }
-            if (stepName === 'BY' || stepName === 'ND') {
-                let disabled = disabledSetters[stepName][isStepSelected]
-                if (disabled === undefined) { disabled = [] }
-                this.setStepsDisabled(disabled)
-            }
+            const stepsStatusData = {}
+            this.steps.forEach((step) => {
+                stepsStatusData[step.name] = step.selected
+            })
+            const { visible, enabled, disabledDue } = updateVisibleEnabledStatus(stepsStatusData)
+            this.setStepsVisible(visible)
+            this.setStepsEnabled(enabled, disabledDue)
         },
         visibleSteps() {
             return this.steps.filter(step => {
