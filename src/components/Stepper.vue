@@ -395,12 +395,6 @@ export default {
     .inactive .vocab.h5b {
         color: #B0B0B0;
     }
-    .stepper-card .b-radio.radio input[type=radio]:not(:disabled) + .check {
-        border-color: rgba(51, 51, 51, 0.2);
-        }
-    .stepper-card .b-radio.radio:hover input[type=radio]:not(:disabled) + .check {
-         border: 4px solid #0464E1;
-    }
     .step-navigation {
         margin: 13px 0 13px -4px;
     }
