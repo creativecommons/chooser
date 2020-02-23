@@ -14,7 +14,7 @@
     {
         "nav": {
             "previous-label": "BACK",
-            "next-label": "NEXT QUESTION",
+            "next-label": "NEXT STEP",
             "finish-label": "SEE LICENSE & ATTRIBUTION"
         },
         "yes": "Yes. ",
@@ -54,7 +54,7 @@
         "CW": {
             "heading": "Copyright Waiver",
             "question": "Waive Your Copyright",
-            "selected": "You waived your copyright",
+            "selected": "I waived copyright",
             "copyright-waive-agreement": "I hereby waive all copyright and related or neighboring rights together with all associated claims and causes of action with respect to this work to the extent possible under the law.",
             "copyright-waive-confirmation": "I have read and understand the terms and intended legal effect of CC0, and hereby voluntarily elect to apply it to this work."
         },
@@ -213,5 +213,4 @@
         "yes": "Free Culture License",
         "no": "Not a Free Culture License"
     }
-
 }
