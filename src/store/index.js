@@ -12,8 +12,7 @@ export default new Vuex.Store({
             creatorProfileUrl: '',
             workTitle: '',
             workUrl: ''
-        },
-        useDropdownForSelection: undefined
+        }
     },
     getters: {
         isLicenseSelected: state => {
@@ -39,15 +38,12 @@ export default new Vuex.Store({
     },
     mutations: {
         setSelected(state, { stepName, isSelected }) {
-            // When a Radio button is selected, either useDropdownForSelection or
-            // currentLicenseAttribute 'selected' attribute is updated
+            // When a Radio button is selected, currentLicenseAttribute 'selected' attribute is updated
             if (['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1) {
                 state.currentLicenseAttributes = {
                     ...state.currentLicenseAttributes,
                     [stepName]: isSelected
                 }
-            } else if (stepName === 'FS') {
-                state.useDropdownForSelection = !state.useDropdownForSelection
             }
         },
         updateAttributesFromShort(state, shortName) {

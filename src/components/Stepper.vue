@@ -70,7 +70,7 @@ import FirstStep from './FirstStep'
 import AttributionDetailsStep from './AttributionDetailsStep'
 import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
-import { disabledSetters, visibleSetters } from '../utils/license-utilities'
+import { updateVisibleEnabledStatus } from '../utils/license-utilities'
 
 export default {
     name: 'Stepper',
@@ -166,7 +166,7 @@ export default {
                 }
             }
             this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isSelected })
-            this.updateDisabledAndVisibleSteps(stepName, isSelected)
+            this.updateDisabledAndVisibleSteps()
         },
         handleNext(stepName) {
             /**
@@ -247,21 +247,22 @@ export default {
                 }
             })
         },
-        setStepsDisabled(stepsToSetDisabled) {
+        setStepsEnabled(stepsToSetEnabled, disabledDue) {
             // sets steps in stepsToSetDisabled array enabled properties to false
             this.steps.forEach((step) => {
-                if (stepsToSetDisabled.indexOf(step.name) > -1 && step.enabled) {
-                    this.$set(this.steps, step.id, { ...step, enabled: false })
-                } else if (stepsToSetDisabled.indexOf(step.name) === -1 && !step.enabled) {
-                    this.$set(this.steps, step.id, { ...step, enabled: true })
+                // step is currently enabled, but should be disabled
+                if (stepsToSetEnabled.indexOf(step.name) === -1 && step.enabled) {
+                    this.$set(this.steps, step.id, { ...step, enabled: false, disabledDue: disabledDue })
+                } else if (stepsToSetEnabled.indexOf(step.name) > -1 && !step.enabled) {
+                    // step is currently disabled, but should be set enabled
+                    this.$set(this.steps, step.id, { ...step, enabled: true, disabledDue: '' })
                 }
             })
         },
-        updateDisabledAndVisibleSteps(stepName, isStepSelected) {
+        updateDisabledAndVisibleSteps() {
             /**
-             * Creates an array of steps that should be set visible/disabled
-             * based on the step that was selected/unselected,
-             * and updates their visible/enabled properties
+             * Creates an array of steps that should be visible/enalbed based on data from steps array
+             * and updates the steps array
              */
             if (stepName in visibleSetters) {
                 let visible = []
@@ -294,9 +295,6 @@ export default {
             set(newVal) {
                 this.$emit('input', newVal)
             }
-        },
-        useDropdownForSelection() {
-            return this.steps[0].selected
         }
     },
     created: function() {
@@ -357,6 +355,9 @@ export default {
         position:relative;
         margin: 24px 24px 8px;
     }
+    .stepper-card-header:hover {
+        cursor: pointer;
+    }
     .stepper-card-header .stepper-header-h5 {
         margin-left: 45px;
     }
@@ -401,7 +402,6 @@ export default {
     .previous.disabled {
         color: #B0B0B0;
     }
-
     .previous.disabled .vocab-h5b,
     .inactive .vocab.h5b {
         color: #B0B0B0;
@@ -412,30 +412,30 @@ export default {
     .stepper-card .b-radio.radio:hover input[type=radio]:not(:disabled) + .check {
          border: 4px solid #0464E1;
     }
-        .step-navigation {
-            margin: 13px 0 13px -4px;
-        }
-        .pagination-next {
-            background-color: #04A635;
-            color: white!important;
-            font-family: Roboto Condensed,sans-serif;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 24px;
-        }
-        .pagination-next.disabled {
-            background-color: #D8D8D8;
-        }
-        .pagination-next.disabled:hover,
-        .pagination-next.disabled:active {
-            box-shadow: none;
-            border: 1px solid transparent;
-        }
-        .slide-enter-active {
-            /*transition: all .3s ease;*/
-        animation: slide-down .5s;
+    .step-navigation {
+        margin: 13px 0 13px -4px;
     }
+    .pagination-next {
+        background-color: #04A635;
+        color: white!important;
+        font-family: Roboto Condensed,sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .pagination-next.disabled {
+        background-color: #D8D8D8;
+    }
+    .pagination-next.disabled:hover,
+    .pagination-next.disabled:active {
+        box-shadow: none;
+        border: 1px solid transparent;
+    }
+    .slide-enter-active {
+        /*transition: all .3s ease;*/
+    animation: slide-down .3s;
+}
     .slide-leave-active {
         /*transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);*/
         animation: slide-down .5s reverse;
@@ -458,6 +458,11 @@ export default {
             opacity: 1;
             transform: translateY(0px);
             /*transform: scaleY(1);*/
+        }
+    }
+    @media (max-width: 860px) {
+        .stepper-card:last-of-type {
+            margin-bottom: 1rem;
         }
     }
 </style>

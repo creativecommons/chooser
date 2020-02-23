@@ -1,30 +1,6 @@
 const CC0Attributes = { BY: false, NC: false, ND: false, SA: false }
 const CCBYAttributes = { BY: true, NC: false, ND: false, SA: false }
 const defaultAttributes = { BY: undefined, NC: undefined, ND: undefined, SA: undefined }
-const visibleSetters = {
-    FSCC0: ['FS', 'DD', 'CW', 'AD'],
-    FSBY: ['FS', 'DD', 'AD'],
-    FS: {
-        true: ['FS', 'DD', 'AD'],
-        false: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
-    },
-    BY: {
-        true: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
-        false: ['FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
-    },
-    ND: {
-        true: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
-    }
-}
-const disabledSetters = {
-    // Steps that should be disabled if other steps are selected/not selected
-    BY: {
-        false: ['NC', 'ND', 'SA']
-    },
-    ND: {
-        true: ['SA']
-    }
-}
 
 function shortToAttr(shortLicenseName) {
     const short = shortLicenseName
@@ -98,6 +74,45 @@ function licenseIconsArr(licenseAttributes) {
     return iconsArray
 }
 
+function updateVisibleEnabledStatus(stepStatusData) {
+    let visible = []
+    let enabled = []
+    let stepsDisabledDue = ''
+    if (stepStatusData.FS) {
+        // User will select from the dropdown
+        if (stepStatusData.BY === false) {
+            // User selected a license from the dropdown a CC0 license
+            // First step, dropdown and attribution details should be visible and enabled
+            visible = ['FS', 'DD', 'CW', 'AD']
+            enabled = ['FS', 'DD', 'CW', 'AD']
+            stepsDisabledDue = 'CC0'
+        } else {
+            // User hasn't selected anything yet, or selected a BY license
+            // First step, dropdown and attribution details should be visible and enabled
+            visible = ['FS', 'DD', 'AD']
+            enabled = ['FS', 'DD', 'AD']
+        }
+    } else {
+        // User uses the stepper for license selection
+        if (stepStatusData.BY === false) {
+            // User selects a CC0 license
+            visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
+            enabled = ['FS', 'BY', 'CW', 'AD']
+            stepsDisabledDue = 'CC0'
+        } else if (stepStatusData.ND) {
+            // User selects an ND license: SA step is disabled
+            visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+            enabled = ['FS', 'BY', 'NC', 'ND', 'AD']
+            stepsDisabledDue = 'CC0'
+        } else {
+            // User selects a non-ND BY license from the stepper
+            visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+            enabled = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+        }
+    }
+    return { visible, enabled, stepsDisabledDue }
+}
+
 function generateHTML(attributionDetails, shortLicenseName) {
     const dataForHtmlGeneration = {
         htmlString: '',
@@ -138,7 +153,6 @@ function generateHTML(attributionDetails, shortLicenseName) {
     return dataForHtmlGeneration
 }
 export {
-    defaultAttributes, CC0Attributes, CCBYAttributes, visibleSetters, disabledSetters,
-    shortToAttr, attrToShort, attrToFull, licenseUrl, licenseSlug, licenseIconsArr,
-    generateHTML
+    defaultAttributes, CC0Attributes, CCBYAttributes, shortToAttr, attrToShort,
+    attrToFull, licenseUrl, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus
 }
