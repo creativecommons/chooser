@@ -111,9 +111,7 @@ export default {
 }
 </script>
 <style lang="scss">
-    .license-text span * {
-        vertical-align: middle;
-    }
+
     .attribution-tab .photo-license-icon {
         height: 1.4rem;
     }

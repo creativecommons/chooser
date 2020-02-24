@@ -139,9 +139,7 @@ export default {
 }
 </script>
 <style lang="scss">
-    .attribution-tab .photo-license-icon {
-        height: 26px;
-    }
+
     #attribution-richtext>p>span,
     #attribution-richtext .photo-license-icons{
         height: 26px;
