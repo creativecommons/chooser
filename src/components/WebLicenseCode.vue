@@ -148,7 +148,7 @@ export default {
         vertical-align: middle;
     }
     #attribution-richtext p {
-        margin-top: 1rem;
+        margin-top: 0.5rem;
         margin-bottom: 1rem;
     }
     .license-use-hint {

@@ -12,10 +12,13 @@
             <template v-slot:creator>
                 <a :href="creatorProfileUrl" v-if="creatorProfileUrl && isWeb" rel="cc:attributionURL">
                     <span v-html="creatorSpan" /></a>
-                <span v-else v-html="creatorSpan" />
+                <span v-else-if="creatorName" v-html="creatorSpan" />
             </template>
             <template v-slot:by>
                 {{$t(byString)}}
+            </template>
+            <template v-slot:licensed-text>
+                <span>{{$t('license-use.richtext.licensed-text')}}</span>
             </template>
             <template v-slot:licenseName>
                 <a v-if="isWeb" :href="licenseUrl('web')" target="_blank" rel="license noopener noreferrer"
@@ -23,7 +26,7 @@
                 <span v-else>{{shortName}}</span>
                 <LicenseIcons
                     v-if="isWeb"
-                    :url="licenseUrl"
+                    :url="licenseUrl('web')"
                     :iconsArr="iconsList"/>
             </template>
         </i18n>
@@ -80,6 +83,6 @@ export default {
 
 <style scoped>
 .license-text .photo-license-icons {
-    height: 22px;
+    height: 1.4rem!important;
 }
 </style>

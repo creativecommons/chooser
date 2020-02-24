@@ -118,9 +118,10 @@
         "copy-label": "Copy",
         "copied-label": "Copied!",
         "richtext": {
-            "full-text": "{workTitle} {by} {creator} is licensed under {licenseName}",
+            "full-text": "{workTitle} {by} {creator}{licensed-text}{licenseName}",
             "workTitle": "This work",
             "by": "by",
+            "licensed-text": " is licensed under ",
             "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}."
         }
     },

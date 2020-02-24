@@ -268,8 +268,7 @@ export default {
         color: #ED592F;
     }
     .help-links .help-link .help-link-a:hover {
-        font-weight: bold;
-        color:black!important;
+        color:#363636!important;
     }
     .help-links {
         list-style-position: inside;

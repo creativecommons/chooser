@@ -111,16 +111,15 @@ export default {
 }
 </script>
 <style lang="scss">
-    .attribution-tab .photo-license-icon {
-        height: 26px;
-    }
-    #attribution-richtext>p>span,
-    #attribution-richtext .photo-license-icons{
-        height: 26px;
+    .license-text span * {
         vertical-align: middle;
     }
-    #attribution-richtext p {
-        margin-top: 1rem;
+    .attribution-tab .photo-license-icon {
+        height: 1.4rem;
+    }
+
+    #attribution-plaintext p {
+        margin-top: 0.5rem;
         margin-bottom: 1rem;
     }
     .license-use-hint {
@@ -169,29 +168,6 @@ export default {
                     height: 60px;
                 }
             }
-        }
-    }
-    #generated-html-container {
-        padding-top:10px;
-        padding-bottom: 10px;
-        textarea {
-            word-break: break-all;
-            -ms-word-break: break-all;
-            min-height: 60px;
-            font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
-            font-size:0.845rem;
-        }
-    }
-    #generated-richtext-container {
-        margin-top: 1rem;
-        display: block;
-        .attribution-license-icons {
-            vertical-align: middle;
-            margin-top: 0;
-            margin-left: 2px;
-        }
-        p {
-            display: inline
         }
     }
 </style>
