@@ -8,7 +8,7 @@
     "locale-selector.label": "Selected language",
     "select-license": {
         "heading": "SELECT YOUR LICENSE",
-        "instructions": "Follow the steps to select the appropriate license for your work"
+        "instructions": "Follow the steps to select the appropriate license for your work."
     },
     "stepper":
     {
@@ -24,8 +24,8 @@
         "FS": {
             "heading": "License Expertise",
             "question": "Do you know which license you need?",
-            "selected": "I know which license I need",
-            "not-selected": "I need help selecting a license"
+            "selected": "I know which license I need.",
+            "not-selected": "I need help selecting a license."
         },
         "BY": {
             "heading": "Attribution",
@@ -65,7 +65,7 @@
         },
         "AD": {
             "heading": "Attribution Details",
-            "instructions": "Filling out this form is optional, but helps others attribute your work to you, and fills in machine-readable code",
+            "instructions": "Filling out this form is optional, but helps others attribute your work to you, and fills in machine-readable code.",
             "form": {
                 "creator-name": {
                     "label": "Work Author",
@@ -106,9 +106,9 @@
         }
     },
     "license-use": {
-        "heading": "Use your license",
-        "common-instructions": "Choose what kind of work you are licensing to get appropriate license code",
-        "web-instructions": "If you are licensing one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page",
+        "heading": "Use your license.",
+        "common-instructions": "Choose what kind of work you are licensing to get appropriate license code.",
+        "web-instructions": "If you are licensing one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page.",
         "web-tab-heading": "Website",
         "print-media-tab-heading": "Print Work or Media",
         "print-media-instructions": "Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.",
@@ -202,9 +202,10 @@
             "call": "Help us keep Internet free and open."
         },
         "licensing": {
-            "text": "Except where otherwise {noted}, content on this site is licensed under a {CCBY}. Icons by Noun Project.",
+            "text": "Except where otherwise {noted}, content on this site is licensed under a {CCBY}. Icons by {noun-project}.",
             "noted": "noted",
-            "CCBY": "Creative Commons Attribution 4.0 International license"
+            "CCBY": "Creative Commons Attribution 4.0 International license",
+            "noun-project": "Noun Project"
         }
     },
     "cc0-waiver": {

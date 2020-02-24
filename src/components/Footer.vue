@@ -13,6 +13,9 @@
                     <template v-slot:noted>
                         <a :href="licensePoliciesUrl">{{ $t('footer.licensing.noted') }}</a>
                     </template>
+                    <template v-slot:noun-project>
+                        <a :href="nounProjectIconsUrl">{{$t('footer.licensing.noun-project')}}</a>
+                    </template>
                     <template v-slot:CCBY>
                         <a :href="CCBYUrl">{{ $t('footer.licensing.CCBY') }}</a>
                     </template>
@@ -37,7 +40,8 @@ export default {
     data() {
         return {
             licensePoliciesUrl: 'https://creativecommons.org/policies#license',
-            CCBYUrl: 'https://creativecommons.org/licenses/by/4.0/'
+            CCBYUrl: 'https://creativecommons.org/licenses/by/4.0/',
+            nounProjectIconsUrl: 'https://creativecommons.org/website-icons'
         }
     }
 }
