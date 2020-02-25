@@ -9,17 +9,7 @@
                 <p class="vocab-body-normal"><a href="tel:+1-415-429-6753">+1-415-429-6753</a></p>
             </section>
             <section class="middle-column">
-                <i18n path="footer.licensing.text" tag="p" :class="'vocab-caption'">
-                    <template v-slot:noted>
-                        <a :href="licensePoliciesUrl">{{ $t('footer.licensing.noted') }}</a>
-                    </template>
-                    <template v-slot:noun-project>
-                        <a :href="nounProjectIconsUrl">{{$t('footer.licensing.noun-project')}}</a>
-                    </template>
-                    <template v-slot:CCBY>
-                        <a :href="CCBYUrl">{{ $t('footer.licensing.CCBY') }}</a>
-                    </template>
-                </i18n>
+                <p>{{$t('footer.licensing.text')}}</p>
                 <p class="footer-license-icons">
                     <img src="../assets/license-icons/icon-cc_white.png">
                     <img src="../assets/license-icons/icon-by-white.png">
@@ -36,14 +26,7 @@
 <script>
 
 export default {
-    name: 'Footer',
-    data() {
-        return {
-            licensePoliciesUrl: 'https://creativecommons.org/policies#license',
-            CCBYUrl: 'https://creativecommons.org/licenses/by/4.0/',
-            nounProjectIconsUrl: 'https://creativecommons.org/website-icons'
-        }
-    }
+    name: 'Footer'
 }
 </script>
 

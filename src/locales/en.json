@@ -122,7 +122,7 @@
             "workTitle": "This work",
             "by": "by",
             "licensed-text": " is licensed under ",
-            "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}."
+            "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}"
         }
     },
     "help": {
@@ -202,10 +202,7 @@
             "call": "Help us keep Internet free and open."
         },
         "licensing": {
-            "text": "Except where otherwise {noted}, content on this site is licensed under a {CCBY}. Icons by {noun-project}.",
-            "noted": "noted",
-            "CCBY": "Creative Commons Attribution 4.0 International license",
-            "noun-project": "Noun Project"
+            "text": "Except where otherwise <a href='https://creativecommons.org/policies#license'>noted</a>, content on this site is licensed under a <a href='https://creativecommons.org/licenses/by/4.0/'>Creative Commons Attribution 4.0 International license</a>. Icons by <a href='https://creativecommons.org/website-icons'>Noun Project</a>."
         }
     },
     "cc0-waiver": {
