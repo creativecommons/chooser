@@ -14,6 +14,7 @@
                     <img src="../assets/license-icons/icon-cc_white.png">
                     <img src="../assets/license-icons/icon-by-white.png">
                 </p>
+                <p class="footer-contribute-link" v-html="$t('footer.contribute')" />
             </section>
             <section class="donation-column">
                 <h4 class="vocab ha h4a">{{$t('footer.donation.header')}}</h4>
