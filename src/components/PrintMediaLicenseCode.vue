@@ -8,13 +8,11 @@
                     <LicenseCode ref="licenseCode" attribution-type="print"/>
                 </div>
             </b-tab-item>
-            <b-tab-item icon-pack="fas" icon="copy">
+            <b-tab-item>
                 <template slot="header">
                     <a class="copyBtn"
                         data-clipboard-target="#attribution-plaintext">
-                        <b-icon
-                            icon-pack="fas"
-                            icon="copy"/>
+                        <font-awesome-icon icon="copy" />
                         <span class="button-text">{{ copyText }}</span>
                     </a>
                 </template>
@@ -27,10 +25,12 @@
 import Clipboard from 'clipboard'
 import { mapGetters } from 'vuex'
 import LicenseCode from './LicenseCode'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
     name: 'PrintMediaLicenseCode',
     components: {
+        FontAwesomeIcon,
         LicenseCode
     },
     props: {
@@ -111,6 +111,9 @@ export default {
 }
 </script>
 <style lang="scss">
+    .copyBtn svg {
+        margin-right: 3px;
+    }
 
     .attribution-tab .photo-license-icon {
         height: 1.4rem;

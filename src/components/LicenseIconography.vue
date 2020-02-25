@@ -15,24 +15,8 @@
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {
-    faCreativeCommons,
-    faCreativeCommonsBy,
-    faCreativeCommonsNc,
-    faCreativeCommonsNd,
-    faCreativeCommonsSa,
-    faCreativeCommonsZero
-} from '@fortawesome/free-brands-svg-icons/'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(
-    faCreativeCommons,
-    faCreativeCommonsBy,
-    faCreativeCommonsNc,
-    faCreativeCommonsNd,
-    faCreativeCommonsSa,
-    faCreativeCommonsZero
-)
+
 /**
    * ### License icons are hieroglyphs for the aspects of a license.
    *

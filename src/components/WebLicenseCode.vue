@@ -17,16 +17,11 @@
                     />
                 </div>
             </b-tab-item>
-            <b-tab-item
-                icon-pack="fas"
-                icon="copy"
-            >
+            <b-tab-item>
                 <template slot="header">
                     <a class="copyBtn"
                         :data-clipboard-target=this.clipboardTarget()>
-                        <b-icon
-                            icon-pack="fas"
-                            icon="copy"/>
+                        <font-awesome-icon icon="copy" />
                         <span class="button-text">{{ copyText }}
                         </span>
                     </a>
@@ -41,10 +36,12 @@ import Clipboard from 'clipboard'
 import { mapGetters } from 'vuex'
 import LicenseCode from './LicenseCode'
 import { generateHTML } from '../utils/license-utilities'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
     name: 'WebLicenseCode',
     components: {
+        FontAwesomeIcon,
         LicenseCode
     },
     props: {
@@ -139,6 +136,10 @@ export default {
 }
 </script>
 <style lang="scss">
+
+    .copyBtn svg {
+        margin-right: 3px;
+    }
 
     #attribution-richtext>p>span,
     #attribution-richtext .photo-license-icons{
