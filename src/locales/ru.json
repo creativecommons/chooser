@@ -1,36 +1,36 @@
 {
     "app": {
-        "title": "License Chooser"
+        "title": "Выбор лицензии"
     },
     "header": {
-        "nav-feedback": "FEEDBACK"
+        "nav-feedback": "ОБРАТНАЯ СВЯЗЬ"
     },
-    "locale-selector.label": "Selected language",
+    "locale-selector.label": "Выбранный язык",
     "select-license": {
-        "heading": "SELECT YOUR LICENSE",
-        "instructions": "Follow the steps to select the appropriate license for your work."
+        "heading": "ВЫБЕРЕТЕ СВОЮ ЛИЦЕНЗИЮ",
+        "instructions": "Выполните следующие шаги для того, чтобы выбрать подходящую лицензию для вашего произведения"
     },
     "stepper":
     {
         "nav": {
-            "previous-label": "BACK",
-            "next-label": "NEXT STEP",
+            "previous-label": "НАЗАД",
+            "next-label": "СЛЕДУЮЩИЙ ШАГ",
             "finish-label": "SEE LICENSE & ATTRIBUTION"
         },
-        "yes": "Yes. ",
-        "no": "No. ",
+        "yes": "Да. ",
+        "no": "Нет. ",
         "disabled-text": "This step is disabled due to selecting waiver of copyright through use of CC0.",
         "disabled-text-ND": "This step is disabled due to selecting ND, which does not allow for adaptations.",
         "FS": {
             "heading": "License Expertise",
-            "question": "Do you know which license you need?",
-            "selected": "I know which license I need.",
-            "not-selected": "I need help selecting a license."
+            "question": "Вы знаете, какая лицензия вам нужна?",
+            "selected": "Я знаю, какая лицензия мне нужна.",
+            "not-selected": "Мне нужна помощь с выбором лицензии."
         },
         "BY": {
             "heading": "Attribution",
             "question": "Do you want attribution for your work?",
-            "selected": "Anyone using my work must include proper attribution.",
+            "selected": "Все, кто использует мое произведение, должны указывать авторство.",
             "not-selected": "Anyone can use my work, even without giving me attribution."
         },
         "NC": {
@@ -65,7 +65,7 @@
         },
         "AD": {
             "heading": "Attribution Details",
-            "instructions": "Filling out this form is optional, but helps others attribute your work to you, and fills in machine-readable code.",
+            "instructions": "Filling out this form is optional, but helps others attribute your work to you, and fills in machine-readable code",
             "form": {
                 "creator-name": {
                     "label": "Work Author",
@@ -106,9 +106,9 @@
         }
     },
     "license-use": {
-        "heading": "Use your license.",
-        "common-instructions": "Choose what kind of work you are licensing to get appropriate license code.",
-        "web-instructions": "If you are licensing one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page.",
+        "heading": "Use your license",
+        "common-instructions": "Choose what kind of work you are licensing to get appropriate license code",
+        "web-instructions": "If you are licensing one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page",
         "web-tab-heading": "Website",
         "print-media-tab-heading": "Print Work or Media",
         "print-media-instructions": "Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.",
@@ -122,7 +122,7 @@
             "workTitle": "This work",
             "by": "by",
             "licensed-text": " is licensed under ",
-            "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}"
+            "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}."
         }
     },
     "help": {
@@ -131,11 +131,11 @@
             "heading": "What Are Creative Commons Licenses?",
             "text": "<p class='help-text'>The Creative Commons copyright licenses and tools forge a balance inside the traditional \"all rights reserved\" setting that copyright law creates. Our licenses and tools give everyone from individual creators to large companies a simple, standardized way to grant copyright permissions to their creative work.</p><p class='help-text'>This helps you as a creator, because instead of having to hire a lawyer to parse legalese and create a license for you, you can save time and money, use Creative Commons licenses instead!</p>",
             "footer": "For more information, please see <a id='license_link' href='https://creativecommons.org/licenses/' target='blank_'>About the Licenses</a>"
-         },
+        },
         "how-licenses-work": {
             "heading": "How do the Licenses Work?",
             "text": " <h5 class='help-h5'>License \"Layers\"</h5> <p class='help-text'>Creative Commons licenses incorporate a unique and innovative \"three-layer\" design.</p><ul><li><h5 class='help-h5'> - Legal Code: </h5><p class='help-text'>Each license begins as a traditional legal tool, in the kind of language and text formats that most lawyers know and love. We call this the Legal Code layer of each license.</p> </li><li><h5 class='help-h5'> - Human Readable: </h5> <p class='help-text'>Since most creators, educators, and scientists are not in fact lawyers, we also make the licenses available in a format that normal people can read -- The Commons Deed (also known as the “human readable” version of the license). This is a handy reference for licensors and licensees, summarizing some of the most important terms and conditions. Think of the Commons Deed as a user-friendly interface to the legal code beneath.</p> </li> <li><h5 class='help-h5'> - Machine Readable: </h5><p class='help-text'>The final layer of the license design helps out software, from search engines to office productivity, this software plays an enormous role in the creation, copying, and distribution of creative works. To help out this software, we provide a \"Machine Readable\" version of the license. </p><p class='help-text'>We developed a standardized way to describe licenses that software can understand called <a id='cc_rights_link' href='https://wiki.creativecommons.org/Ccrel' target='blank_'>CC Rights Expression language</a> (CC REL) to accomplish this.</p></li></ul>",
-             "footer": "<p>For more information, please see <a id='license_link_2' href='https://creativecommons.org/licenses/' target='blank_'>About the Licenses</a></p>"
+            "footer": "<p>For more information, please see <a id='license_link_2' href='https://creativecommons.org/licenses/' target='blank_'>About the Licenses</a></p>"
         },
         "what-icons-mean": {
             "heading": "What do the Icons Mean?",
@@ -179,7 +179,7 @@
             "heading": "How do I Formally License my Work?",
             "text": "<p class='help-text'>Formally licensing your work is as easy as marking your work as being CC licensed, along with the specific license it is under. This mark may be in the form of a watermark, or it may be somewhere around where your work is hosted or shared. This mark may be as simple as a bit of text stating the license, or as complex as embedding the license information on your website.</p><h5 class='help-h5'>Recourse Options</h5><p class='help-text'> So what would I do if someone used my licensed work in a way that the license does not permit? Well, there are lots of recourse options, but here are the two main ones: </p> <ul> <li> <h5 class='help-h5'> - Resolve the Dispute Amicably</h5> <p class='help-text'>First, we encourage you to contact the alleged violator, and attempt to resolve the dispute amicably. Most disagreements are solved in this manner, and it saves everyone time and money.</p> </li> <li><h5 class='help-h5'> - Litigation</h5><p class='help-text'>If you determine that the dispute cannot be resolved any other way, you would then identify the alleged violation, contact a lawyer, and begin building a case.</p> </li></ul>",
             "footer": ""
-         },
+        },
         "six-cc-licenses": {
             "heading": "The Six Creative Commons Licenses",
             "text": "<p class='help-text'>There are six main licenses that Creative Commons offers.</p> <p class='help-text'>In the diagram to the right, you can see the six main licenses and the public domain CC0 license, and how restrictive they are, with licenses at the top being the least restrictive, and licenses at the bottom being the most restrictive.</p> <p class='help-text'>If you are unsure about which one is right for you and your work, please select <strong>\"I need help selecting a license\"</strong> on the first question of this page.</p>",
@@ -202,7 +202,9 @@
             "call": "Help us keep Internet free and open."
         },
         "licensing": {
-            "text": "Except where otherwise <a href='https://creativecommons.org/policies#license'>noted</a>, content on this site is licensed under a <a href='https://creativecommons.org/licenses/by/4.0/'>Creative Commons Attribution 4.0 International license</a>. Icons by <a href='https://creativecommons.org/website-icons'>Noun Project</a>."
+            "text": "Except where otherwise {noted}, content on this site is licensed under a {CCBY}. Icons by Noun Project.",
+            "noted": "noted",
+            "CCBY": "Creative Commons Attribution 4.0 International license"
         }
     },
     "cc0-waiver": {
