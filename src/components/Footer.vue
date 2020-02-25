@@ -9,7 +9,7 @@
                 <p class="vocab-body-normal"><a href="tel:+1-415-429-6753">+1-415-429-6753</a></p>
             </section>
             <section class="middle-column">
-                <p>{{$t('footer.licensing.text')}}</p>
+                <p class="footer-licensing-text" v-html="$t('footer.licensing.text')" />
                 <p class="footer-license-icons">
                     <img src="../assets/license-icons/icon-cc_white.png">
                     <img src="../assets/license-icons/icon-by-white.png">
@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .footer.chooser-footer {
     background-color: black;
     color: white;
@@ -46,9 +46,16 @@ export default {
     margin-bottom: 0;
     padding-bottom:0;
 }
-.chooser-footer a {
+.chooser-footer a,
+.middle-column .footer-licensing-text a
+{
     color:  #05B5DA;
 }
+.chooser-footer a:hover,
+.middle-column .footer-licensing-text a:hover {
+    color: #363636;
+}
+
 .footer-cc-logo {
     margin-bottom: 40px;
 }
