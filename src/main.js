@@ -8,20 +8,16 @@ import store from './store'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCopy } from '@fortawesome/free-solid-svg-icons/faCopy'
-import { faCreativeCommons } from '@fortawesome/free-brands-svg-icons/faCreativeCommons'
-import { faCreativeCommonsBy } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsBy'
-import { faCreativeCommonsNc } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsNc'
-import { faCreativeCommonsNd } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsNd'
-import { faCreativeCommonsSa } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsSa'
-import { faCreativeCommonsZero } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsZero'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+import {
+    faCreativeCommons, faCreativeCommonsBy, faCreativeCommonsNc,
+    faCreativeCommonsNd, faCreativeCommonsSa, faCreativeCommonsZero
+} from '@fortawesome/free-brands-svg-icons'
+
 library.add(
-    faCopy,
-    faCreativeCommons,
-    faCreativeCommonsBy,
-    faCreativeCommonsNc,
-    faCreativeCommonsNd,
-    faCreativeCommonsSa,
+    faCopy, faCreativeCommons, faCreativeCommonsBy,
+    faCreativeCommonsNc, faCreativeCommonsNd, faCreativeCommonsSa,
     faCreativeCommonsZero
 )
 Vue.component('vue-fontawesome', FontAwesomeIcon)
