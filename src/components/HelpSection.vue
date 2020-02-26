@@ -162,7 +162,9 @@
                     </tr>
                     <tr>
                         <th>{{$t('help.how-licenses-communicated.license-icons')}}</th>
-                        <td><LicenseIconography :icon-list="['', 'by', 'nc']"/></td>
+                        <td>
+                            <LicenseIcons :iconsArr="['by', 'nc']"/>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -183,7 +185,7 @@
     </div>
 </template>
 <script>
-import LicenseIconography from './LicenseIconography'
+import LicenseIcons from './LicenseIcons'
 
 // eslint-disable-next-line
 const ModalForm = {
@@ -205,7 +207,7 @@ const ModalForm = {
 }
 export default {
     components: {
-        LicenseIconography
+        LicenseIcons
     },
     data() {
         return {
