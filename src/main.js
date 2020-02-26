@@ -6,6 +6,9 @@ import VueAnalytics from 'vue-analytics'
 import App from './App.vue'
 import store from './store'
 
+import * as Sentry from '@sentry/browser'
+import * as Integrations from '@sentry/integrations'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCopy } from '@fortawesome/free-solid-svg-icons/faCopy'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -30,6 +33,16 @@ if (process.env.NODE_ENV === 'production') {
         autoTracking: {
             screenview: true
         }
+    })
+    Sentry.init({
+        dsn: '',
+        integrations: [
+            new Integrations.Vue({
+                Vue,
+                attachProps: true,
+                logErrors: true
+            })
+        ]
     })
 }
 
