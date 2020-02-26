@@ -34,17 +34,20 @@ if (process.env.NODE_ENV === 'production') {
             screenview: true
         }
     })
-    Sentry.init({
-        dsn: '',
-        integrations: [
-            new Integrations.Vue({
-                Vue,
-                attachProps: true,
-                logErrors: true
-            })
-        ]
-    })
 }
+
+Sentry.init({
+    dsn: process.env.NODE_ENV === 'production'
+        ? 'https://8c09726e231d4cf780c541f40d3639a9@sentry.io/3009295' // cc-chooser-prod project
+        : 'https://ab63acb8c1464466869182dd53c7046d@sentry.io/3009597', // cc-chooser-dev project
+    integrations: [
+        new Integrations.Vue({
+            Vue,
+            attachProps: true,
+            logErrors: true
+        })
+    ]
+})
 
 new Vue({
     store,
