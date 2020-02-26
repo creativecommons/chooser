@@ -37,8 +37,6 @@
 
 <script>
 // TODO Reduce custom styling in favour of Vocabulary styles
-import '@creativecommons/vocabulary/css/root.css'
-import '@creativecommons/vocabulary/css/index.css'
 
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
@@ -97,7 +95,14 @@ export default {
 
     // Import Bulma and Buefy styles
     @import "~bulma";
-    @import "~buefy/src/scss/buefy";
+    @import '~buefy/src/scss/utils/_variables.scss';
+    @import '~buefy/src/scss/components/_modal.scss';
+    @import '~buefy/src/scss/components/_radio.scss';
+    @import '~buefy/src/scss/components/_tabs.scss';
+    @import '~buefy/src/scss/components/_select.scss';
+    @import '~buefy/src/scss/components/_form.scss';
+    @import '~buefy/src/scss/components/_icon.scss';
+
     @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A%20400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
 
     #app {
