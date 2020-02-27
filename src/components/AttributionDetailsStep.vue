@@ -1,6 +1,11 @@
 <template>
-    <div class="step-actions" v-if="this.status==='current'">
-        <p class="attribution-details-instructions">{{$t('stepper.AD.instructions')}}</p>
+    <div
+        v-if="status==='current'"
+        class="step-actions"
+    >
+        <p class="attribution-details-instructions">
+            {{ $t('stepper.AD.instructions') }}
+        </p>
         <form class="attribution-details-form">
             <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
                 <b-input
@@ -27,7 +32,7 @@
                 />
             </b-field>
         </form>
-        </div>
+    </div>
 </template>
 
 <script>
@@ -35,9 +40,13 @@ import { mapMutations, mapState } from 'vuex'
 
 export default {
     name: 'AttributionDetails',
-    props: ['status'],
-    methods: {
-        ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl'])
+    props: {
+        status: {
+            type: String,
+            validator(value) {
+                return ['current', 'previous', 'inactive'].includes(value)
+            }
+        }
     },
     computed: {
         ...mapState(['attributionDetails']),
@@ -65,6 +74,9 @@ export default {
                 this.setWorkUrl(newVal)
             }
         }
+    },
+    methods: {
+        ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl'])
     }
 
 }

@@ -1,15 +1,21 @@
 <template>
-    <a :href="url"
-       @click.stop="() => false"
-       class="photo-license-icons"
-       target="_blank"
-       rel="noopener noreferrer">
-        <img class="photo-license-icon"
-             src="../assets/license-icons/cc_icon.svg">
-        <img v-for="(license, index) in iconsArr"
-             class="photo-license-icon"
-             :src="require(`../assets/license-icons/cc-${license.toLowerCase()}_icon.svg`)"
-             :key="index">
+    <a
+        :href="url"
+        class="photo-license-icons"
+        target="_blank"
+        rel="noopener noreferrer"
+        @click.stop="() => false"
+    >
+        <img
+            class="photo-license-icon"
+            src="../assets/license-icons/cc_icon.svg"
+        >
+        <img
+            v-for="(license, index) in iconsArr"
+            :key="index"
+            class="photo-license-icon"
+            :src="require(`../assets/license-icons/cc-${license.toLowerCase()}_icon.svg`)"
+        >
     </a>
 </template>
 

@@ -2,23 +2,45 @@
     <footer class="footer chooser-footer">
         <div class="container chooser-footer-container">
             <section class="cc-info-column">
-                <img src="../assets/cc-logo_white.png" :alt="$t('alt.cc-logo')" class="footer-cc-logo">
-                <p class="vocab-body-normal no-bottom-margin">Creative Commons</p>
-                <p class="vocab-body-normal">PO Box 1866, Mountain View, CA 94042</p>
-                <p class="vocab-body-normal"><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>
-                <p class="vocab-body-normal"><a href="tel:+1-415-429-6753">+1-415-429-6753</a></p>
+                <img
+                    src="../assets/cc-logo_white.png"
+                    :alt="$t('alt.cc-logo')"
+                    class="footer-cc-logo"
+                >
+                <p class="vocab-body-normal no-bottom-margin">
+                    Creative Commons
+                </p>
+                <p class="vocab-body-normal">
+                    PO Box 1866, Mountain View, CA 94042
+                </p>
+                <p class="vocab-body-normal">
+                    <a href="mailto:info@creativecommons.org">info@creativecommons.org</a>
+                </p>
+                <p class="vocab-body-normal">
+                    <a href="tel:+1-415-429-6753">+1-415-429-6753</a>
+                </p>
             </section>
             <section class="middle-column">
-                <p class="footer-licensing-text" v-html="$t('footer.licensing.text')" />
+                <p
+                    class="footer-licensing-text"
+                    v-html="$t('footer.licensing.text')"
+                />
                 <p class="footer-license-icons">
                     <img src="../assets/license-icons/icon-cc_white.png">
                     <img src="../assets/license-icons/icon-by-white.png">
                 </p>
-                <p class="footer-contribute-link" v-html="$t('footer.contribute')" />
+                <p
+                    class="footer-contribute-link"
+                    v-html="$t('footer.contribute')"
+                />
             </section>
             <section class="donation-column">
-                <h4 class="vocab ha h4a">{{$t('footer.donation.header')}}</h4>
-                <p class="vocab-body-normal">{{$t('footer.donation.call')}}</p>
+                <h4 class="vocab ha h4a">
+                    {{ $t('footer.donation.header') }}
+                </h4>
+                <p class="vocab-body-normal">
+                    {{ $t('footer.donation.call') }}
+                </p>
             </section>
         </div>
     </footer>

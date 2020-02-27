@@ -1,9 +1,12 @@
 <template>
     <div id="feedback">
-            <p>
-                The new Creative Commons License Chooser is still in active development, and we would like to know what you think!
-            </p>
-            <b>Please give us your feedback by <a href="https://docs.google.com/forms/d/e/1FAIpQLSfF7MCKxlPsPuMn17v_sLYWMkxBkudQSPXCXoJKjh5GCtx63g/viewform" class="anim_link-underline">filling out this short Google Form</a>!</b>
+        <p>
+            The new Creative Commons License Chooser is still in active development, and we would like to know what you think!
+        </p>
+        <b>Please give us your feedback by <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfF7MCKxlPsPuMn17v_sLYWMkxBkudQSPXCXoJKjh5GCtx63g/viewform"
+            class="anim_link-underline"
+        >filling out this short Google Form</a>!</b>
     </div>
 </template>
 <script>

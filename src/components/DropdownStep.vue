@@ -1,13 +1,18 @@
 <template>
     <div>
-        <div class="step-description" v-if="this.status==='previous'">
-            {{cardText}}
+        <div
+            v-if="status==='previous'"
+            class="step-description"
+        >
+            {{ cardText }}
         </div>
-        <div class="step-actions" v-else-if="this.status==='current'">
+        <div
+            v-else-if="status==='current'"
+            class="step-actions"
+        >
             <LicenseDropdown @input="updateSelected" />
         </div>
     </div>
-
 </template>
 
 <script>
@@ -17,18 +22,23 @@ export default {
     name: 'DropdownStep',
     components: { LicenseDropdown },
     props: {
-        status: String,
+        status: {
+            type: String,
+            validator(value) {
+                return ['current', 'previous', 'inactive'].includes(value)
+            }
+        },
         stepId: Number
-    },
-    methods: {
-        updateSelected() {
-            this.$emit('input', 'DD', this.$props.stepId, true)
-        }
     },
     computed: {
         ...mapGetters(['fullName']),
         cardText() {
             return this.fullName
+        }
+    },
+    methods: {
+        updateSelected() {
+            this.$emit('input', 'DD', this.$props.stepId, true)
         }
     }
 }

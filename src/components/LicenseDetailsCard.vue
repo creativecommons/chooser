@@ -1,33 +1,41 @@
 <template>
-<div class="selected-license-card">
-    <h3 class="vocab ha h3a">{{$t('license-details-card.heading')}}</h3>
-    <h4 class="vocab h4b hb">
-        <a :href="licenseUrl('web')" class="license-name">{{fullName}} ({{shortName}})
-            <LicenseIcons
-                :url="licenseUrl('web')"
-                :iconsArr="iconsList"/>
-        </a>
-    </h4>
-    <p id='chooser-selected-description'>
-        <b>{{licenseSlug}}</b>
-        {{$t(licenseKey)}}
-    </p>
-    <section class="license-visual-info">
-        <ul class="license-list">
-            <transition-group name="highlight">
-                <li v-for="item in iconsList"
-                    :class="['license-list-item', item]"
-                    :key="item">
-                    <span class="readable-string">
-                        <b v-if="item!=='zero'">{{item.toUpperCase()}}:</b>
-                        <b v-else>CC0:</b>
-                        {{$t(`license-details-card.item-description.${item}`)}}
-                    </span>
-                </li>
-            </transition-group>
-        </ul>
-    </section>
-</div>
+    <div class="selected-license-card">
+        <h3 class="vocab ha h3a">
+            {{ $t('license-details-card.heading') }}
+        </h3>
+        <h4 class="vocab h4b hb">
+            <a
+                :href="licenseUrl('web')"
+                class="license-name"
+            >{{ fullName }} ({{ shortName }})
+                <LicenseIcons
+                    :url="licenseUrl('web')"
+                    :icons-arr="iconsList"
+                />
+            </a>
+        </h4>
+        <p id="chooser-selected-description">
+            <b>{{ licenseSlug }}</b>
+            {{ $t(licenseKey) }}
+        </p>
+        <section class="license-visual-info">
+            <ul class="license-list">
+                <transition-group name="highlight">
+                    <li
+                        v-for="item in iconsList"
+                        :key="item"
+                        :class="['license-list-item', item]"
+                    >
+                        <span class="readable-string">
+                            <b v-if="item!=='zero'">{{ item.toUpperCase() }}:</b>
+                            <b v-else>CC0:</b>
+                            {{ $t(`license-details-card.item-description.${item}`) }}
+                        </span>
+                    </li>
+                </transition-group>
+            </ul>
+        </section>
+    </div>
 </template>
 
 <script>
