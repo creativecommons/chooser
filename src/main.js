@@ -5,6 +5,7 @@ import i18n from './i18n'
 import VueAnalytics from 'vue-analytics'
 import App from './App.vue'
 import store from './store'
+import './assets/css/vocab.css'
 
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'

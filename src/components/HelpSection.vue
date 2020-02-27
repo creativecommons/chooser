@@ -387,8 +387,4 @@ export default {
         margin: 0;
     }
 
-    .vocab.license-icons img {
-        width: 35px;
-    }
-
 </style>

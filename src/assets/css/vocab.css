@@ -1,0 +1,112 @@
+/* Vocabulary Header styles */
+.vocab.ha {
+    font-family: Roboto Condensed,sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    padding-bottom: 0.5rem;
+}
+.vocab.hb {
+    font-family: Source Sans Pro,sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    padding-bottom: 0.5rem;
+}
+.vocab.h2a {
+    color: black;
+    font-size: 36px;
+    line-height: 47px;
+}
+.vocab.h3a {
+    font-size: 28px;
+    line-height: 36px;
+    color: black;
+}
+.vocab.h3b {
+    font-size: 28px;
+    line-height: 33px;
+}
+.vocab.h4a {
+    font-size: 23px;
+    line-height: 30px;
+}
+.vocab.h4b {
+    font-size: 23px;
+    line-height: 27px;
+}
+.vocab.h5a {
+    font-size: 20px;
+    line-height: 30px;
+}
+.vocab.h5b {
+    font-size: 20px;
+    line-height: 26px;
+}
+/* Vocabulary Text styles */
+.vocab-body {
+    font-style: normal;
+    font-weight: normal;
+    color: #333333;
+    padding-bottom: 8px;
+}
+.vocab-body.body-bigger {
+    font-size: 23px;
+    line-height: 33px;
+    color: black;
+}
+.vocab-body.body-big {
+    font-size: 18px;
+    line-height: 25px;
+}
+.vocab-body.body-normal {
+    font-size: 16px;
+    line-height: 24px;
+}
+.vocab-caption {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
+    padding-bottom: 8px;
+}
+/* Vocabulary colors */
+.normal-gray {
+    color: #D8D8D8!important;
+}
+.slate-gray {
+    color: #333333;
+}
+.vocab-tomato {
+    color: #ED592F!important;
+}
+/* Vocabulary other styles */
+.vocab-container .vocab-grid .panel {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.vocab.select-field.normal-sized {
+    font-size: 1rem;
+}
+
+.vocab.select-field > .field.has-addons {
+    padding-left: calc(1em + var(--select-field-addons-space));
+    margin-bottom: 0;
+    min-width: 10em;
+}
+
+.vocab.select-field > .field > option[disabled] {
+    opacity: 0.6;
+}
+.vocab.license-icons img {
+    width: 35px;
+}
