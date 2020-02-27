@@ -1,26 +1,33 @@
 <template>
     <div class="license-code">
         <b-tabs
+            v-model="activeTab"
             class="attribution-tab"
-            v-model="activeTab">
+        >
             <b-tab-item :label="this.$t('license-use.rich-text-label')">
                 <div id="attribution-richtext">
-                <LicenseCode ref="licenseCode" />
+                    <LicenseCode ref="licenseCode" />
                 </div>
             </b-tab-item>
             <b-tab-item :label="this.$t('license-use.html-label')">
-                <div class='control' id='generated-html-container'>
-                    <textarea id='attribution-html'
-                              class='textarea'
-                              :value="htmlLicenseParagraph"
-                              readonly
+                <div
+                    id="generated-html-container"
+                    class="control"
+                >
+                    <textarea
+                        id="attribution-html"
+                        class="textarea"
+                        :value="htmlLicenseParagraph"
+                        readonly
                     />
                 </div>
             </b-tab-item>
             <b-tab-item>
                 <template slot="header">
-                    <a class="copyBtn"
-                        :data-clipboard-target=this.clipboardTarget()>
+                    <a
+                        class="copyBtn"
+                        :data-clipboard-target="clipboardTarget()"
+                    >
                         <font-awesome-icon icon="copy" />
                         <span class="button-text">{{ copyText }}
                         </span>
@@ -54,40 +61,6 @@ export default {
             currentTab: 0,
             copyText: this.$t('license-use.copy-label'),
             currentSelection: 'richtext'
-        }
-    },
-    methods: {
-        onCopySuccess(e) {
-            this.success = true
-            if (process.env.NODE_ENV === 'production') {
-                const fieldsFilled = {}
-                for (const detail in this.attributionDetails) {
-                    fieldsFilled[detail] = this.attributionDetails[detail] !== ''
-                }
-                const copiedLicense = {
-                    license: this.shortName,
-                    // codeType can be either rich-text or html
-                    codeType: this.currentSelection,
-                    fieldsFilled: fieldsFilled
-                }
-                this.$ga.event({
-                    eventCategory: 'Attribution',
-                    eventAction: 'copied',
-                    eventLabel: JSON.stringify(copiedLicense)
-                })
-            }
-            this.$emit('copied', { content: e.text })
-            setTimeout(() => {
-                this.success = false
-            }, 2000)
-            e.clearSelection()
-        },
-        onCopyError(e) {
-            this.$emit('copyFailed')
-            e.clearSelection()
-        },
-        clipboardTarget() {
-            return `#attribution-${this.currentSelection}`
         }
     },
     computed: {
@@ -132,6 +105,40 @@ export default {
     },
     destroyed() {
         this.clipboard.destroy()
+    },
+    methods: {
+        onCopySuccess(e) {
+            this.success = true
+            if (process.env.NODE_ENV === 'production') {
+                const fieldsFilled = {}
+                for (const detail in this.attributionDetails) {
+                    fieldsFilled[detail] = this.attributionDetails[detail] !== ''
+                }
+                const copiedLicense = {
+                    license: this.shortName,
+                    // codeType can be either rich-text or html
+                    codeType: this.currentSelection,
+                    fieldsFilled: fieldsFilled
+                }
+                this.$ga.event({
+                    eventCategory: 'Attribution',
+                    eventAction: 'copied',
+                    eventLabel: JSON.stringify(copiedLicense)
+                })
+            }
+            this.$emit('copied', { content: e.text })
+            setTimeout(() => {
+                this.success = false
+            }, 2000)
+            e.clearSelection()
+        },
+        onCopyError(e) {
+            this.$emit('copyFailed')
+            e.clearSelection()
+        },
+        clipboardTarget() {
+            return `#attribution-${this.currentSelection}`
+        }
     }
 }
 </script>
