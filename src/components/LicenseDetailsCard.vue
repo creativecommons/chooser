@@ -14,8 +14,8 @@
                 />
             </a>
         </h4>
-        <p id="chooser-selected-description">
-            <b>{{ licenseSlug }}</b>
+        <p class="chooser-selected-description">
+            <b>{{ slug.toUpperCase() }}</b>
             {{ $t(licenseKey) }}
         </p>
         <section class="license-visual-info">
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { licenseSlug } from '../utils/license-utilities'
 import LicenseIcons from './LicenseIcons'
 import { mapGetters } from 'vuex'
 
@@ -50,20 +51,23 @@ export default {
     computed: {
         ...mapGetters(['shortName', 'fullName', 'iconsList', 'licenseUrl']),
         licenseDescription() {
-            const descriptionString = `${this.$licenseSlug(this.shortName)}-description`
+            const descriptionString = `${this.slug}-description`
             return this.$t(descriptionString)
         },
-        licenseSlug() {
-            return this.shortName.slice(0, this.shortName.length - 4)
-        },
         licenseKey() {
-            return `license-details-card.full-description.${this.licenseSlug.toLowerCase().replace(' ', '-')}`
+            return `license-details-card.full-description.${this.slug}`
+        },
+        slug() {
+            return licenseSlug(this.shortName)
         }
     }
 }
 </script>
 
 <style lang="scss">
+    .select-license-card {
+        margin-bottom: 32px;
+    }
     .license-name {
         vertical-align: middle;
         display: inline-block;

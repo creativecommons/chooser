@@ -42,6 +42,7 @@
     font-size: 20px;
     line-height: 26px;
 }
+
 /* Vocabulary Text styles */
 .vocab-body {
     font-style: normal;
@@ -69,6 +70,7 @@
     line-height: 19px;
     padding-bottom: 8px;
 }
+
 /* Vocabulary colors */
 .normal-gray {
     color: #D8D8D8!important;
@@ -80,33 +82,7 @@
     color: #ED592F!important;
 }
 /* Vocabulary other styles */
-.vocab-container .vocab-grid .panel {
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-}
-
-.vocab.select-field.normal-sized {
-    font-size: 1rem;
-}
-
-.vocab.select-field > .field.has-addons {
-    padding-left: calc(1em + var(--select-field-addons-space));
-    margin-bottom: 0;
-    min-width: 10em;
-}
-
-.vocab.select-field > .field > option[disabled] {
-    opacity: 0.6;
-}
 .vocab.license-icons img {
     width: 35px;
+    height: 35px;
 }

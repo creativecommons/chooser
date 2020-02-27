@@ -9,8 +9,7 @@
     <FontAwesomeIcon
       v-for="(icon, index) in processedIconList"
       :key="index"
-      :icon="['fab', icon]"
-      style="width: 35px; height: 35px"/>
+      :icon="['fab', icon]"/>
   </span>
 </template>
 

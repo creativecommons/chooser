@@ -1,21 +1,19 @@
 <template>
-    <div class="license-dropdown">
-        <b-field>
-            <b-select
-                :placeholder="this.$t('stepper.DD.placeholder')"
-                :value="shortName"
-                @input="setCurrentLicense"
+    <b-field class="license-dropdown">
+        <b-select
+            :placeholder="this.$t('stepper.DD.placeholder')"
+            :value="shortName"
+            @input="setCurrentLicense"
+        >
+            <option
+                v-for="license in licenseList"
+                :key="license"
+                :value="license"
             >
-                <option
-                    v-for="license in licenseList"
-                    :key="license"
-                    :value="license"
-                >
-                    {{ license }}
-                </option>
-            </b-select>
-        </b-field>
-    </div>
+                {{ license }}
+            </option>
+        </b-select>
+    </b-field>
 </template>
 <script>
 
@@ -56,14 +54,14 @@ export default {
 }
 </script>
 <style lang="scss">
-    div.license-dropdown {
+    .license-dropdown {
         margin-top: 1rem;
-        label.label{
+        .label{
             font-weight: normal;
             opacity: 0.8;
             font-size: 1em;
         }
-        span.select, select {
+        .select, select {
             width: 100%;
         }
     }
