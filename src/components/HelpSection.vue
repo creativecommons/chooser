@@ -154,7 +154,7 @@
                     <tbody>
                     <tr>
                         <th>{{$t('help.how-licenses-communicated.full-name')}}</th>
-                        <td>{{$t('help.how-licenses-communicated.CC-BY-SA')}}</td>
+                        <td>{{$t('help.how-licenses-communicated.CC-BY-NC')}}</td>
                     </tr>
                     <tr>
                         <th>{{$t('help.how-licenses-communicated.short-name')}}</th>
