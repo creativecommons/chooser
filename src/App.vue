@@ -106,10 +106,6 @@ export default {
         color: #2c3e50;
         counter-reset: step-counter;
     }
-    .fixed-right-column {
-        position: sticky;
-        top: 10px;
-    }
     #site-container {
         padding-top: 2rem;
         padding-bottom: 2%;
@@ -118,35 +114,32 @@ export default {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1.5rem;
+        .select-license-column {
+            grid-column: 1;
+        }
+        .locale-chooser {
+            grid-column: 2;
+        }
     }
-    .select-license-column {
-        grid-column: 1;
+    .stepper-instructions {
+        margin-bottom: 14px;
     }
-    .locale-chooser {
-        grid-column: 2;
-    }
-    .desktop-hide {
-        display: none;
-    }
-    .desktop-show {
-        display: block;
+    .fixed-right-column {
+        position: sticky;
+        top: 10px;
     }
     .selected-license-card {
+        // Margin is added to make the left column long enough for the right column to stay sticky when scrolling
         margin-bottom: 32px;
     }
-    .help-section {
-    }
-
     @media only screen and (max-width: 1025px) {
         #site-container {
             margin-left: 2%;
             margin-right: 2%;
         }
-
         .mobile-hide {
             display: none;
         }
-
         .mobile-show {
             display: block;
         }
@@ -174,8 +167,5 @@ export default {
             margin-left: 3%;
             margin-right: 3%;
         }
-    }
-    .panel {
-        margin-top: 1rem;
     }
 </style>

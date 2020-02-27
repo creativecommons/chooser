@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="step-content">
         <div
             v-if="status==='previous'"
             class="step-description vocab-body body-normal"
@@ -78,15 +78,18 @@ export default {
 </script>
 
 <style lang="scss">
-label.label {
-    font-size: 0.845rem;
-}
 .waiver-textarea {
     width: 100%;
     min-height: 100px;
     margin: 1rem 0;
 }
-.b-checkbox {
-    align-items: flex-start;
+.step-actions .b-checkbox.checkbox {
+    align-items: normal;
+}
+.step-actions .control-label {
+    color: #333333;
+}
+.step-actions .b-checkbox.checkbox input[type=checkbox] + .check {
+    border: 2px solid #D8D8D8;
 }
 </style>

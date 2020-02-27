@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="step-content">
         <div
             v-if="status==='previous'"
             class="step-description"

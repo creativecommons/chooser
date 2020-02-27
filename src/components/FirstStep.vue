@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="step-content">
         <p
             v-if="status==='previous'"
             class="step-description vocab-body body-normal"
@@ -20,8 +20,8 @@
                 >
                     <span
                         class="vocab-body body-normal"
-                        v-html="$t(yesText)"
-                    />
+                    >
+                        {{ $t('stepper.yes') }}{{ $t(yesText) }}</span>
                 </b-radio>
             </div>
             <div
@@ -34,8 +34,7 @@
                 >
                     <span
                         class="vocab-body body-normal"
-                        v-html="$t(noText)"
-                    />
+                    >{{ $t('stepper.no') }}{{ $t(noText) }}</span>
                 </b-radio>
             </div>
         </div>
