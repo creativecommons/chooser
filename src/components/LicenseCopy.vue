@@ -4,12 +4,17 @@
             v-model="activeTab"
             class="attribution-tab"
         >
-            <b-tab-item :label="this.$t('license-use.rich-text-label')">
-                <div id="attribution-richtext">
-                    <LicenseCode ref="licenseCode" />
+            <b-tab-item :label="this.$t(firstTabLabel)">
+                <div id="attribution-text">
+                    <LicenseCode
+                        :attribution-type="textAttributionType"
+                    />
                 </div>
             </b-tab-item>
-            <b-tab-item :label="this.$t('license-use.html-label')">
+            <b-tab-item
+                v-if="isWeb"
+                :label="this.$t('license-use.html-label')"
+            >
                 <div
                     id="generated-html-container"
                     class="control"
@@ -29,8 +34,7 @@
                         :data-clipboard-target="clipboardTarget()"
                     >
                         <font-awesome-icon icon="copy" />
-                        <span class="button-text">{{ copyText }}
-                        </span>
+                        <span class="button-text">{{ copyText }}</span>
                     </a>
                 </template>
                 <div class="dummy" />
@@ -42,17 +46,20 @@
 import Clipboard from 'clipboard'
 import { mapGetters } from 'vuex'
 import LicenseCode from './LicenseCode'
-import { generateHTML } from '../utils/license-utilities'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { generateHTML } from '../utils/license-utilities'
 
 export default {
-    name: 'WebLicenseCode',
+    name: 'LicenseCopy',
     components: {
         FontAwesomeIcon,
         LicenseCode
     },
     props: {
-        value: Object
+        isWeb: {
+            type: Boolean,
+            default: true
+        }
     },
     data() {
         return {
@@ -60,13 +67,22 @@ export default {
             clipboard: null,
             currentTab: 0,
             copyText: this.$t('license-use.copy-label'),
-            currentSelection: 'richtext'
+            currentSelection: 'text'
         }
     },
     computed: {
         ...mapGetters(['shortName', 'fullName', 'iconsList', 'licenseUrl']),
         attributionDetails() {
             return this.$store.state.attributionDetails
+        },
+        tabsCount() {
+            return this.isWeb ? 2 : 1
+        },
+        firstTabLabel() {
+            return this.isWeb ? 'license-use.rich-text-label' : 'license-use.plain-text-label'
+        },
+        textAttributionType() {
+            return this.isWeb ? 'web' : 'print'
         },
         htmlLicenseParagraph() {
             const data = generateHTML(this.attributionDetails, this.shortName)
@@ -81,12 +97,12 @@ export default {
         activeTab: {
             get() { return this.currentTab },
             set(val) {
-                if (val !== 2) {
+                if (val !== this.tabsCount) {
                     this.currentTab = val
                 } else {
-                    this.currentSelection = this.currentTab === 0 ? 'richtext' : 'html'
+                    this.currentSelection = this.currentTab === 0 ? 'text' : 'html'
                     const tab = this.currentTab
-                    this.currentTab = 2
+                    this.currentTab = this.tabsCount
                     this.copyText = this.$t('license-use.copied-label')
                     setTimeout(() => {
                         this.currentTab = tab
@@ -117,7 +133,7 @@ export default {
                 const copiedLicense = {
                     license: this.shortName,
                     // codeType can be either rich-text or html
-                    codeType: this.currentSelection,
+                    codeType: 'plaintext',
                     fieldsFilled: fieldsFilled
                 }
                 this.$ga.event({
@@ -143,19 +159,28 @@ export default {
 }
 </script>
 <style lang="scss">
-
     .copyBtn svg {
         margin-right: 3px;
     }
 
-    #attribution-richtext>p>span,
-    #attribution-richtext .photo-license-icons{
-        height: 26px;
-        vertical-align: middle;
+    .attribution-tab .photo-license-icon {
+        height: 1.4rem;
     }
-    #attribution-richtext p {
+
+    #attribution-text p {
         margin-top: 0.5rem;
         margin-bottom: 1rem;
+    }
+    #generated-html-container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    #generated-html-container textarea {
+        word-break: break-all;
+        -ms-word-break: break-all;
+        min-height: 60px;
+        font-family: Source Sans Pro, Noto Sans, Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-size: .845rem;
     }
     .license-use-hint {
         text-align: center;
@@ -203,29 +228,6 @@ export default {
                     height: 60px;
                 }
             }
-        }
-    }
-    #generated-html-container {
-        padding-top:10px;
-        padding-bottom: 10px;
-        textarea {
-            word-break: break-all;
-            -ms-word-break: break-all;
-            min-height: 60px;
-            font-family: "Source Sans Pro", "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
-            font-size:0.845rem;
-        }
-    }
-    #generated-richtext-container {
-        margin-top: 1rem;
-        display: block;
-        .attribution-license-icons {
-            vertical-align: middle;
-            margin-top: 0;
-            margin-left: 2px;
-        }
-        p {
-            display: inline
         }
     }
 </style>
