@@ -170,18 +170,20 @@
                 <p v-html="this.$t('help.how-licenses-communicated.text')" />
                 <table class="table is-hoverable is-fullwidth help-section__table">
                     <tbody>
-                        <tr>
-                            <th>{{ $t('help.how-licenses-communicated.full-name') }}</th>
-                            <td>{{ $t('help.how-licenses-communicated.CC-BY-SA') }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ $t('help.how-licenses-communicated.short-name') }}</th>
-                            <td>CC BY-NC</td>
-                        </tr>
-                        <tr>
-                            <th>{{ $t('help.how-licenses-communicated.license-icons') }}</th>
-                            <td><LicenseIconography :icon-list="['', 'by', 'nc']" /></td>
-                        </tr>
+                    <tr>
+                        <th>{{$t('help.how-licenses-communicated.full-name')}}</th>
+                        <td>{{$t('help.how-licenses-communicated.CC-BY-NC')}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{$t('help.how-licenses-communicated.short-name')}}</th>
+                        <td>CC BY-NC</td>
+                    </tr>
+                    <tr>
+                        <th>{{$t('help.how-licenses-communicated.license-icons')}}</th>
+                        <td>
+                            <LicenseIcons :iconsArr="['by', 'nc']"/>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </section>
@@ -202,7 +204,7 @@
     </div>
 </template>
 <script>
-import LicenseIconography from './LicenseIconography'
+import LicenseIcons from './LicenseIcons'
 
 // eslint-disable-next-line
 const ModalForm = {
@@ -224,7 +226,7 @@ const ModalForm = {
 }
 export default {
     components: {
-        LicenseIconography
+        LicenseIcons
     },
     data() {
         return {
