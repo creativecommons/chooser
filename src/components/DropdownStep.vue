@@ -1,20 +1,13 @@
 <template>
     <div class="step-content">
-        <div
-            v-if="status==='previous'"
-            class="step-description"
-        >
+        <div v-if="status==='previous'" class="step-description">
             {{ cardText }}
         </div>
-        <div
-            v-else-if="status==='current'"
-            class="step-actions"
-        >
+        <div v-else-if="status==='current'" class="step-actions">
             <LicenseDropdown @input="updateSelected" />
         </div>
     </div>
 </template>
-
 <script>
 import { mapGetters } from 'vuex'
 import LicenseDropdown from './LicenseDropdown'
@@ -43,7 +36,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>

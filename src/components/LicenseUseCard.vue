@@ -9,20 +9,15 @@
         <b-tabs>
             <b-tab-item :label="$t('license-use.web-tab-heading')">
                 {{ $t('license-use.web-instructions') }}
-                <LicenseCopy
-                    :is-web="true"
-                />
+                <LicenseCopy :is-web="true" />
             </b-tab-item>
             <b-tab-item :label="$t('license-use.print-media-tab-heading')">
                 {{ $t('license-use.print-media-instructions') }}
-                <LicenseCopy
-                    :is-web="false"
-                />
+                <LicenseCopy :is-web="false" />
             </b-tab-item>
         </b-tabs>
     </div>
 </template>
-
 <script>
 import LicenseCopy from './LicenseCopy'
 export default {
@@ -32,7 +27,6 @@ export default {
     }
 }
 </script>
-
 <style lang="scss">
 .license-use-card {
     margin-bottom: 24px;

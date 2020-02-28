@@ -1,43 +1,29 @@
 <template>
     <div class="license-code">
-        <b-tabs
-            v-model="activeTab"
-            class="attribution-tab"
-        >
+        <b-tabs v-model="activeTab"
+            class="attribution-tab">
             <b-tab-item :label="this.$t(firstTabLabel)">
                 <div id="attribution-text">
-                    <LicenseCode
-                        :attribution-type="textAttributionType"
-                    />
+                    <LicenseCode :attribution-type="textAttributionType" />
                 </div>
             </b-tab-item>
-            <b-tab-item
-                v-if="isWeb"
-                :label="this.$t('license-use.html-label')"
-            >
-                <div
-                    id="generated-html-container"
-                    class="control"
-                >
-                    <textarea
-                        id="attribution-html"
+            <b-tab-item v-if="isWeb"
+                :label="this.$t('license-use.html-label')">
+                <div id="generated-html-container"
+                    class="control">
+                    <textarea id="attribution-html"
                         class="textarea"
                         :value="htmlLicenseParagraph"
-                        readonly
-                    />
+                        readonly />
                 </div>
             </b-tab-item>
             <b-tab-item>
                 <template slot="header">
-                    <a
-                        class="copyBtn"
-                        :data-clipboard-target="clipboardTarget()"
-                    >
+                    <a class="copyBtn" :data-clipboard-target="clipboardTarget()">
                         <font-awesome-icon icon="copy" />
                         <span class="button-text">{{ copyText }}</span>
                     </a>
                 </template>
-                <div class="dummy" />
             </b-tab-item>
         </b-tabs>
     </div>
