@@ -1,24 +1,17 @@
 <template>
-    <a
-        :href="url"
+    <a :href="url"
         class="photo-license-icons"
         target="_blank"
         rel="noopener noreferrer"
-        @click.stop="() => false"
-    >
-        <img
-            class="photo-license-icon"
-            src="../assets/license-icons/cc_icon.svg"
-        >
-        <img
-            v-for="(license, index) in iconsArr"
+        @click.stop="() => false">
+        <img class="photo-license-icon"
+            src="../assets/license-icons/cc_icon.svg">
+        <img v-for="(license, index) in iconsArr"
             :key="index"
             class="photo-license-icon"
-            :src="require(`../assets/license-icons/cc-${license.toLowerCase()}_icon.svg`)"
-        >
+            :src="require(`../assets/license-icons/cc-${license.toLowerCase()}_icon.svg`)">
     </a>
 </template>
-
 <script>
 const LicenseIcons = {
     name: 'license-icons',
