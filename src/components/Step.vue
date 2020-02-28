@@ -1,20 +1,37 @@
 <template>
     <div>
-        <div class="step-description vocab-body body-normal"
-             v-if="this.status==='previous'||this.showDisabledDue">
-            <p class="vocab-body body-normal">{{$t(cardText)}}</p>
+        <div
+            v-if="status==='previous'||showDisabledDue"
+            class="step-description vocab-body body-normal"
+        >
+            <p class="vocab-body body-normal">
+                {{ $t(cardText) }}
+            </p>
         </div>
-        <div class="step-actions" v-else-if="this.status==='current'">
-            <div class="field" :class="yesSelected">
-                <b-radio v-model="radio"
-                         native-value="yes">
-                    <span class="vocab-body body-normal">{{$t('stepper.yes')}}{{$t(yesText)}}</span>
+        <div
+            v-else-if="status==='current'"
+            class="step-actions"
+        >
+            <div
+                class="field"
+                :class="yesSelected"
+            >
+                <b-radio
+                    v-model="radio"
+                    native-value="yes"
+                >
+                    <span class="vocab-body body-normal">{{ $t('stepper.yes') }}{{ $t(yesText) }}</span>
                 </b-radio>
             </div>
-            <div class="field" :class="noSelected">
-                <b-radio v-model="radio"
-                         native-value="no">
-                    <span class="vocab-body body-normal">{{$t('stepper.no')}}{{$t(noText)}}</span>
+            <div
+                class="field"
+                :class="noSelected"
+            >
+                <b-radio
+                    v-model="radio"
+                    native-value="no"
+                >
+                    <span class="vocab-body body-normal">{{ $t('stepper.no') }}{{ $t(noText) }}</span>
                 </b-radio>
             </div>
         </div>
@@ -29,7 +46,12 @@ export default {
         stepName: String,
         selected: Boolean,
         stepId: Number,
-        status: String,
+        status: {
+            type: String,
+            validator(value) {
+                return ['current', 'previous', 'inactive'].includes(value)
+            }
+        },
         reversed: Boolean,
         enabled: Boolean,
         disabledDue: String

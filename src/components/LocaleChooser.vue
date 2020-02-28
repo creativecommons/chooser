@@ -1,12 +1,16 @@
 <template>
     <div class="locale-chooser">
-        <b-field :label="this.$t('locale-selector.label')" :class="'locale-chooser-field'">
+        <b-field
+            :label="this.$t('locale-selector.label')"
+            :class="'locale-chooser-field'"
+        >
             <b-select v-model="$i18n.locale">
                 <option
-                    v-for="lang in this.availableLocaleNames"
+                    v-for="lang in availableLocaleNames"
+                    :key="lang.eng"
                     :value="lang.name"
-                    :key="lang.eng">
-                    {{lang.eng}} - {{lang.native}}
+                >
+                    {{ lang.eng }} - {{ lang.native }}
                 </option>
             </b-select>
         </b-field>

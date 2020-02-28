@@ -1,25 +1,32 @@
 <template>
     <div id="app">
-        <Header :title="$t('app.title')"/>
-        <div class="container" id="site-container">
+        <Header :title="$t('app.title')" />
+        <div
+            id="site-container"
+            class="container"
+        >
             <div class="page-head">
                 <div class="select-license-column">
-                    <h2 class="vocab h2a ha">{{$t('select-license.heading')}}</h2>
-                    <p class="stepper-instructions vocab-body body-bigger">{{$t('select-license.instructions')}}</p>
+                    <h2 class="vocab h2a ha">
+                        {{ $t('select-license.heading') }}
+                    </h2>
+                    <p class="stepper-instructions vocab-body body-bigger">
+                        {{ $t('select-license.instructions') }}
+                    </p>
                 </div>
                 <LocaleChooser />
             </div>
             <div class="columns">
                 <Stepper v-model="currentStepId" />
-                <div class="column" >
+                <div class="column">
                     <div class="fixed-right-column">
-                    <SelectedLicenseCard
-                        v-if="showLicense"
-                    />
-                    <LicenseUseCard
-                        v-if="showLicenseUse"
-                    />
-                    <HelpSection />
+                        <SelectedLicenseCard
+                            v-if="showLicense"
+                        />
+                        <LicenseUseCard
+                            v-if="showLicenseUse"
+                        />
+                        <HelpSection />
                     </div>
                 </div>
             </div>

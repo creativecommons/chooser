@@ -1,67 +1,85 @@
 <template>
-<div class="column vertical-stepper-container">
-    <div :class="['stepper-card', step.status, enabledQualifier(step.enabled)]"
-         v-for="(step, idx) in visibleSteps()"
-         :key="idx">
-        <div :class="['stepper-card-header']"
-            @click="setActiveStep(step.id)">
-            <h5 class="vocab hb h5b stepper-header-h5">{{$t(stepHeaderText(step.name, step.status))}}</h5>
-        </div>
-        <div :class="['step-card-content', step.status]"
-             v-if="step.status!=='inactive'">
-            <FirstStep
-                v-if="step.name==='FS'"
-                :step-id="step.id"
-                :selected="step.selected"
-                :status="step.status"
-                @change="changeStepSelected"
-            />
-            <Step
-                v-else-if="isLicenseAttribute(step.name)"
-                :step-id="step.id"
-                :step-name="step.name"
-                :selected="step.selected"
-                :status="step.status"
-                :reversed="isStepReversed(step.name)"
-                :enabled="step.enabled"
-                :disabled-due="step.disabledDue"
-                @change="changeStepSelected"
-            />
-            <CopyrightWaiverStep
-                v-if="step.name==='CW'"
-                :step-id="step.id"
-                :step-name="step.name"
-                :selected="step.selected"
-                :status="step.status"
-                @change="changeStepSelected"
-            />
-            <DropdownStep
-                v-else-if="step.name==='DD'"
-                :step-id="step.id"
-                :status="step.status"
-                @input="changeStepSelected"
+    <div class="column vertical-stepper-container">
+        <div
+            v-for="(step, idx) in visibleSteps()"
+            :key="idx"
+            :class="['stepper-card', step.status, enabledQualifier(step.enabled)]"
+        >
+            <div
+                :class="['stepper-card-header']"
+                @click="setActiveStep(step.id)"
+            >
+                <h5 class="vocab hb h5b stepper-header-h5">
+                    {{ $t(stepHeaderText(step.name, step.status)) }}
+                </h5>
+            </div>
+            <div
+                v-if="step.status!=='inactive'"
+                :class="['step-card-content', step.status]"
+            >
+                <FirstStep
+                    v-if="step.name==='FS'"
+                    :step-id="step.id"
+                    :selected="step.selected"
+                    :status="step.status"
+                    @change="changeStepSelected"
                 />
-            <AttributionDetailsStep
-                v-else-if="step.name==='AD'"
-                :step-id="step.id"
-                :status="step.status"
-            />
-            <nav class="step-navigation" v-if="step.status==='current'">
-                <a role="button" class="pagination-previous"
-                   v-if="step.name!=='FS'"
-                   @click="handlePrevious(step.name)">{{$t('stepper.nav.previous-label')}}</a>
-                <a role="button"
-                   v-if="step.name!=='AD'"
-                   :class="['pagination-next', nextButtonEnabledState(step.id)]"
-                   @click="handleNext(step.name)"
-                >{{$t('stepper.nav.next-label')}}</a>
-                <a role="button" class="pagination-next"
-                   v-else
-                   @click="handleFinish()">{{$t('stepper.nav.finish-label')}}</a>
-            </nav>
+                <Step
+                    v-else-if="isLicenseAttribute(step.name)"
+                    :step-id="step.id"
+                    :step-name="step.name"
+                    :selected="step.selected"
+                    :status="step.status"
+                    :reversed="isStepReversed(step.name)"
+                    :enabled="step.enabled"
+                    :disabled-due="step.disabledDue"
+                    @change="changeStepSelected"
+                />
+                <CopyrightWaiverStep
+                    v-if="step.name==='CW'"
+                    :step-id="step.id"
+                    :step-name="step.name"
+                    :selected="step.selected"
+                    :status="step.status"
+                    @change="changeStepSelected"
+                />
+                <DropdownStep
+                    v-else-if="step.name==='DD'"
+                    :step-id="step.id"
+                    :status="step.status"
+                    @input="changeStepSelected"
+                />
+                <AttributionDetailsStep
+                    v-else-if="step.name==='AD'"
+                    :step-id="step.id"
+                    :status="step.status"
+                />
+                <nav
+                    v-if="step.status==='current'"
+                    class="step-navigation"
+                >
+                    <a
+                        v-if="step.name!=='FS'"
+                        role="button"
+                        class="pagination-previous"
+                        @click="handlePrevious(step.name)"
+                    >{{ $t('stepper.nav.previous-label') }}</a>
+                    <a
+                        v-if="step.name!=='AD'"
+                        role="button"
+                        :class="['pagination-next', nextButtonEnabledState(step.id)]"
+                        @click="handleNext(step.name)"
+                    >{{ $t('stepper.nav.next-label') }}</a>
+                    <a
+                        v-else
+                        role="button"
+                        class="pagination-next"
+                        @click="handleFinish()"
+                    >{{ $t('stepper.nav.finish-label') }}</a>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -81,7 +99,12 @@ export default {
         CopyrightWaiverStep,
         DropdownStep
     },
-    props: ['value'],
+    props: {
+        value: {
+            type: Number,
+            default: 0
+        }
+    },
     data() {
         return {
             /** Data for 7 Stepper steps
@@ -115,6 +138,33 @@ export default {
                 { id: 7, name: 'AD', visible: true, enabled: true, status: 'inactive', selected: undefined }
             ]
         }
+    },
+    computed: {
+        currentStepId: {
+            get() { return this.$props.value },
+            set(newVal) {
+                this.$emit('input', newVal)
+            }
+        }
+    },
+    created: function() {
+        /**
+         * Updates the steps array when license is changed in store through dropdown selection
+         */
+        this.$store.subscribe((mutation, state) => {
+            if (mutation.type === 'updateAttributesFromShort') {
+                for (const step in this.steps) {
+                    const stepId = this.steps[step].id
+                    const stepName = this.steps[step].name
+                    const isStepSelected = this.steps[step].selected
+                    const isAttrSelected = state.currentLicenseAttributes[stepName]
+                    if (this.isLicenseAttribute(stepName) && isStepSelected !== isAttrSelected) {
+                        this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isAttrSelected })
+                        this.updateDisabledAndVisibleSteps(stepName, isAttrSelected)
+                    }
+                }
+            }
+        })
     },
     methods: {
         /**
@@ -277,33 +327,6 @@ export default {
                 return step.visible
             })
         }
-    },
-    computed: {
-        currentStepId: {
-            get() { return this.$props.value },
-            set(newVal) {
-                this.$emit('input', newVal)
-            }
-        }
-    },
-    created: function() {
-        /**
-         * Updates the steps array when license is changed in store through dropdown selection
-         */
-        this.$store.subscribe((mutation, state) => {
-            if (mutation.type === 'updateAttributesFromShort') {
-                for (const step in this.steps) {
-                    const stepId = this.steps[step].id
-                    const stepName = this.steps[step].name
-                    const isStepSelected = this.steps[step].selected
-                    const isAttrSelected = state.currentLicenseAttributes[stepName]
-                    if (this.isLicenseAttribute(stepName) && isStepSelected !== isAttrSelected) {
-                        this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isAttrSelected })
-                        this.updateDisabledAndVisibleSteps(stepName, isAttrSelected)
-                    }
-                }
-            }
-        })
     }
 }
 </script>

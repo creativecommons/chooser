@@ -1,16 +1,26 @@
 <template>
     <div>
-        <div class="step-description vocab-body body-normal"
-             v-if="this.status==='previous'">
-            <p class="vocab-body body-normal">{{$t('stepper.CW.selected')}}</p>
+        <div
+            v-if="status==='previous'"
+            class="step-description vocab-body body-normal"
+        >
+            <p class="vocab-body body-normal">
+                {{ $t('stepper.CW.selected') }}
+            </p>
         </div>
-        <div class="step-actions" v-else-if="this.status==='current'">
+        <div
+            v-else-if="status==='current'"
+            class="step-actions"
+        >
             <b-checkbox v-model="copyrightWaiverAgreed">
-                {{$t('stepper.CW.copyright-waive-agreement')}}
+                {{ $t('stepper.CW.copyright-waive-agreement') }}
             </b-checkbox>
-            <textarea :value="this.$t('cc0-waiver.text')" :class="'waiver-textarea'" />
+            <textarea
+                :value="this.$t('cc0-waiver.text')"
+                :class="'waiver-textarea'"
+            />
             <b-checkbox v-model="copyrightWaiverConfirmed">
-                {{$t("stepper.CW.copyright-waive-confirmation")}}
+                {{ $t("stepper.CW.copyright-waive-confirmation") }}
             </b-checkbox>
         </div>
     </div>
@@ -23,7 +33,12 @@ export default {
         stepId: Number,
         stepName: String,
         selected: Boolean,
-        status: String
+        status: {
+            type: String,
+            validator(value) {
+                return ['current', 'previous', 'inactive'].includes(value)
+            }
+        }
     },
     data() {
         return {

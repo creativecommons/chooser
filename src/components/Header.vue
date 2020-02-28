@@ -1,20 +1,23 @@
 <template>
-    <b-navbar wrapperClass="container">
+    <b-navbar wrapper-class="container">
         <template slot="brand">
             <b-navbar-item>
                 <img
                     src="https://creativecommons.org/wp-content/uploads/2016/05/cc-site-icon-300x300.png"
                     alt="Creative Commons License chooser"
                 >
-                <h1 class="app-heading">{{$t('app.title')}}</h1>
+                <h1 class="app-heading">
+                    {{ $t('app.title') }}
+                </h1>
             </b-navbar-item>
         </template>
         <template slot="end">
             <b-navbar-item
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfF7MCKxlPsPuMn17v_sLYWMkxBkudQSPXCXoJKjh5GCtx63g/viewform"
                 title="Feedback"
-                :class="'navbar-item-feedback'">
-                {{$t('header.nav-feedback')}}
+                :class="'navbar-item-feedback'"
+            >
+                {{ $t('header.nav-feedback') }}
             </b-navbar-item>
         </template>
     </b-navbar>

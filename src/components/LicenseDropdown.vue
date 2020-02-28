@@ -1,12 +1,16 @@
 <template>
     <div class="license-dropdown">
         <b-field>
-            <b-select :placeholder="this.$t('stepper.DD.placeholder')" @input="setCurrentLicense"
-                      :value="this.shortName">
+            <b-select
+                :placeholder="this.$t('stepper.DD.placeholder')"
+                :value="shortName"
+                @input="setCurrentLicense"
+            >
                 <option
-                    v-for="license in this.licenseList"
+                    v-for="license in licenseList"
+                    :key="license"
                     :value="license"
-                    :key="license">
+                >
                     {{ license }}
                 </option>
             </b-select>
@@ -33,6 +37,9 @@ export default {
             currentLicense: undefined
         }
     },
+    computed: {
+        ...mapGetters(['shortName', 'fullName'])
+    },
     methods: {
         setCurrentLicense(currentLicense) {
             this.$store.commit('updateAttributesFromShort', currentLicense)
@@ -45,11 +52,7 @@ export default {
                 })
             }
         }
-    },
-    computed: {
-        ...mapGetters(['shortName', 'fullName'])
     }
-
 }
 </script>
 <style lang="scss">

@@ -1,19 +1,41 @@
 <template>
     <div>
-        <p class="step-description vocab-body body-normal" v-if="this.status==='previous'">
-            {{$t(cardText)}}
+        <p
+            v-if="status==='previous'"
+            class="step-description vocab-body body-normal"
+        >
+            {{ $t(cardText) }}
         </p>
-        <div class="step-actions" v-else-if="this.status==='current'">
-            <div class="field" :class="yesSelected">
-                <b-radio v-model="radio"
-                         native-value="yes">
-                    <span class="vocab-body body-normal" v-html="$t(yesText)" />
+        <div
+            v-else-if="status==='current'"
+            class="step-actions"
+        >
+            <div
+                class="field"
+                :class="yesSelected"
+            >
+                <b-radio
+                    v-model="radio"
+                    native-value="yes"
+                >
+                    <span
+                        class="vocab-body body-normal"
+                        v-html="$t(yesText)"
+                    />
                 </b-radio>
             </div>
-            <div class="field" :class="noSelected">
-                <b-radio v-model="radio"
-                         native-value="no">
-                    <span class="vocab-body body-normal" v-html="$t(noText)" />
+            <div
+                class="field"
+                :class="noSelected"
+            >
+                <b-radio
+                    v-model="radio"
+                    native-value="no"
+                >
+                    <span
+                        class="vocab-body body-normal"
+                        v-html="$t(noText)"
+                    />
                 </b-radio>
             </div>
         </div>
