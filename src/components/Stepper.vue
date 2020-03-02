@@ -1,83 +1,76 @@
 <template>
-    <div class="column vertical-stepper-container">
+    <div class="stepper-container column">
         <div
             v-for="(step, idx) in visibleSteps()"
             :key="idx"
-            :class="['stepper-card', step.status, enabledQualifier(step.enabled)]"
+            :class="['step-container', step.status, enabledQualifier(step.enabled)]"
         >
             <div
-                :class="['stepper-card-header']"
+                :class="['step-header']"
                 @click="setActiveStep(step.id)"
             >
-                <h5 class="vocab hb h5b stepper-header-h5">
+                <h5 class="step-title vocab hb h5b">
                     {{ $t(stepHeaderText(step.name, step.status)) }}
                 </h5>
             </div>
-            <div
-                v-if="step.status!=='inactive'"
-                :class="['step-card-content', step.status]"
+            <FirstStep
+                v-if="step.status!=='inactive' && step.name==='FS'"
+                :step-id="step.id"
+                :selected="step.selected"
+                :status="step.status"
+                @change="changeStepSelected"
+            />
+            <Step
+                v-else-if="step.status!=='inactive' && isLicenseAttribute(step.name)"
+                :step-id="step.id"
+                :step-name="step.name"
+                :selected="step.selected"
+                :status="step.status"
+                :reversed="isStepReversed(step.name)"
+                :enabled="step.enabled"
+                :disabled-due="step.disabledDue"
+                @change="changeStepSelected"
+            />
+            <CopyrightWaiverStep
+                v-else-if="step.status!=='inactive' && step.name==='CW'"
+                :step-id="step.id"
+                :step-name="step.name"
+                :selected="step.selected"
+                :status="step.status"
+                @change="changeStepSelected"
+            />
+            <DropdownStep
+                v-else-if="step.status!=='inactive' && step.name==='DD'"
+                :step-id="step.id"
+                :status="step.status"
+                @input="changeStepSelected"
+            />
+            <AttributionDetailsStep
+                v-else-if="step.status!=='inactive' && step.name==='AD'"
+                :step-id="step.id"
+                :status="step.status"
+            />
+            <nav
+                v-if="step.status==='current'"
+                class="step-navigation"
             >
-                <FirstStep
-                    v-if="step.name==='FS'"
-                    :step-id="step.id"
-                    :selected="step.selected"
-                    :status="step.status"
-                    @change="changeStepSelected"
-                />
-                <Step
-                    v-else-if="isLicenseAttribute(step.name)"
-                    :step-id="step.id"
-                    :step-name="step.name"
-                    :selected="step.selected"
-                    :status="step.status"
-                    :reversed="isStepReversed(step.name)"
-                    :enabled="step.enabled"
-                    :disabled-due="step.disabledDue"
-                    @change="changeStepSelected"
-                />
-                <CopyrightWaiverStep
-                    v-if="step.name==='CW'"
-                    :step-id="step.id"
-                    :step-name="step.name"
-                    :selected="step.selected"
-                    :status="step.status"
-                    @change="changeStepSelected"
-                />
-                <DropdownStep
-                    v-else-if="step.name==='DD'"
-                    :step-id="step.id"
-                    :status="step.status"
-                    @input="changeStepSelected"
-                />
-                <AttributionDetailsStep
-                    v-else-if="step.name==='AD'"
-                    :step-id="step.id"
-                    :status="step.status"
-                />
-                <nav
-                    v-if="step.status==='current'"
-                    class="step-navigation"
-                >
-                    <a
-                        v-if="step.name!=='FS'"
-                        role="button"
-                        class="pagination-previous"
-                        @click="handlePrevious(step.name)"
-                    >{{ $t('stepper.nav.previous-label') }}</a>
-                    <a
-                        v-if="step.name!=='AD'"
-                        role="button"
-                        :class="['pagination-next', nextButtonEnabledState(step.id)]"
-                        @click="handleNext(step.name)"
-                    >{{ $t('stepper.nav.next-label') }}</a>
-                    <a
-                        v-else
-                        role="button"
-                        class="pagination-next"
-                        @click="handleFinish()"
-                    >{{ $t('stepper.nav.finish-label') }}</a>
-                </nav>
-            </div>
+                <a
+                    v-if="step.name!=='FS'"
+                    role="button"
+                    class="pagination-previous"
+                    @click="handlePrevious(step.name)"
+                >{{ $t('stepper.nav.previous-label') }}</a>
+                <a
+                    v-if="step.name!=='AD'"
+                    role="button"
+                    :class="['pagination-next', nextButtonEnabledState(step.id)]"
+                    @click="handleNext(step.name)"
+                >{{ $t('stepper.nav.next-label') }}</a>
+                <span
+                    v-else
+                    class="pagination-finish"
+                >{{ $t('stepper.nav.finish-label') }}</span>
+            </nav>
         </div>
     </div>
 </template>
@@ -331,21 +324,8 @@ export default {
 }
 </script>
 
-<style>
-    .step-navigation .pagination-previous {
-        border: 2px solid #787878;
-        color: #787878;
-    }
-    .pagination-next {
-        background-color: #04a635;
-        color: #fff!important;
-        font-family: Roboto Condensed,sans-serif;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 24px;
-    }
-    .stepper-card {
+<style lang="scss">
+    .step-container {
         background-color: white;
         border: 2px solid  #D8D8D8;
         border-bottom: none;
@@ -353,12 +333,12 @@ export default {
         max-width: 100%;
         position: relative;
         padding-bottom: 8px;
+        &:last-of-type {
+            border-bottom: 2px solid #D8D8D8;
+            margin-bottom: 15rem;
+         }
     }
-    .stepper-card:last-of-type {
-        border-bottom: 2px solid #D8D8D8;
-        margin-bottom: 15rem;
-    }
-    .stepper-card-header {
+    .step-header {
         background-color: transparent;
         -webkit-box-align: stretch;
         align-items: stretch;
@@ -366,14 +346,15 @@ export default {
         display: flex;
         position:relative;
         margin: 24px 24px 8px;
+        &:hover {
+            cursor: pointer;
+        }
     }
-    .stepper-card-header:hover {
-        cursor: pointer;
-    }
-    .stepper-card-header .stepper-header-h5 {
+
+    .step-header .step-title {
         margin-left: 45px;
     }
-    .stepper-header-h5::before{
+    .step-header .step-title::before{
         counter-increment: step-counter;
         position: absolute;
         left: 0;
@@ -391,15 +372,12 @@ export default {
         color: #fff;
         top: 0;
     }
-    .previous.disabled .stepper-header-h5::before,
-    .inactive .stepper-header-h5::before {
+    .previous.disabled .step-title::before,
+    .inactive .step-title::before {
         background-color: #D8D8D8;
         color: #333333;
     }
-    .stepper-instructions {
-        margin-bottom: 14px;
-    }
-    .step-card-content {
+    .step-content {
         margin-left: 69px;
         padding-bottom:8px;
         padding-right: 24px;
@@ -414,21 +392,30 @@ export default {
     .previous.disabled {
         color: #B0B0B0;
     }
-    .previous.disabled .vocab-h5b,
-    .inactive .vocab.h5b {
+    .previous.disabled .step-title,
+    .inactive .step-title {
         color: #B0B0B0;
     }
     .step-navigation {
-        margin: 13px 0 13px -4px;
+        margin: 13px 0;
+        padding-left: 65px;
     }
-    .pagination-next {
-        background-color: #04A635;
-        color: white!important;
+    .step-navigation .pagination-next,
+    .step-navigation .pagination-previous {
         font-family: Roboto Condensed,sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
         line-height: 24px;
+    }
+    .step-navigation .pagination-previous {
+        border: 2px solid #787878;
+        color: #787878;
+    }
+    .step-navigation .pagination-next {
+        background-color: #04a635;
+        color: #fff!important;
+        border: 2px solid transparent;
     }
     .pagination-next.disabled {
         background-color: #D8D8D8;
@@ -437,6 +424,10 @@ export default {
     .pagination-next.disabled:active {
         box-shadow: none;
         border: 1px solid transparent;
+    }
+    .pagination-finish{
+        margin-left: 1rem;
+        line-height: 42px;
     }
     .slide-enter-active {
         /*transition: all .3s ease;*/
@@ -467,7 +458,7 @@ export default {
         }
     }
     @media (max-width: 860px) {
-        .stepper-card:last-of-type {
+        .step-container:last-of-type {
             margin-bottom: 1rem;
         }
     }

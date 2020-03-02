@@ -15,7 +15,7 @@
         "nav": {
             "previous-label": "BACK",
             "next-label": "NEXT STEP",
-            "finish-label": "SEE LICENSE & ATTRIBUTION"
+            "finish-label": "Attribution details are automatically updated"
         },
         "yes": "Yes. ",
         "no": "No. ",
@@ -106,7 +106,7 @@
         }
     },
     "license-use": {
-        "heading": "Use your license.",
+        "heading": "Use your license",
         "common-instructions": "Choose what kind of work you are licensing to get appropriate license code.",
         "web-instructions": "If you are licensing one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page.",
         "web-tab-heading": "Website",

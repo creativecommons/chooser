@@ -4,30 +4,23 @@
             {{ $t('help.heading') }}
         </h3>
         <ul class="help-links">
-            <li
-                v-for="(modal, idx) in modals"
+            <li v-for="(modal, idx) in modals"
                 :key="idx"
-                class="help-link"
-            >
-                <a
-                    class="vocab-body body-big help-link-a"
-                    @click="clickHandler(idx)"
-                >{{ $t(`help.${modal.title}.heading`) }}</a>
+                class="help-link">
+                <a class="vocab-body body-big help-link-a"
+                    @click="clickHandler(idx)">
+                    {{ $t(`help.${modal.title}.heading`) }}
+                </a>
             </li>
         </ul>
-
         <b-modal :active.sync="modals[1].status">
             <header class="modal-card-head">
-                <p
-                    class="modal-card-title modal-title"
-                    v-html="this.$t('help.what-are-cc-licenses.heading')"
-                />
+                <p class="modal-card-title modal-title"
+                    v-html="this.$t('help.what-are-cc-licenses.heading')"/>
             </header>
             <section class="modal-card-body">
-                <article
-                    class="help-text"
-                    v-html="this.$t('help.what-are-cc-licenses.text')"
-                />
+                <article class="help-text"
+                    v-html="this.$t('help.what-are-cc-licenses.text')"/>
                 <footer class="modal-card-foot">
                     <p v-html="this.$t('help.what-are-cc-licenses.footer')" />
                 </footer>
@@ -41,10 +34,8 @@
             </header>
             <section class="modal-card-body">
                 <article v-html="this.$t('help.how-licenses-work.text')" />
-                <footer
-                    class="modal-card-foot"
-                    v-html="this.$t('help.how-licenses-work.footer')"
-                />
+                <footer class="modal-card-foot"
+                    v-html="this.$t('help.how-licenses-work.footer')"/>
             </section>
         </b-modal>
         <b-modal :active.sync="modals[3].status">
@@ -211,7 +202,7 @@
     </div>
 </template>
 <script>
-import LicenseIconography from './LicenseIconography'
+import LicenseIcons from './LicenseIcons'
 
 // eslint-disable-next-line
 const ModalForm = {
@@ -233,7 +224,7 @@ const ModalForm = {
 }
 export default {
     components: {
-        LicenseIconography
+        LicenseIcons
     },
     data() {
         return {
@@ -385,10 +376,6 @@ export default {
 
     .edu-icons-section-icon_title p {
         margin: 0;
-    }
-
-    .vocab.license-icons img {
-        width: 35px;
     }
 
 </style>

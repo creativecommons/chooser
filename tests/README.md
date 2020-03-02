@@ -8,12 +8,12 @@ This file will be used to document some useful commands and tips for tests. Also
 If you want to run only unit tests, use:
 
 ``` bash
-$ npm run unit
+$ npm run test:unit
 ```
 
 If you want to run only e2e tests, use:
 ``` bash
-$ npm run e2e
+$ npm run test:e2e
 ```
 
 ### About Snapshots Test

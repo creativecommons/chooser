@@ -1,42 +1,28 @@
 <template>
-    <p
-        xmlns:dct="http://purl.org/dc/terms/"
+    <p xmlns:dct="http://purl.org/dc/terms/"
         xmlns:cc="http://creativecommons.org/ns#"
-        class="license-text"
-    >
-        <i18n
-            path="license-use.richtext.full-text"
-            tag="span"
-        >
+        class="license-text">
+        <i18n path="license-use.richtext.full-text" tag="span">
             <template v-slot:workTitle>
-                <a
-                    v-if="workUrl && isWeb"
+                <a v-if="workUrl && isWeb"
                     :href="workUrl"
-                    rel="cc:attributionURL"
-                >
+                    rel="cc:attributionURL">
                     <span v-if="!workTitle">{{ $t('license-use.richtext.workTitle') }}</span>
-                    <span
-                        v-else
-                        rel="dc:title"
-                    >{{ workTitle }}</span>
+                    <span v-else rel="dc:title">
+                        {{ workTitle }}
+                    </span>
                 </a>
-                <span
-                    v-else-if="workTitle"
-                    rel="dc:title"
-                >{{ workTitle }}</span>
+                <span v-else-if="workTitle" rel="dc:title">
+                    {{ workTitle }}
+                </span>
                 <span v-else>{{ $t('license-use.richtext.workTitle') }}</span>
             </template>
             <template v-slot:creator>
-                <a
-                    v-if="creatorProfileUrl && isWeb"
+                <a v-if="creatorProfileUrl && isWeb"
                     :href="creatorProfileUrl"
-                    rel="cc:attributionURL"
-                >
+                    rel="cc:attributionURL">
                     <span v-html="creatorSpan" /></a>
-                <span
-                    v-else-if="creatorName"
-                    v-html="creatorSpan"
-                />
+                <span v-else-if="creatorName" v-html="creatorSpan" />
             </template>
             <template v-slot:by>
                 {{ $t(byString) }}
@@ -45,33 +31,28 @@
                 <span>{{ $t('license-use.richtext.licensed-text') }}</span>
             </template>
             <template v-slot:licenseName>
-                <a
-                    v-if="isWeb"
+                <a v-if="isWeb"
                     :href="licenseUrl('web')"
                     target="_blank"
                     rel="license noopener noreferrer"
-                    style="display: inline-block;"
-                >{{ shortName }}</a>
+                    style="display: inline-block;">
+                    {{ shortName }}
+                </a>
                 <span v-else>{{ shortName }}</span>
-                <LicenseIcons
-                    v-if="isWeb"
+                <LicenseIcons v-if="isWeb"
                     :url="licenseUrl('web')"
-                    :icons-arr="iconsList"
-                />
+                    :icons-arr="iconsList" />
             </template>
         </i18n>
-        <i18n
-            v-if="!isWeb"
+        <i18n v-if="!isWeb"
             path="license-use.richtext.print-instructions"
-            tag="span"
-        >
+            tag="span">
             <template v-slot:linkToLicenseDeed>
                 {{ licenseUrl('print') }}
             </template>
         </i18n>
     </p>
 </template>
-
 <script>
 import { mapGetters, mapState } from 'vuex'
 import LicenseIcons from './LicenseIcons'

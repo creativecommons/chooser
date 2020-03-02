@@ -70,8 +70,7 @@ export default {
     padding-bottom:0;
 }
 .chooser-footer a,
-.middle-column .footer-licensing-text a
-{
+.middle-column .footer-licensing-text a {
     color:  #05B5DA;
 }
 .chooser-footer a:hover,
@@ -90,5 +89,20 @@ export default {
 }
 .donation-column {
     padding-top: 118px;
+}
+@media only screen and (max-width: 768px) {
+    .chooser-footer .chooser-footer-container {
+        display: grid;
+        grid-template-columns: 100%;
+    }
+    .middle-column {
+        padding-top: 1rem;
+    }
+    .donation-column {
+        padding-top: 1rem;
+    }
+    .footer-cc-logo {
+        max-width: 300px;
+    }
 }
 </style>

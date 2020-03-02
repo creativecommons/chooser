@@ -4,28 +4,22 @@
             {{ $t('license-details-card.heading') }}
         </h3>
         <h4 class="vocab h4b hb">
-            <a
-                :href="licenseUrl('web')"
-                class="license-name"
-            >{{ fullName }} ({{ shortName }})
-                <LicenseIcons
-                    :url="licenseUrl('web')"
-                    :icons-arr="iconsList"
-                />
+            <a :href="licenseUrl('web')"
+                class="license-name">
+                {{ fullName }} ({{ shortName }})
+                <LicenseIcons :url="licenseUrl('web')" :icons-arr="iconsList" />
             </a>
         </h4>
-        <p id="chooser-selected-description">
-            <b>{{ licenseSlug }}</b>
+        <p class="chooser-selected-description">
+            <b>{{ slug.toUpperCase() }}</b>
             {{ $t(licenseKey) }}
         </p>
         <section class="license-visual-info">
             <ul class="license-list">
                 <transition-group name="highlight">
-                    <li
-                        v-for="item in iconsList"
+                    <li v-for="item in iconsList"
                         :key="item"
-                        :class="['license-list-item', item]"
-                    >
+                        :class="['license-list-item', item]">
                         <span class="readable-string">
                             <b v-if="item!=='zero'">{{ item.toUpperCase() }}:</b>
                             <b v-else>CC0:</b>
@@ -37,8 +31,8 @@
         </section>
     </div>
 </template>
-
 <script>
+import { licenseSlug } from '../utils/license-utilities'
 import LicenseIcons from './LicenseIcons'
 import { mapGetters } from 'vuex'
 
@@ -50,20 +44,23 @@ export default {
     computed: {
         ...mapGetters(['shortName', 'fullName', 'iconsList', 'licenseUrl']),
         licenseDescription() {
-            const descriptionString = `${this.$licenseSlug(this.shortName)}-description`
+            const descriptionString = `${this.slug}-description`
             return this.$t(descriptionString)
         },
-        licenseSlug() {
-            return this.shortName.slice(0, this.shortName.length - 4)
-        },
         licenseKey() {
-            return `license-details-card.full-description.${this.licenseSlug.toLowerCase().replace(' ', '-')}`
+            return `license-details-card.full-description.${this.slug}`
+        },
+        slug() {
+            return licenseSlug(this.shortName)
         }
     }
 }
 </script>
 
 <style lang="scss">
+    .select-license-card {
+        margin-bottom: 32px;
+    }
     .license-name {
         vertical-align: middle;
         display: inline-block;
