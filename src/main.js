@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Buefy from 'buefy'
-import 'buefy/dist/buefy.css'
 import i18n from './i18n'
 import VueAnalytics from 'vue-analytics'
 import App from './App.vue'
@@ -14,10 +13,12 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCopy } from '@fortawesome/free-solid-svg-icons/faCopy'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import {
-    faCreativeCommons, faCreativeCommonsBy, faCreativeCommonsNc,
-    faCreativeCommonsNd, faCreativeCommonsSa, faCreativeCommonsZero
-} from '@fortawesome/free-brands-svg-icons'
+import { faCreativeCommons } from '@fortawesome/free-brands-svg-icons/faCreativeCommons'
+import { faCreativeCommonsBy } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsBy'
+import { faCreativeCommonsNc } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsNc'
+import { faCreativeCommonsNd } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsNd'
+import { faCreativeCommonsSa } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsSa'
+import { faCreativeCommonsZero } from '@fortawesome/free-brands-svg-icons/faCreativeCommonsZero'
 
 library.add(
     faCopy, faCreativeCommons, faCreativeCommonsBy,
