@@ -74,8 +74,8 @@ export default {
     color:  #05B5DA;
 }
 .chooser-footer a:hover,
-.middle-column .footer-licensing-text a:hover, .middle-column .footer-contribute-link a:hover{
-    text-decoration: underline;  
+.middle-column .footer-licensing-text a:hover, .middle-column .footer-contribute-link a:hover {
+    text-decoration: underline; 
 }
 
 .footer-cc-logo {
