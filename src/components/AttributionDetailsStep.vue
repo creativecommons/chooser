@@ -1,28 +1,34 @@
 <template>
     <div class="step-content">
-        <div v-if="status==='current'"
-            class="step-actions">
+        <div
+            v-if="status==='current'"
+            class="step-actions"
+        >
             <p class="attribution-details-instructions">
                 {{ $t('stepper.AD.instructions') }}
             </p>
             <form class="attribution-details-form">
                 <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
-                    <b-input v-model="creatorName"
+                    <b-input
+                        v-model="creatorName"
                         :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
                     />
                 </b-field>
                 <b-field :label="this.$t('stepper.AD.form.creator-profile.label')">
-                    <b-input v-model="creatorProfileUrl"
+                    <b-input
+                        v-model="creatorProfileUrl"
                         :placeholder="this.$t('stepper.AD.form.creator-profile.placeholder')"
                     />
                 </b-field>
                 <b-field :label="this.$t('stepper.AD.form.work-title.label')">
-                    <b-input v-model="workTitle"
+                    <b-input
+                        v-model="workTitle"
                         :placeholder="this.$t('stepper.AD.form.work-title.placeholder')"
                     />
                 </b-field>
                 <b-field :label="this.$t('stepper.AD.form.work-url.label')">
-                    <b-input v-model="workUrl"
+                    <b-input
+                        v-model="workUrl"
                         :placeholder="this.$t('stepper.AD.form.work-url.placeholder')"
                     />
                 </b-field>
