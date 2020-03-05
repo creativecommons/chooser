@@ -75,7 +75,8 @@ export default {
 }
 .chooser-footer a:hover,
 .middle-column .footer-licensing-text a:hover {
-    color: #363636;
+    text-decoration: underline;
+    text-decoration-style: dotted;
 }
 
 .footer-cc-logo {
