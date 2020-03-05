@@ -75,7 +75,7 @@ export default {
 }
 .chooser-footer a:hover,
 .middle-column .footer-licensing-text a:hover, .middle-column .footer-contribute-link a:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
 }
 
 .footer-cc-logo {
