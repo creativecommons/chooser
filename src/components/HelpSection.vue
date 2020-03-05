@@ -190,7 +190,7 @@
                         </tr>
                         <tr>
                             <th>{{ $t('help.how-licenses-communicated.license-icons') }}</th>
-                            <td><LicenseIconography :icon-list="['', 'by', 'nc']" /></td>
+                            <td><LicenseIcons :icons-arr="['by', 'nc']" /></td>
                         </tr>
                     </tbody>
                 </table>
