@@ -69,15 +69,12 @@ export default {
     margin-bottom: 0;
     padding-bottom:0;
 }
-.chooser-footer a,
-.middle-column .footer-licensing-text a {
-    color:  #05B5DA;
+.chooser-footer-container a, .chooser-footer-container a:hover {
+ color:#05b5da;
 }
-.chooser-footer a:hover,
-.middle-column .footer-licensing-text a:hover {
-    color: #363636;
+.chooser-footer-container a:hover {
+    text-decoration: underline;
 }
-
 .footer-cc-logo {
     margin-bottom: 40px;
 }
