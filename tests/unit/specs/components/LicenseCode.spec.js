@@ -1,4 +1,3 @@
-/* eslint-disable eol-last */
 import { mount, createLocalVue, config } from '@vue/test-utils'
 import LicenseCode from '@/components/LicenseCode.vue'
 import VueI18n from 'vue-i18n'
