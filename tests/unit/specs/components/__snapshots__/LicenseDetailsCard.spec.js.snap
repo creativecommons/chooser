@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LicenseDetailsCard.vue has the expected UI 1`] = `
+exports[`LicenseDetailsCard.vue Check if the LicenseDetailsCard.vue component has the expected UI 1`] = `
 <div class="selected-license-card">
   <h3 class="vocab ha h3a">
     license-details-card.heading
   </h3>
-  <h4 class="vocab h4b hb"><a href="http://example.com" class="license-name">
-      fooBar (foo)
-      <a href="http://example.com" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img src="../assets/license-icons/cc_icon.svg" class="photo-license-icon"> <img src="[object Object]" class="photo-license-icon"><img src="[object Object]" class="photo-license-icon"></a></a></h4>
-  <p class="chooser-selected-description"><b>FO</b>
-    license-details-card.full-description.fo
+  <h4 class="vocab h4b hb"><a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser" class="license-name">
+      Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img src="../assets/license-icons/cc_icon.svg" class="photo-license-icon"> <img src="[object Object]" class="photo-license-icon"><img src="[object Object]" class="photo-license-icon"></a></a></h4>
+  <p class="chooser-selected-description"><b>CC-BY-SA</b>
+    license-details-card.full-description.cc-by-sa
   </p>
   <section class="license-visual-info">
     <ul class="license-list"><span name="highlight"><li class="license-list-item by"><span class="readable-string"><b>BY:</b>
