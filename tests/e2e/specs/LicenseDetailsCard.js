@@ -12,7 +12,7 @@ module.exports = {
             .click('option[value="CC BY-SA 4.0"]')
             .assert.elementPresent('.selected-license-card')
     },
-    'Check if the a tag with class license-name redirects to https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser': function(browser) {
+    'Check if the a tag with class license-name redirects correctly': function(browser) {
         browser
             .assert.elementPresent('a[class="license-name"]')
             .getAttribute('a[class="license-name"]', 'href', function(result) {
