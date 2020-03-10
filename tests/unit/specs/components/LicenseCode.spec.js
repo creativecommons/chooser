@@ -5,64 +5,55 @@ import Vuex from 'vuex'
 
 describe('LicenseCode.vue', () => {
     let wrapper
-    let getters
     let state
     let store
 
     // Always creates a shallow instance of component
     beforeEach(() => {
-            const localVue = createLocalVue()
-            localVue.use(VueI18n)
-            localVue.use(Vuex)
-            state = {
-                attributionDetails: {
-                    creatorName: 'J Doe',
-                    creatorProfileUrl: 'www.author.com',
-                    workTitle: 'My work',
-                    workUrl: 'www.author.com/pic.jpg'
-                }
+        const localVue = createLocalVue()
+        localVue.use(VueI18n)
+        localVue.use(Vuex)
+        state = {
+            attributionDetails: {
+                creatorName: 'J Doe',
+                creatorProfileUrl: 'www.author.com',
+                workTitle: 'My work',
+                workUrl: 'www.author.com/pic.jpg'
             }
-            getters = {
-                shortName: state => {
-                    return 'foo'
-                },
-                licenseUrl: state => (mode) => {
-                    return 'http://example.com'
-                },
-                iconsList: state => {
-                    return ['by', 'sa']
-                }
-            }
-            store = new Vuex.Store({
-                state,
-                getters
-            })
-            const messages = require('@/locales/en.json')
-            const i18n = new VueI18n({
-                locale: 'en',
-                fallbackLocale: 'en',
-                messages: messages
-            })
-
-            config.mocks.i18n = i18n
-
-            config.mocks.$t = (key) => {
-                return i18n.messages[key]
-            }
-            wrapper = mount(LicenseCode, {
-                localVue,
-                store
-            })
+        }
+        store = new Vuex.Store({
+            state
         })
-        // Test for DOM elements which must be present
-    it('Has the main p tag', () => {
+        const messages = require('@/locales/en.json')
+        const i18n = new VueI18n({
+            locale: 'en',
+            fallbackLocale: 'en',
+            messages: messages,
+            silentTranslationWarn: true
+        })
+
+        config.mocks.i18n = i18n
+
+        config.mocks.$t = (key) => {
+            return i18n.messages[key]
+        }
+        wrapper = mount(LicenseCode, {
+            localVue,
+            store,
+            i18n
+        })
+    })
+
+    // Test for DOM elements which must be present
+    it('Check if the p-tag with class license-text is present in the DOM', () => {
         expect(wrapper.contains('.license-text')).toBe(true)
     })
 
-    // Tests for computed props and methods
-    it('renders without any errors', () => {
+    it('Check if the LicenseCode.vue component renders without any errors', () => {
         expect(wrapper.isVueInstance()).toBeTruthy()
     })
+
+    // Tests for computed props and methods
     it('Check if the byString function returns the correct text', () => {
         expect(wrapper.vm.byString).toBe('license-use.richtext.by')
     })
@@ -81,12 +72,15 @@ describe('LicenseCode.vue', () => {
     it('Check if the workUrl function returns the correct text', () => {
         expect(wrapper.vm.workUrl).toBe('www.author.com/pic.jpg')
     })
-    it('Check if the isWeb function returns the correct boolean', () => {
+    it('Check if the isWeb function returns true if attribution type is web', () => {
         wrapper.setProps({
-            attributionType: {
-                type: String,
-                default: 'web'
-            }
+            attributionType: 'web'
+        })
+        expect(wrapper.vm.isWeb).toBe(true)
+    })
+    it('Check if the isWeb function returns false if attribution type is print', () => {
+        wrapper.setProps({
+            attributionType: 'print'
         })
         expect(wrapper.vm.isWeb).toBe(false)
     })
