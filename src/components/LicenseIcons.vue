@@ -1,15 +1,25 @@
 <template>
-    <a :href="url"
+    <a
+        :href="url"
         class="photo-license-icons"
         target="_blank"
         rel="noopener noreferrer"
-        @click.stop="() => false">
-        <img class="photo-license-icon"
-            src="../assets/license-icons/cc_icon.svg">
-        <img v-for="(license, index) in iconsArr"
+        @click.stop="() => false"
+    >
+        <img
+            class="photo-license-icon"
+            alt="CC icon"
+            title="CC icon"
+            src="../assets/license-icons/cc_icon.svg"
+        >
+        <img
+            v-for="(license, index) in iconsArr"
             :key="index"
             class="photo-license-icon"
-            :src="require(`../assets/license-icons/cc-${license.toLowerCase()}_icon.svg`)">
+            :alt="license + ' icon'"
+            :title="license + ' icon'"
+            :src="require(`../assets/license-icons/cc-${license.toLowerCase()}_icon.svg`)"
+        >
     </a>
 </template>
 <script>
@@ -28,7 +38,8 @@ export default LicenseIcons
         margin-right:3px;
     }
     .photo-license-icon {
-      height: inherit;
-      margin-left: 3px;
+      height: 2rem;
+      width: auto;
+      margin-right: 3px;
     }
 </style>

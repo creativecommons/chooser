@@ -1,12 +1,12 @@
 {
-    "name": "cc-chooser",
+    "name": "chooser",
     "version": "1.0.0",
     "description": "The new and improved Creative Commons License Chooser",
     "author": "akmadian <akmadian@gmail.com>",
     "private": false,
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/creativecommons/cc-chooser.git"
+        "url": "git+https://github.com/creativecommons/chooser.git"
     },
     "license": "MIT",
     "scripts": {
@@ -15,7 +15,7 @@
         "test:unit": "vue-cli-service test:unit",
         "test:e2e": "vue-cli-service test:e2e",
         "lint": "vue-cli-service lint",
-        "test": "vue-cli-service test:unit --coverage",
+        "test": "vue-cli-service test:unit --coverage && vue-cli-service test:e2e",
         "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json"
     },
     "dependencies": {

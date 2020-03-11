@@ -1,18 +1,24 @@
 <template>
     <div class="step-content">
-        <div v-if="status==='previous'"
-            class="step-description vocab-body body-normal">
+        <div
+            v-if="status==='previous'"
+            class="step-description vocab-body body-normal"
+        >
             <p class="vocab-body body-normal">
                 {{ $t('stepper.CW.selected') }}
             </p>
         </div>
-        <div v-else-if="status==='current'"
-            class="step-actions">
+        <div
+            v-else-if="status==='current'"
+            class="step-actions"
+        >
             <b-checkbox v-model="copyrightWaiverAgreed">
                 {{ $t('stepper.CW.copyright-waive-agreement') }}
             </b-checkbox>
-            <textarea :value="this.$t('cc0-waiver.text')"
-                :class="'waiver-textarea'"/>
+            <textarea
+                :value="this.$t('cc0-waiver.text')"
+                :class="'waiver-textarea'"
+            />
             <b-checkbox v-model="copyrightWaiverConfirmed">
                 {{ $t("stepper.CW.copyright-waive-confirmation") }}
             </b-checkbox>
