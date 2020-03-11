@@ -125,5 +125,6 @@ export default {
 <style scoped>
 .license-text .photo-license-icons {
     height: 1.4rem!important;
+    margin-left: 3px;
 }
 </style>
