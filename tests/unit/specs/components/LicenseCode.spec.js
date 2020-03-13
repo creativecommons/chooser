@@ -15,7 +15,7 @@ describe('LicenseCode.vue', () => {
         localVue.use(Vuex)
         state = {
             attributionDetails: {
-                creatorName: 'J Doe',
+                creatorName: '',
                 creatorProfileUrl: 'www.author.com',
                 workTitle: 'My work',
                 workUrl: 'www.author.com/pic.jpg'
@@ -54,13 +54,22 @@ describe('LicenseCode.vue', () => {
     })
 
     // Tests for computed props and methods
+    it('Check the creatorSpan function returns else text correctly', () => {
+        expect(wrapper.vm.creatorSpan).toBe('')
+    })
+    it('Check if the byString function returns else text correctly', () => {
+        expect(wrapper.vm.byString).toBe('')
+    })
     it('Check if the byString function returns the correct text', () => {
+        state.attributionDetails.creatorName = 'J Doe'
         expect(wrapper.vm.byString).toBe('license-use.richtext.by')
     })
     it('Check if the creatorSpan function returns the correct text', () => {
+        state.attributionDetails.creatorName = 'J Doe'
         expect(wrapper.vm.creatorSpan).toBe('<span rel="cc:attributionName">J Doe</span>')
     })
     it('Check if the creatorName function returns the correct text', () => {
+        state.attributionDetails.creatorName = 'J Doe'
         expect(wrapper.vm.creatorName).toBe('J Doe')
     })
     it('Check if the creatorProfileUrl function returns the correct text', () => {
