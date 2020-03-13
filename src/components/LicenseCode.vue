@@ -17,14 +17,14 @@
                     <span v-if="!workTitle">{{ $t('license-use.richtext.workTitle') }}</span>
                     <span
                         v-else
-                        rel="dc:title"
+                        rel="dct:title"
                     >
                         {{ workTitle }}
                     </span>
                 </a>
                 <span
                     v-else-if="workTitle"
-                    rel="dc:title"
+                    rel="dct:title"
                 >
                     {{ workTitle }}
                 </span>
