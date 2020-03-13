@@ -4,10 +4,15 @@
             {{ $t('license-details-card.heading') }}
         </h3>
         <h4 class="vocab h4b hb">
-            <a :href="licenseUrl('web')"
-                class="license-name">
+            <a
+                :href="licenseUrl('web')"
+                class="license-name"
+            >
                 {{ fullName }} ({{ shortName }})
-                <LicenseIcons :url="licenseUrl('web')" :icons-arr="iconsList" />
+                <LicenseIcons
+                    :url="licenseUrl('web')"
+                    :icons-arr="iconsList"
+                />
             </a>
         </h4>
         <p class="chooser-selected-description">
@@ -17,9 +22,11 @@
         <section class="license-visual-info">
             <ul class="license-list">
                 <transition-group name="highlight">
-                    <li v-for="item in iconsList"
+                    <li
+                        v-for="item in iconsList"
                         :key="item"
-                        :class="['license-list-item', item]">
+                        :class="['license-list-item', item]"
+                    >
                         <span class="readable-string">
                             <b v-if="item!=='zero'">{{ item.toUpperCase() }}:</b>
                             <b v-else>CC0:</b>

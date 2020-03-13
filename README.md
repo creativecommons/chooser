@@ -1,4 +1,4 @@
-# cc-chooser
+# chooser
 
 The Creative Commons License Chooser is meant to help people learn about CC licenses, and select the license that best fits their needs. The new version in this repo places greater importance on usability and an educational experience of the six CC licenses.
 
@@ -9,7 +9,7 @@ This site is built using [Vue.js](https://vuejs.org/) (and vue-cli), and [Buefy]
 
 #### Roadmap
 
-Tasks, issues, and discussion related to the release of the new chooser are tracked with the [`Launch Milestone`](https://github.com/creativecommons/cc-chooser/milestone/1).
+Tasks, issues, and discussion related to the release of the new chooser are tracked with the [`Launch Milestone`](https://github.com/creativecommons/chooser/milestone/1).
 
 ## Getting Started
 Run the following commands in order to have the code up and running on your machine:
@@ -24,11 +24,11 @@ $ npm run serve
 You should now have the application running and accessible at http://localhost:8080 (note: will run on a different port if 8080 is occupied, most common alternative port is 8081).
 
 ## Contributing
-Before getting started on an issue, please comment on the issue you would like to work on to indicate that you are interested. Issues marked with the yellow `in progress` tag are already claimed, and are not up for grabs. 
+For information on contributing, please see [Creative Commons' Contribution Guidelines](https://opensource.creativecommons.org/contributing-code/)
 
 If you create a PR for your work, but you are not finished yet, please include `WIP:` in the beginning of your PR title. When your work on your PR is completed and you are ready for a final review, please remove the `WIP:` prefix from the title to indicate that your work is done.
 
-Here's a [handy link](https://github.com/creativecommons/cc-chooser/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22+-label%3A%22in+progress%22) that will show you all open issues in this repo that have the `help wanted` tag, but do not have the `in progress` tag. 
+Here's a [handy link](https://github.com/creativecommons/chooser/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22+-label%3A%22in+progress%22) that will show you all open issues in this repo that have the `help wanted` tag, but do not have the `in progress` tag. 
 All issues in this list are up for grabs! 
 If it says "No results matched your search", then there are no issues currently up for grabs.
 

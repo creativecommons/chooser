@@ -1,11 +1,15 @@
 <template>
     <b-field class="license-dropdown">
-        <b-select :placeholder="this.$t('stepper.DD.placeholder')"
+        <b-select
+            :placeholder="this.$t('stepper.DD.placeholder')"
             :value="shortName"
-            @input="setCurrentLicense">
-            <option v-for="license in licenseList"
+            @input="setCurrentLicense"
+        >
+            <option
+                v-for="license in licenseList"
                 :key="license"
-                :value="license">
+                :value="license"
+            >
                 {{ license }}
             </option>
         </b-select>
