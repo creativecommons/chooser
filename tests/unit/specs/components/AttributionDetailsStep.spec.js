@@ -30,14 +30,16 @@ describe('AttributionDetailsStep Component Rendering', () => {
     
     it('Component not mounted if status is previous', () =>{
         wrapper.setProps({status : 'previous'})
-        expect(wrapper.find('.step-action').exists()).toBeFalsy
+        console.log(wrapper.html())
+        console.log(wrapper.find('.step-content'))
+        expect(wrapper.find('.step-actions').exists()).toBeFalsy()
     })
 
     it('Component not mounted if status is inactive', () =>{
         wrapper.setProps({status : 'inactive'})
-        expect(wrapper.find('.step-action').exists()).toBeFalsy
+        expect(wrapper.find('.step-actions').exists()).toBeFalsy()
     })
-    
+
     it('Component mounted if status is current', () =>{
         wrapper.setProps({status : 'current'})
         expect(wrapper.element).toMatchSnapshot()
