@@ -37,5 +37,27 @@ module.exports = {
             .assert.elementPresent('p[class="license-text"]')
             .assert.elementPresent('#attribution-text > p > span:nth-child(1)')
             .assert.elementPresent('#attribution-text > p > span:nth-child(2)')
+    },
+
+    // Tests for the text under the "Plain Text"
+
+    'Check if the work in plain text is displayed': function(browser) {
+        browser
+            .click('nav > ul > li:nth-child(2) > a')
+            .expect.element('#attribution-text > p > span:nth-child(1) > span:nth-child(1)').text.to.equal('This work')
+    },
+    'Check if the license in plain text is displayed': function(browser) {
+        browser
+            .expect.element('#attribution-text > p > span:nth-child(1) > span:nth-child(4)').text.to.equal('CC BY-SA 4.0')
+    },
+    'Check if the author-name in plain text is displayed': function(browser) {
+        browser
+            .expect.element('#attribution-text > p > span:nth-child(1) > span:nth-child(2) > span').text.to.equal('Jane Doe')
+    },
+    'Check if the license-details in plain text are displayed': function(browser) {
+        browser
+            .click('nav > ul > li:nth-child(2) > a')
+            .assert.elementPresent('#attribution-text > p > span:nth-child(2)')
+            .expect.element('#attribution-text > p > span:nth-child(2)').text.to.equal('. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0')
     }
 }
