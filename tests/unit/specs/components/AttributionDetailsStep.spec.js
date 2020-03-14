@@ -30,8 +30,6 @@ describe('AttributionDetailsStep Component Rendering', () => {
     
     it('Component not mounted if status is previous', () =>{
         wrapper.setProps({status : 'previous'})
-        console.log(wrapper.html())
-        console.log(wrapper.find('.step-content'))
         expect(wrapper.find('.step-actions').exists()).toBeFalsy()
     })
 
