@@ -8,27 +8,39 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 localVue.use(Buefy)
 
-it('AttributionDetailsStep Component is mounted if status is current', () => {
-    const wrapper = mount(AttributionDetailsStep, {
-        localVue,
-        propsData: {
-            status: 'current'
-
-        },
-        mocks: {
-            $t: key => key,
-            $store: {
-                state: {
-                    attributionDetails: {
-                        creatorName: '',
-                        creatorProfileUrl: '',
-                        workTitle: '',
-                        workUrl: ''
+describe('AttributionDetailsStep Component Rendering', () => {
+    
+        const wrapper = mount(AttributionDetailsStep, {
+            localVue,
+            mocks: {
+                $t: key => key,
+                $store: {
+                    state: {
+                        attributionDetails: {
+                            creatorName: '',
+                            creatorProfileUrl: '',
+                            workTitle: '',
+                            workUrl: ''
+                        }
                     }
                 }
             }
-        }
-
+    
+        })
+    
+    it('Component not mounted if status is previous', () =>{
+        wrapper.setProps({status : 'previous'})
+        expect(wrapper.find('.step-action').exists()).toBeFalsy
     })
-    expect(wrapper.element).toMatchSnapshot()
+
+    it('Component not mounted if status is inactive', () =>{
+        wrapper.setProps({status : 'inactive'})
+        expect(wrapper.find('.step-action').exists()).toBeFalsy
+    })
+    
+    it('Component mounted if status is current', () =>{
+        wrapper.setProps({status : 'current'})
+        expect(wrapper.element).toMatchSnapshot()
+    })
 })
+
