@@ -8,7 +8,6 @@ describe('LicenseDetailsCard.vue', () => {
     let wrapper
     let getters
     let store
-    let i18n
 
     // Always creates a shallow instance of component
     beforeEach(() => {
@@ -22,7 +21,7 @@ describe('LicenseDetailsCard.vue', () => {
             fullName: () => {
                 return 'Attribution-ShareAlike 4.0 International'
             },
-            licenseUrl: () => {
+            licenseUrl: () => (mode) => {
                 return 'https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser'
             },
             iconsList: () => {
@@ -33,7 +32,7 @@ describe('LicenseDetailsCard.vue', () => {
             getters
         })
         const messages = require('@/locales/en.json')
-        i18n = new VueI18n({
+        const i18n = new VueI18n({
             locale: 'en',
             fallbackLocale: 'en',
             messages: messages,
