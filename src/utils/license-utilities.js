@@ -28,6 +28,7 @@ function attrToShort(attr) {
 }
 
 function attrToFull(attr) {
+    if (attr.BY === undefined) { return undefined }
     if (!attr.BY) { return 'CC0 1.0 Universal' }
     let base = 'Attribution'
     if (attr.NC) { base += '-NonCommercial' }
