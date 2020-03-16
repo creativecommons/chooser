@@ -27,11 +27,11 @@ describe("FirstStep.vue", () => {
         expect(wrapper.vm.cardText).toBe("stepper.FS.not-selected");
     });
 
-    it("Checks if the yesText function returns correct answer", () => {
+    it("Checks if the yesText function returns correct answer ", () => {
         expect(wrapper.vm.yesText).toBe("stepper.FS.selected");
     });
 
-    it("Checks if the yesText function returns correct answer", () => {
+    it("Checks if the noText function returns correct answer", () => {
         expect(wrapper.vm.noText).toBe("stepper.FS.not-selected");
     });
 
