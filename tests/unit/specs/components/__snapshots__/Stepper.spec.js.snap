@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper Component Unit Tests Stepper Component is Rendered Correctly 1`] = `
+<div
+  class="stepper-container column"
+>
+  <div
+    class="step-container current enabled"
+  >
+    <div
+      class="step-header"
+    >
+      <h5
+        class="step-title vocab hb h5b"
+      >
+        
+                stepper.FS.question
+            
+      </h5>
+    </div>
+     
+    <firststep-stub
+      status="current"
+      stepid="0"
+    />
+     
+    <nav
+      class="step-navigation"
+    >
+      <!---->
+       
+      <a
+        class="pagination-next disabled"
+        role="button"
+      >
+        stepper.nav.next-label
+      </a>
+    </nav>
+  </div>
+  <div
+    class="step-container inactive enabled"
+  >
+    <div
+      class="step-header"
+    >
+      <h5
+        class="step-title vocab hb h5b"
+      >
+        
+                stepper.BY.heading
+            
+      </h5>
+    </div>
+     
+    <!---->
+     
+    <!---->
+  </div>
+  <div
+    class="step-container inactive enabled"
+  >
+    <div
+      class="step-header"
+    >
+      <h5
+        class="step-title vocab hb h5b"
+      >
+        
+                stepper.NC.heading
+            
+      </h5>
+    </div>
+     
+    <!---->
+     
+    <!---->
+  </div>
+  <div
+    class="step-container inactive enabled"
+  >
+    <div
+      class="step-header"
+    >
+      <h5
+        class="step-title vocab hb h5b"
+      >
+        
+                stepper.ND.heading
+            
+      </h5>
+    </div>
+     
+    <!---->
+     
+    <!---->
+  </div>
+  <div
+    class="step-container inactive enabled"
+  >
+    <div
+      class="step-header"
+    >
+      <h5
+        class="step-title vocab hb h5b"
+      >
+        
+                stepper.SA.heading
+            
+      </h5>
+    </div>
+     
+    <!---->
+     
+    <!---->
+  </div>
+  <div
+    class="step-container inactive enabled"
+  >
+    <div
+      class="step-header"
+    >
+      <h5
+        class="step-title vocab hb h5b"
+      >
+        
+                stepper.AD.heading
+            
+      </h5>
+    </div>
+     
+    <!---->
+     
+    <!---->
+  </div>
+</div>
+`;
