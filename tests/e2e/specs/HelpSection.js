@@ -39,7 +39,6 @@ module.exports = {
                 this.assert.equal(result.value, 'https://creativecommons.org/licenses/')
             })
     },
-
     'Check if "What do the Icons Mean?" modal is working fine': function(browser) {
         browser
             .init()
@@ -48,6 +47,7 @@ module.exports = {
             .assert.elementPresent('.modal-content')
             .assert.elementPresent('header[class="modal-card-head"]')
             .assert.elementPresent('.modal-card-body')
+            .assert.elementPresent('.edu-icons-title-section img')
             .assert.elementPresent('footer[class="modal-card-foot"]')
             .assert.elementPresent('.help a')
             .getAttribute('.help a', 'href', function(result) {
@@ -100,6 +100,7 @@ module.exports = {
             .assert.elementPresent('.modal-content')
             .assert.elementPresent('header[class="modal-card-head"]')
             .assert.elementPresent('.modal-card-body')
+            .assert.elementPresent('div[class="column"] img')
             .assert.elementPresent('footer[class="modal-card-foot"]')
             .assert.elementPresent('.modal-card-foot p a')
             .getAttribute('.modal-card-foot p a', 'href', function(result) {
@@ -116,6 +117,7 @@ module.exports = {
             .assert.elementPresent('header[class="modal-card-head"]')
             .assert.elementPresent('.modal-card-body')
             .assert.elementPresent('.help-section__table')
+            .assert.elementPresent('.photo-license-icons img')
     },
 
     'Check if "What is a Free Culture License?" modal is working fine': function(browser) {
