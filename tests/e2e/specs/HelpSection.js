@@ -1,82 +1,139 @@
 module.exports = {
-
-    'Common license pop up redirects to https://creativecommons.org/licenses/': function(browser) {
+    'Check if the Help Section is rendered in the DOM': function(browser) {
         browser
             .init()
-            .assert.elementPresent('#cc_license_btn')
-            .click('#cc_license_btn')
+            .assert.elementPresent('.help-section')
+            .assert.elementPresent('.h3a')
+    },
+
+    'Check if "What Are Creative Commons Licenses?" modal is working fine': function(browser) {
+        browser
+            .init()
+            .assert.elementPresent('ul > li:nth-child(1) > a')
+            .click('ul > li:nth-child(1) > a')
+            .assert.elementPresent('.modal-content')
+            .assert.elementPresent('header[class="modal-card-head"]')
+            .assert.elementPresent('.help-text')
+            .assert.elementPresent('footer[class="modal-card-foot"]')
             .assert.elementPresent('#license_link')
-            .click('#license_link')
-            .assert.urlEquals('https://creativecommons.org/licenses/')
+            .getAttribute('#license_link', 'href', function(result) {
+                this.assert.equal(result.value, 'https://creativecommons.org/licenses/')
+            })
     },
 
-    'How do licenses work pop up redirects to https://creativecommons.org/licenses/': function(browser) {
+    'Check if "How do the Licenses Work?" modal is working fine': function(browser) {
         browser
             .init()
-            .assert.elementPresent('#license_work_btn')
-            .click('#license_work_btn')
-            .assert.elementPresent('#license_link_2')
-            .click('#license_link_2')
-            .assert.urlEquals('https://creativecommons.org/licenses/')
-    },
-
-    'How do licenses work pop up redirects to https://wiki.creativecommons.org/wiki/CC_REL': function(browser) {
-        browser
-            .init()
-            .assert.elementPresent('#license_work_btn')
-            .click('#license_work_btn')
+            .assert.elementPresent('ul > li:nth-child(2) > a')
+            .click('ul > li:nth-child(2) > a')
+            .assert.elementPresent('.modal-content')
+            .assert.elementPresent('header[class="modal-card-head"]')
+            .assert.elementPresent('.help-text')
+            .assert.elementPresent('footer[class="modal-card-foot"]')
             .assert.elementPresent('#cc_rights_link')
-            .click('#cc_rights_link')
-            .assert.urlEquals('https://wiki.creativecommons.org/wiki/CC_REL')
+            .getAttribute('#cc_rights_link', 'href', function(result) {
+                this.assert.equal(result.value, 'https://wiki.creativecommons.org/Ccrel')
+            })
+            .assert.elementPresent('#license_link_2')
+            .getAttribute('#license_link_2', 'href', function(result) {
+                this.assert.equal(result.value, 'https://creativecommons.org/licenses/')
+            })
     },
 
-    'Public domain pop up redirects to https://creativecommons.org/publicdomain/': function(browser) {
+    'Check if "What do the Icons Mean?" modal is working fine': function(browser) {
         browser
             .init()
-            .assert.elementPresent('#public_domain_btn')
-            .click('#public_domain_btn')
+            .assert.elementPresent('ul > li:nth-child(3) > a')
+            .click('ul > li:nth-child(3) > a')
+            .assert.elementPresent('.modal-content')
+            .assert.elementPresent('header[class="modal-card-head"]')
+            .assert.elementPresent('.modal-card-body')
+            .assert.elementPresent('footer[class="modal-card-foot"]')
+            .assert.elementPresent('.help a')
+            .getAttribute('.help a', 'href', function(result) {
+                this.assert.equal(result.value, 'https://wiki.creativecommons.org/wiki/NonCommercial_interpretation')
+            })
             .assert.elementPresent('#domain_link')
-            .click('#domain_link')
-            .assert.urlEquals('https://creativecommons.org/publicdomain/')
+            .getAttribute('#domain_link', 'href', function(result) {
+                this.assert.equal(result.value, 'https://creativecommons.org/publicdomain/')
+            })
     },
 
-    'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors': function(browser) {
+    'Check if "Considerations Before Licensing" modal is working fine': function(browser) {
         browser
             .init()
-            .assert.elementPresent('#consideration_btn')
-            .click('#consideration_btn')
+            .assert.elementPresent('ul > li:nth-child(4) > a')
+            .click('ul > li:nth-child(4) > a')
+            .assert.elementPresent('.modal-content')
+            .assert.elementPresent('header[class="modal-card-head"]')
+            .assert.elementPresent('footer[class="modal-card-foot"]')
             .assert.elementPresent('#licensors_link')
-            .click('#licensors_link')
-            .assert.urlEquals('https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors')
-    },
-
-    'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees': function(browser) {
-        browser
-            .init()
-            .assert.elementPresent('#consideration_btn')
-            .click('#consideration_btn')
+            .getAttribute('#licensors_link', 'href', function(result) {
+                this.assert.equal(result.value, 'https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors')
+            })
             .assert.elementPresent('#licensees_link')
-            .click('#licensees_link')
-            .assert.urlEquals('https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees')
-    },
-
-    'License consideration pop up redirects to https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees': function(browser) {
-        browser
-            .init()
-            .assert.elementPresent('#consideration_btn')
-            .click('#consideration_btn')
+            .getAttribute('#licensees_link', 'href', function(result) {
+                this.assert.equal(result.value, 'https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees')
+            })
             .assert.elementPresent('#wiki_link')
-            .click('#wiki_link')
-            .assert.urlEquals('https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees')
+            .getAttribute('#wiki_link', 'href', function(result) {
+                this.assert.equal(result.value, 'https://wiki.creativecommons.org/wiki/Before_Licensing')
+            })
     },
 
-    'License types pop up redirects to https://creativecommons.org/share-your-work/licensing-types-examples/': function(browser) {
+    'Check if "How do I Formally License my Work?" modal is working fine': function(browser) {
         browser
             .init()
-            .assert.elementPresent('#license_description_btn')
-            .click('#license_description_btn')
-            .assert.elementPresent('#licensing_examples_link')
-            .click('#licensing_examples_link')
-            .assert.urlEquals('https://creativecommons.org/share-your-work/licensing-examples/')
+            .assert.elementPresent('ul > li:nth-child(5) > a')
+            .click('ul > li:nth-child(5) > a')
+            .assert.elementPresent('.modal-content')
+            .assert.elementPresent('header[class="modal-card-head"]')
+            .assert.elementPresent('.modal-card-body')
+            .assert.elementPresent('article')
+    },
+
+    'Check if "The Six Creative Commons Licenses" modal is working fine': function(browser) {
+        browser
+            .init()
+            .assert.elementPresent('ul > li:nth-child(6) > a')
+            .click('ul > li:nth-child(6) > a')
+            .assert.elementPresent('.modal-content')
+            .assert.elementPresent('header[class="modal-card-head"]')
+            .assert.elementPresent('.modal-card-body')
+            .assert.elementPresent('footer[class="modal-card-foot"]')
+            .assert.elementPresent('.modal-card-foot p a')
+            .getAttribute('.modal-card-foot p a', 'href', function(result) {
+                this.assert.equal(result.value, 'https://creativecommons.org/share-your-work/licensing-types-examples/')
+            })
+    },
+
+    'Check if "How are Licenses Communicated?" modal is working fine': function(browser) {
+        browser
+            .init()
+            .assert.elementPresent('ul > li:nth-child(7) > a')
+            .click('ul > li:nth-child(7) > a')
+            .assert.elementPresent('.modal-content')
+            .assert.elementPresent('header[class="modal-card-head"]')
+            .assert.elementPresent('.modal-card-body')
+            .assert.elementPresent('.help-section__table')
+    },
+
+    'Check if "What is a Free Culture License?" modal is working fine': function(browser) {
+        browser
+            .init()
+            .assert.elementPresent('ul > li:nth-child(8) > a')
+            .click('ul > li:nth-child(8) > a')
+            .assert.elementPresent('.modal-content')
+            .assert.elementPresent('header[class="modal-card-head"]')
+            .assert.elementPresent('.modal-card-body')
+            .assert.elementPresent('footer[class="modal-card-foot"]')
+            .assert.elementPresent('p[class="help-text"] a')
+            .getAttribute('p[class="help-text"] a', 'href', function(result) {
+                this.assert.equal(result.value, 'https://freedomdefined.org/Definition')
+            })
+            .assert.elementPresent('footer[class="modal-card-foot"] p a')
+            .getAttribute('footer[class="modal-card-foot"] p a', 'href', function(result) {
+                this.assert.equal(result.value, 'https://creativecommons.org/share-your-work/public-domain/freeworks')
+            })
     }
 }
