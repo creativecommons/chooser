@@ -3,7 +3,6 @@ import LicenseDropdown from "@/Components/LicenseDropdown.vue";
 import VueI18n from "vue-i18n";
 import Vuex from "vuex";
 import Buefy from "buefy";
-import { doesNotReject } from "assert";
 
 describe("LicenseDropdown.vue", () => {
     let wrapper;
@@ -16,24 +15,21 @@ describe("LicenseDropdown.vue", () => {
         localVue.use(Vuex);
         localVue.use(Buefy);
 
-        getters = {
-            shortName: state => {
-                return "foo";
-            },
-            fullName: state => {
-                return "foo-bar";
-            }
-        };
+        const language = require("../../src/locales/en.json");
+
+        const i18n = new VueI18n({
+            locale: "en",
+            fallbackLocale: "en",
+            messages: language
+        });
 
         store = new Vuex.Store({
             getters
         });
 
-        const messages = require("@/locales/en.json");
-        const i18n = new VueI18n({
-            locale: "en",
-            fallbackLocale: "en",
-            messages: messages
+        wrapper = mount(LicenseDropdown, {
+            localVue,
+            store
         });
 
         config.mocks.i18n = i18n;
@@ -41,13 +37,9 @@ describe("LicenseDropdown.vue", () => {
         config.mocks.$t = key => {
             return i18n.messages[key];
         };
-        wrapper = mount(LicenseDropdown, {
-            localVue,
-            store
-        });
     });
 
-    it("Has the main field tag", () => {
+    it("Has the field tag", () => {
         expect(wrapper.contains(".license-dropdown")).toBe(true);
     });
 
@@ -67,5 +59,4 @@ describe("LicenseDropdown.vue", () => {
             .at(0)
             .trigger("input");
     });
-    
 });
