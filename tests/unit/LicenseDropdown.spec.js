@@ -8,6 +8,7 @@ describe("LicenseDropdown.vue", () => {
     let wrapper;
     let getters;
     let store;
+    let state;
 
     beforeEach(() => {
         const localVue = createLocalVue();
@@ -15,28 +16,33 @@ describe("LicenseDropdown.vue", () => {
         localVue.use(Vuex);
         localVue.use(Buefy);
 
-        const language = require("../../src/locales/en.json");
+        getters = {
+            shortName: state => {
+                return "name";
+            },
 
+            fullName: state => {
+                return "fullName";
+            }
+        };
+        store = new Vuex.Store({
+            store,
+            getters
+        });
+        const messages = require("@/locales/en.json");
         const i18n = new VueI18n({
             locale: "en",
             fallbackLocale: "en",
-            messages: language
+            messages: messages
         });
-
-        store = new Vuex.Store({
-            getters
-        });
-
+        config.mocks.i18n = i18n;
+        config.mocks.$t = key => {
+            return i18n.messages[key];
+        };
         wrapper = mount(LicenseDropdown, {
             localVue,
             store
         });
-
-        config.mocks.i18n = i18n;
-
-        config.mocks.$t = key => {
-            return i18n.messages[key];
-        };
     });
 
     it("Has the field tag", () => {
