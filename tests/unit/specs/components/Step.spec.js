@@ -198,4 +198,14 @@ describe("Step.vue", () => {
         });
         expect(wrapper.vm.qualifier).toBe(false);
     });
+
+    it("Component mounted if status is current", () => {
+        wrapper.setProps({ status: "current" });
+        expect(wrapper.element).toMatchSnapshot();
+    });
+
+    it("Component mounted if status is previous", () => {
+        wrapper.setProps({ status: "previous" });
+        expect(wrapper.element).toMatchSnapshot();
+    });
 });

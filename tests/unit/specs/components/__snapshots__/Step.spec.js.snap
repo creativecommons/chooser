@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Step.vue Component mounted if status is current 1`] = `
+<div
+  class="step-content"
+>
+  <div
+    class="step-actions"
+  >
+    <div
+      class="field not-selected"
+    >
+      <b-radio
+        native-value="yes"
+      >
+        <span
+          class="vocab-body body-normal"
+        >
+          
+        </span>
+      </b-radio>
+    </div>
+     
+    <div
+      class="field selected"
+    >
+      <b-radio
+        native-value="no"
+      >
+        <span
+          class="vocab-body body-normal"
+        >
+          
+        </span>
+      </b-radio>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Step.vue Component mounted if status is previous 1`] = `
+<div
+  class="step-content"
+>
+  <div
+    class="step-description vocab-body body-normal"
+  >
+    <p
+      class="vocab-body body-normal"
+    >
+      
+            
+        
+    </p>
+  </div>
+</div>
+`;
+
