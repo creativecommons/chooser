@@ -61,12 +61,12 @@ export default {
     width: 100%;
 }
 .locale-chooser-field .control .select select {
-    padding-left: 2.5em;
-    z-index: -1;
+    padding-left:2.5em;
 }
 .locale-chooser-field .control .select::before {
     content: url("../assets/language.png");
     position: absolute;
+    z-index: 1;
     left:10px;
     top:8px;
 }
