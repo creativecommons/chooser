@@ -21,7 +21,7 @@ describe('FirstStep Component', ()=> {
     afterEach(()=> {
             wrapper.destroy()
         })
-        
+
 
     it('Mark up is correctly rendered', () => {
         wrapper.setProps({
@@ -60,7 +60,7 @@ describe('FirstStep Component', ()=> {
     })
 
     it('props:selected false', () =>{
-        const newWrapper = wrapper.setProps({
+        wrapper.setProps({
             selected: false,
             stepId: 0,
             status: "current"
@@ -71,7 +71,7 @@ describe('FirstStep Component', ()=> {
     })
 
     it('props:selected true', () =>{
-        const newWrapper = wrapper.setProps({
+        wrapper.setProps({
             selected: true,
             stepId: 0,
             status: "current"
