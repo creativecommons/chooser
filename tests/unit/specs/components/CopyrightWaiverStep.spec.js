@@ -9,7 +9,7 @@ localVue.use(Vuex)
 localVue.use(Buefy)
 
 describe('CopyrightWaiver Step: Check conditional rendering of markup', () => {
-    let wrapper, state
+    let wrapper
 
     beforeEach(() => {
         wrapper = mount(CopyrightWaiverStep, {
@@ -38,7 +38,7 @@ describe('CopyrightWaiver Step: Check conditional rendering of markup', () => {
             stepName: 'CW', 
         })
 
-       expect(wrapper.find('.step-description').exists()).toBeFalsy
+       expect(wrapper.find('.step-description').exists()).toBeFalsy()
        expect(wrapper.find('.step-actions').exists()).toBeFalsy()
     })
 
