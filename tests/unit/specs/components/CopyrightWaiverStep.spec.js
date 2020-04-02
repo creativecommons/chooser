@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 import CopyrightWaiverStep from '@/components/CopyrightWaiverStep'
 
 const localVue = createLocalVue()
- 
+
 localVue.use(Vuex)
 localVue.use(Buefy)
 
@@ -21,63 +21,62 @@ describe('CopyrightWaiver Step: Check conditional rendering of markup', () => {
                 }
             },
             mocks: {
-                $t: key => key,
+                $t: key => key
             }
         })
     })
 
-    afterEach(()=> {
+    afterEach(() => {
         wrapper.destroy()
     })
 
-    it('Component not mounted if status is inactive', () =>{
+    it('Component not mounted if status is inactive', () => {
         wrapper.setProps({
             selected: undefined,
-            status : 'inactive',
+            status: 'inactive',
             stepId: 6,
-            stepName: 'CW', 
+            stepName: 'CW'
         })
 
-       expect(wrapper.find('.step-description').exists()).toBeFalsy()
-       expect(wrapper.find('.step-actions').exists()).toBeFalsy()
+        expect(wrapper.find('.step-description').exists()).toBeFalsy()
+        expect(wrapper.find('.step-actions').exists()).toBeFalsy()
     })
 
-    it('Step Description block mounted if status is previous', () =>{
-        wrapper.setProps({status : 'previous'})
-        
+    it('Step Description block mounted if status is previous', () => {
+        wrapper.setProps({ status: 'previous' })
+
         expect(wrapper.find('.step-description').exists()).toBeTruthy()
         expect(wrapper.find('.step-actions').exists()).toBeFalsy()
     })
 
-   it('Step Actions block mounted if status is current', () =>{
-        wrapper.setProps({status : 'current'})
+    it('Step Actions block mounted if status is current', () => {
+        wrapper.setProps({ status: 'current' })
 
         expect(wrapper.find('.step-description').exists()).toBeFalsy()
         expect(wrapper.find('.step-actions').exists()).toBeTruthy()
         expect(wrapper.vm.copyrightWaiverAgreed).toBe(false)
     })
-
 })
 
 describe('Test functionality of computed properties', () => {
-    let wrapper 
+    let wrapper
 
     beforeEach(() => {
         wrapper = mount(CopyrightWaiverStep, {
             localVue,
-            propsData:{
+            propsData: {
                 selected: undefined,
-            status : 'current',
-            stepId: 6,
-            stepName: 'CW', 
+                status: 'current',
+                stepId: 6,
+                stepName: 'CW'
             },
             mocks: {
-                $t: key => key,
+                $t: key => key
             }
         })
     })
 
-    afterEach(()=> {
+    afterEach(() => {
         wrapper.destroy()
     })
 
@@ -88,7 +87,7 @@ describe('Test functionality of computed properties', () => {
         })
 
         const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-        checkbox.setChecked();
+        checkbox.setChecked()
 
         expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
     })
@@ -100,9 +99,8 @@ describe('Test functionality of computed properties', () => {
         })
 
         const checkbox = wrapper.findAll('input[type="checkbox"]').at(1)
-        checkbox.setChecked();
+        checkbox.setChecked()
 
         expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
     })
-
 })
