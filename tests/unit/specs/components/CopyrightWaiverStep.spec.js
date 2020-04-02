@@ -57,16 +57,6 @@ describe('CopyrightWaiver Step: Check conditional rendering of markup', () => {
         expect(wrapper.vm.copyrightWaiverAgreed).toBe(false)
     })
 
-    it('User clicks copyright waiver checkbox', () => {
-        wrapper.setProps({status : 'current'})
-
-        const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-        checkbox.setChecked();
-
-        console.log(wrapper.emitted())
-
-    })
-
 })
 
 describe('Test functionality of computed properties', () => {
