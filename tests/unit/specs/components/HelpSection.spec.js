@@ -24,11 +24,6 @@ describe('HelpSection.vue', () => {
         config.mocks.i18n.$t = (key) => {
             return i18n.messages[key]
         }
-        config.mocks.$ga = {
-            event: (sentObj) => {
-                return sentObj
-            }
-        }
         wrapper = mount(HelpSection, {
             localVue,
             i18n
@@ -135,13 +130,6 @@ describe('HelpSection.vue', () => {
         wrapper.vm.clickHandler(1)
         expect(wrapper.vm.modals[1].status).toBe(true)
     })
-    it('Check if the $ga event is working in production', () => {
-        process.env.NODE_ENV = 'production'
-        expect(wrapper.vm.clickHandler(2)).toStrictEqual({ eventAction: 'clicked', eventCategory: 'HelpSection', eventLabel: 'how-licenses-work' })
-        expect(wrapper.vm.modals[2].status).toBe(true)
-        expect(wrapper.vm.modals[1].status).toBe(false)
-    })
-
     // Snapshot tests
     it('Check if the HelpSection.vue component has the expected UI', () => {
         expect(wrapper).toMatchSnapshot()
