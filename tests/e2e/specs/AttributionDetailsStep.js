@@ -1,13 +1,13 @@
 module.exports = {
     '@tags': ['att'],
-    'AttributionDetailsStep'(browser){
+    'AttributionDetailsStep'(browser) {
         const knowLicenseSelector = '.b-radio'
         const nextButton = '.pagination-next'
         const select = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > div > div > span > select'
         const selectOpt = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > div > div > span > select > option:nth-child(4)'
         const stepTitle = '.step-title'
         const attributionDetailsInstructions = '.attribution-details-instructions'
-        const workAuthorLabel ='#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(1) > label'
+        const workAuthorLabel = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(1) > label'
         const workAuthorInput = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(1) > div > input'
         const urlCreatorProfileLabel = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(2) > label'
         const urlCreatorProfileInput = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(2) > div > input'
@@ -18,12 +18,11 @@ module.exports = {
         const backBtn = '.pagination-previous'
         const paginationFinish = '.pagination-finish'
 
-
         browser
             .init()
             .click(knowLicenseSelector)
             .click(nextButton)
-            .click(select, () =>{
+            .click(select, () => {
                 browser.click(selectOpt)
             })
             .click(nextButton)
