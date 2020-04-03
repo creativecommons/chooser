@@ -64,10 +64,10 @@ describe('Test the functionality of Computed properties', () => {
     beforeEach(() => {
         wrapper = mount(CopyrightWaiverStep, {
             localVue,
-            data(){
-                return{
+            data() {
+                return {
                     agreed: false,
-                    confirmed: false  
+                    confirmed: false
                 }
             },
             propsData: {
@@ -100,7 +100,6 @@ describe('Test the functionality of Computed properties', () => {
     it('User checks agreed and then checks confirmed', () => {
         const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
         checkbox.setChecked()
-       
 
         const checkbox1 = wrapper.findAll('input[type="checkbox"]').at(1)
         checkbox1.setChecked()
