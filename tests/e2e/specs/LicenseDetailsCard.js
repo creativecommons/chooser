@@ -7,8 +7,8 @@ module.exports = {
             .click('.control-label > span')
             .assert.elementPresent('.pagination-next')
             .click('.pagination-next')
-            .assert.elementPresent('.select > select')
-            .click('.select > select')
+            .assert.elementPresent('.select')
+            .click('.select')
             .click('option[value="CC BY-SA 4.0"]')
             .assert.elementPresent('.selected-license-card')
     },

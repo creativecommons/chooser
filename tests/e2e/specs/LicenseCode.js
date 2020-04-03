@@ -8,7 +8,7 @@ module.exports = {
             .assert.elementPresent('.pagination-next')
             .click('.pagination-next')
             .assert.elementPresent('.select > select')
-            .click('.select > select')
+            .click('.select')
             .click('option[value="CC BY-SA 4.0"]')
             .assert.elementPresent('.pagination-next')
             .click('.pagination-next')

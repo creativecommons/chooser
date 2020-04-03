@@ -279,12 +279,11 @@ export default {
         clickHandler(modalNumber) {
             this.modals[modalNumber].status = true
             if (process.env.NODE_ENV === 'production') {
-                const Tracked = this.$ga.event({
+                this.$ga.event({
                     eventCategory: 'HelpSection',
                     eventAction: 'clicked',
                     eventLabel: this.modals[modalNumber].title
                 })
-                return Tracked
             }
         }
     }
