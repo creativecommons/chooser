@@ -58,61 +58,18 @@ describe('CopyrightWaiver Step: Check conditional rendering of markup', () => {
     })
 })
 
-describe('Test functionality of computed properties', () => {
+describe('Test the functionality of Computed properties', () => {
     let wrapper
 
     beforeEach(() => {
         wrapper = mount(CopyrightWaiverStep, {
             localVue,
-            propsData: {
-                selected: undefined,
-                status: 'current',
-                stepId: 6,
-                stepName: 'CW'
+            data(){
+                return{
+                    agreed: false,
+                    confirmed: false  
+                }
             },
-            mocks: {
-                $t: key => key
-            }
-        })
-    })
-
-    afterEach(() => {
-        wrapper.destroy()
-    })
-
-    it('User checks agreed with confirmed checked', () => {
-        wrapper.setData({
-            agreed: false,
-            confirmed: true
-        })
-
-        const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-        checkbox.setChecked()
-
-        expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
-        expect(wrapper.vm.copyrightWaiverAgreed).toBe(true)
-    })
-
-    it('User checks confirmed with agreed checked', () => {
-        wrapper.setData({
-            agreed: true,
-            confirmed: false
-        })
-
-        const checkbox = wrapper.findAll('input[type="checkbox"]').at(1)
-        checkbox.setChecked()
-
-        expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
-        expect(wrapper.vm.copyrightWaiverConfirmed).toBe(true)
-    })
-})
-
-describe('Computed properties: user unchecks agreed and/ confirmed', () => {
-    let wrapper
-
-    beforeEach(() => {
-        wrapper = mount(CopyrightWaiverStep, {
-            localVue,
             propsData: {
                 selected: true,
                 status: 'current',
@@ -129,27 +86,43 @@ describe('Computed properties: user unchecks agreed and/ confirmed', () => {
         wrapper.destroy()
     })
 
-    it('User unchecks agreed', () => {
-        wrapper.setData({
-            agreed: true,
-            confirmed: true
-        })
+    it('User checks confirmed then checks agreed', () => {
+        const checkbox1 = wrapper.findAll('input[type="checkbox"]').at(1)
+        checkbox1.setChecked()
 
         const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-        checkbox.trigger('change')
+        checkbox.setChecked()
+
+        expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
+        expect(wrapper.vm.copyrightWaiverAgreed).toBe(true)
+    })
+
+    it('User checks agreed and then checks confirmed', () => {
+        const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
+        checkbox.setChecked()
+       
+
+        const checkbox1 = wrapper.findAll('input[type="checkbox"]').at(1)
+        checkbox1.setChecked()
+
+        expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
+        expect(wrapper.vm.copyrightWaiverConfirmed).toBe(true)
+    })
+
+    it('User unchecks agreed', () => {
+        const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
+        checkbox.setChecked()
+        checkbox.setChecked(false)
 
         expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, undefined])
         expect(wrapper.vm.copyrightWaiverAgreed).toBe(false)
     })
 
     it('User unchecks confirmed', () => {
-        wrapper.setData({
-            agreed: true,
-            confirmed: true
-        })
-
         const checkbox = wrapper.findAll('input[type="checkbox"]').at(1)
-        checkbox.trigger('change')
+
+        checkbox.setChecked()
+        checkbox.setChecked(false)
 
         expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, undefined])
         expect(wrapper.vm.copyrightWaiverConfirmed).toBe(false)
