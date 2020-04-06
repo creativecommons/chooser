@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LicenseUseCard.vue LicenseUseCard.vue component has the expected UI 1`] = `
+<div class="license-use-card">
+  <h4 class="vocab h4b hb">
+
+  </h4>
+  <p class="license-use-instructions">
+
+  </p>
+  <b-tabs-stub animated="true">
+    <b-tab-item-stub visible="true">
+
+      <licensecopy-stub isweb="true"></licensecopy-stub>
+    </b-tab-item-stub>
+    <b-tab-item-stub visible="true">
+
+      <licensecopy-stub></licensecopy-stub>
+    </b-tab-item-stub>
+  </b-tabs-stub>
+</div>
+`;
