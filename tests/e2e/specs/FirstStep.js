@@ -5,15 +5,14 @@ module.exports = {
         const radioSelected = 'div.field.selected > label > span.control-label > span'
         const nextBtn = '.pagination-next'
         const stepTitle = 'div.step-header > h5'
+        const stepBelowCurrentHeader = 'div:nth-child(2) > div > h5'
 
         browser
             .init()
-            .assert.containsText(stepTitle, 'Do you know which license you need?')
-            .assert.containsText(radioSelector, 'Yes. I know which license I need')
-            .assert.containsText(radioSelected, 'No. I need help selecting a license')
             .click(radioSelector)
-            .assert.not.cssClassPresent(nextBtn, 'disabled')
-            .assert.containsText(radioSelector, 'No. I need help selecting a license')
+            .assert.containsText(stepBelowCurrentHeader, 'Creative Commons License')
+            .click(radioSelector)
+            .assert.containsText(stepBelowCurrentHeader, 'Attribution')
             .end()
     }
 }
