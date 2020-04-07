@@ -3,7 +3,7 @@
         <div
             v-for="(step, idx) in visibleSteps()"
             :key="idx"
-            :class="['step-container', step.status, enabledQualifier(step.enabled)]"
+            :class="['step-container', step.name, step.status, enabledQualifier(step.enabled)]"
         >
             <div
                 :class="['step-header']"
@@ -43,7 +43,7 @@
                 v-else-if="step.status!=='inactive' && step.name==='DD'"
                 :step-id="step.id"
                 :status="step.status"
-                @input="changeStepSelected"
+                @change="changeStepSelected"
             />
             <AttributionDetailsStep
                 v-else-if="step.status!=='inactive' && step.name==='AD'"
@@ -258,26 +258,18 @@ export default {
             this.$set(this.steps, previousStep, { ...this.steps[previousStep], status: 'current' })
             this.currentStepId = previousStep
         },
-        handleFinish() {
-            // TODO: write the method
-        },
         setActiveStep(clickedStepId) {
             /**
              * Handles a click on Step header
              */
             if (!this.steps[clickedStepId].enabled) return
             if (this.steps[clickedStepId].status === 'inactive') return
-            if (clickedStepId > this.currentStepId) {
-                for (let i = this.currentStepId; i < clickedStepId; i++) {
-                    this.$set(this.steps, i, { ...this.steps[i], status: 'previous' })
-                }
-                this.$set(this.steps, clickedStepId, { ...this.steps[clickedStepId], status: 'current' })
-            } else {
-                for (let i = this.currentStepId; i > clickedStepId; i--) {
-                    this.$set(this.steps, i, { ...this.steps[i], status: 'inactive' })
-                }
-                this.$set(this.steps, clickedStepId, { ...this.steps[clickedStepId], status: 'current' })
+            // only steps before the current one are clickable
+            if (clickedStepId >= this.currentStepId) return
+            for (let i = this.currentStepId; i > clickedStepId; i--) {
+                this.$set(this.steps, i, { ...this.steps[i], status: 'inactive' })
             }
+            this.$set(this.steps, clickedStepId, { ...this.steps[clickedStepId], status: 'current' })
             this.currentStepId = clickedStepId
         },
         setStepsVisible(stepsToSetVisible) {
