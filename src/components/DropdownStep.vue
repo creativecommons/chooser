@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         updateSelected() {
-            this.$emit('input', 'DD', this.$props.stepId, true)
+            this.$emit('change', 'DD', this.$props.stepId, true)
         }
     }
 }
