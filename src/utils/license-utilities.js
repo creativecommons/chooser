@@ -28,6 +28,7 @@ function attrToShort(attr) {
 }
 
 function attrToFull(attr) {
+    if (attr.BY === undefined) { return undefined }
     if (!attr.BY) { return 'CC0 1.0 Universal' }
     let base = 'Attribution'
     if (attr.NC) { base += '-NonCommercial' }
@@ -143,7 +144,7 @@ function generateHTML(attributionDetails, shortLicenseName) {
         }
     }
     if (attributionDetails.workTitle) {
-        const workTitleSpan = `<span rel="dc:title">${attributionDetails.workTitle}</span>`
+        const workTitleSpan = `<span rel="dct:title">${attributionDetails.workTitle}</span>`
         if (attributionDetails.workUrl) {
             dataForHtmlGeneration.workTitle = `<a rel="cc:attributionURL" href="${attributionDetails.workUrl}">${workTitleSpan}</a>`
         } else {
