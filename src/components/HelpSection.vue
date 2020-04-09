@@ -55,6 +55,7 @@
                 </p>
             </header>
             <section class="modal-card-body">
+                <article v-html="this.$t('help.what-icons-mean.text')" />
                 <div class="columns">
                     <div class="column is-half top-bottom-paddingless">
                         <div class="edu-icons-section">
@@ -118,10 +119,6 @@
                         </div>
                     </div>
                 </div>
-                <footer
-                    class="modal-card-foot"
-                    v-html="this.$t('help.what-icons-mean.footer')"
-                />
             </section>
         </b-modal>
         <b-modal :active.sync="modals[4].status">
@@ -209,6 +206,16 @@
                 <p v-html="this.$t('help.what-free-culture-license.footer')" />
             </footer>
         </b-modal>
+        <b-modal :active.sync="modals[9].status">
+            <header class="modal-card-head">
+                <p class="modal-card-title modal-title">
+                    {{ $t('help.look-earlier-license-ver.heading') }}
+                </p>
+            </header>
+            <section class="modal-card-body">
+                <p v-html="this.$t('help.look-earlier-license-ver.text')" />
+            </section>
+        </b-modal>
     </div>
 </template>
 <script>
@@ -271,6 +278,10 @@ export default {
                 8: {
                     status: false,
                     title: 'what-free-culture-license'
+                },
+                9: {
+                    status: false,
+                    title: 'look-earlier-license-ver'
                 }
             }
         }

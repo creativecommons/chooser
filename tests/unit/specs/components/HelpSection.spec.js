@@ -62,6 +62,10 @@ describe('HelpSection.vue', () => {
                 8: {
                     status: false,
                     title: 'what-free-culture-license'
+                },
+                9: {
+                    status: false,
+                    title: 'look-earlier-license-ver'
                 }
             }
         })
@@ -78,8 +82,8 @@ describe('HelpSection.vue', () => {
     it('Check if the main ul tag with help links is present', () => {
         expect(wrapper.contains('.help-links')).toBe(true)
     })
-    it('Check if all the 8 li tags are present in the DOM', () => {
-        expect(wrapper.findAll('.help-link').length).toBe(8)
+    it('Check if all the 9 li tags are present in the DOM', () => {
+        expect(wrapper.findAll('.help-link').length).toBe(9)
     })
     it('Check if "What Are Creative Commons Licenses?" modal is rendered to DOM', () => {
         expect(wrapper.contains('ul > li:nth-child(1) > a')).toBe(true)
@@ -119,6 +123,11 @@ describe('HelpSection.vue', () => {
     it('Check if " What is a Free Culture License?" modal is rendered to DOM', () => {
         expect(wrapper.contains('ul > li:nth-child(8) > a')).toBe(true)
         wrapper.find('ul > li:nth-child(8) > a').trigger('click')
+        expect(wrapper.contains('.modal-content')).toBe(true)
+    })
+    it('Check if "Looking for Earlier License Versions, including Ports?" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(9) > a')).toBe(true)
+        wrapper.find('ul > li:nth-child(9) > a').trigger('click')
         expect(wrapper.contains('.modal-content')).toBe(true)
     })
 
