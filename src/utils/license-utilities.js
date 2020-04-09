@@ -144,7 +144,7 @@ function generateHTML(attributionDetails, shortLicenseName) {
         }
     }
     if (attributionDetails.workTitle) {
-        const workTitleSpan = `<span rel="dc:title">${attributionDetails.workTitle}</span>`
+        const workTitleSpan = `<span rel="dct:title">${attributionDetails.workTitle}</span>`
         if (attributionDetails.workUrl) {
             dataForHtmlGeneration.workTitle = `<a rel="cc:attributionURL" href="${attributionDetails.workUrl}">${workTitleSpan}</a>`
         } else {
