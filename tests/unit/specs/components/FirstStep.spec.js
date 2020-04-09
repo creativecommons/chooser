@@ -40,7 +40,7 @@ describe('FirstStep Component', () => {
         })
 
         const radio = wrapper.findAll('input[type="radio"]').at(0)
-        radio.trigger('change')
+        radio.setChecked()
 
         expect(wrapper.emitted().change[0]).toEqual(['FS', 0, true])
     })
@@ -53,7 +53,7 @@ describe('FirstStep Component', () => {
         })
 
         const radio = wrapper.findAll('input[type="radio"]').at(1)
-        radio.trigger('change')
+        radio.setChecked()
 
         expect(wrapper.emitted().change[0]).toEqual(['FS', 0, false])
     })
