@@ -1,79 +1,82 @@
-import { mount } from '@vue/test-utils'
+import { createLocalVue, mount } from '@vue/test-utils'
+import Buefy from 'buefy'
 import FirstStep from '@/components/FirstStep.vue'
 
-describe('FirstStep.vue', () => {
-    const wrapper = mount(FirstStep)
-    it('Has the main div tag', () => {
-        expect(wrapper.contains('.step-content')).toBe(true)
+const localVue = createLocalVue()
+
+localVue.use(Buefy)
+
+describe('FirstStep Component', () => {
+    let wrapper
+
+    beforeEach(() => {
+        wrapper = mount(FirstStep, {
+            localVue,
+            mocks: {
+                $t: key => key
+            }
+        })
     })
 
-    it('renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
+    afterEach(() => {
+        wrapper.destroy()
     })
 
-    it('Checks if the cardtext function return the correct answer when selected is true', () => {
+    it('Mark up is correctly rendered', () => {
         wrapper.setProps({
-            selected: true
+            selected: undefined,
+            stepId: 0,
+            status: 'current'
         })
 
-        expect(wrapper.vm.cardText).toBe('stepper.FS.selected')
+        expect(wrapper.element).toMatchSnapshot()
     })
 
-    it('Checks if the cardtext function return the correct answer when selected is false', () => {
+    it('Radio Input value is YES', () => {
         wrapper.setProps({
-            selected: false
+            selected: undefined,
+            stepId: 0,
+            status: 'current'
         })
 
+        const radio = wrapper.findAll('input[type="radio"]').at(0)
+        radio.setChecked()
+
+        expect(wrapper.emitted().change[0]).toEqual(['FS', 0, true])
+    })
+
+    it('Radio Input value is NO', () => {
+        wrapper.setProps({
+            selected: undefined,
+            stepId: 0,
+            status: 'current'
+        })
+
+        const radio = wrapper.findAll('input[type="radio"]').at(1)
+        radio.setChecked()
+
+        expect(wrapper.emitted().change[0]).toEqual(['FS', 0, false])
+    })
+
+    it('props:selected false', () => {
+        wrapper.setProps({
+            selected: false,
+            stepId: 0,
+            status: 'current'
+        })
+
+        expect(wrapper.vm.radio).toBe('no')
         expect(wrapper.vm.cardText).toBe('stepper.FS.not-selected')
     })
 
-    it('Checks if the yesText function returns correct answer ', () => {
-        expect(wrapper.vm.yesText).toBe('stepper.FS.selected')
-    })
-
-    it('Checks if the noText function returns correct answer', () => {
-        expect(wrapper.vm.noText).toBe('stepper.FS.not-selected')
-    })
-
-    it('Checks if the yesSelected function returns the correct boolean when selected is true', () => {
+    it('props:selected true', () => {
         wrapper.setProps({
-            selected: true
+            selected: true,
+            stepId: 0,
+            status: 'current'
         })
-        expect(wrapper.vm.yesSelected).toBe('selected')
-    })
 
-    it('Checks if the yesSelected function returns the correct boolean when selected is false', () => {
-        wrapper.setProps({
-            selected: false
-        })
-        expect(wrapper.vm.yesSelected).toBe('not-selected')
-    })
-
-    it('Checks if the get function in radio returns the correct value when selected is undefined', () => {
-        wrapper.setProps({
-            selected: undefined
-        })
-        expect(wrapper.vm.radio).toBe(undefined)
-    })
-
-    it('Checks if the get function in radio returns the correct value when selected is yes', () => {
-        wrapper.setData({
-            selected: 'yes'
-        })
         expect(wrapper.vm.radio).toBe('yes')
-    })
-
-    it('Checks if the noSelected function returns the correct boolean when selected is true', () => {
-        wrapper.setProps({
-            selected: true
-        })
-        expect(wrapper.vm.noSelected).toBe('not-selected')
-    })
-
-    it('Checks if the noSelected function returns the correct boolean when selected is false', () => {
-        wrapper.setProps({
-            selected: false
-        })
-        expect(wrapper.vm.noSelected).toBe('selected')
+        expect(wrapper.vm.cardText).toBe('stepper.FS.selected')
     })
 })
