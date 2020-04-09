@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FirstStep Component Mark up is correctly rendered 1`] = `
+<div
+  class="step-content"
+>
+  <div
+    class="step-actions"
+  >
+    <div
+      class="field not-selected"
+    >
+      <label
+        class="b-radio radio"
+      >
+        <input
+          type="radio"
+          value="yes"
+        />
+         
+        <span
+          class="check"
+        />
+         
+        <span
+          class="control-label"
+        >
+          <span
+            class="vocab-body body-normal"
+          >
+            
+                    stepper.yesstepper.FS.selected
+                
+          </span>
+        </span>
+      </label>
+    </div>
+     
+    <div
+      class="field selected"
+    >
+      <label
+        class="b-radio radio"
+      >
+        <input
+          type="radio"
+          value="no"
+        />
+         
+        <span
+          class="check"
+        />
+         
+        <span
+          class="control-label"
+        >
+          <span
+            class="vocab-body body-normal"
+          >
+            
+                    stepper.nostepper.FS.not-selected
+                
+          </span>
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+`;
