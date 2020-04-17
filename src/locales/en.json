@@ -129,38 +129,37 @@
         "heading": "CONFUSED? NEED HELP?",
         "what-are-cc-licenses": {
             "heading": "What Are Creative Commons Licenses?",
-            "text": "<p class='help-text'>The Creative Commons copyright licenses and tools forge a balance inside the traditional \"all rights reserved\" setting that copyright law creates. Our licenses and tools give everyone from individual creators to large companies a simple, standardized way to grant copyright permissions to their creative work.</p><p class='help-text'>This helps you as a creator, because instead of having to hire a lawyer to parse legalese and create a license for you, you can save time and money, use Creative Commons licenses instead!</p>",
+            "text": "<p class='help-text'>Creative Commons legal tools give everyone from individual creators to large companies a simple, standardized way to grant copyright permissions to their creative work. They are designed to forge a balance inside the traditional \"all rights reserved\" setting that copyright law creates.</p>",
             "footer": "For more information, please see <a id='license_link' href='https://creativecommons.org/licenses/' target='blank_'>About the Licenses</a>"
          },
         "how-licenses-work": {
             "heading": "How do the Licenses Work?",
-            "text": " <h5 class='help-h5'>License \"Layers\"</h5> <p class='help-text'>Creative Commons licenses incorporate a unique and innovative \"three-layer\" design.</p><ul><li><h5 class='help-h5'> - Legal Code: </h5><p class='help-text'>Each license begins as a traditional legal tool, in the kind of language and text formats that most lawyers know and love. We call this the Legal Code layer of each license.</p> </li><li><h5 class='help-h5'> - Human Readable: </h5> <p class='help-text'>Since most creators, educators, and scientists are not in fact lawyers, we also make the licenses available in a format that normal people can read -- The Commons Deed (also known as the “human readable” version of the license). This is a handy reference for licensors and licensees, summarizing some of the most important terms and conditions. Think of the Commons Deed as a user-friendly interface to the legal code beneath.</p> </li> <li><h5 class='help-h5'> - Machine Readable: </h5><p class='help-text'>The final layer of the license design helps out software, from search engines to office productivity, this software plays an enormous role in the creation, copying, and distribution of creative works. To help out this software, we provide a \"Machine Readable\" version of the license. </p><p class='help-text'>We developed a standardized way to describe licenses that software can understand called <a id='cc_rights_link' href='https://wiki.creativecommons.org/Ccrel' target='blank_'>CC Rights Expression language</a> (CC REL) to accomplish this.</p></li></ul>",
-             "footer": "<p>For more information, please see <a id='license_link_2' href='https://creativecommons.org/licenses/' target='blank_'>About the Licenses</a></p>"
+            "text": "<p class='help-text'>There are six different Creative Commons licenses, as well as one public domain dedication tool. Creators choose the option that is right for them, and then apply that license to their copyrighted work. Anyone who wants to reuse the work of the creator in a manner that requires permission under copyright must comply with the terms of the license.</p>",
+            "footer": "<p>For more information, please see <a id='license_link_2' href='https://creativecommons.org/licenses/' target='blank_'>About the Licenses</a></p>"
         },
         "what-icons-mean": {
             "heading": "What do the Icons Mean?",
+            "text":"<p class='help-text'>The icons represent key features of the different CC license options:</p>",
             "BY": {
-                "text":" All CC licenses require that others who use your work in any way must give you appropriate credit in a reasonable manner, but not in a way that suggests you endorse them or their use. If they want to use your work without giving credit or for endorsement purposes, they must get your permission first.",
+                "text":"Credit must be given to you, the creator.",
                 "long-name": "Attribution Required",
                 "short-name": "(BY)"
             },
             "ND": {
-                "text": "You let others copy, distribute, display, perform, use and modify your work privately, but they may not share any modified work without getting your permission first.",
+                "text": "No derivatives or adaptations of your work are permitted.",
                 "long-name": "Modifying Not Allowed",
                 "short-name": "(ND/ NoDerivatives)"
             },
             "NC": {
-                "text": "<p style='margin-bottom:0;'>You let others copy, distribute, display, perform, use, and modify (but not share a modified work if you have chosen NoDerivatives) and use your work for any purpose other than commercially, unless they get your permission first. </p> <p class='help'> Curious what qualifies as a Commercial Use? Check out the <a href='https://wiki.creativecommons.org/wiki/NonCommercial_interpretation' target='blank_'> CC wiki page on interpretation of Commercial Uses. </a> </p>",
+                "text": "Only noncommercial use of your work is permitted.</p>",
                 "long-name": "Commercial Use Not Allowed",
                 "short-name": "(NC/ NonCommercial)"
             },
             "SA": {
-                "text": " You let others copy, distribute, display, perform, use, and modify your work, as long as any modified work they distribute is on the same terms. If they want to distribute modified works under other terms, they must get your permission first.",
+                "text": "Adaptations must be shared under the same terms.",
                 "long-name": "Distributed on Same Terms",
                 "short-name": "(SA/ ShareAlike)"
-            },
-            "footer": "<p>For more information on CC's public domain tools, please see <a id='domain_link' href='https://creativecommons.org/publicdomain/' target='blank_'>Our Public Domain Tools</a></p>"
-
+            }
         },
         "how-licenses-communicated": {
             "heading": "How are Licenses Communicated?",
@@ -177,9 +176,8 @@
         },
         "how-formally-license": {
             "heading": "How do I Formally License my Work?",
-            "text": "<p class='help-text'>Formally licensing your work is as easy as marking your work as being CC licensed, along with the specific license it is under. This mark may be in the form of a watermark, or it may be somewhere around where your work is hosted or shared. This mark may be as simple as a bit of text stating the license, or as complex as embedding the license information on your website.</p><h5 class='help-h5'>Recourse Options</h5><p class='help-text'> So what would I do if someone used my licensed work in a way that the license does not permit? Well, there are lots of recourse options, but here are the two main ones: </p> <ul> <li> <h5 class='help-h5'> - Resolve the Dispute Amicably</h5> <p class='help-text'>First, we encourage you to contact the alleged violator, and attempt to resolve the dispute amicably. Most disagreements are solved in this manner, and it saves everyone time and money.</p> </li> <li><h5 class='help-h5'> - Litigation</h5><p class='help-text'>If you determine that the dispute cannot be resolved any other way, you would then identify the alleged violation, contact a lawyer, and begin building a case.</p> </li></ul>",
-            "footer": ""
-         },
+            "text": "<p class='help-text'>Licensing your work is as simple as marking it under the specific license you choose. This marking can be as simple as a bit of text stating the license in a copyright notice, or as complex as embedding the license information on your website using the HTML code associated with the particular license. We strongly recommend at least including a link to the applicable license.</p>"
+        },
         "six-cc-licenses": {
             "heading": "The Six Creative Commons Licenses",
             "text": "<p class='help-text'>There are six main licenses that Creative Commons offers.</p> <p class='help-text'>In the diagram to the right, you can see the six main licenses and the public domain CC0 license, and how restrictive they are, with licenses at the top being the least restrictive, and licenses at the bottom being the most restrictive.</p> <p class='help-text'>If you are unsure about which one is right for you and your work, please select <strong>\"I need help selecting a license\"</strong> on the first question of this page.</p>",
@@ -189,6 +187,10 @@
             "heading": "What is a Free Culture License?",
             "text": "<p class='help-text'>CC uses the definition of free cultural works at <a href='https://freedomdefined.org/Definition' target='_blank'>Freedom Defined</a> to categorize certain CC licenses as Free Culture Licenses. Freedom Defined is an open organization of free culture advocates and researchers; the definition was developed by its community as a parallel to efforts such as the Free Software Definition, to have a standard for defining Free Culture. Using that definition, material licensed under CC BY or BY-SA is a free cultural work, as is anything in the worldwide public domain marked with CC0 or the Public Domain Mark.",
             "footer": "Read more about <a href='https://creativecommons.org/share-your-work/public-domain/freeworks' target='_blank'>Understanding Free Cultural Works</a></p>"
+        },
+        "look-earlier-license-ver": {
+            "heading":"Looking for Earlier License Versions, including Ports?",
+            "text": "<p class='help-text'>The most recent license version is 4.0, which can be used internationally. Earlier versions of licenses, including 3.0 international and ports localized to particular jurisdictions, can still be used on the legacy version of the <a href='https://creativecommons.org/choose/' target='_blank'>License Chooser</a>.</p><p class='help-text'>Click on the link at the top of the page <strong>\"Looking for earlier license versions, including ports?\"</strong> and follow the prompts to use earlier license versions.</p>"
         }
     },
     "alt": {

@@ -30,7 +30,11 @@ exports[`HelpSection.vue Check if the HelpSection.vue component has the expected
     <li class="help-link"><a class="vocab-body body-big help-link-a">
         help.what-free-culture-license.heading
       </a></li>
+    <li class="help-link"><a class="vocab-body body-big help-link-a">
+        help.look-earlier-license-ver.heading
+      </a></li>
   </ul>
+  <!---->
   <!---->
   <!---->
   <!---->
