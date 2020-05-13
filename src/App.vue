@@ -112,6 +112,9 @@ export default {
         color: #2c3e50;
         counter-reset: step-counter;
     }
+    .main {
+        padding-bottom: 5rem;
+    }
     #site-container {
         padding: 0.75rem;
     }
