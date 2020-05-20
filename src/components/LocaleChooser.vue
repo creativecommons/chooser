@@ -62,17 +62,14 @@ export default {
 }
 .locale-chooser-field .control .select select {
     padding-left: 2.5em;
-    z-index: -1;
 }
 .locale-chooser-field .control .select::before {
     content: url("../assets/language.png");
     position: absolute;
     left:10px;
     top:8px;
+    z-index:1;
 }
-.locale-chooser .select:not(.is-multiple):not(.is-loading)::after {
-     z-index: 0;
- }
 @media only screen and (max-width: 768px) {
     .locale-chooser {
         height: auto;
