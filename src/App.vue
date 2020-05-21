@@ -14,7 +14,7 @@
                         {{ $t('select-license.instructions') }}
                     </p>
                 </div>
-                <LocaleChooser />
+                <LocaleChooser class="locale-chooser" />
             </div>
             <div class="columns">
                 <Stepper v-model="currentStepId" />
@@ -112,19 +112,19 @@ export default {
         counter-reset: step-counter;
     }
     #site-container {
-        padding-top: 2rem;
-        padding-bottom: 2%;
+        padding: 0.75rem;
     }
     .page-head {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         grid-gap: 1.5rem;
-        .select-license-column {
-            grid-column: 1;
-        }
-        .locale-chooser {
-            grid-column: 2;
-        }
+        grid-template-areas: "localechooser" "heading";
+    }
+    .selected-license-column {
+        grid-area: heading;
+    }
+    .locale-chooser {
+        grid-area: localechooser;
     }
     .stepper-instructions {
         margin-bottom: 14px;
@@ -134,43 +134,31 @@ export default {
         top: 10px;
     }
     .selected-license-card {
-        // Margin is added to make the left column long enough for the right column to stay sticky when scrolling
+        // Margin is added to make the left column long enough
+        // for the right column to stay sticky when scrolling
         margin-bottom: 32px;
     }
-    @media only screen and (max-width: 1025px) {
-        #site-container {
-            margin-left: 2%;
-            margin-right: 2%;
-        }
-        .mobile-hide {
-            display: none;
-        }
-        .mobile-show {
-            display: block;
-        }
+    footer.footer.chooser-footer {
+        margin-top: 2rem;
     }
-    @media only screen and (max-width: 768px) {
-        #site-container {
-            padding-top: 0;
+    @media only screen and (min-width: 769px) {
+        #site-container{
+            padding-top: 2rem;
         }
         .page-head {
-            grid-template-columns: 100%;
-            grid-gap: 1rem;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 1.5rem;
+            grid-template-areas: "heading localechooser";
         }
-        .select-license-column {
-            order: 2;
-        }
-        .locale-chooser {
-            padding-top: 1rem;
-            height: auto;
-            grid-column: auto;
-            order: 1;
+        footer {
+            margin-top: 5rem;
         }
     }
-    @media only screen and (max-width: 670px) {
-        #site-container {
-            margin-left: 3%;
-            margin-right: 3%;
+    @media only screen and (min-width: 1025px) {
+        #site-container{
+            padding-left: 0;
+            padding-right: 0;
         }
     }
+
 </style>
