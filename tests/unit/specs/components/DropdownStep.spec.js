@@ -52,7 +52,7 @@ describe('DropdownStep', () => {
 
         options.at(1).setSelected()
 
-        expect(wrapper.emitted().change[0]).toStrictEqual(['DD', 5, true])
+        expect(wrapper.emitted().input[0]).toStrictEqual(['DD', 5, true])
     })
 })
 

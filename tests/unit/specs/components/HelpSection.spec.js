@@ -3,12 +3,10 @@ import HelpSection from '@/components/HelpSection.vue'
 import VueI18n from 'vue-i18n'
 import Buefy from 'buefy'
 
-// After the rendering of help modals is moved with the portal,
-// testing of modal rendering should be done using e2e testing
-
 describe('HelpSection.vue', () => {
     let wrapper
 
+    // Always creates a shallow instance of component
     beforeEach(() => {
         const localVue = createLocalVue()
         localVue.use(VueI18n)
@@ -87,67 +85,50 @@ describe('HelpSection.vue', () => {
     it('Check if all the 9 li tags are present in the DOM', () => {
         expect(wrapper.findAll('.help-link').length).toBe(9)
     })
-    it('Check if "What Are Creative Commons Licenses?" status is set to true when button is clicked', () => {
-        const modalId = 1
-        expect(wrapper.contains(`ul > li:nth-child(${modalId}) > a`)).toBe(true)
+    it('Check if "What Are Creative Commons Licenses?" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(1) > a')).toBe(true)
         wrapper.find('ul > li:nth-child(1) > a').trigger('click')
-        expect(wrapper.vm.modals[modalId].status).toBe(true)
+        expect(wrapper.contains('.modal-content')).toBe(true)
     })
-    it('Check if "How do the Licenses Work?" status is set to true when button is clicked', () => {
-        const modalId = 2
-        const modalButton = `ul > li:nth-child(${modalId}) > a`
-        expect(wrapper.contains(modalButton)).toBe(true)
-        wrapper.find(modalButton).trigger('click')
-        expect(wrapper.vm.modals[modalId].status).toBe(true)
+    it('Check if "How do the Licenses Work?" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(2) > a')).toBe(true)
+        wrapper.find('ul > li:nth-child(2) > a').trigger('click')
+        expect(wrapper.contains('.modal-content')).toBe(true)
     })
-    it('Check if "What do the Icons Mean?" status is set to true when button is clicked', () => {
-        const modalId = 3
-        const modalButton = `ul > li:nth-child(${modalId}) > a`
-        expect(wrapper.contains(modalButton)).toBe(true)
-        wrapper.find(modalButton).trigger('click')
-        expect(wrapper.vm.modals[modalId].status).toBe(true)
+    it('Check if "What do the Icons Mean?" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(3) > a')).toBe(true)
+        wrapper.find('ul > li:nth-child(3) > a').trigger('click')
+        expect(wrapper.contains('.modal-content')).toBe(true)
     })
-    it('Check if "Considerations Before Licensing" status is set to true when button is clicked', () => {
-        const modalId = 4
-        const modalButton = `ul > li:nth-child(${modalId}) > a`
-        expect(wrapper.contains(modalButton)).toBe(true)
-        wrapper.find(modalButton).trigger('click')
-        expect(wrapper.vm.modals[modalId].status).toBe(true)
+    it('Check if "Considerations Before Licensing" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(4) > a')).toBe(true)
+        wrapper.find('ul > li:nth-child(4) > a').trigger('click')
+        expect(wrapper.contains('.modal-content')).toBe(true)
     })
-    it('Check if "How do I Formally License my Work?" status is set to true when button is clicked', () => {
-        const modalId = 5
-        const modalButton = `ul > li:nth-child(${modalId}) > a`
-        expect(wrapper.contains(modalButton)).toBe(true)
-        wrapper.find(modalButton).trigger('click')
-        expect(wrapper.vm.modals[modalId].status).toBe(true)
+    it('Check if "How do I Formally License my Work?" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(5) > a')).toBe(true)
+        wrapper.find('ul > li:nth-child(5) > a').trigger('click')
+        expect(wrapper.contains('.modal-content')).toBe(true)
     })
-    it('Check if "The Six Creative Commons Licenses" status is set to true when button is clicked', () => {
-        const modalId = 6
-        const modalButton = `ul > li:nth-child(${modalId}) > a`
-        expect(wrapper.contains(modalButton)).toBe(true)
-        wrapper.find(modalButton).trigger('click')
-        expect(wrapper.vm.modals[modalId].status).toBe(true)
+    it('Check if "The Six Creative Commons Licenses" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(6) > a')).toBe(true)
+        wrapper.find('ul > li:nth-child(6) > a').trigger('click')
+        expect(wrapper.contains('.modal-content')).toBe(true)
     })
-    it('Check if "How are Licenses Communicated?" status is set to true when button is clicked', () => {
-        const modalId = 7
-        const modalButton = `ul > li:nth-child(${modalId}) > a`
-        expect(wrapper.contains(modalButton)).toBe(true)
-        wrapper.find(modalButton).trigger('click')
-        expect(wrapper.vm.modals[modalId].status).toBe(true)
+    it('Check if "How are Licenses Communicated?" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(7) > a')).toBe(true)
+        wrapper.find('ul > li:nth-child(7) > a').trigger('click')
+        expect(wrapper.contains('.modal-content')).toBe(true)
     })
-    it('Check if " What is a Free Culture License?" status is set to true when button is clicked', () => {
-        const modalId = 8
-        const modalButton = `ul > li:nth-child(${modalId}) > a`
-        expect(wrapper.contains(modalButton)).toBe(true)
-        wrapper.find(modalButton).trigger('click')
-        expect(wrapper.vm.modals[modalId].status).toBe(true)
+    it('Check if " What is a Free Culture License?" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(8) > a')).toBe(true)
+        wrapper.find('ul > li:nth-child(8) > a').trigger('click')
+        expect(wrapper.contains('.modal-content')).toBe(true)
     })
-    it('Check if "Looking for Earlier License Versions, including Ports?" status is set to true when button is clicked', () => {
-        const modalId = 9
-        const modalButton = `ul > li:nth-child(${modalId}) > a`
-        expect(wrapper.contains(modalButton)).toBe(true)
-        wrapper.find(modalButton).trigger('click')
-        expect(wrapper.vm.modals[modalId].status).toBe(true)
+    it('Check if "Looking for Earlier License Versions, including Ports?" modal is rendered to DOM', () => {
+        expect(wrapper.contains('ul > li:nth-child(9) > a')).toBe(true)
+        wrapper.find('ul > li:nth-child(9) > a').trigger('click')
+        expect(wrapper.contains('.modal-content')).toBe(true)
     })
 
     // Tests for methods
