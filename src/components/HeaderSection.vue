@@ -6,9 +6,6 @@
                     src="../assets/chooser.svg"
                     alt="Creative Commons License chooser"
                 >
-                <h1 class="app-heading">
-                    {{ $t('app.title') }}
-                </h1>
             </b-navbar-item>
         </template>
         <template slot="end">
