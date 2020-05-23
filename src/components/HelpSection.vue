@@ -1,6 +1,6 @@
 <template>
     <div class="help-section">
-        <h3 class="vocab ha h3a">
+        <h3 class="vocab">
             {{ $t('help.heading') }}
         </h3>
         <ul class="help-links">

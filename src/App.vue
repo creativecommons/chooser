@@ -1,13 +1,13 @@
 <template>
     <div id="app">
-        <Header :title="$t('app.title')" />
+        <header-section :title="$t('app.title')" />
         <div
             id="site-container"
             class="container"
         >
             <div class="page-head">
                 <div class="select-license-column">
-                    <h2 class="vocab h2a ha">
+                    <h2 class="vocab">
                         {{ $t('select-license.heading') }}
                     </h2>
                     <p class="stepper-instructions vocab-body body-bigger">
@@ -41,7 +41,7 @@
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
 import LicenseUseCard from './components/LicenseUseCard'
-import Header from './components/Header.vue'
+import HeaderSection from './components/HeaderSection'
 import FooterSection from './components/FooterSection'
 import LocaleChooser from './components/LocaleChooser'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
@@ -53,7 +53,7 @@ export default {
         Stepper,
         LicenseDetailsCard,
         LicenseUseCard,
-        Header,
+        HeaderSection,
         FooterSection,
         LocaleChooser
     },
