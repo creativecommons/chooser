@@ -3,7 +3,7 @@
         <template slot="brand">
             <b-navbar-item>
                 <img
-                    src="https://creativecommons.org/wp-content/uploads/2016/05/cc-site-icon-300x300.png"
+                    src="../assets/chooser.svg"
                     alt="Creative Commons License chooser"
                 >
                 <h1 class="app-heading">
