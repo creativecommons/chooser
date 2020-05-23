@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <Footer />
+        <footer-section />
     </div>
 </template>
 
@@ -42,7 +42,7 @@ import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
 import LicenseUseCard from './components/LicenseUseCard'
 import Header from './components/Header.vue'
-import Footer from './components/Footer'
+import FooterSection from './components/FooterSection'
 import LocaleChooser from './components/LocaleChooser'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
 
@@ -54,7 +54,7 @@ export default {
         LicenseDetailsCard,
         LicenseUseCard,
         Header,
-        Footer,
+        FooterSection,
         LocaleChooser
     },
     data() {
@@ -104,6 +104,7 @@ export default {
     @import '~buefy/src/scss/components/_icon.scss';
 
     @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A%20400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
+    @import "@creativecommons/vocabulary/scss/vocabulary.scss";
 
     #app {
         -webkit-font-smoothing: antialiased;
