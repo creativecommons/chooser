@@ -1,6 +1,6 @@
 <template>
     <div class="license-use-card">
-        <h4 class="vocab h4b hb">
+        <h4 class="vocab b-header">
             {{ $t('license-use.heading') }}
         </h4>
         <p class="license-use-instructions">

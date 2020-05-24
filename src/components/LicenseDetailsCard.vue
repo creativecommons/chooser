@@ -1,9 +1,9 @@
 <template>
     <div class="selected-license-card">
-        <h3 class="vocab ha h3a">
+        <h3 class="vocab">
             {{ $t('license-details-card.heading') }}
         </h3>
-        <h4 class="vocab h4b hb">
+        <h4 class="vocab b-header">
             <a
                 :href="licenseUrl('web')"
                 class="license-name"

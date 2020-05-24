@@ -9,7 +9,7 @@
                 :class="['step-header']"
                 @click="setActiveStep(step.id)"
             >
-                <h5 class="step-title vocab hb h5b">
+                <h5 class="step-title vocab b-header">
                     {{ $t(stepHeaderText(step.name, step.status)) }}
                 </h5>
             </div>
