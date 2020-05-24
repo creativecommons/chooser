@@ -17,212 +17,225 @@
                 </a>
             </li>
         </ul>
-        <b-modal :active.sync="modals[1].status">
-            <header class="modal-card-head">
-                <p
-                    class="modal-card-title modal-title"
-                    v-html="this.$t('help.what-are-cc-licenses.heading')"
-                />
-            </header>
-            <section class="modal-card-body">
-                <article
-                    class="help-text"
-                    v-html="this.$t('help.what-are-cc-licenses.text')"
-                />
-                <footer class="modal-card-foot">
-                    <p v-html="this.$t('help.what-are-cc-licenses.footer')" />
-                </footer>
-            </section>
-        </b-modal>
-        <b-modal :active.sync="modals[2].status">
-            <header class="modal-card-head">
-                <p class="modal-card-title modal-title">
-                    {{ $t('help.how-licenses-work.heading') }}
-                </p>
-            </header>
-            <section class="modal-card-body">
-                <article v-html="this.$t('help.how-licenses-work.text')" />
-                <footer
-                    class="modal-card-foot"
-                    v-html="this.$t('help.how-licenses-work.footer')"
-                />
-            </section>
-        </b-modal>
-        <b-modal :active.sync="modals[3].status">
-            <header class="modal-card-head">
-                <p class="modal-card-title modal-title">
-                    {{ $t('help.what-icons-mean.heading') }}
-                </p>
-            </header>
-            <section class="modal-card-body">
-                <article v-html="this.$t('help.what-icons-mean.text')" />
-                <div class="columns">
-                    <div class="column is-half top-bottom-paddingless">
-                        <div class="edu-icons-section">
-                            <div class="edu-icons-title-section is-gapless">
-                                <img src="../assets/license-icons/cc-by_icon.svg">
-                                <div class="icon-title">
-                                    <b>{{ $t('help.what-icons-mean.BY.long-name') }}</b>
-                                    <p class="help">
-                                        {{ $t('help.what-icons-mean.BY.short-name') }}
-                                    </p>
+        <Portal selector="#portal-target">
+            <b-modal :active.sync="modals[1].status">
+                <header class="modal-card-head">
+                    <p
+                        class="modal-card-title modal-title"
+                        v-html="this.$t('help.what-are-cc-licenses.heading')"
+                    />
+                </header>
+                <section class="modal-card-body">
+                    <article
+                        class="help-text"
+                        v-html="this.$t('help.what-are-cc-licenses.text')"
+                    />
+                    <footer class="modal-card-foot">
+                        <p v-html="this.$t('help.what-are-cc-licenses.footer')" />
+                    </footer>
+                </section>
+            </b-modal>
+        </Portal>
+        <Portal selector="#portal-target">
+            <b-modal :active.sync="modals[2].status">
+                <header class="modal-card-head">
+                    <p class="modal-card-title modal-title">
+                        {{ $t('help.how-licenses-work.heading') }}
+                    </p>
+                </header>
+                <section class="modal-card-body">
+                    <article v-html="this.$t('help.how-licenses-work.text')" />
+                    <footer
+                        class="modal-card-foot"
+                        v-html="this.$t('help.how-licenses-work.footer')"
+                    />
+                </section>
+            </b-modal>
+        </Portal>
+        <Portal selector="#portal-target">
+            <b-modal :active.sync="modals[3].status">
+                <header class="modal-card-head">
+                    <p class="modal-card-title modal-title">
+                        {{ $t('help.what-icons-mean.heading') }}
+                    </p>
+                </header>
+                <section class="modal-card-body">
+                    <article v-html="this.$t('help.what-icons-mean.text')" />
+                    <div class="columns">
+                        <div class="column is-half top-bottom-paddingless">
+                            <div class="edu-icons-section">
+                                <div class="edu-icons-title-section is-gapless">
+                                    <img src="../assets/license-icons/cc-by_icon.svg">
+                                    <div class="icon-title">
+                                        <b>{{ $t('help.what-icons-mean.BY.long-name') }}</b>
+                                        <p class="help">
+                                            {{ $t('help.what-icons-mean.BY.short-name') }}
+                                        </p>
+                                    </div>
                                 </div>
+                                <p>
+                                    {{ $t('help.what-icons-mean.BY.text') }}
+                                </p>
                             </div>
-                            <p>
-                                {{ $t('help.what-icons-mean.BY.text') }}
-                            </p>
+                            <div class="edu-icons-section is-gapless">
+                                <div class="edu-icons-title-section">
+                                    <img src="../assets/license-icons/cc-nd_icon.svg">
+                                    <div class="icon-title">
+                                        <b>{{ $t('help.what-icons-mean.ND.long-name') }}</b>
+                                        <p class="help">
+                                            {{ $t('help.what-icons-mean.ND.short-name') }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <p>
+                                    {{ $t('help.what-icons-mean.ND.text') }}
+                                </p>
+                            </div>
                         </div>
-                        <div class="edu-icons-section is-gapless">
-                            <div class="edu-icons-title-section">
-                                <img src="../assets/license-icons/cc-nd_icon.svg">
-                                <div class="icon-title">
-                                    <b>{{ $t('help.what-icons-mean.ND.long-name') }}</b>
-                                    <p class="help">
-                                        {{ $t('help.what-icons-mean.ND.short-name') }}
-                                    </p>
+                        <div class="column is-half top-bottom-paddingless">
+                            <div class="edu-icons-section is-gapless">
+                                <div class="edu-icons-title-section">
+                                    <img
+                                        class="icon-img"
+                                        src="../assets/license-icons/cc-nc_icon.svg"
+                                    >
+                                    <div class="icon-title">
+                                        <b>{{ $t('help.what-icons-mean.NC.long-name') }}</b>
+                                        <p class="help">
+                                            {{ $t('help.what-icons-mean.NC.short-name') }}
+                                        </p>
+                                    </div>
                                 </div>
+                                <div v-html="this.$t('help.what-icons-mean.NC.text')" />
                             </div>
-                            <p>
-                                {{ $t('help.what-icons-mean.ND.text') }}
-                            </p>
+                            <div class="edu-icons-section">
+                                <div class="edu-icons-title-section is-gapless">
+                                    <img src="../assets/license-icons/cc-sa_icon.svg">
+                                    <div class="icon-title">
+                                        <b>{{ $t('help.what-icons-mean.SA.long-name') }}</b>
+                                        <p class="help">
+                                            {{ $t('help.what-icons-mean.SA.short-name') }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <p>
+                                    {{ $t('help.what-icons-mean.SA.text') }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="column is-half top-bottom-paddingless">
-                        <div class="edu-icons-section is-gapless">
-                            <div class="edu-icons-title-section">
-                                <img
-                                    class="icon-img"
-                                    src="../assets/license-icons/cc-nc_icon.svg"
-                                >
-                                <div class="icon-title">
-                                    <b>{{ $t('help.what-icons-mean.NC.long-name') }}</b>
-                                    <p class="help">
-                                        {{ $t('help.what-icons-mean.NC.short-name') }}
-                                    </p>
-                                </div>
-                            </div>
-                            <div v-html="this.$t('help.what-icons-mean.NC.text')" />
+                </section>
+            </b-modal>
+        </Portal>
+        <Portal selector="#portal-target">
+            <b-modal :active.sync="modals[4].status">
+                <header class="modal-card-head">
+                    <p class="modal-card-title modal-title">
+                        {{ $t('help.considerations-before-licensing.heading') }}
+                    </p>
+                </header>
+                <section class="modal-card-body">
+                    <article v-html="this.$t('help.considerations-before-licensing.text')" />
+                    <footer class="modal-card-foot">
+                        <p v-html="this.$t('help.considerations-before-licensing.footer')" />
+                    </footer>
+                </section>
+            </b-modal>
+            <b-modal :active.sync="modals[5].status">
+                <header class="modal-card-head">
+                    <p class="modal-card-title modal-title">
+                        {{ $t('help.how-formally-license.heading') }}
+                    </p>
+                </header>
+                <section class="modal-card-body">
+                    <article v-html="this.$t('help.how-formally-license.text')" />
+                </section>
+            </b-modal>
+            <b-modal :active.sync="modals[6].status">
+                <header class="modal-card-head">
+                    <p class="modal-card-title modal-title">
+                        {{ $t('help.six-cc-licenses.heading') }}
+                    </p>
+                </header>
+                <section class="modal-card-body">
+                    <div class="columns">
+                        <div class="column is-two-thirds">
+                            <article
+                                v-html="this.$t('help.six-cc-licenses.text')"
+                            />
                         </div>
-                        <div class="edu-icons-section">
-                            <div class="edu-icons-title-section is-gapless">
-                                <img src="../assets/license-icons/cc-sa_icon.svg">
-                                <div class="icon-title">
-                                    <b>{{ $t('help.what-icons-mean.SA.long-name') }}</b>
-                                    <p class="help">
-                                        {{ $t('help.what-icons-mean.SA.short-name') }}
-                                    </p>
-                                </div>
-                            </div>
-                            <p>
-                                {{ $t('help.what-icons-mean.SA.text') }}
-                            </p>
+                        <div class="column">
+                            <img src="../assets/license-openness-scale.png">
                         </div>
                     </div>
-                </div>
-            </section>
-        </b-modal>
-        <b-modal :active.sync="modals[4].status">
-            <header class="modal-card-head">
-                <p class="modal-card-title modal-title">
-                    {{ $t('help.considerations-before-licensing.heading') }}
-                </p>
-            </header>
-            <section class="modal-card-body">
-                <article v-html="this.$t('help.considerations-before-licensing.text')" />
-                <footer class="modal-card-foot">
-                    <p v-html="this.$t('help.considerations-before-licensing.footer')" />
-                </footer>
-            </section>
-        </b-modal>
-        <b-modal :active.sync="modals[5].status">
-            <header class="modal-card-head">
-                <p class="modal-card-title modal-title">
-                    {{ $t('help.how-formally-license.heading') }}
-                </p>
-            </header>
-            <section class="modal-card-body">
-                <article v-html="this.$t('help.how-formally-license.text')" />
-            </section>
-        </b-modal>
-        <b-modal :active.sync="modals[6].status">
-            <header class="modal-card-head">
-                <p class="modal-card-title modal-title">
-                    {{ $t('help.six-cc-licenses.heading') }}
-                </p>
-            </header>
-            <section class="modal-card-body">
-                <div class="columns">
-                    <div class="column is-two-thirds">
-                        <article
-                            v-html="this.$t('help.six-cc-licenses.text')"
-                        />
-                    </div>
-                    <div class="column">
-                        <img src="../assets/license-openness-scale.png">
-                    </div>
-                </div>
 
+                    <footer class="modal-card-foot">
+                        <p v-html="this.$t('help.six-cc-licenses.footer')" />
+                    </footer>
+                </section>
+            </b-modal>
+        </Portal>
+        <Portal selector="#portal-target">
+            <b-modal :active.sync="modals[7].status">
+                <header class="modal-card-head">
+                    <p class="modal-card-title modal-title">
+                        {{ $t('help.how-licenses-communicated.heading') }}
+                    </p>
+                </header>
+                <section class="modal-card-body">
+                    <p v-html="this.$t('help.how-licenses-communicated.text')" />
+                    <table class="table is-hoverable is-fullwidth help-section__table">
+                        <tbody>
+                            <tr>
+                                <th>{{ $t('help.how-licenses-communicated.full-name') }}</th>
+                                <td>{{ $t('help.how-licenses-communicated.CC-BY-NC') }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ $t('help.how-licenses-communicated.short-name') }}</th>
+                                <td>CC BY-NC</td>
+                            </tr>
+                            <tr>
+                                <th>{{ $t('help.how-licenses-communicated.license-icons') }}</th>
+                                <td><LicenseIcons :icons-arr="['by', 'nc']" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </b-modal>
+        </Portal>
+        <Portal selector="#portal-target">
+            <b-modal :active.sync="modals[8].status">
+                <header class="modal-card-head">
+                    <p class="modal-card-title modal-title">
+                        {{ $t('help.what-free-culture-license.heading') }}
+                    </p>
+                </header>
+                <section class="modal-card-body">
+                    <p v-html="this.$t('help.what-free-culture-license.text')" />
+                </section>
                 <footer class="modal-card-foot">
-                    <p v-html="this.$t('help.six-cc-licenses.footer')" />
+                    <p v-html="this.$t('help.what-free-culture-license.footer')" />
                 </footer>
-            </section>
-        </b-modal>
-        <b-modal :active.sync="modals[7].status">
-            <header class="modal-card-head">
-                <p class="modal-card-title modal-title">
-                    {{ $t('help.how-licenses-communicated.heading') }}
-                </p>
-            </header>
-            <section class="modal-card-body">
-                <p v-html="this.$t('help.how-licenses-communicated.text')" />
-                <table class="table is-hoverable is-fullwidth help-section__table">
-                    <tbody>
-                        <tr>
-                            <th>{{ $t('help.how-licenses-communicated.full-name') }}</th>
-                            <td>{{ $t('help.how-licenses-communicated.CC-BY-NC') }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ $t('help.how-licenses-communicated.short-name') }}</th>
-                            <td>CC BY-NC</td>
-                        </tr>
-                        <tr>
-                            <th>{{ $t('help.how-licenses-communicated.license-icons') }}</th>
-                            <td><LicenseIcons :icons-arr="['by', 'nc']" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </b-modal>
-        <b-modal :active.sync="modals[8].status">
-            <header class="modal-card-head">
-                <p class="modal-card-title modal-title">
-                    {{ $t('help.what-free-culture-license.heading') }}
-                </p>
-            </header>
-            <section class="modal-card-body">
-                <p v-html="this.$t('help.what-free-culture-license.text')" />
-            </section>
-            <footer class="modal-card-foot">
-                <p v-html="this.$t('help.what-free-culture-license.footer')" />
-            </footer>
-        </b-modal>
-        <b-modal :active.sync="modals[9].status">
-            <header class="modal-card-head">
-                <p class="modal-card-title modal-title">
-                    {{ $t('help.look-earlier-license-ver.heading') }}
-                </p>
-            </header>
-            <section class="modal-card-body">
-                <p v-html="this.$t('help.look-earlier-license-ver.text')" />
-            </section>
-        </b-modal>
+            </b-modal>
+            <b-modal :active.sync="modals[9].status">
+                <header class="modal-card-head">
+                    <p class="modal-card-title modal-title">
+                        {{ $t('help.look-earlier-license-ver.heading') }}
+                    </p>
+                </header>
+                <section class="modal-card-body">
+                    <p v-html="this.$t('help.look-earlier-license-ver.text')" />
+                </section>
+            </b-modal>
+        </Portal>
     </div>
 </template>
 <script>
 import LicenseIcons from './LicenseIcons'
+import { Portal } from '@linusborg/vue-simple-portal'
 
 // eslint-disable-next-line
-const ModalForm = {
+    const ModalForm = {
     template: `
         <form action="">
             <div class="modal-card" style="width: auto">
@@ -241,7 +254,8 @@ const ModalForm = {
 }
 export default {
     components: {
-        LicenseIcons
+        LicenseIcons,
+        Portal
     },
     data() {
         return {
