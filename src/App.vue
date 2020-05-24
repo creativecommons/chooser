@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header :title="$t('app.title')" />
+        <header-section />
         <div
             id="site-container"
             class="container"
@@ -41,7 +41,7 @@
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
 import LicenseUseCard from './components/LicenseUseCard'
-import Header from './components/Header.vue'
+import HeaderSection from './components/HeaderSection'
 import Footer from './components/Footer'
 import LocaleChooser from './components/LocaleChooser'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
@@ -53,7 +53,7 @@ export default {
         Stepper,
         LicenseDetailsCard,
         LicenseUseCard,
-        Header,
+        HeaderSection,
         Footer,
         LocaleChooser
     },
