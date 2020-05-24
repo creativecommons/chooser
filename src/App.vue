@@ -7,7 +7,7 @@
         >
             <div class="page-head">
                 <div class="select-license-column">
-                    <h2 class="vocab h2a ha">
+                    <h2 class="vocab">
                         {{ $t('select-license.heading') }}
                     </h2>
                     <p class="stepper-instructions vocab-body body-bigger">
