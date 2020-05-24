@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <Footer />
+        <footer-section />
     </div>
 </template>
 
@@ -42,7 +42,7 @@ import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
 import LicenseUseCard from './components/LicenseUseCard'
 import HeaderSection from './components/HeaderSection'
-import Footer from './components/Footer'
+import FooterSection from './components/FooterSection'
 import LocaleChooser from './components/LocaleChooser'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
 
@@ -54,7 +54,7 @@ export default {
         LicenseDetailsCard,
         LicenseUseCard,
         HeaderSection,
-        Footer,
+        FooterSection,
         LocaleChooser
     },
     data() {
