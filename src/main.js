@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Buefy from 'buefy'
 import i18n from './i18n'
-import VueAnalytics from 'vue-analytics'
 import App from './App.vue'
 import store from './store'
 import './styles/vocab.scss'
 
+// Analytics
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
+import Hotjar from 'vue-hotjar'
+import VueAnalytics from 'vue-analytics'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCopy } from '@fortawesome/free-solid-svg-icons/faCopy'
@@ -50,6 +52,14 @@ Sentry.init({
         })
     ]
 })
+
+// Production only since we only have a prod id
+if (process.env.NODE_ENV === 'production') {
+    Vue.use(Hotjar, {
+        id: '1803702',
+        isProduction: true
+    })
+}
 
 new Vue({
     store,
