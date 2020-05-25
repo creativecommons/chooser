@@ -30,10 +30,10 @@
                         class="help-text"
                         v-html="this.$t('help.what-are-cc-licenses.text')"
                     />
-                    <footer class="modal-card-foot">
-                        <p v-html="this.$t('help.what-are-cc-licenses.footer')" />
-                    </footer>
                 </section>
+                <footer class="modal-card-foot">
+                    <p v-html="this.$t('help.what-are-cc-licenses.footer')" />
+                </footer>
             </b-modal>
         </Portal>
         <Portal selector="#portal-target">
@@ -45,11 +45,11 @@
                 </header>
                 <section class="modal-card-body">
                     <article v-html="this.$t('help.how-licenses-work.text')" />
-                    <footer
-                        class="modal-card-foot"
-                        v-html="this.$t('help.how-licenses-work.footer')"
-                    />
                 </section>
+                <footer
+                    class="modal-card-foot"
+                    v-html="this.$t('help.how-licenses-work.footer')"
+                />
             </b-modal>
         </Portal>
         <Portal selector="#portal-target">
@@ -136,10 +136,10 @@
                 </header>
                 <section class="modal-card-body">
                     <article v-html="this.$t('help.considerations-before-licensing.text')" />
-                    <footer class="modal-card-foot">
-                        <p v-html="this.$t('help.considerations-before-licensing.footer')" />
-                    </footer>
                 </section>
+                <footer class="modal-card-foot">
+                    <p v-html="this.$t('help.considerations-before-licensing.footer')" />
+                </footer>
             </b-modal>
             <b-modal :active.sync="modals[5].status">
                 <header class="modal-card-head">
@@ -168,11 +168,10 @@
                             <img src="../assets/license-openness-scale.png">
                         </div>
                     </div>
-
-                    <footer class="modal-card-foot">
-                        <p v-html="this.$t('help.six-cc-licenses.footer')" />
-                    </footer>
                 </section>
+                <footer class="modal-card-foot">
+                    <p v-html="this.$t('help.six-cc-licenses.footer')" />
+                </footer>
             </b-modal>
         </Portal>
         <Portal selector="#portal-target">
@@ -234,24 +233,6 @@
 import LicenseIcons from './LicenseIcons'
 import { Portal } from '@linusborg/vue-simple-portal'
 
-// eslint-disable-next-line
-    const ModalForm = {
-    template: `
-        <form action="">
-            <div class="modal-card" style="width: auto">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Login</p>
-                </header>
-                <section class="modal-card-body">
-
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button" type="button" @click="$parent.close()">Close</button>
-                </footer>
-            </div>
-        </form>
-    `
-}
 export default {
     components: {
         LicenseIcons,
