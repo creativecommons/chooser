@@ -1,13 +1,13 @@
 <template>
     <div id="app">
-        <Header :title="$t('app.title')" />
+        <header-section />
         <div
             id="site-container"
             class="container"
         >
             <div class="page-head">
                 <div class="select-license-column">
-                    <h2 class="vocab h2a ha">
+                    <h2 class="vocab">
                         {{ $t('select-license.heading') }}
                     </h2>
                     <p class="stepper-instructions vocab-body body-bigger">
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <Footer />
+        <footer-section />
     </div>
 </template>
 
@@ -41,8 +41,8 @@
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
 import LicenseUseCard from './components/LicenseUseCard'
-import Header from './components/Header.vue'
-import Footer from './components/Footer'
+import HeaderSection from './components/HeaderSection'
+import FooterSection from './components/FooterSection'
 import LocaleChooser from './components/LocaleChooser'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
 
@@ -53,8 +53,8 @@ export default {
         Stepper,
         LicenseDetailsCard,
         LicenseUseCard,
-        Header,
-        Footer,
+        HeaderSection,
+        FooterSection,
         LocaleChooser
     },
     data() {
@@ -104,6 +104,7 @@ export default {
     @import '~buefy/src/scss/components/_icon.scss';
 
     @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A%20400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
+    @import "@creativecommons/vocabulary/scss/vocabulary.scss";
 
     #app {
         -webkit-font-smoothing: antialiased;
