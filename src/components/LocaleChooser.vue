@@ -1,5 +1,5 @@
 <template>
-    <div class="locale-chooser">
+    <div>
         <b-field
             :label="this.$t('locale-selector.label')"
             :class="'locale-chooser-field'"
@@ -40,51 +40,48 @@ export default {
 </script>
 
 <style>
-.locale-chooser {
-    height: 132px;
-}
-.locale-chooser-field {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-.locale-chooser-field .label {
-    justify-self: end;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 36px;
-    padding-right: 16px;
-}
-.locale-chooser-field .control,
-.locale-chooser-field .select,
-.locale-chooser-field select {
-    width: 100%;
-}
-.locale-chooser-field .control .select select {
-    padding-left: 2.5em;
-    z-index: -1;
-}
-.locale-chooser-field .control .select::before {
-    content: url("../assets/language.png");
-    position: absolute;
-    left:10px;
-    top:8px;
-}
-.locale-chooser .select:not(.is-multiple):not(.is-loading)::after {
-     z-index: 0;
- }
-@media only screen and (max-width: 768px) {
-    .locale-chooser {
-        height: auto;
-        margin-bottom: 1rem;
-    }
     .locale-chooser-field {
-        width: 100%;
         display: grid;
-        grid-template-columns: 100%;
+        grid-template-columns: 1fr;
     }
     .locale-chooser-field .label {
-        justify-self: auto;
+        padding-right: 1rem;
     }
-}
+    .locale-chooser-field .control .select::before {
+        content: url("../assets/language.png");
+        position: absolute;
+        left: 10px;
+        top: 8px;
+        z-index: 1;
+    }
+    .locale-chooser-field .control,
+    .locale-chooser-field .select,
+    .locale-chooser-field select {
+        width: 100%;
+    }
+    .locale-chooser-field .control .select select {
+        padding-left: 2.5em;
+    }
+    .locale-chooser-field label.label {
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 2.25rem;
+        margin-bottom: 0;
+    }
+    @media only screen and (min-width:769px) {
+        .locale-chooser {
+            justify-self: end;
+        }
+    }
+    @media only screen and (min-width:1024px) {
+        .locale-chooser-field {
+            padding-top:0.5rem;
+            display: grid;
+            grid-template-columns: 1fr minmax(210px, 1fr);
+        }
+        .locale-chooser-field .label {
+            padding-right: 0.5rem;
+            justify-self: end;
+        }
+    }
 </style>
