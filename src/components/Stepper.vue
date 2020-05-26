@@ -380,6 +380,10 @@ export default {
     .current,
     .previous {
         color: black;
+        background-color: #fff;
+    }
+    .inactive{
+        background-color: #F5F5F5;
     }
     .previous.disabled {
         color: #B0B0B0;
