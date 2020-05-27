@@ -167,6 +167,9 @@ export default {
     #attribution-text p {
         margin-top: 0.5rem;
         margin-bottom: 1rem;
+        background-color: #fff;
+        padding: 24px 0 0 24px;
+        height: 100px;
     }
     #generated-html-container {
         padding-top: 10px;
