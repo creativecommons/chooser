@@ -125,6 +125,7 @@
                         </div>
                     </div>
                 </section>
+                <footer class="modal-card-foot" />
             </b-modal>
         </Portal>
         <Portal selector="#portal-target">
@@ -150,6 +151,7 @@
                 <section class="modal-card-body">
                     <article v-html="this.$t('help.how-formally-license.text')" />
                 </section>
+                <footer class="modal-card-foot" />
             </b-modal>
             <b-modal :active.sync="modals[6].status">
                 <header class="modal-card-head">
@@ -200,6 +202,7 @@
                         </tbody>
                     </table>
                 </section>
+                <footer class="modal-card-foot" />
             </b-modal>
         </Portal>
         <Portal selector="#portal-target">
@@ -225,6 +228,7 @@
                 <section class="modal-card-body">
                     <p v-html="this.$t('help.look-earlier-license-ver.text')" />
                 </section>
+                <footer class="modal-card-foot" />
             </b-modal>
         </Portal>
     </div>
@@ -310,40 +314,6 @@ export default {
         list-style-image: url("../assets/arrow-right.png");
     }
 
-    table svg {
-        width: 28px !important;
-        height: 28px !important;
-        vertical-align: middle;
-        margin-right: 3px;
-    }
-
-    .help-section__table {
-        margin-top: 1.5rem;
-    }
-
-    .top-bottom-paddingless {
-        padding-bottom: 0 !important;
-        padding-top: 0 !important;
-    }
-
-    @media only screen and (max-width: 1025px) {
-        .tablet-hide { display: none; }
-        .tablet-show { display: block; }
-    }
-
-    @media only screen and (max-width: 670px) {
-        h2 { font-size: 30px !important; }
-        button p { font-size: 18px; }
-
-        .modal-title { font-size: 18px; }
-        .modal-content {
-            margin-left: 10%;
-            margin-right: 10%;
-        }
-
-        .mobile-hide { display: none; }
-        .mobile-show { display: block; }
-    }
 </style>
 <style lang="scss">
     .help__instructions {
@@ -364,17 +334,15 @@ export default {
     }
     .edu-icons-title-section {
         display: grid;
+        grid-gap: 0.5rem;
         grid-template-columns: 1fr 7fr;
     }
-
     .edu-icons-section img {
         width: 45px;
     }
-
     .edu-icons-section p {
         margin-bottom: 6%;
     }
-
     .edu-icons-section .title {
         vertical-align: middle !important;
         margin-bottom: 0 !important;
@@ -385,13 +353,41 @@ export default {
         font-size: 23px;
         line-height: 27px;
     }
-
     .edu-icons-section b {
         padding-top: 0;
     }
-
     .edu-icons-section-icon_title p {
         margin: 0;
     }
+    .modal.is-active .modal-content {
+        overflow: hidden;
+    }
+    button.modal-close {
+        position: fixed;
+    }
+    p.modal-card-title {
+        flex-shrink: 1;
+        line-height: inherit;
+    }
+    .help-section__table {
+        margin-top: 1.5rem;
+    }
+    .top-bottom-paddingless {
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
+    }
 
+    @media only screen and (max-width: 670px) {
+        .modal-card-title.modal-title { font-size: 18px; }
+        .modal-content {
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        .modal-card-body {
+            max-height: 55vh;
+        }
+        .modal.is-active .modal-content {
+            max-height: calc(100vh - 20px);
+        }
+    }
 </style>
