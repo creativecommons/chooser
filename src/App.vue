@@ -111,9 +111,7 @@ export default {
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;
         counter-reset: step-counter;
-    }
-    .main {
-        padding-bottom: 5rem;
+        background-color: #f5f5f5;
     }
     #site-container {
         padding: 0.75rem;
