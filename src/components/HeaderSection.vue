@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss">
 nav.navbar {
-    padding-top: 0.5rem;
+    padding: 0.5rem 0 0;
 }
 .navbar-item-feedback {
     padding-right: 30%;
