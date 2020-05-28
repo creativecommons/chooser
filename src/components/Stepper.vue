@@ -380,6 +380,10 @@ export default {
     .current,
     .previous {
         color: black;
+        background-color: #fff;
+    }
+    .inactive{
+        background-color: #F5F5F5;
     }
     .previous.disabled {
         color: #B0B0B0;
@@ -396,9 +400,16 @@ export default {
     .step-navigation .pagination-previous {
         font-family: Roboto Condensed,sans-serif;
         font-style: normal;
-        font-weight: 500;
         font-size: 18px;
         line-height: 24px;
+    }
+    .step-navigation,
+    .step-navigation {
+        font-weight: 500;
+    }
+    .pagination-next,
+    .pagination-previous {
+        font-weight: bold;
     }
     .step-navigation .pagination-previous {
         border: 2px solid #787878;
@@ -411,6 +422,7 @@ export default {
     }
     .pagination-next.disabled {
         background-color: #D8D8D8;
+        color: #787878 !important;
     }
     .pagination-next.disabled:hover,
     .pagination-next.disabled:active {
