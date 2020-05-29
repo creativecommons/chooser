@@ -10,7 +10,7 @@
             class="photo-license-icon"
             alt="CC icon"
             title="CC icon"
-            src="../assets/license-icons/cc_icon.svg"
+            src="../assets/license-icons/cc.svg"
         >
         <img
             v-for="(license, index) in iconsArr"
@@ -18,7 +18,7 @@
             class="photo-license-icon"
             :alt="license + ' icon'"
             :title="license + ' icon'"
-            :src="require(`../assets/license-icons/cc-${license.toLowerCase()}_icon.svg`)"
+            :src="require(`../assets/license-icons/${license.toLowerCase()}.svg`)"
         >
     </a>
 </template>
