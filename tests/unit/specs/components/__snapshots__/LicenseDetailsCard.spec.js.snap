@@ -17,8 +17,8 @@ exports[`LicenseDetailsCard.vue Check if the LicenseDetailsCard.vue component ha
                     </span></li>
       <li class="license-list-item sa"><span class="readable-string"><b>SA:</b>
                         license-details-card.item-description.sa
-                    </span></li>
-      </span></ul>
+                    </span></li></span>
+    </ul>
   </section>
 </div>
 `;
