@@ -10,7 +10,7 @@ jobs:
     steps:      
     - uses: nanasess/setup-chromedriver@master
       with:
-          chromedriver-version: '79.0.3945.36'
+          chromedriver-version: '83'
     - run: |
           export DISPLAY=:99
           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
@@ -19,9 +19,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
           node-version: '12.x'
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm run test
+    - name: npm install
+      run: npm ci
+    - name: npm test  
+      run: npm run test
       env:
         CI: true
