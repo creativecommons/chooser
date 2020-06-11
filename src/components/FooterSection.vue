@@ -65,7 +65,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="column is-half">
+                <div class="column">
                     <nav class="footer-navigation">
                         <ul class="menu">
                             <li>
@@ -142,5 +142,14 @@ export default {
 
     .icon {
         vertical-align: middle;
+    }
+    @media screen and (min-width: 1023px) {
+        // All columns are set the same width on 'tablet'-sized screen
+        // Half-sized middle column makes the last column too small for
+        // the 'Donate' button and breaks the layout
+        .column:nth-child(2) {
+            flex: none;
+            width: 50%;
+        }
     }
 </style>
