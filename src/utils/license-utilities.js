@@ -43,8 +43,8 @@ function attrToFull(attr) {
 
 function licenseUrl(attr, mode) {
     // Returns url to license from short license name with version number (eg. 'CC BY 4.0')
-    // mode: web/ print (?ref=ccchooser is added to the end of the link if mode is web)
-    const linkRef = mode === 'web' ? '/?ref=ccchooser' : ''
+    // mode: web/ print (?ref=chooser-v1 is added to the end of the link if mode is web)
+    const linkRef = mode === 'web' ? '/?ref=chooser-v1' : ''
     if (attr.BY === false) {
         return `https://creativecommons.org/publicdomain/zero/1.0${linkRef}`
     }
@@ -125,13 +125,14 @@ function generateHTML(attributionDetails, shortLicenseName) {
         ' xmlns:cc="http://creativecommons.org/ns#"' +
         ' class="license-text">'
     const iconStyle = 'style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;"'
-    const baseAssetsPath = 'https://search.creativecommons.org/static/img'
-    let licenseIcons = `<img ${iconStyle} src="${baseAssetsPath}/cc_icon.svg" />`
+    const baseAssetsPath = 'https://mirrors.creativecommons.org/presskit/icons'
+    const linkRef = '?ref=chooser-v1'
+    let licenseIcons = `<img ${iconStyle} src="${baseAssetsPath}/cc.svg/${linkRef}" />`
     if (shortLicenseName.includes('CC0')) {
         shortLicenseName = 'CC CC0 1.0'
     }
     licenseIcons += shortLicenseName.slice(3, shortLicenseName.length - 4).split('-').map(license =>
-        `<img  ${iconStyle} src="${baseAssetsPath}/cc-${license.toLowerCase()}_icon.svg" />`
+        `<img  ${iconStyle} src="${baseAssetsPath}/${license.toLowerCase()}.svg/${linkRef}" />`
     ).join('')
     dataForHtmlGeneration.licenseIconsLink = `<a href="${licenseUrl(shortToAttr(shortLicenseName))}">${licenseIcons}</a>`
 
@@ -153,6 +154,7 @@ function generateHTML(attributionDetails, shortLicenseName) {
     }
     return dataForHtmlGeneration
 }
+
 export {
     defaultAttributes, CC0Attributes, CCBYAttributes, shortToAttr, attrToShort,
     attrToFull, licenseUrl, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus

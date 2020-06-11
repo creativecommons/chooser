@@ -108,19 +108,19 @@ export default {
         background-size: 35px 35px;
     }
     .license-list-item.zero::before {
-        background-image: url("../assets/license-icons/cc-cc0_icon.svg");
+        background-image: url("../assets/license-icons/zero.svg");
     }
     .license-list-item.by::before {
-        background-image: url("../assets/license-icons/cc-by_icon.svg");
+        background-image: url("../assets/license-icons/by.svg");
     }
     .license-list-item.nc::before {
-        background-image: url("../assets/license-icons/cc-nc_icon.svg");
+        background-image: url("../assets/license-icons/nc.svg");
     }
     .license-list-item.nd::before {
-        background-image: url("../assets/license-icons/cc-nd_icon.svg");
+        background-image: url("../assets/license-icons/nd.svg");
     }
     .license-list-item.sa::before {
-        background-image: url("../assets/license-icons/cc-sa_icon.svg");
+        background-image: url("../assets/license-icons/sa.svg");
     }
     .readable-string {
         padding-left:51px;
