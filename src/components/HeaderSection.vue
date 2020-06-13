@@ -33,8 +33,11 @@ export default {
 </script>
 
 <style lang="scss">
-nav.navbar {
-    padding-top: 0.5rem;
+#app .navbar {
+    padding: 0.5rem 0 0;
+}
+.navbar-burger {
+    background-color:white;
 }
 .navbar-item-feedback {
     padding-right: 30%;

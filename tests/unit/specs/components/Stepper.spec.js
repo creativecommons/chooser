@@ -153,7 +153,6 @@ describe('Stepper.vue', () => {
             advanceStep(wrapper, [{ stepName: 'DD', isSelected: true, license: 'CC BY-NC-ND 4.0' }])
             wrapper.find('.pagination-previous').trigger('click')
             expect(wrapper.find('.current').classes()).toContain('DD')
-            console.log(wrapper.emitted())
         })
     })
     describe('FirstStep interactions', () => {

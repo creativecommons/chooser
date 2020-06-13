@@ -22,13 +22,16 @@ module.exports = {
             .setValue('input[placeholder="www.author.com/work.jpg"]', 'www.author.com/work.jpg')
             .assert.elementPresent('p[class="license-text"] a')
             .getAttribute('p > span > a:nth-child(1)', 'href', function(result) {
-                this.assert.equal(result.value, 'http://localhost:8080/www.author.com/work.jpg')
+                const urlString = result.value.split('/').slice(3).join('/')
+                this.assert.equal(urlString, 'www.author.com/work.jpg')
             })
             .getAttribute('p > span > a:nth-child(2)', 'href', function(result) {
-                this.assert.equal(result.value, 'http://localhost:8080/www.author.com')
+                const urlString = result.value.split('/').slice(3).join('/')
+                this.assert.equal(urlString, 'www.author.com')
             })
             .getAttribute('p > span > a:nth-child(4)', 'href', function(result) {
-                this.assert.equal(result.value, 'https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser')
+                const urlString = result.value.split('/').slice(3).join('/')
+                this.assert.equal(urlString, 'licenses/by-sa/4.0/?ref=ccchooser')
             })
     },
     'Check if the text is displayed under the print attribution': function(browser) {

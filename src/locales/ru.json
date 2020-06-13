@@ -7,14 +7,14 @@
     },
     "locale-selector.label": "Выбранный язык",
     "select-license": {
-        "heading": "ВЫБЕРЕТЕ СВОЮ ЛИЦЕНЗИЮ",
+        "heading": "ВЫБЕРИТЕ СВОЮ ЛИЦЕНЗИЮ",
         "instructions": "Выполните следующие шаги для того, чтобы выбрать подходящую лицензию для вашего произведения"
     },
     "stepper":
     {
         "nav": {
             "previous-label": "НАЗАД",
-            "next-label": "СЛЕДУЮЩИЙ ШАГ",
+            "next-label": "ДАЛЕЕ",
             "finish-label": "SEE LICENSE & ATTRIBUTION"
         },
         "yes": "Да. ",
@@ -28,7 +28,7 @@
             "not-selected": "Мне нужна помощь с выбором лицензии."
         },
         "BY": {
-            "heading": "Attribution",
+            "heading": "Указание авторства",
             "question": "Do you want attribution for your work?",
             "selected": "Все, кто использует мое произведение, должны указывать авторство.",
             "not-selected": "Anyone can use my work, even without giving me attribution."

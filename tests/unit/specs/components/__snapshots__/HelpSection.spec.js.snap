@@ -2,7 +2,7 @@
 
 exports[`HelpSection.vue Check if the HelpSection.vue component has the expected UI 1`] = `
 <div class="help-section">
-  <h3 class="vocab ha h3a">
+  <h3 class="vocab">
     help.heading
   </h3>
   <ul class="help-links">
@@ -34,9 +34,6 @@ exports[`HelpSection.vue Check if the HelpSection.vue component has the expected
         help.look-earlier-license-ver.heading
       </a></li>
   </ul>
-  <!---->
-  <!---->
-  <!---->
   <!---->
   <!---->
   <!---->

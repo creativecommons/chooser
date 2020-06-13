@@ -4,7 +4,7 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
 <div class="stepper-container column">
   <div class="step-container FS current enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Do you know which license you need?
       </h5>
     </div>
@@ -14,7 +14,7 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
   </div>
   <div class="step-container BY inactive enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Attribution
       </h5>
     </div>
@@ -23,7 +23,7 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
   </div>
   <div class="step-container NC inactive enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Commercial Use
       </h5>
     </div>
@@ -32,7 +32,7 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
   </div>
   <div class="step-container ND inactive enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Derivative Works
       </h5>
     </div>
@@ -41,7 +41,7 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
   </div>
   <div class="step-container SA inactive enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Sharing Requirements
       </h5>
     </div>
@@ -50,7 +50,7 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
   </div>
   <div class="step-container AD inactive enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Attribution Details
       </h5>
     </div>
@@ -64,7 +64,7 @@ exports[`Stepper.vue renders correctly has expected UI on CW step after DD 1`] =
 <div class="stepper-container column">
   <div class="step-container FS previous enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         License Expertise
       </h5>
     </div>
@@ -73,7 +73,7 @@ exports[`Stepper.vue renders correctly has expected UI on CW step after DD 1`] =
   </div>
   <div class="step-container DD previous enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Creative Commons License
       </h5>
     </div>
@@ -82,7 +82,7 @@ exports[`Stepper.vue renders correctly has expected UI on CW step after DD 1`] =
   </div>
   <div class="step-container CW current enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Waive Your Copyright
       </h5>
     </div>
@@ -91,7 +91,7 @@ exports[`Stepper.vue renders correctly has expected UI on CW step after DD 1`] =
   </div>
   <div class="step-container AD inactive enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Attribution Details
       </h5>
     </div>
@@ -105,7 +105,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
 <div class="stepper-container column">
   <div class="step-container FS previous enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         License Expertise
       </h5>
     </div>
@@ -114,7 +114,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
   </div>
   <div class="step-container BY previous enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Attribution
       </h5>
     </div>
@@ -123,7 +123,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
   </div>
   <div class="step-container NC previous enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Commercial Use
       </h5>
     </div>
@@ -132,7 +132,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
   </div>
   <div class="step-container ND current enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Do you want to allow others to remix, adapt, or build upon your work?
       </h5>
     </div>
@@ -141,7 +141,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
   </div>
   <div class="step-container SA inactive enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Sharing Requirements
       </h5>
     </div>
@@ -150,7 +150,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
   </div>
   <div class="step-container AD inactive enabled">
     <div class="step-header">
-      <h5 class="step-title vocab hb h5b">
+      <h5 class="step-title vocab b-header">
         Attribution Details
       </h5>
     </div>

@@ -140,7 +140,7 @@ export default {
         // for the right column to stay sticky when scrolling
         margin-bottom: 32px;
     }
-    footer.footer.chooser-footer {
+    footer.main-footer {
         margin-top: 2rem;
     }
     @media only screen and (min-width: 769px) {
@@ -152,7 +152,7 @@ export default {
             grid-gap: 1.5rem;
             grid-template-areas: "heading localechooser";
         }
-        footer {
+        footer.main-footer {
             margin-top: 5rem;
         }
     }
