@@ -86,10 +86,11 @@ export default {
             const licenseCodeSpan = this.$i18n.t('license-use.richtext.full-text', {
                 workTitle: data.workTitle ? data.workTitle : this.$i18n.t('license-use.richtext.workTitle'),
                 creator: data.creator,
-                licenseName: this.shortName,
-                by: data.creator ? this.$i18n.t('license-use.richtext.by') : ''
+                license: data.licenseLink,
+                by: data.creator ? this.$i18n.t('license-use.richtext.by') : '',
+                'licensed-text': this.$i18n.t('license-use.richtext.licensed-text')
             })
-            return `${data.htmlString}${licenseCodeSpan}${data.licenseIconsLink}</p>`
+            return `${data.htmlString}${licenseCodeSpan}</p>`
         },
         activeTab: {
             get() { return this.currentTab },
