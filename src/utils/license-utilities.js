@@ -134,7 +134,7 @@ function generateHTML(attributionDetails, shortLicenseName) {
     licenseIcons += shortLicenseName.slice(3, shortLicenseName.length - 4).split('-').map(license =>
         `<img  ${iconStyle} src="${baseAssetsPath}/${license.toLowerCase()}.svg/${linkRef}" />`
     ).join('')
-    dataForHtmlGeneration.licenseIconsLink = `<a href="${licenseUrl(shortToAttr(shortLicenseName))}">${licenseIcons}</a>`
+    dataForHtmlGeneration.licenseIconsLink = `<a rel="license" href="${licenseUrl(shortToAttr(shortLicenseName))}">${licenseIcons}</a>`
 
     if (attributionDetails.creatorName) {
         const creatorSpan = `<span rel="cc:attributionName">${attributionDetails.creatorName}</span>`
