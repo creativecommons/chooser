@@ -2,13 +2,12 @@
 import {
     attrToFull,
     attrToShort,
-    generateHTML,
     licenseIconsArr,
     licenseSlug,
     licenseUrl,
     shortToAttr,
     updateVisibleEnabledStatus
-} from '../../../../src/utils/license-utilities'
+} from '@/utils/license-utilities'
 
 describe('attrToFull', function testAttrToFull() {
     test('CC0 #1', () => {
