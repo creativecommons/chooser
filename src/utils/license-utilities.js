@@ -119,37 +119,42 @@ function generateHTML(attributionDetails, shortLicenseName) {
         htmlString: '',
         creator: '',
         workTitle: '',
-        licenseIconsLink: ''
+        licenseLink: ''
     }
-    dataForHtmlGeneration.htmlString = '<p xmlns:dct="http://purl.org/dc/terms/"' +
+    const { creatorName, creatorProfileUrl, workTitle, workUrl } = attributionDetails
+    dataForHtmlGeneration.htmlString =
+        '<p xmlns:dct="http://purl.org/dc/terms/"' +
         ' xmlns:cc="http://creativecommons.org/ns#"' +
         ' class="license-text">'
-    const iconStyle = 'style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;"'
-    const baseAssetsPath = 'https://mirrors.creativecommons.org/presskit/icons'
-    const linkRef = '?ref=chooser-v1'
-    let licenseIcons = `<img ${iconStyle} src="${baseAssetsPath}/cc.svg/${linkRef}" />`
+    const iconStyle = 'style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"'
+    const assetPathBase = 'https://mirrors.creativecommons.org/presskit/icons'
+    const assetPathRef = '?ref=chooser-v1'
+    let licenseIcons = `<img ${iconStyle} src="${assetPathBase}/cc.svg${assetPathRef}" />`
     if (shortLicenseName.includes('CC0')) {
         shortLicenseName = 'CC CC0 1.0'
     }
-    licenseIcons += shortLicenseName.slice(3, shortLicenseName.length - 4).split('-').map(license =>
-        `<img  ${iconStyle} src="${baseAssetsPath}/${license.toLowerCase()}.svg/${linkRef}" />`
-    ).join('')
-    dataForHtmlGeneration.licenseIconsLink = `<a href="${licenseUrl(shortToAttr(shortLicenseName))}">${licenseIcons}</a>`
+    licenseIcons += shortLicenseName
+        .slice(3, shortLicenseName.length - 4)
+        .split('-')
+        .map(attr => `<img ${iconStyle} src="${assetPathBase}/${attr.toLowerCase()}.svg${assetPathRef}" />`
+        ).join('')
+    const licenseHref = licenseUrl(shortToAttr(shortLicenseName))
+    dataForHtmlGeneration.licenseLink =
+        `<a rel="license" href="${licenseHref}">${shortLicenseName}${licenseIcons}</a>`
 
-    if (attributionDetails.creatorName) {
-        const creatorSpan = `<span rel="cc:attributionName">${attributionDetails.creatorName}</span>`
-        if (attributionDetails.creatorProfileUrl) {
-            dataForHtmlGeneration.creator = `<a rel="cc:attributionURL" href="${attributionDetails.creatorProfileUrl}">${creatorSpan}</a>`
+    if (creatorName) {
+        if (creatorProfileUrl) {
+            dataForHtmlGeneration.creator =
+                `<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="${creatorProfileUrl}">${creatorName}</a>`
         } else {
-            dataForHtmlGeneration.creator = creatorSpan
+            dataForHtmlGeneration.creator = `<span property="cc:attributionName">${creatorName}</span>`
         }
     }
-    if (attributionDetails.workTitle) {
-        const workTitleSpan = `<span rel="dct:title">${attributionDetails.workTitle}</span>`
-        if (attributionDetails.workUrl) {
-            dataForHtmlGeneration.workTitle = `<a rel="cc:attributionURL" href="${attributionDetails.workUrl}">${workTitleSpan}</a>`
+    if (workTitle) {
+        if (workUrl) {
+            dataForHtmlGeneration.workTitle = `<a rel="cc:attributionURL" property="dct:title" href="${workUrl}">${workTitle}</a>`
         } else {
-            dataForHtmlGeneration.workTitle = workTitleSpan
+            dataForHtmlGeneration.workTitle = `<span rel="dct:title">${workTitle}</span>`
         }
     }
     return dataForHtmlGeneration

@@ -48,7 +48,7 @@
             <template v-slot:licensed-text>
                 <span>{{ $t('license-use.richtext.licensed-text') }}</span>
             </template>
-            <template v-slot:licenseName>
+            <template v-slot:license>
                 <a
                     v-if="isWeb"
                     :href="licenseUrl('web')"
