@@ -7,7 +7,7 @@ exports[`LicenseDetailsCard.vue Check if the LicenseDetailsCard.vue component ha
   </h3>
   <h4 class="vocab b-header"><a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser" class="license-name">
       Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img alt="CC icon" title="CC icon" src="../assets/license-icons/cc_icon.svg" class="photo-license-icon"> <img alt="by icon" title="by icon" src="[object Object]" class="photo-license-icon"><img alt="sa icon" title="sa icon" src="[object Object]" class="photo-license-icon"></a></a></h4>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img alt="CC icon" title="CC icon" src="../assets/license-icons/cc.svg" class="photo-license-icon"> <img alt="by icon" title="by icon" src="[object Object]" class="photo-license-icon"><img alt="sa icon" title="sa icon" src="[object Object]" class="photo-license-icon"></a></a></h4>
   <p class="chooser-selected-description"><b>CC-BY-SA</b>
     license-details-card.full-description.cc-by-sa
   </p>
@@ -17,8 +17,8 @@ exports[`LicenseDetailsCard.vue Check if the LicenseDetailsCard.vue component ha
                     </span></li>
       <li class="license-list-item sa"><span class="readable-string"><b>SA:</b>
                         license-details-card.item-description.sa
-                    </span></li>
-      </span></ul>
+                    </span></li></span>
+    </ul>
   </section>
 </div>
 `;
