@@ -2,3 +2,4 @@
 # the repo. Unless a later match takes precedence, they will 
 # be requested for review when someone opens a pull request.
 * @creativecommons/frontend @creativecommons/ct-chooser-maintainers
+* @creativecommons/ct-license-chooser-maintainers
