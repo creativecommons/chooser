@@ -31,7 +31,7 @@ module.exports = {
             })
             .getAttribute('p > span > a:nth-child(4)', 'href', function(result) {
                 const urlString = result.value.split('/').slice(3).join('/')
-                this.assert.equal(urlString, 'licenses/by-sa/4.0/?ref=ccchooser')
+                this.assert.equal(urlString, 'licenses/by-sa/4.0/?ref=chooser-v1')
             })
     },
     'Check if the text is displayed under the print attribution': function(browser) {
