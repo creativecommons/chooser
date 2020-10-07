@@ -148,7 +148,7 @@ describe('Step.vue', () => {
     it('Check if the Step.vue component has the expected UI if disabled due is set', () => {
         wrapper.setProps({
             disabledDue: 'ND',
-            enabled: true,
+            enabled: false,
             reversed: false,
             selected: false,
             stepName: 'SA',
