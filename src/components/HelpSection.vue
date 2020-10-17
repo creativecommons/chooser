@@ -193,7 +193,7 @@
                             </tr>
                             <tr>
                                 <th>{{ $t('help.how-licenses-communicated.short-name') }}</th>
-                                <td>CC BY-NC</td>
+                                <td>CC BY-NC 4.0</td>
                             </tr>
                             <tr>
                                 <th>{{ $t('help.how-licenses-communicated.license-icons') }}</th>
