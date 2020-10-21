@@ -16,7 +16,7 @@ module.exports = {
         browser
             .assert.elementPresent('a[class="license-name"]')
             .getAttribute('a[class="license-name"]', 'href', function(result) {
-                this.assert.equal(result.value, 'https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser')
+                this.assert.equal(result.value, 'https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1')
             })
     }
 }
