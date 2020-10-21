@@ -1,7 +1,20 @@
+/** @typedef {{BY?: boolean, NC?: boolean, ND?: boolean, SA?: boolean}} LicenseAttributes */
+
+/** @typedef {('CC0 1.0'|'CC BY 4.0'|'CC BY-NC 4.0'|'CC BY-NC-ND 4.0'|'CC BY-NC-SA 4.0'|'CC BY-ND 4.0'|'CC BY-ND-SA 4.0')} ShortLicenseName
+ */
+
+/** @type {LicenseAttributes} */
 const CC0Attributes = { BY: false, NC: false, ND: false, SA: false }
+/** @type {LicenseAttributes} */
 const CCBYAttributes = { BY: true, NC: false, ND: false, SA: false }
+/** @type {LicenseAttributes} */
 const defaultAttributes = { BY: undefined, NC: undefined, ND: undefined, SA: undefined }
 
+/**
+ * Convert short license name to attributes
+ * @param {ShortLicenseName} shortLicenseName - name of the license with version number
+ * @returns {LicenseAttributes}}
+ */
 function shortToAttr(shortLicenseName) {
     const short = shortLicenseName
     if (short.includes('CC0')) {
@@ -13,6 +26,11 @@ function shortToAttr(shortLicenseName) {
     return { ...CCBYAttributes, NC: nc, ND: nd, SA: sa }
 }
 
+/**
+ * Convert license attributes object to short license name
+ * @param {LicenseAttributes} attr
+ * @returns {ShortLicenseName}
+ */
 function attrToShort(attr) {
     if (attr.BY === undefined) return undefined
     if (!attr.BY) { return 'CC0 1.0' }
@@ -27,6 +45,11 @@ function attrToShort(attr) {
     return base
 }
 
+/**
+ * Convert license attributes object to full license name
+ * @param {LicenseAttributes} attr
+ * @returns {string|undefined}
+ */
 function attrToFull(attr) {
     if (attr.BY === undefined) { return undefined }
     if (!attr.BY) { return 'CC0 1.0 Universal' }
@@ -41,9 +64,13 @@ function attrToFull(attr) {
     return base
 }
 
+/**
+ * Returns url to license from short license name with version number (eg. 'CC BY 4.0')
+ * @param attr {LicenseAttributes} license attributes object
+ * @param [mode] {'web'| 'print'} (?ref=chooser-v1, target and rel are added to the end of the link if mode is web)
+ * @returns {string} url of the license information page
+ */
 function licenseUrl(attr, mode) {
-    // Returns url to license from short license name with version number (eg. 'CC BY 4.0')
-    // mode: web/ print (?ref=chooser-v1 is added to the end of the link if mode is web)
     const linkRef = mode === 'web' ? '/?ref=chooser-v1' : ''
     if (attr.BY === false) {
         return `https://creativecommons.org/publicdomain/zero/1.0${linkRef}`
@@ -53,15 +80,23 @@ function licenseUrl(attr, mode) {
     return `https://creativecommons.org/licenses/${short}/4.0${linkRef}`
 }
 
+/**
+ * Convert short license name to licence slug ('CC BY 4.0' -> 'cc-by')
+ * @param {ShortLicenseName} shortLicenseName
+ * @returns {string}
+ */
 function licenseSlug(shortLicenseName) {
-    // Returns lower case slugified string of license name without the version number
-    // 'CC BY 4.0' -> 'cc-by'
     return shortLicenseName
         .toLowerCase()
         .replace(' ', '-')
         .slice(0, shortLicenseName.length - 4)
 }
 
+/**
+ * Convert license attributes object to an array of icon names
+ * @param {LicenseAttributes} licenseAttributes
+ * @returns {string[]|[]} Array with slugified names of icons, eg. ['cc', 'by']
+ */
 function licenseIconsArr(licenseAttributes) {
     if (!licenseAttributes.BY) {
         return ['zero']
@@ -76,8 +111,8 @@ function licenseIconsArr(licenseAttributes) {
 }
 
 function updateVisibleEnabledStatus(stepStatusData) {
-    let visible = []
-    let enabled = []
+    let visible
+    let enabled
     let stepsDisabledDue = ''
     if (stepStatusData.FS) {
         // User will select from the dropdown
@@ -114,6 +149,12 @@ function updateVisibleEnabledStatus(stepStatusData) {
     return { visible, enabled, stepsDisabledDue }
 }
 
+/**
+ * Generate data for use in attribution HTML through i18n
+ * @param attributionDetails
+ * @param {ShortLicenseName} shortLicenseName
+ * @returns {{creator: string, workTitle: string, licenseLink: string, htmlString: string}}
+ */
 function generateHTML(attributionDetails, shortLicenseName) {
     const dataForHtmlGeneration = {
         htmlString: '',
@@ -130,29 +171,31 @@ function generateHTML(attributionDetails, shortLicenseName) {
     const assetPathBase = 'https://mirrors.creativecommons.org/presskit/icons'
     const assetPathRef = '?ref=chooser-v1'
     let licenseIcons = `<img ${iconStyle} src="${assetPathBase}/cc.svg${assetPathRef}" />`
-    if (shortLicenseName.includes('CC0')) {
-        shortLicenseName = 'CC CC0 1.0'
-    }
-    licenseIcons += shortLicenseName
-        .slice(3, shortLicenseName.length - 4)
+    const nameForSlug = shortLicenseName.includes('CC0') ? 'CC CC0 1.0' : shortLicenseName
+    licenseIcons += nameForSlug
+        .slice(3, nameForSlug.length - 4)
         .split('-')
         .map(attr => `<img ${iconStyle} src="${assetPathBase}/${attr.toLowerCase()}.svg${assetPathRef}" />`
         ).join('')
     const licenseHref = licenseUrl(shortToAttr(shortLicenseName))
     dataForHtmlGeneration.licenseLink =
-        `<a rel="license" href="${licenseHref}">${shortLicenseName}${licenseIcons}</a>`
+        `<a rel="license" href="${licenseHref}" target="_blank"
+        rel="license noopener noreferrer" style="display: inline-block;">
+        ${shortLicenseName}${licenseIcons}</a>`
 
     if (creatorName) {
         if (creatorProfileUrl) {
+            const absoluteUrl = creatorProfileUrl.startsWith('http') ? creatorProfileUrl : `http://${creatorProfileUrl}`
             dataForHtmlGeneration.creator =
-                `<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="${creatorProfileUrl}">${creatorName}</a>`
+                `<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="${absoluteUrl}">${creatorName}</a>`
         } else {
             dataForHtmlGeneration.creator = `<span property="cc:attributionName">${creatorName}</span>`
         }
     }
     if (workTitle) {
         if (workUrl) {
-            dataForHtmlGeneration.workTitle = `<a rel="cc:attributionURL" property="dct:title" href="${workUrl}">${workTitle}</a>`
+            const absoluteUrl = workUrl.startsWith('http') ? workUrl : `http://${workUrl}`
+            dataForHtmlGeneration.workTitle = `<a rel="cc:attributionURL" property="dct:title" href="${absoluteUrl}">${workTitle}</a>`
         } else {
             dataForHtmlGeneration.workTitle = `<span rel="dct:title">${workTitle}</span>`
         }
