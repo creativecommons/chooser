@@ -25,8 +25,7 @@ module.exports = {
                 this.assert.equal(result.value, 'http://www.author.com/work.jpg')
             })
             .getAttribute('p > span > a:nth-child(2)', 'href', function(result) {
-                const urlString = result.value.split('/').slice(3).join('/')
-                this.assert.equal(urlString, 'www.author.com')
+                this.assert.equal(result.value, 'http://www.author.com/')
             })
             .getAttribute('p > span > a:nth-child(4)', 'href', function(result) {
                 const urlString = result.value.split('/').slice(3).join('/')

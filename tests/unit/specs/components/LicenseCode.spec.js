@@ -73,13 +73,13 @@ describe('LicenseCode.vue', () => {
         expect(wrapper.vm.creatorName).toBe('J Doe')
     })
     it('Check if the creatorProfileUrl function returns the correct text', () => {
-        expect(wrapper.vm.creatorProfileUrl).toBe('www.author.com')
+        expect(wrapper.vm.creatorProfileUrl).toBe('http://www.author.com')
     })
     it('Check if the workTitle function returns the correct text', () => {
         expect(wrapper.vm.workTitle).toBe('My work')
     })
     it('Check if the workUrl function returns the correct text', () => {
-        expect(wrapper.vm.workUrl).toBe('www.author.com/pic.jpg')
+        expect(wrapper.vm.workUrl).toBe('http://www.author.com/pic.jpg')
     })
     it('Check if the isWeb function returns true if attribution type is web', () => {
         wrapper.setProps({
