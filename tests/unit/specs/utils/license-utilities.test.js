@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import {
     attrToFull,
     attrToShort,
@@ -9,9 +10,7 @@ import {
     updateVisibleEnabledStatus
 } from '@/utils/license-utilities'
 import { mount } from '@vue/test-utils'
-import TestComponent from "./TestComponent"
-
-const addRef = (link) => `${link}/?ref=chooser-v1`
+import TestComponent from './TestComponent'
 
 const LICENSES = {
     CC0: {
@@ -413,7 +412,7 @@ describe('generateHTML', function testGenerateHTML() {
         NAME: 'xmlns:dct',
         URI: 'http://purl.org/dc/terms/'
     }
-    const ICON_STYLE='height:22px!important;margin-left:3px;vertical-align:text-bottom;'
+    const ICON_STYLE = 'height:22px!important;margin-left:3px;vertical-align:text-bottom;'
     const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons/'
     const TEST_DATA = {
         CREATOR: 'John',
@@ -433,9 +432,9 @@ describe('generateHTML', function testGenerateHTML() {
             if (!licenses.includes(license)) return false
         })
         return true
-        }
+    }
     const initialHtmlObject = generateHTML({}, LICENSES.CC0.SHORT)
-    const wrapper = mount(TestComponent, {propsData: {attribution: initialHtmlObject}})
+    const wrapper = mount(TestComponent, { propsData: { attribution: initialHtmlObject } })
     let iconSources
     const licenseLinkElement = (wrapper) => wrapper.find('.license-link').find('a')
     const licenseImages = (wrapper) => wrapper.findAll('img')
@@ -466,14 +465,13 @@ describe('generateHTML', function testGenerateHTML() {
 
         iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
         expect(areIconSourcesCorrect(iconSources, ['cc', 'by', 'nc', 'nd'])).toBe(true)
-
     })
     test('Licenses without links', () => {
         const attributionDetails = {
             workTitle: TEST_DATA.WORK_TITLE,
             creatorName: TEST_DATA.CREATOR
         }
-        wrapper.setProps({attribution: generateHTML(attributionDetails, LICENSES.CC0.SHORT)})
+        wrapper.setProps({ attribution: generateHTML(attributionDetails, LICENSES.CC0.SHORT) })
 
         // CC0 license
         expect(wrapper.find('.creator').text()).toBe(TEST_DATA.CREATOR)
@@ -501,14 +499,13 @@ describe('generateHTML', function testGenerateHTML() {
 
         iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
         expect(areIconSourcesCorrect(iconSources, ['cc', 'by', 'nc', 'nd'])).toBe(true)
-
     })
     test('Licenses only with links, no name/title', () => {
         const attributionDetails = {
             workUrl: TEST_DATA.WORK_URL,
             creatorProfileUrl: TEST_DATA.PROFILE_URL
         }
-        wrapper.setProps({attribution: generateHTML(attributionDetails, LICENSES.CC0.SHORT)})
+        wrapper.setProps({ attribution: generateHTML(attributionDetails, LICENSES.CC0.SHORT) })
 
         // CC0 license
         expect(wrapper.find('.creator').text()).toBe('')
@@ -536,7 +533,6 @@ describe('generateHTML', function testGenerateHTML() {
 
         iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
         expect(areIconSourcesCorrect(iconSources, ['cc', 'by', 'nc', 'nd'])).toBe(true)
-
     })
     test('Licenses with all attributes links', () => {
         const attributionDetails = {
@@ -545,7 +541,7 @@ describe('generateHTML', function testGenerateHTML() {
             creatorName: TEST_DATA.CREATOR,
             creatorProfileUrl: TEST_DATA.PROFILE_URL
         }
-        wrapper.setProps({attribution: generateHTML(attributionDetails, LICENSES.CC0.SHORT)})
+        wrapper.setProps({ attribution: generateHTML(attributionDetails, LICENSES.CC0.SHORT) })
 
         // CC0 license
         expect(wrapper.find('.creator').text()).toBe(TEST_DATA.CREATOR)
@@ -573,6 +569,5 @@ describe('generateHTML', function testGenerateHTML() {
 
         iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
         expect(areIconSourcesCorrect(iconSources, ['cc', 'by', 'nc', 'nd'])).toBe(true)
-
     })
 })

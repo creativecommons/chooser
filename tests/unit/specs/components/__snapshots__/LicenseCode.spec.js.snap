@@ -1,7 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`LicenseCode.vue has correct information all data are provided 1`] = `
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text"><span><a href="http://www.author.com/picture.jpg" rel="cc:attributionURL"><span rel="dct:title">
+                    My work
+                </span></a>
+  by
+  <a href="http://www.author.com" rel="cc:attributionURL"><span><span rel="cc:attributionName">Jane Doe</span></span></a><span> is licensed under </span><a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display: inline-block;">
+    CC BY 4.0
+  </a> <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img alt="CC icon" title="CC icon" src="../assets/license-icons/cc.svg" class="photo-license-icon"> <img alt="by icon" title="by icon" src="[object Object]" class="photo-license-icon"></a></span>
+  <!---->
+</p>
+`;
+
+exports[`LicenseCode.vue has correct information when creator name and work title are provided 1`] = `
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text"><span><span rel="dct:title">
+                My work
+            </span>
+  by
+  <span><span rel="cc:attributionName">Jane Doe</span></span><span> is licensed under </span><a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display: inline-block;">
+    CC BY 4.0
+  </a> <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img alt="CC icon" title="CC icon" src="../assets/license-icons/cc.svg" class="photo-license-icon"> <img alt="by icon" title="by icon" src="[object Object]" class="photo-license-icon"></a></span>
+  <!---->
+</p>
+`;
+
+exports[`LicenseCode.vue has correct information when only urls are provided 1`] = `
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text"><span><a href="http://www.author.com/picture.jpg" rel="cc:attributionURL"><span rel="dct:title">
+                    My work
+                </span></a>
+  by
+  <a href="http://www.author.com" rel="cc:attributionURL"><span><span rel="cc:attributionName">Jane Doe</span></span></a><span> is licensed under </span><a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display: inline-block;">
+    CC BY 4.0
+  </a> <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img alt="CC icon" title="CC icon" src="../assets/license-icons/cc.svg" class="photo-license-icon"> <img alt="by icon" title="by icon" src="[object Object]" class="photo-license-icon"></a></span>
+  <!---->
+</p>
+`;
+
 exports[`LicenseCode.vue has the expected UI 1`] = `
-<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text"><span>license-use.richtext.full-text</span>
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text"><span><span>This work</span>
+
+  <span> is licensed under </span><a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display: inline-block;">
+    CC BY 4.0
+  </a> <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="noopener noreferrer" class="photo-license-icons"><img alt="CC icon" title="CC icon" src="../assets/license-icons/cc.svg" class="photo-license-icon"> <img alt="by icon" title="by icon" src="[object Object]" class="photo-license-icon"></a></span>
   <!---->
 </p>
 `;
