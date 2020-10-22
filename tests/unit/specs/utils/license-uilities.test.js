@@ -373,7 +373,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name', () => {
 //         const attr = { creatorName: 'John' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">John</span>',
+//             creator: '<span property="cc:attributionName">John</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/publicdomain/zero/1.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-cc0_icon.svg" /></a>',
 //             workTitle: ''
@@ -382,7 +382,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name + url', () => {
 //         const attr = { creatorName: 'John', creatorProfileUrl: 'j@doe.com' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">John</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">John</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/publicdomain/zero/1.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-cc0_icon.svg" /></a>',
 //             workTitle: ''
@@ -394,7 +394,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/publicdomain/zero/1.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-cc0_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('work title + url', () => {
@@ -403,43 +403,43 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/publicdomain/zero/1.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-cc0_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name; work title', () => {
 //         const attr = { workTitle: 'Foo', creatorName: 'Jane' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/publicdomain/zero/1.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-cc0_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name + url; work title', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/publicdomain/zero/1.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-cc0_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name; work title + url', () => {
 //         const attr = { creatorName: 'Jane', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/publicdomain/zero/1.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-cc0_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name + url; work title + url', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/publicdomain/zero/1.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-cc0_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 // })
@@ -458,7 +458,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name', () => {
 //         const attr = { creatorName: 'John' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">John</span>',
+//             creator: '<span property="cc:attributionName">John</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>',
 //             workTitle: ''
@@ -467,7 +467,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name + url', () => {
 //         const attr = { creatorName: 'John', creatorProfileUrl: 'j@doe.com' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">John</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">John</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>',
 //             workTitle: ''
@@ -479,7 +479,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('work title + url', () => {
@@ -488,43 +488,43 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name; work title', () => {
 //         const attr = { workTitle: 'Foo', creatorName: 'Jane' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name + url; work title', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name; work title + url', () => {
 //         const attr = { creatorName: 'Jane', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name + url; work title + url', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 // })
@@ -543,7 +543,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name', () => {
 //         const attr = { creatorName: 'John' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">John</span>',
+//             creator: '<span property="cc:attributionName">John</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
 //             workTitle: ''
@@ -552,7 +552,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name + url', () => {
 //         const attr = { creatorName: 'John', creatorProfileUrl: 'j@doe.com' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">John</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">John</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
 //             workTitle: ''
@@ -564,7 +564,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('work title + url', () => {
@@ -573,43 +573,43 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name; work title', () => {
 //         const attr = { workTitle: 'Foo', creatorName: 'Jane' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name + url; work title', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name; work title + url', () => {
 //         const attr = { creatorName: 'Jane', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name + url; work title + url', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 // })
@@ -628,7 +628,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name', () => {
 //         const attr = { creatorName: 'John' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">John</span>',
+//             creator: '<span property="cc:attributionName">John</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /></a>',
 //             workTitle: ''
@@ -637,7 +637,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name + url', () => {
 //         const attr = { creatorName: 'John', creatorProfileUrl: 'j@doe.com' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">John</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">John</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /></a>',
 //             workTitle: ''
@@ -649,7 +649,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('work title + url', () => {
@@ -658,43 +658,43 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name; work title', () => {
 //         const attr = { workTitle: 'Foo', creatorName: 'Jane' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name + url; work title', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name; work title + url', () => {
 //         const attr = { creatorName: 'Jane', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name + url; work title + url', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 // })
@@ -713,7 +713,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name', () => {
 //         const attr = { creatorName: 'John' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">John</span>',
+//             creator: '<span property="cc:attributionName">John</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
 //             workTitle: ''
@@ -722,7 +722,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name + url', () => {
 //         const attr = { creatorName: 'John', creatorProfileUrl: 'j@doe.com' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">John</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">John</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
 //             workTitle: ''
@@ -734,7 +734,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('work title + url', () => {
@@ -743,43 +743,43 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name; work title', () => {
 //         const attr = { workTitle: 'Foo', creatorName: 'Jane' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name + url; work title', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name; work title + url', () => {
 //         const attr = { creatorName: 'Jane', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name + url; work title + url', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 // })
@@ -798,7 +798,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name', () => {
 //         const attr = { creatorName: 'John' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">John</span>',
+//             creator: '<span property="cc:attributionName">John</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
 //             workTitle: ''
@@ -807,7 +807,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name + url', () => {
 //         const attr = { creatorName: 'John', creatorProfileUrl: 'j@doe.com' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">John</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">John</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
 //             workTitle: ''
@@ -819,7 +819,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('work title + url', () => {
@@ -828,43 +828,43 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name; work title', () => {
 //         const attr = { workTitle: 'Foo', creatorName: 'Jane' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name + url; work title', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name; work title + url', () => {
 //         const attr = { creatorName: 'Jane', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name + url; work title + url', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 // })
@@ -883,7 +883,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name', () => {
 //         const attr = { creatorName: 'John' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">John</span>',
+//             creator: '<span property="cc:attributionName">John</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
 //             workTitle: ''
@@ -892,7 +892,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //     test('creator name + url', () => {
 //         const attr = { creatorName: 'John', creatorProfileUrl: 'j@doe.com' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">John</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">John</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
 //             workTitle: ''
@@ -904,7 +904,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('work title + url', () => {
@@ -913,43 +913,43 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 //             creator: '',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name; work title', () => {
 //         const attr = { workTitle: 'Foo', creatorName: 'Jane' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name + url; work title', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<span rel="dct:title">Foo</span>'
+//             workTitle: '<span property="dct:title">Foo</span>'
 //         })
 //     })
 //     test('creator name; work title + url', () => {
 //         const attr = { creatorName: 'Jane', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<span rel="cc:attributionName">Jane</span>',
+//             creator: '<span property="cc:attributionName">Jane</span>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 //     test('creator name + url; work title + url', () => {
 //         const attr = { creatorName: 'Jane', creatorProfileUrl: 'j@doe.com', workTitle: 'Foo', workUrl: 'www.foo.bar' }
 //         expect(generateHTML(attr, license)).toEqual({
-//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span rel="cc:attributionName">Jane</span></a>',
+//             creator: '<a rel="cc:attributionURL" href="j@doe.com"><span property="cc:attributionName">Jane</span></a>',
 //             htmlString: '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text">',
 //             licenseIconsLink: '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a>',
-//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span rel="dct:title">Foo</span></a>'
+//             workTitle: '<a rel="cc:attributionURL" href="www.foo.bar"><span property="dct:title">Foo</span></a>'
 //         })
 //     })
 // })

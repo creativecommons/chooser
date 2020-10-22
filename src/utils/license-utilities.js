@@ -154,7 +154,7 @@ function generateHTML(attributionDetails, shortLicenseName) {
         if (workUrl) {
             dataForHtmlGeneration.workTitle = `<a rel="cc:attributionURL" property="dct:title" href="${workUrl}">${workTitle}</a>`
         } else {
-            dataForHtmlGeneration.workTitle = `<span rel="dct:title">${workTitle}</span>`
+            dataForHtmlGeneration.workTitle = `<span property="dct:title">${workTitle}</span>`
         }
     }
     return dataForHtmlGeneration

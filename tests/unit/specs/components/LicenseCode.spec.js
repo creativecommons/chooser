@@ -66,7 +66,7 @@ describe('LicenseCode.vue', () => {
     })
     it('Check if the creatorSpan function returns the correct text', () => {
         state.attributionDetails.creatorName = 'J Doe'
-        expect(wrapper.vm.creatorSpan).toBe('<span rel="cc:attributionName">J Doe</span>')
+        expect(wrapper.vm.creatorSpan).toBe('<span property="cc:attributionName">J Doe</span>')
     })
     it('Check if the creatorName function returns the correct text', () => {
         state.attributionDetails.creatorName = 'J Doe'
