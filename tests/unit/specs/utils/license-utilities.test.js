@@ -7,143 +7,76 @@ import {
     licenseSlug,
     licenseUrl,
     shortToAttr,
-    updateVisibleEnabledStatus
+    updateVisibleEnabledStatus,
+    LICENSES,
+    CC_NAMESPACE,
+    DCT_NAMESPACE,
+    ICON_BASE_URL,
+    ICON_STYLE
 } from '@/utils/license-utilities'
 import { mount } from '@vue/test-utils'
 import TestComponent from './TestComponent'
 
-const LICENSES = {
-    CC0: {
-        FULL: 'CC0 1.0 Universal',
-        SHORT: 'CC0 1.0',
-        SLUG: 'cc0',
-        URL: 'https://creativecommons.org/publicdomain/zero/1.0'
+const attributesToTest = [
+    {
+        attr: {},
+        fullResult: undefined
     },
-    CC_BY: {
-        FULL: 'Attribution 4.0 International',
-        SHORT: 'CC BY 4.0',
-        SLUG: 'cc-by',
-        URL: 'https://creativecommons.org/licenses/by/4.0'
+    {
+        attr: {BY: false},
+        fullResult: LICENSES.CC0.FULL,
+        shortResult: LICENSES.CC0.SHORT
     },
-    CC_BY_SA: {
-        FULL: 'Attribution-ShareAlike 4.0 International',
-        SHORT: 'CC BY-SA 4.0',
-        SLUG: 'cc-by-sa',
-        URL: 'https://creativecommons.org/licenses/by-sa/4.0'
+    {
+        attr:{ SA: false, BY: false },
+        fullResult: LICENSES.CC0.FULL,
+        shortResult: LICENSES.CC0.SHORT
     },
-    CC_BY_NC: {
-        FULL: 'Attribution-NonCommercial 4.0 International',
-        SHORT: 'CC BY-NC 4.0',
-        SLUG: 'cc-by-nc',
-        URL: 'https://creativecommons.org/licenses/by-nc/4.0'
-    },
-    CC_BY_NC_SA: {
-        FULL: 'Attribution-NonCommercial-ShareAlike 4.0 International',
-        SHORT: 'CC BY-NC-SA 4.0',
-        SLUG: 'cc-by-nc-sa',
-        URL: 'https://creativecommons.org/licenses/by-nc-sa/4.0'
-    },
-    CC_BY_NC_ND: {
-        FULL: 'Attribution-NonCommercial-NoDerivatives 4.0 International',
-        SHORT: 'CC BY-NC-ND 4.0',
-        SLUG: 'cc-by-nc-nd',
-        URL: 'https://creativecommons.org/licenses/by-nc-nd/4.0'
-    },
-    CC_BY_ND: {
-        FULL: 'Attribution-NoDerivatives 4.0 International',
-        SHORT: 'CC BY-ND 4.0',
-        SLUG: 'cc-by-nd',
-        URL: 'https://creativecommons.org/licenses/by-nd/4.0'
+    {
+        attr:{ BY: true },
+        fullResult: LICENSES.CC_BY.FULL,
+        shortResult: LICENSES.CC_BY.SHORT
     }
-}
 
-describe('attrToFull', function testAttrToFull() {
-    test('Not selected', () => {
-        const attr = {}
-        expect(attrToFull(attr)).toBeUndefined()
-    })
-    test('CC0 #2', () => {
-        const attr = { BY: false }
-        expect(attrToFull(attr)).toBe(LICENSES.CC0.FULL)
-    })
-    test('CC0 #3', () => {
-        const attr = { SA: false, BY: false }
-        expect(attrToFull(attr)).toBe(LICENSES.CC0.FULL)
-    })
-    test('CC BY', () => {
-        const attr = { BY: true }
-        expect(attrToFull(attr)).toBe(LICENSES.CC_BY.FULL)
-    })
-    test('CC BY-SA', () => {
-        const attr = { BY: true, SA: true }
-        expect(attrToFull(attr)).toBe(
-            LICENSES.CC_BY_SA.FULL
-        )
-    })
-    test('CC BY-NC', () => {
-        const attr = { BY: true, NC: true }
-        expect(attrToFull(attr)).toBe(
-            LICENSES.CC_BY_NC.FULL
-        )
-    })
-    test('CC BY-NC-SA', () => {
-        const attr = { BY: true, NC: true, SA: true }
-        expect(attrToFull(attr)).toBe(
-            LICENSES.CC_BY_NC_SA.FULL
-        )
-    })
-    test('CC BY-ND', () => {
-        const attr = { BY: true, ND: true }
-        expect(attrToFull(attr)).toBe(
-            LICENSES.CC_BY_ND.FULL
-        )
-    })
-    test('CC BY-NC-ND', () => {
-        const attr = { BY: true, ND: true, NC: true }
-        expect(attrToFull(attr)).toBe(
-            LICENSES.CC_BY_NC_ND.FULL
-        )
-    })
-    test('SA, ND: true', () => {
-        const attr = { BY: true, SA: true, ND: true }
-        expect(attrToFull(attr)).toBe(
-            LICENSES.CC_BY_ND.FULL
-        )
+]
+describe('attrToFull edge cases', function testAttrToFull() {
+    attributesToTest.forEach((option) => {
+        const {attr, fullResult} = option
+        it(`Attributes ${JSON.stringify(attr)} should return <${fullResult}>`, () => {
+            expect(attrToFull(attr)).toEqual(fullResult)
+        })
     })
 })
-
-describe('attrToShort', function testAttrToShort() {
-    test('undefined BY', () => {
-        const attr = { BY: undefined }
-        expect(attrToShort(attr)).toBeUndefined()
+describe('attrToFull all licenses', () =>  {
+    Object.values(LICENSES).forEach((license) => {
+        const {ATTRIBUTES: attr, FULL: result} = license
+        it(`${JSON.stringify(attr)} should return <${result}>`, () => {
+            expect(attrToFull(attr)).toEqual(result)
+        })
     })
-    test('CC0 #1', () => {
-        const attr = { BY: false }
-        expect(attrToShort(attr)).toBe(LICENSES.CC0.SHORT)
+})
+describe('attrToShort all licenses', () =>  {
+    Object.values(LICENSES).forEach((license) => {
+        const {ATTRIBUTES: attr, SHORT: result} = license
+        it(`${JSON.stringify(attr)} should return <${result}>`, () => {
+            expect(attrToShort(attr)).toEqual(result)
+        })
     })
-    test('CC BY', () => {
-        const attr = { BY: true }
-        expect(attrToShort(attr)).toBe(LICENSES.CC_BY.SHORT)
+})
+describe('shortToAttr all licenses', () =>  {
+    Object.values(LICENSES).forEach((license) => {
+        const {ATTRIBUTES: attr, SHORT: short} = license
+        it(`<${short}> should return ${JSON.stringify(attr)}`, () => {
+            expect(shortToAttr(short)).toEqual(attr)
+        })
     })
-    test('CC BY-SA', () => {
-        const attr = { BY: true, SA: true }
-        expect(attrToShort(attr)).toBe(LICENSES.CC_BY_SA.SHORT)
-    })
-    test('CC BY-NC', () => {
-        const attr = { BY: true, NC: true }
-        expect(attrToShort(attr)).toBe(LICENSES.CC_BY_NC.SHORT)
-    })
-    test('CC BY-NC-SA', () => {
-        const attr = { BY: true, NC: true, SA: true }
-        expect(attrToShort(attr)).toBe(LICENSES.CC_BY_NC_SA.SHORT)
-    })
-    test('CC BY-ND', () => {
-        const attr = { BY: true, ND: true }
-        expect(attrToShort(attr)).toBe(LICENSES.CC_BY_ND.SHORT)
-    })
-    test('CC BY-NC-ND', () => {
-        const attr = { BY: true, ND: true, NC: true }
-        expect(attrToShort(attr)).toBe(LICENSES.CC_BY_NC_ND.SHORT)
+})
+describe('license slug', () =>  {
+    Object.values(LICENSES).forEach((license) => {
+        const {SHORT: short, SLUG: slug} = license
+        it(`<${short}> should return ${slug}`, () => {
+            expect(licenseSlug(short)).toEqual(slug)
+        })
     })
 })
 
@@ -160,100 +93,6 @@ describe('shortToAttr', function testAttrToShort() {
             ND: false,
             SA: false
         })
-    })
-    test('CC0 1.0', () => {
-        const str = 'CC0'
-        expect(shortToAttr(str)).toEqual({
-            BY: false,
-            NC: false,
-            ND: false,
-            SA: false
-        })
-    })
-    test('CC BY 2.5', () => {
-        const str = 'CC BY 2.5'
-        expect(shortToAttr(str)).toEqual({
-            BY: true,
-            NC: false,
-            ND: false,
-            SA: false
-        })
-    })
-    test('CC BY-SA 4.0', () => {
-        const str = 'CC BY-SA 4.0'
-        expect(shortToAttr(str)).toEqual({
-            BY: true,
-            NC: false,
-            ND: false,
-            SA: true
-        })
-    })
-    test('CC BY-NC 4.0', () => {
-        const str = 'CC BY-NC 4.0'
-        expect(shortToAttr(str)).toEqual({
-            BY: true,
-            NC: true,
-            ND: false,
-            SA: false
-        })
-    })
-    test('CC BY-NC-SA 4.0', () => {
-        const str = 'CC BY-NC-SA 4.0'
-        expect(shortToAttr(str)).toEqual({
-            BY: true,
-            NC: true,
-            ND: false,
-            SA: true
-        })
-    })
-    test('CC BY-ND 4.0', () => {
-        const str = 'CC BY-ND 4.0'
-        expect(shortToAttr(str)).toEqual({
-            BY: true,
-            NC: false,
-            ND: true,
-            SA: false
-        })
-    })
-    test('CC BY-NC-ND 4.0', () => {
-        const str = 'CC BY-NC-ND 4.0'
-        expect(shortToAttr(str)).toEqual({
-            BY: true,
-            NC: true,
-            ND: true,
-            SA: false
-        })
-    })
-})
-
-describe('licenseSlug', function testLicenseSlug() {
-    test('CC0 1.0', () => {
-        const str = LICENSES.CC0.SHORT
-        expect(licenseSlug(str)).toBe(LICENSES.CC0.SLUG)
-    })
-    test('CC BY 4.0', () => {
-        const str = LICENSES.CC_BY.SHORT
-        expect(licenseSlug(str)).toBe(LICENSES.CC_BY.SLUG)
-    })
-    test('CC BY-SA 4.0', () => {
-        const str = LICENSES.CC_BY_SA.SHORT
-        expect(licenseSlug(str)).toBe(LICENSES.CC_BY_SA.SLUG)
-    })
-    test('CC BY-NC 4.0', () => {
-        const str = LICENSES.CC_BY_NC.SHORT
-        expect(licenseSlug(str)).toBe(LICENSES.CC_BY_NC.SLUG)
-    })
-    test('CC BY-NC-SA 4.0', () => {
-        const str = LICENSES.CC_BY_NC_SA.SHORT
-        expect(licenseSlug(str)).toBe(LICENSES.CC_BY_NC_SA.SLUG)
-    })
-    test('CC BY-ND 4.0', () => {
-        const str = LICENSES.CC_BY_ND.SHORT
-        expect(licenseSlug(str)).toBe(LICENSES.CC_BY_ND.SLUG)
-    })
-    test('CC BY-NC-ND 4.0', () => {
-        const str = LICENSES.CC_BY_NC_ND.SHORT
-        expect(licenseSlug(str)).toBe(LICENSES.CC_BY_NC_ND.SLUG)
     })
 })
 
@@ -292,63 +131,17 @@ describe('licenseIconsArr', function testLicenseIconsArr() {
     })
 })
 
-describe('licenseUrl', function testLicenseUrl() {
-    const web = 'web'
-    test('CC0 web', () => {
-        const attr = { BY: false }
-        expect(licenseUrl(attr, web)).toBe('https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1')
-    })
-    test('CC0 no web', () => {
-        const attr = { BY: false }
-        expect(licenseUrl(attr)).toBe('https://creativecommons.org/publicdomain/zero/1.0')
-    })
-    test('CC BY web', () => {
-        const attr = { BY: true }
-        expect(licenseUrl(attr, web)).toBe('https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1')
-    })
-    test('CC BY no web', () => {
-        const attr = { BY: true }
-        expect(licenseUrl(attr)).toBe('https://creativecommons.org/licenses/by/4.0')
-    })
-    test('CC BY-SA web', () => {
-        const attr = { BY: true, SA: true }
-        expect(licenseUrl(attr, web)).toBe('https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1')
-    })
-    test('CC BY-SA no web', () => {
-        const attr = { BY: true, SA: true }
-        expect(licenseUrl(attr)).toBe('https://creativecommons.org/licenses/by-sa/4.0')
-    })
-    test('CC BY-NC web', () => {
-        const attr = { BY: true, NC: true }
-        expect(licenseUrl(attr, web)).toBe('https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1')
-    })
-    test('CC BY-NC no web', () => {
-        const attr = { BY: true, NC: true }
-        expect(licenseUrl(attr)).toBe('https://creativecommons.org/licenses/by-nc/4.0')
-    })
-    test('CC BY-NC-SA web', () => {
-        const attr = { BY: true, NC: true, SA: true }
-        expect(licenseUrl(attr, web)).toBe('https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1')
-    })
-    test('CC BY-NC-SA no web', () => {
-        const attr = { BY: true, NC: true, SA: true }
-        expect(licenseUrl(attr)).toBe('https://creativecommons.org/licenses/by-nc-sa/4.0')
-    })
-    test('CC BY-ND web', () => {
-        const attr = { BY: true, ND: true }
-        expect(licenseUrl(attr, web)).toBe('https://creativecommons.org/licenses/by-nd/4.0/?ref=chooser-v1')
-    })
-    test('CC BY-ND no web', () => {
-        const attr = { BY: true, ND: true }
-        expect(licenseUrl(attr)).toBe('https://creativecommons.org/licenses/by-nd/4.0')
-    })
-    test('CC BY-NC-ND web', () => {
-        const attr = { BY: true, NC: true, ND: true }
-        expect(licenseUrl(attr, web)).toBe('https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1')
-    })
-    test('CC BY-NC-ND no web', () => {
-        const attr = { BY: true, NC: true, ND: true }
-        expect(licenseUrl(attr)).toBe('https://creativecommons.org/licenses/by-nc-nd/4.0')
+describe('license url', () =>  {
+    Object.values(LICENSES).forEach((license) => {
+        const {ATTRIBUTES: attr, URL: url} = license
+        it(`${JSON.stringify(attr)} should return ${url}`, () => {
+            expect(licenseUrl(attr)).toEqual(url)
+        })
+        it(`${JSON.stringify(attr)} for web should return ${url} with a ref value`, () => {
+            const [urlForWeb, ref] = licenseUrl(attr, 'web').split('/?')
+            expect(urlForWeb).toEqual(url)
+            expect(ref).toEqual('ref=chooser-v1')
+        })
     })
 })
 
@@ -404,16 +197,6 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
 })
 
 describe('generateHTML', function testGenerateHTML() {
-    const CC_NAMESPACE = {
-        NAME: 'xmlns:cc',
-        URI: 'http://creativecommons.org/ns#'
-    }
-    const DCT_NAMESPACE = {
-        NAME: 'xmlns:dct',
-        URI: 'http://purl.org/dc/terms/'
-    }
-    const ICON_STYLE = 'height:22px!important;margin-left:3px;vertical-align:text-bottom;'
-    const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons/'
     const TEST_DATA = {
         CREATOR: 'John',
         WORK_TITLE: 'Foo',

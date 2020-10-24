@@ -2,12 +2,9 @@
 
 /** @typedef {('CC0 1.0'|'CC BY 4.0'|'CC BY-NC 4.0'|'CC BY-NC-ND 4.0'|'CC BY-NC-SA 4.0'|'CC BY-ND 4.0'|'CC BY-ND-SA 4.0')} ShortLicenseName
  */
-
-/** @type {LicenseAttributes} */
-const CC0Attributes = { BY: false, NC: false, ND: false, SA: false }
-/** @type {LicenseAttributes} */
-const CCBYAttributes = { BY: true, NC: false, ND: false, SA: false }
-/** @type {LicenseAttributes} */
+import {LICENSES} from './licenses'
+const CC0Attributes = LICENSES.CC0.ATTRIBUTES
+const CCBYAttributes = LICENSES.CC_BY.ATTRIBUTES
 const defaultAttributes = { BY: undefined, NC: undefined, ND: undefined, SA: undefined }
 
 /**
@@ -47,7 +44,7 @@ function attrToShort(attr) {
 
 /**
  * Convert license attributes object to full license name
- * @param {LicenseAttributes} attr
+ * @param {{LicenseAttributes}} attr
  * @returns {string|undefined}
  */
 function attrToFull(attr) {
@@ -149,6 +146,18 @@ function updateVisibleEnabledStatus(stepStatusData) {
     return { visible, enabled, stepsDisabledDue }
 }
 
+
+const CC_NAMESPACE = {
+    NAME: 'xmlns:cc',
+    URI: 'http://creativecommons.org/ns#'
+}
+const DCT_NAMESPACE = {
+    NAME: 'xmlns:dct',
+    URI: 'http://purl.org/dc/terms/'
+}
+const ICON_STYLE = 'height:22px!important;margin-left:3px;vertical-align:text-bottom;'
+const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons/'
+
 /**
  * Generate data for use in attribution HTML through i18n
  * @param attributionDetails
@@ -164,23 +173,22 @@ function generateHTML(attributionDetails, shortLicenseName) {
     }
     const { creatorName, creatorProfileUrl, workTitle, workUrl } = attributionDetails
     dataForHtmlGeneration.htmlString =
-        '<p xmlns:dct="http://purl.org/dc/terms/"' +
-        ' xmlns:cc="http://creativecommons.org/ns#"' +
+        `<p ${DCT_NAMESPACE.NAME}="${DCT_NAMESPACE.URI}"` +
+        ` ${CC_NAMESPACE.NAME}="${CC_NAMESPACE.URI}"` +
         ' class="license-text">'
-    const iconStyle = 'style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"'
-    const assetPathBase = 'https://mirrors.creativecommons.org/presskit/icons'
+    const iconStyle = `style="${ICON_STYLE}"`
     const assetPathRef = '?ref=chooser-v1'
-    let licenseIcons = `<img ${iconStyle} src="${assetPathBase}/cc.svg${assetPathRef}" />`
+    let licenseIcons = `<img ${iconStyle} src="${ICON_BASE_URL}/cc.svg${assetPathRef}" />`
     const nameForSlug = shortLicenseName.includes('CC0') ? 'CC CC0 1.0' : shortLicenseName
     licenseIcons += nameForSlug
         .slice(3, nameForSlug.length - 4)
         .split('-')
-        .map(attr => `<img ${iconStyle} src="${assetPathBase}/${attr.toLowerCase()}.svg${assetPathRef}" />`
+        .map(attr => `<img ${iconStyle} src="${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}" />`
         ).join('')
     const licenseHref = licenseUrl(shortToAttr(shortLicenseName))
     dataForHtmlGeneration.licenseLink =
         `<a rel="license" href="${licenseHref}" target="_blank"
-        rel="license noopener noreferrer" style="display: inline-block;">
+        rel="license noopener noreferrer" style="display:inline-block;">
         ${shortLicenseName}${licenseIcons}</a>`
 
     if (creatorName) {
@@ -205,5 +213,6 @@ function generateHTML(attributionDetails, shortLicenseName) {
 
 export {
     defaultAttributes, CC0Attributes, CCBYAttributes, shortToAttr, attrToShort,
-    attrToFull, licenseUrl, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus
+    attrToFull, licenseUrl, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus,
+    CC_NAMESPACE, DCT_NAMESPACE, LICENSES, ICON_STYLE, ICON_BASE_URL
 }
