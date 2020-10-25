@@ -23,17 +23,17 @@ const attributesToTest = [
         fullResult: undefined
     },
     {
-        attr: {BY: false},
+        attr: { BY: false },
         fullResult: LICENSES.CC0.FULL,
         shortResult: LICENSES.CC0.SHORT
     },
     {
-        attr:{ SA: false, BY: false },
+        attr: { SA: false, BY: false },
         fullResult: LICENSES.CC0.FULL,
         shortResult: LICENSES.CC0.SHORT
     },
     {
-        attr:{ BY: true },
+        attr: { BY: true },
         fullResult: LICENSES.CC_BY.FULL,
         shortResult: LICENSES.CC_BY.SHORT
     }
@@ -41,39 +41,39 @@ const attributesToTest = [
 ]
 describe('attrToFull edge cases', function testAttrToFull() {
     attributesToTest.forEach((option) => {
-        const {attr, fullResult} = option
+        const { attr, fullResult } = option
         it(`Attributes ${JSON.stringify(attr)} should return <${fullResult}>`, () => {
             expect(attrToFull(attr)).toEqual(fullResult)
         })
     })
 })
-describe('attrToFull all licenses', () =>  {
+describe('attrToFull all licenses', () => {
     Object.values(LICENSES).forEach((license) => {
-        const {ATTRIBUTES: attr, FULL: result} = license
+        const { ATTRIBUTES: attr, FULL: result } = license
         it(`${JSON.stringify(attr)} should return <${result}>`, () => {
             expect(attrToFull(attr)).toEqual(result)
         })
     })
 })
-describe('attrToShort all licenses', () =>  {
+describe('attrToShort all licenses', () => {
     Object.values(LICENSES).forEach((license) => {
-        const {ATTRIBUTES: attr, SHORT: result} = license
+        const { ATTRIBUTES: attr, SHORT: result } = license
         it(`${JSON.stringify(attr)} should return <${result}>`, () => {
             expect(attrToShort(attr)).toEqual(result)
         })
     })
 })
-describe('shortToAttr all licenses', () =>  {
+describe('shortToAttr all licenses', () => {
     Object.values(LICENSES).forEach((license) => {
-        const {ATTRIBUTES: attr, SHORT: short} = license
+        const { ATTRIBUTES: attr, SHORT: short } = license
         it(`<${short}> should return ${JSON.stringify(attr)}`, () => {
             expect(shortToAttr(short)).toEqual(attr)
         })
     })
 })
-describe('license slug', () =>  {
+describe('license slug', () => {
     Object.values(LICENSES).forEach((license) => {
-        const {SHORT: short, SLUG: slug} = license
+        const { SHORT: short, SLUG: slug } = license
         it(`<${short}> should return ${slug}`, () => {
             expect(licenseSlug(short)).toEqual(slug)
         })
@@ -82,17 +82,8 @@ describe('license slug', () =>  {
 
 describe('shortToAttr', function testAttrToShort() {
     test('gibberish string #1', () => {
-        const str = 'gibberish'
-        expect(shortToAttr(str)).not.toEqual({ BY: true })
-    })
-    test('gibberish string #2', () => {
-        const str = 'GATSBY'
-        expect(shortToAttr(str)).toEqual({
-            BY: true,
-            NC: false,
-            ND: false,
-            SA: false
-        })
+        const str = 'CC 4.0'
+        expect(shortToAttr(str)).toEqual(undefined)
     })
 })
 
@@ -131,9 +122,9 @@ describe('licenseIconsArr', function testLicenseIconsArr() {
     })
 })
 
-describe('license url', () =>  {
+describe('license url', () => {
     Object.values(LICENSES).forEach((license) => {
-        const {ATTRIBUTES: attr, URL: url} = license
+        const { ATTRIBUTES: attr, URL: url } = license
         it(`${JSON.stringify(attr)} should return ${url}`, () => {
             expect(licenseUrl(attr)).toEqual(url)
         })
@@ -203,154 +194,112 @@ describe('generateHTML', function testGenerateHTML() {
         PROFILE_URL: 'www.john.com',
         WORK_URL: 'www.john.com/foo.jpg'
     }
-    const areIconSourcesCorrect = (sources, licenses) => {
+    // For each kind of Attribution data present, check:
+    // 1. Correct namespaces of RDFa data a applied
+    // 2. License link has correct rel and href attributes
+    // 3. License link has correct text
+    // 4. There are corresponding icons for the license
+    // 5. Creator text and link are correct, and have proper metadata
+    // 6. Work text and link are correct, and have proper metadata
+    const hasIconSourcesErrors = (sources, licenses) => {
         const urlRef = '?ref=chooser-v1" target="_blank" rel="noopener noreferrer"'
-        if (sources.length !== licenses.length) return false
+        if (sources.length !== licenses.length) {
+            return `Incorrect number of licenses, expected ${licenses.length}, got ${sources.length}`
+        }
         sources.forEach((source) => {
-            if (!source.startsWith(urlRef)) return false
+            if (!source.startsWith(urlRef)) {
+                return `${source} doesn't start with correct base`
+            }
             const license = source
                 .replace(ICON_BASE_URL, '')
                 .replace(urlRef, '')
                 .replace('.svg', '')
-            if (!licenses.includes(license)) return false
+            if (!licenses.includes(license)) {
+                return `${license} is not supposed to be present`
+            }
         })
-        return true
+        return false
     }
-    const initialHtmlObject = generateHTML({}, LICENSES.CC0.SHORT)
-    const wrapper = mount(TestComponent, { propsData: { attribution: initialHtmlObject } })
-    let iconSources
-    const licenseLinkElement = (wrapper) => wrapper.find('.license-link').find('a')
-    const licenseImages = (wrapper) => wrapper.findAll('img')
-    test('Licenses with empty attributes', () => {
-        // CC0 license
-        expect(wrapper.find('.creator').text()).toBe('')
-        const para = wrapper.find('.html-string > p')
-        expect(Object.keys(para.attributes()).length).toEqual(3)
-        expect(para.attributes()[CC_NAMESPACE.NAME]).toEqual(CC_NAMESPACE.URI)
-        expect(para.attributes()[DCT_NAMESPACE.NAME]).toEqual(DCT_NAMESPACE.URI)
-        const workTitle = wrapper.find('.work-title')
-        expect(workTitle.text()).toBe('')
-        expect(licenseLinkElement(wrapper).attributes('rel')).toBe('license')
-        expect(licenseLinkElement(wrapper).attributes('href')).toBe(LICENSES.CC0.URL)
-        expect(licenseLinkElement(wrapper).text()).toBe(LICENSES.CC0.SHORT)
 
-        expect(licenseImages(wrapper).at(0).attributes().style).toBe(ICON_STYLE)
-        iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
-        expect(areIconSourcesCorrect(iconSources, ['cc', 'by'])).toBe(true)
-
-        // CC BY-NC-ND
-        wrapper.setProps({
-            attribution: generateHTML({}, LICENSES.CC_BY_NC_ND.SHORT)
-        })
-        expect(licenseLinkElement(wrapper).attributes('rel')).toBe('license')
-        expect(licenseLinkElement(wrapper).attributes('href')).toBe(LICENSES.CC_BY_NC_ND.URL)
-        expect(licenseLinkElement(wrapper).text()).toBe(LICENSES.CC_BY_NC_ND.SHORT)
-
-        iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
-        expect(areIconSourcesCorrect(iconSources, ['cc', 'by', 'nc', 'nd'])).toBe(true)
-    })
-    test('Licenses without links', () => {
-        const attributionDetails = {
-            workTitle: TEST_DATA.WORK_TITLE,
-            creatorName: TEST_DATA.CREATOR
-        }
-        wrapper.setProps({ attribution: generateHTML(attributionDetails, LICENSES.CC0.SHORT) })
-
-        // CC0 license
-        expect(wrapper.find('.creator').text()).toBe(TEST_DATA.CREATOR)
-        const para = wrapper.find('.html-string > p')
-        expect(Object.keys(para.attributes()).length).toEqual(3)
-        expect(para.attributes()[CC_NAMESPACE.NAME]).toEqual(CC_NAMESPACE.URI)
-        expect(para.attributes()[DCT_NAMESPACE.NAME]).toEqual(DCT_NAMESPACE.URI)
-        const workTitle = wrapper.find('.work-title')
-        expect(workTitle.text()).toBe(TEST_DATA.WORK_TITLE)
-        expect(licenseLinkElement(wrapper).attributes('rel')).toBe('license')
-        expect(licenseLinkElement(wrapper).attributes('href')).toBe(LICENSES.CC0.URL)
-        expect(licenseLinkElement(wrapper).text()).toBe(LICENSES.CC0.SHORT)
-
-        expect(licenseImages(wrapper).at(0).attributes().style).toBe(ICON_STYLE)
-        iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
-        expect(areIconSourcesCorrect(iconSources, ['cc', 'by'])).toBe(true)
-
-        // CC BY-NC-ND
-        wrapper.setProps({
-            attribution: generateHTML(attributionDetails, LICENSES.CC_BY_NC_ND.SHORT)
-        })
-        expect(licenseLinkElement(wrapper).attributes('rel')).toBe('license')
-        expect(licenseLinkElement(wrapper).attributes('href')).toBe(LICENSES.CC_BY_NC_ND.URL)
-        expect(licenseLinkElement(wrapper).text()).toBe(LICENSES.CC_BY_NC_ND.SHORT)
-
-        iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
-        expect(areIconSourcesCorrect(iconSources, ['cc', 'by', 'nc', 'nd'])).toBe(true)
-    })
-    test('Licenses only with links, no name/title', () => {
-        const attributionDetails = {
-            workUrl: TEST_DATA.WORK_URL,
-            creatorProfileUrl: TEST_DATA.PROFILE_URL
-        }
-        wrapper.setProps({ attribution: generateHTML(attributionDetails, LICENSES.CC0.SHORT) })
-
-        // CC0 license
-        expect(wrapper.find('.creator').text()).toBe('')
-        const para = wrapper.find('.html-string > p')
-        expect(Object.keys(para.attributes()).length).toEqual(3)
-        expect(para.attributes()[CC_NAMESPACE.NAME]).toEqual(CC_NAMESPACE.URI)
-        expect(para.attributes()[DCT_NAMESPACE.NAME]).toEqual(DCT_NAMESPACE.URI)
-        const workTitle = wrapper.find('.work-title')
-        expect(workTitle.text()).toBe('')
-        expect(licenseLinkElement(wrapper).attributes('rel')).toBe('license')
-        expect(licenseLinkElement(wrapper).attributes('href')).toBe(LICENSES.CC0.URL)
-        expect(licenseLinkElement(wrapper).text()).toBe(LICENSES.CC0.SHORT)
-
-        expect(licenseImages(wrapper).at(0).attributes().style).toBe(ICON_STYLE)
-        iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
-        expect(areIconSourcesCorrect(iconSources, ['cc', 'by'])).toBe(true)
-
-        // CC BY-NC-ND
-        wrapper.setProps({
-            attribution: generateHTML({}, LICENSES.CC_BY_NC_ND.SHORT)
-        })
-        expect(licenseLinkElement(wrapper).attributes('rel')).toBe('license')
-        expect(licenseLinkElement(wrapper).attributes('href')).toBe(LICENSES.CC_BY_NC_ND.URL)
-        expect(licenseLinkElement(wrapper).text()).toBe(LICENSES.CC_BY_NC_ND.SHORT)
-
-        iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
-        expect(areIconSourcesCorrect(iconSources, ['cc', 'by', 'nc', 'nd'])).toBe(true)
-    })
-    test('Licenses with all attributes links', () => {
-        const attributionDetails = {
-            workTitle: TEST_DATA.WORK_TITLE,
-            workUrl: TEST_DATA.WORK_URL,
+    const attributionOptions = {
+        blank: {},
+        onlyCreator: { creatorName: TEST_DATA.CREATOR },
+        onlyWork: { workTitle: TEST_DATA.WORK_TITLE },
+        onlyCreatorUrl: { creatorProfileUrl: TEST_DATA.PROFILE_URL },
+        onlyWorkUrl: { workUrl: TEST_DATA.WORK_URL },
+        allData: {
             creatorName: TEST_DATA.CREATOR,
+            workUrl: TEST_DATA.WORK_URL,
+            workTitle: TEST_DATA.WORK_URL,
             creatorProfileUrl: TEST_DATA.PROFILE_URL
         }
-        wrapper.setProps({ attribution: generateHTML(attributionDetails, LICENSES.CC0.SHORT) })
+    }
+    Object.keys(attributionOptions).forEach((option) => {
+        describe(`${option} with CC0 license should return correct HTML`, () => {
+            const currentLicense = LICENSES.CC0
+            const currentAttributionOptions = attributionOptions[option]
+            const generatedHtml = generateHTML(currentAttributionOptions, currentLicense.SHORT)
+            const wrapper = mount(TestComponent, { propsData: { attribution: generatedHtml } })
+            const expectedWorkTitle = currentAttributionOptions.workTitle || ''
+            const expectedCreatorName = currentAttributionOptions.creatorName || ''
+            const expectedWorkUrl = currentAttributionOptions.workUrl || ''
+            const expectedCreatorProfileUrl = currentAttributionOptions.creatorProfileUrl || ''
 
-        // CC0 license
-        expect(wrapper.find('.creator').text()).toBe(TEST_DATA.CREATOR)
-        const para = wrapper.find('.html-string > p')
-        expect(Object.keys(para.attributes()).length).toEqual(3)
-        expect(para.attributes()[CC_NAMESPACE.NAME]).toEqual(CC_NAMESPACE.URI)
-        expect(para.attributes()[DCT_NAMESPACE.NAME]).toEqual(DCT_NAMESPACE.URI)
-        const workTitle = wrapper.find('.work-title')
-        expect(workTitle.text()).toBe(TEST_DATA.WORK_TITLE)
-        expect(licenseLinkElement(wrapper).attributes('rel')).toBe('license')
-        expect(licenseLinkElement(wrapper).attributes('href')).toBe(LICENSES.CC0.URL)
-        expect(licenseLinkElement(wrapper).text()).toBe(LICENSES.CC0.SHORT)
+            it('has correct wrapper', () => {
+                const para = wrapper.find('.html-string > p')
+                expect(Object.keys(para.attributes()).length).toEqual(3)
+                expect(para.attributes()[CC_NAMESPACE.NAME]).toEqual(CC_NAMESPACE.URI)
+                expect(para.attributes()[DCT_NAMESPACE.NAME]).toEqual(DCT_NAMESPACE.URI)
+            })
+            it(`has correct license link ${currentLicense.SHORT} and license icons `, () => {
+                Object.values(LICENSES).forEach((license) => {
+                    const licenseLinkElement = wrapper.find('.license-link').find('a')
+                    const licenseImages = (wrapper) => wrapper.findAll('img')
 
-        expect(licenseImages(wrapper).at(0).attributes().style).toBe(ICON_STYLE)
-        iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
-        expect(areIconSourcesCorrect(iconSources, ['cc', 'by'])).toBe(true)
+                    expect(licenseLinkElement.attributes('rel')).toBe('license')
+                    expect(licenseLinkElement.attributes('href')).toBe(currentLicense.URL)
+                    expect(licenseLinkElement.text()).toBe(currentLicense.SHORT)
 
-        // CC BY-NC-ND
-        wrapper.setProps({
-            attribution: generateHTML({}, LICENSES.CC_BY_NC_ND.SHORT)
+                    expect(licenseImages(wrapper).at(0).attributes().style).toBe(ICON_STYLE)
+                    const iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
+                    expect(hasIconSourcesErrors(iconSources, currentLicense.ICONS)).toBe(false)
+                })
+            })
+            it(`has correct work attribution: "${expectedWorkTitle}" at url "${expectedWorkUrl}"`, () => {
+                const workTitle = wrapper.find('.work-title')
+                if (!expectedWorkTitle) {
+                    expect(workTitle.text()).toBeFalsy()
+                } else {
+                    console.log(workTitle.html())
+                    expect(workTitle.text()).toBe(expectedWorkTitle)
+                    if (!expectedWorkUrl) {
+                        const titleMetaAttribute = workTitle.find('span').attributes().rel
+                        expect(titleMetaAttribute).toEqual('dct:title')
+                    } else {
+                        const titleLink = workTitle.find('a')
+                        expect(titleLink.attributes().rel).toEqual('cc:attributionURL')
+                        expect(titleLink.attributes().property).toEqual('dct:title')
+                        expect(titleLink.attributes().href).toEqual(`http://${expectedWorkUrl}`)
+                    }
+                }
+            })
+            it(`has correct creator attribution: "${expectedCreatorName}" at url "${expectedCreatorProfileUrl}"`, () => {
+                const creator = wrapper.find('.creator')
+                expect(creator.text()).toBe(expectedCreatorName)
+                if (expectedCreatorName) {
+                    if (expectedCreatorProfileUrl) {
+                        const creatorLinkAttributes = creator.find('a').attributes()
+                        expect(creatorLinkAttributes.rel).toEqual('cc:attributionURL dct:creator')
+                        expect(creatorLinkAttributes.property).toEqual('cc:attributionName')
+                        expect(creatorLinkAttributes.href).toEqual(`http://${expectedCreatorProfileUrl}`)
+                    } else {
+                        expect(creator.find('span').attributes().property).toEqual('cc:attributionName')
+                    }
+                } else {
+                    expect(creator.find('span').exists()).toBeFalsy()
+                    expect(creator.find('a').exists()).toBeFalsy()
+                }
+            })
         })
-        expect(licenseLinkElement(wrapper).attributes('rel')).toBe('license')
-        expect(licenseLinkElement(wrapper).attributes('href')).toBe(LICENSES.CC_BY_NC_ND.URL)
-        expect(licenseLinkElement(wrapper).text()).toBe(LICENSES.CC_BY_NC_ND.SHORT)
-
-        iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
-        expect(areIconSourcesCorrect(iconSources, ['cc', 'by', 'nc', 'nd'])).toBe(true)
     })
 })

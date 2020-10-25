@@ -82,15 +82,15 @@ export default {
             return this.isWeb ? 'web' : 'print'
         },
         htmlLicenseParagraph() {
-            const data = generateHTML(this.attributionDetails, this.shortName)
+            const { work, creator, license, paragraph } = generateHTML(this.attributionDetails, this.shortName)
             const licenseCodeSpan = this.$i18n.t('license-use.richtext.full-text', {
-                workTitle: data.workTitle ? data.workTitle : this.$i18n.t('license-use.richtext.workTitle'),
-                creator: data.creator,
-                license: data.licenseLink,
-                by: data.creator ? this.$i18n.t('license-use.richtext.by') : '',
+                workTitle: work || this.$i18n.t('license-use.richtext.workTitle'),
+                creator,
+                license,
+                by: creator ? this.$i18n.t('license-use.richtext.by') : '',
                 'licensed-text': this.$i18n.t('license-use.richtext.licensed-text')
             })
-            return `${data.htmlString}${licenseCodeSpan}</p>`
+            return `${paragraph}${licenseCodeSpan}</p>`
         },
         activeTab: {
             get() { return this.currentTab },

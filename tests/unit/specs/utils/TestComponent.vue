@@ -6,15 +6,15 @@
         />
         <div
             class="html-string"
-            v-html="attribution.htmlString"
+            v-html="attribution.paragraph"
         />
         <div
             class="license-link"
-            v-html="attribution.licenseLink"
+            v-html="attribution.license"
         />
         <div
             class="work-title"
-            v-html="attribution.workTitle"
+            v-html="attribution.work"
         />
     </div>
 </template>

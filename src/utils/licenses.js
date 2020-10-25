@@ -15,7 +15,8 @@ export const LICENSES = {
         FULL: 'CC0 1.0 Universal',
         SHORT: 'CC0 1.0',
         SLUG: 'cc0',
-        URL: 'https://creativecommons.org/publicdomain/zero/1.0'
+        URL: 'https://creativecommons.org/publicdomain/zero/1.0',
+        ICONS: ['cc', 'zero']
     },
     CC_BY: {
         ATTRIBUTES: {
@@ -27,7 +28,8 @@ export const LICENSES = {
         FULL: 'Attribution 4.0 International',
         SHORT: 'CC BY 4.0',
         SLUG: 'cc-by',
-        URL: 'https://creativecommons.org/licenses/by/4.0'
+        URL: 'https://creativecommons.org/licenses/by/4.0',
+        ICONS: ['cc', 'by']
     },
     CC_BY_SA: {
         ATTRIBUTES: {
@@ -39,7 +41,8 @@ export const LICENSES = {
         FULL: 'Attribution-ShareAlike 4.0 International',
         SHORT: 'CC BY-SA 4.0',
         SLUG: 'cc-by-sa',
-        URL: 'https://creativecommons.org/licenses/by-sa/4.0'
+        URL: 'https://creativecommons.org/licenses/by-sa/4.0',
+        ICONS: ['cc', 'by', 'sa']
     },
     CC_BY_NC: {
         ATTRIBUTES: {
@@ -51,7 +54,8 @@ export const LICENSES = {
         FULL: 'Attribution-NonCommercial 4.0 International',
         SHORT: 'CC BY-NC 4.0',
         SLUG: 'cc-by-nc',
-        URL: 'https://creativecommons.org/licenses/by-nc/4.0'
+        URL: 'https://creativecommons.org/licenses/by-nc/4.0',
+        ICONS: ['cc', 'by', 'nc']
     },
     CC_BY_NC_SA: {
         ATTRIBUTES: {
@@ -63,7 +67,8 @@ export const LICENSES = {
         FULL: 'Attribution-NonCommercial-ShareAlike 4.0 International',
         SHORT: 'CC BY-NC-SA 4.0',
         SLUG: 'cc-by-nc-sa',
-        URL: 'https://creativecommons.org/licenses/by-nc-sa/4.0'
+        URL: 'https://creativecommons.org/licenses/by-nc-sa/4.0',
+        ICONS: ['cc', 'by', 'nc', 'sa']
     },
     CC_BY_NC_ND: {
         ATTRIBUTES: {
@@ -75,7 +80,8 @@ export const LICENSES = {
         FULL: 'Attribution-NonCommercial-NoDerivatives 4.0 International',
         SHORT: 'CC BY-NC-ND 4.0',
         SLUG: 'cc-by-nc-nd',
-        URL: 'https://creativecommons.org/licenses/by-nc-nd/4.0'
+        URL: 'https://creativecommons.org/licenses/by-nc-nd/4.0',
+        ICONS: ['cc', 'by', 'nc', 'nd']
     },
     CC_BY_ND: {
         ATTRIBUTES: {
@@ -87,6 +93,7 @@ export const LICENSES = {
         FULL: 'Attribution-NoDerivatives 4.0 International',
         SHORT: 'CC BY-ND 4.0',
         SLUG: 'cc-by-nd',
-        URL: 'https://creativecommons.org/licenses/by-nd/4.0'
+        URL: 'https://creativecommons.org/licenses/by-nd/4.0',
+        ICONS: ['cc', 'by', 'nd']
     }
 }
