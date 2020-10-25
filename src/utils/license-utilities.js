@@ -194,10 +194,8 @@ function generateWorkCode(workTitle, workUrl) {
             const absoluteUrl = workUrl.startsWith('http') ? workUrl : `http://${workUrl}`
             workCode = `<a rel="cc:attributionURL" property="dct:title" href="${absoluteUrl}">${workTitle}</a>`
         } else {
-            dataForHtmlGeneration.workTitle = `<span property="dct:title">${workTitle}</span>`
+            workCode = `<span property="dct:title">${workTitle}</span>`
         }
-    } else {
-        console.log('No work title, but url: ', workUrl)
     }
     return workCode
 }

@@ -230,7 +230,7 @@ describe('generateHTML', function testGenerateHTML() {
         allData: {
             creatorName: TEST_DATA.CREATOR,
             workUrl: TEST_DATA.WORK_URL,
-            workTitle: TEST_DATA.WORK_URL,
+            workTitle: TEST_DATA.WORK_TITLE,
             creatorProfileUrl: TEST_DATA.PROFILE_URL
         }
     }
@@ -270,10 +270,9 @@ describe('generateHTML', function testGenerateHTML() {
                 if (!expectedWorkTitle) {
                     expect(workTitle.text()).toBeFalsy()
                 } else {
-                    console.log(workTitle.html())
                     expect(workTitle.text()).toBe(expectedWorkTitle)
                     if (!expectedWorkUrl) {
-                        const titleMetaAttribute = workTitle.find('span').attributes().rel
+                        const titleMetaAttribute = workTitle.find('span').attributes().property
                         expect(titleMetaAttribute).toEqual('dct:title')
                     } else {
                         const titleLink = workTitle.find('a')
