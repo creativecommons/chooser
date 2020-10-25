@@ -17,14 +17,14 @@
                     <span v-if="!workTitle">{{ $t('license-use.richtext.workTitle') }}</span>
                     <span
                         v-else
-                        rel="dct:title"
+                        property="dct:title"
                     >
                         {{ workTitle }}
                     </span>
                 </a>
                 <span
                     v-else-if="workTitle"
-                    rel="dct:title"
+                    property="dct:title"
                 >
                     {{ workTitle }}
                 </span>
@@ -100,7 +100,7 @@ export default {
         },
         creatorSpan() {
             if (this.creatorName) {
-                return `<span rel="cc:attributionName">${this.creatorName}</span>`
+                return `<span property="cc:attributionName">${this.creatorName}</span>`
             } else return ''
         },
         creatorName() {

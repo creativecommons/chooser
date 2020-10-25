@@ -44,7 +44,10 @@ describe('LicenseCode.vue', () => {
     it('it renders without any errors', () => {
         expect(wrapper.isVueInstance()).toBeTruthy()
     })
-
+    it('Check if the creatorSpan function returns the correct text', () => {
+        state.attributionDetails.creatorName = 'J Doe'
+        expect(wrapper.vm.creatorSpan).toBe('<span property="cc:attributionName">J Doe</span>')
+    })
     it('has the expected UI', () => {
         expect(wrapper).toMatchSnapshot()
     })
