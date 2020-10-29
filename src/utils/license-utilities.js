@@ -155,10 +155,9 @@ const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons/'
 
 /**
  * Generate html for creator:
- * 1. If the creator name is blank, blank string is returned
- * 2. If only creator name is provided, returns a span with proper metadata
- * 3. If only creator URL is provided, ???
- * 4. If both creator name and URL are provided, returns an 'a' element with proper data and metadata
+ * 1. If the creator name is blank, even if creator link is provided, return a blank string
+ * 2. If only creator name is provided, return a span with proper metadata
+ * 3. If both creator name and URL are provided, returns an 'a' element with proper data and metadata
  * @param {string} creatorName
  * @param {string} creatorProfileUrl
  * @returns {string}
@@ -179,10 +178,9 @@ function generateCreatorCode(creatorName, creatorProfileUrl) {
 
 /**
  * Generate html for work title:
- * 1. If the work title is blank, blank string is returned
- * 2. If only work title is provided, returns a span with proper metadata
- * 3. If only work URL is provided, ???
- * 4. If both title and URL are provided, returns an 'a' element with proper data and metadata
+ * 1. If the work title is blank, event if work link is provided, return blank string
+ * 2. If only work title is provided, return a span with proper metadata
+ * 3. If both title and URL are provided, returns an 'a' element with proper data and metadata
  * @param {string} workTitle
  * @param {string} workUrl
  * @returns {string}
