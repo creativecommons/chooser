@@ -46,7 +46,7 @@
         "@vue/eslint-config-standard": "^5.1.2",
         "@vue/test-utils": "1.0.0-beta.29",
         "babel-eslint": "^10.1.0",
-        "chromedriver": "^83.0.1",
+        "chromedriver": "^86.0.0",
         "clipboardy": "^2.3.0",
         "eslint": "^6.8.0",
         "eslint-plugin-import": "^2.22.0",

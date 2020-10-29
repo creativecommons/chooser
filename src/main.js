@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Buefy from 'buefy'
 import i18n from './i18n'
 import App from './App.vue'
-import store from './store'
+import createStore from './store'
 import './styles/vocab.scss'
 
 // Analytics
@@ -61,6 +61,7 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
+const store = createStore({})
 new Vue({
     store,
     i18n,

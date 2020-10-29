@@ -13,14 +13,9 @@
                     v-if="workUrl && isWeb"
                     :href="workUrl"
                     rel="cc:attributionURL"
+                    :property="workTitle ? 'dct:title' : false"
                 >
-                    <span v-if="!workTitle">{{ $t('license-use.richtext.workTitle') }}</span>
-                    <span
-                        v-else
-                        property="dct:title"
-                    >
-                        {{ workTitle }}
-                    </span>
+                    {{ workTitle }}
                 </a>
                 <span
                     v-else-if="workTitle"
@@ -32,11 +27,11 @@
             </template>
             <template v-slot:creator>
                 <a
-                    v-if="creatorProfileUrl && isWeb"
+                    v-if="creatorName && creatorProfileUrl && isWeb"
                     :href="creatorProfileUrl"
                     rel="cc:attributionURL"
-                >
-                    <span v-html="creatorSpan" /></a>
+                    v-html="creatorSpan"
+                />
                 <span
                     v-else-if="creatorName"
                     v-html="creatorSpan"
@@ -107,13 +102,23 @@ export default {
             return this.attributionDetails.creatorName
         },
         creatorProfileUrl() {
+            const { creatorProfileUrl } = this.attributionDetails
+            if (creatorProfileUrl && !creatorProfileUrl.startsWith('http')) {
+                return `http://${creatorProfileUrl}`
+            }
             return this.attributionDetails.creatorProfileUrl
         },
         workTitle() {
             return this.attributionDetails.workTitle
+                ? this.attributionDetails.workTitle
+                : this.$t('license-use.richtext.workTitle')
         },
         workUrl() {
-            return this.attributionDetails.workUrl
+            const { workUrl } = this.attributionDetails
+            if (workUrl && !workUrl.startsWith('http')) {
+                return `http://${workUrl}`
+            }
+            return workUrl
         },
         isWeb() {
             return this.attributionType === 'web'

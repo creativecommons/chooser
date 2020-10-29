@@ -1,18 +1,29 @@
-const CC0Attributes = { BY: false, NC: false, ND: false, SA: false }
-const CCBYAttributes = { BY: true, NC: false, ND: false, SA: false }
+/** @typedef {{BY?: boolean, NC?: boolean, ND?: boolean, SA?: boolean}} LicenseAttributes */
+
+/** @typedef {('CC0 1.0'|'CC BY 4.0'|'CC BY-NC 4.0'|'CC BY-NC-ND 4.0'|'CC BY-NC-SA 4.0'|'CC BY-ND 4.0'|'CC BY-ND-SA 4.0')} ShortLicenseName
+ */
+import { LICENSES } from './licenses'
+const CC0Attributes = LICENSES.CC0.ATTRIBUTES
+const CCBYAttributes = LICENSES.CC_BY.ATTRIBUTES
 const defaultAttributes = { BY: undefined, NC: undefined, ND: undefined, SA: undefined }
 
+/**
+ * Convert short license name to attributes
+ * @param {ShortLicenseName} shortLicenseName - name of the license with version number
+ * @returns {LicenseAttributes}}
+ */
 function shortToAttr(shortLicenseName) {
-    const short = shortLicenseName
-    if (short.includes('CC0')) {
-        return { ...CC0Attributes }
-    }
-    const nc = short.includes('NC')
-    const nd = short.includes('ND')
-    const sa = short.includes('SA')
-    return { ...CCBYAttributes, NC: nc, ND: nd, SA: sa }
+    const currentLicense = Object.values(LICENSES).find(license => {
+        return license.SHORT === shortLicenseName
+    })
+    return currentLicense ? currentLicense.ATTRIBUTES : currentLicense
 }
 
+/**
+ * Convert license attributes object to short license name
+ * @param {LicenseAttributes} attr
+ * @returns {ShortLicenseName}
+ */
 function attrToShort(attr) {
     if (attr.BY === undefined) return undefined
     if (!attr.BY) { return 'CC0 1.0' }
@@ -27,6 +38,11 @@ function attrToShort(attr) {
     return base
 }
 
+/**
+ * Convert license attributes object to full license name
+ * @param {{LicenseAttributes}} attr
+ * @returns {string|undefined}
+ */
 function attrToFull(attr) {
     if (attr.BY === undefined) { return undefined }
     if (!attr.BY) { return 'CC0 1.0 Universal' }
@@ -41,9 +57,13 @@ function attrToFull(attr) {
     return base
 }
 
+/**
+ * Returns url to license from short license name with version number (eg. 'CC BY 4.0')
+ * @param attr {LicenseAttributes} license attributes object
+ * @param [mode] {'web'| 'print'} (?ref=chooser-v1, target and rel are added to the end of the link if mode is web)
+ * @returns {string} url of the license information page
+ */
 function licenseUrl(attr, mode) {
-    // Returns url to license from short license name with version number (eg. 'CC BY 4.0')
-    // mode: web/ print (?ref=chooser-v1 is added to the end of the link if mode is web)
     const linkRef = mode === 'web' ? '/?ref=chooser-v1' : ''
     if (attr.BY === false) {
         return `https://creativecommons.org/publicdomain/zero/1.0${linkRef}`
@@ -53,15 +73,23 @@ function licenseUrl(attr, mode) {
     return `https://creativecommons.org/licenses/${short}/4.0${linkRef}`
 }
 
+/**
+ * Convert short license name to licence slug ('CC BY 4.0' -> 'cc-by')
+ * @param {ShortLicenseName} shortLicenseName
+ * @returns {string}
+ */
 function licenseSlug(shortLicenseName) {
-    // Returns lower case slugified string of license name without the version number
-    // 'CC BY 4.0' -> 'cc-by'
-    return shortLicenseName
-        .toLowerCase()
-        .replace(' ', '-')
-        .slice(0, shortLicenseName.length - 4)
+    const currentLicense = Object.values(LICENSES).find(license => {
+        return license.SHORT === shortLicenseName
+    })
+    return currentLicense ? currentLicense.SLUG : currentLicense
 }
 
+/**
+ * Convert license attributes object to an array of icon names
+ * @param {LicenseAttributes} licenseAttributes
+ * @returns {string[]|[]} Array with slugified names of icons, eg. ['cc', 'by']
+ */
 function licenseIconsArr(licenseAttributes) {
     if (!licenseAttributes.BY) {
         return ['zero']
@@ -76,8 +104,8 @@ function licenseIconsArr(licenseAttributes) {
 }
 
 function updateVisibleEnabledStatus(stepStatusData) {
-    let visible = []
-    let enabled = []
+    let visible
+    let enabled
     let stepsDisabledDue = ''
     if (stepStatusData.FS) {
         // User will select from the dropdown
@@ -114,53 +142,103 @@ function updateVisibleEnabledStatus(stepStatusData) {
     return { visible, enabled, stepsDisabledDue }
 }
 
-function generateHTML(attributionDetails, shortLicenseName) {
-    const dataForHtmlGeneration = {
-        htmlString: '',
-        creator: '',
-        workTitle: '',
-        licenseLink: ''
-    }
-    const { creatorName, creatorProfileUrl, workTitle, workUrl } = attributionDetails
-    dataForHtmlGeneration.htmlString =
-        '<p xmlns:dct="http://purl.org/dc/terms/"' +
-        ' xmlns:cc="http://creativecommons.org/ns#"' +
-        ' class="license-text">'
-    const iconStyle = 'style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"'
-    const assetPathBase = 'https://mirrors.creativecommons.org/presskit/icons'
-    const assetPathRef = '?ref=chooser-v1'
-    let licenseIcons = `<img ${iconStyle} src="${assetPathBase}/cc.svg${assetPathRef}" />`
-    if (shortLicenseName.includes('CC0')) {
-        shortLicenseName = 'CC CC0 1.0'
-    }
-    licenseIcons += shortLicenseName
-        .slice(3, shortLicenseName.length - 4)
-        .split('-')
-        .map(attr => `<img ${iconStyle} src="${assetPathBase}/${attr.toLowerCase()}.svg${assetPathRef}" />`
-        ).join('')
-    const licenseHref = licenseUrl(shortToAttr(shortLicenseName))
-    dataForHtmlGeneration.licenseLink =
-        `<a rel="license" href="${licenseHref}">${shortLicenseName}${licenseIcons}</a>`
+const CC_NAMESPACE = {
+    NAME: 'xmlns:cc',
+    URI: 'http://creativecommons.org/ns#'
+}
+const DCT_NAMESPACE = {
+    NAME: 'xmlns:dct',
+    URI: 'http://purl.org/dc/terms/'
+}
+const ICON_STYLE = 'height:22px!important;margin-left:3px;vertical-align:text-bottom;'
+const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons/'
 
+/**
+ * Generate html for creator:
+ * 1. If the creator name is blank, even if creator link is provided, return a blank string
+ * 2. If only creator name is provided, return a span with proper metadata
+ * 3. If both creator name and URL are provided, returns an 'a' element with proper data and metadata
+ * @param {string} creatorName
+ * @param {string} creatorProfileUrl
+ * @returns {string}
+ */
+function generateCreatorCode(creatorName, creatorProfileUrl) {
+    let creator = ''
     if (creatorName) {
         if (creatorProfileUrl) {
-            dataForHtmlGeneration.creator =
-                `<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="${creatorProfileUrl}">${creatorName}</a>`
+            const absoluteUrl = creatorProfileUrl.startsWith('http') ? creatorProfileUrl : `http://${creatorProfileUrl}`
+            creator =
+                `<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="${absoluteUrl}">${creatorName}</a>`
         } else {
-            dataForHtmlGeneration.creator = `<span property="cc:attributionName">${creatorName}</span>`
+            creator = `<span property="cc:attributionName">${creatorName}</span>`
         }
     }
+    return creator
+}
+
+/**
+ * Generate html for work title:
+ * 1. If the work title is blank, event if work link is provided, return blank string
+ * 2. If only work title is provided, return a span with proper metadata
+ * 3. If both title and URL are provided, returns an 'a' element with proper data and metadata
+ * @param {string} workTitle
+ * @param {string} workUrl
+ * @returns {string}
+ */
+function generateWorkCode(workTitle, workUrl) {
+    let workCode = ''
     if (workTitle) {
         if (workUrl) {
-            dataForHtmlGeneration.workTitle = `<a rel="cc:attributionURL" property="dct:title" href="${workUrl}">${workTitle}</a>`
+            const absoluteUrl = workUrl.startsWith('http') ? workUrl : `http://${workUrl}`
+            workCode = `<a rel="cc:attributionURL" property="dct:title" href="${absoluteUrl}">${workTitle}</a>`
         } else {
-            dataForHtmlGeneration.workTitle = `<span property="dct:title">${workTitle}</span>`
+            workCode = `<span property="dct:title">${workTitle}</span>`
         }
     }
+    return workCode
+}
+
+/**
+ * Generates the html for the rich text license information, including license name,
+ * link to the license deed, and license icons
+ * @param {LicenseAttributes} licenseAttr
+ * @param {ShortLicenseName} shortLicenseName
+ * @returns {string} HTML code for the license
+ */
+function generateLicenseCode(licenseAttr, shortLicenseName) {
+    const iconStyle = `style="${ICON_STYLE}"`
+    const assetPathRef = '?ref=chooser-v1'
+    const licenseIconsCode = ['cc', ...licenseIconsArr(licenseAttr)]
+        .map(attr => `<img ${iconStyle} src="${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}" />`
+        ).join('')
+
+    return (`<a rel="license" href="${licenseUrl(licenseAttr)}" target="_blank"
+        rel="license noopener noreferrer" style="display:inline-block;">
+        ${shortLicenseName}${licenseIconsCode}</a>`)
+}
+
+/**
+ * Generate data for use in attribution HTML through i18n
+ * @param attributionDetails
+ * @param {ShortLicenseName} shortLicenseName
+ * @returns {{creator: string, workTitle: string, licenseLink: string, htmlString: string}}
+ */
+function generateHTML(attributionDetails, shortLicenseName) {
+    const dataForHtmlGeneration = {}
+    const { creatorName, creatorProfileUrl, workTitle, workUrl } = attributionDetails
+    dataForHtmlGeneration.paragraph =
+        `<p ${DCT_NAMESPACE.NAME}="${DCT_NAMESPACE.URI}"` +
+        ` ${CC_NAMESPACE.NAME}="${CC_NAMESPACE.URI}"` +
+        ' class="license-text">'
+    const licenseAttr = shortToAttr(shortLicenseName)
+    dataForHtmlGeneration.license = generateLicenseCode(licenseAttr, shortLicenseName)
+    dataForHtmlGeneration.creator = generateCreatorCode(creatorName, creatorProfileUrl)
+    dataForHtmlGeneration.work = generateWorkCode(workTitle, workUrl)
     return dataForHtmlGeneration
 }
 
 export {
     defaultAttributes, CC0Attributes, CCBYAttributes, shortToAttr, attrToShort,
-    attrToFull, licenseUrl, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus
+    attrToFull, licenseUrl, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus,
+    CC_NAMESPACE, DCT_NAMESPACE, LICENSES, ICON_STYLE, ICON_BASE_URL
 }
