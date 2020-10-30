@@ -14,12 +14,6 @@
                         :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
                     />
                 </b-field>
-                <b-field :label="this.$t('stepper.AD.form.creator-profile.label')">
-                    <b-input
-                        v-model="creatorProfileUrl"
-                        :placeholder="this.$t('stepper.AD.form.creator-profile.placeholder')"
-                    />
-                </b-field>
                 <b-field :label="this.$t('stepper.AD.form.work-title.label')">
                     <b-input
                         v-model="workTitle"
@@ -30,6 +24,12 @@
                     <b-input
                         v-model="workUrl"
                         :placeholder="this.$t('stepper.AD.form.work-url.placeholder')"
+                    />
+                </b-field>
+                <b-field :label="this.$t('stepper.AD.form.creator-profile.label')">
+                    <b-input
+                        v-model="creatorProfileUrl"
+                        :placeholder="this.$t('stepper.AD.form.creator-profile.placeholder')"
                     />
                 </b-field>
             </form>

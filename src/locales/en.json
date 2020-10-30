@@ -68,20 +68,20 @@
             "instructions": "Filling out this form is optional, but helps others attribute your work to you, and fills in machine-readable code.",
             "form": {
                 "creator-name": {
-                    "label": "Work Author",
+                    "label": "Creator of Work",
                     "placeholder": "Jane Doe"
                 },
                 "creator-profile": {
-                    "label": "URL of creator profile",
-                    "placeholder": "www.author.com"
+                    "label": "Link to Creator Profile",
+                    "placeholder": "https://janedoe.com"
                 },
                 "work-title": {
                     "label": "Title of Work",
                     "placeholder": "This work"
                 },
                 "work-url": {
-                    "label": "Work URL",
-                    "placeholder": "www.author.com/work.jpg"
+                    "label": "Link to Work",
+                    "placeholder": "https://janedoe.com/best-photo-ever.jpg"
                 }
             }
         }

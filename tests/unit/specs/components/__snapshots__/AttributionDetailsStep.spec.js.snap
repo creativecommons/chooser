@@ -53,35 +53,6 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
         <label
           class="label"
         >
-          stepper.AD.form.creator-profile.label
-        </label>
-         
-        <div
-          class="control is-clearfix"
-        >
-          <input
-            autocomplete="on"
-            class="input"
-            placeholder="stepper.AD.form.creator-profile.placeholder"
-            type="text"
-          />
-           
-          <!---->
-           
-          <!---->
-           
-          <!---->
-        </div>
-         
-        <!---->
-      </div>
-       
-      <div
-        class="field"
-      >
-        <label
-          class="label"
-        >
           stepper.AD.form.work-title.label
         </label>
          
@@ -121,6 +92,35 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
             autocomplete="on"
             class="input"
             placeholder="stepper.AD.form.work-url.placeholder"
+            type="text"
+          />
+           
+          <!---->
+           
+          <!---->
+           
+          <!---->
+        </div>
+         
+        <!---->
+      </div>
+       
+      <div
+        class="field"
+      >
+        <label
+          class="label"
+        >
+          stepper.AD.form.creator-profile.label
+        </label>
+         
+        <div
+          class="control is-clearfix"
+        >
+          <input
+            autocomplete="on"
+            class="input"
+            placeholder="stepper.AD.form.creator-profile.placeholder"
             type="text"
           />
            
