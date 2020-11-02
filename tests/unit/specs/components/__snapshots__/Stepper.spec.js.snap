@@ -10,7 +10,8 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
     </div>
     <firststep-stub stepid="0" status="current"></firststep-stub>
     <nav class="step-navigation">
-      <!----> <a role="button" class="pagination-next disabled">NEXT STEP</a></nav>
+      <!----> <a role="button" class="pagination-next disabled">NEXT STEP</a>
+    </nav>
   </div>
   <div class="step-container BY inactive enabled">
     <div class="step-header">
