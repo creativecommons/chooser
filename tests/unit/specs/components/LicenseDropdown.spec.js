@@ -58,6 +58,12 @@ describe('LicenseDropdown.vue',()=>{
         expect(wrapper.contains('option')).toBe(true)
     })
 
+    it('Checks methods: setCurrentLicense',()=>{
+        const options = wrapper.find('select').findAll('option')
+        options.at(1).setSelected()
+        expect(wrapper.emitted().input).toBeTruthy()
+    })
+
     it('Check if the LicenseDropdown.vue component has the expected UI', () => {
         expect(wrapper).toMatchSnapshot()
     })
