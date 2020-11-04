@@ -62,7 +62,6 @@ describe('LicenseCode.vue', () => {
         wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
         wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
         wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
-        console.log(wrapper.html())
         expect(wrapper).toMatchSnapshot()
     })
 })
