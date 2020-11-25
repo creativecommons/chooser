@@ -9,12 +9,7 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
       </h5>
     </div>
     <firststep-stub stepid="0" status="current"></firststep-stub>
-    <nav class="step-navigation">
-      <!---->
-      <v-button-stub size="normal" disabled="disabled" class="is-success disabled">
-        NEXT STEP
-      </v-button-stub>
-    </nav>
+    <stepnavigation-stub stepname="FS"></stepnavigation-stub>
   </div>
   <div class="step-container BY inactive enabled">
     <div class="step-header">
@@ -91,14 +86,7 @@ exports[`Stepper.vue renders correctly has expected UI on CW step after DD 1`] =
       </h5>
     </div>
     <copyrightwaiverstep-stub stepid="6" stepname="CW" status="current"></copyrightwaiverstep-stub>
-    <nav class="step-navigation">
-      <v-button-stub size="normal" class="is-border">
-        BACK
-      </v-button-stub>
-      <v-button-stub size="normal" disabled="disabled" class="is-success disabled">
-        NEXT STEP
-      </v-button-stub>
-    </nav>
+    <stepnavigation-stub stepname="CW"></stepnavigation-stub>
   </div>
   <div class="step-container AD inactive enabled">
     <div class="step-header">
@@ -148,14 +136,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
       </h5>
     </div>
     <step-stub stepname="ND" stepid="3" status="current" reversed="true" enabled="true"></step-stub>
-    <nav class="step-navigation">
-      <v-button-stub size="normal" class="is-border">
-        BACK
-      </v-button-stub>
-      <v-button-stub size="normal" disabled="disabled" class="is-success disabled">
-        NEXT STEP
-      </v-button-stub>
-    </nav>
+    <stepnavigation-stub stepname="ND"></stepnavigation-stub>
   </div>
   <div class="step-container SA inactive enabled">
     <div class="step-header">

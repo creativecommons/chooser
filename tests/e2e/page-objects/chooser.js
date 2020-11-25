@@ -12,11 +12,11 @@ const stepperCommands = {
         return this
     },
     clickNext: function() {
-        this.click('.pagination-next')
+        this.click('.next-button')
         return this
     },
     clickPrevious: function() {
-        this.click('.pagination-previous')
+        this.click('.previous-button')
         return this
     },
     chooseNo: function() {
@@ -32,7 +32,7 @@ const stepperCommands = {
     clickWaiver: function() {
         this.click('.checkbox:first-of-type input[type=checkbox]')
             .click('.checkbox:last-of-type input[type=checkbox]')
-            .click('.pagination-next')
+            .click('.next-button')
         return this
     },
     selectFromDropdown: function(licenseName) {
@@ -40,7 +40,7 @@ const stepperCommands = {
             .waitForElementVisible('.license-dropdown')
             .click('.license-dropdown')
             .click(`.license-dropdown option[value="${licenseName}"]`)
-            .click('.pagination-next')
+            .click('.next-button')
         return this
     },
     assertStepName: function(stepName) {

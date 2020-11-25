@@ -7,12 +7,6 @@ import VueI18n from 'vue-i18n'
 import Vue from 'vue'
 import store from '@/store'
 
-function getNextButton(wrapper) {
-    return wrapper.findAll('v-button-stub').at(1)
-}
-function clickNext(wrapper) {
-    getNextButton(wrapper).vm.$emit('click')
-}
 function getStepId(wrapper, stepName) {
     return wrapper.vm.steps.filter((step) => { return step.name === stepName })[0].id
 }
@@ -115,21 +109,6 @@ describe('Stepper.vue', () => {
             expect(wrapper.find('.current').classes()).toContain('CW')
         })
     })
-    describe('Next button', () => {
-        it('becomes clickable only after selection is made', () => {
-            const nextButtonStub = wrapper.find('v-button-stub')
-            expect(nextButtonStub.classes('disabled')).toBe(true)
-            setStepSelected(wrapper, 'FS', false)
-            expect(nextButtonStub.classes('disabled')).toBe(false)
-        })
-        it('clicking on Next button advances the step', () => {
-            setStepSelected(wrapper, 'FS', true)
-            wrapper.find('v-button-stub').vm.$emit('click')
-            const steps = wrapper.findAll('.step-container')
-            expect(steps.at(0).classes('previous')).toBe(true)
-            expect(steps.at(1).classes('current')).toBe(true)
-        })
-    })
 
     describe('FirstStep interactions', () => {
         it('choosing Yes sets 3 steps visible: FS, Dropdown and AttributionDetails, opens DD', () => {
@@ -142,8 +121,7 @@ describe('Stepper.vue', () => {
         })
         it('choosing No sets 6 steps visible: FS, BY, NC, ND, SA and AttributionDetails, opens BY', () => {
             setStepSelected(wrapper, 'FS', false)
-            const nextButton = wrapper.find('v-button-stub')
-            nextButton.vm.$emit('click')
+            wrapper.find('stepnavigation-stub').vm.$emit('navigate', { direction: 'next', stepName: 'FS' })
             const steps = wrapper.findAll('.step-container')
             expect(steps.length).toEqual(6)
             expect(wrapper.vm.currentStepId).toEqual(1)

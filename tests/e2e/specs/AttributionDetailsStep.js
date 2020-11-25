@@ -2,7 +2,7 @@ module.exports = {
     '@tags': ['att'],
     'AttributionDetailsStep'(browser) {
         const knowLicenseSelector = '.b-radio'
-        const nextButton = '.pagination-next'
+        const nextButton = '.next-button'
         const select = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > div > div > span > select'
         const selectOpt = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > div > div > span > select > option:nth-child(4)'
         const stepTitle = '.step-title'
@@ -15,7 +15,7 @@ module.exports = {
         const workUrlInput = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(4) > div > input'
         const workTitleLabel = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(3) > label'
         const workTitleInput = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(3) > div > input'
-        const backBtn = '.pagination-previous'
+        const backBtn = '.previous-button'
         const paginationFinish = '.pagination-finish'
 
         browser
