@@ -26,7 +26,6 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
         >
           stepper.AD.form.creator-name.label
         </label>
-         
         <div
           class="control is-clearfix"
         >
@@ -36,14 +35,10 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
             placeholder="stepper.AD.form.creator-name.placeholder"
             type="text"
           />
-           
           <!---->
-           
           <!---->
-           
           <!---->
         </div>
-         
         <!---->
       </div>
        
@@ -55,7 +50,6 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
         >
           stepper.AD.form.work-title.label
         </label>
-         
         <div
           class="control is-clearfix"
         >
@@ -65,14 +59,10 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
             placeholder="stepper.AD.form.work-title.placeholder"
             type="text"
           />
-           
           <!---->
-           
           <!---->
-           
           <!---->
         </div>
-         
         <!---->
       </div>
        
@@ -84,7 +74,6 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
         >
           stepper.AD.form.work-url.label
         </label>
-         
         <div
           class="control is-clearfix"
         >
@@ -94,14 +83,10 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
             placeholder="stepper.AD.form.work-url.placeholder"
             type="text"
           />
-           
           <!---->
-           
           <!---->
-           
           <!---->
         </div>
-         
         <!---->
       </div>
        
@@ -113,7 +98,6 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
         >
           stepper.AD.form.creator-profile.label
         </label>
-         
         <div
           class="control is-clearfix"
         >
@@ -123,14 +107,10 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
             placeholder="stepper.AD.form.creator-profile.placeholder"
             type="text"
           />
-           
           <!---->
-           
           <!---->
-           
           <!---->
         </div>
-         
         <!---->
       </div>
     </form>
