@@ -64,7 +64,6 @@ export default {
             return this.reversed ? !this.selected : this.selected
         },
         cardText() {
-            console.log('Will return card text: ', this.stepName, this.$props.selected)
             if (this.stepName === 'FS') {
                 return this.$props.selected ? 'stepper.FS.selected' : 'stepper.FS.not-selected'
             }
