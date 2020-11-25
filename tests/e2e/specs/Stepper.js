@@ -11,7 +11,7 @@ module.exports = {
         stepper.expect.element('@currentStep').to.be.present
         stepper.chooseNo().clickNo()
         chooser.expect.section('@selectedLicenseCard').to.be.visible
-    },
+    }
     // 'Step three: going through license attribute steps opens license use card and Attribution Details Step': function(browser) {
     //     const chooser = browser.page.chooser().navigate()
     //     const stepper = chooser.section.stepper

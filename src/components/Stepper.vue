@@ -13,15 +13,8 @@
                     {{ $t(stepHeaderText(step.name, step.status)) }}
                 </h5>
             </div>
-            <FirstStep
-                v-if="step.status!=='inactive' && step.name==='FS'"
-                :step-id="step.id"
-                :selected="step.selected"
-                :status="step.status"
-                @change="changeStepSelected"
-            />
-            <Step
-                v-else-if="step.status!=='inactive' && isLicenseAttribute(step.name)"
+            <ChooserStep
+                v-if="step.status!=='inactive' && (isLicenseAttribute(step.name)||step.name==='FS')"
                 :step-id="step.id"
                 :step-name="step.name"
                 :selected="step.selected"
@@ -61,8 +54,7 @@
 </template>
 
 <script>
-import Step from './Step'
-import FirstStep from './FirstStep'
+import ChooserStep from './ChooserStep'
 import AttributionDetailsStep from './AttributionDetailsStep'
 import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
@@ -72,8 +64,7 @@ import { updateVisibleEnabledStatus } from '../utils/license-utilities'
 export default {
     name: 'Stepper',
     components: {
-        FirstStep,
-        Step,
+        ChooserStep,
         AttributionDetailsStep,
         CopyrightWaiverStep,
         DropdownStep,
