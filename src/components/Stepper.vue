@@ -50,30 +50,12 @@
                 :step-id="step.id"
                 :status="step.status"
             />
-            <nav
-                v-if="step.status==='current'"
-                class="step-navigation"
-            >
-                <v-button
-                    v-if="step.name!=='FS'"
-                    class="is-border"
-                    @click="handlePrevious(step.name)"
-                >
-                    {{ $t('stepper.nav.previous-label') }}
-                </v-button>
-                <v-button
-                    v-if="step.name!=='AD'"
-                    :class="['is-success', nextButtonEnabledState(step.id)]"
-                    :disabled="nextButtonEnabledState(step.id) ? 'disabled' : null"
-                    @click="handleNext(step.name)"
-                >
-                    {{ $t('stepper.nav.next-label') }}
-                </v-button>
-                <span
-                    v-else
-                    class="pagination-finish"
-                >{{ $t('stepper.nav.finish-label') }}</span>
-            </nav>
+            <StepNavigation
+                v-if="step.status === 'current'"
+                :step-name="step.name"
+                :is-next-enabled="isNextEnabled(step.id)"
+                @navigate="navigate"
+            />
         </div>
     </div>
 </template>
@@ -84,6 +66,7 @@ import FirstStep from './FirstStep'
 import AttributionDetailsStep from './AttributionDetailsStep'
 import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
+import StepNavigation from './StepNavigation'
 import { updateVisibleEnabledStatus } from '../utils/license-utilities'
 
 export default {
@@ -93,7 +76,8 @@ export default {
         Step,
         AttributionDetailsStep,
         CopyrightWaiverStep,
-        DropdownStep
+        DropdownStep,
+        StepNavigation
     },
     props: {
         value: {
@@ -191,12 +175,13 @@ export default {
          * Checks if the Next button should be disabled. Next button is enabled only
          * after the user has interacted with the step (selected radio or checked a checkbox)
          * @param {number} stepId
-         * @returns {'disabled'|''} next button's disabled status
+         * @returns {Boolean} next button's disabled status
          */
-        nextButtonEnabledState(stepId) {
-            return this.steps[stepId].selected === undefined
-                ? 'disabled'
-                : ''
+        isNextEnabled(stepId) {
+            return this.steps[stepId].selected !== undefined
+        },
+        navigate({ direction, stepName }) {
+            direction === 'next' ? this.handleNext(stepName) : this.handlePrevious()
         },
         changeStepSelected(stepName, stepId, isSelected) {
             /**
@@ -398,17 +383,7 @@ export default {
     .inactive .step-title {
         color: #b0b0b0;
     }
-    .step-navigation {
-        margin: 13px 0;
-        padding-left: 65px;
-        .button + .button {
-            margin-left: 1rem;
-        }
-    }
-    .pagination-finish{
-        margin-left: 1rem;
-        line-height: 42px;
-    }
+
     .slide-enter-active {
         /*transition: all .3s ease;*/
     animation: slide-down .3s;
