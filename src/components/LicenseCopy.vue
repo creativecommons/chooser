@@ -6,7 +6,7 @@
         >
             <b-tab-item :label="this.$t(firstTabLabel)">
                 <div
-                    id="attribution-text"
+                    :id="textAttributionId"
                     class="attribution-text"
                 >
                     <LicenseCode :attribution-type="textAttributionType" />
@@ -20,7 +20,7 @@
                     class="generated-html-container control"
                 >
                     <textarea
-                        id="attribution-html"
+                        :id="htmlAttributionId"
                         class="attribution-html-textarea textarea"
                         :value="htmlLicenseParagraph"
                         readonly
@@ -79,6 +79,15 @@ export default {
         },
         firstTabLabel() {
             return this.isWeb ? 'license-use.rich-text-label' : 'license-use.plain-text-label'
+        },
+        attributionIdPrefix() {
+            return this.isWeb ? 'attribution-web-' : 'attribution-print-'
+        },
+        textAttributionId() {
+            return `${this.attributionIdPrefix}-text`
+        },
+        htmlAttributionId() {
+            return `${this.attributionIdPrefix}-html`
         },
         textAttributionType() {
             return this.isWeb ? 'web' : 'print'
@@ -153,7 +162,7 @@ export default {
             e.clearSelection()
         },
         clipboardTarget() {
-            return `#attribution-${this.currentSelection}`
+            return `#${this.attributionIdPrefix}-${this.currentSelection}`
         }
     }
 }
