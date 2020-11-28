@@ -21,7 +21,7 @@
                 >
                     <textarea
                         id="attribution-html"
-                        class="textarea"
+                        class="attribution-html-textarea textarea"
                         :value="htmlLicenseParagraph"
                         readonly
                     />
@@ -178,7 +178,7 @@ export default {
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    .generated-html-container textarea {
+    .generated-html-container .attribution-html-textarea.textarea {
         word-break: break-all;
         -ms-word-break: break-all;
         min-height: 60px;
