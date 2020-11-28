@@ -41,9 +41,21 @@ const createStore = (state) => {
             }
         },
         mutations: {
+            /**
+             * Updates current license attributes when user selects radio option.
+             * Edge case: If user selects ND, SA should be set to false
+             * @param state
+             * @param {string} stepName
+             * @param {Boolean} isSelected
+             */
             setSelected(state, { stepName, isSelected }) {
-                // When a Radio button is selected, currentLicenseAttribute 'selected' attribute is updated
-                if (['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1) {
+                if (stepName === 'ND' && isSelected && state.currentLicenseAttributes.SA) {
+                    state.currentLicenseAttributes = {
+                        ...state.currentLicenseAttributes,
+                        SA: false,
+                        ND: true
+                    }
+                } else if (['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1) {
                     state.currentLicenseAttributes = {
                         ...state.currentLicenseAttributes,
                         [stepName]: isSelected
