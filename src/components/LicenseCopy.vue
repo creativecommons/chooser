@@ -5,7 +5,10 @@
             class="attribution-tab"
         >
             <b-tab-item :label="this.$t(firstTabLabel)">
-                <div id="attribution-text">
+                <div
+                    :id="textAttributionId"
+                    class="attribution-text"
+                >
                     <LicenseCode :attribution-type="textAttributionType" />
                 </div>
             </b-tab-item>
@@ -14,12 +17,11 @@
                 :label="this.$t('license-use.html-label')"
             >
                 <div
-                    id="generated-html-container"
-                    class="control"
+                    class="generated-html-container control"
                 >
                     <textarea
-                        id="attribution-html"
-                        class="textarea"
+                        :id="htmlAttributionId"
+                        class="attribution-html-textarea textarea"
                         :value="htmlLicenseParagraph"
                         readonly
                     />
@@ -77,6 +79,15 @@ export default {
         },
         firstTabLabel() {
             return this.isWeb ? 'license-use.rich-text-label' : 'license-use.plain-text-label'
+        },
+        attributionIdPrefix() {
+            return this.isWeb ? 'attribution-web-' : 'attribution-print-'
+        },
+        textAttributionId() {
+            return `${this.attributionIdPrefix}-text`
+        },
+        htmlAttributionId() {
+            return `${this.attributionIdPrefix}-html`
         },
         textAttributionType() {
             return this.isWeb ? 'web' : 'print'
@@ -151,7 +162,7 @@ export default {
             e.clearSelection()
         },
         clipboardTarget() {
-            return `#attribution-${this.currentSelection}`
+            return `#${this.attributionIdPrefix}-${this.currentSelection}`
         }
     }
 }
@@ -165,18 +176,18 @@ export default {
         height: 1.4rem;
     }
 
-    #attribution-text p {
+    .attribution-text p {
         margin-top: 0.5rem;
         margin-bottom: 1rem;
         background-color: #fff;
         padding: 24px 0 0 24px;
         height: 100px;
     }
-    #generated-html-container {
+    .generated-html-container {
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    #generated-html-container textarea {
+    .generated-html-container .attribution-html-textarea.textarea {
         word-break: break-all;
         -ms-word-break: break-all;
         min-height: 60px;
