@@ -11,7 +11,7 @@ describe('HelpSection.vue', () => {
         const localVue = createLocalVue()
         localVue.use(VueI18n)
         localVue.use(Buefy)
-        const messages = require('@/locales/en.json')
+        const messages = require('@/locales/en.js')
         const i18n = new VueI18n({
             locale: 'en',
             fallbackLocale: 'en',

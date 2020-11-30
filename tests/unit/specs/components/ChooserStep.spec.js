@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue, config } from '@vue/test-utils'
+import { config, createLocalVue, shallowMount } from '@vue/test-utils'
 import ChooserStep from '@/components/ChooserStep'
 import Buefy from 'buefy'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
@@ -18,13 +18,10 @@ describe('ChooserStep.vue', () => {
         localVue.use(Buefy)
         localVue.use(VueVocabulary)
         Vue.use(VueI18n)
-        const i18n = new VueI18n({
+        config.mocks.i18n = new VueI18n({
             locale: 'en',
-            fallbackLocale: 'en',
             messages: {}
         })
-
-        config.mocks.i18n = i18n
 
         config.mocks.$t = key => key
         wrapper = shallowMount(ChooserStep, {

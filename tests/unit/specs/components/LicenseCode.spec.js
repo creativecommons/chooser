@@ -1,7 +1,7 @@
 import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
 import { mount, createLocalVue } from '@vue/test-utils'
-import LicenseCode from '@/components/LicenseCode.vue'
+import LicenseText from '@/components/LicenseText.vue'
 import createStore from '@/store'
 import { CCBYAttributes } from '@/utils/license-utilities'
 
@@ -12,7 +12,7 @@ const TEST_DATA = {
     workUrl: 'www.author.com/picture.jpg'
 }
 
-describe('LicenseCode.vue', () => {
+describe('LicenseText.vue', () => {
     let wrapper
     let state
     let localVue
@@ -20,7 +20,7 @@ describe('LicenseCode.vue', () => {
     // Vue i18n is looking for locale key in messages,
     // i.e. $t('app') becomes 'messages.<en>.app'
     const messages = {}
-    messages.en = require('@/locales/en.json')
+    messages.en = require('@/locales/en.js')
     beforeEach(() => {
         localVue = createLocalVue()
         localVue.use(VueI18n)
@@ -34,7 +34,7 @@ describe('LicenseCode.vue', () => {
             messages: messages
         })
 
-        wrapper = mount(LicenseCode, {
+        wrapper = mount(LicenseText, {
             localVue,
             store,
             i18n

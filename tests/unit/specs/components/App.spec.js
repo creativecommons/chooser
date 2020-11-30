@@ -16,7 +16,7 @@ describe('App.vue', () => {
         localVue.use(Vuex)
         localVue.use(Buefy)
         Vue.use(VueI18n)
-        const messages = require('@/locales/en.json')
+        const messages = require('@/locales/en.js')
         const i18n = new VueI18n({
             locale: 'en',
             fallbackLocale: 'en',
