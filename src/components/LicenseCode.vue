@@ -25,7 +25,8 @@
                 </span>
                 <span v-else>{{ $t('license-use.richtext.workTitle') }}</span>
             </template>
-            <template v-slot:creator>
+            <template v-slot:byCreator>
+                <span v-if="creatorName">{{ $t('license-use.richtext.by') }} </span>
                 <a
                     v-if="creatorName && creatorProfileUrl && isWeb"
                     :href="creatorProfileUrl"
@@ -37,11 +38,8 @@
                     v-html="creatorSpan"
                 />
             </template>
-            <template v-slot:by>
-                {{ $t(byString) }}
-            </template>
-            <template v-slot:licensed-text>
-                <span>{{ $t('license-use.richtext.licensed-text') }}</span>
+            <template v-slot:licensedMarkedString>
+                <span>{{ $t(licensedMarkedString) }}</span>
             </template>
             <template v-slot:license>
                 <a
@@ -66,7 +64,7 @@
             path="license-use.richtext.print-instructions"
             tag="span"
         >
-            <template v-slot:linkToLicenseDeed>
+            <template v-slot:linkToDeed>
                 {{ licenseUrl('print') }}
             </template>
         </i18n>
@@ -90,8 +88,8 @@ export default {
     computed: {
         ...mapGetters(['shortName', 'licenseUrl', 'iconsList']),
         ...mapState(['attributionDetails']),
-        byString() {
-            return this.creatorName ? 'license-use.richtext.by' : ''
+        licensedMarkedString() {
+            return this.$store.getters.shortName === 'CC0 1.0' ? 'license-use.richtext.marked-text' : 'license-use.richtext.licensed-text'
         },
         creatorSpan() {
             if (this.creatorName) {

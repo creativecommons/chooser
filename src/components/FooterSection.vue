@@ -84,7 +84,7 @@
                                 target="_blank"
                                 rel="noopener"
                             >noted</a>,
-                            content on this site is marked with a
+                            content on this site is licensed under the
                             <a
                                 href="https://creativecommons.org/licenses/by/4.0/"
                                 target="_blank"

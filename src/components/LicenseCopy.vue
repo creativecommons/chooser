@@ -96,10 +96,9 @@ export default {
             const { work, creator, license, paragraph } = generateHTML(this.attributionDetails, this.shortName)
             const licenseCodeSpan = this.$i18n.t('license-use.richtext.full-text', {
                 workTitle: work || this.$i18n.t('license-use.richtext.workTitle'),
-                creator,
+                byCreator: creator ? this.$i18n.t('license-use.richtext.by') + ' ' + creator : '',
                 license,
-                by: creator ? this.$i18n.t('license-use.richtext.by') : '',
-                'licensed-text': this.$i18n.t('license-use.richtext.licensed-text')
+                licensedMarkedString: this.$i18n.t(this.shortName === 'CC0 1.0' ? 'license-use.richtext.marked-text' : 'license-use.richtext.licensed-text')
             })
             return `${paragraph}${licenseCodeSpan}</p>`
         },
