@@ -374,7 +374,6 @@ export default {
     .inactive .step-title {
         color: #b0b0b0;
     }
-
     .slide-enter-active {
         /*transition: all .3s ease;*/
     animation: slide-down .3s;
