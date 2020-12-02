@@ -54,18 +54,21 @@
                 v-if="step.status==='current'"
                 class="step-navigation"
             >
-                <a
+                <v-button
                     v-if="step.name!=='FS'"
-                    role="button"
-                    class="pagination-previous"
+                    class="is-border"
                     @click="handlePrevious(step.name)"
-                >{{ $t('stepper.nav.previous-label') }}</a>
-                <a
+                >
+                    {{ $t('stepper.nav.previous-label') }}
+                </v-button>
+                <v-button
                     v-if="step.name!=='AD'"
-                    role="button"
-                    :class="['pagination-next', nextButtonEnabledState(step.id)]"
+                    :class="['is-success', nextButtonEnabledState(step.id)]"
+                    :disabled="nextButtonEnabledState(step.id) ? 'disabled' : null"
                     @click="handleNext(step.name)"
-                >{{ $t('stepper.nav.next-label') }}</a>
+                >
+                    {{ $t('stepper.nav.next-label') }}
+                </v-button>
                 <span
                     v-else
                     class="pagination-finish"
@@ -184,10 +187,13 @@ export default {
              */
             return ['NC', 'ND', 'SA'].indexOf(stepName) > -1
         },
+        /**
+         * Checks if the Next button should be disabled. Next button is enabled only
+         * after the user has interacted with the step (selected radio or checked a checkbox)
+         * @param {number} stepId
+         * @returns {'disabled'|''} next button's disabled status
+         */
         nextButtonEnabledState(stepId) {
-            /**
-             * Disables the 'Next' button before the user interacts with the step
-             */
             return this.steps[stepId].selected === undefined
                 ? 'disabled'
                 : ''
@@ -395,39 +401,9 @@ export default {
     .step-navigation {
         margin: 13px 0;
         padding-left: 65px;
-    }
-    .step-navigation .pagination-next,
-    .step-navigation .pagination-previous {
-        font-family: Roboto Condensed,sans-serif;
-        font-style: normal;
-        font-size: 18px;
-        line-height: 24px;
-    }
-    .step-navigation,
-    .step-navigation {
-        font-weight: 500;
-    }
-    .pagination-next,
-    .pagination-previous {
-        font-weight: bold;
-    }
-    .step-navigation .pagination-previous {
-        border: 2px solid #787878;
-        color: #787878;
-    }
-    .step-navigation .pagination-next {
-        background-color: #04a635;
-        color: #fff!important;
-        border: 2px solid transparent;
-    }
-    .pagination-next.disabled {
-        background-color: #D8D8D8;
-        color: #787878 !important;
-    }
-    .pagination-next.disabled:hover,
-    .pagination-next.disabled:active {
-        box-shadow: none;
-        border: 1px solid transparent;
+        .button + .button {
+            margin-left: 1rem;
+        }
     }
     .pagination-finish{
         margin-left: 1rem;
