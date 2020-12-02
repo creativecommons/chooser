@@ -17,11 +17,9 @@ exports[`FirstStep Component Mark up is correctly rendered 1`] = `
           type="radio"
           value="yes"
         />
-         
         <span
           class="check"
         />
-         
         <span
           class="control-label"
         >
@@ -46,11 +44,9 @@ exports[`FirstStep Component Mark up is correctly rendered 1`] = `
           type="radio"
           value="no"
         />
-         
         <span
           class="check"
         />
-         
         <span
           class="control-label"
         >

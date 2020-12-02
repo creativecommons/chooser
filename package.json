@@ -19,8 +19,8 @@
         "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json"
     },
     "dependencies": {
-        "@creativecommons/vocabulary": "^1.0.0-beta.16",
-        "@creativecommons/vue-vocabulary": "0.0.0-alpha.30",
+        "@creativecommons/vocabulary": "^2020.11.3",
+        "@creativecommons/vue-vocabulary": "^2020.11.3",
         "@fortawesome/fontawesome-svg-core": "^1.2.30",
         "@fortawesome/free-brands-svg-icons": "^5.14.0",
         "@fortawesome/free-solid-svg-icons": "^5.14.0",
@@ -28,7 +28,7 @@
         "@linusborg/vue-simple-portal": "^0.1.4",
         "@sentry/browser": "^5.20.1",
         "@sentry/integrations": "^5.20.1",
-        "buefy": "^0.8.20",
+        "buefy": "^0.9.4",
         "clipboard": "^2.0.6",
         "core-js": "^3.6.5",
         "vue": "^2.6.10",

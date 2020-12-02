@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Buefy from 'buefy'
+import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common.js'
 import i18n from './i18n'
 import App from './App.vue'
 import createStore from './store'
@@ -30,6 +31,7 @@ library.add(
 Vue.component('vue-fontawesome', FontAwesomeIcon)
 Vue.config.productionTip = false
 Vue.use(Buefy)
+Vue.use(VueVocabulary)
 
 if (process.env.NODE_ENV === 'production') {
     Vue.use(VueAnalytics, {

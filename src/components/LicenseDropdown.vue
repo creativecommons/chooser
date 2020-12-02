@@ -63,5 +63,11 @@ export default {
         .select, select {
             width: 100%;
         }
+        .select select {
+            border: 0.125rem solid #d8d8d8;
+            &:active, &:focus, &:hover {
+                border-color: #b0b0b0;
+            }
+        }
     }
 </style>

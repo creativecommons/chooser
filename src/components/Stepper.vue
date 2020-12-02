@@ -386,11 +386,11 @@ export default {
         background-color: #F5F5F5;
     }
     .previous.disabled {
-        color: #B0B0B0;
+        color: #b0b0b0;
     }
     .previous.disabled .step-title,
     .inactive .step-title {
-        color: #B0B0B0;
+        color: #b0b0b0;
     }
     .step-navigation {
         margin: 13px 0;
