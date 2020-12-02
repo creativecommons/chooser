@@ -50,7 +50,7 @@ Sentry.init({
         new Integrations.Vue({
             Vue,
             attachProps: true,
-            logErrors: !process.env.NODE_ENV === 'production' // Only log errors in dev env
+            logErrors: process.env.NODE_ENV !== 'production' // Only log errors in dev env
         })
     ]
 })

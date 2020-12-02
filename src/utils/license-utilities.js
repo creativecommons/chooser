@@ -64,7 +64,8 @@ function attrToFull(attr) {
  * @returns {string} url of the license information page
  */
 function licenseUrl(attr, mode) {
-    const linkRef = mode === 'web' ? '/?ref=chooser-v1' : ''
+    if (attr.BY === undefined) throw new Error('Cannot return URL when BY attribute is undefined')
+    const linkRef = mode === 'web' ? '?ref=chooser-v1' : ''
     if (attr.BY === false) {
         return `https://creativecommons.org/publicdomain/zero/1.0${linkRef}`
     }
@@ -82,13 +83,14 @@ function licenseSlug(shortLicenseName) {
     const currentLicense = Object.values(LICENSES).find(license => {
         return license.SHORT === shortLicenseName
     })
-    return currentLicense ? currentLicense.SLUG : currentLicense
+    if (!currentLicense) throw new Error(`Cannot create slug from string "${shortLicenseName}"`)
+    return currentLicense.SLUG
 }
 
 /**
  * Convert license attributes object to an array of icon names
  * @param {LicenseAttributes} licenseAttributes
- * @returns {string[]|[]} Array with slugified names of icons, eg. ['cc', 'by']
+ * @returns {string[]} Array with slugified names of icons, eg. ['cc', 'by']
  */
 function licenseIconsArr(licenseAttributes) {
     if (!licenseAttributes.BY) {
