@@ -100,7 +100,7 @@ export default {
     border-width: 2px;
     border-color: #d8d8d8;
     &:focus, &:active, &:hover {
-        border-color: #B0B0B0;
+        border-color: #b0b0b0;
     }
 }
 </style>
