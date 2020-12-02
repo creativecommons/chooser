@@ -97,7 +97,6 @@ export default {
     @import "~bulma";
     @import '~buefy/src/scss/utils/_variables.scss';
     @import '~buefy/src/scss/components/_modal.scss';
-    @import '~buefy/src/scss/components/_radio.scss';
     @import '~buefy/src/scss/components/_tabs.scss';
     @import '~buefy/src/scss/components/_select.scss';
     @import '~buefy/src/scss/components/_form.scss';
