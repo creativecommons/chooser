@@ -8,7 +8,7 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
         Do you know which license you need?
       </h5>
     </div>
-    <firststep-stub stepid="0" status="current"></firststep-stub>
+    <chooserstep-stub stepname="FS" stepid="0" status="current" enabled="true"></chooserstep-stub>
     <stepnavigation-stub stepname="FS"></stepnavigation-stub>
   </div>
   <div class="step-container BY inactive enabled">
@@ -67,7 +67,7 @@ exports[`Stepper.vue renders correctly has expected UI on CW step after DD 1`] =
         License Expertise
       </h5>
     </div>
-    <firststep-stub stepid="0" status="previous" selected="true"></firststep-stub>
+    <chooserstep-stub stepname="FS" stepid="0" status="previous" enabled="true" selected="true"></chooserstep-stub>
     <!---->
   </div>
   <div class="step-container DD previous enabled">
@@ -108,7 +108,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
         License Expertise
       </h5>
     </div>
-    <firststep-stub stepid="0" status="previous"></firststep-stub>
+    <chooserstep-stub stepname="FS" stepid="0" status="previous" enabled="true"></chooserstep-stub>
     <!---->
   </div>
   <div class="step-container BY previous enabled">
@@ -117,7 +117,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
         Attribution
       </h5>
     </div>
-    <step-stub stepname="BY" stepid="1" status="previous" enabled="true" selected="true"></step-stub>
+    <chooserstep-stub stepname="BY" stepid="1" status="previous" enabled="true" selected="true"></chooserstep-stub>
     <!---->
   </div>
   <div class="step-container NC previous enabled">
@@ -126,7 +126,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
         Commercial Use
       </h5>
     </div>
-    <step-stub stepname="NC" stepid="2" status="previous" reversed="true" enabled="true"></step-stub>
+    <chooserstep-stub stepname="NC" stepid="2" status="previous" reversed="true" enabled="true"></chooserstep-stub>
     <!---->
   </div>
   <div class="step-container ND current enabled">
@@ -135,7 +135,7 @@ exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
         Do you want to allow others to remix, adapt, or build upon your work?
       </h5>
     </div>
-    <step-stub stepname="ND" stepid="3" status="current" reversed="true" enabled="true"></step-stub>
+    <chooserstep-stub stepname="ND" stepid="3" status="current" reversed="true" enabled="true"></chooserstep-stub>
     <stepnavigation-stub stepname="ND"></stepnavigation-stub>
   </div>
   <div class="step-container SA inactive enabled">

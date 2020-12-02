@@ -186,7 +186,6 @@ describe('ChooserStep.vue', () => {
             stepId: 0,
             status: 'current'
         })
-        console.log(wrapper.html())
         expect(wrapper.vm.radio).toBe('no')
         expect(wrapper.vm.cardText).toBe('stepper.FS.not-selected')
     })

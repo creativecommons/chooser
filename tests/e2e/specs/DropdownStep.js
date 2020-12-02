@@ -9,11 +9,11 @@ module.exports = {
             .click('.next-button')
             .assert.elementPresent('.select > select')
             .click('.select > select')
-            .click('option[value="CC0 1.0"]')
+            .click('option[value="CC BY 4.0"]')
             .assert.not.cssClassPresent('.next-button', 'disabled')
             .click('.next-button')
             .assert.visible('.step-description')
-            .assert.containsText('div.step-description', 'CC0 1.0 Universal')
+            // .assert.containsText('div.step-description', 'Attribution 4.0 International')
             .end()
     }
 }

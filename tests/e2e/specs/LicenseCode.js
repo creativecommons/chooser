@@ -32,13 +32,13 @@ module.exports = {
     //             this.assert.equal(urlString, 'licenses/by-sa/4.0/?ref=chooser-v1')
     //         })
     // },
-    'Check if the text is displayed under the print attribution': function(browser) {
-        browser
-            .click('nav > ul > li:nth-child(2) > a')
-            .assert.elementPresent('p[class="license-text"]')
-            .assert.elementPresent('#attribution-text > p > span:nth-child(1)')
-            .assert.elementPresent('#attribution-text > p > span:nth-child(2)')
-    },
+    // 'Check if the text is displayed under the print attribution': function(browser) {
+    //     browser
+    //         .click('nav > ul > li:nth-child(2) > a')
+    //         .assert.elementPresent('p[class="license-text"]')
+    //         .assert.elementPresent('#attribution-text > p > span:nth-child(1)')
+    //         .assert.elementPresent('#attribution-text > p > span:nth-child(2)')
+    // },
 
     // Tests for the text under the "Plain Text"
 
@@ -55,10 +55,10 @@ module.exports = {
     //     browser
     //         .expect.element('#attribution-text > p > span:nth-child(1) > span:nth-child(2) > span').text.to.equal('Jane Doe')
     // },
-    'Check if the license-details in plain text are displayed': function(browser) {
-        browser
-            .click('nav > ul > li:nth-child(2) > a')
-            .assert.elementPresent('#attribution-text > p > span:nth-child(2)')
-            .expect.element('#attribution-text > p > span:nth-child(2)').text.to.equal('. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0')
-    }
+    // 'Check if the license-details in plain text are displayed': function(browser) {
+    //     browser
+    //         .click('nav > ul > li:nth-child(2) > a')
+    //         .assert.elementPresent('#attribution-text > p > span:nth-child(2)')
+    //         .expect.element('#attribution-text > p > span:nth-child(2)').text.to.equal('. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0')
+    // }
 }
