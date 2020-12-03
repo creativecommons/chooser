@@ -1,41 +1,30 @@
 <template>
-    <div class="step-content">
-        <div
-            v-if="status==='previous'"
-            class="step-description vocab-body body-normal"
-        >
-            <p class="vocab-body body-normal">
-                {{ $t('stepper.CW.selected') }}
-            </p>
-        </div>
-        <div
-            v-else-if="status==='current'"
-            class="step-actions"
-        >
-            <v-checkbox v-model="copyrightWaiverAgreed">
-                {{ $t('stepper.CW.copyright-waive-agreement') }}
-            </v-checkbox>
-            <textarea
-                :value="this.$t('cc0-waiver.text')"
-                :class="'waiver-textarea'"
-            />
-            <v-checkbox v-model="copyrightWaiverConfirmed">
-                {{ $t("stepper.CW.copyright-waive-confirmation") }}
-            </v-checkbox>
-        </div>
+    <div
+        class="step-actions"
+    >
+        <v-checkbox v-model="copyrightWaiverAgreed">
+            {{ $t('stepper.CW.copyright-waive-agreement') }}
+        </v-checkbox>
+        <textarea
+            :value="this.$t('cc0-waiver.text')"
+            :class="'waiver-textarea'"
+        />
+        <v-checkbox v-model="copyrightWaiverConfirmed">
+            {{ $t("stepper.CW.copyright-waive-confirmation") }}
+        </v-checkbox>
     </div>
 </template>
 <script>
 export default {
     name: 'CopyrightWaiverStep',
     props: {
-        stepId: Number,
-        stepName: String,
+        id: Number,
+        name: String,
         selected: Boolean,
         status: {
             type: String,
             validator(value) {
-                return ['current', 'previous', 'inactive'].includes(value)
+                return ['active', 'previous', 'inactive'].includes(value)
             }
         }
     },
@@ -52,11 +41,13 @@ export default {
             },
             set() {
                 this.agreed = !this.agreed
+                const payload = { name: this.$props.name, id: this.$props.id }
                 if (this.agreed && this.confirmed) {
-                    this.$emit('change', this.$props.stepName, this.$props.stepId, true)
+                    payload.selected = true
                 } else if (!this.agreed) {
-                    this.$emit('change', this.$props.stepName, this.$props.stepId, undefined)
+                    payload.selected = undefined
                 }
+                this.$emit('change', payload)
             }
         },
         copyrightWaiverConfirmed: {
@@ -65,11 +56,13 @@ export default {
             },
             set() {
                 this.confirmed = !this.confirmed
+                const payload = { name: this.$props.name, id: this.$props.id }
                 if (this.agreed && this.confirmed) {
-                    this.$emit('change', this.$props.stepName, this.$props.stepId, true)
+                    payload.selected = true
                 } else if (!this.confirmed) {
-                    this.$emit('change', this.$props.stepName, this.$props.stepId, undefined)
+                    payload.selected = undefined
                 }
+                this.$emit('change', payload)
             }
         }
     }

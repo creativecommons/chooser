@@ -1,39 +1,36 @@
 <template>
-    <div class="step-content">
-        <div
-            v-if="status==='current'"
-            class="step-actions"
-        >
-            <p class="attribution-details-instructions">
-                {{ $t('stepper.AD.instructions') }}
-            </p>
-            <form class="attribution-details-form">
-                <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
-                    <b-input
-                        v-model="creatorName"
-                        :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
-                    />
-                </b-field>
-                <b-field :label="this.$t('stepper.AD.form.work-title.label')">
-                    <b-input
-                        v-model="workTitle"
-                        :placeholder="this.$t('stepper.AD.form.work-title.placeholder')"
-                    />
-                </b-field>
-                <b-field :label="this.$t('stepper.AD.form.work-url.label')">
-                    <b-input
-                        v-model="workUrl"
-                        :placeholder="this.$t('stepper.AD.form.work-url.placeholder')"
-                    />
-                </b-field>
-                <b-field :label="this.$t('stepper.AD.form.creator-profile.label')">
-                    <b-input
-                        v-model="creatorProfileUrl"
-                        :placeholder="this.$t('stepper.AD.form.creator-profile.placeholder')"
-                    />
-                </b-field>
-            </form>
-        </div>
+    <div
+        class="step-actions"
+    >
+        <p class="attribution-details-instructions">
+            {{ $t('stepper.AD.instructions') }}
+        </p>
+        <form class="attribution-details-form">
+            <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
+                <b-input
+                    v-model="creatorName"
+                    :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
+                />
+            </b-field>
+            <b-field :label="this.$t('stepper.AD.form.work-title.label')">
+                <b-input
+                    v-model="workTitle"
+                    :placeholder="this.$t('stepper.AD.form.work-title.placeholder')"
+                />
+            </b-field>
+            <b-field :label="this.$t('stepper.AD.form.work-url.label')">
+                <b-input
+                    v-model="workUrl"
+                    :placeholder="this.$t('stepper.AD.form.work-url.placeholder')"
+                />
+            </b-field>
+            <b-field :label="this.$t('stepper.AD.form.creator-profile.label')">
+                <b-input
+                    v-model="creatorProfileUrl"
+                    :placeholder="this.$t('stepper.AD.form.creator-profile.placeholder')"
+                />
+            </b-field>
+        </form>
     </div>
 </template>
 <script>
@@ -45,7 +42,7 @@ export default {
         status: {
             type: String,
             validator(value) {
-                return ['current', 'previous', 'inactive'].includes(value)
+                return ['active', 'previous', 'inactive'].includes(value)
             }
         }
     },

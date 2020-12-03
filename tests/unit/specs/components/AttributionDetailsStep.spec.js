@@ -35,18 +35,8 @@ describe('AttributionDetailsStep Component Rendering', () => {
         wrapper.destroy()
     })
 
-    it('Component not mounted if status is previous', () => {
-        wrapper.setProps({ status: 'previous' })
-        expect(wrapper.find('.step-actions').exists()).toBeFalsy()
-    })
-
-    it('Component not mounted if status is inactive', () => {
-        wrapper.setProps({ status: 'inactive' })
-        expect(wrapper.find('.step-actions').exists()).toBeFalsy()
-    })
-
-    it('Component mounted if status is current', () => {
-        wrapper.setProps({ status: 'current' })
+    it('Component mounted if status is active', () => {
+        wrapper.setProps({ status: 'active' })
         expect(wrapper.element).toMatchSnapshot()
     })
 })
@@ -78,7 +68,7 @@ describe('Store is updated when a user provides input', () => {
 
         wrapper = mount(AttributionDetailsStep, {
             propsData: {
-                status: 'current'
+                status: 'active'
             },
             mocks: {
                 $t: key => key

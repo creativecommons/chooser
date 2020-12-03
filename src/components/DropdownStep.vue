@@ -2,12 +2,12 @@
     <div class="step-content">
         <div
             v-if="status==='previous'"
-            class="step-description"
+            class="step-header__caption"
         >
             {{ cardText }}
         </div>
         <div
-            v-else-if="status==='current'"
+            v-else-if="status==='active'"
             class="step-actions"
         >
             <LicenseDropdown @input="updateSelected" />
@@ -24,10 +24,10 @@ export default {
         status: {
             type: String,
             validator(value) {
-                return ['current', 'previous', 'inactive'].includes(value)
+                return ['active', 'previous', 'inactive'].includes(value)
             }
         },
-        stepId: Number
+        id: Number
     },
     computed: {
         ...mapGetters(['fullName']),
@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         updateSelected() {
-            this.$emit('change', 'DD', this.$props.stepId, true)
+            this.$emit('change', { name: 'DD', id: this.$props.id, selected: true })
         }
     }
 }
