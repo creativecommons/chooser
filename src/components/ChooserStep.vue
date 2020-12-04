@@ -1,9 +1,6 @@
 <template>
     <div class="step-actions">
-        <div
-            class="field"
-            :class="yesSelected"
-        >
+        <div :class="['field', yesSelected]">
             <v-radio
                 v-model="radio"
                 native-value="yes"
@@ -12,10 +9,7 @@
                 <span class="vocab-body body-normal">{{ $t('stepper.yes') }}{{ $t(yesText) }}</span>
             </v-radio>
         </div>
-        <div
-            class="field"
-            :class="noSelected"
-        >
+        <div :class="['field', noSelected]">
             <v-radio
                 v-model="radio"
                 native-value="no"
@@ -40,11 +34,18 @@ export default {
                 return ['active', 'previous', 'inactive'].includes(value)
             }
         },
-        reversed: Boolean,
         enabled: Boolean,
         disabledDue: String
     },
     computed: {
+        /**
+         * NC, ND and SA steps are reversed: unlike BY, they are selected when the user
+         * answers no, and not selected when the user answers yes
+         * @returns {boolean}
+         */
+        reversed() {
+            return ['NC', 'ND', 'SA'].indexOf(this.$props.name) > -1
+        },
         showDisabledDue() {
             return !this.$props.enabled && this.$props.disabledDue !== undefined
         },

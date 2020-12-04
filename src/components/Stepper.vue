@@ -5,23 +5,10 @@
             :key="idx"
             :class="['step-container', step.name, step.status, { disabled: !step.enabled }]"
         >
-            <div
-                class="step-header"
-                :class="step.status"
-                tabindex="0"
-                @click="setActiveStep(step.id)"
-                @keyup.13="setActiveStep(step.id)"
-            >
-                <h5 class="step-header__title b-header">
-                    {{ $t(stepHeaderText(step)) }}
-                </h5>
-                <div
-                    v-if="step.status === 'completed'"
-                    class="step-header__caption"
-                >
-                    {{ $t(completedStepCaption(step)) }}
-                </div>
-            </div>
+            <step-header
+                :step="step"
+                @activate="setActiveStep(step.id)"
+            />
             <div
                 v-if="step.status==='active'"
                 class="step-content"
@@ -29,7 +16,7 @@
                 <component
                     :is="stepActionComponent(step)"
                     v-if="step.status === 'active'"
-                    v-bind="step"
+                    v-bind="stepActionProps(step)"
                     @change="changeStepSelected"
                 />
             </div>
@@ -44,11 +31,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import ChooserStep from './ChooserStep'
 import AttributionDetailsStep from './AttributionDetailsStep'
 import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
+import StepHeader from './StepHeader'
 import StepNavigation from './StepNavigation'
 import { updateVisibleEnabledStatus } from '../utils/license-utilities'
 
@@ -59,6 +46,7 @@ export default {
         AttributionDetailsStep,
         CopyrightWaiverStep,
         DropdownStep,
+        StepHeader,
         StepNavigation
     },
     props: {
@@ -102,7 +90,6 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['fullName']),
         activeStepId: {
             get() { return this.$props.value },
             set(newVal) {
@@ -136,43 +123,11 @@ export default {
             default: return ChooserStep
             }
         },
-        /**
-         * stepHeader shows step 'question' for active step, and step 'heading' for others
-         * @returns {string} key for i18n message
-         */
-        stepHeaderText({ name, status }) {
-            const prefix = `stepper.${name}`
-            if (name === 'AD') {
-                return prefix + '.heading'
-            }
-            return status === 'active' ? `${prefix}.question` : `${prefix}.heading`
-        },
-        completedStepCaption({ id, name, enabled, selected, reversed }) {
-            if (name === 'DD') {
-                return this.fullName
-            } else if (['FS', 'CW'].includes(name)) {
-                return selected ? `stepper.${name}.selected` : `stepper.${name}.not-selected`
-            } else if (enabled === false) {
-                return (this.steps[id].disabledDue === 'ND')
-                    ? 'stepper.disabled-text-ND'
-                    : 'stepper.disabled-text'
-            } else {
-                const qualifier = reversed ? !selected : selected
-                const prefix = `stepper.${name}.${qualifier ? '' : 'not-'}`
-                return `${prefix}selected`
-            }
+        stepActionProps(step) {
+            return { ...step }
         },
         isLicenseAttribute(stepName) {
             return ['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1
-        },
-        /**
-         * NC, ND and SA steps are reversed: unlike BY, they are selected when the user
-         * answers no, and not selected when the user answers yes
-         * @param {String} stepName
-         * @returns {boolean}
-         */
-        isStepReversed(stepName) {
-            return ['NC', 'ND', 'SA'].indexOf(stepName) > -1
         },
         /**
          * Checks if the Next button should be disabled. Next button is enabled only
@@ -335,66 +290,16 @@ export default {
          }
     }
     .step-container.completed:not(.disabled):hover {
-        border: 0.125rem solid #b0b0b0;
+        border-color: #b0b0b0;
+        border-bottom: 0.125rem solid #b0b0b0;
         & .step-content {
             cursor: pointer;
         }
     }
-    .step-container.completed:not(.disabled):hover + .step__container {
+    .step-container.completed:not(.disabled):hover {
+    }
+    .step-container.completed:not(.disabled):hover + .step-container {
         border-top: none;
-    }
-    .step-header {
-        background-color: transparent;
-        display: flex;
-        flex-direction: column;
-        position:relative;
-        padding: 1.5625rem 1.5rem 0.5rem var(--step-left-padding);
-
-        &:not(.inactive):hover, &:not(.disabled):hover {
-            cursor: pointer;
-        }
-        &.completed {
-            padding-bottom: 1.5rem;
-            &.completed:focus, &.completed:active {
-                outline: none;
-                transform: translateY(1px);
-                box-shadow: 2px -2px 0 2px rgba(176, 176, 176, 0.2), -2px -2px 0 2px rgba(176, 176, 176, 0.2);
-            }
-        }
-        &.inactive {
-            padding-bottom: 1.5rem;
-            &:hover {
-                cursor: default;
-            }
-        }
-
-    }
-    .step-header__title::before{
-        content: counter(step-counter);
-        counter-increment: step-counter;
-        position: absolute;
-        left: var(--h-padding);
-        top: 1.375rem;
-        width: var(--counter-size);
-        height: var(--counter-size);
-        line-height: var(--counter-size);
-        font-weight: bold;
-        font-family: inherit;
-        font-size: 1rem;background: #04A635;
-        border-radius: 50%;
-        text-align: center;
-        color: #fff;
-    }
-    .step-header__title.completed.disabled::before,
-    .step-header__title.inactive::before {
-        background-color: #d8d8d8;
-        color: #333333;
-    }
-    .step-header__caption {
-        color: #333333;
-        &:focus {
-            outline: none;
-        }
     }
     .step-content {
         padding: 0.5rem 1.5rem 0.5rem var(--step-left-padding);
@@ -411,21 +316,13 @@ export default {
             background-color: #fff;
         }
     }
-    .step-header.active,
-    .step-header.completed {
-
-    }
     .inactive {
         background-color: #F5F5F5;
     }
     .completed.disabled {
         color: #b0b0b0;
     }
-    .completed.disabled .step-header__title,
-    .inactive .step-header__title
-    {
-        color: #b0b0b0;
-    }
+
     .inactive .step-header__title::before {
         background: #d8d8d8;
         color: #333333;
