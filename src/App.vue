@@ -17,7 +17,10 @@
                 <LocaleChooser class="locale-chooser" />
             </div>
             <div class="columns">
-                <Stepper v-model="currentStepId" />
+                <div class="column">
+                    <Stepper v-model="currentStepId" />
+                    <HelpSection />
+                </div>
                 <div class="column">
                     <div class="fixed-right-column">
                         <LicenseDetailsCard
@@ -26,7 +29,6 @@
                         <LicenseUseCard
                             v-if="showLicenseUse"
                         />
-                        <HelpSection />
                     </div>
                 </div>
             </div>

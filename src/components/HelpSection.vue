@@ -1,6 +1,6 @@
 <template>
     <div class="help-section">
-        <h3 class="vocab">
+        <h3>
             {{ $t('help.heading') }}
         </h3>
         <ul class="help-links">
@@ -10,7 +10,7 @@
                 class="help-link"
             >
                 <a
-                    class="vocab-body body-big help-link-a"
+                    class="help-link-a"
                     @click="clickHandler(idx)"
                 >
                     {{ $t(`help.${modal.title}.heading`) }}
@@ -299,26 +299,34 @@ export default {
     }
 }
 </script>
-<style scoped>
-    .help-link {
-        padding-bottom: 8px;
-    }
-    .help-link .help-link-a {
-        color: #ED592F;
-    }
-    .help-links .help-link .help-link-a:hover {
-        color:#363636!important;
+<style lang="scss" scoped>
+    .help-section {
+        margin-top: 3rem;
     }
     .help-links {
-        list-style-position: inside;
-        list-style-image: url("../assets/arrow-right.png");
+        list-style: circle outside none;
+        margin-top: 1rem;
     }
-
+    .help-link {
+        margin-bottom: 0.5rem;
+        list-style: disc outside none;
+        &::marker {
+            color: #b0b0b0;
+        }
+    }
+    .help-link .help-link-a {
+        color: #d14500;
+        font-weight: 600;
+        &:hover {
+            color:#363636!important;
+        }
+    }
 </style>
 <style lang="scss">
     .help__instructions {
         text-align: center;
         margin-bottom: 0.5rem;
+        line-height: 20.11px;
     }
     .help-text {
         margin-bottom: 1rem;
@@ -327,14 +335,14 @@ export default {
         margin-top: 3% !important;
     }
     .help-h5 {
-        font-weight: bold;
+        font-weight: 600;
     }
     .edu-icons-section {
         margin-top: 1.5%;
     }
     .edu-icons-title-section {
         display: grid;
-        grid-gap: 0.5rem;
+        grid-gap: 0.25rem;
         grid-template-columns: 1fr 7fr;
     }
     .edu-icons-section img {
@@ -349,7 +357,7 @@ export default {
         padding-bottom: 0 !important;
         margin-left: 2% !important;
         font-style: normal;
-        font-weight: bold;
+        font-weight: 600;
         font-size: 23px;
         line-height: 27px;
     }
