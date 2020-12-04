@@ -1,20 +1,17 @@
 module.exports = {
     '@tags': ['att'],
     'AttributionDetailsStep'(browser) {
-        const knowLicenseSelector = '.b-radio'
+        const knowLicenseSelector = '.v-radio'
         const nextButton = '.next-button'
-        const select = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > div > div > span > select'
-        const selectOpt = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > div > div > span > select > option:nth-child(4)'
-        const stepTitle = '.step-title'
-        const attributionDetailsInstructions = '.attribution-details-instructions'
-        const workAuthorLabel = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(1) > label'
-        const workAuthorInput = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(1) > div > input'
-        const urlCreatorProfileLabel = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(2) > label'
-        const urlCreatorProfileInput = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(2) > div > input'
-        const workUrlLabel = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(3) > label'
-        const workUrlInput = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(4) > div > input'
-        const workTitleLabel = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(3) > label'
-        const workTitleInput = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(3) > div > input'
+        const stepTitle = '.step-header__title'
+        const workAuthorLabel = '.step-content > div > form > div:nth-child(1) > label'
+        const workAuthorInput = 'form > div:nth-child(1) input'
+        const urlCreatorProfileLabel = 'form > div:nth-child(2) > label'
+        const urlCreatorProfileInput = 'form > div:nth-child(2) input'
+        const workUrlLabel = 'form > div:nth-child(3)  label'
+        const workUrlInput = 'form > div:nth-child(4) input'
+        const workTitleLabel = 'form > div:nth-child(3)  label'
+        const workTitleInput = 'form > div:nth-child(3)  input'
         const backBtn = '.previous-button'
         const paginationFinish = '.pagination-finish'
 
@@ -22,12 +19,10 @@ module.exports = {
             .init()
             .click(knowLicenseSelector)
             .click(nextButton)
-            .click(select, () => {
-                browser.click(selectOpt)
-            })
+            .click('.select > select')
+            .click('option[value="CC BY 4.0"]')
             .click(nextButton)
             .assert.visible(stepTitle, 'Title is visible')
-            .assert.visible(attributionDetailsInstructions, 'Atrribution Details Instructions block is visible')
             .assert.visible(workAuthorLabel, 'Work Author Label is visible')
             .assert.visible(workAuthorInput, 'Work Author Input is visible')
             .assert.visible(urlCreatorProfileLabel, 'URL of Creator Profile Label is visible')

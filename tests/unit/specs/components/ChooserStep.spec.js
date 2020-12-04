@@ -1,7 +1,6 @@
-import { shallowMount, createLocalVue, config } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import ChooserStep from '@/components/ChooserStep'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
-import Vuex from 'vuex'
 
 describe('ChooserStep.vue', () => {
     let wrapper
@@ -10,7 +9,6 @@ describe('ChooserStep.vue', () => {
     // Always creates a shallow instance of component
     beforeEach(() => {
         localVue = createLocalVue()
-        localVue.use(Vuex)
         localVue.use(VueVocabulary)
         wrapper = shallowMount(ChooserStep, {
             localVue,

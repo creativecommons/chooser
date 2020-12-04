@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-import { shallowMount, createLocalVue, config } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Stepper from '@/components/Stepper'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import Vue from 'vue'
@@ -41,20 +41,11 @@ function setUp() {
     localVue = createLocalVue()
     localVue.use(Vuex)
     localVue.use(VueVocabulary)
-    const getters = {
-        fullName: () => {
-            return 'Attribution-ShareAlike 4.0 International'
-        }
-    }
-    const storeMock = {
-        getters: getters
-    }
 
     wrapper = shallowMount(Stepper, {
         store,
         localVue,
         mocks: {
-            $store: storeMock,
             $t: key => key
         },
         propsData: {
@@ -79,27 +70,10 @@ describe('Stepper.vue', () => {
             expect(stepContainers.length).toEqual(6)
             const activeStep = wrapper.findAll('.step-container.active')
             expect(activeStep.length).toEqual(1)
-            expect(activeStep.at(0).text()).toEqual('stepper.ND.question')
         })
         it('has expected UI on CW step after DD', async() => {
             await advanceStep(wrapper, { FS: true, DD: [true, 'CC0 1.0'] }
             )
-        })
-    })
-
-    describe('Step headings', () => {
-        it('inactive step headings are not clickable', () => {
-            const stepHeaders = wrapper.findAll('.step-header')
-            stepHeaders.at(0).trigger('click')
-            expect(stepHeaders.at(0).classes('active')).toBe(true)
-            stepHeaders.at(1).trigger('click')
-            expect(stepHeaders.at(1).classes('inactive')).toBe(true)
-        })
-        it('clicking on disabled completed step does not change current step', async() => {
-            await advanceStep(wrapper, { FS: false, BY: false })
-            expect(wrapper.find('.active').classes()).toContain('CW')
-            wrapper.findAll('.step-header').at(2).trigger('click')
-            expect(wrapper.find('.active').classes()).toContain('CW')
         })
     })
 
@@ -118,7 +92,6 @@ describe('Stepper.vue', () => {
             const steps = wrapper.findAll('.step-container')
             expect(steps.length).toEqual(6)
             expect(wrapper.vm.activeStepId).toEqual(1)
-            expect(stepHeadingText(steps, 1)).toEqual(wrapper.vm.$t('stepper.BY.question'))
         })
     })
 

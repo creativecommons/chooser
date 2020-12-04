@@ -56,38 +56,3 @@ describe('DropdownStep', () => {
         expect(emittedChange.selected).toEqual(true)
     })
 })
-
-describe('DropdownStep', () => {
-    let wrapper, store, getters
-
-    beforeEach(() => {
-        getters = {
-            fullName: jest.fn().mockReturnValue('CC 1.0 Universal')
-        }
-
-        store = new Vuex.Store({
-            getters
-        })
-
-        wrapper = mount(DropdownStep, {
-            localVue,
-            mocks: {
-                $t: key => key
-            },
-            store
-        })
-    })
-
-    afterEach(() => {
-        wrapper.destroy()
-    })
-
-    it('Checks conditional rendering of markup: status  is inactive', () => {
-        wrapper.setProps({
-            stepId: 5,
-            status: 'inactive'
-        })
-        expect(wrapper.find('.step-description').exists()).toBeFalsy()
-        expect(wrapper.find('.step-actions').exists()).toBeFalsy()
-    })
-})
