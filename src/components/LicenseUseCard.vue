@@ -9,16 +9,20 @@
         <p class="license-use-instructions">
             {{ $t('license-use.common-instructions') }}
         </p>
-        <tabs ref="alltabs">
+        <tabs
+            ref="alltabs"
+            class="top-tabs"
+        >
             <!-- Website: Richtext, HTML, XMP -->
             <tab
                 ref="web"
+                class="main-tabs"
                 :title="$t('license-use.web-tab-heading')"
             >
                 {{ $t('license-use.web-instructions') }}
                 <tabs
                     ref="web"
-                    class="attribution-tab"
+                    class="sub-tabs"
                     :boxed="true"
                 >
                     <tab
@@ -98,13 +102,27 @@ export default {
 </script>
 <style lang="scss">
 .license-use-card {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
+    h3 {
+        margin-bottom: 0.5rem;
+    }
 }
-.tabs {
-    margin-top: 2rem;
+
+.top-tabs > .tabs:not(:last-child) {
+    margin: 2rem 0 1rem;
 }
-.attribution-tab .tabs-content.is-boxed {
-    padding: 1.5rem!important;
-    border-bottom: none;
+.sub-tabs {
+    margin-top: 1.25rem;
+    .tabs-content.is-boxed {
+        padding: 1.5rem !important;
+        border-bottom: none;
+        border-top-right-radius: 0.25rem;
+    }
+}
+.tabs.is-boxed li:first-child a {
+    border-top-left-radius: 0.25rem;
+}
+.tabs.is-boxed li:last-child a {
+    border-top-right-radius: 0.25rem;
 }
 </style>

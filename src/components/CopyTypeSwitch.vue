@@ -99,7 +99,8 @@ export default {
 }
 
 .toggle-label {
-    font-size: 13px;
+    font-size: 0.8125rem;
+    font-weight: 600;
     color: #d8d8d8;
     &.selected {
         color: #333;

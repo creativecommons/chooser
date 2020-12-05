@@ -98,10 +98,12 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid #d8d8d8;
+    border: 0.125rem solid #d8d8d8;
     border-top: none;
     background-color: white;
     padding: 0 1.5rem 1.5rem;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
 }
 .button.donate.small {
     justify-content: center;
