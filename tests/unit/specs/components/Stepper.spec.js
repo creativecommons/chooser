@@ -12,9 +12,7 @@ async function setStepSelected(wrapper, name, selected) {
     const stepId = getStepId(wrapper, name)
     await wrapper.vm.changeStepSelected({ name, id: stepId, selected })
 }
-function stepHeadingText(steps, index) {
-    return steps.at(index).find('h5').text()
-}
+
 async function advanceStep(wrapper, actions) {
     for (const [name, data] of Object.entries(actions)) {
         let selected, license
@@ -112,6 +110,30 @@ describe('Stepper.vue', () => {
             const steps = wrapper.findAll('.step-container')
             expect(steps.length).toEqual(3)
             expect(wrapper.find('.active').classes()).toContain('AD')
+        })
+    })
+
+    describe('Steps are disabled correctly', () => {
+
+        it('selecting CC0 makes NC, ND, SA disabled', async() => {
+            await advanceStep(wrapper, { FS: false, BY: false })
+
+            const steps = wrapper.findAll('.step-container')
+            expect(steps.length).toEqual(7)
+            const disabledSteps = wrapper.findAll('.step-container.disabled')
+            expect(disabledSteps.length).toEqual(3)
+            expect(wrapper.find('.NC').classes()).toContain('disabled')
+            expect(wrapper.find('.ND').classes()).toContain('disabled')
+            expect(wrapper.find('.SA').classes()).toContain('disabled')
+        })
+        it('selecting ND makes SA  license and clicking Next makes 3 steps visible and opens AttributionDetails step', async() => {
+            await advanceStep(wrapper, { FS: false, BY: true, NC: true, ND: true })
+
+            const steps = wrapper.findAll('.step-container')
+            expect(steps.length).toEqual(6)
+            const disabledSteps = wrapper.findAll('.step-container.disabled')
+            expect(disabledSteps.length).toEqual(1)
+            expect(wrapper.find('.SA').classes()).toContain('disabled')
         })
     })
 })
