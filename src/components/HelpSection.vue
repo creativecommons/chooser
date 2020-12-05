@@ -304,7 +304,7 @@ export default {
         margin-top: 3rem;
     }
     .help-links {
-        list-style: circle outside none;
+        list-style: circle inside none;
         margin-top: 1rem;
     }
     .help-link {
