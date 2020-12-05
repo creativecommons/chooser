@@ -87,7 +87,8 @@ export default {
             const creatorAttrs = { property: 'cc:attributionName' }
             if (this.isCreatorLink) {
                 creatorAttrs.href = this.creatorProfileUrl
-                creatorAttrs.rel = 'cc:attributionURL'
+                creatorAttrs.rel = 'cc:attributionURL noopener noreferrer'
+                creatorAttrs.target = '_blank'
             }
             return creatorAttrs
         },
@@ -121,7 +122,8 @@ export default {
             }
             if (workUrl) {
                 workAttrs.href = workUrl
-                workAttrs.rel = 'cc:attributionURL'
+                workAttrs.rel = 'cc:attributionURL noopener noreferrer'
+                workAttrs.target = '_blank'
             }
             return workAttrs
         },
