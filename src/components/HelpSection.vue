@@ -304,12 +304,11 @@ export default {
         margin-top: 3rem;
     }
     .help-links {
-        list-style: circle inside none;
         margin-top: 1rem;
     }
     .help-link {
         margin-bottom: 0.5rem;
-        list-style: disc outside none;
+        list-style: disc inside none;
         &::marker {
             color: #b0b0b0;
         }
