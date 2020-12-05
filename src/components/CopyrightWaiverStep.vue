@@ -1,7 +1,5 @@
 <template>
-    <div
-        class="step-actions"
-    >
+    <div class="step-actions">
         <v-checkbox v-model="copyrightWaiverAgreed">
             {{ $t('stepper.CW.copyright-waive-agreement') }}
         </v-checkbox>

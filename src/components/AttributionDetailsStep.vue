@@ -1,7 +1,5 @@
 <template>
-    <div
-        class="step-actions"
-    >
+    <div class="step-actions">
         <p class="attribution-details-instructions">
             {{ $t('stepper.AD.instructions') }}
         </p>
