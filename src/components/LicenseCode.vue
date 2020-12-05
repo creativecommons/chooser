@@ -6,7 +6,6 @@
         xmlns:cc="http://creativecommons.org/ns#"
         class="license-text"
     >
-
         <template #workTitle>
             <component
                 :is="workUrl && isWeb ? 'a' : 'span'"
@@ -27,7 +26,7 @@
         <template #by>
             {{ $t(byString) }}
         </template>
-        <template #license-marked-text>
+        <template #licenseMark>
             <span>{{ $t(licensedMarkedString) }}</span>
         </template>
         <template #license>
