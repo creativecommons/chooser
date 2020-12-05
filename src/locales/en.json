@@ -119,7 +119,7 @@
         "copy-label": "Copy",
         "copied-label": "Copied!",
         "richtext": {
-            "full-text": "{workTitle} {byCreator} {licenseMark} {license}",
+            "full-text": "{workTitle} {by} {creator} {licenseMark} {license}",
             "workTitle": "This work",
             "by": "by",
             "licensed-text": "is licensed under",

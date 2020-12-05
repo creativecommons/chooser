@@ -16,7 +16,7 @@
         </template>
         <template #creator>
             <component
-                :is="creatorName && creatorProfileUrl && isWeb ? 'a' : 'span'"
+                :is="isCreatorLink ? 'a' : 'span'"
                 v-if="creatorName"
                 v-bind="creatorProps"
             >
@@ -24,7 +24,7 @@
             </component>
         </template>
         <template #by>
-            {{ $t(byString) }}
+            {{ byString }}
         </template>
         <template #licenseMark>
             <span>{{ $t(licensedMarkedString) }}</span>
@@ -68,9 +68,15 @@ export default {
         licensedMarkedString() {
             return this.shortName === 'CC0 1.0' ? 'license-use.richtext.marked-text' : 'license-use.richtext.licensed-text'
         },
+        isCreatorLink() {
+            return this.attributionDetails.creatorName && this.creatorProfileUrl && this.isWeb
+        },
+        byString() {
+            return this.creatorName ? this.$t('license-use.richtext.by') : ''
+        },
         creatorProps() {
             const creatorAttrs = { property: 'cc:attributionName' }
-            if (this.creatorName && this.creatorProfileUrl && this.isWeb) {
+            if (this.isCreatorLink) {
                 creatorAttrs.href = this.creatorProfileUrl
                 creatorAttrs.rel = 'cc:attributionURL'
             }
