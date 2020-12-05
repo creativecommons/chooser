@@ -16,7 +16,7 @@
         </template>
         <template #creator>
             <component
-                :is="creatorName && creatorProfileUrl && isWeb ? 'a' : 'span'"
+                :is="isCreatorLink ? 'a' : 'span'"
                 v-if="creatorName"
                 v-bind="creatorProps"
             >
@@ -24,7 +24,7 @@
             </component>
         </template>
         <template #by>
-            {{ $t(byString) }}
+            {{ byString }}
         </template>
         <template #licenseMark>
             <span>{{ $t(licensedMarkedString) }}</span>
@@ -45,7 +45,7 @@
             <span v-else>{{ licenseName }}.</span>
         </template>
         <template #print-instructions>
-            <span v-if="!isWeb">{{ $t('license-use.print.text', {linkToLicenseDeed: licenseUrl('print')}) }}</span>
+            <span v-if="!isWeb">{{ $t('license-use.print.text', { linkToLicenseDeed: licenseUrl('print') }) }}</span>
         </template>
     </i18n>
 </template>
@@ -66,9 +66,6 @@ export default {
             validate: function(val) {
                 return ['web', 'print'].indexOf(val) > -1
             }
-        },
-        ltid: {
-            type: String
         }
     },
     computed: {
@@ -77,15 +74,18 @@ export default {
         licensedMarkedString() {
             return this.shortName === 'CC0 1.0' ? 'license-use.richtext.marked-text' : 'license-use.richtext.licensed-text'
         },
+        isCreatorLink() {
+            return this.creatorName && this.creatorProfileUrl && this.isWeb
+        },
         licenseName() {
             return this.attributionType === 'short' ? this.shortName : this.fullName
         },
         byString() {
-            return this.creatorName ? 'license-use.richtext.by' : ''
+            return this.creatorName ? this.$t('license-use.richtext.by') : ''
         },
         creatorProps() {
             const creatorAttrs = { property: 'cc:attributionName' }
-            if (this.creatorName && this.creatorProfileUrl && this.isWeb) {
+            if (this.isCreatorLink) {
                 creatorAttrs.href = this.creatorProfileUrl
                 creatorAttrs.rel = 'cc:attributionURL'
             }

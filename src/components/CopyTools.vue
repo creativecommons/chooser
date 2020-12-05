@@ -5,8 +5,8 @@
             @change-copy-type="changeCopyType"
         />
         <v-button
-            class="donate small copy-button"
             v-if="clipboardTarget!=='.xmp'"
+            class="donate small copy-button"
             :data-clipboard-target="clipboardTarget"
             @click="handleCopy"
         >
@@ -104,7 +104,6 @@ export default {
     padding: 0 1.5rem 1.5rem;
 }
 .button.donate.small {
-    width: 5rem;
     justify-content: center;
     &.is-xmp {
         width: fit-content;

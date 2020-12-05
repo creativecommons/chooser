@@ -37,7 +37,7 @@ function setUp() {
     localVue.use(Buefy)
     localVue.use(VueVocabulary)
     Vue.use(VueI18n)
-    const messages = require('@/locales/en.js')
+    const messages = require('@/locales/en.json')
     const i18n = new VueI18n({
         locale: 'en',
         fallbackLocale: 'en',

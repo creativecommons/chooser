@@ -107,24 +107,28 @@
         }
     },
     "license-use": {
-        "heading": "Use your license",
-        "common-instructions": "Choose what kind of work you are licensing to get appropriate license code.",
-        "web-instructions": "If you are licensing one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page.",
+        "heading": "Mark your work",
+        "common-instructions": "Choose what kind of work to get appropriate license code or public domain marking.",
+        "web-instructions": "If you are licensing or marking one work, paste the code next to it. If you are licensing the whole page or blog, you can paste the license code at the bottom of the page.",
         "web-tab-heading": "Website",
         "print-media-tab-heading": "Print Work or Media",
         "print-media-instructions": "Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.",
         "rich-text-label": "Rich Text",
         "html-label": "HTML",
         "plain-text-label": "Plain Text",
+        "xmp-label": "Download meta data XMP",
         "copy-label": "Copy",
         "copied-label": "Copied!",
         "richtext": {
-            "full-text": "{workTitle} {byCreator} {licenseMark} {license}",
+            "full-text": "{workTitle} {by} {creator}{licenseMark} {license}{print-instructions}",
             "workTitle": "This work",
             "by": "by",
             "licensed-text": "is licensed under",
             "marked-text": "is marked with",
             "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}"
+        },
+        "print": {
+            "text": " To view a copy of this license, visit {linkToLicenseDeed}"
         }
     },
     "help": {
