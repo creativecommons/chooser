@@ -82,7 +82,7 @@ export default {
 
 }
 </script>
-<style>
+<style lang="scss">
 .attribution-details-form {
     margin-top: 1rem;
 }
@@ -97,5 +97,10 @@ export default {
     font-weight: 600;
     font-size: 16px;
     color: #333333;
+    border-width: 2px;
+    border-color: #d8d8d8;
+    &:focus, &:active, &:hover {
+        border-color: #b0b0b0;
+    }
 }
 </style>

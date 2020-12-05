@@ -45,3 +45,7 @@
 a, a:hover {
     text-decoration: none;
 }
+
+.select:not(.is-multiple):not(.is-loading)::after {
+    border: none;
+}

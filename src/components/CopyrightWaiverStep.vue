@@ -12,16 +12,16 @@
             v-else-if="status==='current'"
             class="step-actions"
         >
-            <b-checkbox v-model="copyrightWaiverAgreed">
+            <v-checkbox v-model="copyrightWaiverAgreed">
                 {{ $t('stepper.CW.copyright-waive-agreement') }}
-            </b-checkbox>
+            </v-checkbox>
             <textarea
                 :value="this.$t('cc0-waiver.text')"
                 :class="'waiver-textarea'"
             />
-            <b-checkbox v-model="copyrightWaiverConfirmed">
+            <v-checkbox v-model="copyrightWaiverConfirmed">
                 {{ $t("stepper.CW.copyright-waive-confirmation") }}
-            </b-checkbox>
+            </v-checkbox>
         </div>
     </div>
 </template>
@@ -81,13 +81,10 @@ export default {
     min-height: 100px;
     margin: 1rem 0;
 }
-.step-actions .b-checkbox.checkbox {
-    align-items: normal;
-}
 .step-actions .control-label {
     color: #333333;
 }
-.step-actions .b-checkbox.checkbox input[type=checkbox] + .check {
-    border: 2px solid #D8D8D8;
+input[type='checkbox'] {
+    transform: translateY(3px);
 }
 </style>

@@ -78,6 +78,12 @@ describe('license slug', () => {
             expect(licenseSlug(short)).toEqual(slug)
         })
     })
+    it('should raise an error if non-license string is provided', () => {
+        // No version number:
+        expect(() => licenseSlug('CC BY-NC-ND')).toThrowError()
+        // lower case
+        expect(() => licenseSlug('cc by-nc-nd 4.0')).toThrowError()
+    })
 })
 
 describe('shortToAttr', function testAttrToShort() {
@@ -128,10 +134,15 @@ describe('license url', () => {
         it(`${JSON.stringify(attr)} should return ${url}`, () => {
             expect(licenseUrl(attr)).toEqual(url)
         })
+
         it(`${JSON.stringify(attr)} for web should return ${url} with a ref value`, () => {
-            const [urlForWeb, ref] = licenseUrl(attr, 'web').split('/?')
+            const [urlForWeb, ref] = licenseUrl(attr, 'web').split('?')
             expect(urlForWeb).toEqual(url)
             expect(ref).toEqual('ref=chooser-v1')
+        })
+
+        it('Should raise an error if BY is not selected', () => {
+            expect(() => { licenseUrl({ ...LICENSES.CC0.ATTRIBUTES, BY: undefined }) }).toThrowError()
         })
     })
 })

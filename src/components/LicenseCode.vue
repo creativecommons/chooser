@@ -1,74 +1,52 @@
 <template>
-    <p
+    <i18n
+        path="license-use.richtext.full-text"
+        tag="p"
         xmlns:dct="http://purl.org/dc/terms/"
         xmlns:cc="http://creativecommons.org/ns#"
         class="license-text"
     >
-        <i18n
-            path="license-use.richtext.full-text"
-            tag="span"
-        >
-            <template v-slot:workTitle>
-                <a
-                    v-if="workUrl && isWeb"
-                    :href="workUrl"
-                    rel="cc:attributionURL"
-                    :property="workTitle ? 'dct:title' : false"
-                >
-                    {{ workTitle }}
-                </a>
-                <span
-                    v-else-if="workTitle"
-                    property="dct:title"
-                >
-                    {{ workTitle }}
-                </span>
-                <span v-else>{{ $t('license-use.richtext.workTitle') }}</span>
-            </template>
-            <template v-slot:byCreator>
-                <span v-if="creatorName">{{ $t('license-use.richtext.by') }} </span>
-                <a
-                    v-if="creatorName && creatorProfileUrl && isWeb"
-                    :href="creatorProfileUrl"
-                    rel="cc:attributionURL"
-                    v-html="creatorSpan"
-                />
-                <span
-                    v-else-if="creatorName"
-                    v-html="creatorSpan"
-                />
-            </template>
-            <template v-slot:licensedMarkedString>
-                <span>{{ $t(licensedMarkedString) }}</span>
-            </template>
-            <template v-slot:license>
-                <a
-                    v-if="isWeb"
-                    :href="licenseUrl('web')"
-                    target="_blank"
-                    rel="license noopener noreferrer"
-                    style="display: inline-block;"
-                >
-                    {{ shortName }}
-                </a>
-                <span v-else>{{ shortName }}</span>
+
+        <template #workTitle>
+            <component
+                :is="workUrl && isWeb ? 'a' : 'span'"
+                v-bind="workProps"
+            >
+                {{ workTitle }}
+            </component>
+        </template>
+        <template #creator>
+            <component
+                :is="creatorName && creatorProfileUrl && isWeb ? 'a' : 'span'"
+                v-if="creatorName"
+                v-bind="creatorProps"
+            >
+                {{ creatorName }}
+            </component>
+        </template>
+        <template #by>
+            {{ $t(byString) }}
+        </template>
+        <template #license-marked-text>
+            <span>{{ $t(licensedMarkedString) }}</span>
+        </template>
+        <template #license>
+            <a
+                v-if="isWeb"
+                :href="licenseUrl('web')"
+                target="_blank"
+                rel="license noopener noreferrer"
+                style="display: inline-block;"
+            >
+                {{ shortName }}
                 <LicenseIcons
-                    v-if="isWeb"
-                    :url="licenseUrl('web')"
                     :icons-arr="iconsList"
+                    :size="20"
                 />
-            </template>
-        </i18n>
-        <i18n
-            v-if="!isWeb"
-            path="license-use.richtext.print-instructions"
-            tag="span"
-        >
-            <template v-slot:linkToDeed>
-                {{ licenseUrl('print') }}
-            </template>
-        </i18n>
-    </p>
+            </a>
+            <span v-else>{{ shortName }}</span>
+        </template>
+    </i18n>
 </template>
 <script>
 import { mapGetters, mapState } from 'vuex'
@@ -89,12 +67,15 @@ export default {
         ...mapGetters(['shortName', 'licenseUrl', 'iconsList']),
         ...mapState(['attributionDetails']),
         licensedMarkedString() {
-            return this.$store.getters.shortName === 'CC0 1.0' ? 'license-use.richtext.marked-text' : 'license-use.richtext.licensed-text'
+            return this.shortName === 'CC0 1.0' ? 'license-use.richtext.marked-text' : 'license-use.richtext.licensed-text'
         },
-        creatorSpan() {
-            if (this.creatorName) {
-                return `<span property="cc:attributionName">${this.creatorName}</span>`
-            } else return ''
+        creatorProps() {
+            const creatorAttrs = { property: 'cc:attributionName' }
+            if (this.creatorName && this.creatorProfileUrl && this.isWeb) {
+                creatorAttrs.href = this.creatorProfileUrl
+                creatorAttrs.rel = 'cc:attributionURL'
+            }
+            return creatorAttrs
         },
         creatorName() {
             return this.attributionDetails.creatorName
@@ -117,6 +98,18 @@ export default {
                 return `http://${workUrl}`
             }
             return workUrl
+        },
+        workProps() {
+            const workAttrs = {}
+            const { workTitle, workUrl } = this.attributionDetails
+            if (workTitle) {
+                workAttrs.property = 'dct:title'
+            }
+            if (workUrl) {
+                workAttrs.href = workUrl
+                workAttrs.rel = 'cc:attributionURL'
+            }
+            return workAttrs
         },
         isWeb() {
             return this.attributionType === 'web'

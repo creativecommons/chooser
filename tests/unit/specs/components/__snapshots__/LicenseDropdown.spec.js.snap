@@ -3,7 +3,7 @@
 exports[`LicenseDropdown.vue Check if the LicenseDropdown.vue component has the expected UI 1`] = `
 <div class="field license-dropdown">
   <!---->
-  <div class="control"><span class="select"><select><!----> <option value="CC0 1.0">
+  <div class="control"><span class="select"><select><!----><option value="CC0 1.0">
             CC0 1.0
         </option><option value="CC BY 4.0">
             CC BY 4.0

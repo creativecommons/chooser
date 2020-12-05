@@ -13,15 +13,8 @@
                     {{ $t(stepHeaderText(step.name, step.status)) }}
                 </h5>
             </div>
-            <FirstStep
-                v-if="step.status!=='inactive' && step.name==='FS'"
-                :step-id="step.id"
-                :selected="step.selected"
-                :status="step.status"
-                @change="changeStepSelected"
-            />
-            <Step
-                v-else-if="step.status!=='inactive' && isLicenseAttribute(step.name)"
+            <ChooserStep
+                v-if="step.status!=='inactive' && (isLicenseAttribute(step.name)||step.name==='FS')"
                 :step-id="step.id"
                 :step-name="step.name"
                 :selected="step.selected"
@@ -50,47 +43,32 @@
                 :step-id="step.id"
                 :status="step.status"
             />
-            <nav
-                v-if="step.status==='current'"
-                class="step-navigation"
-            >
-                <a
-                    v-if="step.name!=='FS'"
-                    role="button"
-                    class="pagination-previous"
-                    @click="handlePrevious(step.name)"
-                >{{ $t('stepper.nav.previous-label') }}</a>
-                <a
-                    v-if="step.name!=='AD'"
-                    role="button"
-                    :class="['pagination-next', nextButtonEnabledState(step.id)]"
-                    @click="handleNext(step.name)"
-                >{{ $t('stepper.nav.next-label') }}</a>
-                <span
-                    v-else
-                    class="pagination-finish"
-                >{{ $t('stepper.nav.finish-label') }}</span>
-            </nav>
+            <StepNavigation
+                v-if="step.status === 'current'"
+                :step-name="step.name"
+                :is-next-enabled="isNextEnabled(step.id)"
+                @navigate="navigate"
+            />
         </div>
     </div>
 </template>
 
 <script>
-import Step from './Step'
-import FirstStep from './FirstStep'
+import ChooserStep from './ChooserStep'
 import AttributionDetailsStep from './AttributionDetailsStep'
 import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
+import StepNavigation from './StepNavigation'
 import { updateVisibleEnabledStatus } from '../utils/license-utilities'
 
 export default {
     name: 'Stepper',
     components: {
-        FirstStep,
-        Step,
+        ChooserStep,
         AttributionDetailsStep,
         CopyrightWaiverStep,
-        DropdownStep
+        DropdownStep,
+        StepNavigation
     },
     props: {
         value: {
@@ -184,13 +162,17 @@ export default {
              */
             return ['NC', 'ND', 'SA'].indexOf(stepName) > -1
         },
-        nextButtonEnabledState(stepId) {
-            /**
-             * Disables the 'Next' button before the user interacts with the step
-             */
-            return this.steps[stepId].selected === undefined
-                ? 'disabled'
-                : ''
+        /**
+         * Checks if the Next button should be disabled. Next button is enabled only
+         * after the user has interacted with the step (selected radio or checked a checkbox)
+         * @param {number} stepId
+         * @returns {Boolean} next button's disabled status
+         */
+        isNextEnabled(stepId) {
+            return this.steps[stepId].selected !== undefined
+        },
+        navigate({ direction, stepName }) {
+            direction === 'next' ? this.handleNext(stepName) : this.handlePrevious()
         },
         changeStepSelected(stepName, stepId, isSelected) {
             /**
@@ -386,52 +368,11 @@ export default {
         background-color: #F5F5F5;
     }
     .previous.disabled {
-        color: #B0B0B0;
+        color: #b0b0b0;
     }
     .previous.disabled .step-title,
     .inactive .step-title {
-        color: #B0B0B0;
-    }
-    .step-navigation {
-        margin: 13px 0;
-        padding-left: 65px;
-    }
-    .step-navigation .pagination-next,
-    .step-navigation .pagination-previous {
-        font-family: Roboto Condensed,sans-serif;
-        font-style: normal;
-        font-size: 18px;
-        line-height: 24px;
-    }
-    .step-navigation,
-    .step-navigation {
-        font-weight: 500;
-    }
-    .pagination-next,
-    .pagination-previous {
-        font-weight: bold;
-    }
-    .step-navigation .pagination-previous {
-        border: 2px solid #787878;
-        color: #787878;
-    }
-    .step-navigation .pagination-next {
-        background-color: #04a635;
-        color: #fff!important;
-        border: 2px solid transparent;
-    }
-    .pagination-next.disabled {
-        background-color: #D8D8D8;
-        color: #787878 !important;
-    }
-    .pagination-next.disabled:hover,
-    .pagination-next.disabled:active {
-        box-shadow: none;
-        border: 1px solid transparent;
-    }
-    .pagination-finish{
-        margin-left: 1rem;
-        line-height: 42px;
+        color: #b0b0b0;
     }
     .slide-enter-active {
         /*transition: all .3s ease;*/

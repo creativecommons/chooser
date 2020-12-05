@@ -16,23 +16,23 @@
                 class="field"
                 :class="yesSelected"
             >
-                <b-radio
+                <v-radio
                     v-model="radio"
                     native-value="yes"
                 >
                     <span class="vocab-body body-normal">{{ $t('stepper.yes') }}{{ $t(yesText) }}</span>
-                </b-radio>
+                </v-radio>
             </div>
             <div
                 class="field"
                 :class="noSelected"
             >
-                <b-radio
+                <v-radio
                     v-model="radio"
                     native-value="no"
                 >
                     <span class="vocab-body body-normal">{{ $t('stepper.no') }}{{ $t(noText) }}</span>
-                </b-radio>
+                </v-radio>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
 <script>
 
 export default {
-    name: 'Step',
+    name: 'ChooserStep',
     props: {
         stepName: String,
         selected: Boolean,
@@ -64,6 +64,9 @@ export default {
             return this.reversed ? !this.selected : this.selected
         },
         cardText() {
+            if (this.stepName === 'FS') {
+                return this.$props.selected ? 'stepper.FS.selected' : 'stepper.FS.not-selected'
+            }
             if (this.$props.enabled === false) {
                 return this.$props.disabledDue === 'ND'
                     ? 'stepper.disabled-text-ND'

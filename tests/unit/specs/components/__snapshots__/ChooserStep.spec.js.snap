@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Step.vue Check if the Step.vue component has the expected UI if current 1`] = `
+exports[`ChooserStep.vue Check if the Step.vue component has the expected UI if current 1`] = `
 <div class="step-content">
   <div class="step-actions">
     <div class="field not-selected">
@@ -13,7 +13,7 @@ exports[`Step.vue Check if the Step.vue component has the expected UI if current
 </div>
 `;
 
-exports[`Step.vue Check if the Step.vue component has the expected UI if disabled due is set 1`] = `
+exports[`ChooserStep.vue Check if the Step.vue component has the expected UI if disabled due is set 1`] = `
 <div class="step-content">
   <div class="step-description vocab-body body-normal">
     <p class="vocab-body body-normal">
@@ -23,13 +23,13 @@ exports[`Step.vue Check if the Step.vue component has the expected UI if disable
 </div>
 `;
 
-exports[`Step.vue Check if the Step.vue component has the expected UI if inactive 1`] = `
+exports[`ChooserStep.vue Check if the Step.vue component has the expected UI if inactive 1`] = `
 <div class="step-content">
   <!---->
 </div>
 `;
 
-exports[`Step.vue Check if the Step.vue component has the expected UI if previous 1`] = `
+exports[`ChooserStep.vue Check if the Step.vue component has the expected UI if previous 1`] = `
 <div class="step-content">
   <div class="step-description vocab-body body-normal">
     <p class="vocab-body body-normal">
@@ -39,7 +39,7 @@ exports[`Step.vue Check if the Step.vue component has the expected UI if previou
 </div>
 `;
 
-exports[`Step.vue Check if the Step.vue component has the expected UI if reversed 1`] = `
+exports[`ChooserStep.vue Check if the Step.vue component has the expected UI if reversed 1`] = `
 <div class="step-content">
   <div class="step-actions">
     <div class="field not-selected">
@@ -47,6 +47,44 @@ exports[`Step.vue Check if the Step.vue component has the expected UI if reverse
     </div>
     <div class="field selected">
       <b-radio-stub value="yes" nativevalue="no"><span class="vocab-body body-normal">stepper.nostepper.SA.not-selected</span></b-radio-stub>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ChooserStep.vue Mark up is correctly rendered 1`] = `
+<div
+  class="step-content"
+>
+  <div
+    class="step-actions"
+  >
+    <div
+      class="field not-selected"
+    >
+      <b-radio-stub
+        nativevalue="yes"
+      >
+        <span
+          class="vocab-body body-normal"
+        >
+          stepper.yesstepper.undefined.selected
+        </span>
+      </b-radio-stub>
+    </div>
+     
+    <div
+      class="field selected"
+    >
+      <b-radio-stub
+        nativevalue="no"
+      >
+        <span
+          class="vocab-body body-normal"
+        >
+          stepper.nostepper.undefined.not-selected
+        </span>
+      </b-radio-stub>
     </div>
   </div>
 </div>

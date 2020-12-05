@@ -2,10 +2,10 @@ module.exports = {
     '@tags': ['first'],
     'FirstStep'(browser) {
         const radioSelector = 'div.field.not-selected > label > span.control-label > span'
-        const nextBtn = 'a.pagination-next'
+        const nextBtn = '.next-button'
         const stepBelowCurrentHeader = 'div:nth-child(2) > div > h5'
         const stepDescription = '.step-description'
-        const backBtn = 'a.pagination-previous'
+        const backBtn = '.previous-button'
 
         browser
             .init()

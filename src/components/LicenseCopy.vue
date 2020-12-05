@@ -204,7 +204,7 @@ export default {
     }
     .license-code .attribution-tab .tabs span {
         font-style: normal;
-        color: #B0B0B0;
+        color: #b0b0b0;
         font-size: 16px;
         line-height: 24px;
     }

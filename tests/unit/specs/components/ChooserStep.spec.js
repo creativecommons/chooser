@@ -1,12 +1,13 @@
 import { shallowMount, createLocalVue, config } from '@vue/test-utils'
-import Step from '@/components/Step'
+import ChooserStep from '@/components/ChooserStep'
 import Buefy from 'buefy'
+import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import VueI18n from 'vue-i18n'
 import Vuex from 'vuex'
 import Vue from 'vue'
 import store from '@/store'
 
-describe('Step.vue', () => {
+describe('ChooserStep.vue', () => {
     let wrapper
     let localVue
 
@@ -15,6 +16,7 @@ describe('Step.vue', () => {
         localVue = createLocalVue()
         localVue.use(Vuex)
         localVue.use(Buefy)
+        localVue.use(VueVocabulary)
         Vue.use(VueI18n)
         const i18n = new VueI18n({
             locale: 'en',
@@ -25,7 +27,7 @@ describe('Step.vue', () => {
         config.mocks.i18n = i18n
 
         config.mocks.$t = key => key
-        wrapper = shallowMount(Step, {
+        wrapper = shallowMount(ChooserStep, {
             store,
             localVue
         })
@@ -166,5 +168,37 @@ describe('Step.vue', () => {
             status: 'current'
         })
         expect(wrapper).toMatchSnapshot()
+    })
+    it('Mark up is correctly rendered', () => {
+        wrapper.setProps({
+            selected: undefined,
+            stepId: 0,
+            status: 'current'
+        })
+
+        expect(wrapper.element).toMatchSnapshot()
+    })
+
+    it('props:selected false', () => {
+        wrapper.setProps({
+            selected: false,
+            stepName: 'FS',
+            stepId: 0,
+            status: 'current'
+        })
+        expect(wrapper.vm.radio).toBe('no')
+        expect(wrapper.vm.cardText).toBe('stepper.FS.not-selected')
+    })
+
+    it('props:selected true', () => {
+        wrapper.setProps({
+            selected: true,
+            stepName: 'FS',
+            stepId: 0,
+            status: 'current'
+        })
+
+        expect(wrapper.vm.radio).toBe('yes')
+        expect(wrapper.vm.cardText).toBe('stepper.FS.selected')
     })
 })
