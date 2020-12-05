@@ -114,9 +114,8 @@ export default {
 .sub-tabs {
     margin-top: 1.25rem;
     .tabs-content.is-boxed {
-        padding: 1.5rem !important;
+        padding: 1.5rem;
         border-bottom: none;
-        border-top-right-radius: 0.25rem;
     }
 }
 .tabs.is-boxed li:first-child a {
