@@ -13,7 +13,7 @@ module.exports = {
             .assert.elementPresent('.next-button')
             .click('.next-button')
             .assert.elementPresent('p[class="license-text"]')
-    },
+    }
     // 'Check if the links in the license code redirects properly': function(browser) {
     //     browser
     //         .setValue('input[placeholder="Jane Doe"]', 'Jane Doe')

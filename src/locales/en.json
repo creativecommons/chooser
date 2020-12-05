@@ -88,6 +88,7 @@
     },
     "license-details-card": {
         "heading": "RECOMMENDED LICENSE",
+        "cc0-heading": "RECOMMENDED",
         "full-description": {
             "cc0": "By marking your work with a CC0 public domain dedication, you are giving up your copyright and allowing reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.",
             "cc-by": "This license requires that reuses give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.",
@@ -118,10 +119,11 @@
         "copy-label": "Copy",
         "copied-label": "Copied!",
         "richtext": {
-            "full-text": "{workTitle} {by} {creator}{licensed-text}{license}",
+            "full-text": "{workTitle} {byCreator} {licenseMark} {license}",
             "workTitle": "This work",
             "by": "by",
-            "licensed-text": " is licensed under ",
+            "licensed-text": "is licensed under",
+            "marked-text": "is marked with",
             "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}"
         }
     },

@@ -26,8 +26,8 @@
         <template #by>
             {{ $t(byString) }}
         </template>
-        <template #licensed-text>
-            <span>{{ $t('license-use.richtext.licensed-text') }}</span>
+        <template #licenseMark>
+            <span>{{ $t(licensedMarkedString) }}</span>
         </template>
         <template #license>
             <a
@@ -65,8 +65,8 @@ export default {
     computed: {
         ...mapGetters(['shortName', 'licenseUrl', 'iconsList']),
         ...mapState(['attributionDetails']),
-        byString() {
-            return this.creatorName ? 'license-use.richtext.by' : ''
+        licensedMarkedString() {
+            return this.shortName === 'CC0 1.0' ? 'license-use.richtext.marked-text' : 'license-use.richtext.licensed-text'
         },
         creatorProps() {
             const creatorAttrs = { property: 'cc:attributionName' }
