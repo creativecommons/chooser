@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { defaultAttributes, CC0Attributes, attrToShort, attrToFull, licenseUrl, licenseIconsArr } from '../utils/license-utilities.js'
+import { defaultAttributes, CC0Attributes, attrToShort, attrToFull, licenseURL, licenseIconsArr } from '../utils/license-utilities.js'
 
 Vue.use(Vuex)
 
@@ -33,8 +33,8 @@ const createStore = (state) => {
             fullName: state => {
                 return attrToFull(state.currentLicenseAttributes)
             },
-            licenseUrl: state => (mode) => {
-                return licenseUrl(state.currentLicenseAttributes, mode)
+            licenseUrl: state => (mode = 'web') => {
+                return licenseURL(state.currentLicenseAttributes, mode)
             },
             iconsList: state => {
                 return licenseIconsArr(state.currentLicenseAttributes)

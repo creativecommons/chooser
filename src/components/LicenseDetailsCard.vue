@@ -44,7 +44,9 @@
         </section>
         <a
             class="license-deed-link"
-            :href="licenseUrl('web')"
+            :href="licenseUrl()"
+            target="_blank"
+            rel="noopener noreferrer"
         >
             See the License Deed
             <span class="icon external-link">
@@ -69,10 +71,6 @@ export default {
     name: 'LicenseDetailsCard',
     computed: {
         ...mapGetters(['shortName', 'fullName', 'iconsList', 'licenseUrl']),
-        licenseDescription() {
-            const descriptionString = `${this.slug}-description`
-            return this.$t(descriptionString)
-        },
         licenseKey() {
             return `license-details-card.full-description.${this.slug}`
         },
