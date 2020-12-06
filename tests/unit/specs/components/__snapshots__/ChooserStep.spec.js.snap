@@ -4,10 +4,10 @@ exports[`ChooserStep.vue Check if the Step.vue component has the expected UI if 
 <div class="step-content">
   <div class="step-actions">
     <div class="field not-selected">
-      <b-radio-stub value="no" nativevalue="yes"><span class="vocab-body body-normal">stepper.yesstepper.SA.selected</span></b-radio-stub>
+      <v-radio-stub value="no" nativevalue="yes"><span class="vocab-body body-normal">stepper.yesstepper.SA.selected</span></v-radio-stub>
     </div>
     <div class="field selected">
-      <b-radio-stub value="no" nativevalue="no"><span class="vocab-body body-normal">stepper.nostepper.SA.not-selected</span></b-radio-stub>
+      <v-radio-stub value="no" nativevalue="no"><span class="vocab-body body-normal">stepper.nostepper.SA.not-selected</span></v-radio-stub>
     </div>
   </div>
 </div>
@@ -43,10 +43,10 @@ exports[`ChooserStep.vue Check if the Step.vue component has the expected UI if 
 <div class="step-content">
   <div class="step-actions">
     <div class="field not-selected">
-      <b-radio-stub value="yes" nativevalue="yes"><span class="vocab-body body-normal">stepper.yesstepper.SA.selected</span></b-radio-stub>
+      <v-radio-stub value="yes" nativevalue="yes"><span class="vocab-body body-normal">stepper.yesstepper.SA.selected</span></v-radio-stub>
     </div>
     <div class="field selected">
-      <b-radio-stub value="yes" nativevalue="no"><span class="vocab-body body-normal">stepper.nostepper.SA.not-selected</span></b-radio-stub>
+      <v-radio-stub value="yes" nativevalue="no"><span class="vocab-body body-normal">stepper.nostepper.SA.not-selected</span></v-radio-stub>
     </div>
   </div>
 </div>
@@ -62,7 +62,7 @@ exports[`ChooserStep.vue Mark up is correctly rendered 1`] = `
     <div
       class="field not-selected"
     >
-      <b-radio-stub
+      <v-radio-stub
         nativevalue="yes"
       >
         <span
@@ -70,13 +70,13 @@ exports[`ChooserStep.vue Mark up is correctly rendered 1`] = `
         >
           stepper.yesstepper.undefined.selected
         </span>
-      </b-radio-stub>
+      </v-radio-stub>
     </div>
      
     <div
       class="field selected"
     >
-      <b-radio-stub
+      <v-radio-stub
         nativevalue="no"
       >
         <span
@@ -84,7 +84,7 @@ exports[`ChooserStep.vue Mark up is correctly rendered 1`] = `
         >
           stepper.nostepper.undefined.not-selected
         </span>
-      </b-radio-stub>
+      </v-radio-stub>
     </div>
   </div>
 </div>

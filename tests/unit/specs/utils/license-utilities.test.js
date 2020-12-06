@@ -5,14 +5,15 @@ import {
     generateHTML,
     licenseIconsArr,
     licenseSlug,
-    licenseUrl,
+    licenseURL,
     shortToAttr,
     updateVisibleEnabledStatus,
     LICENSES,
     CC_NAMESPACE,
     DCT_NAMESPACE,
     ICON_BASE_URL,
-    ICON_STYLE
+    ICON_STYLE,
+    chooserRef
 } from '@/utils/license-utilities'
 import { mount } from '@vue/test-utils'
 import TestComponent from './TestComponent'
@@ -131,18 +132,18 @@ describe('licenseIconsArr', function testLicenseIconsArr() {
 describe('license url', () => {
     Object.values(LICENSES).forEach((license) => {
         const { ATTRIBUTES: attr, URL: url } = license
-        it(`${JSON.stringify(attr)} should return ${url}`, () => {
-            expect(licenseUrl(attr)).toEqual(url)
+        it(`${JSON.stringify(attr)} should return ${url} for print mode`, () => {
+            expect(licenseURL(attr, 'print')).toEqual(url)
         })
 
-        it(`${JSON.stringify(attr)} for web should return ${url} with a ref value`, () => {
-            const [urlForWeb, ref] = licenseUrl(attr, 'web').split('?')
+        it(`${JSON.stringify(attr)} for web should return ${url} with a ref value by default`, () => {
+            const [urlForWeb, ref] = licenseURL(attr).split('?')
             expect(urlForWeb).toEqual(url)
             expect(ref).toEqual('ref=chooser-v1')
         })
 
         it('Should raise an error if BY is not selected', () => {
-            expect(() => { licenseUrl({ ...LICENSES.CC0.ATTRIBUTES, BY: undefined }) }).toThrowError()
+            expect(() => { licenseURL({ ...LICENSES.CC0.ATTRIBUTES, BY: undefined }) }).toThrowError()
         })
     })
 })
@@ -268,7 +269,7 @@ describe('generateHTML', function testGenerateHTML() {
                     const licenseImages = (wrapper) => wrapper.findAll('img')
 
                     expect(licenseLinkElement.attributes('rel')).toBe('license')
-                    expect(licenseLinkElement.attributes('href')).toBe(currentLicense.URL)
+                    expect(licenseLinkElement.attributes('href')).toBe(currentLicense.URL + chooserRef)
                     expect(licenseLinkElement.text()).toBe(currentLicense.SHORT)
 
                     expect(licenseImages(wrapper).at(0).attributes().style).toBe(ICON_STYLE)
