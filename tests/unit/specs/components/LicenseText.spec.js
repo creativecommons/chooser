@@ -3,7 +3,7 @@ import VueI18n from 'vue-i18n'
 import { mount, createLocalVue } from '@vue/test-utils'
 import LicenseText from '@/components/LicenseText.vue'
 import createStore from '@/store'
-import { CCBYAttributes } from '@/utils/license-utilities'
+import { CCBYAttributes, LICENSES } from '@/utils/license-utilities'
 
 const TEST_DATA = {
     creatorName: 'Jane Doe',
@@ -62,12 +62,13 @@ describe('LicenseText.vue', () => {
         wrapper.vm.$store.commit('setCreatorName', '')
         wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
         wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
-        const titleElement = wrapper.find('[rel="cc:attributionURL"]')
+        const titleElement = wrapper.find('[rel^="cc:attributionURL"]')
         expect(titleElement.text()).toEqual('This work')
         expect(titleElement.name()).toEqual('a')
         expect(titleElement.attributes().href).toEqual(TEST_DATA.workUrl)
-        expect(Object.keys(titleElement.attributes()).length).toEqual(2)
-        const creatorElement = wrapper.findAll('[property="cc:attributionName"]')
+        // href, rel, target
+        expect(Object.keys(titleElement.attributes()).length).toEqual(3)
+        const creatorElement = wrapper.findAll('[property^="cc:attributionName"]')
         expect(creatorElement.length).toEqual(0)
     })
 
@@ -79,14 +80,22 @@ describe('LicenseText.vue', () => {
         const titleElement = wrapper.find('[property="dct:title"]')
         expect(titleElement.text()).toEqual(TEST_DATA.workTitle)
         expect(titleElement.attributes().href).toEqual(TEST_DATA.workUrl)
-        expect(titleElement.attributes().rel).toEqual('cc:attributionURL')
+        expect(titleElement.attributes().rel).toEqual('cc:attributionURL noopener noreferrer')
         expect(titleElement.name()).toEqual('a')
-        expect(Object.keys(titleElement.attributes()).length).toEqual(3)
+        // href, rel, target, property
+        expect(Object.keys(titleElement.attributes()).length).toEqual(4)
         const creatorElement = wrapper.find('[property="cc:attributionName"]')
-        expect(Object.keys(creatorElement.attributes()).length).toEqual(3)
+        expect(Object.keys(creatorElement.attributes()).length).toEqual(4)
         expect(creatorElement.text()).toEqual(TEST_DATA.creatorName)
         expect(creatorElement.attributes().href).toEqual('http://' + TEST_DATA.creatorProfileUrl)
-        expect(creatorElement.attributes().rel).toEqual('cc:attributionURL')
+        expect(creatorElement.attributes().rel).toEqual('cc:attributionURL noopener noreferrer')
         expect(creatorElement.name()).toEqual('a')
+    })
+
+    it('updates license name type (full/short)', () => {
+        wrapper.vm.$store.state.attributionType = 'full'
+        expect(wrapper.vm.licenseName).toEqual(LICENSES.CC_BY.FULL)
+        wrapper.vm.$store.state.attributionType = 'short'
+        expect(wrapper.vm.licenseName).toEqual(LICENSES.CC_BY.SHORT)
     })
 })

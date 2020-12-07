@@ -1,19 +1,19 @@
 module.exports = {
 
-    'Check if the p-tag with the class license-text is present': function(browser) {
-        browser
-            .init()
-            .assert.elementPresent('.control-label > span')
-            .click('.control-label > span')
-            .assert.elementPresent('.next-button')
-            .click('.next-button')
-            .assert.elementPresent('.select > select')
-            .click('.select')
-            .click('option[value="CC BY-SA 4.0"]')
-            .assert.elementPresent('.next-button')
-            .click('.next-button')
-            .assert.elementPresent('p[class="license-text"]')
-    }
+    // 'Check if the p-tag with the class license-text is present': function(browser) {
+    //     browser
+    //         .init()
+    //         .assert.elementPresent('.control-label > span')
+    //         .click('.control-label > span')
+    //         .assert.elementPresent('.next-button')
+    //         .click('.next-button')
+    //         .assert.elementPresent('.select > select')
+    //         .click('.select')
+    //         .click('option[value="CC BY-SA 4.0"]')
+    //         .assert.elementPresent('.next-button')
+    //         .click('.next-button')
+    //         .assert.elementPresent('p[class="license-text"]')
+    // }
     // 'Check if the links in the license code redirects properly': function(browser) {
     //     browser
     //         .setValue('input[placeholder="Jane Doe"]', 'Jane Doe')

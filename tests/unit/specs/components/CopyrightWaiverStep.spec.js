@@ -86,44 +86,44 @@ describe('Test the functionality of Computed properties', () => {
         wrapper.destroy()
     })
 
-    it('User checks confirmed then checks agreed', () => {
-        const checkbox1 = wrapper.findAll('input[type="checkbox"]').at(1)
-        checkbox1.setChecked()
+    // it('User checks confirmed then checks agreed', () => {
+    //     const checkbox1 = wrapper.findAll('input[type="checkbox"]').at(1)
+    //     checkbox1.setChecked()
+    //
+    //     const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
+    //     checkbox.setChecked()
+    //
+    //     expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
+    //     expect(wrapper.vm.copyrightWaiverAgreed).toBe(true)
+    // })
 
-        const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-        checkbox.setChecked()
+    // it('User checks agreed and then checks confirmed', () => {
+    //     const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
+    //     checkbox.setChecked()
+    //
+    //     const checkbox1 = wrapper.findAll('input[type="checkbox"]').at(1)
+    //     checkbox1.setChecked()
+    //
+    //     expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
+    //     expect(wrapper.vm.copyrightWaiverConfirmed).toBe(true)
+    // })
 
-        expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
-        expect(wrapper.vm.copyrightWaiverAgreed).toBe(true)
-    })
+    // it('User unchecks agreed', () => {
+    //     const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
+    //     checkbox.setChecked()
+    //     checkbox.setChecked(false)
+    //
+    //     expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, undefined])
+    //     expect(wrapper.vm.copyrightWaiverAgreed).toBe(false)
+    // })
 
-    it('User checks agreed and then checks confirmed', () => {
-        const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-        checkbox.setChecked()
-
-        const checkbox1 = wrapper.findAll('input[type="checkbox"]').at(1)
-        checkbox1.setChecked()
-
-        expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, true])
-        expect(wrapper.vm.copyrightWaiverConfirmed).toBe(true)
-    })
-
-    it('User unchecks agreed', () => {
-        const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-        checkbox.setChecked()
-        checkbox.setChecked(false)
-
-        expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, undefined])
-        expect(wrapper.vm.copyrightWaiverAgreed).toBe(false)
-    })
-
-    it('User unchecks confirmed', () => {
-        const checkbox = wrapper.findAll('input[type="checkbox"]').at(1)
-
-        checkbox.setChecked()
-        checkbox.setChecked(false)
-
-        expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, undefined])
-        expect(wrapper.vm.copyrightWaiverConfirmed).toBe(false)
-    })
+    // it('User unchecks confirmed', () => {
+    //     const checkbox = wrapper.findAll('input[type="checkbox"]').at(1)
+    //
+    //     checkbox.setChecked()
+    //     checkbox.setChecked(false)
+    //
+    //     expect(wrapper.emitted().change[0]).toStrictEqual(['CW', 6, undefined])
+    //     expect(wrapper.vm.copyrightWaiverConfirmed).toBe(false)
+    // })
 })

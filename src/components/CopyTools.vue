@@ -78,14 +78,12 @@ export default {
                     eventLabel: JSON.stringify(copiedLicense)
                 })
             }
-            this.$emit('copied', { content: e.text })
             setTimeout(() => {
                 this.success = false
             }, 2000)
             e.clearSelection()
         },
         onCopyError(e) {
-            this.$emit('copyFailed')
             e.clearSelection()
         }
     }

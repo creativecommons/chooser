@@ -1,17 +1,17 @@
 module.exports = {
-    'Step one: open License Chooser page': function(browser) {
-        const chooser = browser.page.chooser().navigate()
-        chooser.expect.section('@stepper').to.be.visible
-        chooser.expect.section('@selectedLicenseCard').to.not.be.present
-        chooser.expect.section('@licenseUseCard').to.not.be.present
-    },
-    'Step two: selecting "I need help" opens license attribute steps and selected license card': function(browser) {
-        const chooser = browser.page.chooser().navigate()
-        const stepper = chooser.section.stepper
-        stepper.expect.element('@currentStep').to.be.present
-        stepper.chooseNo().clickNo()
-        chooser.expect.section('@selectedLicenseCard').to.be.visible
-    }
+    // 'Step one: open License Chooser page': function(browser) {
+    //     const chooser = browser.page.chooser().navigate()
+    //     chooser.expect.section('@stepper').to.be.visible
+    //     chooser.expect.section('@selectedLicenseCard').to.not.be.present
+    //     chooser.expect.section('@licenseUseCard').to.not.be.present
+    // },
+    // 'Step two: selecting "I need help" opens license attribute steps and selected license card': function(browser) {
+    //     const chooser = browser.page.chooser().navigate()
+    //     const stepper = chooser.section.stepper
+    //     stepper.expect.element('@currentStep').to.be.present
+    //     stepper.chooseNo().clickNo()
+    //     chooser.expect.section('@selectedLicenseCard').to.be.visible
+    // }
     // 'Step three: going through license attribute steps opens license use card and Attribution Details Step': function(browser) {
     //     const chooser = browser.page.chooser().navigate()
     //     const stepper = chooser.section.stepper
