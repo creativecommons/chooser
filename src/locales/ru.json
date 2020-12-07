@@ -73,7 +73,7 @@
                 },
                 "creator-profile": {
                     "label": "URL of creator profile",
-                    "placeholder": "www.author.com"
+                    "placeholder": "https://janedoe.com"
                 },
                 "work-title": {
                     "label": "Title of Work",
@@ -81,7 +81,7 @@
                 },
                 "work-url": {
                     "label": "Work URL",
-                    "placeholder": "www.author.com/work.jpg"
+                    "placeholder": "https://janedoe.com/best-photo-ever.jpg"
                 }
             }
         }
