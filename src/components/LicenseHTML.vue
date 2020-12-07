@@ -22,12 +22,12 @@ export default {
         htmlLicenseParagraph() {
             const isFull = this.attributionType === 'full'
             const { work, creator, license, paragraph } = generateHTML(this.attributionDetails, this.shortName, isFull)
-            const licenseCodeSpan = this.$i18n.t('license-use.richtext.full-text', {
-                workTitle: work || this.$i18n.t('license-use.richtext.workTitle'),
+            const licenseCodeSpan = this.$t('license-use.richtext.full-text', {
+                workTitle: work || this.$t('license-use.richtext.workTitle'),
                 creator,
                 license,
-                by: creator ? this.$i18n.t('license-use.richtext.by') : '',
-                'licensed-text': this.$i18n.t('license-use.richtext.licensed-text')
+                by: creator ? this.$t('license-use.richtext.by') : '',
+                'licensed-text': this.$t('license-use.richtext.licensed-text')
             })
             return `${paragraph}${licenseCodeSpan}</p>`
         }
