@@ -10,6 +10,7 @@
             >
                 {{ fullName }} ({{ shortName }})
                 <LicenseIcons
+                    class="license-icons"
                     :url="licenseUrl('web')"
                     :icons-arr="iconsList"
                 />
@@ -78,7 +79,7 @@ export default {
         display: inline-block;
         margin-top: 8px;
     }
-    .license-name .photo-license-icons {
+    .license-icons {
         height: 35px;
         vertical-align: middle;
     }
