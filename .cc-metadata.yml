@@ -5,4 +5,4 @@ english_name: CC Chooser
 # All technologies used
 technologies: HTML, CSS, JS, Bulma, Vue, Jest
 # Whether this repository should be featured on the CC Open Source site
-featured: false
+featured: true

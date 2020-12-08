@@ -7,9 +7,9 @@ import { CCBYAttributes, LICENSES } from '@/utils/license-utilities'
 
 const TEST_DATA = {
     creatorName: 'Jane Doe',
-    creatorProfileUrl: 'www.author.com',
+    creatorProfileUrl: 'https://janedoe.com',
     workTitle: 'My work',
-    workUrl: 'www.author.com/picture.jpg'
+    workUrl: 'https://janedoe.com/best-photo-ever.jpg'
 }
 
 describe('LicenseText.vue', () => {
