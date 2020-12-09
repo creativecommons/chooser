@@ -122,10 +122,12 @@
         "copy-label": "Copy",
         "copied-label": "Copied!",
         "richtext": {
-            "full-text": "{workTitle} {by} {creator}{licensed-text}{license}{print-instructions}",
+            "full-text": "{workTitle} {by} {creator}{licenseMark} {license}{print-instructions}",
             "workTitle": "This work",
             "by": "by",
-            "licensed-text": " is licensed under "
+            "licensed-text": "is licensed under",
+            "marked-text": "is marked with",
+            "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}"
         },
         "print": {
             "text": " To view a copy of this license, visit {linkToLicenseDeed}"

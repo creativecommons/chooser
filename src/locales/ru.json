@@ -73,7 +73,7 @@
                 },
                 "creator-profile": {
                     "label": "URL of creator profile",
-                    "placeholder": "www.author.com"
+                    "placeholder": "https://janedoe.com"
                 },
                 "work-title": {
                     "label": "Title of Work",
@@ -81,7 +81,7 @@
                 },
                 "work-url": {
                     "label": "Work URL",
-                    "placeholder": "www.author.com/work.jpg"
+                    "placeholder": "https://janedoe.com/best-photo-ever.jpg"
                 }
             }
         }
@@ -118,11 +118,12 @@
         "copy-label": "Copy",
         "copied-label": "Copied!",
         "richtext": {
-            "full-text": "{workTitle} {by} {creator}{licensed-text}{licenseName}",
+            "full-text": "{workTitle} {byCreator} {licensedMarkedString} {license}",
             "workTitle": "This work",
             "by": "by",
-            "licensed-text": " is licensed under ",
-            "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}."
+            "licensed-text": "is licensed under",
+            "marked-text": "is marked with",
+            "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}"
         }
     },
     "help": {

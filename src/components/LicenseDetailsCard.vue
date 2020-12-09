@@ -1,7 +1,7 @@
 <template>
     <div class="selected-license-card">
         <h3 class="vocab">
-            {{ $t('license-details-card.heading') }}
+            {{ headingText }}
         </h3>
         <h4 class="vocab b-header">
             <a
@@ -10,6 +10,7 @@
             >
                 {{ fullName }} ({{ shortName }})
                 <LicenseIcons
+                    class="license-icons"
                     :url="licenseUrl('web')"
                     :icons-arr="iconsList"
                 />
@@ -39,7 +40,7 @@
     </div>
 </template>
 <script>
-import { licenseSlug } from '../utils/license-utilities'
+import { LICENSES, licenseSlug } from '../utils/license-utilities'
 import LicenseIcons from './LicenseIcons'
 import { mapGetters } from 'vuex'
 
@@ -59,6 +60,11 @@ export default {
         },
         slug() {
             return licenseSlug(this.shortName)
+        },
+        headingText() {
+            return this.shortName === LICENSES.CC0.SHORT
+                ? this.$t('license-details-card.cc0-heading')
+                : this.$t('license-details-card.heading')
         }
     }
 }
@@ -73,7 +79,7 @@ export default {
         display: inline-block;
         margin-top: 8px;
     }
-    .license-name .photo-license-icons {
+    .license-icons {
         height: 35px;
         vertical-align: middle;
     }

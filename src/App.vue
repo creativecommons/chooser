@@ -5,6 +5,21 @@
             id="site-container"
             class="container"
         >
+            <nav
+                class="breadcrumb caption bold"
+                aria-label="breadcrumbs"
+            >
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Child Page</a></li>
+                    <li class="is-active">
+                        <a
+                            href="#"
+                            aria-current="page"
+                        >Chooser</a>
+                    </li>
+                </ul>
+            </nav>
             <div class="page-head">
                 <div class="select-license-column">
                     <h2 class="vocab">
@@ -114,6 +129,9 @@ export default {
     }
     #site-container {
         padding: 0.75rem;
+    }
+    .breadcrumb {
+        margin-bottom: 2rem;
     }
     .page-head {
         display: grid;

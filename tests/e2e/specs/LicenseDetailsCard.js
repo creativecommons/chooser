@@ -1,5 +1,5 @@
 module.exports = {
-    //
+
     // 'Check if the main div tag with the class selected-license-card is present': function(browser) {
     //     browser
     //         .init()
