@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
-<div class="stepper-container column">
+<div class="stepper-container">
   <div class="step-container FS current enabled">
     <div class="step-header">
       <h5 class="step-title vocab b-header">
@@ -60,7 +60,7 @@ exports[`Stepper.vue renders correctly has expected UI initially 1`] = `
 `;
 
 exports[`Stepper.vue renders correctly has expected UI on CW step after DD 1`] = `
-<div class="stepper-container column">
+<div class="stepper-container">
   <div class="step-container FS previous enabled">
     <div class="step-header">
       <h5 class="step-title vocab b-header">
@@ -101,7 +101,7 @@ exports[`Stepper.vue renders correctly has expected UI on CW step after DD 1`] =
 `;
 
 exports[`Stepper.vue renders correctly has expected UI on ND step 1`] = `
-<div class="stepper-container column">
+<div class="stepper-container">
   <div class="step-container FS previous enabled">
     <div class="step-header">
       <h5 class="step-title vocab b-header">

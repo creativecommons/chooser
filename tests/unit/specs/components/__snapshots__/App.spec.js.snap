@@ -23,12 +23,14 @@ exports[`App.vue Check if the App.vue component has the expected UI 1`] = `
       <localechooser-stub class="locale-chooser"></localechooser-stub>
     </div>
     <div class="columns">
-      <stepper-stub value="0"></stepper-stub>
+      <div class="column">
+        <stepper-stub value="0"></stepper-stub>
+        <help-section-stub></help-section-stub>
+      </div>
       <div class="column">
         <div class="fixed-right-column">
           <!---->
           <!---->
-          <helpsection-stub></helpsection-stub>
         </div>
       </div>
     </div>
