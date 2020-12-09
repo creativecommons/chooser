@@ -1,6 +1,11 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue, config } from '@vue/test-utils'
 import ChooserStep from '@/components/ChooserStep'
+import Buefy from 'buefy'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
+import VueI18n from 'vue-i18n'
+import Vuex from 'vuex'
+import Vue from 'vue'
+import store from '@/store'
 
 describe('ChooserStep.vue', () => {
     let wrapper
@@ -9,12 +14,22 @@ describe('ChooserStep.vue', () => {
     // Always creates a shallow instance of component
     beforeEach(() => {
         localVue = createLocalVue()
+        localVue.use(Vuex)
+        localVue.use(Buefy)
         localVue.use(VueVocabulary)
+        Vue.use(VueI18n)
+        const i18n = new VueI18n({
+            locale: 'en',
+            fallbackLocale: 'en',
+            messages: {}
+        })
+
+        config.mocks.i18n = i18n
+
+        config.mocks.$t = key => key
         wrapper = shallowMount(ChooserStep, {
-            localVue,
-            mocks: {
-                $t: key => key
-            }
+            store,
+            localVue
         })
     })
 
@@ -29,13 +44,15 @@ describe('ChooserStep.vue', () => {
             enabled: true,
             reversed: false,
             selected: undefined,
-            status: 'active',
-            id: 1,
-            name: 'BY'
+            status: 'current',
+            stepId: 1,
+            stepName: 'BY'
         })
 
+        expect(wrapper.vm.cardText).toBe('stepper.BY.not-selected')
         expect(wrapper.vm.noSelected).toBe('selected')
         expect(wrapper.vm.noText).toBe('stepper.BY.not-selected')
+        expect(wrapper.vm.question).toBe('stepper.BY.question')
         expect(wrapper.vm.tPrefix).toBe('stepper.BY')
         expect(wrapper.vm.yesSelected).toBe('not-selected')
         expect(wrapper.vm.yesText).toBe('stepper.BY.selected')
@@ -47,14 +64,16 @@ describe('ChooserStep.vue', () => {
             enabled: true,
             reversed: false,
             selected: true,
-            status: 'active',
-            id: 1,
-            name: 'BY'
+            status: 'current',
+            stepId: 1,
+            stepName: 'BY'
         })
 
         expect(wrapper.vm.radio).toBe('yes')
+        expect(wrapper.vm.cardText).toBe('stepper.BY.selected')
         expect(wrapper.vm.noSelected).toBe('not-selected')
         expect(wrapper.vm.noText).toBe('stepper.BY.not-selected')
+        expect(wrapper.vm.question).toBe('stepper.BY.question')
         expect(wrapper.vm.tPrefix).toBe('stepper.BY')
         expect(wrapper.vm.yesSelected).toBe('selected')
         expect(wrapper.vm.yesText).toBe('stepper.BY.selected')
@@ -66,37 +85,120 @@ describe('ChooserStep.vue', () => {
             enabled: true,
             reversed: false,
             selected: false,
-            status: 'active',
-            id: 1,
-            name: 'BY'
+            status: 'current',
+            stepId: 1,
+            stepName: 'BY'
         })
 
         expect(wrapper.vm.radio).toBe('no')
+        expect(wrapper.vm.cardText).toBe('stepper.BY.not-selected')
         expect(wrapper.vm.noSelected).toBe('selected')
         expect(wrapper.vm.noText).toBe('stepper.BY.not-selected')
+        expect(wrapper.vm.question).toBe('stepper.BY.question')
         expect(wrapper.vm.tPrefix).toBe('stepper.BY')
         expect(wrapper.vm.yesSelected).toBe('not-selected')
         expect(wrapper.vm.yesText).toBe('stepper.BY.selected')
     })
 
+    it('Check that `previous` step does not have actions div', () => {
+        wrapper.setProps({
+            status: 'previous',
+            stepId: 1,
+            stepName: 'BY'
+        })
+        const stepActions = wrapper.findAll('.step-actions')
+        expect(stepActions).toHaveLength(0)
+        const stepDescription = wrapper.findAll('.step-description')
+        expect(stepDescription).toHaveLength(1)
+    })
+
+    // Snapshot tests
+    it('Check if the Step.vue component has the expected UI if current', () => {
+        wrapper.setProps({
+            disabledDue: undefined,
+            enabled: true,
+            reversed: false,
+            selected: false,
+            stepName: 'SA',
+            status: 'current'
+        })
+
+        // expect(wrapper).toMatchSnapshot()
+    })
+    it('Check if the Step.vue component has the expected UI if previous', () => {
+        wrapper.setProps({
+            status: 'previous',
+            disabledDue: undefined,
+            enabled: true,
+            reversed: false,
+            selected: false,
+            stepName: 'SA'
+        })
+        // expect(wrapper).toMatchSnapshot()
+    })
+    it('Check if the Step.vue component has the expected UI if inactive', () => {
+        wrapper.setProps({
+            status: 'inactive',
+            disabledDue: undefined,
+            enabled: true,
+            reversed: false,
+            selected: false,
+            stepName: 'SA'
+        })
+        // expect(wrapper).toMatchSnapshot()
+    })
+    it('Check if the Step.vue component has the expected UI if disabled due is set', () => {
+        wrapper.setProps({
+            disabledDue: 'ND',
+            enabled: false,
+            reversed: false,
+            selected: false,
+            stepName: 'SA',
+            status: 'current'
+        })
+        // expect(wrapper).toMatchSnapshot()
+    })
+    it('Check if the Step.vue component has the expected UI if reversed', () => {
+        wrapper.setProps({
+            reversed: true,
+            disabledDue: undefined,
+            enabled: true,
+            selected: false,
+            stepName: 'SA',
+            status: 'current'
+        })
+        // expect(wrapper).toMatchSnapshot()
+    })
+    it('Mark up is correctly rendered', () => {
+        wrapper.setProps({
+            selected: undefined,
+            stepId: 0,
+            status: 'current'
+        })
+
+        // expect(wrapper.element).toMatchSnapshot()
+    })
+
     it('props:selected false', () => {
         wrapper.setProps({
             selected: false,
-            name: 'FS',
-            id: 0,
-            status: 'active'
+            stepName: 'FS',
+            stepId: 0,
+            status: 'current'
         })
         expect(wrapper.vm.radio).toBe('no')
+        expect(wrapper.vm.cardText).toBe('stepper.FS.not-selected')
     })
 
     it('props:selected true', () => {
         wrapper.setProps({
             selected: true,
-            name: 'FS',
-            id: 0,
-            status: 'active'
+            stepName: 'FS',
+            stepId: 0,
+            status: 'current'
         })
 
         expect(wrapper.vm.radio).toBe('yes')
+        expect(wrapper.vm.cardText).toBe('stepper.FS.selected')
     })
 })

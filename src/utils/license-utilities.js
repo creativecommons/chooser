@@ -2,6 +2,8 @@
 
 /** @typedef {('CC0 1.0'|'CC BY 4.0'|'CC BY-NC 4.0'|'CC BY-NC-ND 4.0'|'CC BY-NC-SA 4.0'|'CC BY-ND 4.0'|'CC BY-ND-SA 4.0')} ShortLicenseName
  */
+/** @typedef {('CC0 1.0 Universal'|'Attribution 4.0 International'|'Attribution-ShareAlike 4.0 International'|'Attribution-NonCommercial-ShareAlike 4.0 International'|'Attribution-NonCommercial-NoDerivatives 4.0 International'|'Attribution-NoDerivatives 4.0 International')} FullLicenseName
+ */
 import { LICENSES } from './licenses'
 const CC0Attributes = LICENSES.CC0.ATTRIBUTES
 const CCBYAttributes = LICENSES.CC_BY.ATTRIBUTES
@@ -153,7 +155,7 @@ const DCT_NAMESPACE = {
     URI: 'http://purl.org/dc/terms/'
 }
 const ICON_STYLE = 'height:22px!important;margin-left:3px;vertical-align:text-bottom;'
-const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons/'
+const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons'
 
 /**
  * Generate html for creator:
@@ -204,36 +206,37 @@ function generateWorkCode(workTitle, workUrl) {
  * Generates the html for the rich text license information, including license name,
  * link to the license deed, and license icons
  * @param {LicenseAttributes} licenseAttr
- * @param {ShortLicenseName} shortLicenseName
+ * @param {ShortLicenseName|FullLicenseName} licenseName
  * @returns {string} HTML code for the license
  */
-function generateLicenseCode(licenseAttr, shortLicenseName) {
+function generateLicenseCode(licenseAttr, licenseName) {
     const iconStyle = `style="${ICON_STYLE}"`
     const assetPathRef = '?ref=chooser-v1'
     const licenseIconsCode = ['cc', ...licenseIconsArr(licenseAttr)]
-        .map(attr => `<img ${iconStyle} src="${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}" />`
+        .map(attr => `<img ${iconStyle} src="${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}">`
         ).join('')
 
     return (`<a rel="license" href="${licenseUrl(licenseAttr)}" target="_blank"
         rel="license noopener noreferrer" style="display:inline-block;">
-        ${shortLicenseName}${licenseIconsCode}</a>`)
+        ${licenseName}${licenseIconsCode}</a>`)
 }
 
 /**
  * Generate data for use in attribution HTML through i18n
  * @param attributionDetails
  * @param {ShortLicenseName} shortLicenseName
+ * @param {Boolean} isFullName - Should the license name be full (short by default)
  * @returns {{creator: string, workTitle: string, licenseLink: string, htmlString: string}}
  */
-function generateHTML(attributionDetails, shortLicenseName) {
+function generateHTML(attributionDetails, shortLicenseName, isFullName = false) {
     const dataForHtmlGeneration = {}
     const { creatorName, creatorProfileUrl, workTitle, workUrl } = attributionDetails
     dataForHtmlGeneration.paragraph =
         `<p ${DCT_NAMESPACE.NAME}="${DCT_NAMESPACE.URI}"` +
-        ` ${CC_NAMESPACE.NAME}="${CC_NAMESPACE.URI}"` +
-        ' class="license-text">'
+        ` ${CC_NAMESPACE.NAME}="${CC_NAMESPACE.URI}">`
     const licenseAttr = shortToAttr(shortLicenseName)
-    dataForHtmlGeneration.license = generateLicenseCode(licenseAttr, shortLicenseName)
+    const licenseName = isFullName ? attrToFull(licenseAttr) : shortLicenseName
+    dataForHtmlGeneration.license = generateLicenseCode(licenseAttr, licenseName)
     dataForHtmlGeneration.creator = generateCreatorCode(creatorName, creatorProfileUrl)
     dataForHtmlGeneration.work = generateWorkCode(workTitle, workUrl)
     return dataForHtmlGeneration
