@@ -128,7 +128,6 @@
             "licensed-text": "is licensed under",
             "marked-text": "is marked with",
             "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}"
-        },
         "print": {
             "text": " To view a copy of this license, visit {linkToLicenseDeed}"
         }
