@@ -13,7 +13,7 @@
     "stepper": {
         "nav": {
             "previous-label": "BACK",
-            "next-label": "NEXT STEP",
+            "next-label": "NEXT",
             "finish-label": "Attribution details are automatically updated"
         },
         "yes": "Yes. ",
@@ -23,7 +23,7 @@
         "FS": {
             "heading": "License Expertise",
             "question": "Do you know which license you need?",
-            "selected": "I know which license I need.",
+            "selected": "I know the license I need.",
             "not-selected": "I need help selecting a license."
         },
         "BY": {
@@ -127,10 +127,10 @@
             "by": "by",
             "licensed-text": "is licensed under",
             "marked-text": "is marked with",
-            "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}",
-            "print": {
-                "text": " To view a copy of this license, visit {linkToLicenseDeed}"
-            }
+            "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}"
+        },
+        "print": {
+            "text": " To view a copy of this license, visit {linkToLicenseDeed}"
         }
     },
     "help": {
