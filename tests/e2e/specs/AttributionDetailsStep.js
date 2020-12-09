@@ -17,7 +17,7 @@ module.exports = {
     //     const workTitleInput = '#site-container > div.columns > div.stepper-container.column > div.step-container.current.enabled > div.step-content > div > form > div:nth-child(3) > div > input'
     //     const backBtn = '.previous-button'
     //     const paginationFinish = '.pagination-finish'
-
+    //
     //     browser
     //         .init()
     //         .click(knowLicenseSelector)
