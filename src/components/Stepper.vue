@@ -1,5 +1,5 @@
 <template>
-    <div class="stepper-container column">
+    <div class="stepper-container">
         <div
             v-for="(step, idx) in visibleSteps()"
             :key="idx"
@@ -309,7 +309,6 @@ export default {
         padding-bottom: 8px;
         &:last-of-type {
             border-bottom: 2px solid #D8D8D8;
-            margin-bottom: 15rem;
          }
     }
     .step-header {
