@@ -123,4 +123,16 @@ export default {
 .inactive .step-header__title {
         color: #b0b0b0;
     }
+@media (max-width: 768px) {
+    .step-header__title {
+        font-size: 1.25rem;
+        padding-left: calc(var(--step-left-padding) * 2 + var(--counter-size));
+        &::before {
+            top: 1rem;
+        }
+    }
+    .step-header {
+        padding-top: 1rem;
+    }
+}
 </style>

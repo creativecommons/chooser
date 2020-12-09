@@ -43,9 +43,4 @@ describe('App.vue', () => {
     it('Check if App.vue component renders without any errors', () => {
         expect(wrapper.isVueInstance()).toBeTruthy()
     })
-
-    // Snapshot tests
-    it('Check if the App.vue component has the expected UI', () => {
-        expect(wrapper).toMatchSnapshot()
-    })
 })

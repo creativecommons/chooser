@@ -20,18 +20,15 @@
                     </li>
                 </ul>
             </nav>
-            <div class="page-head">
-                <div class="select-license-column">
-                    <h2 class="vocab">
-                        {{ $t('chooser.heading') }}
-                    </h2>
-                    <p class="stepper-instructions vocab-body body-bigger">
-                        {{ $t('chooser.instructions') }}
-                    </p>
-                </div>
-                <LocaleChooser class="locale-chooser" />
-            </div>
-            <div class="columns">
+
+            <h2>
+                {{ $t('chooser.heading') }}
+            </h2>
+            <p class="stepper-instructions body-bigger">
+                {{ $t('chooser.instructions') }}
+            </p>
+
+            <div class="columns wider-gap">
                 <div class="column">
                     <Stepper
                         v-model="currentStepId"
@@ -69,7 +66,6 @@ import Stepper from './components/Stepper'
 import LicenseUseCard from './components/LicenseUseCard'
 import HeaderSection from './components/HeaderSection'
 import FooterSection from './components/FooterSection'
-import LocaleChooser from './components/LocaleChooser'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
 
 export default {
@@ -80,8 +76,7 @@ export default {
         LicenseDetailsCard,
         LicenseUseCard,
         HeaderSection,
-        FooterSection,
-        LocaleChooser
+        FooterSection
     },
     data() {
         return {
@@ -154,23 +149,21 @@ export default {
     #site-container {
         padding: 0.75rem;
     }
-    .breadcrumb {
+    #site-container .breadcrumb {
         margin-bottom: 2rem;
     }
-    .page-head {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 1.5rem;
-        grid-template-areas: "localechooser" "heading";
-    }
-    .selected-license-column {
-        grid-area: heading;
-    }
-    .locale-chooser {
-        grid-area: localechooser;
+    #site-container h2 {
+        letter-spacing: 0.05rem;
     }
     .stepper-instructions {
-        margin-bottom: 14px;
+        margin-top: 0.5rem;
+        margin-bottom: 2.75rem;
+    }
+    .columns.wider-gap .column:first-child {
+        padding-right: 1.5rem
+    }
+    .columns.wider-gap .column:last-child {
+        padding-left: 1.5rem
     }
     .fixed-right-column {
         position: sticky;
@@ -203,5 +196,36 @@ export default {
             padding-right: 0;
         }
     }
+    @media only screen and (max-width: 768px) {
+        #site-container {
+            padding-right: 1.375rem;
+            padding-left: 1.375rem;
+        }
+        #site-container h2, #site-container h3 {
+            font-size: 1.4375rem;
+        }
+        .body-bigger {
+            font-size: 1rem;
+        }
+        .stepper-instructions {
+            margin-bottom: 2rem;
+        }
+        .columns.wider-gap .column:first-child,
+        .columns.wider-gap .column:last-child {
+            padding-right: 0.75rem;
+            padding-left: 0.75rem;
+        }
 
+    }
+    .appear-enter-active {
+        transition: all .8s ease;
+    }
+    .appear-leave-active {
+        transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .appear-enter, .appear-leave-to
+        /* .appear-leave-active below version 2.1.8 */ {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
 </style>
