@@ -11,7 +11,8 @@ const defaultState = {
         creatorProfileUrl: '',
         workTitle: '',
         workUrl: ''
-    }
+    },
+    attributionType: 'short'
 }
 
 const createStore = (state) => {
@@ -83,6 +84,9 @@ const createStore = (state) => {
             },
             setWorkUrl(state, newName) {
                 state.attributionDetails.workUrl = newName
+            },
+            setAttributionType(state, attrType) {
+                state.attributionType = attrType
             }
         }
     })

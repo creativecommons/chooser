@@ -1,45 +1,44 @@
 <template>
-    <a
-        :href="url"
-        class="photo-license-icons"
-        target="_blank"
-        rel="noopener noreferrer"
-        @click.stop="() => false"
-    >
+    <span>
         <img
-            class="photo-license-icon"
-            alt="CC icon"
-            title="CC icon"
+            :width="size"
+            :height="size"
             src="../assets/license-icons/cc.svg"
         >
         <img
             v-for="(license, index) in iconsArr"
             :key="index"
-            class="photo-license-icon"
-            :alt="license + ' icon'"
-            :title="license + ' icon'"
+            :width="size"
+            :height="size"
             :src="require(`../assets/license-icons/${license.toLowerCase()}.svg`)"
         >
-    </a>
+    </span>
 </template>
 <script>
 const LicenseIcons = {
     name: 'license-icons',
-    components: {},
-    props: ['url', 'iconsArr']
+    props: {
+        size: {
+            type: [Number, String],
+            default: 20
+        },
+        iconsArr: {
+            type: Array,
+            default: []
+        }
+    }
 }
 export default LicenseIcons
 </script>
 <style lang="scss" scoped>
-    .photo-license-icons {
-        display: inline-block;
+    span {
+        display: inline-flex;
+        align-items:center;
         white-space: nowrap;
         vertical-align: middle;
         margin-right:3px;
     }
-    .photo-license-icon {
-      height: 2rem;
-      width: auto;
-      margin-right: 3px;
+    span > * {
+        margin-right: 3px;
     }
 </style>
