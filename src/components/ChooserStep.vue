@@ -1,79 +1,56 @@
 <template>
-    <div class="step-content">
-        <div
-            v-if="status==='previous'||showDisabledDue"
-            class="step-description vocab-body body-normal"
-        >
-            <p class="vocab-body body-normal">
-                {{ $t(cardText) }}
-            </p>
+    <div class="step-actions">
+        <div :class="['field', yesSelected]">
+            <v-radio
+                v-model="radio"
+                native-value="yes"
+                name="radio"
+            >
+                <span class="vocab-body body-normal">{{ $t('stepper.yes') }}{{ $t(yesText) }}</span>
+            </v-radio>
         </div>
-        <div
-            v-else-if="status==='current'"
-            class="step-actions"
-        >
-            <div
-                class="field"
-                :class="yesSelected"
+        <div :class="['field', noSelected]">
+            <v-radio
+                v-model="radio"
+                native-value="no"
+                name="radio"
             >
-                <v-radio
-                    v-model="radio"
-                    native-value="yes"
-                >
-                    <span class="vocab-body body-normal">{{ $t('stepper.yes') }}{{ $t(yesText) }}</span>
-                </v-radio>
-            </div>
-            <div
-                class="field"
-                :class="noSelected"
-            >
-                <v-radio
-                    v-model="radio"
-                    native-value="no"
-                >
-                    <span class="vocab-body body-normal">{{ $t('stepper.no') }}{{ $t(noText) }}</span>
-                </v-radio>
-            </div>
+                <span class="vocab-body body-normal">{{ $t('stepper.no') }}{{ $t(noText) }}</span>
+            </v-radio>
         </div>
     </div>
 </template>
 
 <script>
-
 export default {
     name: 'ChooserStep',
     props: {
-        stepName: String,
+        name: String,
         selected: Boolean,
-        stepId: Number,
+        id: Number,
         status: {
             type: String,
             validator(value) {
-                return ['current', 'previous', 'inactive'].includes(value)
+                return ['active', 'previous', 'inactive'].includes(value)
             }
         },
-        reversed: Boolean,
         enabled: Boolean,
         disabledDue: String
     },
     computed: {
+        /**
+         * NC, ND and SA steps are reversed: unlike BY, they are selected when the user
+         * answers no, and not selected when the user answers yes
+         * @returns {boolean}
+         */
+        reversed() {
+            return ['NC', 'ND', 'SA'].indexOf(this.$props.name) > -1
+        },
         showDisabledDue() {
             return !this.$props.enabled && this.$props.disabledDue !== undefined
         },
         qualifier() {
             return this.reversed ? !this.selected : this.selected
-        },
-        cardText() {
-            if (this.stepName === 'FS') {
-                return this.$props.selected ? 'stepper.FS.selected' : 'stepper.FS.not-selected'
-            }
-            if (this.$props.enabled === false) {
-                return this.$props.disabledDue === 'ND'
-                    ? 'stepper.disabled-text-ND'
-                    : 'stepper.disabled-text'
-            }
-            const prefix = `stepper.${this.$props.stepName}.${this.qualifier ? '' : 'not-'}`
-            return `${prefix}selected`
         },
         radio: {
             get() {
@@ -84,22 +61,19 @@ export default {
                 }
             },
             set(newVal) {
-                let isSelected = newVal === 'yes'
-                isSelected = this.reversed ? !isSelected : isSelected
-                this.$emit('change', this.$props.stepName, this.$props.stepId, isSelected)
+                let selected = newVal === 'yes'
+                selected = this.reversed ? !selected : selected
+                this.$emit('change', { name: this.$props.name, id: this.$props.id, selected })
             }
         },
         tPrefix() {
-            return 'stepper.' + this.stepName
-        },
-        question() {
-            return this.tPrefix + '.question'
+            return `stepper.${this.$props.name}`
         },
         yesText() {
-            return this.tPrefix + '.selected'
+            return `${this.tPrefix}.selected`
         },
         noText() {
-            return this.tPrefix + '.not-selected'
+            return `${this.tPrefix}.not-selected`
         },
         yesSelected() {
             return this.selected ? 'selected' : 'not-selected'
