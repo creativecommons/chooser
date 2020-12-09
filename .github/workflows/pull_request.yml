@@ -1,4 +1,4 @@
-name: Pull request
+name: Publish
 
 on:
     push:
@@ -26,7 +26,7 @@ jobs:
             - name: Build
               run: |
                   npm run build
-                  echo "chooser-beta.creatovecommons.org" > "./dist/CNAME"
+                  echo "chooser-beta.creativecommons.org" > "./dist/CNAME"
                   rm -r -f "./docs"
                   mv -f -v "./dist" "./docs"
 

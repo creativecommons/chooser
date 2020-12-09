@@ -1,30 +1,34 @@
 import Vuex from 'vuex'
-import { shallowMount, createLocalVue, config } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Stepper from '@/components/Stepper'
-import Buefy from 'buefy'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
-import VueI18n from 'vue-i18n'
 import Vue from 'vue'
 import store from '@/store'
 
-function getStepId(wrapper, stepName) {
-    return wrapper.vm.steps.filter((step) => { return step.name === stepName })[0].id
+function getStepId(wrapper, name) {
+    return wrapper.vm.steps.filter((step) => { return step.name === name })[0].id
 }
-function setStepSelected(wrapper, stepName, isSelected) {
-    const stepId = getStepId(wrapper, stepName)
-    wrapper.vm.changeStepSelected(stepName, stepId, isSelected)
+async function setStepSelected(wrapper, name, selected) {
+    const stepId = getStepId(wrapper, name)
+    await wrapper.vm.changeStepSelected({ name, id: stepId, selected })
 }
-function stepHeadingText(steps, index) {
-    return steps.at(index).find('h5').text()
-}
-function advanceStep(wrapper, actions) {
-    for (const { stepName, isSelected, license } of actions) {
-        const stepId = getStepId(wrapper, stepName)
-        if (stepName === 'DD') {
-            wrapper.vm.$store.commit('updateAttributesFromShort', license)
+
+async function advanceStep(wrapper, actions) {
+    for (const [name, data] of Object.entries(actions)) {
+        let selected, license
+        if (Array.isArray(data)) {
+            [selected, license] = data
+        } else {
+            selected = data
         }
-        wrapper.vm.changeStepSelected(stepName, stepId, isSelected)
-        wrapper.vm.handleNext(stepName)
+        const stepId = getStepId(wrapper, name)
+        if (name === 'DD') {
+            wrapper.vm.$store.commit('updateAttributesFromShort', license)
+            await Vue.nextTick()
+        }
+        wrapper.vm.changeStepSelected({ name, id: stepId, selected })
+        await Vue.nextTick()
+        wrapper.vm.navigate({ direction: 'next', name })
     }
 }
 
@@ -34,27 +38,17 @@ let localVue
 function setUp() {
     localVue = createLocalVue()
     localVue.use(Vuex)
-    localVue.use(Buefy)
     localVue.use(VueVocabulary)
-    Vue.use(VueI18n)
-    const messages = require('@/locales/en.json')
-    const i18n = new VueI18n({
-        locale: 'en',
-        fallbackLocale: 'en',
-        messages: messages
-    })
 
-    config.mocks.i18n = i18n
-
-    config.mocks.$t = key => {
-        // key is a string (eg. 'stepper.ND.question')
-        // this line converts it into an object reference
-        // eg. messages['stepper.ND.question'] -> messages.stepper.ND.question
-        return key.split('.').reduce((messages, k) => messages[k], i18n.messages)
-    }
     wrapper = shallowMount(Stepper, {
         store,
-        localVue
+        localVue,
+        mocks: {
+            $t: key => key
+        },
+        propsData: {
+            value: 0
+        }
     })
     wrapper.vm.$on('input', (newVal) => {
         wrapper.setProps({ value: newVal })
@@ -67,86 +61,78 @@ describe('Stepper.vue', () => {
     describe('renders correctly', () => {
         it('is called', () => {
             expect(wrapper.name()).toBe('Stepper')
-            expect(wrapper.isVueInstance()).toBeTruthy()
         })
-        it('has expected UI initially', () => {
-            expect(wrapper).toMatchSnapshot()
+        it('has expected UI on ND step', async() => {
+            await advanceStep(wrapper, { FS: false, BY: true, NC: false })
+            const stepContainers = wrapper.findAll('.step-container')
+            expect(stepContainers.length).toEqual(6)
+            const activeStep = wrapper.findAll('.step-container.active')
+            expect(activeStep.length).toEqual(1)
         })
-        it('has expected UI on ND step', () => {
-            advanceStep(wrapper, [
-                { stepName: 'FS', isSelected: false },
-                { stepName: 'BY', isSelected: true },
-                { stepName: 'NC', isSelected: false }
-            ])
-            expect(wrapper).toMatchSnapshot()
-        })
-        it('has expected UI on CW step after DD', () => {
-            advanceStep(wrapper, [
-                { stepName: 'FS', isSelected: true },
-                { stepName: 'DD', isSelected: true, license: 'CC0 1.0' }
-            ])
-            expect(wrapper).toMatchSnapshot()
-        })
-    })
-
-    describe('Step headings', () => {
-        it('inactive step headings are not clickable', () => {
-            const stepHeaders = wrapper.findAll('.step-header')
-            const steps = wrapper.findAll('.step-container')
-            stepHeaders.at(0).trigger('click')
-            expect(steps.at(0).classes('current')).toBe(true)
-            stepHeaders.at(1).trigger('click')
-            expect(steps.at(1).classes('inactive')).toBe(true)
-        })
-        it('clicking on disabled previous step does not change current step', () => {
-            advanceStep(wrapper,
-                [
-                    { stepName: 'FS', isSelected: false },
-                    { stepName: 'BY', isSelected: false }
-                ])
-            expect(wrapper.find('.current').classes()).toContain('CW')
-            wrapper.findAll('.step-header').at(2).trigger('click')
-            expect(wrapper.find('.current').classes()).toContain('CW')
+        it('has expected UI on CW step after DD', async() => {
+            await advanceStep(wrapper, { FS: true, DD: [true, 'CC0 1.0'] }
+            )
         })
     })
 
     describe('FirstStep interactions', () => {
-        it('choosing Yes sets 3 steps visible: FS, Dropdown and AttributionDetails, opens DD', () => {
-            advanceStep(wrapper, [
-                { stepName: 'FS', isSelected: true }])
+        it('choosing Yes sets 3 steps visible: FS, Dropdown and AttributionDetails, opens DD', async() => {
+            await advanceStep(wrapper, { FS: true })
             const steps = wrapper.findAll('.step-container')
             expect(steps.length).toEqual(3)
-            expect(steps.at(0).classes('previous')).toBe(true)
-            expect(wrapper.find('.current').classes('DD')).toBe(true)
+            expect(steps.at(0).classes('completed')).toBe(true)
+            expect(wrapper.find('.active').classes('DD')).toBe(true)
         })
         it('choosing No sets 6 steps visible: FS, BY, NC, ND, SA and AttributionDetails, opens BY', () => {
             setStepSelected(wrapper, 'FS', false)
-            wrapper.find('stepnavigation-stub').vm.$emit('navigate', { direction: 'next', stepName: 'FS' })
+            wrapper.find('stepnavigation-stub').vm.$emit('navigate', { direction: 'next', name: 'FS' })
+            Vue.nextTick()
             const steps = wrapper.findAll('.step-container')
             expect(steps.length).toEqual(6)
-            expect(wrapper.vm.currentStepId).toEqual(1)
-            expect(stepHeadingText(steps, 1)).toEqual(wrapper.vm.$t('stepper.BY.question'))
+            expect(wrapper.vm.activeStepId).toEqual(1)
         })
     })
 
     describe('DropdownStep interactions', () => {
-        beforeEach(() => {
+        beforeEach(async() => {
             // setUp()
-            advanceStep(wrapper, [
-                { stepName: 'FS', isSelected: true }])
+            await advanceStep(wrapper, { FS: true })
         })
         it('selecting CC0 makes 4 steps visible and opens Copyright Waiver step', async() => {
             const shortName = 'CC0 1.0'
-            advanceStep(wrapper, [{ stepName: 'DD', isSelected: true, license: shortName }])
+            await advanceStep(wrapper, { DD: [true, shortName] })
             const steps = wrapper.findAll('.step-container')
             expect(steps.length).toEqual(4)
-            expect(wrapper.find('.current').classes()).toContain('CW')
+            expect(wrapper.find('.active').classes()).toContain('CW')
         })
         it('selecting a BY license and clicking Next makes 3 steps visible and opens AttributionDetails step', async() => {
-            advanceStep(wrapper, [{ stepName: 'DD', isSelected: true, license: 'CC BY 4.0' }])
+            await advanceStep(wrapper, { DD: [true, 'CC BY 4.0'] })
             const steps = wrapper.findAll('.step-container')
             expect(steps.length).toEqual(3)
-            expect(wrapper.find('.current').classes()).toContain('AD')
+            expect(wrapper.find('.active').classes()).toContain('AD')
+        })
+    })
+
+    describe('Steps are disabled correctly', () => {
+        it('selecting CC0 makes NC, ND, SA disabled', async() => {
+            await advanceStep(wrapper, { FS: false, BY: false })
+
+            const steps = wrapper.findAll('.step-container')
+            expect(steps.length).toEqual(7)
+            const disabledSteps = wrapper.findAll('.step-container.disabled')
+            expect(disabledSteps.length).toEqual(3)
+            expect(wrapper.find('.NC').classes()).toContain('disabled')
+            expect(wrapper.find('.ND').classes()).toContain('disabled')
+            expect(wrapper.find('.SA').classes()).toContain('disabled')
+        })
+        it('selecting ND makes SA  license and clicking Next makes 3 steps visible and opens AttributionDetails step', async() => {
+            await advanceStep(wrapper, { FS: false, BY: true, NC: true, ND: true })
+
+            const steps = wrapper.findAll('.step-container')
+            expect(steps.length).toEqual(6)
+            const disabledSteps = wrapper.findAll('.step-container.disabled')
+            expect(disabledSteps.length).toEqual(1)
+            expect(wrapper.find('.SA').classes()).toContain('disabled')
         })
     })
 })

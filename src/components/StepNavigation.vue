@@ -3,15 +3,15 @@
         <v-button
             v-if="stepName!=='FS'"
             class="is-border previous-button"
-            @click="handlePrevious"
+            @click="handleNavigation('back')"
         >
             {{ $t('stepper.nav.previous-label') }}
         </v-button>
         <v-button
             v-if="stepName!=='AD'"
-            :class="['is-success', 'next-button', isNextEnabled ? '' : 'disabled']"
+            :class="['is-success', 'next-button', { 'disabled' : isNextEnabled } ]"
             :disabled="!isNextEnabled"
-            @click="handleNext"
+            @click="handleNavigation('next')"
         >
             {{ $t('stepper.nav.next-label') }}
         </v-button>
@@ -32,15 +32,12 @@ export default {
         },
         isNextEnabled: {
             type: Boolean,
-            required: true
+            default: false
         }
     },
     methods: {
-        handlePrevious() {
-            this.$emit('navigate', { direction: 'previous', stepName: this.stepName })
-        },
-        handleNext() {
-            this.$emit('navigate', { direction: 'next', stepName: this.stepName })
+        handleNavigation(direction) {
+            this.$emit('navigate', { direction, stepName: this.stepName })
         }
     }
 }
@@ -48,14 +45,13 @@ export default {
 
 <style lang="scss" scoped>
 .step-navigation {
-    margin: 13px 0;
-    padding-left: 65px;
-        .button + .button {
-            margin-left: 1rem;
-        }
+    padding: 1.375rem 0.5rem 1.375rem var(--step-left-padding);
+    .button + .button {
+        margin-left: 1rem;
     }
-.pagination-finish{
+}
+.pagination-finish {
     margin-left: 1rem;
-    line-height: 42px;
+    line-height: 2.625rem;
 }
 </style>

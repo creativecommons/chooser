@@ -4,11 +4,11 @@
 
 const stepperCommands = {
     clickYes: function() {
-        this.click('.step-actions .field:first-of-type .check')
+        this.click('.radio-input[value="yes"]')
         return this
     },
     clickNo: function() {
-        this.click('.step-actions .field:last-of-type .check')
+        this.click('.radio-input[value="no"]')
         return this
     },
     clickNext: function() {
@@ -30,8 +30,8 @@ const stepperCommands = {
         return this
     },
     clickWaiver: function() {
-        this.click('.checkbox:first-of-type input[type=checkbox]')
-            .click('.checkbox:last-of-type input[type=checkbox]')
+        this.click('.v-checkbox:first-child')
+            .click('.v-checkbox:last-child')
             .click('.next-button')
         return this
     },
@@ -52,7 +52,6 @@ const chooserCommands = {
     assertSelectedLicenseDisplayed: function(licenseName) {
         this
             .assert.containsText('.license-name', licenseName)
-            .assert.containsText('p.license-text a', licenseName)
         return this
     }
 }
@@ -62,17 +61,17 @@ module.exports = {
 
     elements: {
         appContainer: '#app',
-        stepper: '.stepper-container',
+        stepper: '.stepper__container',
         selectedLicenseCard: '.selected-license-card',
         licenseUseCard: '.license-use-card'
     },
 
     sections: {
         stepper: {
-            selector: '.stepper-container',
+            selector: '.stepper__container',
             elements: {
                 currentStep: {
-                    selector: '.step-container.current'
+                    selector: '.step-container.active'
                 }
             },
             commands: [stepperCommands]
