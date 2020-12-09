@@ -7,11 +7,11 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
   <p
     class="attribution-details-instructions"
   >
-    
+
         stepper.AD.instructions
-    
+
   </p>
-   
+
   <form
     class="attribution-details-form"
   >
@@ -38,7 +38,7 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
       </div>
       <!---->
     </div>
-     
+
     <div
       class="field"
     >
@@ -62,7 +62,7 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
       </div>
       <!---->
     </div>
-     
+
     <div
       class="field"
     >
@@ -86,7 +86,7 @@ exports[`AttributionDetailsStep Component Rendering Component mounted if status 
       </div>
       <!---->
     </div>
-     
+
     <div
       class="field"
     >
