@@ -13,7 +13,8 @@ module.exports = {
         const workTitleLabel = 'form > div:nth-child(3)  label'
         const workTitleInput = 'form > div:nth-child(3)  input'
         const backBtn = '.previous-button'
-        const paginationFinish = '.pagination-finish'
+        const doneBtn = '.done-button'
+        const restartBtn = '.restart-button'
 
         browser
             .init()
@@ -32,6 +33,7 @@ module.exports = {
             .assert.visible(workTitleLabel, 'Work Title Label is visible')
             .assert.visible(workTitleInput, 'Work Title Input is visible')
             .assert.visible(backBtn, 'Back button is visible')
-            .assert.visible(paginationFinish, 'Pagination Finish Block is visible')
+            .assert.visible(doneBtn, 'Done button is visible')
+            .assert.visible(restartBtn, 'Start again button is visible')
     }
 }

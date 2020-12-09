@@ -16,7 +16,6 @@ describe('LicenseDetailsCard.vue', () => {
     let store
     let currentLicense
 
-
     // Always creates a shallow instance of component
     beforeEach(() => {
         const localVue = createLocalVue()
@@ -71,11 +70,9 @@ describe('LicenseDetailsCard.vue', () => {
         const licenseDeedLink = wrapper.find('a.license-deed-link')
         expect(licenseDeedLink.attributes().href).toEqual(currentLicense.URL)
     })
-
 })
 
 describe('LicenseDetailsCard.vue', () => {
-
     it('Check if Recommended section renders correctly for CC0', () => {
         const localVue = createLocalVue()
         localVue.use(VueI18n)
