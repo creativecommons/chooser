@@ -5,6 +5,7 @@ import i18n from './i18n'
 import App from './App.vue'
 import createStore from './store'
 import './styles/vocab.scss'
+import VueScrollTo from 'vue-scrollto'
 
 // Analytics
 import * as Sentry from '@sentry/browser'
@@ -32,6 +33,7 @@ Vue.component('vue-fontawesome', FontAwesomeIcon)
 Vue.config.productionTip = false
 Vue.use(Buefy)
 Vue.use(VueVocabulary)
+Vue.use(VueScrollTo)
 
 if (process.env.NODE_ENV === 'production') {
     Vue.use(VueAnalytics, {

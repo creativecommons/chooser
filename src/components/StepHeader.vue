@@ -44,7 +44,7 @@ export default {
             return status === 'active' ? `${prefix}.question` : `${prefix}.heading`
         },
         completedStepCaption() {
-            const { id, name, enabled, selected } = this.step
+            const { name, enabled, selected } = this.step
             const reversed = (name) => (['NC', 'ND', 'SA'].indexOf(name) > -1)
             let captionKey
             if (name === 'DD') {
@@ -52,7 +52,7 @@ export default {
             } else if (['FS', 'CW'].includes(name)) {
                 captionKey = selected ? `stepper.${name}.selected` : `stepper.${name}.not-selected`
             } else if (enabled === false) {
-                captionKey = (this.steps[id].disabledDue === 'ND')
+                captionKey = (this.disabledDue === 'ND')
                     ? 'stepper.disabled-text-ND'
                     : 'stepper.disabled-text'
             } else {

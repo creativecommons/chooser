@@ -29,8 +29,10 @@
                     >
                         <span class="readable-string">
                             <i :class="['icon', 'has-background-white', `cc-${item}`]" />
-                            <b>{{ item === 'zero' ? 'CC0' : item.toUpperCase() }}:</b>
-                            {{ $t(`license-details-card.item-description.${item}`) }}
+                            <span>
+                                <b>{{ item === 'zero' ? 'CC0' : item.toUpperCase() }}:</b>
+                                {{ $t(`license-details-card.item-description.${item}`) }}
+                            </span>
                         </span>
                         <span
                             v-if="item === 'nc'"
@@ -79,7 +81,7 @@ export default {
         },
         cardHeading() {
             return this.shortName === LICENSES.CC0.SHORT
-                ? this.$t('license-details-card.cc0-heading')
+                ? this.$t('license-details-card.heading-cc0')
                 : this.$t('license-details-card.heading')
         }
 

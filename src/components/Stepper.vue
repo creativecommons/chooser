@@ -1,16 +1,22 @@
 <template>
-    <div class="stepper__container">
+    <div
+        ref="top"
+        class="stepper__container"
+    >
         <div
             v-for="(step, idx) in visibleSteps()"
             :key="idx"
+            :ref="`step-${idx}`"
             :class="['step-container', step.name, step.status, { disabled: !step.enabled }]"
         >
             <step-header
                 :step="step"
+                v-bind="step"
                 @activate="setActiveStep(step.id)"
             />
             <div
                 v-if="step.status==='active'"
+                ref="activeStep"
                 class="step-content"
             >
                 <component
@@ -25,6 +31,8 @@
                 :step-name="step.name"
                 :is-next-enabled="isNextEnabled(step.id)"
                 @navigate="navigate"
+                @restart="restart"
+                @done="done"
             />
         </div>
     </div>
@@ -38,6 +46,7 @@ import DropdownStep from './DropdownStep'
 import StepHeader from './StepHeader'
 import StepNavigation from './StepNavigation'
 import { updateVisibleEnabledStatus } from '../utils/license-utilities'
+import { initialSteps } from '@/utils/steps'
 
 export default {
     name: 'Stepper',
@@ -57,36 +66,7 @@ export default {
     },
     data() {
         return {
-            /** Data for 7 Stepper steps
-             * FS: First step, checks if user knows the license (and we need to open the dropdown)
-             * BY, NC, ND, SA: license attribute selection steps
-             * DD: Step with Dropdown for quick license selection, opens if user knows the license
-             * CW: Copyright waiver step for CC0 if the user selects NO on BY step
-             * AD: Attribution Details step with the form
-             *
-             * Properties:
-             * visible: sets whether the step should be shown or not. Eg. if BY is selected,
-             * Copyright Waiver should not be shown, as the user will not waive copyright
-             *
-             * enabled: sets whether the step can be clicked/selected.
-             * Eg. SA shouldn't be selectable if ND was selected
-             *
-             * status: can be set to 'active', 'completed', or 'inactive', to show the user's
-             * progress in Stepper
-             *
-             * selected: set to undefined before the user interacts with a step; true/false after
-             * user selects radio buttons/ checkboxes/ etc.
-             */
-            steps: [
-                { id: 0, name: 'FS', visible: true, enabled: true, status: 'active', selected: undefined },
-                { id: 1, name: 'BY', visible: true, enabled: true, status: 'inactive', selected: undefined },
-                { id: 2, name: 'NC', visible: true, enabled: true, status: 'inactive', selected: undefined },
-                { id: 3, name: 'ND', visible: true, enabled: true, status: 'inactive', selected: undefined },
-                { id: 4, name: 'SA', visible: true, enabled: true, status: 'inactive', selected: undefined },
-                { id: 5, name: 'DD', visible: false, enabled: true, status: 'inactive', selected: undefined },
-                { id: 6, name: 'CW', visible: false, enabled: true, status: 'inactive', selected: undefined },
-                { id: 7, name: 'AD', visible: true, enabled: true, status: 'inactive', selected: undefined }
-            ]
+            steps: [...initialSteps]
         }
     },
     computed: {
@@ -138,10 +118,19 @@ export default {
         isNextEnabled(id) {
             return this.steps[id].selected !== undefined
         },
-
         navigate({ direction, name }) {
+            // activeStepElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
             // Back and next
             direction === 'next' ? this.handleNext(name) : this.handlePrevious()
+        },
+        restart() {
+            this.steps = [...initialSteps]
+            this.$store.commit('restoreLicenseAttr')
+            this.$emit('restart')
+            this.$scrollTo(this.$refs.top)
+        },
+        done() {
+            this.$emit('done')
         },
         /**
          * When a user interacts with a step, updates:
@@ -186,6 +175,8 @@ export default {
             }
             this.$set(this.steps, nextStep, { ...this.steps[nextStep], status: 'active' })
             this.activeStepId = nextStep
+            const activeStepElement = this.$refs.activeStep[0].parentElement
+            this.$scrollTo(activeStepElement)
         },
         handlePrevious() {
             /**
@@ -212,6 +203,8 @@ export default {
             }
             this.$set(this.steps, previousStep, { ...this.steps[previousStep], status: 'active' })
             this.activeStepId = previousStep
+            const previousStepElement = this.$refs[`step-${previousStep}`][0]
+            this.$scrollTo(previousStepElement)
         },
         setActiveStep(clickedStepId) {
             /**
@@ -284,9 +277,9 @@ export default {
         --counter-size: 1.875rem;
         --h-padding: 1.5rem;
         --step-left-padding: calc(var(--h-padding) + var(--counter-size) + 1rem);
-        &:last-of-type {
+        &:last-child {
             border-bottom: 2px solid #d8d8d8;
-         }
+        }
     }
     .step-container.completed:not(.disabled):hover {
         border-color: #b0b0b0;
@@ -326,18 +319,22 @@ export default {
         background: #d8d8d8;
         color: #333333;
     }
+    .step-header__title.b-header {
+        letter-spacing: normal;
+    }
+    .slide-fade-enter-active {
+        transition: translate .5s ease, opacity 0.3s ease-in;
+    }
+    .slide-fade-enter, .slide-fade-leave-to {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
     .slide-enter-active {
-        /*transition: all .3s ease;*/
-        animation: slide-down .3s;
+        animation: slide-down .4s;
     }
     .slide-leave-active {
-        /*transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);*/
-        animation: slide-down .5s reverse;
+        animation: slide-down .3s reverse;
     }
-    /*.slide-enter, .slide-leave-to {*/
-    /*    transform: translateY(-50px);*/
-    /*    opacity: 0;*/
-    /*}*/
     @keyframes slide-down {
         0% {
             opacity: 0;
@@ -354,9 +351,21 @@ export default {
             /*transform: scaleY(1);*/
         }
     }
-    @media (max-width: 860px) {
-        .step-container:last-of-type {
-            margin-bottom: 1rem;
+    @media (max-width: 768px) {
+        .step-container {
+            --h-padding: 1rem;
+            --step-left-padding: 1rem;
+            --counter-size: 1.4375rem;
+            &:last-child {
+                border-bottom: 2px solid #d8d8d8;
+                border-bottom-right-radius: 4px;
+                border-bottom-left-radius: 4px;
+                margin-bottom: 1rem;
+            }
+            &:first-child {
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+            }
         }
     }
 </style>

@@ -16,33 +16,42 @@
                         <a
                             href="#"
                             aria-current="page"
-                        >Chooser</a>
+                        >{{ $t('app.page-title') }}</a>
                     </li>
                 </ul>
             </nav>
             <div class="page-head">
                 <div class="select-license-column">
                     <h2 class="vocab">
-                        {{ $t('select-license.heading') }}
+                        {{ $t('chooser.heading') }}
                     </h2>
                     <p class="stepper-instructions vocab-body body-bigger">
-                        {{ $t('select-license.instructions') }}
+                        {{ $t('chooser.instructions') }}
                     </p>
                 </div>
                 <LocaleChooser class="locale-chooser" />
             </div>
             <div class="columns">
                 <div class="column">
-                    <Stepper v-model="currentStepId" />
+                    <Stepper
+                        v-model="currentStepId"
+                        @restart="restart"
+                        @done="done"
+                    />
                     <help-section />
                 </div>
                 <div class="column">
                     <div class="fixed-right-column">
-                        <LicenseDetailsCard
-                            v-if="showLicense"
-                        />
+                        <transition name="appear">
+                            <LicenseDetailsCard
+                                v-if="showLicense"
+                            />
+                        </transition>
+
                         <LicenseUseCard
                             v-if="showLicenseUse"
+                            ref="licenseUseCard"
+                            :class="{ 'shake' : shouldShake}"
                         />
                     </div>
                 </div>
@@ -77,7 +86,8 @@ export default {
     data() {
         return {
             currentStepId: 0,
-            showLicense: false
+            showLicense: false,
+            shouldShake: false
         }
     },
     computed: {
@@ -95,6 +105,18 @@ export default {
                 this.showLicense = true
             }
         })
+    },
+    methods: {
+        restart() {
+            this.currentStepId = 0
+            this.showLicense = 0
+        },
+        done() {
+            this.shouldShake = true
+            const comp = this
+            setTimeout(() => { comp.shouldShake = false }, 2000)
+            this.$refs.licenseUseCard.$el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+        }
     }
 }
 </script>

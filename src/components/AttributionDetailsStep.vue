@@ -4,16 +4,16 @@
             {{ $t('stepper.AD.instructions') }}
         </p>
         <form class="attribution-details-form">
-            <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
-                <b-input
-                    v-model="creatorName"
-                    :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
-                />
-            </b-field>
             <b-field :label="this.$t('stepper.AD.form.work-title.label')">
                 <b-input
                     v-model="workTitle"
                     :placeholder="this.$t('stepper.AD.form.work-title.placeholder')"
+                />
+            </b-field>
+            <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
+                <b-input
+                    v-model="creatorName"
+                    :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
                 />
             </b-field>
             <b-field :label="this.$t('stepper.AD.form.work-url.label')">
