@@ -34,11 +34,6 @@ describe('AttributionDetailsStep Component Rendering', () => {
     afterEach(() => {
         wrapper.destroy()
     })
-
-    it('Component mounted if status is active', () => {
-        wrapper.setProps({ status: 'active' })
-        expect(wrapper.element).toMatchSnapshot()
-    })
 })
 
 describe('Store is updated when a user provides input', () => {
