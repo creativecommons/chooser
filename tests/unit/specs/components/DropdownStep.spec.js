@@ -30,7 +30,7 @@ describe('DropdownStep', () => {
             localVue,
             propsData: {
                 stepId: 5,
-                status: 'current'
+                status: 'active'
             },
             mocks: {
                 $t: key => key
@@ -43,7 +43,7 @@ describe('DropdownStep', () => {
         wrapper.destroy()
     })
 
-    it('Checks conditional rendering of markup: status is current', () => {
+    it('Checks conditional rendering of markup: status is active', () => {
         expect(wrapper.find('.step-actions').exists()).toBeTruthy()
     })
 
@@ -51,54 +51,8 @@ describe('DropdownStep', () => {
         const options = wrapper.find('select').findAll('option')
 
         options.at(1).setSelected()
-
-        expect(wrapper.emitted().change[0]).toStrictEqual(['DD', 5, true])
-    })
-})
-
-describe('DropdownStep', () => {
-    let wrapper, store, getters
-
-    beforeEach(() => {
-        getters = {
-            fullName: jest.fn().mockReturnValue('CC 1.0 Universal')
-        }
-
-        store = new Vuex.Store({
-            getters
-        })
-
-        wrapper = mount(DropdownStep, {
-            localVue,
-            mocks: {
-                $t: key => key
-            },
-            store
-        })
-    })
-
-    afterEach(() => {
-        wrapper.destroy()
-    })
-
-    it('Checks conditional rendering of markup: status  is inactive', () => {
-        wrapper.setProps({
-            stepId: 5,
-            status: 'inactive'
-        })
-        expect(wrapper.find('.step-description').exists()).toBeFalsy()
-        expect(wrapper.find('.step-actions').exists()).toBeFalsy()
-    })
-
-    it('Checks getters and computed property cardText && Checks conditional rendering of markup', () => {
-        wrapper.setProps({
-            stepId: 5,
-            status: 'previous'
-        })
-
-        expect(wrapper.find('.step-description').exists()).toBeTruthy()
-        expect(wrapper.vm.fullName).toBe('CC 1.0 Universal')
-        expect(wrapper.vm.cardText).toBe('CC 1.0 Universal')
-        expect(wrapper.find('.step-description').text()).toBe('CC 1.0 Universal')
+        const emittedChange = wrapper.emitted().change[0][0]
+        expect(emittedChange.name).toEqual('DD')
+        expect(emittedChange.selected).toEqual(true)
     })
 })

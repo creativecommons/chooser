@@ -1,50 +1,27 @@
 <template>
-    <div class="stepper-container">
+    <div class="stepper__container">
         <div
             v-for="(step, idx) in visibleSteps()"
             :key="idx"
-            :class="['step-container', step.name, step.status, enabledQualifier(step.enabled)]"
+            :class="['step-container', step.name, step.status, { disabled: !step.enabled }]"
         >
+            <step-header
+                :step="step"
+                @activate="setActiveStep(step.id)"
+            />
             <div
-                :class="['step-header']"
-                @click="setActiveStep(step.id)"
+                v-if="step.status==='active'"
+                class="step-content"
             >
-                <h5 class="step-title vocab b-header">
-                    {{ $t(stepHeaderText(step.name, step.status)) }}
-                </h5>
+                <component
+                    :is="stepActionComponent(step)"
+                    v-if="step.status === 'active'"
+                    v-bind="stepActionProps(step)"
+                    @change="changeStepSelected"
+                />
             </div>
-            <ChooserStep
-                v-if="step.status!=='inactive' && (isLicenseAttribute(step.name)||step.name==='FS')"
-                :step-id="step.id"
-                :step-name="step.name"
-                :selected="step.selected"
-                :status="step.status"
-                :reversed="isStepReversed(step.name)"
-                :enabled="step.enabled"
-                :disabled-due="step.disabledDue"
-                @change="changeStepSelected"
-            />
-            <CopyrightWaiverStep
-                v-else-if="step.status!=='inactive' && step.name==='CW'"
-                :step-id="step.id"
-                :step-name="step.name"
-                :selected="step.selected"
-                :status="step.status"
-                @change="changeStepSelected"
-            />
-            <DropdownStep
-                v-else-if="step.status!=='inactive' && step.name==='DD'"
-                :step-id="step.id"
-                :status="step.status"
-                @change="changeStepSelected"
-            />
-            <AttributionDetailsStep
-                v-else-if="step.status!=='inactive' && step.name==='AD'"
-                :step-id="step.id"
-                :status="step.status"
-            />
             <StepNavigation
-                v-if="step.status === 'current'"
+                v-if="step.status === 'active'"
                 :step-name="step.name"
                 :is-next-enabled="isNextEnabled(step.id)"
                 @navigate="navigate"
@@ -58,6 +35,7 @@ import ChooserStep from './ChooserStep'
 import AttributionDetailsStep from './AttributionDetailsStep'
 import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
+import StepHeader from './StepHeader'
 import StepNavigation from './StepNavigation'
 import { updateVisibleEnabledStatus } from '../utils/license-utilities'
 
@@ -68,6 +46,7 @@ export default {
         AttributionDetailsStep,
         CopyrightWaiverStep,
         DropdownStep,
+        StepHeader,
         StepNavigation
     },
     props: {
@@ -92,14 +71,14 @@ export default {
              * enabled: sets whether the step can be clicked/selected.
              * Eg. SA shouldn't be selectable if ND was selected
              *
-             * status: can be set to 'current', 'previous', or 'inactive', to show the user's
+             * status: can be set to 'active', 'completed', or 'inactive', to show the user's
              * progress in Stepper
              *
              * selected: set to undefined before the user interacts with a step; true/false after
              * user selects radio buttons/ checkboxes/ etc.
              */
             steps: [
-                { id: 0, name: 'FS', visible: true, enabled: true, status: 'current', selected: undefined },
+                { id: 0, name: 'FS', visible: true, enabled: true, status: 'active', selected: undefined },
                 { id: 1, name: 'BY', visible: true, enabled: true, status: 'inactive', selected: undefined },
                 { id: 2, name: 'NC', visible: true, enabled: true, status: 'inactive', selected: undefined },
                 { id: 3, name: 'ND', visible: true, enabled: true, status: 'inactive', selected: undefined },
@@ -111,7 +90,7 @@ export default {
         }
     },
     computed: {
-        currentStepId: {
+        activeStepId: {
             get() { return this.$props.value },
             set(newVal) {
                 this.$emit('input', newVal)
@@ -125,120 +104,114 @@ export default {
         this.$store.subscribe((mutation, state) => {
             if (mutation.type === 'updateAttributesFromShort') {
                 for (const step in this.steps) {
-                    const stepId = this.steps[step].id
-                    const stepName = this.steps[step].name
-                    const isStepSelected = this.steps[step].selected
-                    const isAttrSelected = state.currentLicenseAttributes[stepName]
-                    if (this.isLicenseAttribute(stepName) && isStepSelected !== isAttrSelected) {
-                        this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isAttrSelected })
-                        this.updateDisabledAndVisibleSteps(stepName, isAttrSelected)
+                    const { id, name, selected } = this.steps[step]
+                    const isAttrSelected = state.currentLicenseAttributes[name]
+                    if (this.isLicenseAttribute(name) && selected !== isAttrSelected) {
+                        this.$set(this.steps, id, { ...this.steps[id], selected: isAttrSelected })
+                        this.updateDisabledAndVisibleSteps(name, isAttrSelected)
                     }
                 }
             }
         })
     },
     methods: {
-        /**
-         * stepHeader shows step 'question' for current step, and step 'heading' for others
-         * @returns {string} key for i18n message
-         */
-        stepHeaderText(stepId, stepStatus) {
-            const prefix = `stepper.${stepId}`
-            if (stepId === 'AD') {
-                return prefix + '.heading'
+        stepActionComponent({ name }) {
+            switch (name) {
+            case 'CW': return CopyrightWaiverStep
+            case 'DD': return DropdownStep
+            case 'AD': return AttributionDetailsStep
+            default: return ChooserStep
             }
-            return stepStatus === 'current' ? `${prefix}.question` : `${prefix}.heading`
         },
-        enabledQualifier(isEnabled) {
-            return isEnabled ? 'enabled' : 'disabled'
+        stepActionProps(step) {
+            return { ...step }
         },
         isLicenseAttribute(stepName) {
             return ['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1
         },
-        isStepReversed(stepName) {
-            /**
-             * NC, ND and SA steps are reversed: unlike BY, they are selected when the user
-             * answers no, and not selected when the user answers yes
-             */
-            return ['NC', 'ND', 'SA'].indexOf(stepName) > -1
-        },
         /**
          * Checks if the Next button should be disabled. Next button is enabled only
          * after the user has interacted with the step (selected radio or checked a checkbox)
-         * @param {number} stepId
+         * @param {number} id
          * @returns {Boolean} next button's disabled status
          */
-        isNextEnabled(stepId) {
-            return this.steps[stepId].selected !== undefined
+        isNextEnabled(id) {
+            return this.steps[id].selected !== undefined
         },
-        navigate({ direction, stepName }) {
-            direction === 'next' ? this.handleNext(stepName) : this.handlePrevious()
+
+        navigate({ direction, name }) {
+            // Back and next
+            direction === 'next' ? this.handleNext(name) : this.handlePrevious()
         },
-        changeStepSelected(stepName, stepId, isSelected) {
-            /**
-             * When a user interacts with a step, updates:
-             * 1. 'selected' property for the step in steps array
-             * 2. if the step is for license attribute, its value in Vuex store
-             * 3. 'enabled' and 'visible' properties of other steps affected by current step selection
-             */
-            if (this.isLicenseAttribute(stepName)) {
-                this.$store.commit('setSelected', { stepName, isSelected })
+        /**
+         * When a user interacts with a step, updates:
+         * 1. 'selected' property for the step in steps array
+         * 2. if the step is for license attribute, its value in Vuex store
+         * 3. 'enabled' and 'visible' properties of other steps affected by active step selection
+         * @param {String} stepName
+         * @param {Number} id
+         * @param {Boolean} selected
+         */
+        changeStepSelected({ name, id, selected }) {
+            if (this.isLicenseAttribute(name)) {
+                this.$store.commit('setSelected', { name, selected })
                 // When the user first selects a license attribute, the dropdown step's Next button should be enabled
                 // as the dropdown will be populated with the selected license from the state
-                const DROPDOWNSTEP = 5
-                if (this.steps[DROPDOWNSTEP].selected === undefined && stepName === 'BY') {
-                    this.$set(this.steps, DROPDOWNSTEP, { ...this.steps[DROPDOWNSTEP], selected: true })
+                const DROPDOWN_STEP = 5
+                if (this.steps[DROPDOWN_STEP].selected === undefined && name === 'BY') {
+                    this.$set(this.steps, DROPDOWN_STEP, { ...this.steps[DROPDOWN_STEP], selected: true })
                 }
             }
-            this.$set(this.steps, stepId, { ...this.steps[stepId], selected: isSelected })
+            this.$set(this.steps, id, { ...this.steps[id], selected: selected })
             this.updateDisabledAndVisibleSteps()
         },
-        handleNext(stepName) {
+        handleNext(name) {
             /**
-             * Updates state when 'Next' button is clicked if current step has been interacted with
+             * Updates state when 'Next' button is clicked if active step has been interacted with
              *
-             * Finds the next available enabled and visible step, sets its status to 'current',
-             * and steps before that to 'previous'
+             * Finds the next available enabled and visible step, sets its status to 'active',
+             * and steps before that to 'completed'
              */
-            const stepSelected = this.steps[this.currentStepId].selected
-            if (stepSelected === undefined && this.currentStepId <= 6) return
-            const nextStep = this.steps.slice(this.currentStepId + 1).find(step => step.visible && step.enabled).id
-            this.$set(this.steps, this.currentStepId, { ...this.steps[this.currentStepId], status: 'previous' })
-            if (nextStep - this.currentStepId > 1) {
-                for (let i = this.currentStepId + 1; i < nextStep; i++) {
-                    this.$set(this.steps, i, { ...this.steps[i], status: 'previous', disabledDue: stepName })
+            const id = this.activeStepId
+            const stepSelected = this.steps[id].selected
+            if (stepSelected === undefined && id <= 6) return
+            const nextStep = this.steps.slice(id + 1).find(step => step.visible && step.enabled).id
+            this.$set(this.steps, id, { ...this.steps[id], status: 'completed' })
+            if (nextStep - id > 1) {
+                for (let i = id + 1; i < nextStep; i++) {
+                    this.$set(this.steps, i, { ...this.steps[i], status: 'completed', disabledDue: name })
                 }
             } else {
-                this.$set(this.steps, this.currentStepId, { ...this.steps[this.currentStepId], status: 'previous' })
+                this.$set(this.steps, id, { ...this.steps[id], status: 'completed' })
             }
-            this.$set(this.steps, nextStep, { ...this.steps[nextStep], status: 'current' })
-            this.currentStepId = nextStep
+            this.$set(this.steps, nextStep, { ...this.steps[nextStep], status: 'active' })
+            this.activeStepId = nextStep
         },
         handlePrevious() {
             /**
              * Updates state when 'Previous' button
              *
-             * Finds the previous enabled and visible step, sets its status to 'current',
+             * Finds the previous enabled and visible step, sets its status to 'active',
              * and steps after that to 'inactive'
              */
 
-            let previousStep = this.currentStepId
-            for (let i = this.currentStepId - 1; i >= 0; i--) {
+            let previousStep = this.activeStepId
+            for (let i = this.activeStepId - 1; i >= 0; i--) {
                 const thisStep = this.steps[i]
                 if (thisStep.visible && thisStep.enabled) {
                     previousStep = this.steps[i].id
                     break
                 }
             }
-            if (this.currentStepId - previousStep > 1) {
-                for (let i = this.currentStepId; i > previousStep; i--) {
+            if (this.activeStepId - previousStep > 1) {
+                for (let i = this.activeStepId; i > previousStep; i--) {
                     this.$set(this.steps, i, { ...this.steps[i], status: 'inactive' })
                 }
             } else {
-                this.$set(this.steps, this.currentStepId, { ...this.steps[this.currentStepId], status: 'inactive' })
+                this.$set(this.steps, this.activeStepId, { ...this.steps[this.activeStepId], status: 'inactive' })
             }
-            this.$set(this.steps, previousStep, { ...this.steps[previousStep], status: 'current' })
-            this.currentStepId = previousStep
+            this.$set(this.steps, previousStep, { ...this.steps[previousStep], status: 'active' })
+            this.activeStepId = previousStep
         },
         setActiveStep(clickedStepId) {
             /**
@@ -246,13 +219,13 @@ export default {
              */
             if (!this.steps[clickedStepId].enabled) return
             if (this.steps[clickedStepId].status === 'inactive') return
-            // only steps before the current one are clickable
-            if (clickedStepId >= this.currentStepId) return
-            for (let i = this.currentStepId; i > clickedStepId; i--) {
+            // only steps before the active one are clickable
+            if (clickedStepId >= this.activeStepId) return
+            for (let i = this.activeStepId; i > clickedStepId; i--) {
                 this.$set(this.steps, i, { ...this.steps[i], status: 'inactive' })
             }
-            this.$set(this.steps, clickedStepId, { ...this.steps[clickedStepId], status: 'current' })
-            this.currentStepId = clickedStepId
+            this.$set(this.steps, clickedStepId, { ...this.steps[clickedStepId], status: 'active' })
+            this.activeStepId = clickedStepId
         },
         setStepsVisible(stepsToSetVisible) {
             // sets steps in stepsToSetVisible array visible properties to true
@@ -266,11 +239,13 @@ export default {
         },
         setStepsEnabled(stepsToSetEnabled, disabledDue) {
             // sets steps in stepsToSetDisabled array enabled properties to false
+            const shouldSetEnabled = (step) => stepsToSetEnabled.indexOf(step.name) > -1 && !step.enabled
+            const shouldSetDisabled = (step) => stepsToSetEnabled.indexOf(step.name) === -1 && step.enabled
             this.steps.forEach((step) => {
                 // step is currently enabled, but should be disabled
-                if (stepsToSetEnabled.indexOf(step.name) === -1 && step.enabled) {
+                if (shouldSetDisabled(step)) {
                     this.$set(this.steps, step.id, { ...step, enabled: false, disabledDue: disabledDue })
-                } else if (stepsToSetEnabled.indexOf(step.name) > -1 && !step.enabled) {
+                } else if (shouldSetEnabled(step)) {
                     // step is currently disabled, but should be set enabled
                     this.$set(this.steps, step.id, { ...step, enabled: true, disabledDue: '' })
                 }
@@ -278,10 +253,11 @@ export default {
         },
         updateDisabledAndVisibleSteps() {
             /**
-             * Creates an array of steps that should be visible/enalbed based on data from steps array
+             * Creates an array of steps that should be visible/enabled based on data from steps array
              * and updates the steps array
              */
             const stepsStatusData = {}
+
             this.steps.forEach((step) => {
                 stepsStatusData[step.name] = step.selected
             })
@@ -301,82 +277,59 @@ export default {
 <style lang="scss">
     .step-container {
         background-color: white;
-        border: 2px solid  #D8D8D8;
+        border: 0.125rem solid #d8d8d8;
         border-bottom: none;
-        border-radius: 4px;
         max-width: 100%;
         position: relative;
-        padding-bottom: 8px;
+        --counter-size: 1.875rem;
+        --h-padding: 1.5rem;
+        --step-left-padding: calc(var(--h-padding) + var(--counter-size) + 1rem);
         &:last-of-type {
-            border-bottom: 2px solid #D8D8D8;
+            border-bottom: 2px solid #d8d8d8;
          }
     }
-    .step-header {
-        background-color: transparent;
-        -webkit-box-align: stretch;
-        align-items: stretch;
-        display: -webkit-box;
-        display: flex;
-        position:relative;
-        margin: 24px 24px 8px;
-        &:hover {
+    .step-container.completed:not(.disabled):hover {
+        border-color: #b0b0b0;
+        border-bottom: 0.125rem solid #b0b0b0;
+        & .step-content {
             cursor: pointer;
         }
     }
-
-    .step-header .step-title {
-        margin-left: 45px;
+    .step-container.completed:not(.disabled):hover {
     }
-    .step-header .step-title::before{
-        counter-increment: step-counter;
-        position: absolute;
-        left: 0;
-        display: inline-block;
-        font-weight: 700;
-        font-family: inherit;
-        content: counter(step-counter);
-        font-size: 16px;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        background: #04A635;
-        border-radius: 50%;
-        text-align: center;
-        color: #fff;
-        top: 0;
-    }
-    .previous.disabled .step-title::before,
-    .inactive .step-title::before {
-        background-color: #D8D8D8;
-        color: #333333;
+    .step-container.completed:not(.disabled):hover + .step-container {
+        border-top: none;
     }
     .step-content {
-        margin-left: 69px;
-        padding-bottom:8px;
-        padding-right: 24px;
+        padding: 0.5rem 1.5rem 0.5rem var(--step-left-padding);
     }
-    .step-description {
-        color: #333333;
+    .step__actions {
+        &:focus {
+            outline: none;
+            background-color:green;
+        }
     }
-    .current,
-    .previous {
-        color: black;
-        background-color: #fff;
+    .step__container.completed {
+        .step-header__title {
+            color: black;
+            background-color: #fff;
+        }
     }
-    .inactive{
+    .inactive {
         background-color: #F5F5F5;
     }
-    .previous.disabled {
+    .completed.disabled {
         color: #b0b0b0;
     }
-    .previous.disabled .step-title,
-    .inactive .step-title {
-        color: #b0b0b0;
+
+    .inactive .step-header__title::before {
+        background: #d8d8d8;
+        color: #333333;
     }
     .slide-enter-active {
         /*transition: all .3s ease;*/
-    animation: slide-down .3s;
-}
+        animation: slide-down .3s;
+    }
     .slide-leave-active {
         /*transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);*/
         animation: slide-down .5s reverse;
