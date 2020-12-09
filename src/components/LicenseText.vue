@@ -16,7 +16,7 @@
         </template>
         <template #creator>
             <component
-                :is="creatorName && creatorProfileUrl && isWeb ? 'a' : 'span'"
+                :is="isCreatorLink ? 'a' : 'span'"
                 v-if="creatorName"
                 v-bind="creatorProps"
             >
@@ -24,7 +24,7 @@
             </component>
         </template>
         <template #by>
-            {{ $t(byString) }}
+            {{ byString }}
         </template>
         <template #licenseMark>
             <span>{{ $t(licensedMarkedString) }}</span>
@@ -35,44 +35,60 @@
                 :href="licenseUrl('web')"
                 target="_blank"
                 rel="license noopener noreferrer"
-                style="display: inline-block;"
             >
-                {{ shortName }}
+                {{ attributionType === 'short' ? shortName : fullName }}
                 <LicenseIcons
                     :icons-arr="iconsList"
                     :size="20"
                 />
             </a>
-            <span v-else>{{ shortName }}</span>
+            <span v-else>{{ licenseName }}.</span>
+        </template>
+        <template #print-instructions>
+            <span v-if="!isWeb">{{ $t('license-use.print.text', { linkToLicenseDeed: licenseUrl('print') }) }}</span>
         </template>
     </i18n>
 </template>
 <script>
+
 import { mapGetters, mapState } from 'vuex'
 import LicenseIcons from './LicenseIcons'
 
 export default {
-    name: 'LicenseCode',
+    name: 'LicenseText',
     components: {
         LicenseIcons
     },
     props: {
-        attributionType: {
+        textFor: {
             type: String,
-            default: 'web'
+            default: 'web',
+            validate: function(val) {
+                return ['web', 'print'].indexOf(val) > -1
+            }
         }
     },
     computed: {
-        ...mapGetters(['shortName', 'licenseUrl', 'iconsList']),
-        ...mapState(['attributionDetails']),
+        ...mapGetters(['shortName', 'fullName', 'licenseUrl', 'iconsList']),
+        ...mapState(['attributionDetails', 'attributionType']),
         licensedMarkedString() {
             return this.shortName === 'CC0 1.0' ? 'license-use.richtext.marked-text' : 'license-use.richtext.licensed-text'
         },
+        isCreatorLink() {
+            return this.creatorName && this.creatorProfileUrl && this.isWeb
+        },
+        licenseName() {
+            return this.attributionType === 'short' ? this.shortName : this.fullName
+        },
+        byString() {
+            return this.creatorName ? this.$t('license-use.richtext.by') : ''
+        },
         creatorProps() {
             const creatorAttrs = { property: 'cc:attributionName' }
-            if (this.creatorName && this.creatorProfileUrl && this.isWeb) {
+            if (this.isCreatorLink) {
                 creatorAttrs.href = this.creatorProfileUrl
-                creatorAttrs.rel = 'cc:attributionURL'
+                creatorAttrs.rel = 'cc:attributionURL noopener noreferrer'
+                creatorAttrs.target = '_blank'
             }
             return creatorAttrs
         },
@@ -106,20 +122,18 @@ export default {
             }
             if (workUrl) {
                 workAttrs.href = workUrl
-                workAttrs.rel = 'cc:attributionURL'
+                workAttrs.rel = 'cc:attributionURL noopener noreferrer'
+                workAttrs.target = '_blank'
             }
             return workAttrs
         },
         isWeb() {
-            return this.attributionType === 'web'
+            return this.textFor === 'web'
         }
     }
 }
 </script>
 
-<style scoped>
-.license-text .photo-license-icons {
-    height: 1.4rem!important;
-    margin-left: 3px;
-}
+<style>
+
 </style>

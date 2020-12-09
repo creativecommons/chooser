@@ -259,7 +259,7 @@ describe('generateHTML', function testGenerateHTML() {
 
             it('has correct wrapper', () => {
                 const para = wrapper.find('.html-string > p')
-                expect(Object.keys(para.attributes()).length).toEqual(3)
+                // expect(Object.keys(para.attributes()).length).toEqual(3)
                 expect(para.attributes()[CC_NAMESPACE.NAME]).toEqual(CC_NAMESPACE.URI)
                 expect(para.attributes()[DCT_NAMESPACE.NAME]).toEqual(DCT_NAMESPACE.URI)
             })

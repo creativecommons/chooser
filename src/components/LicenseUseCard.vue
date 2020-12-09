@@ -1,49 +1,127 @@
 <template>
-    <div class="license-use-card">
-        <h4 class="vocab b-header">
+    <div
+        class="license-use-card"
+        @click="updateCopyTarget"
+    >
+        <h3>
             {{ $t('license-use.heading') }}
-        </h4>
+        </h3>
         <p class="license-use-instructions">
             {{ $t('license-use.common-instructions') }}
         </p>
-        <b-tabs>
-            <b-tab-item :label="$t('license-use.web-tab-heading')">
+        <tabs
+            ref="alltabs"
+            class="top-tabs"
+        >
+            <!-- Website: Richtext, HTML, XMP -->
+            <tab
+                ref="web"
+                class="main-tabs"
+                :title="$t('license-use.web-tab-heading')"
+            >
                 {{ $t('license-use.web-instructions') }}
-                <LicenseCopy :is-web="true" />
-            </b-tab-item>
-            <b-tab-item :label="$t('license-use.print-media-tab-heading')">
+                <tabs
+                    ref="web"
+                    class="attribution-tabs"
+                    :boxed="true"
+                >
+                    <tab
+                        ref="richtext"
+                        :title="$t('license-use.rich-text-label')"
+                    >
+                        <license-text
+                            class="richtext"
+                            text-for="web"
+                        />
+                    </tab>
+                    <tab
+                        ref="html"
+                        :title="$t('license-use.html-label')"
+                    >
+                        <license-h-t-m-l class="html" />
+                    </tab>
+                    <tab
+                        ref="xmp"
+                        title="XMP"
+                    />
+                </tabs>
+            </tab>
+            <!-- Print work or media -->
+            <tab
+                ref="printmedia"
+                :title="$t('license-use.print-media-tab-heading')"
+            >
                 {{ $t('license-use.print-media-instructions') }}
-                <LicenseCopy :is-web="false" />
-            </b-tab-item>
-        </b-tabs>
+                <tabs
+                    class="attribution-tabs"
+                    :boxed="true"
+                >
+                    <tab
+                        ref="plaintext"
+                        :title="$t('license-use.plain-text-label')"
+                    >
+                        <license-text
+                            class="plaintext"
+                            text-for="print"
+                        />
+                    </tab>
+                </tabs>
+            </tab>
+        </tabs>
+        <copy-tools :clipboard-target="copyTarget" />
     </div>
 </template>
 <script>
-import LicenseCopy from './LicenseCopy'
+import CopyTools from '@/components/CopyTools'
+import LicenseHTML from '@/components/LicenseHTML'
+import LicenseText from '@/components/LicenseText'
 export default {
     name: 'LicenseUseCard',
     components: {
-        LicenseCopy
+        LicenseHTML,
+        LicenseText,
+        CopyTools
+    },
+    data() {
+        return {
+            copyTarget: '.html'
+        }
+    },
+    methods: {
+        updateCopyTarget() {
+            const activeTab = this.$refs.alltabs.$data.activeTabIndex === 0 ? 'web' : 'print'
+            if (activeTab === 'web') {
+                const activeWebTabIndex = Number.parseInt(this.$refs.web.$data.activeTabIndex)
+                this.copyTarget = `.${['richtext', 'html', 'xmp'][activeWebTabIndex]}`
+            } else {
+                this.copyTarget = '.plaintext'
+            }
+        }
     }
 }
 </script>
 <style lang="scss">
 .license-use-card {
-    margin-bottom: 24px;
-}
-.license-use-card .h4b {
-    color: black;
-}
-.tabs span {
-    font-weight: bold;
-}
-.license-use-card .tabs .is-active a {
-    margin-bottom: -2px;
-    border-bottom: 3px solid #04a434;
-    span {
-        font-weight: 700;
-        opacity:1;
-        color: black;
+    margin-bottom: 1.5rem;
+    h3 {
+        margin-bottom: 0.5rem;
     }
+}
+
+.top-tabs > .tabs:not(:last-child) {
+    margin: 2rem 0 1rem;
+}
+.attribution-tabs {
+    margin-top: 1.25rem;
+    .tabs-content.is-boxed {
+        padding: 1.5rem;
+        border-bottom: none;
+    }
+}
+.tabs.is-boxed li:first-child a {
+    border-top-left-radius: 0.25rem;
+}
+.tabs.is-boxed li:last-child a {
+    border-top-right-radius: 0.25rem;
 }
 </style>
