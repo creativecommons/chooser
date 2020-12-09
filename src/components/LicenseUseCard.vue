@@ -22,7 +22,7 @@
                 {{ $t('license-use.web-instructions') }}
                 <tabs
                     ref="web"
-                    class="sub-tabs"
+                    class="attribution-tabs"
                     :boxed="true"
                 >
                     <tab
@@ -53,7 +53,7 @@
             >
                 {{ $t('license-use.print-media-instructions') }}
                 <tabs
-                    class="attribution-tab"
+                    class="attribution-tabs"
                     :boxed="true"
                 >
                     <tab
@@ -111,7 +111,7 @@ export default {
 .top-tabs > .tabs:not(:last-child) {
     margin: 2rem 0 1rem;
 }
-.sub-tabs {
+.attribution-tabs {
     margin-top: 1.25rem;
     .tabs-content.is-boxed {
         padding: 1.5rem;
