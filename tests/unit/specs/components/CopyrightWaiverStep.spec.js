@@ -1,6 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import Buefy from 'buefy'
-import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import Vuex from 'vuex'
 import CopyrightWaiverStep from '@/components/CopyrightWaiverStep'
 
@@ -8,7 +7,6 @@ const localVue = createLocalVue()
 
 localVue.use(Vuex)
 localVue.use(Buefy)
-localVue.use(VueVocabulary)
 
 describe('CopyrightWaiver Step: Check conditional rendering of markup', () => {
     let wrapper
