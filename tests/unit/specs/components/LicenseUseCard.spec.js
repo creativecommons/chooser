@@ -35,6 +35,5 @@ describe('LicenseUseCard.vue', () => {
         expect(topTabs.at(0).text()).toEqual('license-use.web-instructions')
         expect(topTabs.at(1).text()).toEqual('license-use.print-media-instructions')
         expect(wrapper.vm.copyTarget).toEqual('.html')
-
     })
 })

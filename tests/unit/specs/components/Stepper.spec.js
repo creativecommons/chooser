@@ -114,7 +114,6 @@ describe('Stepper.vue', () => {
     })
 
     describe('Steps are disabled correctly', () => {
-
         it('selecting CC0 makes NC, ND, SA disabled', async() => {
             await advanceStep(wrapper, { FS: false, BY: false })
 

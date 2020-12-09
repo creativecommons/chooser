@@ -23,7 +23,7 @@ module.exports = {
     //         .assert.elementPresent('p[class="license-text"] a')
     //         .getAttribute('p > span > a:nth-child(1)', 'href', function(result) {
     //             this.assert.equal(result.value, 'https://janedoe.com/best-photo-ever.jpg')
-     //         })
+    //         })
     //         })
     //         .getAttribute('p > span > a:nth-child(2)', 'href', function(result) {
     //             this.assert.equal(result.value, 'https://janedoe.com')
