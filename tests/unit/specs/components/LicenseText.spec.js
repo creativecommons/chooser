@@ -87,7 +87,7 @@ describe('LicenseText.vue', () => {
         const creatorElement = wrapper.find('[property="cc:attributionName"]')
         expect(Object.keys(creatorElement.attributes()).length).toEqual(4)
         expect(creatorElement.text()).toEqual(TEST_DATA.creatorName)
-        expect(creatorElement.attributes().href).toEqual('http://' + TEST_DATA.creatorProfileUrl)
+        expect(creatorElement.attributes().href).toEqual(TEST_DATA.creatorProfileUrl)
         expect(creatorElement.attributes().rel).toEqual('cc:attributionURL noopener noreferrer')
         expect(creatorElement.name()).toEqual('a')
     })

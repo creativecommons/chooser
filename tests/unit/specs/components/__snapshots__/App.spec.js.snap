@@ -4,6 +4,13 @@ exports[`App.vue Check if the App.vue component has the expected UI 1`] = `
 <div id="app">
   <header-section-stub></header-section-stub>
   <div id="site-container" class="container">
+    <nav aria-label="breadcrumbs" class="breadcrumb caption bold">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Child Page</a></li>
+        <li class="is-active"><a href="#" aria-current="page">Chooser</a></li>
+      </ul>
+    </nav>
     <div class="page-head">
       <div class="select-license-column">
         <h2 class="vocab">

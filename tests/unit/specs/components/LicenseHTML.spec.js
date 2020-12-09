@@ -3,18 +3,11 @@ import VueI18n from 'vue-i18n'
 import { mount, createLocalVue } from '@vue/test-utils'
 import LicenseHTML from '@/components/LicenseHTML'
 import createStore from '@/store'
-import { CCBYAttributes, LICENSES } from '@/utils/license-utilities'
+import { CCBYAttributes } from '@/utils/license-utilities'
 
-const TEST_DATA = {
-    creatorName: 'Jane Doe',
-    creatorProfileUrl: 'www.author.com',
-    workTitle: 'My work',
-    workUrl: 'www.author.com/picture.jpg'
-}
-
-const defaultHTML = '<p xmlns:dct=\"http://purl.org/dc/terms/\" xmlns:cc=\"http://creativecommons.org/ns#\">This work   <a rel=\"license\" href=\"https://creativecommons.org/licenses/by/4.0\" target=\"_blank\"\n' +
-    '        rel=\"license noopener noreferrer\" style=\"display:inline-block;\">\n' +
-    '        CC BY 4.0<img style=\"height:22px!important;margin-left:3px;vertical-align:text-bottom;\" src=\"https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1\"><img style=\"height:22px!important;margin-left:3px;vertical-align:text-bottom;\" src=\"https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1\"></a></p>'
+const defaultHTML = '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">This work   <a rel="license" href="https://creativecommons.org/licenses/by/4.0" target="_blank"\n' +
+    '        rel="license noopener noreferrer" style="display:inline-block;">\n' +
+    '        CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>'
 
 describe('LicenseHTML.vue', () => {
     let wrapper
@@ -52,5 +45,4 @@ describe('LicenseHTML.vue', () => {
     it('has correct information when creator name and work title are provided', () => {
         expect(wrapper.vm.htmlLicenseParagraph).toEqual(defaultHTML)
     })
-
 })
