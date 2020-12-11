@@ -56,7 +56,7 @@
                             <div class="column is-half top-bottom-paddingless">
                                 <div class="edu-icons-section">
                                     <div class="edu-icons-title-section is-gapless">
-                                        <img src="../assets/license-icons/cc-by_icon.svg">
+                                        <img src="../assets/license-icons/by.svg">
                                         <div class="icon-title">
                                             <b>{{ $t('help.what-icons-mean.BY.long-name') }}</b>
                                             <p class="help">
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="edu-icons-section is-gapless">
                                     <div class="edu-icons-title-section">
-                                        <img src="../assets/license-icons/cc-nd_icon.svg">
+                                        <img src="../assets/license-icons/nd.svg">
                                         <div class="icon-title">
                                             <b>{{ $t('help.what-icons-mean.ND.long-name') }}</b>
                                             <p class="help">
@@ -88,7 +88,7 @@
                                     <div class="edu-icons-title-section">
                                         <img
                                             class="icon-img"
-                                            src="../assets/license-icons/cc-nc_icon.svg"
+                                            src="../assets/license-icons/nc.svg"
                                         >
                                         <div class="icon-title">
                                             <b>{{ $t('help.what-icons-mean.NC.long-name') }}</b>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="edu-icons-section">
                                     <div class="edu-icons-title-section is-gapless">
-                                        <img src="../assets/license-icons/cc-sa_icon.svg">
+                                        <img src="../assets/license-icons/sa.svg">
                                         <div class="icon-title">
                                             <b>{{ $t('help.what-icons-mean.SA.long-name') }}</b>
                                             <p class="help">
