@@ -126,7 +126,6 @@ export default {
             this.steps = [...initialSteps]
             this.$store.commit('restoreLicenseAttr')
             this.$emit('restart')
-            this.$scrollTo(this.$refs.top)
         },
         done() {
             this.$emit('done')
@@ -265,15 +264,22 @@ export default {
 <style lang="scss">
     .step-container {
         background-color: white;
-        border: 0.125rem solid #d8d8d8;
+        border: var(--border-width) solid #d8d8d8;
+
         border-bottom: none;
         max-width: 100%;
         position: relative;
         --counter-size: 1.875rem;
         --h-padding: 1.5rem;
         --step-left-padding: calc(var(--h-padding) + var(--counter-size) + 1rem);
+        &:first-child {
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
         &:last-child {
             border-bottom: 2px solid #d8d8d8;
+            border-bottom-left-radius: 0.25rem;
+            border-bottom-right-radius: 0.25rem;
         }
     }
     .step-container.completed:not(.disabled):hover {
@@ -346,21 +352,18 @@ export default {
             /*transform: scaleY(1);*/
         }
     }
-    @media (max-width: 768px) {
+    @media only screen and (max-width: 768px) {
         .step-container {
             --h-padding: 1rem;
             --step-left-padding: 1rem;
             --counter-size: 1.4375rem;
             &:last-child {
                 border-bottom: 2px solid #d8d8d8;
-                border-bottom-right-radius: 4px;
-                border-bottom-left-radius: 4px;
                 margin-bottom: 1rem;
             }
-            &:first-child {
-                border-top-left-radius: 4px;
-                border-top-right-radius: 4px;
-            }
+        }
+        .step-content {
+            padding-right: 0.5rem;
         }
     }
 </style>
