@@ -4,10 +4,12 @@
 
 const stepperCommands = {
     clickYes: function() {
+        this.pause(500)
         this.click('.radio-input[value="yes"]')
         return this
     },
     clickNo: function() {
+        this.pause(500)
         this.click('.radio-input[value="no"]')
         return this
     },

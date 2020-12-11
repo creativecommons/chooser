@@ -74,7 +74,7 @@
         "transform": {
             "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
             ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
-            "^.+\\.svg$": "<rootDir>/tests/unit/svgTransform.js"
+            "^.+\\.(svg|png)$": "<rootDir>/tests/unit/svgTransform.js"
         },
         "snapshotSerializers": [
             "<rootDir>/node_modules/jest-serializer-vue"
