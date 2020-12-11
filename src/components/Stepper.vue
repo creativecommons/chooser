@@ -7,7 +7,7 @@
             v-for="(step, idx) in visibleSteps()"
             :key="idx"
             :ref="`step-${idx}`"
-            :class="['step-container', step.name, step.status, { disabled: !step.enabled }]"
+            :class="['step-container', `step-${step.id}`, step.name, step.status, { disabled: !step.enabled }]"
         >
             <step-header
                 :step="step"
@@ -119,7 +119,6 @@ export default {
             return this.steps[id].selected !== undefined
         },
         navigate({ direction, name }) {
-            // activeStepElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
             // Back and next
             direction === 'next' ? this.handleNext(name) : this.handlePrevious()
         },
@@ -175,8 +174,6 @@ export default {
             }
             this.$set(this.steps, nextStep, { ...this.steps[nextStep], status: 'active' })
             this.activeStepId = nextStep
-            const activeStepElement = this.$refs.activeStep[0].parentElement
-            this.$scrollTo(activeStepElement)
         },
         handlePrevious() {
             /**
@@ -203,8 +200,6 @@ export default {
             }
             this.$set(this.steps, previousStep, { ...this.steps[previousStep], status: 'active' })
             this.activeStepId = previousStep
-            const previousStepElement = this.$refs[`step-${previousStep}`][0]
-            this.$scrollTo(previousStepElement)
         },
         setActiveStep(clickedStepId) {
             /**

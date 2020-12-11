@@ -38,7 +38,7 @@
                     <help-section />
                 </div>
                 <div class="column">
-                    <div class="fixed-right-column">
+                    <div :class="{ 'fixed-right-column': currentStepId !== 7 }">
                         <transition name="appear">
                             <LicenseDetailsCard
                                 v-if="showLicense"
@@ -90,6 +90,12 @@ export default {
             return this.currentStepId === 7
         }
     },
+    watch: {
+        currentStepId(newId) {
+            const offset = newId === 7 ? -200 : -120
+            this.$scrollTo(`.step-${newId}`, { offset: offset })
+        }
+    },
     created: function() {
         // send home to google analytics
         if (process.env.NODE_ENV === 'production') {
@@ -107,10 +113,13 @@ export default {
             this.showLicense = 0
         },
         done() {
-            this.shouldShake = true
+            const scrollDuration = 800
+            const shakeDuration = 3000
             const comp = this
-            setTimeout(() => { comp.shouldShake = false }, 2000)
-            this.$refs.licenseUseCard.$el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+
+            setTimeout(() => { comp.shouldShake = true }, scrollDuration)
+            setTimeout(() => { comp.shouldShake = false }, shakeDuration)
+            this.$scrollTo(this.$refs.licenseUseCard.$el, 800)
         }
     }
 }
