@@ -126,7 +126,6 @@ export default {
             this.steps = [...initialSteps]
             this.$store.commit('restoreLicenseAttr')
             this.$emit('restart')
-            this.$scrollTo(this.$refs.top)
         },
         done() {
             this.$emit('done')
