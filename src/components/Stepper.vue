@@ -172,6 +172,10 @@ export default {
                 this.$set(this.steps, id, { ...this.steps[id], status: 'completed' })
             }
             this.$set(this.steps, nextStep, { ...this.steps[nextStep], status: 'active' })
+            const visibleSteps = this.visibleSteps()
+            const visibleIndex = visibleSteps.findIndex(step => step.id === nextStep)
+            const previousVisibleStep = visibleSteps[visibleIndex - 1].id
+            this.$emit('scroll-forward', previousVisibleStep)
             this.activeStepId = nextStep
         },
         handlePrevious() {
@@ -198,6 +202,7 @@ export default {
                 this.$set(this.steps, this.activeStepId, { ...this.steps[this.activeStepId], status: 'inactive' })
             }
             this.$set(this.steps, previousStep, { ...this.steps[previousStep], status: 'active' })
+            this.$emit('scroll-back', previousStep)
             this.activeStepId = previousStep
         },
         setActiveStep(clickedStepId) {

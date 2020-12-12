@@ -34,6 +34,8 @@
                         v-model="currentStepId"
                         @restart="restart"
                         @done="done"
+                        @scroll-back="scrollBack"
+                        @scroll-forward="scrollForward"
                     />
                     <help-section />
                 </div>
@@ -90,12 +92,6 @@ export default {
             return this.currentStepId === 7
         }
     },
-    watch: {
-        currentStepId(newId) {
-            const offset = newId === 7 ? -200 : -120
-            this.$scrollTo(`.step-${newId}`, { offset: offset })
-        }
-    },
     created: function() {
         // send home to google analytics
         if (process.env.NODE_ENV === 'production') {
@@ -108,6 +104,12 @@ export default {
         })
     },
     methods: {
+        scrollBack(payload) {
+            this.$scrollTo(`.step-${payload}`)
+        },
+        scrollForward(payload) {
+            this.$scrollTo(`.step-${payload}`)
+        },
         restart() {
             this.currentStepId = 0
             this.showLicense = 0
