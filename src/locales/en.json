@@ -137,37 +137,42 @@
         "heading": "CONFUSED? NEED HELP?",
         "what-are-cc-licenses": {
             "heading": "What Are Creative Commons Licenses?",
-            "text": "<p class='help-text'>Creative Commons legal tools give everyone from individual creators to large companies a simple, standardized way to grant copyright permissions to their creative work. They are designed to forge a balance inside the traditional \"all rights reserved\" setting that copyright law creates.</p>",
-            "footer": "For more information, please see <a id='license_link' href='https://creativecommons.org/licenses/' target='blank_'>About the Licenses</a>"
+            "text": "Creative Commons legal tools give everyone from individual creators to large companies a simple, standardized way to grant copyright permissions to their creative work. They are designed to forge a balance inside the traditional \"all rights reserved\" setting that copyright law creates.",
+            "footer": "For more information, please see [About the Licenses](https://creativecommons.org/licenses/)."
         },
         "how-licenses-work": {
             "heading": "How do the Licenses Work?",
-            "text": "<p class='help-text'>There are six different Creative Commons licenses, as well as one public domain dedication tool. Creators choose the option that is right for them, and then apply that license to their copyrighted work. Anyone who wants to reuse the work of the creator in a manner that requires permission under copyright must comply with the terms of the license.</p>",
-            "footer": "<p>For more information, please see <a id='license_link_2' href='https://creativecommons.org/licenses/' target='blank_'>About the Licenses</a></p>"
+            "text": "There are six different Creative Commons licenses, as well as one public domain dedication tool. Creators choose the option that is right for them, and then apply that license to their copyrighted work. Anyone who wants to reuse the work of the creator in a manner that requires permission under copyright must comply with the terms of the license.",
+            "footer": "For more information, please see [About the Licenses](https://creativecommons.org/licenses/)"
         },
         "what-icons-mean": {
             "heading": "What do the Icons Mean?",
-            "text": "<p class='help-text'>The icons represent key features of the different CC license options:</p>",
+            "text": "The icons represent key features of the different CC license options:",
             "BY": {
                 "text": "Credit must be given to you, the creator.",
                 "long-name": "Attribution Required",
+                "icon-alt-text": "Attribution Required Icon",
                 "short-name": "(BY)"
             },
             "ND": {
                 "text": "No derivatives or adaptations of your work are permitted.",
                 "long-name": "Modifying Not Allowed",
+                "icon-alt-text": "Modifying Not Allowed Icon",
                 "short-name": "(ND/ NoDerivatives)"
             },
             "NC": {
-                "text": "Only noncommercial use of your work is permitted.</p>",
+                "text": "Only noncommercial use of your work is permitted.",
                 "long-name": "Commercial Use Not Allowed",
+                "icon-alt-text": "Commercial Use Not Allowed Icon",
                 "short-name": "(NC/ NonCommercial)"
             },
             "SA": {
                 "text": "Adaptations must be shared under the same terms.",
                 "long-name": "Distributed on Same Terms",
+                "icon-alt-text": "Distributed on Same Terms Icon",
                 "short-name": "(SA/ ShareAlike)"
-            }
+            },
+            "footer": ""
         },
         "how-licenses-communicated": {
             "heading": "How are Licenses Communicated?",
@@ -175,30 +180,33 @@
             "full-name": "Full Name",
             "short-name": "Short Name",
             "license-icons": "Icons",
-            "CC-BY-NC": "Attribution-NonCommercial 4.0 International"
+            "CC-BY-NC": "Attribution-NonCommercial 4.0 International",
+            "footer": ""
         },
         "considerations-before-licensing": {
             "heading": "Considerations Before Licensing",
-            "text": "<p> There are a number of things you should consider before you apply a Creative Commons license to your work, or before using Creative Commons-licenced material.</p> <p><a id='licensors_link' href='https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors' target='blank_'>Considerations for Licensors</a> - If you are licensing your own work</p> <p><a id='licensees_link' href='https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees' target='blank_'>Considerations for Licensees</a> - If you are using someone else's licensed work</p>",
-            "footer": "For more information, please see <a id='wiki_link' href='https://wiki.creativecommons.org/wiki/Before_Licensing' target='blank_'>the CC wiki's page on Considerations for Licensors and Licensees.</a>"
+            "text": "There are a number of things you should consider before you apply a Creative Commons license to your work, or before using Creative Commons-licenced material.\n[Considerations for Licensors](https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors)  - If you are licensing your own work\n[Considerations for Licensees](https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees) - someone else's licensed work",
+            "footer": "For more information, please see [the CC wiki's page on Considerations for Licensors and Licensees](https://wiki.creativecommons.org/wiki/Before_Licensing)."
         },
         "how-formally-license": {
             "heading": "How do I Formally License my Work?",
-            "text": "<p class='help-text'>Licensing your work is as simple as marking it under the specific license you choose. This marking can be as simple as a bit of text stating the license in a copyright notice, or as complex as embedding the license information on your website using the HTML code associated with the particular license. We strongly recommend at least including a link to the applicable license.</p>"
+            "text": "Licensing your work is as simple as marking it under the specific license you choose. This marking can be as simple as a bit of text stating the license in a copyright notice, or as complex as embedding the license information on your website using the HTML code associated with the particular license. We strongly recommend at least including a link to the applicable license.",
+            "footer": ""
         },
         "six-cc-licenses": {
             "heading": "The Six Creative Commons Licenses",
-            "text": "<p class='help-text'>There are six main licenses that Creative Commons offers.</p> <p class='help-text'>In the diagram to the right, you can see the six main licenses and the public domain CC0 license, and how restrictive they are, with licenses at the top being the least restrictive, and licenses at the bottom being the most restrictive.</p> <p class='help-text'>If you are unsure about which one is right for you and your work, please select <strong>\"I need help selecting a license\"</strong> on the first question of this page.</p>",
-            "footer": "For more information, please read more about  <a id='licensing_examples_link' href='https://creativecommons.org/share-your-work/licensing-types-examples/' target='_blank'>CC Licenses and Examples.</a>"
+            "text": "There are six main licenses that Creative Commons offers.\nIn the diagram to the right, you can see the six main licenses and the public domain CC0 license, and how restrictive they are, with licenses at the top being the least restrictive, and licenses at the bottom being the most restrictive.\nIf you are unsure about which one is right for you and your work, please select **I need help selecting a license** on the first question of this page.",
+            "footer": "For more information, please read more about [CC Licenses and Examples](https://creativecommons.org/share-your-work/licensing-types-examples/)."
         },
         "what-free-culture-license": {
             "heading": "What is a Free Culture License?",
-            "text": "<p class='help-text'>CC uses the definition of free cultural works at <a href='https://freedomdefined.org/Definition' target='_blank'>Freedom Defined</a> to categorize certain CC licenses as Free Culture Licenses. Freedom Defined is an open organization of free culture advocates and researchers; the definition was developed by its community as a parallel to efforts such as the Free Software Definition, to have a standard for defining Free Culture. Using that definition, material licensed under CC BY or BY-SA is a free cultural work, as is anything in the worldwide public domain marked with CC0 or the Public Domain Mark.",
-            "footer": "Read more about <a href='https://creativecommons.org/share-your-work/public-domain/freeworks' target='_blank'>Understanding Free Cultural Works</a></p>"
+            "text": "CC uses the definition of free cultural works at [Freedom Defined](https://freedomdefined.org/Definition) to categorize certain CC licenses as Free Culture Licenses. Freedom Defined is an open organization of free culture advocates and researchers; the definition was developed by its community as a parallel to efforts such as the Free Software Definition, to have a standard for defining Free Culture. Using that definition, material licensed under CC BY or BY-SA is a free cultural work, as is anything in the worldwide public domain marked with CC0 or the Public Domain Mark.",
+            "footer": "Read more about [Understanding Free Cultural Works](https://creativecommons.org/share-your-work/public-domain/freeworks)"
         },
         "look-earlier-license-ver": {
             "heading": "Looking for Earlier License Versions, including Ports?",
-            "text": "<p class='help-text'>The most recent license version is 4.0, which can be used internationally. Earlier versions of licenses, including 3.0 international and ports localized to particular jurisdictions, can still be used on the legacy version of the <a href='https://creativecommons.org/choose/' target='_blank'>License Chooser</a>.</p><p class='help-text'>Click on the link at the top of the page <strong>\"Looking for earlier license versions, including ports?\"</strong> and follow the prompts to use earlier license versions.</p>"
+            "text": "The most recent license version is 4.0, which can be used internationally. Earlier versions of licenses, including 3.0 international and ports localized to particular jurisdictions, can still be used on the legacy version of the [License Chooser](https://creativecommons.org/choose/)\nClick on the link at the top of the page **\"Looking for earlier license versions, including ports?\"** and follow the prompts to use earlier license versions.",
+            "footer": ""
         }
     },
     "alt": {

@@ -354,7 +354,7 @@ export default {
             /*transform: scaleY(1);*/
         }
     }
-    @media (max-width: 860px) {
+    @media only screen and (max-width: 768px) {
         .step-container:last-of-type {
             margin-bottom: 1rem;
         }
