@@ -11,7 +11,7 @@
     "license": "MIT",
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build && node deploy.js",
+        "build": "vue-cli-service build && rm -f -r ./docs && cp -r ./dist ./docs && echo chooser-beta.creativecommons.org > ./docs/CNAME",
         "test:unit": "vue-cli-service test:unit",
         "test:e2e": "vue-cli-service test:e2e",
         "lint": "vue-cli-service lint",
@@ -54,7 +54,6 @@
         "eslint-plugin-promise": "^4.2.1",
         "eslint-plugin-standard": "^4.0.1",
         "eslint-plugin-vue": "^6.2.2",
-        "fs-extra": "^9.0.1",
         "geckodriver": "^1.19.1",
         "node-sass": "^4.14.1",
         "sass-loader": "^8.0.2",
