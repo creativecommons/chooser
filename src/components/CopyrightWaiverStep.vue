@@ -87,19 +87,6 @@ export default {
             }
         }
     },
-    watch: {
-        async openModal(newValue, oldValue) {
-            if (newValue) {
-                await this.$nextTick()
-                const deedIframe = document.querySelector('#iframe')
-                console.log('Deed iframe: ', deedIframe)
-                const doc = deedIframe.contentDocument
-                console.log(doc)
-                doc.body.innerHTML = doc.body.innerHTML + '<style>body {padding-left: 1rem;padding-right:1rem;}</style>'
-                console.log(deedIframe, oldValue)
-            }
-        }
-    },
     methods: {
         closeModal() {
             this.openModal = false
