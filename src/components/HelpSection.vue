@@ -26,7 +26,7 @@
             >
                 <section
                     v-if="isSimpleModal(openModal)"
-                    class="modal-content modal-1"
+                    :class="['modal-content', `modal-${openModal}`]"
                 >
                     <md-text
                         :source="$t(`help.${modals[openModal].title}.text`)"
@@ -279,11 +279,17 @@ export default {
     .modal-content, footer {
         padding-left: var(--h-padding);
         padding-right: var(--h-padding);
+        width: 100%;
     }
     .modal-content {
         padding-top: var(--h-padding);
         padding-bottom: var(--h-padding);
         margin: 0;
+        article {
+            max-width: 85ch;
+            margin-right: auto;
+            margin-left: auto;
+        }
     }
 }
 
