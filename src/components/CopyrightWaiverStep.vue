@@ -3,13 +3,35 @@
         <v-checkbox v-model="copyrightWaiverAgreed">
             {{ $t('stepper.CW.copyright-waive-agreement') }}
         </v-checkbox>
-        <textarea
-            :value="this.$t('cc0-waiver.text')"
-            :class="'waiver-textarea'"
-        />
         <v-checkbox v-model="copyrightWaiverConfirmed">
-            {{ $t("stepper.CW.copyright-waive-confirmation") }}
+            <i18n
+                path="stepper.CW.copyright-waive-confirmation"
+                tag="span"
+            >
+                <a
+                    slot="link"
+                    href="#0"
+                    @click="openModal=true"
+                >
+                    {{ $t('stepper.CW.link-label') }}
+                </a>
+            </i18n>
         </v-checkbox>
+        <app-modal
+            v-if="openModal"
+            title="CC0 1.0"
+            @close="closeModal"
+        >
+            <div class="modal-container">
+                <iframe
+                    id="iframe"
+                    width="100%"
+                    height="100%"
+                    allowtransparency="true"
+                    src="https://creativecommons.org/publicdomain/zero/1.0/legalcode"
+                />
+            </div>
+        </app-modal>
     </div>
 </template>
 <script>
@@ -29,7 +51,8 @@ export default {
     data() {
         return {
             agreed: false,
-            confirmed: false
+            confirmed: false,
+            openModal: false
         }
     },
     computed: {
@@ -63,19 +86,64 @@ export default {
                 this.$emit('change', payload)
             }
         }
+    },
+    watch: {
+        async openModal(newValue, oldValue) {
+            if (newValue) {
+                await this.$nextTick()
+                const deedIframe = document.querySelector('#iframe')
+                console.log('Deed iframe: ', deedIframe)
+                const doc = deedIframe.contentDocument
+                console.log(doc)
+                doc.body.innerHTML = doc.body.innerHTML + '<style>body {padding-left: 1rem;padding-right:1rem;}</style>'
+                console.log(deedIframe, oldValue)
+            }
+        }
+    },
+    methods: {
+        closeModal() {
+            this.openModal = false
+        }
     }
 }
 </script>
 <style lang="scss">
-.waiver-textarea {
-    width: 100%;
-    min-height: 100px;
-    margin: 1rem 0;
-}
 .step-actions .control-label {
     color: #333333;
 }
 input[type='checkbox'] {
     transform: translateY(3px);
+}
+.modal-container {
+    width: 85vw;
+    height: 85vh;
+    overflow: hidden;
+}
+.deed-main {
+    padding-right: 2rem;
+}
+.v-checkbox {
+    margin-bottom: 1.5rem;
+}
+
+.overlay.app-modal {
+    .close-button {
+        margin-left: 0;
+    }
+    .modal {
+        display: block;
+        overflow: hidden;
+    }
+    .modal-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.4rem!important;
+        h3 {
+            flex: 1;
+            text-align: center;
+        }
+    }
 }
 </style>
