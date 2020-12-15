@@ -38,7 +38,7 @@
                     <help-section />
                 </div>
                 <div class="column">
-                    <div :class="{ 'fixed-right-column': currentStepId !== 7 }">
+                    <div :class="{ 'fixed-right-column': !showLicenseUse }">
                         <transition name="appear">
                             <LicenseDetailsCard
                                 v-if="showLicense"
