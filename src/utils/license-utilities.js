@@ -218,9 +218,9 @@ function generateLicenseCode(licenseAttr, licenseName) {
         .map(attr => `<img ${iconStyle} src="${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}">`
         ).join('')
 
-    return (`<a rel="license" href="${licenseURL(licenseAttr)}" target="_blank"
-        rel="license noopener noreferrer" style="display:inline-block;">
-        ${licenseName}${licenseIconsCode}</a>`)
+    return (`<a rel="license" href="${licenseURL(licenseAttr)}" target="_blank"` +
+        'rel="license noopener noreferrer" style="display:inline-block;">' +
+        `${licenseName}${licenseIconsCode}</a>`)
 }
 
 /**

@@ -11,7 +11,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
-import { generateHTML } from '../utils/license-utilities'
+import { generateHTML, LICENSES } from '../utils/license-utilities'
 
 export default {
     name: 'LicenseHTML',
@@ -22,12 +22,13 @@ export default {
         htmlLicenseParagraph() {
             const isFull = this.attributionType === 'full'
             const { work, creator, license, paragraph } = generateHTML(this.attributionDetails, this.shortName, isFull)
+            const licenseMark = this.shortName === LICENSES.CC0.SHORT ? 'marked-text' : 'licensed-text'
             const licenseCodeSpan = this.$t('license-use.richtext.full-text', {
                 workTitle: work || this.$t('license-use.richtext.workTitle'),
-                creator,
-                license,
-                by: creator ? this.$t('license-use.richtext.by') : '',
-                'licensed-text': this.$t('license-use.richtext.licensed-text')
+                creator: creator,
+                license: license,
+                licenseMark: this.$t(`license-use.richtext.${licenseMark}`),
+                by: creator ? this.$t('license-use.richtext.by') : ''
             })
             return `${paragraph}${licenseCodeSpan}</p>`
         }
