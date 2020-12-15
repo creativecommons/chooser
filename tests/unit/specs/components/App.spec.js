@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue, config } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import App from '@/App'
 import Buefy from 'buefy'
 import VueI18n from 'vue-i18n'
