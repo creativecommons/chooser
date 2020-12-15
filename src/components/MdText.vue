@@ -32,7 +32,7 @@ export default {
         this.md = null
     },
     render(h) {
-        const paragraphs = this.content.replaceAll('<br>', '</p><p>')
+        const paragraphs = this.content.split('<br>').join('</p><p>')
         return h(this.tag, { domProps: { innerHTML: paragraphs } })
     }
 }

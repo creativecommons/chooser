@@ -9,19 +9,19 @@
                 :key="idx"
                 class="help-link"
             >
-                <a
+                <v-button
+                    theme="text"
                     class="help-link-a"
                     @click="clickHandler(idx)"
                 >
-                    {{ $t(`help.${modal.title}.heading`) }}
-                </a>
+                    {{ $t(`help.${modal}.heading`) }}
+                </v-button>
             </li>
         </ul>
         <portal>
             <app-modal
-                v-if="openModal"
-                :title="$t(`help.${modals[openModal].title}.heading`)"
-                :aria-labels="modalAriaLabels"
+                v-if="openModal!==null"
+                :title="$t(`help.${modals[openModal]}.heading`)"
                 @close="closeModal"
             >
                 <section
@@ -29,14 +29,14 @@
                     :class="['modal-content', `modal-${openModal}`]"
                 >
                     <md-text
-                        :source="$t(`help.${modals[openModal].title}.text`)"
+                        :source="$t(`help.${modals[openModal]}.text`)"
                         tag="article"
                     />
                 </section>
 
                 <section
-                    v-if="openModal === 3"
-                    class="modal-content modal-3"
+                    v-if="openModal === 2"
+                    class="modal-content modal-2"
                 >
                     <p>
                         {{ $t('help.what-icons-mean.text') }}
@@ -105,8 +105,8 @@
                     </div>
                 </section>
                 <section
-                    v-if="openModal === 6"
-                    class="modal-content modal-6"
+                    v-if="openModal === 5"
+                    class="modal-content modal-5"
                 >
                     <article class="columns-auto">
                         <md-text
@@ -120,8 +120,8 @@
                     </article>
                 </section>
                 <section
-                    v-if="openModal === 7"
-                    class="modal-content modal-7"
+                    v-if="openModal === 6"
+                    class="modal-content modal-6"
                 >
                     <article>
                         <md-text
@@ -151,9 +151,8 @@
                         </div>
                     </article>
                 </section>
-
                 <md-text
-                    :source="$t(`help.${modals[openModal].title}.footer`)"
+                    :source="$t(`help.${modals[openModal]}.footer`)"
                     tag="footer"
                     class="modal-footer modal-card-foot"
                 />
@@ -175,59 +174,34 @@ export default {
     data() {
         return {
             openModal: null,
-            modals: {
-                1: {
-                    status: false,
-                    title: 'what-are-cc-licenses'
-                },
-                2: {
-                    status: false,
-                    title: 'how-licenses-work'
-                },
-                3: {
-                    status: false,
-                    title: 'what-icons-mean'
-                },
-                4: {
-                    status: false,
-                    title: 'considerations-before-licensing'
-                },
-                5: {
-                    status: false,
-                    title: 'how-formally-license'
-                },
-                6: {
-                    status: false,
-                    title: 'six-cc-licenses'
-                },
-                7: {
-                    status: false,
-                    title: 'how-licenses-communicated'
-                },
-                8: {
-                    status: false,
-                    title: 'what-free-culture-license'
-                },
-                9: {
-                    status: false,
-                    title: 'look-earlier-license-ver'
-                }
-            },
-            modalAriaLabels: {
-                // TODO: implement i18n values passing to VueVocabulary components
-                'browse-page.aria.close': 'close'
-            }
+            modals: [
+                'what-are-cc-licenses',
+                'how-licenses-work',
+                'what-icons-mean',
+                'considerations-before-licensing',
+                'how-formally-license',
+                'six-cc-licenses',
+                'how-licenses-communicated',
+                'what-free-culture-license',
+                'look-earlier-license-ver'
+            ]
+        }
+    },
+    computed: {
+        openModalTitle() {
+            return this.openModal !== null
+                ? this.modals[this.openModal]
+                : null
         }
     },
     methods: {
         async clickHandler(modalNumber) {
-            this.modals[modalNumber].status = true
             this.openModal = parseInt(modalNumber)
             if (process.env.NODE_ENV === 'production') {
                 this.$ga.event({
                     eventCategory: 'HelpSection',
                     eventAction: 'clicked',
-                    eventLabel: this.modals[modalNumber].title
+                    eventLabel: this.modals[modalNumber]
                 })
             }
             await this.$nextTick()
@@ -240,10 +214,9 @@ export default {
             })
         },
         isSimpleModal(number) {
-            return ![3, 6, 7].includes(number)
+            return ![2, 5, 6].includes(number)
         },
         closeModal() {
-            this.modals[this.openModal].status = false
             this.openModal = null
         }
     }
