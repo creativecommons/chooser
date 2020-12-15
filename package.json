@@ -36,6 +36,7 @@
         "vue-analytics": "^5.22.1",
         "vue-hotjar": "^1.2.0",
         "vue-i18n": "^8.20.0",
+        "vue-scrollto": "^2.20.0",
         "vuex": "^3.5.1"
     },
     "devDependencies": {
@@ -74,7 +75,7 @@
         "transform": {
             "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
             ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
-            "^.+\\.svg$": "<rootDir>/tests/unit/svgTransform.js"
+            "^.+\\.(svg|png)$": "<rootDir>/tests/unit/svgTransform.js"
         },
         "snapshotSerializers": [
             "<rootDir>/node_modules/jest-serializer-vue"

@@ -1,12 +1,13 @@
 export const messages = {
     app: {
-        title: 'License Chooser'
+        title: 'License Chooser',
+        'page-title': 'Chooser'
     },
     header: {
         'nav-feedback': 'FEEDBACK'
     },
     'locale-selector.label': 'Selected language',
-    'select-license': {
+    chooser: {
         heading: 'LICENSE CHOOSER',
         instructions: 'Follow the steps to select the appropriate license for your work. ' +
             'This site does not store any information.'
@@ -15,7 +16,8 @@ export const messages = {
         nav: {
             'previous-label': 'BACK',
             'next-label': 'NEXT',
-            'finish-label': 'Attribution details are automatically updated'
+            'done-label': 'DONE',
+            'restart-label': 'Start again'
         },
         yes: 'Yes. ',
         no: 'No. ',

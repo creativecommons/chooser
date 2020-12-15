@@ -87,6 +87,9 @@ const createStore = (state) => {
             },
             setAttributionType(state, attrType) {
                 state.attributionType = attrType
+            },
+            restoreLicenseAttr(state) {
+                state.currentLicenseAttributes = defaultAttributes
             }
         }
     })

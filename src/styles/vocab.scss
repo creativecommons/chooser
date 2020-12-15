@@ -1,51 +1,39 @@
-/* Vocabulary Text styles */
-.vocab-body {
-    font-style: normal;
-    font-weight: normal;
-    color: #333333;
-    padding-bottom: 8px;
-}
-.vocab-body.body-bigger {
-    font-size: 23px;
-    line-height: 33px;
-    color: black;
-}
-.vocab-body.body-big {
-    font-size: 18px;
-    line-height: 25px;
-}
-.vocab-body.body-normal {
-    font-size: 16px;
-    line-height: 24px;
-}
-.vocab-caption {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 19px;
-    padding-bottom: 8px;
-}
-
-/* Vocabulary colors */
-.normal-gray {
-    color: #D8D8D8!important;
-}
-.slate-gray {
-    color: #333333;
-}
-.vocab-tomato {
-    color: #ED592F!important;
-}
-/* Vocabulary other styles */
-.vocab.license-icons img {
-    width: 35px;
-    height: 35px;
-}
-// Remove underlines from Previous/Next buttons
-a, a:hover {
-    text-decoration: none;
-}
-
 .select:not(.is-multiple):not(.is-loading)::after {
     border: none;
+}
+@media only screen and (max-width: 768px) {
+    h3 {
+        font-size: 1.25rem;
+    }
+    #site-container {
+        h3 {
+            font-size: 1.25rem;
+        }
+        h4.b-header {
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.4375rem;
+            letter-spacing: 0;
+            text-align: left;
+        }
+        .body-bigger, .body-big {
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.5625rem;
+            letter-spacing: 0;
+            text-align: left;
+
+        }
+        .body-normal {
+            font-size: 0.8125rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.1875rem;
+            letter-spacing: 0;
+            text-align: left;
+
+        }
+    }
 }

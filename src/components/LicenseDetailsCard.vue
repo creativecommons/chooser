@@ -29,8 +29,16 @@
                     >
                         <span class="readable-string">
                             <i :class="['icon', 'has-background-white', `cc-${item}`]" />
-                            <b>{{ item === 'zero' ? 'CC0' : item.toUpperCase() }}:</b>
-                            {{ $t(`license-details-card.item-description.${item}`) }}
+                            <span>
+                                <b>{{ item === 'zero' ? 'CC0' : item.toUpperCase() }}:</b>
+                                {{ $t(`license-details-card.item-description.${item}`) }}
+                            </span>
+                        </span>
+                        <span
+                            v-if="item === 'nc'"
+                            class="description-caption caption"
+                        >
+                            {{ $t(`license-details-card.caption.${item}`) }}
                         </span>
                         <span
                             v-if="item === 'nc'"
