@@ -38,7 +38,7 @@
                     <help-section />
                 </div>
                 <div class="column">
-                    <div :class="{ 'fixed-right-column': currentStepId !== 7 }">
+                    <div :class="{ 'fixed-right-column': !showLicenseUse }">
                         <transition name="appear">
                             <LicenseDetailsCard
                                 v-if="showLicense"
@@ -140,12 +140,10 @@ export default {
     @import "~bulma";
     @import '~buefy/src/scss/utils/_variables.scss';
     @import '~buefy/src/scss/components/_modal.scss';
-    @import '~buefy/src/scss/components/_tabs.scss';
     @import '~buefy/src/scss/components/_select.scss';
     @import '~buefy/src/scss/components/_form.scss';
     @import '~buefy/src/scss/components/_icon.scss';
 
-    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A%20400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
     @import "@creativecommons/vocabulary/scss/vocabulary.scss";
 
     #app {
@@ -157,6 +155,7 @@ export default {
     }
     #site-container {
         padding: 0.75rem;
+        --border-width: 0.125rem;
     }
     #site-container .breadcrumb {
         margin-bottom: 2rem;
@@ -168,11 +167,17 @@ export default {
         margin-top: 0.5rem;
         margin-bottom: 2.75rem;
     }
+    .columns.wider-gap {
+        --outer-padding: 1rem;
+        --inner-padding: 1.5rem;
+    }
     .columns.wider-gap .column:first-child {
-        padding-right: 1.5rem
+        padding-left: var(--outer-padding);
+        padding-right: var(--inner-padding);
     }
     .columns.wider-gap .column:last-child {
-        padding-left: 1.5rem
+        padding-right: var(--outer-padding);
+        padding-left: var(--inner-padding);
     }
     .fixed-right-column {
         position: sticky;
@@ -190,16 +195,11 @@ export default {
         #site-container {
             padding-top: 2rem;
         }
-        .page-head {
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 1.5rem;
-            grid-template-areas: "heading localechooser";
-        }
         footer.main-footer {
             margin-top: 5rem;
         }
     }
-    @media only screen and (min-width: 1025px) {
+    @media only screen and (min-width: 1024px) {
         #site-container {
             padding-left: 0;
             padding-right: 0;

@@ -91,6 +91,9 @@ export default {
     }
 
 }
+.step-header__title {
+    margin-bottom: 0.25rem;
+}
 .step-header__title::before{
     content: counter(step-counter);
     counter-increment: step-counter;
@@ -123,16 +126,26 @@ export default {
 .inactive .step-header__title {
         color: #b0b0b0;
     }
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .step-header__title {
-        font-size: 1.25rem;
-        padding-left: calc(var(--step-left-padding) * 2 + var(--counter-size));
+        font-size: 1.125rem;
+        padding-left: calc(var(--step-left-padding) + var(--counter-size));
+        margin-bottom: 0.5rem;
         &::before {
             top: 1rem;
         }
     }
+    .step-header__caption {
+        font-size: 0.8125rem;
+        line-height: 1.1875rem;
+        font-weight: 600;
+    }
     .step-header {
         padding-top: 1rem;
+        padding-right: 0.5rem;
+        &.completed, &.inactive {
+            padding-bottom: 1rem;
+        }
     }
 }
 </style>

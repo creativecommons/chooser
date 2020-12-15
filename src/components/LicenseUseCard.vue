@@ -143,4 +143,29 @@ export default {
 .tabs.is-boxed li:last-child a {
     border-top-right-radius: 0.25rem;
 }
+@media only screen and (max-width: 768px) {
+    .attribution-tabs {
+        margin-top: 1.25rem;
+        .tabs-content.is-boxed {
+            padding: 1rem;
+            border-bottom: none;
+            font-size: 0.8125rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.1875rem;
+            letter-spacing: 0;
+            text-align: left;
+        }
+        .tabs.is-boxed a {
+             font-size: 0.8125rem;
+             font-style: normal;
+             font-weight: 600;
+             line-height: 1.1875rem;
+             letter-spacing: 0;
+             text-align: left;
+        }
+    }
+
+}
+
 </style>
