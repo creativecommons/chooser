@@ -26,14 +26,12 @@ export default {
     },
     created() {
         this.md = new MarkdownIt()
-        this.md.options.breaks = true
     },
     destroyed() {
         this.md = null
     },
     render(h) {
-        const paragraphs = this.content.split('<br>').join('</p><p>')
-        return h(this.tag, { domProps: { innerHTML: paragraphs } })
+        return h(this.tag, { domProps: { innerHTML: this.content } })
     }
 }
 </script>
