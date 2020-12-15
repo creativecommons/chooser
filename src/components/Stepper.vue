@@ -1,5 +1,5 @@
 <template>
-    <div class="stepper__container column">
+    <div class="stepper__container">
         <div
             v-for="(step, idx) in visibleSteps()"
             :key="idx"
@@ -286,7 +286,6 @@ export default {
         --step-left-padding: calc(var(--h-padding) + var(--counter-size) + 1rem);
         &:last-of-type {
             border-bottom: 2px solid #d8d8d8;
-            margin-bottom: 15rem;
          }
     }
     .step-container.completed:not(.disabled):hover {
@@ -355,7 +354,7 @@ export default {
             /*transform: scaleY(1);*/
         }
     }
-    @media (max-width: 860px) {
+    @media only screen and (max-width: 768px) {
         .step-container:last-of-type {
             margin-bottom: 1rem;
         }

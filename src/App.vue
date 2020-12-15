@@ -32,7 +32,10 @@
                 <LocaleChooser class="locale-chooser" />
             </div>
             <div class="columns">
-                <Stepper v-model="currentStepId" />
+                <div class="column">
+                    <Stepper v-model="currentStepId" />
+                    <help-section />
+                </div>
                 <div class="column">
                     <div class="fixed-right-column">
                         <LicenseDetailsCard
@@ -41,7 +44,6 @@
                         <LicenseUseCard
                             v-if="showLicenseUse"
                         />
-                        <HelpSection />
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@ export default {
         if (process.env.NODE_ENV === 'production') {
             this.$ga.page('/')
         }
-        this.$store.subscribe((mutation, state) => {
+        this.$store.subscribe((mutation) => {
             if (mutation.type === 'updateAttributesFromShort' || mutation.type === 'setSelected') {
                 this.showLicense = true
             }

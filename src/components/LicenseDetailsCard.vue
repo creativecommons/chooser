@@ -79,7 +79,7 @@ export default {
         },
         cardHeading() {
             return this.shortName === LICENSES.CC0.SHORT
-                ? this.$t('license-details-card.cc0-heading')
+                ? this.$t('license-details-card.heading-cc0')
                 : this.$t('license-details-card.heading')
         }
 
