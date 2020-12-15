@@ -199,7 +199,7 @@ export default {
             margin-top: 5rem;
         }
     }
-    @media only screen and (min-width: 1025px) {
+    @media only screen and (min-width: 1024px) {
         #site-container {
             padding-left: 0;
             padding-right: 0;
