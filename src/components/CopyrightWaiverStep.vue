@@ -69,7 +69,7 @@ export default {
 <style lang="scss">
 .waiver-textarea {
     width: 100%;
-    min-height: 100px;
+    min-height: 270px;
     margin: 1rem 0;
 }
 .step-actions .control-label {
