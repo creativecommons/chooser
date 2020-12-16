@@ -199,6 +199,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .main-footer {
+        --icon-size: 30px;
+    }
     .donate, .social {
         &:hover {
             text-decoration: none;
@@ -212,8 +215,9 @@ export default {
         align-items: center;
     }
     .icon {
-        width: 30px;
-        height: 30px;
+        width: var(--icon-size);
+        height: var(--icon-size);
+        display: inline-flex;
         svg {
             width: 100%;
             height: auto;
