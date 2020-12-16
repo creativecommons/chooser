@@ -103,7 +103,7 @@ export default {
     font-weight: bold;
     font-family: inherit;
     font-size: 1rem;
-    background: #04A635;
+    background: rgb(0, 128, 0);
     border-radius: 50%;
     text-align: center;
     color: #fff;
