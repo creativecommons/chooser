@@ -37,19 +37,23 @@
                     />
                     <help-section />
                 </div>
-                <div class="column">
+                <div class="column right-column">
+                    <!-- The right column with the recommended license should be fixed until
+                     the 'LicenseUseCard' appears, when the column should scroll to make the
+                     'LicenseUseCard' visible -->
                     <div :class="{ 'fixed-right-column': !showLicenseUse }">
                         <transition name="appear">
                             <LicenseDetailsCard
                                 v-if="showLicense"
                             />
                         </transition>
-
-                        <LicenseUseCard
-                            v-if="showLicenseUse"
-                            ref="licenseUseCard"
-                            :class="{ 'shake' : shouldShake}"
-                        />
+                        <transition name="appear">
+                            <LicenseUseCard
+                                v-if="showLicenseUse"
+                                ref="licenseUseCard"
+                                :class="{ 'shake' : shouldShake}"
+                            />
+                        </transition>
                     </div>
                 </div>
             </div>
@@ -82,19 +86,40 @@ export default {
         return {
             currentStepId: 0,
             showLicense: false,
-            shouldShake: false
+            shouldShake: false,
+            windowWidth: window.innerWidth
         }
     },
     computed: {
         showLicenseUse() {
             return this.currentStepId === 7
+        },
+        isBelowTabletWidth() {
+            return this.windowWidth < 769
         }
     },
     watch: {
-        currentStepId(newId) {
-            const offset = newId === 7 ? -200 : -120
-            this.$scrollTo(`.step-${newId}`, { offset: offset })
+        async currentStepId(newId, oldId) {
+            // When the new step opens, the page is scrolled to the top of the
+            // previous step. When the 'Back' button is clicked, the page is
+            // scrolled to the previous step.
+            // If the user chooses No attribution, the page is scrolled to the top
+            // of the disabled steps, i.e. step 2.
+            let stepToScroll = newId === 6 ? 2 : Math.min(newId, oldId)
+            if (newId === 6) {
+                stepToScroll = 2
+            }
+            await this.$nextTick()
+            this.$scrollTo(`.step-${stepToScroll}`)
         }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            window.addEventListener('resize', this.onResize)
+        })
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.onResize)
     },
     created: function() {
         // send home to google analytics
@@ -113,13 +138,18 @@ export default {
             this.showLicense = 0
         },
         done() {
-            const scrollDuration = 800
-            const shakeDuration = 3000
+            // Add 'shake' class that triggers animation to the 'LicenseUseCard',
+            // when 'Done' button is clicked, after the scroll has finished.
+            //
+            const scrollDuration = this.isBelowTabletWidth ? 3000 : 800
+            const shakeDuration = 3000 + scrollDuration
             const comp = this
-
             setTimeout(() => { comp.shouldShake = true }, scrollDuration)
             setTimeout(() => { comp.shouldShake = false }, shakeDuration)
-            this.$scrollTo(this.$refs.licenseUseCard.$el, 800)
+            this.$scrollTo(this.$refs.licenseUseCard.$el, scrollDuration)
+        },
+        onResize() {
+            this.windowWidth = window.innerWidth
         }
     }
 }
@@ -144,7 +174,7 @@ export default {
     @import '~buefy/src/scss/components/_form.scss';
     @import '~buefy/src/scss/components/_icon.scss';
 
-    @import "@creativecommons/vocabulary/scss/vocabulary.scss";
+    @import "~@creativecommons/vocabulary/scss/vocabulary.scss";
 
     #app {
         -webkit-font-smoothing: antialiased;
@@ -227,14 +257,12 @@ export default {
 
     }
     .appear-enter-active {
-        transition: all .8s ease;
+        transition: opacity .8s ease;
     }
     .appear-leave-active {
-        transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        transition: opacity .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     }
-    .appear-enter, .appear-leave-to
-        /* .appear-leave-active below version 2.1.8 */ {
-        transform: translateY(-10px);
+    .appear-enter, .appear-leave-to {
         opacity: 0;
     }
 </style>
