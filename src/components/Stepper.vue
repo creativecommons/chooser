@@ -302,7 +302,7 @@ export default {
         border-top: none;
     }
     .step-content {
-        padding: 0.5rem 1.5rem 0.5rem var(--step-left-padding);
+        padding: 0.25rem 1.5rem 0.5rem var(--step-left-padding);
     }
     .step__actions {
         &:focus {

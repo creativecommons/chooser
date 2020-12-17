@@ -77,7 +77,7 @@ export default {
     display: flex;
     flex-direction: column;
     position:relative;
-    padding: 1.5625rem 1.5rem 0.5rem var(--step-left-padding);
+    padding: 1.5625rem 1.5rem 0.25rem var(--step-left-padding);
     cursor: default;
 
     &:active, &:focus {
