@@ -243,7 +243,6 @@ export default {
 
                 &:hover {
                     text-decoration: underline;
-                    text-decoration-color: #363636;
                 }
             }
         }
