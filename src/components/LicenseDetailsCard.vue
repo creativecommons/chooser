@@ -132,4 +132,7 @@ export default {
         padding-left:51px;
         line-height:35px;
     }
+    .chooser-selected-description{
+        color: #2f4f4f;
+    }
 </style>
