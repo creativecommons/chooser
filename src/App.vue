@@ -140,11 +140,10 @@ export default {
     @import "~bulma";
     @import '~buefy/src/scss/utils/_variables.scss';
     @import '~buefy/src/scss/components/_modal.scss';
-    @import '~buefy/src/scss/components/_select.scss';
     @import '~buefy/src/scss/components/_form.scss';
     @import '~buefy/src/scss/components/_icon.scss';
 
-    @import "@creativecommons/vocabulary/scss/vocabulary.scss";
+    @import "~@creativecommons/vocabulary/scss/vocabulary.scss";
 
     #app {
         -webkit-font-smoothing: antialiased;
