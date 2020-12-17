@@ -15,10 +15,21 @@
         >
             {{ $t('stepper.nav.next-label') }}
         </v-button>
-        <span
+        <v-button
             v-else
-            class="pagination-finish"
-        >{{ $t('stepper.nav.finish-label') }}</span>
+            class="is-success next-button done-button"
+            @click="handleDone"
+        >
+            {{ $t('stepper.nav.done-label') }}
+        </v-button>
+        <v-button
+            v-if="stepName==='AD'"
+            class="restart-button"
+            theme="text"
+            @click="handleRestart"
+        >
+            {{ $t('stepper.nav.restart-label') }}
+        </v-button>
     </nav>
 </template>
 
@@ -37,7 +48,13 @@ export default {
     },
     methods: {
         handleNavigation(direction) {
-            this.$emit('navigate', { direction, stepName: this.stepName })
+            this.$emit('navigate', { direction, name: this.stepName })
+        },
+        handleDone() {
+            this.$emit('done')
+        },
+        handleRestart() {
+            this.$emit('restart')
         }
     }
 }
@@ -45,13 +62,25 @@ export default {
 
 <style lang="scss" scoped>
 .step-navigation {
-    padding: 1.375rem 0.5rem 1.375rem var(--step-left-padding);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1.375rem 1.5rem 1.375rem var(--step-left-padding);
+    width: 100%;
     .button + .button {
         margin-left: 1rem;
     }
+    .button.restart-button {
+        margin-left: auto;
+        color: #008000;
+    }
+    .button.next-button.is-success {
+        background-color: #008000;
+        color: white;
+        &:hover, &:active, &:focus {
+            background-color: #008B00;
+        }
+    }
 }
-.pagination-finish {
-    margin-left: 1rem;
-    line-height: 2.625rem;
-}
+
 </style>
