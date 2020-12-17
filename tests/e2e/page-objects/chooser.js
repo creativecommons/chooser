@@ -4,21 +4,23 @@
 
 const stepperCommands = {
     clickYes: function() {
-        this.pause(500)
         this.click('.radio-input[value="yes"]')
+        this.pause(500)
         return this
     },
     clickNo: function() {
-        this.pause(500)
         this.click('.radio-input[value="no"]')
+        this.pause(500)
         return this
     },
     clickNext: function() {
         this.click('.next-button')
+        this.pause(500)
         return this
     },
     clickPrevious: function() {
         this.click('.previous-button')
+        this.pause(500)
         return this
     },
     chooseNo: function() {
@@ -34,7 +36,7 @@ const stepperCommands = {
     clickWaiver: function() {
         this.click('.v-checkbox:first-child')
             .click('.v-checkbox:last-child')
-            .click('.next-button')
+        this.clickNext()
         return this
     },
     selectFromDropdown: function(licenseName) {
@@ -43,6 +45,7 @@ const stepperCommands = {
             .click('.license-dropdown')
             .click(`.license-dropdown option[value="${licenseName}"]`)
             .click('.next-button')
+        this.pause(500)
         return this
     },
     assertStepName: function(stepName) {
