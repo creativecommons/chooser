@@ -20,7 +20,7 @@ describe('LicenseText.vue', () => {
     // Vue i18n is looking for locale key in messages,
     // i.e. $t('app') becomes 'messages.<en>.app'
     const messages = {}
-    messages.en = require('@/locales/en.json')
+    messages.en = require('@/locales/en.js').messages
     beforeEach(() => {
         localVue = createLocalVue()
         localVue.use(VueI18n)

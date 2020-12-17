@@ -143,7 +143,7 @@ export default {
     .icon {
         vertical-align: middle;
     }
-    @media screen and (min-width: 1023px) {
+    @media only screen and (min-width: 1024px) {
         // All columns are set the same width on 'tablet'-sized screen
         // Half-sized middle column makes the last column too small for
         // the 'Donate' button and breaks the layout

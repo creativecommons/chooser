@@ -12,7 +12,7 @@ const defaultAttributes = { BY: undefined, NC: undefined, ND: undefined, SA: und
 /**
  * Convert short license name to attributes
  * @param {ShortLicenseName} shortLicenseName - name of the license with version number
- * @returns {LicenseAttributes}}
+ * @returns {LicenseAttributes|null}
  */
 function shortToAttr(shortLicenseName) {
     const currentLicense = Object.values(LICENSES).find(license => {
@@ -42,7 +42,7 @@ function attrToShort(attr) {
 
 /**
  * Convert license attributes object to full license name
- * @param {{LicenseAttributes}} attr
+ * @param {LicenseAttributes} attr
  * @returns {string|undefined}
  */
 function attrToFull(attr) {
@@ -59,15 +59,17 @@ function attrToFull(attr) {
     return base
 }
 
+const chooserRef = '?ref=chooser-v1'
+
 /**
  * Returns url to license from short license name with version number (eg. 'CC BY 4.0')
- * @param attr {LicenseAttributes} license attributes object
- * @param [mode] {'web'| 'print'} (?ref=chooser-v1, target and rel are added to the end of the link if mode is web)
+ * @param {LicenseAttributes} attr license attributes object
+ * @param {'web'|'print'} mode?  (?ref=chooser-v1, target and rel are added to the end of the link if mode is web)
  * @returns {string} url of the license information page
  */
-function licenseUrl(attr, mode) {
+function licenseURL(attr, mode = 'web') {
     if (attr.BY === undefined) throw new Error('Cannot return URL when BY attribute is undefined')
-    const linkRef = mode === 'web' ? '?ref=chooser-v1' : ''
+    const linkRef = mode === 'web' ? chooserRef : ''
     if (attr.BY === false) {
         return `https://creativecommons.org/publicdomain/zero/1.0${linkRef}`
     }
@@ -216,7 +218,7 @@ function generateLicenseCode(licenseAttr, licenseName) {
         .map(attr => `<img ${iconStyle} src="${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}">`
         ).join('')
 
-    return (`<a rel="license" href="${licenseUrl(licenseAttr)}" target="_blank"
+    return (`<a rel="license" href="${licenseURL(licenseAttr)}" target="_blank"
         rel="license noopener noreferrer" style="display:inline-block;">
         ${licenseName}${licenseIconsCode}</a>`)
 }
@@ -244,6 +246,6 @@ function generateHTML(attributionDetails, shortLicenseName, isFullName = false) 
 
 export {
     defaultAttributes, CC0Attributes, CCBYAttributes, shortToAttr, attrToShort,
-    attrToFull, licenseUrl, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus,
+    attrToFull, licenseURL, chooserRef, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus,
     CC_NAMESPACE, DCT_NAMESPACE, LICENSES, ICON_STYLE, ICON_BASE_URL
 }

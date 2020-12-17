@@ -63,7 +63,7 @@ export default {
             this.success = true
             if (process.env.NODE_ENV === 'production') {
                 const fieldsFilled = {}
-                for (const detail in this.attributionDetails) {
+                for (const detail in Object.keys(this.attributionDetails)) {
                     fieldsFilled[detail] = this.attributionDetails[detail] !== ''
                 }
                 const copiedLicense = {
@@ -107,6 +107,13 @@ export default {
     justify-content: center;
     &.is-xmp {
         width: fit-content;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .copy-tools {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1rem 1rem;
     }
 }
 </style>
