@@ -307,7 +307,7 @@ export default {
         color: #ED592F;
     }
     .help-links .help-link .help-link-a:hover {
-        color:#363636!important;
+        color:#ED592F!important;
     }
     .help-links {
         list-style-position: inside;
