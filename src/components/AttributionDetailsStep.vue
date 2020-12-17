@@ -4,38 +4,36 @@
             {{ $t('stepper.AD.instructions') }}
         </p>
         <form class="attribution-details-form">
-            <b-field :label="this.$t('stepper.AD.form.work-title.label')">
-                <b-input
-                    v-model="workTitle"
-                    :placeholder="this.$t('stepper.AD.form.work-title.placeholder')"
-                />
-            </b-field>
-            <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
-                <b-input
-                    v-model="creatorName"
-                    :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
-                />
-            </b-field>
-            <b-field :label="this.$t('stepper.AD.form.work-url.label')">
-                <b-input
-                    v-model="workUrl"
-                    :placeholder="this.$t('stepper.AD.form.work-url.placeholder')"
-                />
-            </b-field>
-            <b-field :label="this.$t('stepper.AD.form.creator-profile.label')">
-                <b-input
-                    v-model="creatorProfileUrl"
-                    :placeholder="this.$t('stepper.AD.form.creator-profile.placeholder')"
-                />
-            </b-field>
+            <v-input
+                v-model="workTitle"
+                :label="$t('stepper.AD.form.work-title.label')"
+                :placeholder="$t('stepper.AD.form.work-title.placeholder')"
+            />
+            <v-input
+                v-model="creatorName"
+                :label="$t('stepper.AD.form.creator-name.label')"
+                :placeholder="$t('stepper.AD.form.creator-name.placeholder')"
+            />
+            <v-input
+                v-model="workUrl"
+                :label="$t('stepper.AD.form.work-url.label')"
+                :placeholder="$t('stepper.AD.form.work-url.placeholder')"
+            />
+            <v-input
+                v-model="creatorProfileUrl"
+                :label="$t('stepper.AD.form.creator-profile.label')"
+                :placeholder="$t('stepper.AD.form.creator-profile.placeholder')"
+            />
         </form>
     </div>
 </template>
 <script>
 import { mapMutations, mapState } from 'vuex'
+import VInput from '@/Vocabulary/VInput'
 
 export default {
     name: 'AttributionDetails',
+    components: { VInput },
     props: {
         status: {
             type: String,
@@ -79,24 +77,18 @@ export default {
 </script>
 <style lang="scss">
 .attribution-details-form {
-    margin-top: 1rem;
-}
-
-.attribution-details-form .label {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    color: #333333;
-}
-.attribution-details-form .input {
-    font-weight: 600;
-    font-size: 1rem;
-    color: #333333;
-    border-width: 2px;
-    border-color: #d8d8d8;
-    &:focus, &:active, &:hover {
-        border-color: #b0b0b0;
+    margin-top: 1.5rem;
+    .input[type="text"] {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #333333;
+        border: 2px solid #d8d8d8;
+        &:focus, &:active, &:hover {
+            border-color: #b0b0b0;
+        }
+    }
+    .control + .control {
+        margin-top: 1rem;
     }
 }
 @media only screen and (max-width: 768px) {
@@ -105,19 +97,16 @@ export default {
         line-height: 1.1875rem;
         font-weight: 600;
     }
-    .attribution-details-form .label {
-        font-style: normal;
-        font-size: 0.8125rem;
-        line-height: 1.1875rem;
-        font-weight: 600;
-        color: #333333;
-    }
-    .attribution-details-form input[type="text"] {
-        font-style: normal;
-        font-size: 0.8125rem;
-        line-height: 1.1875rem;
-        font-weight: 600;
-        color: #333333;
+    .attribution-details-form {
+        .label {
+            font-size: 0.8125rem;
+            &.label-bold {
+                font-weight: 600;
+            }
+        }
+        input[type="text"].input {
+            font-size: 0.8125rem;
+        }
     }
 }
 </style>

@@ -139,12 +139,11 @@ export default {
     // Import Bulma and Buefy styles
     @import "~bulma";
     @import '~buefy/src/scss/utils/_variables.scss';
-    @import '~buefy/src/scss/components/_modal.scss';
     @import '~buefy/src/scss/components/_select.scss';
     @import '~buefy/src/scss/components/_form.scss';
     @import '~buefy/src/scss/components/_icon.scss';
 
-    @import "@creativecommons/vocabulary/scss/vocabulary.scss";
+    @import "~@creativecommons/vocabulary/scss/vocabulary.scss";
 
     #app {
         -webkit-font-smoothing: antialiased;
@@ -232,8 +231,7 @@ export default {
     .appear-leave-active {
         transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     }
-    .appear-enter, .appear-leave-to
-        /* .appear-leave-active below version 2.1.8 */ {
+    .appear-enter, .appear-leave-to {
         transform: translateY(-10px);
         opacity: 0;
     }
