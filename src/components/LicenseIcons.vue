@@ -1,22 +1,17 @@
 <template>
     <span>
         <img
-            :width="size"
-            :height="size"
-            src="../assets/license-icons/cc.svg"
-        >
-        <img
-            v-for="(license, index) in iconsArr"
+            v-for="(icon, index) in ['cc', ...iconsArr]"
             :key="index"
             :width="size"
             :height="size"
-            :src="require(`../assets/license-icons/${license.toLowerCase()}.svg`)"
+            :src="require(`../assets/license-icons/${filename(icon)}`)"
         >
     </span>
 </template>
 <script>
-const LicenseIcons = {
-    name: 'license-icons',
+export default {
+    name: 'LicenseIcons',
     props: {
         size: {
             type: [Number, String],
@@ -24,11 +19,20 @@ const LicenseIcons = {
         },
         iconsArr: {
             type: Array,
-            default: []
+            required: true
+        },
+        // Icons for rich text need to be in .png format to enable pasting
+        isPng: {
+            type: Boolean,
+            default: false
+        }
+    },
+    methods: {
+        filename(icon) {
+            return `${icon.toLowerCase()}.${this.isPng ? 'png' : 'svg'}`
         }
     }
 }
-export default LicenseIcons
 </script>
 <style lang="scss" scoped>
     span {

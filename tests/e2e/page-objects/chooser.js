@@ -4,10 +4,12 @@
 
 const stepperCommands = {
     clickYes: function() {
+        this.pause(500)
         this.click('.radio-input[value="yes"]')
         return this
     },
     clickNo: function() {
+        this.pause(500)
         this.click('.radio-input[value="no"]')
         return this
     },
@@ -51,7 +53,7 @@ const stepperCommands = {
 const chooserCommands = {
     assertSelectedLicenseDisplayed: function(licenseName) {
         this
-            .assert.containsText('.license-name', licenseName)
+            .assert.containsText('.license-short-name', licenseName)
         return this
     }
 }
@@ -62,7 +64,7 @@ module.exports = {
     elements: {
         appContainer: '#app',
         stepper: '.stepper__container',
-        selectedLicenseCard: '.selected-license-card',
+        selectedLicenseCard: '.recommended-card',
         licenseUseCard: '.license-use-card'
     },
 
@@ -77,7 +79,7 @@ module.exports = {
             commands: [stepperCommands]
         },
         selectedLicenseCard: {
-            selector: '.selected-license-card'
+            selector: '.recommended-card'
         },
         licenseUseCard: {
             selector: '.license-use-card'

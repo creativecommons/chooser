@@ -4,6 +4,7 @@ import Stepper from '@/components/Stepper'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import Vue from 'vue'
 import store from '@/store'
+import VueScrollTo from 'vue-scrollto'
 
 function getStepId(wrapper, name) {
     return wrapper.vm.steps.filter((step) => { return step.name === name })[0].id
@@ -39,6 +40,7 @@ function setUp() {
     localVue = createLocalVue()
     localVue.use(Vuex)
     localVue.use(VueVocabulary)
+    localVue.use(VueScrollTo)
 
     wrapper = shallowMount(Stepper, {
         store,
