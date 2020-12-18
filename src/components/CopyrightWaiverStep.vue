@@ -4,7 +4,7 @@
             {{ $t('stepper.CW.copyright-waive-agreement') }}
         </v-checkbox>
         <textarea
-            :value="this.$t('cc0-waiver.text')"
+            :value="$t('cc0-waiver.text')"
             :class="'waiver-textarea'"
         />
         <v-checkbox v-model="copyrightWaiverConfirmed">
@@ -15,16 +15,11 @@
 <script>
 export default {
     name: 'CopyrightWaiverStep',
+    inheritAttrs: false,
     props: {
         id: Number,
         name: String,
-        selected: Boolean,
-        status: {
-            type: String,
-            validator(value) {
-                return ['active', 'previous', 'inactive'].includes(value)
-            }
-        }
+        selected: Boolean
     },
     data() {
         return {
