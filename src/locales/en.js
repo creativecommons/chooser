@@ -152,7 +152,7 @@ export const messages = {
         'copy-label': 'Copy',
         'copied-label': 'Copied!',
         richtext: {
-            'full-text': '{workTitle} {by} {creator}{licenseMark} {license}{print-instructions}',
+            'full-text': '{workTitle} {by} {creator} {licenseMark} {license}{print-instructions}',
             workTitle: 'This work',
             by: 'by',
             'licensed-text': 'is licensed under',
