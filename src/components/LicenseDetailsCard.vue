@@ -40,12 +40,6 @@
                         >
                             {{ $t(`license-details-card.caption.${item}`) }}
                         </span>
-                        <span
-                            v-if="item === 'nc'"
-                            class="description-caption caption"
-                        >
-                            {{ $t(`license-details-card.caption.${item}`) }}
-                        </span>
                     </li>
                 </transition-group>
             </ul>

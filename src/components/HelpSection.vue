@@ -242,7 +242,7 @@ export default {
                 font-weight: 600;
 
                 &:hover {
-                    color: #363636;
+                    text-decoration: underline;
                 }
             }
         }
