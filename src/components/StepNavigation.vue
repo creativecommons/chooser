@@ -66,7 +66,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 1.375rem 1.5rem 1.375rem var(--step-left-padding);
+    padding: 1.375rem 0 1.375rem 0;
     width: 100%;
     .button + .button {
         margin-left: 1rem;
