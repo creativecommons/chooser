@@ -11,7 +11,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
-import { generateHTML, LICENSES } from '../utils/license-utilities'
+import { generateHTML, LICENSES } from '@/utils/license-utilities'
 
 export default {
     name: 'LicenseHTML',
@@ -27,7 +27,7 @@ export default {
                 creator: creator,
                 license: license,
                 by: creator ? this.$t('license-use.richtext.by') : '',
-                'licenseMark': this.shortName === LICENSES.CC0.SHORT
+                licenseMark: this.shortName === LICENSES.CC0.SHORT
                     ? this.$t('license-use.richtext.marked-text')
                     : this.$t('license-use.richtext.licensed-text')
             })

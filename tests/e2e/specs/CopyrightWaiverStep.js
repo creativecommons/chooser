@@ -9,7 +9,6 @@ module.exports = {
             .click('.select > select')
             .click('option[value="CC0 1.0"]')
             .click('.next-button')
-            .assert.elementPresent('.waiver-textarea')
             .assert.elementPresent('.v-checkbox:nth-child(1)')
             .assert.elementPresent('.v-checkbox:nth-child(3)')
     },
