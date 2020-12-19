@@ -9,7 +9,7 @@
         </v-button>
         <v-button
             v-if="stepName!=='AD'"
-            :class="['is-success', 'next-button', { 'disabled' : isNextEnabled } ]"
+            :class="['is-success', 'next-button', { 'disabled' : !isNextEnabled } ]"
             :disabled="!isNextEnabled"
             @click="handleNavigation('next')"
         >
@@ -60,7 +60,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '~@creativecommons/vocabulary/scss/color';
 .step-navigation {
     display: flex;
     flex-direction: row;
@@ -72,15 +73,20 @@ export default {
     }
     .button.restart-button {
         margin-left: auto;
-        color: #008000;
+        color: $color-forest-green;
     }
     .button.next-button.is-success {
-        background-color: #008000;
+        background-color: $color-forest-green;
         color: white;
         &:hover, &:active, &:focus {
-            background-color: #008B00;
+            background-color: $color-brighter-forest-green;
         }
     }
 }
-
+@media only screen and (max-width: 768px) {
+    .step-navigation {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
 </style>

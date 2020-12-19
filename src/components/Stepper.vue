@@ -1,8 +1,5 @@
 <template>
-    <div
-        ref="top"
-        class="stepper__container"
-    >
+    <div class="stepper__container">
         <div
             v-for="(step, idx) in visibleSteps()"
             :key="idx"
@@ -11,7 +8,6 @@
         >
             <step-header
                 :step="step"
-                v-bind="step"
                 @activate="setActiveStep(step.id)"
             />
             <div
@@ -21,19 +17,17 @@
             >
                 <component
                     :is="stepActionComponent(step)"
-                    v-if="step.status === 'active'"
                     v-bind="stepActionProps(step)"
                     @change="changeStepSelected"
                 />
+                <StepNavigation
+                    :step-name="step.name"
+                    :is-next-enabled="isNextEnabled(step.id)"
+                    @navigate="navigate"
+                    @restart="restart"
+                    @done="done"
+                />
             </div>
-            <StepNavigation
-                v-if="step.status === 'active'"
-                :step-name="step.name"
-                :is-next-enabled="isNextEnabled(step.id)"
-                @navigate="navigate"
-                @restart="restart"
-                @done="done"
-            />
         </div>
     </div>
 </template>
@@ -288,8 +282,6 @@ export default {
         & .step-content {
             cursor: pointer;
         }
-    }
-    .step-container.completed:not(.disabled):hover {
     }
     .step-container.completed:not(.disabled):hover + .step-container {
         border-top: none;

@@ -106,7 +106,7 @@ export default {
     font-weight: bold;
     font-family: inherit;
     font-size: 1rem;
-    background: #04A635;
+    background: rgb(0, 128, 0);
     border-radius: 50%;
     text-align: center;
     color: #fff;
@@ -136,9 +136,9 @@ export default {
         }
     }
     .step-header__caption {
-        font-size: 0.8125rem;
-        line-height: 1.1875rem;
-        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-weight: 400;
     }
     .step-header {
         padding-top: 1rem;

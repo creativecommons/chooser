@@ -152,11 +152,11 @@ export const messages = {
         'copy-label': 'Copy',
         'copied-label': 'Copied!',
         richtext: {
-            'full-text': '{workTitle} {by} {creator}{licenseMark} {license}{print-instructions}',
+            'full-text': '{workTitle}{by}{creator}{licenseMark} {license}{print-instructions}',
             workTitle: 'This work',
-            by: 'by',
-            'licensed-text': 'is licensed under',
-            'marked-text': 'is marked with',
+            by: ' by ',
+            'licensed-text': ' is licensed under',
+            'marked-text': '  marked with',
             'print-instructions': '. To view a copy of this license, visit {linkToLicenseDeed}'
         },
         print: {

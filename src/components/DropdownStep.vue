@@ -2,7 +2,7 @@
     <div class="step-actions">
         <b-field class="license-dropdown">
             <b-select
-                :placeholder="this.$t('stepper.DD.placeholder')"
+                :placeholder="$t('stepper.DD.placeholder')"
                 :value="shortName"
                 @input="setCurrentLicense"
             >
@@ -21,13 +21,8 @@
 import { mapGetters } from 'vuex'
 export default {
     name: 'DropdownStep',
+    inheritAttrs: false,
     props: {
-        status: {
-            type: String,
-            validator(value) {
-                return ['active', 'previous', 'inactive'].includes(value)
-            }
-        },
         id: Number
     },
     data() {
@@ -66,11 +61,6 @@ export default {
 <style lang="scss">
 .license-dropdown {
     margin-top: 1rem;
-    .label{
-        font-weight: normal;
-        opacity: 0.8;
-        font-size: 1em;
-    }
     .select, select {
         width: 100%;
     }
@@ -79,6 +69,11 @@ export default {
         &:active, &:focus, &:hover {
             border-color: #b0b0b0;
         }
+    }
+}
+@media only screen and (max-width: 768px) {
+    .license-dropdown {
+        margin-top: 0;
     }
 }
 </style>
