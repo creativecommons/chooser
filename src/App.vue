@@ -115,7 +115,6 @@ export default {
             // By default, scroll is cancelled when the user clicks enter. We want to override that
             // so that the stepper scrolls for users using keyboard navigation.
             this.$scrollTo(`.step-${stepToScroll}`, { cancelable: false })
-            console.log('scrolled')
         }
     },
     mounted() {

@@ -34,8 +34,8 @@ const stepperCommands = {
         return this
     },
     clickWaiver: function() {
-        this.click('.v-checkbox:first-child')
-            .click('.v-checkbox:last-child')
+        this.click('.v-checkbox:first-child input[type="checkbox"]')
+            .click('.v-checkbox:last-child input[type="checkbox"]')
         this.clickNext()
         return this
     },
