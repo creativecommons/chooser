@@ -42,7 +42,7 @@ describe('StepNavigation.vue', () => {
                 stepName: 'AD'
             })
             const buttons = wrapper.findAll('button')
-            expect(buttons.length).toEqual(1)
+            expect(buttons.length).toEqual(3)
             const backButton = buttons.at(0)
             expect(backButton.text()).toEqual('stepper.nav.previous-label')
             expect(backButton.attributes().disabled).toBeFalsy()
@@ -60,7 +60,7 @@ describe('StepNavigation.vue', () => {
             const payload = emittedEvent[0][0]
             expect(emittedEvent).toBeTruthy()
             expect(payload.direction).toEqual('next')
-            expect(payload.stepName).toEqual('FS')
+            expect(payload.name).toEqual('FS')
         })
 
         it('handles clicks correctly in the middle step', () => {
@@ -76,7 +76,7 @@ describe('StepNavigation.vue', () => {
             let payload = emittedEvent[0][0]
             expect(emittedEvent).toBeTruthy()
             expect(payload.direction).toEqual('back')
-            expect(payload.stepName).toEqual(stepName)
+            expect(payload.name).toEqual(stepName)
 
             wrapper.setProps({ isNextEnabled: true })
 
@@ -86,7 +86,7 @@ describe('StepNavigation.vue', () => {
             payload = emittedEvent[1][0]
             expect(emittedEvent).toBeTruthy()
             expect(payload.direction).toEqual('next')
-            expect(payload.stepName).toEqual(stepName)
+            expect(payload.name).toEqual(stepName)
         })
     })
 })

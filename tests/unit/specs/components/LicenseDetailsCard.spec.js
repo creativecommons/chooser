@@ -1,53 +1,38 @@
-import { mount, createLocalVue, config } from '@vue/test-utils'
-import LicenseDetailsCard from '@/components/LicenseDetailsCard.vue'
-import { licenseSlug } from '@/utils/license-utilities'
+import { createLocalVue, shallowMount } from '@vue/test-utils'
+import LicenseDetailsCard from '@/components/LicenseDetailsCard'
+import { LICENSES } from '@/utils/license-utilities'
 import VueI18n from 'vue-i18n'
 import Vuex from 'vuex'
 
+const getters = (slug) => ({
+    fullName: jest.fn().mockReturnValue(LICENSES[slug].FULL),
+    shortName: jest.fn().mockReturnValue(LICENSES[slug].SHORT),
+    licenseUrl: jest.fn().mockReturnValue((val) => LICENSES[slug].URL),
+    iconsList: jest.fn().mockReturnValue(LICENSES[slug].ICONS.slice(1))
+})
+
 describe('LicenseDetailsCard.vue', () => {
     let wrapper
-    let getters
     let store
+    let currentLicense
 
     // Always creates a shallow instance of component
     beforeEach(() => {
         const localVue = createLocalVue()
         localVue.use(VueI18n)
         localVue.use(Vuex)
-        getters = {
-            shortName: () => {
-                return 'CC BY-SA 4.0'
-            },
-            fullName: () => {
-                return 'Attribution-ShareAlike 4.0 International'
-            },
-            licenseUrl: () => (mode) => {
-                return 'https://creativecommons.org/licenses/by-sa/4.0/?ref=ccchooser'
-            },
-            iconsList: () => {
-                return ['by', 'sa']
-            }
-        }
+        const currentLicenseSlug = 'CC_BY_NC_ND'
+        currentLicense = LICENSES[currentLicenseSlug]
         store = new Vuex.Store({
-            getters
-        })
-        const messages = require('@/locales/en.json')
-        const i18n = new VueI18n({
-            locale: 'en',
-            fallbackLocale: 'en',
-            messages: messages,
-            silentTranslationWarn: true
+            getters: getters(currentLicenseSlug)
         })
 
-        config.mocks.i18n = i18n
-
-        config.mocks.i18n.$t = (key) => {
-            return i18n.messages[key]
-        }
-        wrapper = mount(LicenseDetailsCard, {
+        wrapper = shallowMount(LicenseDetailsCard, {
             localVue,
-            store,
-            i18n
+            mocks: {
+                $t: key => key,
+                $store: store
+            }
         })
     })
 
@@ -56,47 +41,58 @@ describe('LicenseDetailsCard.vue', () => {
     })
 
     // Test for DOM elements which must be present
-    it('Check if the main div-tag with class selected-license-card is present in the DOM', () => {
-        expect(wrapper.contains('.selected-license-card')).toBe(true)
-    })
-    it('Check if the heading of the license details card is present in the DOM', () => {
-        expect(wrapper.contains('h3')).toBe(true)
-    })
-    it('Check if the heading with full license name is present in the DOM', () => {
-        expect(wrapper.contains('h4')).toBe(true)
-    })
-    it('Check if the license heading is a link to the license', () => {
-        expect(wrapper.contains('.license-name')).toBe(true)
-    })
-    it('Check if the license description is present in the DOM', () => {
-        expect(wrapper.contains('.chooser-selected-description')).toBe(true)
-    })
-    it('Check if the visual-info section is present in the DOM', () => {
-        expect(wrapper.contains('.license-visual-info')).toBe(true)
-    })
-    it('Check if the license list is present in the DOM', () => {
-        expect(wrapper.contains('.license-list')).toBe(true)
-    })
-    it('Check if the license list elements are present in the DOM', () => {
-        expect(wrapper.contains('li')).toBe(true)
-    })
-    it('Check if the license list elements have description about them', () => {
-        expect(wrapper.contains('.readable-string')).toBe(true)
+    it('Check if the main div and heading are rendered', () => {
+        expect(wrapper.contains('.recommended-card')).toBe(true)
+        expect(wrapper.find('h3').text()).toEqual('license-details-card.heading')
     })
 
-    // Tests for computed props and methods
-    it('Check if the slug function returns the correct text', () => {
-        expect(wrapper.vm.slug).toBe(licenseSlug('CC BY-SA 4.0'))
+    it('Check if the license short name is displayed correctly', () => {
+        const shortNameElement = wrapper.find('.license-short-name')
+        expect(shortNameElement.text()).toEqual(currentLicense.SHORT)
+        expect(shortNameElement.findAll('.icon').length).toEqual(currentLicense.ICONS.length)
     })
-    it('Check if the licenseKey function returns the correct text', () => {
-        expect(wrapper.vm.licenseKey).toBe(`license-details-card.full-description.${licenseSlug('CC BY-SA 4.0')}`)
-    })
-    it('Check if the licenseDescription function returns the correct text', () => {
-        expect(wrapper.vm.licenseDescription).toBe(`${licenseSlug('CC BY-SA 4.0')}-description`)
+    it('Check if the license full name is displayed correctly', () => {
+        const fullNameElement = wrapper.findAll('h4').at(1)
+        expect(fullNameElement.text()).toEqual(currentLicense.FULL)
     })
 
-    // Snapshot tests
-    it('Check if the LicenseDetailsCard.vue component has the expected UI', () => {
-        expect(wrapper).toMatchSnapshot()
+    it('Check if the license description is displayed correctly', () => {
+        const fullDescription = wrapper.find('.license-full-description')
+        expect(fullDescription.text()).toEqual('license-details-card.full-description.cc-by-nc-nd')
+    })
+
+    it('Check if the license description is displayed correctly', () => {
+        const itemsDescription = wrapper.find('.items-description')
+        expect(itemsDescription.findAll('li').length).toEqual(currentLicense.ICONS.length - 1)
+    })
+
+    it('Check if the license deed url is displayed correctly', () => {
+        const licenseDeedLink = wrapper.find('a.license-deed-link')
+        expect(licenseDeedLink.attributes().href).toEqual(currentLicense.URL)
+    })
+})
+
+describe('LicenseDetailsCard.vue', () => {
+    it('Check if Recommended section renders correctly for CC0', () => {
+        const localVue = createLocalVue()
+        localVue.use(VueI18n)
+        localVue.use(Vuex)
+        const currentLicense = LICENSES.CC0
+        const store = new Vuex.Store({
+            getters: getters('CC0')
+        })
+
+        const wrapper = shallowMount(LicenseDetailsCard, {
+            localVue,
+            mocks: {
+                $t: key => key,
+                $store: store
+            }
+        })
+        const shortNameElement = wrapper.find('.license-short-name')
+        expect(shortNameElement.text()).toEqual(currentLicense.SHORT)
+        expect(shortNameElement.findAll('.icon').length).toEqual(currentLicense.ICONS.length)
+        const fullNameElement = wrapper.findAll('h4').at(1)
+        expect(fullNameElement.text()).toEqual(currentLicense.FULL)
     })
 })

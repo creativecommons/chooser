@@ -11,7 +11,7 @@
     "license": "MIT",
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
+        "build": "vue-cli-service build && rm -f -r ./docs && cp -r ./dist ./docs && echo chooser-beta.creativecommons.org > ./docs/CNAME",
         "test:unit": "vue-cli-service test:unit",
         "test:e2e": "vue-cli-service test:e2e",
         "lint": "vue-cli-service lint",
@@ -31,10 +31,12 @@
         "buefy": "^0.9.4",
         "clipboard": "^2.0.6",
         "core-js": "^3.6.5",
+        "markdown-it": "^12.0.3",
         "vue": "^2.6.10",
         "vue-analytics": "^5.22.1",
         "vue-hotjar": "^1.2.0",
         "vue-i18n": "^8.20.0",
+        "vue-scrollto": "^2.20.0",
         "vuex": "^3.5.1"
     },
     "devDependencies": {
@@ -73,7 +75,7 @@
         "transform": {
             "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
             ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
-            "^.+\\.svg$": "<rootDir>/tests/unit/svgTransform.js"
+            "^.+\\.(svg|png)$": "<rootDir>/tests/unit/svgTransform.js"
         },
         "snapshotSerializers": [
             "<rootDir>/node_modules/jest-serializer-vue"

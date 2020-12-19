@@ -4,16 +4,16 @@
             {{ $t('stepper.AD.instructions') }}
         </p>
         <form class="attribution-details-form">
-            <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
-                <b-input
-                    v-model="creatorName"
-                    :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
-                />
-            </b-field>
             <b-field :label="this.$t('stepper.AD.form.work-title.label')">
                 <b-input
                     v-model="workTitle"
                     :placeholder="this.$t('stepper.AD.form.work-title.placeholder')"
+                />
+            </b-field>
+            <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
+                <b-input
+                    v-model="creatorName"
+                    :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
                 />
             </b-field>
             <b-field :label="this.$t('stepper.AD.form.work-url.label')">
@@ -81,21 +81,43 @@ export default {
 .attribution-details-form {
     margin-top: 1rem;
 }
+
 .attribution-details-form .label {
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     color: #333333;
 }
 .attribution-details-form .input {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1rem;
     color: #333333;
     border-width: 2px;
     border-color: #d8d8d8;
     &:focus, &:active, &:hover {
         border-color: #b0b0b0;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .attribution-details-instructions {
+        font-size: 0.8125rem;
+        line-height: 1.1875rem;
+        font-weight: 600;
+    }
+    .attribution-details-form .label {
+        font-style: normal;
+        font-size: 0.8125rem;
+        line-height: 1.1875rem;
+        font-weight: 600;
+        color: #333333;
+    }
+    .attribution-details-form input[type="text"] {
+        font-style: normal;
+        font-size: 0.8125rem;
+        line-height: 1.1875rem;
+        font-weight: 600;
+        color: #333333;
     }
 }
 </style>

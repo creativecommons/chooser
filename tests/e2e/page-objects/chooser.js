@@ -5,18 +5,22 @@
 const stepperCommands = {
     clickYes: function() {
         this.click('.radio-input[value="yes"]')
+        this.pause(500)
         return this
     },
     clickNo: function() {
         this.click('.radio-input[value="no"]')
+        this.pause(500)
         return this
     },
     clickNext: function() {
         this.click('.next-button')
+        this.pause(500)
         return this
     },
     clickPrevious: function() {
         this.click('.previous-button')
+        this.pause(500)
         return this
     },
     chooseNo: function() {
@@ -32,7 +36,7 @@ const stepperCommands = {
     clickWaiver: function() {
         this.click('.v-checkbox:first-child')
             .click('.v-checkbox:last-child')
-            .click('.next-button')
+        this.clickNext()
         return this
     },
     selectFromDropdown: function(licenseName) {
@@ -41,6 +45,7 @@ const stepperCommands = {
             .click('.license-dropdown')
             .click(`.license-dropdown option[value="${licenseName}"]`)
             .click('.next-button')
+        this.pause(500)
         return this
     },
     assertStepName: function(stepName) {
@@ -51,7 +56,7 @@ const stepperCommands = {
 const chooserCommands = {
     assertSelectedLicenseDisplayed: function(licenseName) {
         this
-            .assert.containsText('.license-name', licenseName)
+            .assert.containsText('.license-short-name', licenseName)
         return this
     }
 }
@@ -62,7 +67,7 @@ module.exports = {
     elements: {
         appContainer: '#app',
         stepper: '.stepper__container',
-        selectedLicenseCard: '.selected-license-card',
+        selectedLicenseCard: '.recommended-card',
         licenseUseCard: '.license-use-card'
     },
 
@@ -77,7 +82,7 @@ module.exports = {
             commands: [stepperCommands]
         },
         selectedLicenseCard: {
-            selector: '.selected-license-card'
+            selector: '.recommended-card'
         },
         licenseUseCard: {
             selector: '.license-use-card'

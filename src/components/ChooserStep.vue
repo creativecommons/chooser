@@ -6,7 +6,7 @@
                 native-value="yes"
                 name="radio"
             >
-                <span class="vocab-body body-normal">{{ $t('stepper.yes') }}{{ $t(yesText) }}</span>
+                <span class="body-normal">{{ $t('stepper.yes') }}{{ $t(yesText) }}</span>
             </v-radio>
         </div>
         <div :class="['field', noSelected]">
@@ -15,7 +15,7 @@
                 native-value="no"
                 name="radio"
             >
-                <span class="vocab-body body-normal">{{ $t('stepper.no') }}{{ $t(noText) }}</span>
+                <span class="body-normal">{{ $t('stepper.no') }}{{ $t(noText) }}</span>
             </v-radio>
         </div>
     </div>

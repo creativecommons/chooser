@@ -1,26 +1,25 @@
 <template>
-    <div class="selected-license-card">
-        <h3 class="vocab">
-            {{ headingText }}
-        </h3>
-        <h4 class="vocab b-header">
-            <a
-                :href="licenseUrl('web')"
-                class="license-name"
-            >
-                {{ fullName }} ({{ shortName }})
-                <LicenseIcons
-                    class="license-icons"
-                    :url="licenseUrl('web')"
-                    :icons-arr="iconsList"
+    <div class="recommended-card">
+        <h3> {{ cardHeading }}  </h3>
+        <div class="license-short-name">
+            <span class="license-icons">
+                <i
+                    v-for="icon in ['logo', ...iconsList]"
+                    :key="icon"
+                    :class="['icon', 'has-background-white', `cc-${icon}`]"
                 />
-            </a>
+            </span>
+            <h4 class="b-header">
+                {{ shortName }}
+            </h4>
+        </div>
+        <h4 class="b-header">
+            {{ fullName }}
         </h4>
-        <p class="chooser-selected-description">
-            <b>{{ slug.toUpperCase() }}</b>
+        <p class="license-full-description body-big">
             {{ $t(licenseKey) }}
         </p>
-        <section class="license-visual-info">
+        <section class="items-description">
             <ul class="license-list">
                 <transition-group name="highlight">
                     <li
@@ -29,107 +28,127 @@
                         :class="['license-list-item', item]"
                     >
                         <span class="readable-string">
-                            <b v-if="item!=='zero'">{{ item.toUpperCase() }}:</b>
-                            <b v-else>CC0:</b>
-                            {{ $t(`license-details-card.item-description.${item}`) }}
+                            <i :class="['icon', 'has-background-white', `cc-${item}`]" />
+                            <span>
+                                <b>{{ item === 'zero' ? 'CC0' : item.toUpperCase() }}:</b>
+                                {{ $t(`license-details-card.item-description.${item}`) }}
+                            </span>
+                        </span>
+                        <span
+                            v-if="item === 'nc'"
+                            class="description-caption caption"
+                        >
+                            {{ $t(`license-details-card.caption.${item}`) }}
+                        </span>
+                        <span
+                            v-if="item === 'nc'"
+                            class="description-caption caption"
+                        >
+                            {{ $t(`license-details-card.caption.${item}`) }}
                         </span>
                     </li>
                 </transition-group>
             </ul>
         </section>
+        <a
+            class="license-deed-link"
+            :href="licenseUrl()"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            See the License Deed
+            <span class="icon external-link">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 30 30"
+                ><path
+                    d="M25.313 18.75h-1.875a.938.938 0 00-.938.938v6.562H3.75V7.5h8.438a.937.937 0 00.937-.938V4.688a.938.938 0 00-.938-.937H2.813A2.813 2.813 0 000 6.563v20.625A2.812 2.812 0 002.813 30h20.625a2.812 2.812 0 002.812-2.813v-7.5a.938.938 0 00-.938-.937zM28.593 0h-7.5c-1.251 0-1.877 1.518-.995 2.402l2.093 2.094-14.28 14.276a1.406 1.406 0 000 1.992l1.327 1.326a1.405 1.405 0 001.993 0L25.505 7.812l2.093 2.09c.879.88 2.402.264 2.402-.996v-7.5A1.406 1.406 0 0028.594 0z"
+                    fill="currentColor"
+                /></svg>
+            </span>
+        </a>
     </div>
 </template>
 <script>
 import { LICENSES, licenseSlug } from '../utils/license-utilities'
-import LicenseIcons from './LicenseIcons'
 import { mapGetters } from 'vuex'
 
 export default {
     name: 'LicenseDetailsCard',
-    components: {
-        LicenseIcons
-    },
     computed: {
         ...mapGetters(['shortName', 'fullName', 'iconsList', 'licenseUrl']),
-        licenseDescription() {
-            const descriptionString = `${this.slug}-description`
-            return this.$t(descriptionString)
-        },
         licenseKey() {
             return `license-details-card.full-description.${this.slug}`
         },
         slug() {
             return licenseSlug(this.shortName)
         },
-        headingText() {
+        cardHeading() {
             return this.shortName === LICENSES.CC0.SHORT
-                ? this.$t('license-details-card.cc0-heading')
+                ? this.$t('license-details-card.heading-cc0')
                 : this.$t('license-details-card.heading')
         }
+
     }
 }
 </script>
 
-<style lang="scss">
-    .select-license-card {
-        margin-bottom: 32px;
+<style lang="scss" scoped>
+.recommended-card {
+    margin-bottom: 2rem;
+}
+.license-full-description {
+    margin: 1.5rem 0;
+}
+.license-short-name {
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.license-deed-link {
+    margin-top: 1.375rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    .icon {
+        margin-right: 0.5rem;
     }
-    .license-name {
-        vertical-align: middle;
-        display: inline-block;
-        margin-top: 8px;
+}
+.license-list-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.readable-string {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    i {
+        font-size: 2.1875rem;
+        height: 2.1875rem;
+        width: 2.1875rem;
+        margin-right: 1rem;
     }
-    .license-icons {
-        height: 35px;
-        vertical-align: middle;
+    b {
+        margin-right: 0.2rem;
     }
-    .license-name .photo-license-icon {
-        height: 35px;
-        opacity: 1;
+}
+.license-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    font-size: 2.1875rem;
+    .icon {
+        height: 2.1875rem;
+        width: 2.1875rem;
     }
-    .license-visual-info {
-        margin-top: 16px;
-    }
-    .license-list-item {
-        position: relative;
-        padding-bottom: 8px;
-    }
-    .license-list-item span {
-        vertical-align: middle;
-        display:inline-block;
-    }
-    .license-list-item span b {
-        display: inline-block;
-        width: 36px;
-    }
-    .license-list-item::before{
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: inline-block;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        content: "";
-        background-size: 35px 35px;
-    }
-    .license-list-item.zero::before {
-        background-image: url("../assets/license-icons/zero.svg");
-    }
-    .license-list-item.by::before {
-        background-image: url("../assets/license-icons/by.svg");
-    }
-    .license-list-item.nc::before {
-        background-image: url("../assets/license-icons/nc.svg");
-    }
-    .license-list-item.nd::before {
-        background-image: url("../assets/license-icons/nd.svg");
-    }
-    .license-list-item.sa::before {
-        background-image: url("../assets/license-icons/sa.svg");
-    }
-    .readable-string {
-        padding-left:51px;
-        line-height:35px;
-    }
+}
+.description-caption {
+    padding-left: 3.1875rem;
+    font-weight: 600;
+}
 </style>
