@@ -1,5 +1,5 @@
 <template>
-    <nav class="step-navigation">
+    <div class="step-navigation">
         <v-button
             v-if="stepName!=='FS'"
             class="is-border previous-button"
@@ -9,6 +9,7 @@
         </v-button>
         <v-button
             v-if="stepName!=='AD'"
+            type="submit"
             :class="['is-success', 'next-button', { 'disabled' : !isNextEnabled } ]"
             :disabled="!isNextEnabled"
             @click="handleNavigation('next')"
@@ -18,6 +19,7 @@
         <v-button
             v-else
             class="is-success next-button done-button"
+            type="submit"
             @click="handleDone"
         >
             {{ $t('stepper.nav.done-label') }}
@@ -30,7 +32,7 @@
         >
             {{ $t('stepper.nav.restart-label') }}
         </v-button>
-    </nav>
+    </div>
 </template>
 
 <script>

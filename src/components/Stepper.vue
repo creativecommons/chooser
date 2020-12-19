@@ -10,10 +10,10 @@
                 :step="step"
                 @activate="setActiveStep(step.id)"
             />
-            <div
+            <form
                 v-if="step.status==='active'"
-                ref="activeStep"
                 class="step-content"
+                @keyup.enter="submitForm"
             >
                 <component
                     :is="stepActionComponent(step)"
@@ -27,7 +27,7 @@
                     @restart="restart"
                     @done="done"
                 />
-            </div>
+            </form>
         </div>
     </div>
 </template>
@@ -39,7 +39,7 @@ import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
 import StepHeader from './StepHeader'
 import StepNavigation from './StepNavigation'
-import { updateVisibleEnabledStatus } from '../utils/license-utilities'
+import { updateVisibleEnabledStatus } from '@/utils/license-utilities'
 import { initialSteps } from '@/utils/steps'
 
 export default {
@@ -89,6 +89,14 @@ export default {
         })
     },
     methods: {
+        submitForm() {
+            const activeStepName = this.steps[this.value].name
+            if (this.value === 7) {
+                this.done()
+            } else {
+                this.handleNext(activeStepName)
+            }
+        },
         stepActionComponent({ name }) {
             switch (name) {
             case 'CW': return CopyrightWaiverStep
@@ -276,7 +284,8 @@ export default {
             border-bottom-right-radius: 0.25rem;
         }
     }
-    .step-container.completed:not(.disabled):hover {
+    .step-container.completed:not(.disabled):hover,
+    .step-container.completed:not(.disabled):focus-within {
         border-color: #b0b0b0;
         border-bottom: 0.125rem solid #b0b0b0;
         & .step-content {
@@ -288,12 +297,6 @@ export default {
     }
     .step-content {
         padding: 0.5rem 1.5rem 0.5rem var(--step-left-padding);
-    }
-    .step__actions {
-        &:focus {
-            outline: none;
-            background-color:green;
-        }
     }
     .step__container.completed {
         .step-header__title {
