@@ -10,7 +10,7 @@
             >
                 <a
                     slot="link"
-                    href="#0"
+                    href="#"
                     @click="openModal=true"
                 >
                     {{ $t('stepper.CW.link-label') }}
