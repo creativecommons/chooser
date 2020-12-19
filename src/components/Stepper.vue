@@ -10,10 +10,9 @@
                 :step="step"
                 @activate="setActiveStep(step.id)"
             />
-            <form
+            <div
                 v-if="step.status==='active'"
                 class="step-content"
-                @keyup.enter="submitForm"
             >
                 <component
                     :is="stepActionComponent(step)"
@@ -27,7 +26,7 @@
                     @restart="restart"
                     @done="done"
                 />
-            </form>
+            </div>
         </div>
     </div>
 </template>
@@ -89,14 +88,6 @@ export default {
         })
     },
     methods: {
-        submitForm() {
-            const activeStepName = this.steps[this.value].name
-            if (this.value === 7) {
-                this.done()
-            } else {
-                this.handleNext(activeStepName)
-            }
-        },
         stepActionComponent({ name }) {
             switch (name) {
             case 'CW': return CopyrightWaiverStep

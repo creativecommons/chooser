@@ -9,7 +9,6 @@
         </v-button>
         <v-button
             v-if="stepName!=='AD'"
-            type="submit"
             :class="['is-success', 'next-button', { 'disabled' : !isNextEnabled } ]"
             :disabled="!isNextEnabled"
             @click="handleNavigation('next')"
@@ -19,15 +18,13 @@
         <v-button
             v-else
             class="is-success next-button done-button"
-            type="submit"
             @click="handleDone"
         >
             {{ $t('stepper.nav.done-label') }}
         </v-button>
         <v-button
             v-if="stepName==='AD'"
-            class="restart-button"
-            theme="text"
+            class="restart-button is-text"
             @click="handleRestart"
         >
             {{ $t('stepper.nav.restart-label') }}

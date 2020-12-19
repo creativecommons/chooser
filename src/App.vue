@@ -159,7 +159,7 @@ export default {
             const comp = this
             setTimeout(() => { comp.shouldShake = true }, scrollDuration - 400)
             setTimeout(() => { comp.shouldShake = false }, shakeDuration)
-            this.$scrollTo(this.$refs.licenseUseCard.$el, scrollDuration)
+            this.$scrollTo(this.$refs.licenseUseCard.$el, scrollDuration, { cancelable: false })
         },
         onResize() {
             this.windowWidth = window.innerWidth
