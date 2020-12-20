@@ -64,6 +64,7 @@
 
 <script>
 // TODO Reduce custom styling in favour of Vocabulary styles
+import { mapMutations } from 'vuex'
 
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
@@ -137,6 +138,7 @@ export default {
         })
     },
     methods: {
+        ...mapMutations(['setAttributionType']),
         /**
         *  When user clicks restart, we set the active step to 0, so the stepper opens
         *  the first step. We don't, however, delete the information the user entered,
@@ -146,6 +148,7 @@ export default {
         restart() {
             this.currentStepId = 0
             this.showLicense = 0
+            this.setAttributionType('short')
         },
         /**
          * When the user clicks `Done`, we scroll to the 'Mark your work' section ('LicenseUseCard')
