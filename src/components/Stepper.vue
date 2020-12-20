@@ -12,7 +12,6 @@
             />
             <div
                 v-if="step.status==='active'"
-                ref="activeStep"
                 class="step-content"
             >
                 <component
@@ -39,7 +38,7 @@ import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
 import StepHeader from './StepHeader'
 import StepNavigation from './StepNavigation'
-import { updateVisibleEnabledStatus } from '../utils/license-utilities'
+import { updateVisibleEnabledStatus } from '@/utils/license-utilities'
 import { initialSteps } from '@/utils/steps'
 
 export default {
@@ -276,7 +275,8 @@ export default {
             border-bottom-right-radius: 0.25rem;
         }
     }
-    .step-container.completed:not(.disabled):hover {
+    .step-container.completed:not(.disabled):hover,
+    .step-container.completed:not(.disabled):focus-within {
         border-color: #b0b0b0;
         border-bottom: 0.125rem solid #b0b0b0;
         & .step-content {
@@ -288,12 +288,6 @@ export default {
     }
     .step-content {
         padding: 0.5rem 1.5rem 0.5rem var(--step-left-padding);
-    }
-    .step__actions {
-        &:focus {
-            outline: none;
-            background-color:green;
-        }
     }
     .step__container.completed {
         .step-header__title {

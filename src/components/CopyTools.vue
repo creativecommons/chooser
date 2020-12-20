@@ -61,15 +61,20 @@ export default {
         },
         onCopySuccess(e) {
             this.success = true
+
             if (process.env.NODE_ENV === 'production') {
+                const { attributionDetails } = this.$store.state
+                const shortName = this.$store.getters.shortName
+                // codeType is the class of the copy button, we remove the leading dot
+                // Can be 'html', 'richtext', 'plaintext'
+                const codeType = this.clipboardTarget.slice(1)
                 const fieldsFilled = {}
-                for (const detail in Object.keys(this.attributionDetails)) {
-                    fieldsFilled[detail] = this.attributionDetails[detail] !== ''
-                }
+                Object.keys(attributionDetails).forEach((detail) => {
+                    fieldsFilled[detail] = !!attributionDetails[detail]
+                })
                 const copiedLicense = {
-                    license: this.shortName,
-                    // codeType can be either rich-text or html
-                    codeType: 'plaintext',
+                    license: shortName,
+                    codeType: codeType,
                     fieldsFilled: fieldsFilled
                 }
                 this.$ga.event({
