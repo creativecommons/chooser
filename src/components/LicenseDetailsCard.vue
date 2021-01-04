@@ -40,12 +40,6 @@
                         >
                             {{ $t(`license-details-card.caption.${item}`) }}
                         </span>
-                        <span
-                            v-if="item === 'nc'"
-                            class="description-caption caption"
-                        >
-                            {{ $t(`license-details-card.caption.${item}`) }}
-                        </span>
                     </li>
                 </transition-group>
             </ul>
@@ -115,7 +109,7 @@ export default {
     display: flex;
     align-items: center;
     .icon {
-        margin-right: 0.5rem;
+        margin-left: 0.5rem;
     }
 }
 .license-list-item {

@@ -1,8 +1,5 @@
 <template>
-    <div
-        ref="top"
-        class="stepper__container"
-    >
+    <div class="stepper__container">
         <div
             v-for="(step, idx) in visibleSteps()"
             :key="idx"
@@ -11,29 +8,25 @@
         >
             <step-header
                 :step="step"
-                v-bind="step"
                 @activate="setActiveStep(step.id)"
             />
             <div
                 v-if="step.status==='active'"
-                ref="activeStep"
                 class="step-content"
             >
                 <component
                     :is="stepActionComponent(step)"
-                    v-if="step.status === 'active'"
                     v-bind="stepActionProps(step)"
                     @change="changeStepSelected"
                 />
+                <StepNavigation
+                    :step-name="step.name"
+                    :is-next-enabled="isNextEnabled(step.id)"
+                    @navigate="navigate"
+                    @restart="restart"
+                    @done="done"
+                />
             </div>
-            <StepNavigation
-                v-if="step.status === 'active'"
-                :step-name="step.name"
-                :is-next-enabled="isNextEnabled(step.id)"
-                @navigate="navigate"
-                @restart="restart"
-                @done="done"
-            />
         </div>
     </div>
 </template>
@@ -45,7 +38,7 @@ import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
 import StepHeader from './StepHeader'
 import StepNavigation from './StepNavigation'
-import { updateVisibleEnabledStatus } from '../utils/license-utilities'
+import { updateVisibleEnabledStatus } from '@/utils/license-utilities'
 import { initialSteps } from '@/utils/steps'
 
 export default {
@@ -282,26 +275,19 @@ export default {
             border-bottom-right-radius: 0.25rem;
         }
     }
-    .step-container.completed:not(.disabled):hover {
+    .step-container.completed:not(.disabled):hover,
+    .step-container.completed:not(.disabled):focus-within {
         border-color: #b0b0b0;
         border-bottom: 0.125rem solid #b0b0b0;
         & .step-content {
             cursor: pointer;
         }
     }
-    .step-container.completed:not(.disabled):hover {
-    }
     .step-container.completed:not(.disabled):hover + .step-container {
         border-top: none;
     }
     .step-content {
         padding: 0.5rem 1.5rem 0.5rem var(--step-left-padding);
-    }
-    .step__actions {
-        &:focus {
-            outline: none;
-            background-color:green;
-        }
     }
     .step__container.completed {
         .step-header__title {

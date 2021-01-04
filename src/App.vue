@@ -64,6 +64,7 @@
 
 <script>
 // TODO Reduce custom styling in favour of Vocabulary styles
+import { mapMutations } from 'vuex'
 
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
@@ -98,18 +99,22 @@ export default {
         }
     },
     watch: {
+        /**
+         * When the new step opens, the page is scrolled to the top of the
+         * previous step. When the 'Back' button is clicked, the page is
+         * scrolled to the previous step.
+         * If the user chooses No attribution, the page is scrolled to the top
+         * of the disabled steps, i.e. step 2.
+         */
         async currentStepId(newId, oldId) {
-            // When the new step opens, the page is scrolled to the top of the
-            // previous step. When the 'Back' button is clicked, the page is
-            // scrolled to the previous step.
-            // If the user chooses No attribution, the page is scrolled to the top
-            // of the disabled steps, i.e. step 2.
             let stepToScroll = newId === 6 ? 2 : Math.min(newId, oldId)
             if (newId === 6) {
                 stepToScroll = 2
             }
             await this.$nextTick()
-            this.$scrollTo(`.step-${stepToScroll}`)
+            // By default, scroll is cancelled when the user clicks enter. We want to override that
+            // so that the stepper scrolls for users using keyboard navigation.
+            this.$scrollTo(`.step-${stepToScroll}`, { cancelable: false })
         }
     },
     mounted() {
@@ -132,20 +137,31 @@ export default {
         })
     },
     methods: {
+        ...mapMutations(['setAttributionType']),
+        /**
+        *  When user clicks restart, we set the active step to 0, so the stepper opens
+        *  the first step. We don't, however, delete the information the user entered,
+        *  so all the steps have previously selected options, and attribution information
+         *  is filled as it was previously.
+         */
         restart() {
             this.currentStepId = 0
             this.showLicense = 0
+            this.setAttributionType('short')
         },
+        /**
+         * When the user clicks `Done`, we scroll to the 'Mark your work' section ('LicenseUseCard')
+         * and shake it. Shaking animation is triggered by adding 'shake' class to the section, and removing it
+         * after a timeout. On mobile, we add a timeout for shaking because the page will first to make the
+         * section visible.
+         */
         done() {
-            // Add 'shake' class that triggers animation to the 'LicenseUseCard',
-            // when 'Done' button is clicked, after the scroll has finished.
-            //
             const scrollDuration = this.isBelowTabletWidth ? 3000 : 800
             const shakeDuration = 3000 + scrollDuration
             const comp = this
-            setTimeout(() => { comp.shouldShake = true }, scrollDuration)
+            setTimeout(() => { comp.shouldShake = true }, scrollDuration - 400)
             setTimeout(() => { comp.shouldShake = false }, shakeDuration)
-            this.$scrollTo(this.$refs.licenseUseCard.$el, scrollDuration)
+            this.$scrollTo(this.$refs.licenseUseCard.$el, scrollDuration, { cancelable: false })
         },
         onResize() {
             this.windowWidth = window.innerWidth
@@ -154,31 +170,13 @@ export default {
 }
 </script>
 <style lang="scss">
-    // Import Bulma's core
-    @import "~bulma/sass/utilities/_all";
-    $primary: hsl(138, 95%, 33%);
-
-    // Links
-    $link: $primary;
-    $link-focus-border: $primary;
-    // Fonts
-    $family-primary: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif;
-    $family-sans-serif: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif!important;
-
-    // Import Bulma and Buefy styles
-    @import "~bulma";
-    @import '~buefy/src/scss/utils/_variables.scss';
-    @import '~buefy/src/scss/components/_modal.scss';
-    @import '~buefy/src/scss/components/_select.scss';
-    @import '~buefy/src/scss/components/_form.scss';
-    @import '~buefy/src/scss/components/_icon.scss';
 
     @import "~@creativecommons/vocabulary/scss/vocabulary.scss";
 
     #app {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        color: #2c3e50;
+        color: #333333;
         counter-reset: step-counter;
         background-color: #f5f5f5;
     }
@@ -256,7 +254,7 @@ export default {
 
     }
     .appear-enter-active {
-        transition: opacity .8s ease;
+        transition: opacity .6s ease;
     }
     .appear-leave-active {
         transition: opacity .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
