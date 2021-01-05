@@ -283,6 +283,7 @@ export default {
         padding-top: var(--h-padding);
         padding-bottom: var(--h-padding);
         margin: 0;
+        color: #333333;
 
         article {
             max-width: 85ch;
