@@ -144,6 +144,10 @@ export default {
     border-top-right-radius: 0.25rem;
 }
 @media only screen and (max-width: 768px) {
+    .tabs li a{
+        font-weight: 600;
+        font-size: 1em
+    }
     .attribution-tabs {
         margin-top: 1.25rem;
         .tabs-content.is-boxed {
