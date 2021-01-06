@@ -257,12 +257,20 @@ export default {
 
     .modal-header {
         background-color: #f5f5f5;
-        color: #363636;
+        color: #333333;
         font-size: 1.5rem;
-        font-family: "Source Sans Pro", sans-serif;
         border-bottom: 1px solid #dbdbdb;
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
+    }
+    .modal-card-foot {
+        align-items: center;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-shrink: 0;
+        justify-content: flex-start;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
 
     .modal-content, footer {
@@ -275,6 +283,7 @@ export default {
         padding-top: var(--h-padding);
         padding-bottom: var(--h-padding);
         margin: 0;
+        color: #333333;
 
         article {
             max-width: 85ch;

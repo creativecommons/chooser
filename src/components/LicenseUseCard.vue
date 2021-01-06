@@ -84,7 +84,7 @@ export default {
     },
     data() {
         return {
-            copyTarget: '.html'
+            copyTarget: '.richtext'
         }
     },
     methods: {
