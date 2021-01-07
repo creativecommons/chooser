@@ -1,28 +1,35 @@
 <template>
     <div class="step-actions">
-        <b-field class="license-dropdown">
-            <b-select
-                :placeholder="$t('stepper.DD.placeholder')"
-                :value="shortName"
-                @input="setCurrentLicense"
+        <v-select
+            class="license-dropdown"
+            :placeholder="$t('stepper.DD.placeholder')"
+            :value="shortName"
+            @input="setCurrentLicense"
+        >
+            <option
+                v-for="license in licenseList"
+                :key="license"
+                :value="license"
             >
-                <option
-                    v-for="license in licenseList"
-                    :key="license"
-                    :value="license"
-                >
-                    {{ license }}
-                </option>
-            </b-select>
-        </b-field>
+                {{ license }}
+            </option>
+        </v-select>
     </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import VSelect from '@/Vocabulary/VSelect'
 export default {
     name: 'DropdownStep',
+    components: { VSelect },
     inheritAttrs: false,
     props: {
+        status: {
+            type: String,
+            validator(value) {
+                return ['active', 'previous', 'inactive'].includes(value)
+            }
+        },
         id: Number
     },
     data() {
