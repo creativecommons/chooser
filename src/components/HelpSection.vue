@@ -238,7 +238,7 @@ export default {
             }
 
             .help-link-a {
-                color: #d14500;
+                color: #C74200;
                 font-weight: 600;
 
                 &:hover {
