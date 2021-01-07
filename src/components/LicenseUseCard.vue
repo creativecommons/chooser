@@ -145,8 +145,7 @@ export default {
 }
 @media only screen and (max-width: 768px) {
     .tabs li a{
-        font-weight: 600;
-        font-size: 1.125em
+        font-size: 1.125 rem
     }
     .attribution-tabs {
         margin-top: 1.25rem;
