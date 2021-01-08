@@ -1,6 +1,6 @@
 <template>
     <div class="step-actions">
-        <p class="attribution-details-instructions">
+        <p class="body-normal">
             {{ $t('stepper.AD.instructions') }}
         </p>
         <form class="attribution-details-form">
@@ -42,6 +42,7 @@ export default {
             }
         }
     },
+    inheritAttrs: false,
     computed: {
         ...mapState(['attributionDetails']),
         creatorName: {
