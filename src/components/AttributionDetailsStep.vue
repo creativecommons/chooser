@@ -79,35 +79,8 @@ export default {
 <style lang="scss">
 .attribution-details-form {
     margin-top: 1.5rem;
-    .input[type="text"] {
-        font-weight: 600;
-        font-size: 1rem;
-        color: #333333;
-        border: 2px solid #d8d8d8;
-        &:focus, &:active, &:hover {
-            border-color: #b0b0b0;
-        }
-    }
     .control + .control {
         margin-top: 1rem;
-    }
-}
-@media only screen and (max-width: 768px) {
-    .attribution-details-instructions {
-        font-size: 0.8125rem;
-        line-height: 1.1875rem;
-        font-weight: 600;
-    }
-    .attribution-details-form {
-        .label {
-            font-size: 0.8125rem;
-            &.label-bold {
-                font-weight: 600;
-            }
-        }
-        input[type="text"].input {
-            font-size: 0.8125rem;
-        }
     }
 }
 </style>
