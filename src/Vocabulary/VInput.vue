@@ -1,18 +1,24 @@
 <template>
-    <div :class="[ 'control', sizeClass, { 'has-icons-left': hasLeftIcon } ]">
-        <label :class="sizeClass">
+    <div
+        :class="['control', sizeClass, {
+            'has-icons-left': hasLeftIcon,
+            'has-icons-right': hasRightIcon
+        }]"
+    >
+        <label :class="[sizeClass]">
             <span
                 v-if="label"
-                :class="['label', { 'label-bold': isLabelBold}]"
-            >{{ label }}</span>
-            <span
-                v-if="description"
-                class="description"
-            >{{ description }}</span>
-            <span class="control-inner">
+                class="label"
+            >{{ label }}
+                <span
+                    v-if="description"
+                    class="description"
+                >{{ description }}</span>
+            </span>
+            <span :class="['control-inner', { 'disabled': isDisabled, 'readonly': isReadonly}]">
                 <span
                     v-if="hasLeftIcon"
-                    class="icon is-left"
+                    class="icon left-icon"
                 >
                     <slot name="left-icon" />
                 </span>
@@ -37,7 +43,7 @@
                 />
                 <span
                     v-if="hasRightIcon"
-                    class="icon is-right"
+                    class="icon right-icon"
                 >
                     <slot name="right-icon" />
                 </span>
@@ -69,10 +75,6 @@ export default {
             type: String,
             default: ''
         },
-        icon: {
-            type: [String, null],
-            default: null
-        },
         isTextArea: {
             type: Boolean,
             default: false
@@ -91,14 +93,6 @@ export default {
             validate: function(value) {
                 return ['is-normal', 'is-medium', 'is-large'].indexOf(value) > -1
             }
-        },
-        hasLeftIcon: {
-            type: Boolean,
-            default: false
-        },
-        hasRightIcon: {
-            type: Boolean,
-            default: false
         }
     },
     data() {
@@ -119,9 +113,13 @@ export default {
         sizeClass() {
             return this.size === 'normal' ? '' : this.size
         },
-        isLabelBold() {
-            // label should be bold only if there is no description
-            return !this.description
+        hasLeftIcon() {
+            // Check if the 'left-icon' slot has content, return a boolean value
+            return !!this.$slots['left-icon']
+        },
+        hasRightIcon() {
+            // Check if the 'right-icon' slot has content, return a boolean value
+            return !!this.$slots['right-icon']
         }
     },
     methods: {
@@ -139,20 +137,12 @@ export default {
 @import "~@creativecommons/vocabulary/scss/color.scss";
 @import "~@creativecommons/vocabulary/scss/typography.scss";
 .input, .textarea {
-    border-color: $color-light-gray;
-    border-width: 0.125rem;
+    border: none;
     &:hover, &:active, &:focus {
         border-color: $color-gray;
     }
 }
-.label, .description {
-    color: $color-dark-slate-gray;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-.label-bold {
-    font-weight: 700;
-}
+
 label {
     &.is-medium {
         .label, .description {
@@ -160,7 +150,17 @@ label {
         }
     }
 }
-.control.has-icons-left, .control.has-icons-right {
+.label, .description {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.label {
+    font-weight: bold;
+}
+.description {
+    font-weight: normal;
+}
+.control {
     .control-inner {
         border: 0.125rem solid $color-light-gray;
         border-radius: 4px;
@@ -169,43 +169,58 @@ label {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        &:hover, &:active, &:focus {
+        &:hover:not(.disabled):not(.readonly),
+        &:active:not(.disabled):not(.readonly),
+        &:focus:not(.disabled):not(.readonly) {
             border-color: $color-gray;
             .icon {
                 color: $color-gray;
             }
         }
-    }
-    .input {
-        width: calc(100% - 4.25rem);
-        padding-left: 1rem;
-        border-color: transparent;
-        margin-top: 0;
-    }
-    .icon {
-        .icon-svg {
-            height: auto;
-            width: 100%;
-            &.clickable {
-                pointer-events: all;
-                cursor: pointer;
+        &.disabled {
+            background-color: $color-lighter-gray;
+            textarea {
+                background-color: $color-lighter-gray;
             }
         }
     }
-}
+    .input {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border-color: transparent;
+        margin-top: 0;
+    }
 
-.control.has-icons-left, .control.has-icons-right {
     .icon {
         position: static;
         height: 1.25rem;
         width: 1.25rem;
-        &.is-left {
+        &.left-icon {
             margin-left: 1rem;
         }
-        &.is-right {
+        &.right-icon {
             margin-right: 1rem;
         }
+        .icon-img {
+            height: auto;
+            width: 100%;
+            pointer-events: none;
+            cursor: unset;
+            &.clickable {
+                pointer-events: auto;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
+.control.is-large {
+    .left-icon {
+        margin-left: 1.5rem;
+    }
+    .right-icon {
+        margin-right: 1.5rem;
     }
 }
-
 </style>

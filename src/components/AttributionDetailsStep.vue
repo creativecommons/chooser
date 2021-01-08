@@ -34,6 +34,7 @@ import VInput from '@/Vocabulary/VInput'
 export default {
     name: 'AttributionDetails',
     components: { VInput },
+    inheritAttrs: false,
     props: {
         status: {
             type: String,
@@ -42,7 +43,6 @@ export default {
             }
         }
     },
-    inheritAttrs: false,
     computed: {
         ...mapState(['attributionDetails']),
         creatorName: {
