@@ -1,6 +1,5 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import App from '@/App'
-import Buefy from 'buefy'
 import VueI18n from 'vue-i18n'
 import Vuex from 'vuex'
 import Vue from 'vue'
@@ -14,7 +13,6 @@ describe('App.vue', () => {
     beforeEach(() => {
         localVue = createLocalVue()
         localVue.use(Vuex)
-        localVue.use(Buefy)
         Vue.use(VueI18n)
 
         wrapper = shallowMount(App, {
