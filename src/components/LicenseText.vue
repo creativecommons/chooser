@@ -40,6 +40,7 @@
                 <LicenseIcons
                     :icons-arr="iconsList"
                     :size="20"
+                    :is-png="true"
                 />
             </a>
             <span v-else>{{ licenseName }}.</span>

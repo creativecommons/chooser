@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue, config } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import App from '@/App'
 import Buefy from 'buefy'
 import VueI18n from 'vue-i18n'
@@ -16,24 +16,13 @@ describe('App.vue', () => {
         localVue.use(Vuex)
         localVue.use(Buefy)
         Vue.use(VueI18n)
-        const messages = require('@/locales/en.json')
-        const i18n = new VueI18n({
-            locale: 'en',
-            fallbackLocale: 'en',
-            messages: messages
-        })
 
-        config.mocks.i18n = i18n
-
-        config.mocks.$t = key => {
-            // key is a string (eg. 'stepper.ND.question')
-            // this line converts it into an object reference
-            // eg. messages['stepper.ND.question'] -> messages.stepper.ND.question
-            return key.split('.').reduce((messages, k) => messages[k], i18n.messages)
-        }
         wrapper = shallowMount(App, {
             store,
-            localVue
+            localVue,
+            mocks: {
+                $t: key => key
+            }
         })
         wrapper.vm.$on('input', (newVal) => {
             wrapper.setProps({ value: newVal })
@@ -42,10 +31,5 @@ describe('App.vue', () => {
 
     it('Check if App.vue component renders without any errors', () => {
         expect(wrapper.isVueInstance()).toBeTruthy()
-    })
-
-    // Snapshot tests
-    it('Check if the App.vue component has the expected UI', () => {
-        expect(wrapper).toMatchSnapshot()
     })
 })

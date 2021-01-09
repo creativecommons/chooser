@@ -10,12 +10,12 @@ module.exports = {
             .assert.elementPresent('.select')
             .click('.select')
             .click('option[value="CC BY-SA 4.0"]')
-            .assert.elementPresent('.selected-license-card')
+            .assert.elementPresent('.recommended-card')
     },
-    'Check if the a tag with class license-name redirects correctly': function(browser) {
+    'Check if the license deed link redirects correctly': function(browser) {
         browser
-            .assert.elementPresent('a[class="license-name"]')
-            .getAttribute('a[class="license-name"]', 'href', function(result) {
+            .assert.elementPresent('a[class="license-deed-link"]')
+            .getAttribute('a[class="license-deed-link"]', 'href', function(result) {
                 this.assert.equal(result.value, 'https://creativecommons.org/licenses/by-sa/4.0?ref=chooser-v1')
             })
     }

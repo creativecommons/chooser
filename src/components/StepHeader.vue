@@ -1,7 +1,7 @@
 <template>
     <div
         :class="['step-header', step.status]"
-        tabindex="0"
+        v-bind="tabIndex"
         @click="activate"
         @keyup.13="activate"
     >
@@ -30,6 +30,11 @@ export default {
     },
     computed: {
         ...mapGetters(['fullName']),
+        tabIndex() {
+            return this.step.status === 'completed'
+                ? { tabindex: 0 }
+                : {}
+        },
 
         /**
          * stepHeader shows step 'question' for active step, and step 'heading' for others
@@ -44,7 +49,7 @@ export default {
             return status === 'active' ? `${prefix}.question` : `${prefix}.heading`
         },
         completedStepCaption() {
-            const { id, name, enabled, selected } = this.step
+            const { name, enabled, selected } = this.step
             const reversed = (name) => (['NC', 'ND', 'SA'].indexOf(name) > -1)
             let captionKey
             if (name === 'DD') {
@@ -52,7 +57,7 @@ export default {
             } else if (['FS', 'CW'].includes(name)) {
                 captionKey = selected ? `stepper.${name}.selected` : `stepper.${name}.not-selected`
             } else if (enabled === false) {
-                captionKey = (this.steps[id].disabledDue === 'ND')
+                captionKey = (this.disabledDue === 'ND')
                     ? 'stepper.disabled-text-ND'
                     : 'stepper.disabled-text'
             } else {
@@ -79,10 +84,6 @@ export default {
     position:relative;
     padding: 1.5625rem 1.5rem 0.5rem var(--step-left-padding);
     cursor: default;
-
-    &:active, &:focus {
-        outline: none;
-    }
     &.completed:not(.disabled):hover {
         cursor: pointer;
     }
@@ -90,6 +91,9 @@ export default {
         padding-bottom: 1.5rem;
     }
 
+}
+.step-header__title {
+    margin-bottom: 0.25rem;
 }
 .step-header__title::before{
     content: counter(step-counter);
@@ -103,7 +107,7 @@ export default {
     font-weight: bold;
     font-family: inherit;
     font-size: 1rem;
-    background: #04A635;
+    background: rgb(0, 128, 0);
     border-radius: 50%;
     text-align: center;
     color: #fff;
@@ -115,12 +119,31 @@ export default {
 }
 .step-header__caption {
     color: #333333;
-    &:focus {
-         outline: none;
-     }
 }
 .completed.disabled .step-header__title,
 .inactive .step-header__title {
         color: #b0b0b0;
     }
+@media only screen and (max-width: 768px) {
+    .step-header__title {
+        font-size: 1.125rem;
+        padding-left: calc(var(--step-left-padding) + var(--counter-size));
+        margin-bottom: 0.5rem;
+        &::before {
+            top: 1rem;
+        }
+    }
+    .step-header__caption {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-weight: 400;
+    }
+    .step-header {
+        padding-top: 1rem;
+        padding-right: 0.5rem;
+        &.completed, &.inactive {
+            padding-bottom: 1rem;
+        }
+    }
+}
 </style>

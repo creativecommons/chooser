@@ -16,32 +16,44 @@
                         <a
                             href="#"
                             aria-current="page"
-                        >Chooser</a>
+                        >{{ $t('app.page-title') }}</a>
                     </li>
                 </ul>
             </nav>
-            <div class="page-head">
-                <div class="select-license-column">
-                    <h2 class="vocab">
-                        {{ $t('select-license.heading') }}
-                    </h2>
-                    <p class="stepper-instructions vocab-body body-bigger">
-                        {{ $t('select-license.instructions') }}
-                    </p>
-                </div>
-                <LocaleChooser class="locale-chooser" />
-            </div>
-            <div class="columns">
-                <Stepper v-model="currentStepId" />
+
+            <h2>
+                {{ $t('chooser.heading') }}
+            </h2>
+            <p class="stepper-instructions body-bigger">
+                {{ $t('chooser.instructions') }}
+            </p>
+
+            <div class="columns wider-gap">
                 <div class="column">
-                    <div class="fixed-right-column">
-                        <LicenseDetailsCard
-                            v-if="showLicense"
-                        />
-                        <LicenseUseCard
-                            v-if="showLicenseUse"
-                        />
-                        <HelpSection />
+                    <Stepper
+                        v-model="currentStepId"
+                        @restart="restart"
+                        @done="done"
+                    />
+                    <help-section />
+                </div>
+                <div class="column right-column">
+                    <!-- The right column with the recommended license should be fixed until
+                     the 'LicenseUseCard' appears, when the column should scroll to make the
+                     'LicenseUseCard' visible -->
+                    <div :class="{ 'fixed-right-column': !showLicenseUse }">
+                        <transition name="appear">
+                            <LicenseDetailsCard
+                                v-if="showLicense"
+                            />
+                        </transition>
+                        <transition name="appear">
+                            <LicenseUseCard
+                                v-if="showLicenseUse"
+                                ref="licenseUseCard"
+                                :class="{ 'shake' : shouldShake}"
+                            />
+                        </transition>
                     </div>
                 </div>
             </div>
@@ -52,13 +64,13 @@
 
 <script>
 // TODO Reduce custom styling in favour of Vocabulary styles
+import { mapMutations } from 'vuex'
 
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
 import LicenseUseCard from './components/LicenseUseCard'
 import HeaderSection from './components/HeaderSection'
 import FooterSection from './components/FooterSection'
-import LocaleChooser from './components/LocaleChooser'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
 
 export default {
@@ -69,84 +81,131 @@ export default {
         LicenseDetailsCard,
         LicenseUseCard,
         HeaderSection,
-        FooterSection,
-        LocaleChooser
+        FooterSection
     },
     data() {
         return {
             currentStepId: 0,
-            showLicense: false
+            showLicense: false,
+            shouldShake: false,
+            windowWidth: window.innerWidth
         }
     },
     computed: {
         showLicenseUse() {
             return this.currentStepId === 7
+        },
+        isBelowTabletWidth() {
+            return this.windowWidth < 769
         }
+    },
+    watch: {
+        /**
+         * When the new step opens, the page is scrolled to the top of the
+         * previous step. When the 'Back' button is clicked, the page is
+         * scrolled to the previous step.
+         * If the user chooses No attribution, the page is scrolled to the top
+         * of the disabled steps, i.e. step 2.
+         */
+        async currentStepId(newId, oldId) {
+            let stepToScroll = newId === 6 ? 2 : Math.min(newId, oldId)
+            if (newId === 6) {
+                stepToScroll = 2
+            }
+            await this.$nextTick()
+            // By default, scroll is cancelled when the user clicks enter. We want to override that
+            // so that the stepper scrolls for users using keyboard navigation.
+            this.$scrollTo(`.step-${stepToScroll}`, { cancelable: false })
+        }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            window.addEventListener('resize', this.onResize)
+        })
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.onResize)
     },
     created: function() {
         // send home to google analytics
         if (process.env.NODE_ENV === 'production') {
             this.$ga.page('/')
         }
-        this.$store.subscribe((mutation, state) => {
+        this.$store.subscribe((mutation) => {
             if (mutation.type === 'updateAttributesFromShort' || mutation.type === 'setSelected') {
                 this.showLicense = true
             }
         })
+    },
+    methods: {
+        ...mapMutations(['setAttributionType']),
+        /**
+        *  When user clicks restart, we set the active step to 0, so the stepper opens
+        *  the first step. We don't, however, delete the information the user entered,
+        *  so all the steps have previously selected options, and attribution information
+         *  is filled as it was previously.
+         */
+        restart() {
+            this.currentStepId = 0
+            this.showLicense = 0
+            this.setAttributionType('short')
+        },
+        /**
+         * When the user clicks `Done`, we scroll to the 'Mark your work' section ('LicenseUseCard')
+         * and shake it. Shaking animation is triggered by adding 'shake' class to the section, and removing it
+         * after a timeout. On mobile, we add a timeout for shaking because the page will first to make the
+         * section visible.
+         */
+        done() {
+            const scrollDuration = this.isBelowTabletWidth ? 3000 : 800
+            const shakeDuration = 3000 + scrollDuration
+            const comp = this
+            setTimeout(() => { comp.shouldShake = true }, scrollDuration - 400)
+            setTimeout(() => { comp.shouldShake = false }, shakeDuration)
+            this.$scrollTo(this.$refs.licenseUseCard.$el, scrollDuration, { cancelable: false })
+        },
+        onResize() {
+            this.windowWidth = window.innerWidth
+        }
     }
 }
 </script>
 <style lang="scss">
-    // Import Bulma's core
-    @import "~bulma/sass/utilities/_all";
-    $primary: hsl(138, 95%, 33%);
 
-    // Links
-    $link: $primary;
-    $link-focus-border: $primary;
-    // Fonts
-    $family-primary: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif;
-    $family-sans-serif: Source Sans Pro,Noto Sans,Arial,Helvetica Neue,Helvetica,sans-serif!important;
-
-    // Import Bulma and Buefy styles
-    @import "~bulma";
-    @import '~buefy/src/scss/utils/_variables.scss';
-    @import '~buefy/src/scss/components/_modal.scss';
-    @import '~buefy/src/scss/components/_tabs.scss';
-    @import '~buefy/src/scss/components/_select.scss';
-    @import '~buefy/src/scss/components/_form.scss';
-    @import '~buefy/src/scss/components/_icon.scss';
-
-    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A%20400%2C600%2C700%7CRoboto+Condensed&ver=4.9.8");
-    @import "@creativecommons/vocabulary/scss/vocabulary.scss";
+    @import "~@creativecommons/vocabulary/scss/vocabulary.scss";
 
     #app {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        color: #2c3e50;
+        color: #333333;
         counter-reset: step-counter;
         background-color: #f5f5f5;
     }
     #site-container {
         padding: 0.75rem;
+        --border-width: 0.125rem;
     }
-    .breadcrumb {
+    #site-container .breadcrumb {
         margin-bottom: 2rem;
     }
-    .page-head {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 1.5rem;
-        grid-template-areas: "localechooser" "heading";
-    }
-    .selected-license-column {
-        grid-area: heading;
-    }
-    .locale-chooser {
-        grid-area: localechooser;
+    #site-container h2 {
+        letter-spacing: 0.05rem;
     }
     .stepper-instructions {
-        margin-bottom: 14px;
+        margin-top: 0.5rem;
+        margin-bottom: 2.75rem;
+    }
+    .columns.wider-gap {
+        --outer-padding: 1rem;
+        --inner-padding: 1.5rem;
+    }
+    .columns.wider-gap .column:first-child {
+        padding-left: var(--outer-padding);
+        padding-right: var(--inner-padding);
+    }
+    .columns.wider-gap .column:last-child {
+        padding-right: var(--outer-padding);
+        padding-left: var(--inner-padding);
     }
     .fixed-right-column {
         position: sticky;
@@ -164,20 +223,44 @@ export default {
         #site-container {
             padding-top: 2rem;
         }
-        .page-head {
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 1.5rem;
-            grid-template-areas: "heading localechooser";
-        }
         footer.main-footer {
             margin-top: 5rem;
         }
     }
-    @media only screen and (min-width: 1025px) {
+    @media only screen and (min-width: 1024px) {
         #site-container {
             padding-left: 0;
             padding-right: 0;
         }
     }
+    @media only screen and (max-width: 768px) {
+        #site-container {
+            padding-right: 1.375rem;
+            padding-left: 1.375rem;
+        }
+        #site-container h2, #site-container h3 {
+            font-size: 1.4375rem;
+        }
+        .body-bigger {
+            font-size: 1rem;
+        }
+        .stepper-instructions {
+            margin-bottom: 2rem;
+        }
+        .columns.wider-gap .column:first-child,
+        .columns.wider-gap .column:last-child {
+            padding-right: 0.75rem;
+            padding-left: 0.75rem;
+        }
 
+    }
+    .appear-enter-active {
+        transition: opacity .6s ease;
+    }
+    .appear-leave-active {
+        transition: opacity .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .appear-enter, .appear-leave-to {
+        opacity: 0;
+    }
 </style>

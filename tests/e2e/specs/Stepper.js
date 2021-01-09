@@ -10,7 +10,8 @@ module.exports = {
         const stepper = chooser.section.stepper
         stepper.expect.element('@currentStep').to.be.present
         stepper.chooseNo().clickNo()
-        chooser.expect.section('@selectedLicenseCard').to.be.visible
+        chooser.waitForElementPresent('@selectedLicenseCard')
+        chooser.expect.section('@selectedLicenseCard').to.be.present
     },
     'Step three: going through license attribute steps opens license use card and Attribution Details Step': function(browser) {
         const chooser = browser.page.chooser().navigate()
@@ -21,7 +22,8 @@ module.exports = {
             .chooseYes()
             .chooseYes()
             .chooseYes()
-        chooser.expect.section('@licenseUseCard').to.be.visible
+        chooser.waitForElementPresent('@selectedLicenseCard')
+        chooser.expect.section('@licenseUseCard').to.be.present
     },
     'Can choose CC0 1.0 license': function(browser) {
         const chooser = browser.page.chooser().navigate()
