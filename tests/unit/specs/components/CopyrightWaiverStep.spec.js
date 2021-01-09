@@ -1,6 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import Vuex from 'vuex'
+import VueI18n from 'vue-i18n'
 import CopyrightWaiverStep from '@/components/CopyrightWaiverStep'
 import Vue from 'vue'
 
@@ -8,39 +9,12 @@ const localVue = createLocalVue()
 
 localVue.use(Vuex)
 localVue.use(VueVocabulary)
-
-describe('CopyrightWaiver Step: Check conditional rendering of markup', () => {
-    let wrapper
-
-    beforeEach(() => {
-        wrapper = mount(CopyrightWaiverStep, {
-            localVue,
-            data() {
-                return {
-                    agreed: false,
-                    confirmed: false
-                }
-            },
-            mocks: {
-                $t: key => key
-            },
-            propsData: {
-                id: 6,
-                name: 'CW'
-            }
-        })
-    })
-
-    afterEach(() => {
-        wrapper.destroy()
-    })
-
-    it('Step Actions block mounted if status is active', () => {
-        wrapper.setProps({ status: 'active', id: 6, name: 'CW' })
-
-        expect(wrapper.find('.step-actions').exists()).toBeTruthy()
-        expect(wrapper.vm.copyrightWaiverAgreed).toBe(false)
-    })
+Vue.use(VueI18n)
+const messages = {}
+messages.en = require('@/locales/en.js').messages
+const i18n = new VueI18n({
+    locale: 'en',
+    messages: messages
 })
 
 describe('Test the functionality of Computed properties', () => {
@@ -49,6 +23,7 @@ describe('Test the functionality of Computed properties', () => {
     beforeEach(() => {
         wrapper = mount(CopyrightWaiverStep, {
             localVue,
+            i18n,
             data() {
                 return {
                     agreed: false,
@@ -69,6 +44,13 @@ describe('Test the functionality of Computed properties', () => {
 
     afterEach(() => {
         wrapper.destroy()
+    })
+
+    it('Step Actions block mounted if status is active', () => {
+        wrapper.setProps({ status: 'active', id: 6, name: 'CW' })
+
+        expect(wrapper.find('.step-actions').exists()).toBeTruthy()
+        expect(wrapper.vm.copyrightWaiverAgreed).toBe(false)
     })
 
     it('User checks confirmed then checks agreed', () => {

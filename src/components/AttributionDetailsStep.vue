@@ -1,31 +1,31 @@
 <template>
     <div class="step-actions">
-        <p class="attribution-details-instructions">
+        <p class="body-normal">
             {{ $t('stepper.AD.instructions') }}
         </p>
         <form class="attribution-details-form">
-            <b-field :label="this.$t('stepper.AD.form.work-title.label')">
+            <b-field :label="$t('stepper.AD.form.work-title.label')">
                 <b-input
                     v-model="workTitle"
-                    :placeholder="this.$t('stepper.AD.form.work-title.placeholder')"
+                    :placeholder="$t('stepper.AD.form.work-title.placeholder')"
                 />
             </b-field>
-            <b-field :label="this.$t('stepper.AD.form.creator-name.label')">
+            <b-field :label="$t('stepper.AD.form.creator-name.label')">
                 <b-input
                     v-model="creatorName"
-                    :placeholder="this.$t('stepper.AD.form.creator-name.placeholder')"
+                    :placeholder="$t('stepper.AD.form.creator-name.placeholder')"
                 />
             </b-field>
-            <b-field :label="this.$t('stepper.AD.form.work-url.label')">
+            <b-field :label="$t('stepper.AD.form.work-url.label')">
                 <b-input
                     v-model="workUrl"
-                    :placeholder="this.$t('stepper.AD.form.work-url.placeholder')"
+                    :placeholder="$t('stepper.AD.form.work-url.placeholder')"
                 />
             </b-field>
-            <b-field :label="this.$t('stepper.AD.form.creator-profile.label')">
+            <b-field :label="$t('stepper.AD.form.creator-profile.label')">
                 <b-input
                     v-model="creatorProfileUrl"
-                    :placeholder="this.$t('stepper.AD.form.creator-profile.placeholder')"
+                    :placeholder="$t('stepper.AD.form.creator-profile.placeholder')"
                 />
             </b-field>
         </form>
@@ -36,14 +36,7 @@ import { mapMutations, mapState } from 'vuex'
 
 export default {
     name: 'AttributionDetails',
-    props: {
-        status: {
-            type: String,
-            validator(value) {
-                return ['active', 'previous', 'inactive'].includes(value)
-            }
-        }
-    },
+    inheritAttrs: false,
     computed: {
         ...mapState(['attributionDetails']),
         creatorName: {
@@ -100,11 +93,6 @@ export default {
     }
 }
 @media only screen and (max-width: 768px) {
-    .attribution-details-instructions {
-        font-size: 0.8125rem;
-        line-height: 1.1875rem;
-        font-weight: 600;
-    }
     .attribution-details-form .label {
         font-style: normal;
         font-size: 0.8125rem;

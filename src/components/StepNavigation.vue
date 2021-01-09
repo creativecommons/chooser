@@ -1,5 +1,5 @@
 <template>
-    <nav class="step-navigation">
+    <div class="step-navigation">
         <v-button
             v-if="stepName!=='FS'"
             class="is-border previous-button"
@@ -9,7 +9,7 @@
         </v-button>
         <v-button
             v-if="stepName!=='AD'"
-            :class="['is-success', 'next-button', { 'disabled' : isNextEnabled } ]"
+            :class="['is-success', 'next-button', { 'disabled' : !isNextEnabled } ]"
             :disabled="!isNextEnabled"
             @click="handleNavigation('next')"
         >
@@ -24,13 +24,12 @@
         </v-button>
         <v-button
             v-if="stepName==='AD'"
-            class="restart-button"
-            theme="text"
+            class="restart-button is-text"
             @click="handleRestart"
         >
             {{ $t('stepper.nav.restart-label') }}
         </v-button>
-    </nav>
+    </div>
 </template>
 
 <script>
@@ -60,27 +59,33 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '~@creativecommons/vocabulary/scss/color';
 .step-navigation {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 1.375rem 1.5rem 1.375rem var(--step-left-padding);
+    padding: 1.375rem 0 1.375rem 0;
     width: 100%;
     .button + .button {
         margin-left: 1rem;
     }
     .button.restart-button {
         margin-left: auto;
-        color: #008000;
+        color: $color-forest-green;
     }
     .button.next-button.is-success {
-        background-color: #008000;
+        background-color: $color-forest-green;
         color: white;
         &:hover, &:active, &:focus {
-            background-color: #008B00;
+            background-color: $color-brighter-forest-green;
         }
     }
 }
-
+@media only screen and (max-width: 768px) {
+    .step-navigation {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
 </style>

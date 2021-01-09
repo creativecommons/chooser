@@ -1,7 +1,7 @@
 <template>
     <div
         :class="['step-header', step.status]"
-        tabindex="0"
+        v-bind="tabIndex"
         @click="activate"
         @keyup.13="activate"
     >
@@ -30,6 +30,11 @@ export default {
     },
     computed: {
         ...mapGetters(['fullName']),
+        tabIndex() {
+            return this.step.status === 'completed'
+                ? { tabindex: 0 }
+                : {}
+        },
 
         /**
          * stepHeader shows step 'question' for active step, and step 'heading' for others
@@ -79,10 +84,6 @@ export default {
     position:relative;
     padding: 1.5625rem 1.5rem 0.5rem var(--step-left-padding);
     cursor: default;
-
-    &:active, &:focus {
-        outline: none;
-    }
     &.completed:not(.disabled):hover {
         cursor: pointer;
     }
@@ -118,9 +119,6 @@ export default {
 }
 .step-header__caption {
     color: #333333;
-    &:focus {
-         outline: none;
-     }
 }
 .completed.disabled .step-header__title,
 .inactive .step-header__title {
@@ -136,9 +134,9 @@ export default {
         }
     }
     .step-header__caption {
-        font-size: 0.8125rem;
-        line-height: 1.1875rem;
-        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-weight: 400;
     }
     .step-header {
         padding-top: 1rem;
