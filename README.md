@@ -28,8 +28,8 @@ For information on contributing, please see [Creative Commons' Contribution Guid
 
 If you create a PR for your work, but you are not finished yet, please include `WIP:` in the beginning of your PR title. When your work on your PR is completed and you are ready for a final review, please remove the `WIP:` prefix from the title to indicate that your work is done.
 
-Here's a [handy link](https://github.com/creativecommons/chooser/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22+-label%3A%22in+progress%22) that will show you all open issues in this repo that have the `help wanted` tag, but do not have the `in progress` tag. 
-All issues in this list are up for grabs! 
+Here's a [handy link](https://github.com/creativecommons/chooser/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22+-label%3A%22in+progress%22) that will show you all open issues in this repo that have the `help wanted` tag, but do not have the `in progress` tag.
+All issues in this list are up for grabs!
 If it says "No results matched your search", then there are no issues currently up for grabs.
 
 *If no progress has been made on an issue for seven days after assignment, the assignment will be removed to allow others to contribute.*
@@ -42,8 +42,10 @@ $ npm run test
 ```
 To run e2e tests, you must have Java installed. [[download Java here](https://java.com/download/)]
 
+## CSS Build
+The Chooser uses PostCSS plugin for PurgeCSS to make CSS bundle size smaller. It automatically removes unused CSS based on the classes found in the final built bundle. Some styles for dynamic components or dynamically-imported files can also be removed. If you find that the built site misses some styles, you can manually add the necessary classes or Regex expressions to the `safelist` array in the `postcss.config.js` file.
 
 ## Deployment
-The chooser is deployed to GitHub Pages. The source files for the beta deployment are contained in the `./docs/` dir, and are live. Any changes to this dir's contents will be automatically deployed, so please take care when making modifications to this location. 
+The chooser is deployed to GitHub Pages. The source files for the beta deployment are contained in the `./docs/` dir, and are live. Any changes to this dir's contents will be automatically deployed, so please take care when making modifications to this location.
 
-To update the dist bundle, run ```$ npm run build```, and copy the generated files from `./dist/` to `./docs/`, taking care to not delete the CNAME file in `./docs/`.
+To update the dist bundle, run ```$ npm run build```. This and copy the generated files from `./dist/` to `./docs/`, taking care to not delete the CNAME file in `./docs/`.

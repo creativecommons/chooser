@@ -84,7 +84,7 @@ export default {
     },
     data() {
         return {
-            copyTarget: '.html'
+            copyTarget: '.richtext'
         }
     },
     methods: {
@@ -144,6 +144,9 @@ export default {
     border-top-right-radius: 0.25rem;
 }
 @media only screen and (max-width: 768px) {
+    .tabs li a{
+        font-size: 1.125 rem
+    }
     .attribution-tabs {
         margin-top: 1.25rem;
         .tabs-content.is-boxed {

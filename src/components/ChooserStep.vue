@@ -24,16 +24,11 @@
 <script>
 export default {
     name: 'ChooserStep',
+    inheritAttrs: false,
     props: {
         name: String,
         selected: Boolean,
         id: Number,
-        status: {
-            type: String,
-            validator(value) {
-                return ['active', 'previous', 'inactive'].includes(value)
-            }
-        },
         enabled: Boolean,
         disabledDue: String
     },
