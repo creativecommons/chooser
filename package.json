@@ -11,7 +11,7 @@
     "license": "MIT",
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build && rm -f -r ./docs && cp -r ./dist ./docs && echo chooser-beta.creativecommons.org > ./docs/CNAME",
+        "build": "vue-cli-service build && rimraf ./docs && copyfiles -u 1 -E ./dist/**/* ./docs && echo chooser-beta.creativecommons.org > ./docs/CNAME",
         "test:unit": "vue-cli-service test:unit",
         "test:e2e": "vue-cli-service test:e2e",
         "lint": "vue-cli-service lint",
@@ -48,6 +48,7 @@
         "babel-eslint": "^10.1.0",
         "chromedriver": "^87.0.0",
         "clipboardy": "^2.3.0",
+        "copyfiles": "^2.4.1",
         "eslint": "^6.8.0",
         "eslint-plugin-import": "^2.22.0",
         "eslint-plugin-node": "^10.0.0",
