@@ -268,7 +268,7 @@ describe('generateHTML', function testGenerateHTML() {
                     const licenseLinkElement = wrapper.find('.license-link').find('a')
                     const licenseImages = (wrapper) => wrapper.findAll('img')
 
-                    expect(licenseLinkElement.attributes('rel')).toBe('license')
+                    expect(licenseLinkElement.attributes('rel')).toBe('license noopener noreferrer')
                     expect(licenseLinkElement.attributes('href')).toBe(currentLicense.URL + chooserRef)
                     expect(licenseLinkElement.text()).toBe(currentLicense.SHORT)
 
