@@ -5,7 +5,10 @@
         class="textarea-html"
         readonly
     >
-        <div class="rendered-html" v-html="htmlLicenseParagraph" />
+        <div
+            class="rendered-html"
+            v-html="htmlLicenseParagraph"
+        />
     </div>
 </template>
 

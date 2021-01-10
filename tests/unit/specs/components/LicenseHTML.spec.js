@@ -44,10 +44,10 @@ describe('LicenseHTML.vue', () => {
         expect(licenseLink.attributes().href).toBe('https://creativecommons.org/licenses/by/4.0?ref=chooser-v1')
         // License link should have the following attributes: href, target, rel and style
         expect(Object.keys(licenseLink.attributes()).length).toBe(4)
-        expect(licenseLink.attributes()['target']).toBe('_blank')
-        expect(licenseLink.attributes()['rel']).toBe('license noopener noreferrer')
+        expect(licenseLink.attributes().target).toBe('_blank')
+        expect(licenseLink.attributes().rel).toBe('license noopener noreferrer')
 
-        const licenseIcons = wrapper.findAll('img');
+        const licenseIcons = wrapper.findAll('img')
         expect(licenseIcons.length).toBe(2)
     })
 })
