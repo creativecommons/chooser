@@ -1,14 +1,9 @@
 import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
 import { mount, createLocalVue } from '@vue/test-utils'
-import LicenseHTML from '@/components/LicenseHTML'
 import createStore from '@/store'
 import { CCBYAttributes } from '@/utils/license-utilities'
-
-const defaultHTML = '<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#">This work is licensed under <a rel="license" href="https://creativecommons.org/licenses/by/4.0' +
-    '?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"' +
-    ' src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.cre' +
-    'ativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>'
+import LicenseHTMLTester from './LicenseHTMLTester'
 
 describe('LicenseHTML.vue', () => {
     let wrapper
@@ -32,18 +27,27 @@ describe('LicenseHTML.vue', () => {
             messages: messages
         })
 
-        wrapper = mount(LicenseHTML, {
+        wrapper = mount(LicenseHTMLTester, {
             localVue,
             store,
             i18n
         })
     })
 
-    it('it renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
-    })
+    it('has correct information when no attribution data is provided', () => {
+        const rendered = wrapper.find('.rendered-html p')
+        expect(rendered.attributes()['xmlns:dct']).toBe('http://purl.org/dc/terms/')
+        expect(rendered.attributes()['xmlns:cc']).toBe('http://creativecommons.org/ns#')
+        expect(rendered.text()).toBe('This work is licensed under CC BY 4.0')
 
-    it('has correct information when creator name and work title are provided', () => {
-        expect(wrapper.vm.htmlLicenseParagraph).toEqual(defaultHTML)
+        const licenseLink = wrapper.find('a')
+        expect(licenseLink.attributes().href).toBe('https://creativecommons.org/licenses/by/4.0?ref=chooser-v1')
+        // License link should have the following attributes: href, target, rel and style
+        expect(Object.keys(licenseLink.attributes()).length).toBe(4)
+        expect(licenseLink.attributes()['target']).toBe('_blank')
+        expect(licenseLink.attributes()['rel']).toBe('license noopener noreferrer')
+
+        const licenseIcons = wrapper.findAll('img');
+        expect(licenseIcons.length).toBe(2)
     })
 })
