@@ -110,18 +110,19 @@ export default {
         },
         workUrl() {
             const { workUrl } = this.attributionDetails
+            if (workUrl && !workUrl.startsWith('http')) {
+                return `http://${workUrl}`
+            }
             return workUrl
         },
         workProps() {
             const workAttrs = {}
-            const { workTitle, workUrl } = this.attributionDetails
+            const { workTitle } = this.attributionDetails
             if (workTitle) {
                 workAttrs.property = 'dct:title'
             }
-            if (workUrl) {
-                workAttrs.href = workUrl && !workUrl.startsWith('http')
-                    ? `http://${workUrl}`
-                    : workUrl
+            if (this.workUrl) {
+                workAttrs.href = this.workUrl
                 workAttrs.rel = 'cc:attributionURL noopener noreferrer'
                 workAttrs.target = '_blank'
             }
