@@ -16,7 +16,8 @@
         "test:e2e": "vue-cli-service test:e2e",
         "lint": "vue-cli-service lint",
         "test": "vue-cli-service test:unit --coverage && vue-cli-service test:e2e",
-        "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json"
+        "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json",
+        "test:cypress": "node_modules/.bin/cypress open"
     },
     "dependencies": {
         "@creativecommons/vocabulary": "^2020.11.3",
@@ -27,6 +28,7 @@
         "buefy": "^0.9.4",
         "clipboard": "^2.0.6",
         "core-js": "^3.6.5",
+        "cypress": "^6.2.1",
         "markdown-it": "^12.0.3",
         "node-sass": "^4.14.1",
         "sass-loader": "^8.0.2",
