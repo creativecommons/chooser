@@ -11,7 +11,7 @@
     "license": "MIT",
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build && rm -f -r ./docs && cp -r ./dist ./docs && echo chooser-beta.creativecommons.org > ./docs/CNAME",
+        "build": "vue-cli-service build && shx rm -rf ./docs && shx cp -r ./dist ./docs && shx echo chooser-beta.creativecommons.org > ./docs/CNAME",
         "test:unit": "vue-cli-service test:unit",
         "test:e2e": "vue-cli-service test:e2e",
         "lint": "vue-cli-service lint",
@@ -57,6 +57,7 @@
         "eslint-plugin-standard": "^4.0.1",
         "eslint-plugin-vue": "^6.2.2",
         "geckodriver": "^1.19.1",
+        "shx": "^0.3.3",
         "vue-cli-plugin-i18n": "^0.6.1",
         "vue-template-compiler": "^2.6.10"
     },
