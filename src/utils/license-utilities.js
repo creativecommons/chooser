@@ -187,18 +187,21 @@ function generateCreatorCode(creatorName, creatorProfileUrl) {
  * 1. If the work title is blank, even if work url is provided, return blank string
  * 2. If only work title is provided, return a span with proper metadata
  * 3. If both title and URL are provided, returns an 'a' element with proper data and metadata
+ * @param {string} workTitle
  * @param {string} workUrl
  * @param {string} defaultTitle
  * @returns {string}
  */
-function generateWorkCode(defaultTitle, workUrl) {
+function generateWorkCode(workTitle, workUrl, defaultTitle) {
     let workCode = ''
+    const showProperty = (workTitle === defaultTitle) ? 'property="dct:title"' : ''
+
     if (defaultTitle) {
         if (workUrl) {
             const absoluteUrl = workUrl.startsWith('http') ? workUrl : `http://${workUrl}`
-            workCode = `<a rel="cc:attributionURL" href="${absoluteUrl}">${defaultTitle}</a>`
+            workCode = `<a rel="cc:attributionURL" ${showProperty}) href="${absoluteUrl}">${defaultTitle}</a>`
         } else {
-            workCode = `<span property="dct:title">${defaultTitle}</span>`
+            workCode = `<span ${showProperty} >${defaultTitle}</span>`
         }
     }
     return workCode
