@@ -187,23 +187,18 @@ function generateCreatorCode(creatorName, creatorProfileUrl) {
  * 1. If the work title is blank, even if work url is provided, return blank string
  * 2. If only work title is provided, return a span with proper metadata
  * 3. If both title and URL are provided, returns an 'a' element with proper data and metadata
- * @param {string} workTitle
  * @param {string} workUrl
+ * @param {string} defaultTitle
  * @returns {string}
  */
-function generateWorkCode(workTitle, workUrl) {
+function generateWorkCode(defaultTitle, workUrl) {
     let workCode = ''
-    if (workTitle) {
+    if (defaultTitle) {
         if (workUrl) {
             const absoluteUrl = workUrl.startsWith('http') ? workUrl : `http://${workUrl}`
-            workCode = `<a rel="cc:attributionURL" href="${absoluteUrl}">${workTitle}</a>`
+            workCode = `<a rel="cc:attributionURL" href="${absoluteUrl}">${defaultTitle}</a>`
         } else {
-            workCode = `<span property="dct:title">${workTitle}</span>`
-        }
-    } else {
-        if (workUrl) {
-            const absoluteUrl = workUrl.startsWith('http') ? workUrl : `http://${workUrl}`
-            workCode = `<a rel="cc:attributionURL" href="${absoluteUrl}">This work</a>`
+            workCode = `<span property="dct:title">${defaultTitle}</span>`
         }
     }
     return workCode
@@ -237,7 +232,7 @@ function generateLicenseCode(licenseAttr, licenseName) {
  */
 function generateHTML(attributionDetails, shortLicenseName, isFullName = false) {
     const dataForHtmlGeneration = {}
-    const { creatorName, creatorProfileUrl, workTitle, workUrl } = attributionDetails
+    const { creatorName, creatorProfileUrl, workTitle, workUrl, defaultTitle } = attributionDetails
     dataForHtmlGeneration.paragraph =
         `<p ${DCT_NAMESPACE.NAME}="${DCT_NAMESPACE.URI}"` +
         ` ${CC_NAMESPACE.NAME}="${CC_NAMESPACE.URI}">`
@@ -245,7 +240,7 @@ function generateHTML(attributionDetails, shortLicenseName, isFullName = false) 
     const licenseName = isFullName ? attrToFull(licenseAttr) : shortLicenseName
     dataForHtmlGeneration.license = generateLicenseCode(licenseAttr, licenseName)
     dataForHtmlGeneration.creator = generateCreatorCode(creatorName, creatorProfileUrl)
-    dataForHtmlGeneration.work = generateWorkCode(workTitle, workUrl)
+    dataForHtmlGeneration.work = generateWorkCode(workTitle, workUrl, defaultTitle)
     return dataForHtmlGeneration
 }
 

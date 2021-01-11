@@ -21,7 +21,11 @@ export default {
 
         htmlLicenseParagraph() {
             const isFull = this.attributionType === 'full'
-            const { work, creator, license, paragraph } = generateHTML(this.attributionDetails, this.shortName, isFull)
+            const attributionDetails = {
+                ...this.attributionDetails,
+                defaultTitle: this.attributionDetails.workTitle || this.$t('license-use.richtext.workTitle')
+            }
+            const { work, creator, license, paragraph } = generateHTML(attributionDetails, this.shortName, isFull)
             const licenseCodeSpan = this.$t('license-use.richtext.full-text', {
                 workTitle: work || this.$t('license-use.richtext.workTitle'),
                 creator: creator,
