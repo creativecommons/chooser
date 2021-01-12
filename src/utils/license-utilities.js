@@ -187,21 +187,21 @@ function generateCreatorCode(creatorName, creatorProfileUrl) {
  * 1. If the work title is blank, even if work url is provided, return blank string
  * 2. If only work title is provided, return a span with proper metadata
  * 3. If both title and URL are provided, returns an 'a' element with proper data and metadata
- * @param {string} workTitle
+ * @param {string} title
  * @param {string} workUrl
- * @param {string} defaultTitle
+ * @param {Boolean} isTitleDefault
  * @returns {string}
  */
-function generateWorkCode(workTitle, workUrl, defaultTitle) {
+function generateWorkCode(title, workUrl, isTitleDefault) {
     let workCode = ''
-    const showProperty = (workTitle === defaultTitle) ? 'property="dct:title"' : ''
+    const showProperty = isTitleDefault ? '' : 'property="dct:title"'
 
-    if (defaultTitle) {
+    if (title) {
         if (workUrl) {
             const absoluteUrl = workUrl.startsWith('http') ? workUrl : `http://${workUrl}`
-            workCode = `<a rel="cc:attributionURL" ${showProperty}) href="${absoluteUrl}">${defaultTitle}</a>`
+            workCode = `<a rel="cc:attributionURL" ${showProperty} href="${absoluteUrl}">${title}</a>`
         } else {
-            workCode = `<span ${showProperty} >${defaultTitle}</span>`
+            workCode = `<span ${showProperty}>${title}</span>`
         }
     }
     return workCode
@@ -231,11 +231,12 @@ function generateLicenseCode(licenseAttr, licenseName) {
  * @param attributionDetails
  * @param {ShortLicenseName} shortLicenseName
  * @param {Boolean} isFullName - Should the license name be full (short by default)
+ * @param {Boolean} isTitleDefault
  * @returns {{creator: string, workTitle: string, licenseLink: string, htmlString: string}}
  */
-function generateHTML(attributionDetails, shortLicenseName, isFullName = false) {
+function generateHTML(attributionDetails, shortLicenseName, isFullName = false, isTitleDefault) {
     const dataForHtmlGeneration = {}
-    const { creatorName, creatorProfileUrl, workTitle, workUrl, defaultTitle } = attributionDetails
+    const { creatorName, creatorProfileUrl, workUrl, title } = attributionDetails
     dataForHtmlGeneration.paragraph =
         `<p ${DCT_NAMESPACE.NAME}="${DCT_NAMESPACE.URI}"` +
         ` ${CC_NAMESPACE.NAME}="${CC_NAMESPACE.URI}">`
@@ -243,7 +244,7 @@ function generateHTML(attributionDetails, shortLicenseName, isFullName = false) 
     const licenseName = isFullName ? attrToFull(licenseAttr) : shortLicenseName
     dataForHtmlGeneration.license = generateLicenseCode(licenseAttr, licenseName)
     dataForHtmlGeneration.creator = generateCreatorCode(creatorName, creatorProfileUrl)
-    dataForHtmlGeneration.work = generateWorkCode(workTitle, workUrl, defaultTitle)
+    dataForHtmlGeneration.work = generateWorkCode(title, workUrl, isTitleDefault)
     return dataForHtmlGeneration
 }
 
