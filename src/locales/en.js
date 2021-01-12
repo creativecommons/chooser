@@ -156,7 +156,7 @@ export const messages = {
             workTitle: 'This work',
             by: ' by ',
             'licensed-text': ' is licensed under',
-            'marked-text': '  marked with',
+            'marked-text': ' is marked with',
             'print-instructions': '. To view a copy of this license, visit {linkToLicenseDeed}'
         },
         print: {
