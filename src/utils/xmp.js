@@ -1,3 +1,4 @@
+/* eslint-disable indent, quotes */
 import { LICENSES, licenseSlug } from '@/utils/license-utilities'
 
 /** The xmp metadata is structured in accordance with the Adobe XMP specifications from 2012:
@@ -19,102 +20,58 @@ cc:attributionName
  Uses the value of the 'Creator of Work' field from the Attribution details form.
  */
 
-// To make the values of these variables human-readable, and format the resulting document correctly,
-// we use the backtick-formatted strings, but remove the '\n' character in the beginning of the values
-const XAP_WEB_STATEMENT = `
-<xapRights:WebStatement rdf:resource='{workUrlTemplate}'/>`.slice(1)
-
-const XAP_MARKED = `
-<xapRights:Marked>{isCopyrightedTemplate}</xapRights:Marked>`.slice(1)
-
-const XAP_OWNER = `
-<xapRights:Owner>
-    <rdf:Bag>
-        <rdf:li>{creatorNameTemplate}</rdf:li>
-    </rdf:Bag>
-</xapRights:Owner>`.slice(1)
-
-const DC_WORK_TITLE_TEMPLATE = `
-<dc:title>
-    <rdf:Alt>
-      <rdf:li xml:lang='x-default'>{workTitleTemplate}</rdf:li>
-      <rdf:li xml:lang='{langTemplate}'>{workTitleTemplate}</rdf:li>
-    </rdf:Alt>
-</dc:title>`.slice(1)
-
-const CC_LICENSE_URL_TEMPLATE = `
-<cc:license rdf:resource='{licenseUrlTemplate}'/>`.slice(1)
-
-const XAP_RIGHTS_USAGE_TERMS = `
-<xapRights:UsageTerms>
-    <rdf:Alt>
-      <rdf:li xml:lang='x-default'>{ccLicenseNoticeTemplate}</rdf:li>
-      <rdf:li xml:lang='{langTemplate}' >{ccLicenseNoticeTemplate}</rdf:li>
-    </rdf:Alt>
-</xapRights:UsageTerms>`.slice(1)
-
-const CC_ATTRIBUTION_NAME = `
-<cc:attributionName>{creatorNameTemplate}</cc:attributionName>`.slice(1)
-
-const LINE_START = '            '
-const addIndent = (str) => (str.replace(/\n/gi, '\n' + LINE_START))
-
 export const createXMP = ({ shortName, workUrl = '', workTitle = '', creatorName = '', lang = 'en-US' }) => {
     const slug = licenseSlug(shortName).replace(/-/gi, '_').toUpperCase()
 
     const licenseUrl = LICENSES[slug].URL
+    const licenseFullName = LICENSES[slug].FULL
 
-    const ccLicenseUrl = addIndent(CC_LICENSE_URL_TEMPLATE.replace('{licenseUrlTemplate}', licenseUrl))
-
-    const ccLicenseNotice = `This work is licensed under <a href="${licenseUrl}">${LICENSES[slug].FULL}</a>`
+    const ccLicenseNotice = `This work is licensed under <a href="${licenseUrl}">${licenseFullName}</a>`
         .replace(/</gi, '&lt;')
         .replace(/>/gi, '&gt;')
         .replace(/"/gi, '&#34;')
 
-    const xapData = {
-        owner: '',
-        webStatement: '',
-        marked: '',
-        rightsUsageTerms: addIndent(XAP_RIGHTS_USAGE_TERMS
-            .replace('{ccLicenseNoticeTemplate}', ccLicenseNotice)
-            .replace('{langTemplate}', lang))
-    }
+    const isLicensed = shortName !== LICENSES.CC0.SHORT ? 'True' : 'False'
 
-    const copyrighted = shortName !== LICENSES.CC0.SHORT ? 'True' : 'False'
-    xapData.marked = addIndent(XAP_MARKED
-        .replace('{isCopyrightedTemplate}', copyrighted))
-
-    if (workUrl) {
-        xapData.webStatement = addIndent(XAP_WEB_STATEMENT
-            .replace('{workUrlTemplate}', workUrl))
-    }
-    const dcWorkTitle = workTitle
-        ? addIndent(DC_WORK_TITLE_TEMPLATE
-            .replace(/{workTitleTemplate}/gi, workTitle)
-            .replace('{langTemplate}', lang))
-        : ''
-    let ccAttributionName = ''
-    if (creatorName) {
-        ccAttributionName = addIndent(CC_ATTRIBUTION_NAME
-            .replace('{creatorNameTemplate}', creatorName))
-        xapData.owner = addIndent(XAP_OWNER.replace('{creatorNameTemplate}', creatorName))
-    }
-    return `
-<?xpacket begin='' id='W5M0MpCehiHzreSzNTczkc9d'?>
+    return (`<?xpacket begin='' id='W5M0MpCehiHzreSzNTczkc9d'?>
 <x:xmpmeta xmlns:x='adobe:ns:meta/'>
     <rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
              xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'
-             xmlns:cc='http://creativecommons.org/ns#'${workTitle ? addIndent("\nxmlns:dc='http://purl.org/dc/elements/1.1/'") : ''}>
+             xmlns:cc='http://creativecommons.org/ns#'${workTitle
+            ? `xmlns:dc='http://purl.org/dc/elements/1.1/'`
+            : ''}>
         <rdf:Description rdf:about=''>
-            ${xapData.marked}
-            ${xapData.owner}
-            ${xapData.webStatement}
-            ${xapData.rightsUsageTerms}
-            ${ccLicenseUrl}
-            ${ccAttributionName}
-            ${dcWorkTitle}
+            ${`<xapRights:Marked>${isLicensed}</xapRights:Marked>`}${creatorName
+        ? `
+            <xapRights:Owner>
+                <rdf:Bag>
+                    <rdf:li>${creatorName}</rdf:li>
+                </rdf:Bag>
+            </xapRights:Owner>`
+        : ''}${workUrl
+        ? `
+            <xapRights:WebStatement rdf:resource='${workUrl}'/>`
+        : ''}
+            <xapRights:UsageTerms>
+                <rdf:Alt>
+                  <rdf:li xml:lang='x-default'>${ccLicenseNotice}</rdf:li>
+                  <rdf:li xml:lang='${lang}' >${ccLicenseNotice}</rdf:li>
+                </rdf:Alt>
+            </xapRights:UsageTerms>
+            <cc:license rdf:resource='${licenseUrl}'/>${creatorName
+            ? `
+            <cc:attributionName>${creatorName}</cc:attributionName>`
+            : ''}${workTitle
+                    ? `
+            <dc:title>
+                <rdf:Alt>
+                  <rdf:li xml:lang='x-default'>${workTitle}</rdf:li>
+                  <rdf:li xml:lang='${lang}'>${workTitle}</rdf:li>
+                </rdf:Alt>
+            </dc:title>`
+            : ''}
         </rdf:Description>
     </rdf:RDF>
 </x:xmpmeta>
-<?xpacket end='r'?>`.slice(1)
+<?xpacket end='r'?>`)
 }
