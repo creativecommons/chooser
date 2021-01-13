@@ -20,10 +20,19 @@ export default {
         ...mapState(['attributionDetails', 'attributionType']),
 
         htmlLicenseParagraph() {
-            const isFull = this.attributionType === 'full'
-            const { work, creator, license, paragraph } = generateHTML(this.attributionDetails, this.shortName, isFull)
+            const useFullName = this.attributionType === 'full'
+
+            const { workTitle } = this.attributionDetails
+            const isTitleDefault = !workTitle
+
+            const attributionDetails = {
+                ...this.attributionDetails,
+                workTitle: workTitle || this.$t('license-use.richtext.workTitle')
+            }
+            const { work, creator, license } = generateHTML(attributionDetails, this.shortName, useFullName, isTitleDefault)
+
             const licenseCodeSpan = this.$t('license-use.richtext.full-text', {
-                workTitle: work || this.$t('license-use.richtext.workTitle'),
+                workTitle: work,
                 creator: creator,
                 license: license,
                 by: creator ? this.$t('license-use.richtext.by') : '',
@@ -31,7 +40,10 @@ export default {
                     ? this.$t('license-use.richtext.marked-text')
                     : this.$t('license-use.richtext.licensed-text')
             })
-            return `${paragraph}${licenseCodeSpan}</p>`
+            const metadata = `xmlns:cc="http://creativecommons.org/ns#" ${isTitleDefault
+                ? ''
+                : 'xmlns:dct="http://purl.org/dc/terms/"'}`
+            return `<p ${metadata}>${licenseCodeSpan}</p>`
         }
     }
 }

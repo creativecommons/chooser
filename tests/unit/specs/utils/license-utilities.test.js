@@ -6,11 +6,8 @@ import {
     licenseIconsArr,
     licenseSlug,
     licenseURL,
-    shortToAttr,
     updateVisibleEnabledStatus,
     LICENSES,
-    CC_NAMESPACE,
-    DCT_NAMESPACE,
     ICON_BASE_URL,
     ICON_STYLE,
     chooserRef
@@ -21,7 +18,7 @@ import TestComponent from './TestComponent'
 const attributesToTest = [
     {
         attr: {},
-        fullResult: undefined
+        fullResult: null
     },
     {
         attr: { BY: false },
@@ -64,14 +61,7 @@ describe('attrToShort all licenses', () => {
         })
     })
 })
-describe('shortToAttr all licenses', () => {
-    Object.values(LICENSES).forEach((license) => {
-        const { ATTRIBUTES: attr, SHORT: short } = license
-        it(`<${short}> should return ${JSON.stringify(attr)}`, () => {
-            expect(shortToAttr(short)).toEqual(attr)
-        })
-    })
-})
+
 describe('license slug', () => {
     Object.values(LICENSES).forEach((license) => {
         const { SHORT: short, SLUG: slug } = license
@@ -84,13 +74,6 @@ describe('license slug', () => {
         expect(() => licenseSlug('CC BY-NC-ND')).toThrowError()
         // lower case
         expect(() => licenseSlug('cc by-nc-nd 4.0')).toThrowError()
-    })
-})
-
-describe('shortToAttr', function testAttrToShort() {
-    test('gibberish string #1', () => {
-        const str = 'CC 4.0'
-        expect(shortToAttr(str)).toEqual(undefined)
     })
 })
 
@@ -206,6 +189,7 @@ describe('generateHTML', function testGenerateHTML() {
         PROFILE_URL: 'www.john.com',
         WORK_URL: 'www.john.com/foo.jpg'
     }
+    const DEFAULT_TITLE = "This work"
     // For each kind of Attribution data present, check:
     // 1. Correct namespaces of RDFa data a applied
     // 2. License link has correct rel and href attributes
@@ -246,71 +230,74 @@ describe('generateHTML', function testGenerateHTML() {
             creatorProfileUrl: TEST_DATA.PROFILE_URL
         }
     }
-    Object.keys(attributionOptions).forEach((option) => {
-        describe(`${option} with CC0 license should return correct HTML`, () => {
-            const currentLicense = LICENSES.CC0
-            const currentAttributionOptions = attributionOptions[option]
-            const generatedHtml = generateHTML(currentAttributionOptions, currentLicense.SHORT)
-            const wrapper = mount(TestComponent, { propsData: { attribution: generatedHtml } })
-            const expectedWorkTitle = currentAttributionOptions.workTitle || ''
-            const expectedCreatorName = currentAttributionOptions.creatorName || ''
-            const expectedWorkUrl = currentAttributionOptions.workUrl || ''
-            const expectedCreatorProfileUrl = currentAttributionOptions.creatorProfileUrl || ''
+    const licenseArray = [LICENSES.CC0, LICENSES.CC_BY, LICENSES.CC_BY_NC_ND]
+    licenseArray.forEach((currentLicense) => {
+        describe(`Attribution for ${currentLicense.SHORT} should return correct HTML`, () => {
+            Object.keys(attributionOptions).forEach((option) => {
+                describe(`${option} with should return correct HTML`, () => {
+                    const currentAttributionOptions = attributionOptions[option]
+                    const useFullName = false
 
-            it('has correct wrapper', () => {
-                const para = wrapper.find('.html-string > p')
-                // expect(Object.keys(para.attributes()).length).toEqual(3)
-                expect(para.attributes()[CC_NAMESPACE.NAME]).toEqual(CC_NAMESPACE.URI)
-                expect(para.attributes()[DCT_NAMESPACE.NAME]).toEqual(DCT_NAMESPACE.URI)
-            })
-            it(`has correct license link ${currentLicense.SHORT} and license icons `, () => {
-                Object.values(LICENSES).forEach((license) => {
-                    const licenseLinkElement = wrapper.find('.license-link').find('a')
-                    const licenseImages = (wrapper) => wrapper.findAll('img')
+                    const { workTitle = '' } = currentAttributionOptions
+                    const isTitleDefault = !workTitle
 
-                    expect(licenseLinkElement.attributes('rel')).toBe('license noopener noreferrer')
-                    expect(licenseLinkElement.attributes('href')).toBe(currentLicense.URL + chooserRef)
-                    expect(licenseLinkElement.text()).toBe(currentLicense.SHORT)
+                    const attributionDetails = {
+                        ...currentAttributionOptions,
+                        workTitle: workTitle || DEFAULT_TITLE
+                    }
+                    const generatedHtml = generateHTML(attributionDetails, currentLicense.SHORT, useFullName, isTitleDefault)
+                    const wrapper = mount(TestComponent, { propsData: { attribution: generatedHtml } })
+                    const expectedWorkTitle = currentAttributionOptions.workTitle || DEFAULT_TITLE
+                    const expectedCreatorName = currentAttributionOptions.creatorName || ''
+                    const expectedWorkUrl = currentAttributionOptions.workUrl || ''
+                    const expectedCreatorProfileUrl = currentAttributionOptions.creatorProfileUrl || ''
 
-                    expect(licenseImages(wrapper).at(0).attributes().style).toBe(ICON_STYLE)
-                    const iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
-                    expect(hasIconSourcesErrors(iconSources, currentLicense.ICONS)).toBe(false)
+                    it(`has correct license link ${currentLicense.SHORT} and license icons `, () => {
+                        const licenseLinkElement = wrapper.find('.license-link').find('a')
+                        const licenseImages = (wrapper) => wrapper.findAll('img')
+
+                        expect(licenseLinkElement.attributes('rel')).toBe('license noopener noreferrer')
+                        expect(licenseLinkElement.attributes('href')).toBe(currentLicense.URL + chooserRef)
+                        expect(licenseLinkElement.text()).toBe(currentLicense.SHORT)
+
+                        expect(licenseImages(wrapper).at(0).attributes().style).toBe(ICON_STYLE)
+                        const iconSources = licenseImages(wrapper).wrappers.map(img => img.attributes().src)
+                        expect(hasIconSourcesErrors(iconSources, currentLicense.ICONS)).toBe(false)
+                    })
+                    it(`has correct work attribution: "${expectedWorkTitle}" at url "${expectedWorkUrl}"`, () => {
+                        const workTitle = wrapper.find('.work-title')
+                        expect(workTitle.text()).toBe(expectedWorkTitle)
+                        if (isTitleDefault) return
+                        if (!expectedWorkUrl) {
+                            const titleMetaAttribute = workTitle.find('span').attributes().property
+                            expect(titleMetaAttribute).toEqual('dct:title')
+                        } else {
+                            const titleLink = workTitle.find('a')
+                            expect(titleLink.attributes().rel).toEqual('cc:attributionURL')
+                            expect(titleLink.attributes().property).toEqual('dct:title')
+                            expect(titleLink.attributes().href).toEqual(`http://${expectedWorkUrl}`)
+                        }
+                    })
+                    it(`has correct creator attribution: "${expectedCreatorName}" at url "${expectedCreatorProfileUrl}"`, () => {
+                        const creator = wrapper.find('.creator')
+                        expect(creator.text()).toBe(expectedCreatorName)
+                        if (expectedCreatorName) {
+                            if (expectedCreatorProfileUrl) {
+                                const creatorLinkAttributes = creator.find('a').attributes()
+                                expect(creatorLinkAttributes.rel).toEqual('cc:attributionURL dct:creator')
+                                expect(creatorLinkAttributes.property).toEqual('cc:attributionName')
+                                expect(creatorLinkAttributes.href).toEqual(`http://${expectedCreatorProfileUrl}`)
+                            } else {
+                                expect(creator.find('span').attributes().property).toEqual('cc:attributionName')
+                            }
+                        } else {
+                            expect(creator.find('span').exists()).toBeFalsy()
+                            expect(creator.find('a').exists()).toBeFalsy()
+                        }
+                    })
                 })
-            })
-            it(`has correct work attribution: "${expectedWorkTitle}" at url "${expectedWorkUrl}"`, () => {
-                const workTitle = wrapper.find('.work-title')
-                if (!expectedWorkTitle) {
-                    expect(workTitle.text()).toBeFalsy()
-                } else {
-                    expect(workTitle.text()).toBe(expectedWorkTitle)
-                    if (!expectedWorkUrl) {
-                        const titleMetaAttribute = workTitle.find('span').attributes().property
-                        expect(titleMetaAttribute).toEqual('dct:title')
-                    } else {
-                        const titleLink = workTitle.find('a')
-                        expect(titleLink.attributes().rel).toEqual('cc:attributionURL')
-                        expect(titleLink.attributes().property).toEqual('dct:title')
-                        expect(titleLink.attributes().href).toEqual(`http://${expectedWorkUrl}`)
-                    }
-                }
-            })
-            it(`has correct creator attribution: "${expectedCreatorName}" at url "${expectedCreatorProfileUrl}"`, () => {
-                const creator = wrapper.find('.creator')
-                expect(creator.text()).toBe(expectedCreatorName)
-                if (expectedCreatorName) {
-                    if (expectedCreatorProfileUrl) {
-                        const creatorLinkAttributes = creator.find('a').attributes()
-                        expect(creatorLinkAttributes.rel).toEqual('cc:attributionURL dct:creator')
-                        expect(creatorLinkAttributes.property).toEqual('cc:attributionName')
-                        expect(creatorLinkAttributes.href).toEqual(`http://${expectedCreatorProfileUrl}`)
-                    } else {
-                        expect(creator.find('span').attributes().property).toEqual('cc:attributionName')
-                    }
-                } else {
-                    expect(creator.find('span').exists()).toBeFalsy()
-                    expect(creator.find('a').exists()).toBeFalsy()
-                }
             })
         })
     })
+
 })
