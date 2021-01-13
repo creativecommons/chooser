@@ -62,7 +62,7 @@ beforeEach(() => setUp())
 describe('Stepper.vue', () => {
     describe('renders correctly', () => {
         it('is called', () => {
-            expect(wrapper.name()).toBe('Stepper')
+            expect(wrapper.findComponent(Stepper).exists()).toBe(true)
         })
         it('has expected UI on ND step', async() => {
             await advanceStep(wrapper, { FS: false, BY: true, NC: false })

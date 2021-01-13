@@ -19,9 +19,6 @@ describe('LicenseUseCard.vue', () => {
         })
     })
 
-    it('it renders without any errors', () => {
-        expect(wrapper).toBeTruthy()
-    })
     it('Renders the heading and instructions', () => {
         const heading = wrapper.find('h3')
         expect(heading.text()).toEqual('license-use.heading')

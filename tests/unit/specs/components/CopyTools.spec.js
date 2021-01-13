@@ -20,9 +20,6 @@ describe('CopyTools.vue', () => {
         })
     })
 
-    it('it renders without any errors', () => {
-        expect(wrapper).toBeTruthy()
-    })
     it('toggle labels are rendered and changed correctly', async() => {
         const toggle = wrapper.find('.toggle')
         expect(toggle.findAll('.toggle-label').length).toEqual(2)

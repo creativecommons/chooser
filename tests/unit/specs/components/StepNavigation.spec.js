@@ -20,7 +20,7 @@ describe('StepNavigation.vue', () => {
     })
     describe('renders correctly', () => {
         it('has correct buttons for first step', () => {
-            expect(wrapper.name()).toBe('StepNavigation')
+            expect(wrapper.findComponent(StepNavigation).exists()).toBe(true)
             const buttons = wrapper.findAll('button')
             expect(buttons.length).toEqual(1)
             expect(buttons.at(0).text()).toEqual('stepper.nav.next-label')

@@ -30,16 +30,12 @@ describe('HelpSection.vue', () => {
         })
     })
 
-    it('Check if HelpSection.vue component renders without any errors', () => {
-        expect(wrapper).toBeTruthy()
-    })
-
     // Test for DOM elements which must be present
     it('Check if the help section is displayed in the DOM', () => {
-        expect(wrapper.contains('.help-section')).toBe(true)
+        expect(wrapper.find('.help-section').exists()).toBe(true)
     })
     it('Check if the main ul tag with help links is present', () => {
-        expect(wrapper.contains('.help-links')).toBe(true)
+        expect(wrapper.find('.help-links').exists()).toBe(true)
     })
     it('Check if all the 9 li tags are present in the DOM', () => {
         expect(wrapper.findAll('.help-link').length).toBe(9)
@@ -47,7 +43,7 @@ describe('HelpSection.vue', () => {
     it('Check if modals are rendered to DOM', () => {
         const modalId = 0
         const modalButton = `ul > li:nth-child(${modalId + 1}) > button`
-        expect(wrapper.contains(modalButton)).toBe(true)
+        expect(wrapper.find(modalButton).exists()).toBe(true)
         wrapper.find(modalButton).trigger('click')
         expect(wrapper.vm.openModal).toEqual(modalId)
     })

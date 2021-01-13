@@ -28,8 +28,4 @@ describe('App.vue', () => {
             wrapper.setProps({ value: newVal })
         })
     })
-
-    it('Check if App.vue component renders without any errors', () => {
-        expect(wrapper).toBeTruthy()
-    })
 })

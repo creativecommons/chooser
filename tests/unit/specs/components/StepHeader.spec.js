@@ -24,7 +24,7 @@ describe('StepHeader.vue', () => {
     })
     describe('renders correctly', () => {
         it('renders correctly for first step', () => {
-            expect(wrapper.name()).toBe('StepHeader')
+            expect(wrapper.findComponent(StepHeader).exists()).toBe(true)
             const title = wrapper.find('.step-header__title')
             expect(title.text()).toEqual('stepper.FS.question')
             const caption = wrapper.find('.step-header__caption')

@@ -18,10 +18,6 @@ describe('ChooserStep.vue', () => {
         })
     })
 
-    it('Check if Step.vue component renders without any errors', () => {
-        expect(wrapper).toBeTruthy()
-    })
-
     // It's only for one state, but this should be enough to test if the logic works properly
     it('Check that all computed i18n props return correct values', () => {
         wrapper.setProps({
