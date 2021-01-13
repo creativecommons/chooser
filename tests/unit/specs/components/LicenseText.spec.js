@@ -42,12 +42,12 @@ describe('LicenseText.vue', () => {
     })
 
     it('it renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        expect(wrapper).toBeTruthy()
     })
 
-    it('has correct information when creator name and work title are provided', () => {
-        wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
-        wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
+    it('has correct information when creator name and work title are provided', async () => {
+        await wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
+        await wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
         const titleElement = wrapper.find('[property="dct:title"]')
         expect(titleElement.text()).toEqual(TEST_DATA.workTitle)
         expect(titleElement.name()).toEqual('span')
@@ -57,11 +57,11 @@ describe('LicenseText.vue', () => {
         expect(creatorElement.text()).toEqual(TEST_DATA.creatorName)
         expect(creatorElement.name()).toEqual('span')
     })
-    it('has correct information when only urls are provided', () => {
-        wrapper.vm.$store.commit('setWorkTitle', '')
-        wrapper.vm.$store.commit('setCreatorName', '')
-        wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
-        wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
+    it('has correct information when only urls are provided', async () => {
+        await wrapper.vm.$store.commit('setWorkTitle', '')
+        await wrapper.vm.$store.commit('setCreatorName', '')
+        await wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
+        await wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
         const titleElement = wrapper.find('[rel^="cc:attributionURL"]')
         expect(titleElement.text()).toEqual('This work')
         expect(titleElement.name()).toEqual('a')
@@ -72,11 +72,11 @@ describe('LicenseText.vue', () => {
         expect(creatorElement.length).toEqual(0)
     })
 
-    it('has correct information all data are provided', () => {
-        wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
-        wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
-        wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
-        wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
+    it('has correct information all data are provided', async () => {
+        await wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
+        await wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
+        await wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
+        await wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
         const titleElement = wrapper.find('[property="dct:title"]')
         expect(titleElement.text()).toEqual(TEST_DATA.workTitle)
         expect(titleElement.attributes().href).toEqual(TEST_DATA.workUrl)

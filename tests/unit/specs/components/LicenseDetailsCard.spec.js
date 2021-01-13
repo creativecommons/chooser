@@ -37,7 +37,7 @@ describe('LicenseDetailsCard.vue', () => {
     })
 
     it('Check if LicenseDetailsCard.vue component renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        expect(wrapper).toBeTruthy()
     })
 
     // Test for DOM elements which must be present

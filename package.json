@@ -46,7 +46,7 @@
         "@vue/cli-plugin-unit-jest": "^4.4.6",
         "@vue/cli-service": "^4.4.6",
         "@vue/eslint-config-standard": "^5.1.2",
-        "@vue/test-utils": "1.0.0-beta.29",
+        "@vue/test-utils": "^1.1.2",
         "babel-eslint": "^10.1.0",
         "chromedriver": "^87.0.0",
         "clipboardy": "^2.3.0",

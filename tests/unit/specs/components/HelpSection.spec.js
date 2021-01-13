@@ -31,7 +31,7 @@ describe('HelpSection.vue', () => {
     })
 
     it('Check if HelpSection.vue component renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        expect(wrapper).toBeTruthy()
     })
 
     // Test for DOM elements which must be present

@@ -20,7 +20,7 @@ describe('LicenseUseCard.vue', () => {
     })
 
     it('it renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        expect(wrapper).toBeTruthy()
     })
     it('Renders the heading and instructions', () => {
         const heading = wrapper.find('h3')

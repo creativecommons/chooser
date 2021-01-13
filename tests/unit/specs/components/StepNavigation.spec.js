@@ -26,8 +26,8 @@ describe('StepNavigation.vue', () => {
             expect(buttons.at(0).text()).toEqual('stepper.nav.next-label')
             expect(buttons.at(0).attributes().disabled).toBeTruthy()
         })
-        it('has correct buttons for SA with next button enabled', () => {
-            wrapper.setProps({
+        it('has correct buttons for SA with next button enabled', async () => {
+            await wrapper.setProps({
                 stepName: 'SA',
                 isNextEnabled: true
             })
@@ -37,8 +37,8 @@ describe('StepNavigation.vue', () => {
             expect(backButton.text()).toEqual('stepper.nav.previous-label')
             expect(backButton.attributes().disabled).toBeFalsy()
         })
-        it('has correct buttons for Attribution Details step', () => {
-            wrapper.setProps({
+        it('has correct buttons for Attribution Details step', async () => {
+            await wrapper.setProps({
                 stepName: 'AD'
             })
             const buttons = wrapper.findAll('button')
@@ -50,12 +50,12 @@ describe('StepNavigation.vue', () => {
     })
 
     describe('handles clicks correctly', () => {
-        it('handles clicks correctly in the first step', () => {
+        it('handles clicks correctly in the first step', async () => {
             const button = wrapper.find('button')
-            button.trigger('click')
+            await button.trigger('click')
             expect(wrapper.emitted().navigate).toBeFalsy()
-            wrapper.setProps({ isNextEnabled: true })
-            button.trigger('click')
+            await wrapper.setProps({ isNextEnabled: true })
+            await button.trigger('click')
             const emittedEvent = wrapper.emitted().navigate
             const payload = emittedEvent[0][0]
             expect(emittedEvent).toBeTruthy()
@@ -63,25 +63,25 @@ describe('StepNavigation.vue', () => {
             expect(payload.name).toEqual('FS')
         })
 
-        it('handles clicks correctly in the middle step', () => {
+        it('handles clicks correctly in the middle step', async () => {
             const stepName = 'ND'
-            wrapper.setProps({
+            await wrapper.setProps({
                 stepName: stepName
             })
             const buttons = wrapper.findAll('button')
             const backButton = buttons.at(0)
 
-            backButton.trigger('click')
+            await backButton.trigger('click')
             let emittedEvent = wrapper.emitted().navigate
             let payload = emittedEvent[0][0]
             expect(emittedEvent).toBeTruthy()
             expect(payload.direction).toEqual('back')
             expect(payload.name).toEqual(stepName)
 
-            wrapper.setProps({ isNextEnabled: true })
+            await wrapper.setProps({ isNextEnabled: true })
 
             const nextButton = wrapper.findAll('button').at(1)
-            nextButton.trigger('click')
+            await nextButton.trigger('click')
             emittedEvent = wrapper.emitted().navigate
             payload = emittedEvent[1][0]
             expect(emittedEvent).toBeTruthy()

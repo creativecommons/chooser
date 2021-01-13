@@ -19,7 +19,7 @@ describe('ChooserStep.vue', () => {
     })
 
     it('Check if Step.vue component renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        expect(wrapper).toBeTruthy()
     })
 
     // It's only for one state, but this should be enough to test if the logic works properly

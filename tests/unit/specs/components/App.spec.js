@@ -30,6 +30,6 @@ describe('App.vue', () => {
     })
 
     it('Check if App.vue component renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        expect(wrapper).toBeTruthy()
     })
 })
