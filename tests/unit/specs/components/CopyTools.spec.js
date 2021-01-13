@@ -23,7 +23,7 @@ describe('CopyTools.vue', () => {
     it('it renders without any errors', () => {
         expect(wrapper).toBeTruthy()
     })
-    it('toggle labels are rendered and changed correctly', async () => {
+    it('toggle labels are rendered and changed correctly', async() => {
         const toggle = wrapper.find('.toggle')
         expect(toggle.findAll('.toggle-label').length).toEqual(2)
         expect(toggle.find('#label-short').classes('selected')).toBe(true)
@@ -34,7 +34,7 @@ describe('CopyTools.vue', () => {
         expect(toggle.find('#label-full').classes('selected')).toBe(true)
     })
 
-    it('copy button works correctly', async () => {
+    it('copy button works correctly', async() => {
         const copyButton = wrapper.find('button')
         expect(copyButton.text()).toEqual('license-use.copy-label')
         await copyButton.trigger('click')

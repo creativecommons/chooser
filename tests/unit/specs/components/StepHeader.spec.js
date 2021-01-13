@@ -30,14 +30,14 @@ describe('StepHeader.vue', () => {
             const caption = wrapper.find('.step-header__caption')
             expect(caption.exists()).toBe(false)
         })
-        it('renders correctly when first step is selected completed', async () => {
+        it('renders correctly when first step is selected completed', async() => {
             await wrapper.setProps({ step: { ...steps[0], status: 'completed', selected: true } })
             const title = wrapper.find('.step-header__title')
             expect(title.text()).toEqual('stepper.FS.heading')
             const caption = wrapper.find('.step-header__caption')
             expect(caption.text()).toEqual('stepper.FS.selected')
         })
-        it('emits activate event when clicked', async () => {
+        it('emits activate event when clicked', async() => {
             const id = 0
             wrapper.setProps({ step: { ...steps[id], status: 'completed' } })
             await wrapper.find('.step-header').trigger('click')

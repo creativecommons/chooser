@@ -26,7 +26,7 @@ describe('StepNavigation.vue', () => {
             expect(buttons.at(0).text()).toEqual('stepper.nav.next-label')
             expect(buttons.at(0).attributes().disabled).toBeTruthy()
         })
-        it('has correct buttons for SA with next button enabled', async () => {
+        it('has correct buttons for SA with next button enabled', async() => {
             await wrapper.setProps({
                 stepName: 'SA',
                 isNextEnabled: true
@@ -37,7 +37,7 @@ describe('StepNavigation.vue', () => {
             expect(backButton.text()).toEqual('stepper.nav.previous-label')
             expect(backButton.attributes().disabled).toBeFalsy()
         })
-        it('has correct buttons for Attribution Details step', async () => {
+        it('has correct buttons for Attribution Details step', async() => {
             await wrapper.setProps({
                 stepName: 'AD'
             })
@@ -50,7 +50,7 @@ describe('StepNavigation.vue', () => {
     })
 
     describe('handles clicks correctly', () => {
-        it('handles clicks correctly in the first step', async () => {
+        it('handles clicks correctly in the first step', async() => {
             const button = wrapper.find('button')
             await button.trigger('click')
             expect(wrapper.emitted().navigate).toBeFalsy()
@@ -63,7 +63,7 @@ describe('StepNavigation.vue', () => {
             expect(payload.name).toEqual('FS')
         })
 
-        it('handles clicks correctly in the middle step', async () => {
+        it('handles clicks correctly in the middle step', async() => {
             const stepName = 'ND'
             await wrapper.setProps({
                 stepName: stepName
