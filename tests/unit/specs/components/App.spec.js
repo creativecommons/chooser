@@ -36,7 +36,7 @@ describe('App.vue', () => {
         })
     })
 
-    it('Check that all computed i18n props return correct values after true selected', () => {
+    it('Check that showLicenseUse returns true if currentStepId is equal to 7', () => {
         expect(wrapper.vm.showLicenseUse).toBe(true)
     })
 })
