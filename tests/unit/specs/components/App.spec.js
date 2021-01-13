@@ -16,10 +16,17 @@ describe('App.vue', () => {
         localVue.use(Vuex)
         localVue.use(Buefy)
         Vue.use(VueI18n)
-
         wrapper = shallowMount(App, {
             store,
             localVue,
+            data() {
+                return {
+                    currentStepId: 7,
+                    showLicense: false,
+                    shouldShake: false,
+                    windowWidth: window.innerWidth
+                }
+            },
             mocks: {
                 $t: key => key
             }
@@ -27,5 +34,9 @@ describe('App.vue', () => {
         wrapper.vm.$on('input', (newVal) => {
             wrapper.setProps({ value: newVal })
         })
+    })
+
+    it('Check that all computed i18n props return correct values after true selected', () => {
+        expect(wrapper.vm.showLicenseUse).toBe(true)
     })
 })
