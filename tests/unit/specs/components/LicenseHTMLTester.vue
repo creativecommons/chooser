@@ -39,7 +39,7 @@ export default {
 
             const metadata = `xmlns:cc="http://creativecommons.org/ns#" ${isTitleDefault
                 ? ''
-                :'xmlns:dct="http://purl.org/dc/terms/"'}`
+                : 'xmlns:dct="http://purl.org/dc/terms/"'}`
             return `<p ${metadata}>${licenseCodeSpan}</p>`
         }
     }
