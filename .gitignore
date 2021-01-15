@@ -4,3 +4,5 @@
 dist/
 coverage/
 node_modules/
+yarn.lock
+cypress/integration/examples
