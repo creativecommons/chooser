@@ -117,12 +117,12 @@ export default {
         },
         workProps() {
             const workAttrs = {}
-            const { workTitle, workUrl } = this.attributionDetails
+            const { workTitle } = this.attributionDetails
             if (workTitle) {
                 workAttrs.property = 'dct:title'
             }
-            if (workUrl) {
-                workAttrs.href = workUrl
+            if (this.workUrl) {
+                workAttrs.href = this.workUrl
                 workAttrs.rel = 'cc:attributionURL noopener noreferrer'
                 workAttrs.target = '_blank'
             }

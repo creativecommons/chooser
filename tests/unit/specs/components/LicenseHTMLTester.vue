@@ -1,12 +1,8 @@
 <template>
     <div
-        id="attribution-html"
-        :aria-label="$t('license-use.html-label')"
-        class="textarea-html"
-        readonly
-    >
-        {{ htmlLicenseParagraph.replace(/ {2,}/g, ' ') }}
-    </div>
+        class="rendered-html"
+        v-html="htmlLicenseParagraph"
+    />
 </template>
 
 <script>
@@ -40,9 +36,10 @@ export default {
                     ? this.$t('license-use.richtext.marked-text')
                     : this.$t('license-use.richtext.licensed-text')
             })
+
             const metadata = `xmlns:cc="http://creativecommons.org/ns#" ${isTitleDefault
                 ? ''
-                : 'xmlns:dct="http://purl.org/dc/terms/"'}`
+                :'xmlns:dct="http://purl.org/dc/terms/"'}`
             return `<p ${metadata}>${licenseCodeSpan}</p>`
         }
     }
