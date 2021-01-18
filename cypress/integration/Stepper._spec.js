@@ -1,6 +1,6 @@
 describe("Stepper.vue", () => {
     it("renders correctly", () => {
-        cy.visit("http://localhost:8080/ ");
+        cy.visit("/");
     });
 
     it("Step one: open License Chooser page", () => {
