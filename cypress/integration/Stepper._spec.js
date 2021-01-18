@@ -138,7 +138,7 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".is-success").click();
         cy.get("select").select("CC BY-NC-ND 4.0");
         cy.get(".is-border").click();
         cy.get(".step-navigation > .button").click();
