@@ -1,6 +1,6 @@
 describe("Stepper.vue", () => {
     it("renders correctly", () => {
-        cy.visit("http://localhost:8081/ ");
+        cy.visit("http://localhost:8080/ ");
     });
 
     it("Step one: open License Chooser page", () => {
@@ -11,7 +11,7 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=no]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".is-success").click();
     });
 
     it("Step three: going through license attribute steps opens license use card and Attribution Details Step", () => {
@@ -35,7 +35,7 @@ describe("Stepper.vue", () => {
     });
 
     it("Can choose CC0 1.0 license", () => {
-        cy.visit("http://localhost:8081/ ");
+        cy.visit("http://localhost:8080/ ");
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
@@ -50,8 +50,8 @@ describe("Stepper.vue", () => {
         cy.get(".attribution-tabs > .tabs-content").contains("CC0 1.0");
     });
 
-    it("Can choose CC0 BY license", () => {
-        cy.visit("http://localhost:8081/ ");
+    it("Can choose CC BY 4.0 license", () => {
+        cy.visit("http://localhost:8080/ ");
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
@@ -63,7 +63,7 @@ describe("Stepper.vue", () => {
     });
 
     it("Can choose CC BY-NC license", () => {
-        cy.visit("http://localhost:8081/ ");
+        cy.visit("http://localhost:8080/ ");
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
@@ -75,7 +75,7 @@ describe("Stepper.vue", () => {
     });
 
     it("Can choose CC BY-ND license", () => {
-        cy.visit("http://localhost:8081/ ");
+        cy.visit("http://localhost:8080/ ");
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
@@ -87,7 +87,7 @@ describe("Stepper.vue", () => {
     });
 
     it("Can choose CC BY-NC-ND license", () => {
-        cy.visit("http://localhost:8081/ ");
+        cy.visit("http://localhost:8080/ ");
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
@@ -99,7 +99,7 @@ describe("Stepper.vue", () => {
     });
 
     it("Can choose CC BY-SA license", () => {
-        cy.visit("http://localhost:8081/ ");
+        cy.visit("http://localhost:8080/ ");
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
@@ -111,7 +111,7 @@ describe("Stepper.vue", () => {
     });
 
     it("Can choose CC BY-NC-SA license", () => {
-        cy.visit("http://localhost:8081/ ");
+        cy.visit("http://localhost:8080/ ");
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
@@ -122,7 +122,7 @@ describe("Stepper.vue", () => {
         cy.get(".attribution-tabs > .tabs-content").contains("CC BY-NC-SA 4.0");
     });
     it("Can select a license from dropdown", () => {
-        cy.visit("http://localhost:8081/ ");
+        cy.visit("http://localhost:8080/ ");
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
@@ -134,7 +134,7 @@ describe("Stepper.vue", () => {
     });
 
     it("Can go back by clicking on Previous button", () => {
-        cy.visit("http://localhost:8081/ ");
+        cy.visit("http://localhost:8080/ ");
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
