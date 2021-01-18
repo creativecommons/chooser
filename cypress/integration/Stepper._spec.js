@@ -11,26 +11,26 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=no]")
             .check();
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
     });
 
     it("Step three: going through license attribute steps opens license use card and Attribution Details Step", () => {
         cy.get(".step-1")
             .find("[value=yes]")
             .check();
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".step-2")
             .find("[value=yes]")
             .click();
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".step-3")
             .find("[value=yes]")
             .click();
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".step-4")
             .find("[value=yes]")
             .click();
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".license-use-card").should("be.visible");
     });
 
@@ -39,13 +39,13 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC0 1.0");
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".step-actions")
             .find("input")
             .check();
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".license-use-card").should("be.visible");
         cy.get(".attribution-tabs > .tabs-content").contains("CC0 1.0");
     });
@@ -55,9 +55,9 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY 4.0");
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".license-use-card").should("be.visible");
         cy.get(".attribution-tabs > .tabs-content").contains("CC BY 4.0");
     });
@@ -67,9 +67,9 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-NC 4.0");
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".license-use-card").should("be.visible");
         cy.get(".attribution-tabs > .tabs-content").contains("CC BY-NC 4.0");
     });
@@ -79,9 +79,9 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-ND 4.0");
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".license-use-card").should("be.visible");
         cy.get(".attribution-tabs > .tabs-content").contains("CC BY-ND 4.0");
     });
@@ -91,9 +91,9 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-NC-ND 4.0");
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".license-use-card").should("be.visible");
         cy.get(".attribution-tabs > .tabs-content").contains("CC BY-NC-ND 4.0");
     });
@@ -103,9 +103,9 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-SA 4.0");
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".license-use-card").should("be.visible");
         cy.get(".attribution-tabs > .tabs-content").contains("CC BY-SA 4.0");
     });
@@ -115,9 +115,9 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-NC-SA 4.0");
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".license-use-card").should("be.visible");
         cy.get(".attribution-tabs > .tabs-content").contains("CC BY-NC-SA 4.0");
     });
@@ -126,9 +126,9 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-NC-ND 4.0");
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get(".license-use-card").should("be.visible");
         cy.get(".attribution-tabs > .tabs-content").contains("CC BY-NC-ND 4.0");
     });
@@ -138,26 +138,26 @@ describe("Stepper.vue", () => {
         cy.get(".step-0")
             .find("[value=yes]")
             .check();
-        cy.get(".is-success").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-NC-ND 4.0");
-        cy.get(".is-border").click();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".previous-button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-NC-SA 4.0");
-        cy.get(".is-border").click();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".previous-button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-SA 4.0");
-        cy.get(".is-border").click();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".previous-button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-NC 4.0");
-        cy.get(".is-border").click();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".previous-button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY 4.0");
-        cy.get(".is-border").click();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".previous-button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC0 1.0");
-        cy.get(".is-border").click();
-        cy.get(".step-navigation > .button").click();
+        cy.get(".previous-button").click();
+        cy.get(".next-button").click();
         cy.get("select").select("CC BY-ND 4.0");
-        cy.get(".is-border").click();
+        cy.get(".previous-button").click();
     });
 });
