@@ -190,8 +190,6 @@ describe("Stepper.vue", () => {
             .find("input")
             .check();
         cy.get(".next-button").click();
-        // cy.get(".license-use-card").should("be.visible");
-        // cy.get(".attribution-tabs > .tabs-content").contains("CC0 1.0");
         cy.get(".next-button").click();
         cy.get(".license-use-card").scrollIntoView();
     });
