@@ -10,8 +10,7 @@
                 aria-label="breadcrumbs"
             >
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Child Page</a></li>
+                    <li><a href="https://creativecommons.org/">Home</a></li>
                     <li class="is-active">
                         <a
                             href="#"
