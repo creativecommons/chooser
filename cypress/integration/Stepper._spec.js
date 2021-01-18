@@ -160,4 +160,39 @@ describe("Stepper.vue", () => {
         cy.get("select").select("CC BY-ND 4.0");
         cy.get(".previous-button").click();
     });
+
+    it("Can restart the whole process on clicking upon the Start Again", () => {
+        cy.visit("/");
+        cy.get(".step-0")
+            .find("[value=yes]")
+            .check();
+        cy.get(".next-button").click();
+        cy.get("select").select("CC0 1.0");
+        cy.get(".next-button").click();
+        cy.get(".step-actions")
+            .find("input")
+            .check();
+        cy.get(".next-button").click();
+        cy.get(".license-use-card").should("be.visible");
+        cy.get(".attribution-tabs > .tabs-content").contains("CC0 1.0");
+        cy.get(".restart-button").click();
+        cy.visit("/");
+    });
+
+    it("Automatic scroll to Mark your Section", () => {
+        cy.get(".step-0")
+            .find("[value=yes]")
+            .check();
+        cy.get(".next-button").click();
+        cy.get("select").select("CC0 1.0");
+        cy.get(".next-button").click();
+        cy.get(".step-actions")
+            .find("input")
+            .check();
+        cy.get(".next-button").click();
+        // cy.get(".license-use-card").should("be.visible");
+        // cy.get(".attribution-tabs > .tabs-content").contains("CC0 1.0");
+        cy.get(".next-button").click();
+        cy.get(".license-use-card").scrollIntoView();
+    });
 });
