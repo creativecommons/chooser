@@ -1,196 +1,227 @@
-describe("Stepper.vue", () => {
-    it("renders correctly", () => {
-        cy.visit("/");
-    });
+/* This Source Code Form is subject to the terms of the Creative Commons
+ * License Chooser
+*/
 
-    it("Step one: open License Chooser page", () => {
-        cy.get(".stepper__container").should("be.visible");
-    });
+// test the interpolated library
 
-    it("Step two: selecting 'I need help' opens license attribute steps and selected license card", () => {
-        cy.get(".step-0")
-            .find("[value=no]")
-            .check();
-        cy.get(".next-button").click();
-    });
+describe('Stpper.vue', () => {
+    it('renders correctly', () => {
+        cy.visit('/')
+    })
 
-    it("Step three: going through license attribute steps opens license use card and Attribution Details Step", () => {
-        cy.get(".step-1")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get(".step-2")
-            .find("[value=yes]")
-            .click();
-        cy.get(".next-button").click();
-        cy.get(".step-3")
-            .find("[value=yes]")
-            .click();
-        cy.get(".next-button").click();
-        cy.get(".step-4")
-            .find("[value=yes]")
-            .click();
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-    });
+    describe('Checks the user know the licence needed', () => {
+        it('Checks whether the CC0 license is selected in the dropdown', () => {
+        cy.get('.step-0')
+            .find('[value="yes"]')
+            .check()
+        cy.get('.next-button').click()
+        cy.get('select').select('CC0 1.0')
+        cy.get('.recommended-card').should('be.visible').contains('CC0 1.0 Universal')
+        cy.get('.next-button').click()
+        cy.get('.v-checkbox:nth-child(1) > input').check()
+        cy.get('.v-checkbox:nth-child(2) > input').check()
+        cy.get('.next-button').click()
+        cy.get('.license-use-card').should('be.visible').contains(' CC0 1.0 ')
+        })
 
-    it("Can choose CC0 1.0 license", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC0 1.0");
-        cy.get(".next-button").click();
-        cy.get(".step-actions")
-            .find("input")
-            .check();
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-        cy.get(".attribution-tabs > .tabs-content").contains("CC0 1.0");
-    });
+        it('Checks whether CC BY-NC-ND is selected in the dropdown', () => {
+            cy.visit('/')
+            cy.get('.step-0')
+            .find('[value="yes"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('select').select('CC BY-NC-ND 4.0')
+            cy.get('.recommended-card').should('be.visible').contains('CC BY-NC-ND 4.0')
+            cy.get('.next-button').click()
+            cy.get('.license-use-card').should('be.visible').contains('CC BY-NC-ND 4.0')
+        })
+    })
 
-    it("Can choose CC BY 4.0 license", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY 4.0");
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-        cy.get(".attribution-tabs > .tabs-content").contains("CC BY 4.0");
-    });
+    describe('Checks the user needed help to choose the license', () => {
+        it('Checks whether CCO License appears after choosing "NO" attribution', () => {
+            cy.visit('/')
+            cy.get('.step-0')
+            .find('[value="no"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-1')
+            .find('[value="no"]')
+            .check()
+            cy.get('.recommended-card').should('be.visible').contains('CC0 1.0 Universal')
+            cy.get('.next-button').click()
+            cy.get('.step-2').should('have.class','disabled')
+            cy.get('.step-3').should('have.class','disabled')
+            cy.get('.step-4').should('have.class','disabled')
+            cy.get('.v-checkbox:nth-child(1) > input').check()
+            cy.get('.v-checkbox:nth-child(2) > input').check()
+            cy.get('.next-button').click()
+            cy.get('.license-use-card').should('be.visible').contains(' CC0 1.0 ')
+        })
 
-    it("Can choose CC BY-NC license", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-NC 4.0");
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-        cy.get(".attribution-tabs > .tabs-content").contains("CC BY-NC 4.0");
-    });
+        it('Checks whether CC BY License appears after choosing "YES" attribution', () => {
+            cy.visit('/')
+            cy.get('.step-0')
+            .find('[value="no"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-1')
+            .find('[value="yes"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-2')
+            .find('[value="yes"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-3')
+            .find('[value="yes"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-4')
+            .find('[value="yes"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.recommended-card').should('be.visible').contains('CC BY 4.0')
+            cy.get('.license-use-card').should('be.visible').contains('CC BY 4.0')
+        })
 
-    it("Can choose CC BY-ND license", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-ND 4.0");
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-        cy.get(".attribution-tabs > .tabs-content").contains("CC BY-ND 4.0");
-    });
+        it('Checks whether CC BY-NC-ND License appears after choosing "YES" attribution', () => {
+            cy.visit('/')
+            cy.get('.step-0')
+            .find('[value="no"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-1')
+            .find('[value="yes"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-2')
+            .find('[value="no"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-3')
+            .find('[value="no"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-4').should('have.class','disabled')
+            cy.get('.next-button').click()
+            cy.get('.recommended-card').should('be.visible').contains('CC BY-NC-ND 4.0')
+            cy.get('.license-use-card').should('be.visible').contains('CC BY-NC-ND 4.0')
+        })
 
-    it("Can choose CC BY-NC-ND license", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-NC-ND 4.0");
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-        cy.get(".attribution-tabs > .tabs-content").contains("CC BY-NC-ND 4.0");
-    });
+        it('Checks whether CC BY-ND License appears after choosing "YES" attribution', () => {
+            cy.visit('/')
+            cy.get('.step-0')
+            .find('[value="no"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-1')
+            .find('[value="yes"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-2')
+            .find('[value="yes"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-3')
+            .find('[value="no"]')
+            .check()
+            cy.get('.next-button').click()
+            cy.get('.step-4').should('have.class','disabled')
+            cy.get('.recommended-card').should('be.visible').contains('CC BY-ND 4.0')
+            cy.get('.license-use-card').should('be.visible').contains('CC BY-ND 4.0')
+        })
 
-    it("Can choose CC BY-SA license", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-SA 4.0");
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-        cy.get(".attribution-tabs > .tabs-content").contains("CC BY-SA 4.0");
-    });
+        describe('Checks whther Back Button is working or not', () => {
 
-    it("Can choose CC BY-NC-SA license", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-NC-SA 4.0");
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-        cy.get(".attribution-tabs > .tabs-content").contains("CC BY-NC-SA 4.0");
-    });
-    it("Can select a license from dropdown", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-NC-ND 4.0");
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-        cy.get(".attribution-tabs > .tabs-content").contains("CC BY-NC-ND 4.0");
-    });
+            it('Checks whether a user can convert CC BY-ND License into CC BY-SA', () => {
+                cy.get('.previous-button').click()
+                cy.get('.step-3')
+                .find('[value="yes"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.step-4')
+                .find('[value="no"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.recommended-card').should('be.visible').contains('CC BY-SA 4.0')
+                cy.get('.license-use-card').should('be.visible').contains('CC BY-SA 4.0')
+            })
 
-    it("Can go back by clicking on Previous button", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-NC-ND 4.0");
-        cy.get(".previous-button").click();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-NC-SA 4.0");
-        cy.get(".previous-button").click();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-SA 4.0");
-        cy.get(".previous-button").click();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-NC 4.0");
-        cy.get(".previous-button").click();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY 4.0");
-        cy.get(".previous-button").click();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC0 1.0");
-        cy.get(".previous-button").click();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC BY-ND 4.0");
-        cy.get(".previous-button").click();
-    });
+            it('Checks whether a user can convert CCO using the License Dropdown into CC BY-NC-SA with the answer to the first question as "NO" ', () => {
+                cy.visit('/')
+                cy.get('.step-0')
+                .find('[value="yes"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('select').select('CC0 1.0')
+                cy.get('.recommended-card').should('be.visible').contains('CC0 1.0 Universal')
+                cy.get('.next-button').click()
+                cy.get('.v-checkbox:nth-child(1) > input').check()
+                cy.get('.v-checkbox:nth-child(2) > input').check()
+                cy.get('.next-button').click()
+                cy.get('.license-use-card').should('be.visible').contains(' CC0 1.0 ')
+                cy.get('.previous-button').click()
+                cy.get('.previous-button').click()
+                cy.get('.previous-button').click()
+                cy.get('.step-0')
+                .find('[value="no"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.step-1')
+                .find('[value="yes"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.step-2')
+                .find('[value="yes"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.step-3')
+                .find('[value="yes"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.step-4')
+                .find('[value="no"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.recommended-card').should('be.visible').contains('CC BY-SA 4.0')
+                cy.get('.license-use-card').should('be.visible').contains('CC BY-SA 4.0')
+            })
+        })
 
-    it("Can restart the whole process on clicking upon the Start Again", () => {
-        cy.visit("/");
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC0 1.0");
-        cy.get(".next-button").click();
-        cy.get(".step-actions")
-            .find("input")
-            .check();
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").should("be.visible");
-        cy.get(".attribution-tabs > .tabs-content").contains("CC0 1.0");
-        cy.get(".restart-button").click();
-        cy.visit("/");
-    });
+        describe('Checks whether the user can click on Start Again Button and application gets a hot reload', () => {
+            it('Clicks on Start Again Buttton', () => {
+                cy.get('.restart-button').click()
+                cy.get('.step-1').should('have.class','inactive')
+                cy.get('.step-2').should('have.class','inactive')
+                cy.get('.step-3').should('have.class','inactive')
+                cy.get('.step-4').should('have.class','inactive')
+            })
+        })
 
-    it("Automatic scroll to Mark your Section", () => {
-        cy.get(".step-0")
-            .find("[value=yes]")
-            .check();
-        cy.get(".next-button").click();
-        cy.get("select").select("CC0 1.0");
-        cy.get(".next-button").click();
-        cy.get(".step-actions")
-            .find("input")
-            .check();
-        cy.get(".next-button").click();
-        cy.get(".next-button").click();
-        cy.get(".license-use-card").scrollIntoView();
-    });
-});
+        describe('Checks that the application gets an auto-scroll to "Mark Your Work Section" when clicked on Done', () => {
+            it('Choose a License of your choice ', () => {
+                cy.get('.step-0')
+                .find('[value="no"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.step-1')
+                .find('[value="yes"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.step-2')
+                .find('[value="yes"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.step-3')
+                .find('[value="no"]')
+                .check()
+                cy.get('.next-button').click()
+                cy.get('.step-4').should('have.class','disabled')
+                cy.get('.recommended-card').should('be.visible').contains('CC BY-ND 4.0')
+                cy.get('.license-use-card').should('be.visible').contains('CC BY-ND 4.0')
+                cy.get('.next-button').click()
+                cy.get('.license-use-card').scrollIntoView()
+            })
+        })
+    })
+})
