@@ -34,7 +34,7 @@
                         @restart="restart"
                         @done="done"
                     />
-                    <help-section />
+                    <help-section @change="openChooserModal" />
                 </div>
                 <div class="column right-column">
                     <!-- The right column with the recommended license should be fixed until
@@ -58,6 +58,10 @@
             </div>
         </div>
         <footer-section />
+        <chooser-modal
+            :active-modal="openModal"
+            @close="closeChooserModal"
+        />
     </div>
 </template>
 
@@ -65,6 +69,7 @@
 // TODO Reduce custom styling in favour of Vocabulary styles
 import { mapMutations } from 'vuex'
 
+import ChooserModal from './components/ChooserModal'
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
 import LicenseUseCard from './components/LicenseUseCard'
@@ -80,11 +85,13 @@ export default {
         LicenseDetailsCard,
         LicenseUseCard,
         HeaderSection,
-        FooterSection
+        FooterSection,
+        ChooserModal
     },
     data() {
         return {
             currentStepId: 0,
+            openModal: null,
             showLicense: false,
             shouldShake: false,
             windowWidth: window.innerWidth
@@ -165,6 +172,14 @@ export default {
         },
         onResize() {
             this.windowWidth = window.innerWidth
+        },
+        openChooserModal(modal) {
+            console.log('Open chooser modal: ', modal, this.openModal)
+            this.openModal = modal
+            console.log('Open chooser modal: ', modal, this.openModal)
+        },
+        closeChooserModal() {
+            this.openModal = null
         }
     }
 }

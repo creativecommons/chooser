@@ -11,7 +11,7 @@ localVue.use(Vuex)
 localVue.use(VueVocabulary)
 Vue.use(VueI18n)
 const messages = {}
-messages.en = require('@/locales/en.js').messages
+messages.en = require('@/locales/en.json')
 const i18n = new VueI18n({
     locale: 'en',
     messages: messages
