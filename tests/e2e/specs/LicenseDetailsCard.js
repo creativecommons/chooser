@@ -16,7 +16,7 @@ module.exports = {
         browser
             .assert.elementPresent('a[class="license-deed-link"]')
             .getAttribute('a[class="license-deed-link"]', 'href', function(result) {
-                this.assert.equal(result.value, 'https://creativecommons.org/licenses/by-sa/4.0?ref=chooser-v1')
+                this.assert.equal(result.value, 'http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1')
             })
     }
 }

@@ -4,7 +4,7 @@ import { defaultAttributes, CC0Attributes, attrToShort, attrToFull, licenseURL, 
 
 Vue.use(Vuex)
 
-const defaultState = {
+export const defaultState = {
     currentLicenseAttributes: { ...defaultAttributes },
     attributionDetails: {
         creatorName: '',
