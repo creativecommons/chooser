@@ -168,7 +168,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
         const attr = { FS: false, BY: true, ND: true }
         expect(updateVisibleEnabledStatus(attr)).toEqual({
             enabled: ['FS', 'BY', 'NC', 'ND', 'AD'],
-            stepsDisabledDue: 'CC0',
+            stepsDisabledDue: 'ND',
             visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
         })
     })
