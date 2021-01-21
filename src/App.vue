@@ -173,9 +173,7 @@ export default {
             this.windowWidth = window.innerWidth
         },
         openChooserModal(modal) {
-            console.log('Open chooser modal: ', modal, this.openModal)
             this.openModal = modal
-            console.log('Open chooser modal: ', modal, this.openModal)
         },
         closeChooserModal() {
             this.openModal = null
