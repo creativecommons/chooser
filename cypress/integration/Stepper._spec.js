@@ -162,12 +162,12 @@ describe('Stepper.vue', () => {
             cy.get('.SA').should('have.class', 'disabled')
             cy.hasRecommendedLicense('CC BY-ND 4.0')
             cy.window().then(($window) => {
-                expect($window.scrollY).to.be.closeTo(800, 200)
+                expect($window.scrollY).to.be.closeTo(800, 300)
             })
             cy.get('button').contains('DONE').click()
             cy.hasLicenseInAttributionCode('CC BY-ND 4.0')
             cy.window().then(($window) => {
-                expect($window.scrollY).to.be.closeTo(1300, 200)
+                expect($window.scrollY).to.be.closeTo(1400, 300)
             })
         })
     })
