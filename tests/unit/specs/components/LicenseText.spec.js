@@ -41,30 +41,26 @@ describe('LicenseText.vue', () => {
         })
     })
 
-    it('it renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
-    })
-
-    it('has correct information when creator name and work title are provided', () => {
-        wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
-        wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
+    it('has correct information when creator name and work title are provided', async() => {
+        await wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
+        await wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
         const titleElement = wrapper.find('[property="dct:title"]')
         expect(titleElement.text()).toEqual(TEST_DATA.workTitle)
-        expect(titleElement.name()).toEqual('span')
+        expect(titleElement.find('span').exists()).toEqual(true)
         expect(Object.keys(titleElement.attributes()).length).toEqual(1)
         const creatorElement = wrapper.find('[property="cc:attributionName"]')
         expect(Object.keys(creatorElement.attributes()).length).toEqual(1)
         expect(creatorElement.text()).toEqual(TEST_DATA.creatorName)
-        expect(creatorElement.name()).toEqual('span')
+        expect(creatorElement.find('span').exists()).toBe(true)
     })
-    it('has correct information when only urls are provided', () => {
-        wrapper.vm.$store.commit('setWorkTitle', '')
-        wrapper.vm.$store.commit('setCreatorName', '')
-        wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
-        wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
+    it('has correct information when only urls are provided', async() => {
+        await wrapper.vm.$store.commit('setWorkTitle', '')
+        await wrapper.vm.$store.commit('setCreatorName', '')
+        await wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
+        await wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
         const titleElement = wrapper.find('[rel^="cc:attributionURL"]')
         expect(titleElement.text()).toEqual('This work')
-        expect(titleElement.name()).toEqual('a')
+        expect(titleElement.find('a').exists()).toBe(true)
         expect(titleElement.attributes().href).toEqual(TEST_DATA.workUrl)
         // href, rel, target
         expect(Object.keys(titleElement.attributes()).length).toEqual(3)
@@ -72,16 +68,16 @@ describe('LicenseText.vue', () => {
         expect(creatorElement.length).toEqual(0)
     })
 
-    it('has correct information all data are provided', () => {
-        wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
-        wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
-        wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
-        wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
+    it('has correct information all data are provided', async() => {
+        await wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
+        await wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
+        await wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
+        await wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
         const titleElement = wrapper.find('[property="dct:title"]')
         expect(titleElement.text()).toEqual(TEST_DATA.workTitle)
         expect(titleElement.attributes().href).toEqual(TEST_DATA.workUrl)
         expect(titleElement.attributes().rel).toEqual('cc:attributionURL noopener noreferrer')
-        expect(titleElement.name()).toEqual('a')
+        expect(titleElement.find('a').exists()).toEqual(true)
         // href, rel, target, property
         expect(Object.keys(titleElement.attributes()).length).toEqual(4)
         const creatorElement = wrapper.find('[property="cc:attributionName"]')
@@ -89,7 +85,7 @@ describe('LicenseText.vue', () => {
         expect(creatorElement.text()).toEqual(TEST_DATA.creatorName)
         expect(creatorElement.attributes().href).toEqual(TEST_DATA.creatorProfileUrl)
         expect(creatorElement.attributes().rel).toEqual('cc:attributionURL noopener noreferrer')
-        expect(creatorElement.name()).toEqual('a')
+        expect(creatorElement.find('a').exists()).toEqual(true)
     })
 
     it('updates license name type (full/short)', () => {

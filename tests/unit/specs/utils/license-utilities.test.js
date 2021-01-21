@@ -168,7 +168,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
         const attr = { FS: false, BY: true, ND: true }
         expect(updateVisibleEnabledStatus(attr)).toEqual({
             enabled: ['FS', 'BY', 'NC', 'ND', 'AD'],
-            stepsDisabledDue: 'CC0',
+            stepsDisabledDue: 'ND',
             visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
         })
     })
@@ -189,7 +189,7 @@ describe('generateHTML', function testGenerateHTML() {
         PROFILE_URL: 'www.john.com',
         WORK_URL: 'www.john.com/foo.jpg'
     }
-    const DEFAULT_TITLE = "This work"
+    const DEFAULT_TITLE = 'This work'
     // For each kind of Attribution data present, check:
     // 1. Correct namespaces of RDFa data a applied
     // 2. License link has correct rel and href attributes
@@ -299,5 +299,4 @@ describe('generateHTML', function testGenerateHTML() {
             })
         })
     })
-
 })

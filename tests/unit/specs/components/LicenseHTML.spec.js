@@ -61,25 +61,24 @@ describe('LicenseHTML.vue', () => {
         await store.commit('setWorkTitle', 'Foo')
         await store.commit('setCreatorProfileUrl', creatorUrl)
 
-
         const rendered = wrapper.find('.rendered-html p')
         expect(rendered.attributes()['xmlns:dct']).toBe('http://purl.org/dc/terms/')
         expect(rendered.attributes()['xmlns:cc']).toBe('http://creativecommons.org/ns#')
         expect(rendered.text()).toBe('Foo by John is licensed under CC BY 4.0')
 
         const creatorLink = wrapper.find(`a[href="http://${creatorUrl}"]`)
-        expect(creatorLink.attributes()['property']).toBe('cc:attributionName')
-        expect(creatorLink.attributes()['rel']).toBe('cc:attributionURL dct:creator')
+        expect(creatorLink.attributes().property).toBe('cc:attributionName')
+        expect(creatorLink.attributes().rel).toBe('cc:attributionURL dct:creator')
         expect(Object.keys(creatorLink.attributes()).length).toBe(3)
         expect(creatorLink.text()).toBe('John')
 
         const workLink = wrapper.find(`a[href="http://${workUrl}"]`)
-        expect(workLink.attributes()['property']).toBe('dct:title')
-        expect(workLink.attributes()['rel']).toBe('cc:attributionURL')
+        expect(workLink.attributes().property).toBe('dct:title')
+        expect(workLink.attributes().rel).toBe('cc:attributionURL')
         expect(Object.keys(workLink.attributes()).length).toBe(3)
         expect(workLink.text()).toBe('Foo')
 
-        const licenseLink = wrapper.find(`a[rel="license noopener noreferrer"]`)
+        const licenseLink = wrapper.find('a[rel="license noopener noreferrer"]')
         expect(licenseLink.attributes().href).toBe('http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1')
         // License link should have the following attributes: href, target, rel and style
         expect(Object.keys(licenseLink.attributes()).length).toBe(4)

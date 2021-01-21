@@ -36,13 +36,9 @@ describe('LicenseDetailsCard.vue', () => {
         })
     })
 
-    it('Check if LicenseDetailsCard.vue component renders without any errors', () => {
-        expect(wrapper.isVueInstance()).toBeTruthy()
-    })
-
     // Test for DOM elements which must be present
     it('Check if the main div and heading are rendered', () => {
-        expect(wrapper.contains('.recommended-card')).toBe(true)
+        expect(wrapper.find('.recommended-card').exists()).toBe(true)
         expect(wrapper.find('h3').text()).toEqual('license-details-card.heading')
     })
 

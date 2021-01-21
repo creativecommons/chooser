@@ -1,1 +1,4 @@
-{}
+{
+    "project": "creativecommons-chooser",
+    "baseUrl": "http://localhost:8080/"
+}
