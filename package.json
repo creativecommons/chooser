@@ -11,7 +11,7 @@
     "license": "MIT",
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build ",
+        "build": "vue-cli-service build && shx rm -rf ./docs && shx cp -r ./dist ./docs",
         "test:unit": "vue-cli-service test:unit",
         "test:e2e": "vue-cli-service test:e2e",
         "lint": "vue-cli-service lint",
