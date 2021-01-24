@@ -140,37 +140,37 @@
     "heading": "CONFUSED? NEED HELP?",
     "what-are-cc-licenses": {
       "heading": "What Are Creative Commons Licenses?",
-      "text": "<p>Creative Commons legal tools give everyone from individual creators to large companies a simple, standardized way to grant copyright permissions to their creative work. They are designed to forge a balance inside the traditional &quot;all rights reserved&quot; setting that copyright law creates.</p>\n",
-      "footer": "<p>For more information, please see <a href=\"https://creativecommons.org/licenses/\">About the Licenses</a>.</p>\n"
+      "text": "<p>Creative Commons legal tools give everyone from individual creators to large companies a simple, standardized way to grant copyright permissions to their creative work. They are designed to forge a balance inside the traditional &quot;all rights reserved&quot; setting that copyright law creates.</p>",
+      "footer": "<p>For more information, please see <a href=\"https://creativecommons.org/licenses/\">About the Licenses</a>.</p>"
     },
     "how-licenses-work": {
       "heading": "How do the Licenses Work?",
-      "text": "<p>There are six different Creative Commons licenses, as well as one public domain dedication tool. Creators choose the option that is right for them, and then apply that license to their copyrighted work. Anyone who wants to reuse the work of the creator in a manner that requires permission under copyright must comply with the terms of the license.</p>\n",
-      "footer": "<p>For more information, please see <a href=\"https://creativecommons.org/licenses/\">About the Licenses</a></p>\n"
+      "text": "<p>There are six different Creative Commons licenses, as well as one public domain dedication tool. Creators choose the option that is right for them, and then apply that license to their copyrighted work. Anyone who wants to reuse the work of the creator in a manner that requires permission under copyright must comply with the terms of the license.</p>",
+      "footer": "<p>For more information, please see <a href=\"https://creativecommons.org/licenses/\">About the Licenses</a></p>"
     },
     "what-icons-mean": {
       "heading": "What do the Icons Mean?",
-      "text": "<p>The icons represent key features of the different CC license options:</p>\n",
+      "text": "<p>The icons represent key features of the different CC license options:</p>",
       "BY": {
-        "text": "<p>Credit must be given to you, the creator.</p>\n",
+        "text": "<p>Credit must be given to you, the creator.</p>",
         "long-name": "Attribution Required",
         "icon-alt-text": "Attribution Required Icon",
         "short-name": "(BY)"
       },
       "ND": {
-        "text": "<p>No derivatives or adaptations of your work are permitted.</p>\n",
+        "text": "<p>No derivatives or adaptations of your work are permitted.</p>",
         "long-name": "Modifying Not Allowed",
         "icon-alt-text": "Modifying Not Allowed Icon",
         "short-name": "(ND/ NoDerivatives)"
       },
       "NC": {
-        "text": "<p>Only noncommercial use of your work is permitted.</p>\n",
+        "text": "<p>Only noncommercial use of your work is permitted.</p>",
         "long-name": "Commercial Use Not Allowed",
         "icon-alt-text": "Commercial Use Not Allowed Icon",
         "short-name": "(NC/ NonCommercial)"
       },
       "SA": {
-        "text": "<p>Adaptations must be shared under the same terms.</p>\n",
+        "text": "<p>Adaptations must be shared under the same terms.</p>",
         "long-name": "Distributed on Same Terms",
         "icon-alt-text": "Distributed on Same Terms Icon",
         "short-name": "(SA/ ShareAlike)"
@@ -179,7 +179,7 @@
     },
     "how-licenses-communicated": {
       "heading": "How are Licenses Communicated?",
-      "text": "<p>Creative Commons licenses can be represented by their names, their associated icons, or both. For example, a CC BY-NC license, which requires attribution, and prohibits commercial use could be represented by its:</p>\n",
+      "text": "<p>Creative Commons licenses can be represented by their names, their associated icons, or both. For example, a CC BY-NC license, which requires attribution, and prohibits commercial use could be represented by its:</p>",
       "full-name": "Full Name",
       "short-name": "Short Name",
       "license-icons": "Icons",
@@ -188,27 +188,27 @@
     },
     "considerations-before-licensing": {
       "heading": "Considerations Before Licensing",
-      "text": "<p>There are a number of things you should consider before you apply a Creative Commons license to your work, or before using Creative Commons-licenced material.</p>\n<p><a href=\"https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors\">Considerations for Licensors</a> - If you are licensing your own work</p>\n<p><a href=\"https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees\">Considerations for Licensees</a> - someone else's licensed work</p>\n",
-      "footer": "<p>For more information, please see <a href=\"https://wiki.creativecommons.org/wiki/Before_Licensing\">the CC wiki's page on Considerations for Licensors and Licensees</a>.</p>\n"
+      "text": "<p>There are a number of things you should consider before you apply a Creative Commons license to your work, or before using Creative Commons-licenced material.</p>\n<p><a href=\"https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors\">Considerations for Licensors</a> - If you are licensing your own work</p>\n<p><a href=\"https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensees\">Considerations for Licensees</a> - someone else's licensed work</p>",
+      "footer": "<p>For more information, please see <a href=\"https://wiki.creativecommons.org/wiki/Before_Licensing\">the CC wiki's page on Considerations for Licensors and Licensees</a>.</p>"
     },
     "how-formally-license": {
       "heading": "How do I Formally License my Work?",
-      "text": "<p>Licensing your work is as simple as marking it under the specific license you choose. This marking can be as simple as a bit of text stating the license in a copyright notice, or as complex as embedding the license information on your website using the HTML code associated with the particular license. We strongly recommend at least including a link to the applicable license.</p>\n",
+      "text": "<p>Licensing your work is as simple as marking it under the specific license you choose. This marking can be as simple as a bit of text stating the license in a copyright notice, or as complex as embedding the license information on your website using the HTML code associated with the particular license. We strongly recommend at least including a link to the applicable license.</p>",
       "footer": ""
     },
     "six-cc-licenses": {
       "heading": "The Six Creative Commons Licenses",
-      "text": "<p>There are six main licenses that Creative Commons offers.</p>\n<p>In the diagram to the right, you can see the six main licenses and the public domain CC0 license, and how restrictive they are, with licenses at the top being the least restrictive, and licenses at the bottom being the most restrictive.</p>\n<p>If you are unsure about which one is right for you and your work, please select <strong>I need help selecting a license</strong> on the first question of this page.</p>\n",
-      "footer": "<p>For more information, please read more about <a href=\"https://creativecommons.org/share-your-work/licensing-types-examples/\">CC Licenses and Examples</a>.</p>\n"
+      "text": "<p>There are six main licenses that Creative Commons offers.</p>\n<p>In the diagram to the right, you can see the six main licenses and the public domain CC0 license, and how restrictive they are, with licenses at the top being the least restrictive, and licenses at the bottom being the most restrictive.</p>\n<p>If you are unsure about which one is right for you and your work, please select <strong>I need help selecting a license</strong> on the first question of this page.</p>",
+      "footer": "<p>For more information, please read more about <a href=\"https://creativecommons.org/share-your-work/licensing-types-examples/\">CC Licenses and Examples</a>.</p>"
     },
     "what-free-culture-license": {
       "heading": "What is a Free Culture License?",
-      "text": "<p>CC uses the definition of free cultural works at <a href=\"https://freedomdefined.org/Definition\">Freedom Defined</a> to categorize certain CC licenses as Free Culture Licenses. Freedom Defined is an open organization of free culture advocates and researchers; the definition was developed by its community as a parallel to efforts such as the Free Software Definition, to have a standard for defining Free Culture. Using that definition, material licensed under CC BY or BY-SA is a free cultural work, as is anything in the worldwide public domain marked with CC0 or the Public Domain Mark.</p>\n",
-      "footer": "<p>Read more about <a href=\"https://creativecommons.org/share-your-work/public-domain/freeworks\">Understanding Free Cultural Works</a></p>\n"
+      "text": "<p>CC uses the definition of free cultural works at <a href=\"https://freedomdefined.org/Definition\">Freedom Defined</a> to categorize certain CC licenses as Free Culture Licenses. Freedom Defined is an open organization of free culture advocates and researchers; the definition was developed by its community as a parallel to efforts such as the Free Software Definition, to have a standard for defining Free Culture. Using that definition, material licensed under CC BY or BY-SA is a free cultural work, as is anything in the worldwide public domain marked with CC0 or the Public Domain Mark.</p>",
+      "footer": "<p>Read more about <a href=\"https://creativecommons.org/share-your-work/public-domain/freeworks\">Understanding Free Cultural Works</a></p>"
     },
     "look-earlier-license-ver": {
       "heading": "Looking for Earlier License Versions, including Ports?",
-      "text": "<p>The most recent license version is 4.0, which can be used internationally. Earlier versions of licenses, including 3.0 international and ports localized to particular jurisdictions, can still be used on the legacy version of the <a href=\"https://creativecommons.org/choose/\">License Chooser</a></p>\n<p>Click on the link at the top of the page <strong>&quot;Looking for earlier license versions, including ports?&quot;</strong> and follow the prompts to use earlier license versions.</p>\n",
+      "text": "<p>The most recent license version is 4.0, which can be used internationally. Earlier versions of licenses, including 3.0 international and ports localized to particular jurisdictions, can still be used on the legacy version of the <a href=\"https://creativecommons.org/choose/\">License Chooser</a></p>\n<p>Click on the link at the top of the page <strong>&quot;Looking for earlier license versions, including ports?&quot;</strong> and follow the prompts to use earlier license versions.</p>",
       "footer": ""
     }
   },
@@ -223,9 +223,9 @@
       "call": "Help us keep Internet free and open."
     },
     "licensing": {
-      "text": "<p>Except where otherwise <a href=\"https://creativecommons.org/policies#license\">noted</a>, content on this site is licensed under a <a href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International license</a>. Icons by <a href=\"https://creativecommons.org/website-icons\">Noun Project</a>.</p>\n"
+      "text": "<p>Except where otherwise <a href=\"https://creativecommons.org/policies#license\">noted</a>, content on this site is licensed under a <a href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International license</a>. Icons by <a href=\"https://creativecommons.org/website-icons\">Noun Project</a>.</p>"
     },
-    "contribute": "<p>Contribute on <a href=\"https://github.com/creativecommons/chooser\">Github</a>.</p>\n"
+    "contribute": "<p>Contribute on <a href=\"https://github.com/creativecommons/chooser\">Github</a>.</p>"
   },
   "free-culture-work": {
     "yes": "Free Culture License",
