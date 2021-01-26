@@ -24,14 +24,14 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("clickNext", () => {
+Cypress.Commands.add('clickNext', () => {
     cy.get('button').contains('NEXT').click()
 })
-Cypress.Commands.add("clickBack", () => {
+Cypress.Commands.add('clickBack', () => {
     cy.get('button').contains('BACK').click()
 })
 
-Cypress.Commands.add("makeAChoice", (stepId, choice) => {
+Cypress.Commands.add('makeAChoice', (stepId, choice) => {
     cy.get(stepId).find(`[value="${choice}"]`).check()
 })
 
@@ -48,5 +48,7 @@ Cypress.Commands.add('hasLicenseInAttributionCode', (license) => {
     cy.get('.license-use-card').should('be.visible').contains(license)
 })
 Cypress.Commands.add('hasStepsCount', (stepsCount) => {
-    cy.get('.stepper__container').find('.step-container').should('have.lengthOf', stepsCount)
+    cy.get('.stepper__container')
+        .find('.step-container')
+        .should('have.lengthOf', stepsCount)
 })

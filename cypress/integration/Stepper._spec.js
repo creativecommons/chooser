@@ -1,6 +1,6 @@
 /* This Source Code Form is subject to the terms of the Creative Commons
  * License Chooser
-*/
+ */
 
 describe('Stepper.vue', () => {
     describe('User can select licenses using the dropdown', () => {
@@ -140,8 +140,12 @@ describe('Stepper.vue', () => {
 
         it('User can start the selection process over by clicking "Start again" Button', () => {
             cy.get('button').contains('Start again').click()
-            cy.get('.right-column').find('.recommended-card').should('not.exist')
-            cy.get('.right-column').find('.license-use-card').should('not.exist')
+            cy.get('.right-column')
+                .find('.recommended-card')
+                .should('not.exist')
+            cy.get('.right-column')
+                .find('.license-use-card')
+                .should('not.exist')
             cy.get('.BY').should('have.class', 'inactive')
             cy.get('.NC').should('have.class', 'inactive')
             cy.get('.ND').should('have.class', 'inactive')
