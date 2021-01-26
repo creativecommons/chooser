@@ -72,9 +72,9 @@
     </div>
 </template>
 <script>
-import CopyTools from '@/components/CopyTools'
-import LicenseHTML from '@/components/LicenseHTML'
-import LicenseText from '@/components/LicenseText'
+import CopyTools from './CopyTools'
+import LicenseHTML from './LicenseHTML'
+import LicenseText from './LicenseText'
 export default {
     name: 'LicenseUseCard',
     components: {

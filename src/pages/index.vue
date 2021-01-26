@@ -20,9 +20,7 @@
                 </ul>
             </nav>
 
-            <h2>
-                {{ $t('chooser.heading') }}
-            </h2>
+            <h2>{{ $t('chooser.heading') }}</h2>
             <p class="stepper-instructions body-bigger">
                 {{ $t('chooser.instructions') }}
             </p>
@@ -69,13 +67,13 @@
 // TODO Reduce custom styling in favour of Vocabulary styles
 import { mapMutations } from 'vuex'
 
-import ChooserModal from './components/ChooserModal'
-import HelpSection from './components/HelpSection'
-import Stepper from './components/Stepper'
-import LicenseUseCard from './components/LicenseUseCard'
-import HeaderSection from './components/HeaderSection'
-import FooterSection from './components/FooterSection'
-import LicenseDetailsCard from './components/LicenseDetailsCard'
+import ChooserModal from '../components/ChooserModal'
+import HelpSection from '../components/HelpSection'
+import Stepper from '../components/Stepper'
+import LicenseUseCard from '../components/LicenseUseCard'
+import HeaderSection from '../components/HeaderSection'
+import FooterSection from '../components/FooterSection'
+import LicenseDetailsCard from '../components/LicenseDetailsCard'
 
 export default {
     name: 'App',
@@ -94,7 +92,7 @@ export default {
             openModal: null,
             showLicense: false,
             shouldShake: false,
-            windowWidth: window.innerWidth
+            windowWidth: null
         }
     },
     computed: {
@@ -125,6 +123,7 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
+            this.windowWidth = window.innerWidth
             window.addEventListener('resize', this.onResize)
         })
     },
@@ -145,9 +144,9 @@ export default {
     methods: {
         ...mapMutations(['setAttributionType']),
         /**
-        *  When user clicks restart, we set the active step to 0, so the stepper opens
-        *  the first step. We don't, however, delete the information the user entered,
-        *  so all the steps have previously selected options, and attribution information
+         *  When user clicks restart, we set the active step to 0, so the stepper opens
+         *  the first step. We don't, however, delete the information the user entered,
+         *  so all the steps have previously selected options, and attribution information
          *  is filled as it was previously.
          */
         restart() {
@@ -183,95 +182,96 @@ export default {
 </script>
 <style lang="scss">
 
-    @import "~@creativecommons/vocabulary/scss/vocabulary.scss";
+@import "~@creativecommons/vocabulary/scss/vocabulary.scss";
+@import '../styles/vocab';
 
-    #app {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        color: #333333;
-        counter-reset: step-counter;
-        background-color: #f5f5f5;
-    }
+#app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #333333;
+    counter-reset: step-counter;
+    background-color: #f5f5f5;
+}
+#site-container {
+    padding: 0.75rem;
+    --border-width: 0.125rem;
+}
+#site-container .breadcrumb {
+    margin-bottom: 2rem;
+}
+#site-container h2 {
+    letter-spacing: 0.05rem;
+}
+.stepper-instructions {
+    margin-top: 0.5rem;
+    margin-bottom: 2.75rem;
+}
+.columns.wider-gap {
+    --outer-padding: 1rem;
+    --inner-padding: 1.5rem;
+}
+.columns.wider-gap .column:first-child {
+    padding-left: var(--outer-padding);
+    padding-right: var(--inner-padding);
+}
+.columns.wider-gap .column:last-child {
+    padding-right: var(--outer-padding);
+    padding-left: var(--inner-padding);
+}
+.fixed-right-column {
+    position: sticky;
+    top: 10px;
+}
+.selected-license-card {
+    // Margin is added to make the left column long enough
+    // for the right column to stay sticky when scrolling
+    margin-bottom: 32px;
+}
+footer.main-footer {
+    margin-top: 2rem;
+}
+@media only screen and (min-width: 769px) {
     #site-container {
-        padding: 0.75rem;
-        --border-width: 0.125rem;
-    }
-    #site-container .breadcrumb {
-        margin-bottom: 2rem;
-    }
-    #site-container h2 {
-        letter-spacing: 0.05rem;
-    }
-    .stepper-instructions {
-        margin-top: 0.5rem;
-        margin-bottom: 2.75rem;
-    }
-    .columns.wider-gap {
-        --outer-padding: 1rem;
-        --inner-padding: 1.5rem;
-    }
-    .columns.wider-gap .column:first-child {
-        padding-left: var(--outer-padding);
-        padding-right: var(--inner-padding);
-    }
-    .columns.wider-gap .column:last-child {
-        padding-right: var(--outer-padding);
-        padding-left: var(--inner-padding);
-    }
-    .fixed-right-column {
-        position: sticky;
-        top: 10px;
-    }
-    .selected-license-card {
-        // Margin is added to make the left column long enough
-        // for the right column to stay sticky when scrolling
-        margin-bottom: 32px;
+        padding-top: 2rem;
     }
     footer.main-footer {
-        margin-top: 2rem;
+        margin-top: 5rem;
     }
-    @media only screen and (min-width: 769px) {
-        #site-container {
-            padding-top: 2rem;
-        }
-        footer.main-footer {
-            margin-top: 5rem;
-        }
+}
+@media only screen and (min-width: 1024px) {
+    #site-container {
+        padding-left: 0;
+        padding-right: 0;
     }
-    @media only screen and (min-width: 1024px) {
-        #site-container {
-            padding-left: 0;
-            padding-right: 0;
-        }
+}
+@media only screen and (max-width: 768px) {
+    #site-container {
+        padding-right: 1.375rem;
+        padding-left: 1.375rem;
     }
-    @media only screen and (max-width: 768px) {
-        #site-container {
-            padding-right: 1.375rem;
-            padding-left: 1.375rem;
-        }
-        #site-container h2, #site-container h3 {
-            font-size: 1.4375rem;
-        }
-        .body-bigger {
-            font-size: 1rem;
-        }
-        .stepper-instructions {
-            margin-bottom: 2rem;
-        }
-        .columns.wider-gap .column:first-child,
-        .columns.wider-gap .column:last-child {
-            padding-right: 0.75rem;
-            padding-left: 0.75rem;
-        }
+    #site-container h2, #site-container h3 {
+        font-size: 1.4375rem;
+    }
+    .body-bigger {
+        font-size: 1rem;
+    }
+    .stepper-instructions {
+        margin-bottom: 2rem;
+    }
+    .columns.wider-gap .column:first-child,
+    .columns.wider-gap .column:last-child {
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+    }
 
-    }
-    .appear-enter-active {
-        transition: opacity .6s ease;
-    }
-    .appear-leave-active {
-        transition: opacity .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-    }
-    .appear-enter, .appear-leave-to {
-        opacity: 0;
-    }
+}
+.appear-enter-active {
+    transition: opacity .6s ease;
+}
+.appear-leave-active {
+    transition: opacity .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.appear-enter, .appear-leave-to {
+    opacity: 0;
+}
 </style>

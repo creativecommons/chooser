@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import CopyTypeSwitch from '@/components/CopyTypeSwitch'
+import CopyTypeSwitch from './CopyTypeSwitch'
 import Clipboard from 'clipboard'
 export default {
     name: 'CopyTools',

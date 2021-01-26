@@ -48,7 +48,7 @@ export default {
         padding-right: 1rem;
     }
     .locale-chooser-field .control .select::before {
-        content: url("../assets/language.png");
+        content: url("../src/assets/language.png");
         position: absolute;
         left: 10px;
         top: 8px;

@@ -64,4 +64,10 @@ export default {
         background-color: white;
     }
 }
+@media only screen and (max-width: 768px) {
+    #app .navbar {
+        padding-right: 1.375rem;
+        padding-left: 1.375rem;
+    }
+}
 </style>

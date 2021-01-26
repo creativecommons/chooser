@@ -29,7 +29,7 @@
 </template>
 <script>
 import { mapMutations, mapState } from 'vuex'
-import VInput from '@/Vocabulary/VInput'
+import VInput from '../Vocabulary/VInput'
 
 export default {
     name: 'AttributionDetails',

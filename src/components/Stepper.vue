@@ -38,8 +38,8 @@ import CopyrightWaiverStep from './CopyrightWaiverStep'
 import DropdownStep from './DropdownStep'
 import StepHeader from './StepHeader'
 import StepNavigation from './StepNavigation'
-import { updateVisibleEnabledStatus } from '@/utils/license-utilities'
-import { initialSteps } from '@/utils/steps'
+import { updateVisibleEnabledStatus } from '../utils/license-utilities'
+import { initialSteps } from '../utils/steps'
 
 export default {
     name: 'Stepper',
