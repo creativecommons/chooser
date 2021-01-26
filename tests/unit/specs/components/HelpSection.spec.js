@@ -1,5 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import HelpSection from '@/components/HelpSection.vue'
+import HelpSection from '@/src/components/HelpSection.vue'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 
 describe('HelpSection.vue', () => {

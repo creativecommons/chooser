@@ -1,5 +1,5 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils'
-import LicenseUseCard from '@/components/LicenseUseCard'
+import LicenseUseCard from '@/src/components/LicenseUseCard'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 
 describe('LicenseUseCard.vue', () => {

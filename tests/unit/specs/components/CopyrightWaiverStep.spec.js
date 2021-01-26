@@ -2,7 +2,7 @@ import { createLocalVue, mount } from '@vue/test-utils'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
-import CopyrightWaiverStep from '@/components/CopyrightWaiverStep'
+import CopyrightWaiverStep from '@/src/components/CopyrightWaiverStep'
 import Vue from 'vue'
 
 const localVue = createLocalVue()
@@ -11,7 +11,7 @@ localVue.use(Vuex)
 localVue.use(VueVocabulary)
 Vue.use(VueI18n)
 const messages = {}
-messages.en = require('@/locales/en.json')
+messages.en = require('@/src/locales/en.json')
 const i18n = new VueI18n({
     locale: 'en',
     messages: messages

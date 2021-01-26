@@ -1,5 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import CopyTools from '@/components/CopyTools.vue'
+import CopyTools from '@/src/components/CopyTools.vue'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 
 describe('CopyTools.vue', () => {

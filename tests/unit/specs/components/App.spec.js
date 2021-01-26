@@ -4,23 +4,31 @@ import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
 import Vocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import VueScrollTo from 'vue-scrollto'
-import createStore from '@/store'
-import App from '@/App'
-import Stepper from '@/components/Stepper'
+import Stepper from '@/src/components/Stepper'
+import index from '../../../../src/pages/index'
 
-describe('App.vue', () => {
+describe('index.vue', () => {
     let wrapper
     let localVue
+    let NuxtStore
+    let store
 
-    beforeEach(() => {
+    beforeAll(async () => {
+        // note the store will mutate across tests
+        const storePath = `${process.env.buildDir}/store.js`
+        NuxtStore = await import(storePath)
+    })
+    beforeEach(async() => {
         localVue = createLocalVue()
         localVue.use(Vuex)
         localVue.use(Vocabulary)
         Vue.use(VueScrollTo)
         Vue.use(VueI18n)
-        wrapper = shallowMount(App, {
-            store: createStore({}),
+        store = await NuxtStore.createStore()
+
+        wrapper = shallowMount(index, {
             localVue,
+            store,
             mocks: {
                 $t: key => key
             }
@@ -40,14 +48,14 @@ describe('App.vue', () => {
         expect(wrapper.findAll('.column').length).toBe(2)
         const rightColumn = wrapper.findAll('.column').at(1)
         expect(rightColumn.find('licensedetailscard-stub').exists()).toBe(false)
-        await wrapper.vm.$store.commit('updateAttributesFromShort', 'CC BY 4.0')
+        await store.commit('updateAttributesFromShort', 'CC BY 4.0')
         expect(rightColumn.find('licensedetailscard-stub').exists()).toBe(true)
     })
 
     it('Shows `Selected License` card when an attribute has been selected', async() => {
         const rightColumn = wrapper.findAll('.column').at(1)
         expect(rightColumn.find('licensedetailscard-stub').exists()).toBe(false)
-        await wrapper.vm.$store.commit('setSelected', { name: 'BY', selected: false })
+        await store.commit('setSelected', { name: 'BY', selected: false })
         expect(rightColumn.find('licensedetailscard-stub').exists()).toBe(true)
     })
 

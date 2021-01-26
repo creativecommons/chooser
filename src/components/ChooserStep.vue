@@ -29,8 +29,6 @@ export default {
         name: String,
         selected: Boolean,
         id: Number,
-        enabled: Boolean,
-        disabledDue: String
     },
     computed: {
         /**
@@ -40,9 +38,6 @@ export default {
          */
         reversed() {
             return ['NC', 'ND', 'SA'].indexOf(this.$props.name) > -1
-        },
-        showDisabledDue() {
-            return !this.$props.enabled && this.$props.disabledDue !== undefined
         },
         qualifier() {
             return this.reversed ? !this.selected : this.selected

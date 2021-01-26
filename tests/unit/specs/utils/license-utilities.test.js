@@ -11,7 +11,7 @@ import {
     ICON_BASE_URL,
     ICON_STYLE,
     chooserRef
-} from '@/utils/license-utilities'
+} from '@/src/utils/license-utilities'
 import { mount } from '@vue/test-utils'
 import TestComponent from './TestComponent'
 

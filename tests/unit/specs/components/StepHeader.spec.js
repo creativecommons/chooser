@@ -1,8 +1,8 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils'
-import StepHeader from '@/components/StepHeader'
+import StepHeader from '@/src/components/StepHeader'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import Vue from 'vue'
-import { initialSteps } from '@/utils/steps'
+import { initialSteps } from '@/src/utils/steps'
 
 const steps = [...initialSteps]
 

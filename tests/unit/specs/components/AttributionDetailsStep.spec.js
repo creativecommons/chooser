@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import Vuex from 'vuex'
-import AttributionDetailsStep from '@/components/AttributionDetailsStep'
+import AttributionDetailsStep from '@/src/components/AttributionDetailsStep'
 
 const localVue = createLocalVue()
 

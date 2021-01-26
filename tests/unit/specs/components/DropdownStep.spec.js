@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import Vuex from 'vuex'
-import DropdownStep from '@/components/DropdownStep'
+import DropdownStep from '@/src/components/DropdownStep'
 
 const localVue = createLocalVue()
 

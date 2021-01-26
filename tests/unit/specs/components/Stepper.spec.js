@@ -1,9 +1,8 @@
 import Vuex from 'vuex'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Stepper from '@/components/Stepper'
+import Stepper from '@/src/components/Stepper'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import Vue from 'vue'
-import store from '@/store'
 import VueScrollTo from 'vue-scrollto'
 
 function getStepId(wrapper, name) {
@@ -33,33 +32,41 @@ async function advanceStep(wrapper, actions) {
     }
 }
 
-let wrapper
-let localVue
 
-function setUp() {
-    localVue = createLocalVue()
-    localVue.use(Vuex)
-    localVue.use(VueVocabulary)
-    localVue.use(VueScrollTo)
-
-    wrapper = shallowMount(Stepper, {
-        store,
-        localVue,
-        mocks: {
-            $t: key => key
-        },
-        propsData: {
-            value: 0
-        }
-    })
-    wrapper.vm.$on('input', (newVal) => {
-        wrapper.setProps({ value: newVal })
-    })
-}
-
-beforeEach(() => setUp())
 
 describe('Stepper.vue', () => {
+    let NuxtStore
+    let wrapper
+    let localVue
+    let store
+    async function setUp() {
+        localVue = createLocalVue()
+        localVue.use(Vuex)
+        localVue.use(VueVocabulary)
+        localVue.use(VueScrollTo)
+        store = await NuxtStore.createStore()
+
+        wrapper = shallowMount(Stepper, {
+            store,
+            localVue,
+            mocks: {
+                $t: key => key
+            },
+            propsData: {
+                value: 0
+            }
+        })
+        wrapper.vm.$on('input', (newVal) => {
+            wrapper.setProps({ value: newVal })
+        })
+    }
+    beforeAll(async () => {
+        // note the store will mutate across tests
+        const storePath = `${process.env.buildDir}/store.js`
+        NuxtStore = await import(storePath)
+    })
+
+    beforeEach(() => setUp())
     describe('renders correctly', () => {
         it('is called', () => {
             expect(wrapper.findComponent(Stepper).exists()).toBe(true)

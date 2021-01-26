@@ -1,5 +1,5 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import ChooserStep from '@/components/ChooserStep'
+import { mount, createLocalVue } from '@vue/test-utils'
+import ChooserStep from '@/src/components/ChooserStep'
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 
 describe('ChooserStep.vue', () => {
@@ -10,89 +10,63 @@ describe('ChooserStep.vue', () => {
     beforeEach(() => {
         localVue = createLocalVue()
         localVue.use(VueVocabulary)
-        wrapper = shallowMount(ChooserStep, {
+        wrapper = mount(ChooserStep, {
             localVue,
             mocks: {
                 $t: key => key
             }
         })
     })
-
-    // It's only for one state, but this should be enough to test if the logic works properly
-    it('Check that all computed i18n props return correct values', () => {
-        wrapper.setProps({
-            disabledDue: '',
-            enabled: true,
-            reversed: false,
-            selected: undefined,
-            status: 'active',
+    it('Check that ChooserStep renders correctly', async () => {
+        await wrapper.setProps({
             id: 1,
-            name: 'BY'
+            name: 'BY',
+            selected: false
         })
-
-        expect(wrapper.vm.noSelected).toBe('selected')
-        expect(wrapper.vm.noText).toBe('stepper.BY.not-selected')
-        expect(wrapper.vm.tPrefix).toBe('stepper.BY')
-        expect(wrapper.vm.yesSelected).toBe('not-selected')
-        expect(wrapper.vm.yesText).toBe('stepper.BY.selected')
+        const yesField = wrapper.findAll('.v-radio').at(0)
+        expect(yesField.text()).toBe('stepper.yes'+'stepper.BY.selected')
+        const noField = wrapper.findAll('.v-radio').at(1)
+        expect(noField.text()).toBe('stepper.no'+'stepper.BY.not-selected')
     })
 
-    it('Check that all computed i18n props return correct values after true selected', () => {
-        wrapper.setProps({
-            disabledDue: undefined,
-            enabled: true,
-            reversed: false,
-            selected: true,
-            status: 'active',
+    it('Check that selecting "Yes" emits correct value', async () => {
+        await wrapper.setProps({
             id: 1,
-            name: 'BY'
+            name: 'BY',
+            selected: undefined
         })
-
-        expect(wrapper.vm.radio).toBe('yes')
-        expect(wrapper.vm.noSelected).toBe('not-selected')
-        expect(wrapper.vm.noText).toBe('stepper.BY.not-selected')
-        expect(wrapper.vm.tPrefix).toBe('stepper.BY')
-        expect(wrapper.vm.yesSelected).toBe('selected')
-        expect(wrapper.vm.yesText).toBe('stepper.BY.selected')
+        const yesField = wrapper.findAll('.v-radio').at(0)
+        expect(yesField.text()).toBe('stepper.yes'+'stepper.BY.selected')
+        const noField = wrapper.findAll('.v-radio').at(1)
+        expect(noField.text()).toBe('stepper.no'+'stepper.BY.not-selected')
+        const radioYes = wrapper.find('input[value="yes"]')
+        await radioYes.setChecked()
+        expect(wrapper.emitted().change[0]).toEqual(
+            expect.arrayContaining([
+                expect.objectContaining({
+                    name: 'BY',
+                    id: 1,
+                    selected: true
+                })
+            ])
+        )
     })
 
-    it('Check that all computed i18n props return correct values after false selected', () => {
-        wrapper.setProps({
-            disabledDue: undefined,
-            enabled: true,
-            reversed: false,
-            selected: false,
-            status: 'active',
-            id: 1,
-            name: 'BY'
-        })
-
-        expect(wrapper.vm.radio).toBe('no')
-        expect(wrapper.vm.noSelected).toBe('selected')
-        expect(wrapper.vm.noText).toBe('stepper.BY.not-selected')
-        expect(wrapper.vm.tPrefix).toBe('stepper.BY')
-        expect(wrapper.vm.yesSelected).toBe('not-selected')
-        expect(wrapper.vm.yesText).toBe('stepper.BY.selected')
-    })
-
-    it('props:selected false', () => {
-        wrapper.setProps({
-            selected: false,
-            name: 'FS',
-            id: 0,
-            status: 'active'
-        })
-        expect(wrapper.vm.radio).toBe('no')
-    })
-
-    it('props:selected true', () => {
-        wrapper.setProps({
-            selected: true,
-            name: 'FS',
-            id: 0,
-            status: 'active'
-        })
-
-        expect(wrapper.vm.radio).toBe('yes')
+    it('Check reversed step emits reversed value', async () => {
+        await wrapper.setProps({
+            id: 3,
+            name: 'ND',
+            selected: undefined
+            }
+        )
+        const radioYes = wrapper.find('input[value="yes"]')
+        await radioYes.setChecked()
+        expect(wrapper.emitted().change[0]).toEqual(
+            expect.arrayContaining([
+                expect.objectContaining({
+                    selected: false
+                })
+            ])
+        )
     })
 })

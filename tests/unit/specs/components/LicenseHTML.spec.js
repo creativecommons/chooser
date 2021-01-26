@@ -1,28 +1,34 @@
 import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
 import { mount, createLocalVue } from '@vue/test-utils'
-import createStore from '@/store'
-import { CCBYAttributes } from '@/utils/license-utilities'
 import LicenseHTMLTester from './LicenseHTMLTester'
 
 describe('LicenseHTML.vue', () => {
     let wrapper
-    let state
     let localVue
     let store
+    let NuxtStore
 
     // Vue i18n is looking for locale key in messages,
     // i.e. $t('app') becomes 'messages.<en>.app'
     const messages = {}
-    messages.en = require('@/locales/en.json')
-    beforeEach(() => {
+    messages.en = require('@/src/locales/en.json')
+
+
+    beforeAll(async () => {
+        // note the store will mutate across tests
+        const storePath = `${process.env.buildDir}/store.js`
+        NuxtStore = await import(storePath)
+    })
+    beforeEach(async() => {
         localVue = createLocalVue()
         localVue.use(VueI18n)
         localVue.use(Vuex)
         // License Code is only available after the User selects a license,
         // so we do not need to test blank license attributes
-        state = { currentLicenseAttributes: CCBYAttributes }
-        store = createStore(state)
+        store = await NuxtStore.createStore()
+        store.commit('updateAttributesFromShort', 'CC BY 4.0')
+
         const i18n = new VueI18n({
             locale: 'en',
             messages: messages

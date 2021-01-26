@@ -11,7 +11,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
-import { generateHTML, LICENSES } from '@/utils/license-utilities'
+import { generateHTML, LICENSES } from '../utils/license-utilities'
 
 export default {
     name: 'LicenseHTML',

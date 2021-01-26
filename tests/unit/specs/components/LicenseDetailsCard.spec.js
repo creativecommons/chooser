@@ -1,13 +1,13 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils'
-import LicenseDetailsCard from '@/components/LicenseDetailsCard'
-import { LICENSES } from '@/utils/license-utilities'
+import LicenseDetailsCard from '@/src/components/LicenseDetailsCard'
+import { LICENSES } from '@/src/utils/license-utilities'
 import VueI18n from 'vue-i18n'
 import Vuex from 'vuex'
 
 const getters = (slug) => ({
     fullName: jest.fn().mockReturnValue(LICENSES[slug].FULL),
     shortName: jest.fn().mockReturnValue(LICENSES[slug].SHORT),
-    licenseUrl: jest.fn().mockReturnValue((val) => LICENSES[slug].URL),
+    licenseUrl: jest.fn().mockReturnValue(() => LICENSES[slug].URL),
     iconsList: jest.fn().mockReturnValue(LICENSES[slug].ICONS.slice(1))
 })
 

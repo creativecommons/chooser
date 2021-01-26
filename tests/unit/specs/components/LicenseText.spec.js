@@ -1,9 +1,8 @@
 import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
 import { mount, createLocalVue } from '@vue/test-utils'
-import LicenseText from '@/components/LicenseText.vue'
-import createStore from '@/store'
-import { CCBYAttributes, LICENSES } from '@/utils/license-utilities'
+import LicenseText from '@/src/components/LicenseText.vue'
+import { LICENSES } from '@/src/utils/license-utilities'
 
 const TEST_DATA = {
     creatorName: 'Jane Doe',
@@ -14,21 +13,29 @@ const TEST_DATA = {
 
 describe('LicenseText.vue', () => {
     let wrapper
-    let state
     let localVue
-
+    let NuxtStore
+    let store
     // Vue i18n is looking for locale key in messages,
     // i.e. $t('app') becomes 'messages.<en>.app'
     const messages = {}
-    messages.en = require('@/locales/en.json')
-    beforeEach(() => {
+    messages.en = require('@/src/locales/en.json')
+
+    beforeAll(async () => {
+        // note the store will mutate across tests
+        const storePath = `${process.env.buildDir}/store.js`
+        NuxtStore = await import(storePath)
+    })
+
+    beforeEach(async () => {
         localVue = createLocalVue()
         localVue.use(VueI18n)
         localVue.use(Vuex)
         // License Code is only available after the User selects a license,
         // so we do not need to test blank license attributes
-        state = { currentLicenseAttributes: CCBYAttributes }
-        const store = createStore(state)
+        store = await NuxtStore.createStore()
+        store.commit('updateAttributesFromShort', 'CC BY 4.0')
+
         const i18n = new VueI18n({
             locale: 'en',
             messages: messages
@@ -42,8 +49,8 @@ describe('LicenseText.vue', () => {
     })
 
     it('has correct information when creator name and work title are provided', async() => {
-        await wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
-        await wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
+        await store.commit('setCreatorName', TEST_DATA.creatorName)
+        await store.commit('setWorkTitle', TEST_DATA.workTitle)
         const titleElement = wrapper.find('[property="dct:title"]')
         expect(titleElement.text()).toEqual(TEST_DATA.workTitle)
         expect(titleElement.find('span').exists()).toEqual(true)
@@ -54,10 +61,10 @@ describe('LicenseText.vue', () => {
         expect(creatorElement.find('span').exists()).toBe(true)
     })
     it('has correct information when only urls are provided', async() => {
-        await wrapper.vm.$store.commit('setWorkTitle', '')
-        await wrapper.vm.$store.commit('setCreatorName', '')
-        await wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
-        await wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
+        await store.commit('setWorkTitle', '')
+        await store.commit('setCreatorName', '')
+        await store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
+        await store.commit('setWorkUrl', TEST_DATA.workUrl)
         const titleElement = wrapper.find('[rel^="cc:attributionURL"]')
         expect(titleElement.text()).toEqual('This work')
         expect(titleElement.find('a').exists()).toBe(true)
@@ -69,10 +76,10 @@ describe('LicenseText.vue', () => {
     })
 
     it('has correct information all data are provided', async() => {
-        await wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
-        await wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
-        await wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
-        await wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
+        await store.commit('setCreatorName', TEST_DATA.creatorName)
+        await store.commit('setWorkTitle', TEST_DATA.workTitle)
+        await store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
+        await store.commit('setWorkUrl', TEST_DATA.workUrl)
         const titleElement = wrapper.find('[property="dct:title"]')
         expect(titleElement.text()).toEqual(TEST_DATA.workTitle)
         expect(titleElement.attributes().href).toEqual(TEST_DATA.workUrl)
@@ -89,9 +96,9 @@ describe('LicenseText.vue', () => {
     })
 
     it('updates license name type (full/short)', () => {
-        wrapper.vm.$store.state.attributionType = 'full'
+        store.commit('setAttributionType', 'full')
         expect(wrapper.vm.licenseName).toEqual(LICENSES.CC_BY.FULL)
-        wrapper.vm.$store.state.attributionType = 'short'
+        store.commit('setAttributionType', 'short')
         expect(wrapper.vm.licenseName).toEqual(LICENSES.CC_BY.SHORT)
     })
 })
