@@ -21,21 +21,16 @@ jobs:
             - name: Run npm install
               run: npm ci
 
-            # After the site is built, we delete the old docs folder,
-            # add CNAME file to dist folder, and rename it to docs.
             - name: Build
               run: |
                   npm run build
-                  echo "chooser-beta.creativecommons.org" > "./dist/CNAME"
-                  rm -r -f "./docs"
-                  mv -f -v "./dist" "./docs"
 
             - name: Commit changes
               uses: EndBug/add-and-commit@v4
               with:
-                  author_name: obulat
-                  author_email: obulat@gmail.com
-                  message: "Publish site"
+                  author_name: cc-open-source-bot
+                  author_email: opensource@creativecommons.org
+                  message: "Deploy site"
                   add: "./docs"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
