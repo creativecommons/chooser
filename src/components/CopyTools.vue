@@ -12,21 +12,18 @@
         >
             {{ copyLabel }}
         </v-button>
-        <v-button
-            v-else
-            class="donate small copy-button is-xmp"
-        >
-            {{ xmpLabel }}
-        </v-button>
+        <xmp-button v-if="clipboardTarget==='.xmp'" />
     </div>
 </template>
 
 <script>
 import CopyTypeSwitch from '@/components/CopyTypeSwitch'
 import Clipboard from 'clipboard'
+import XmpButton from '@/components/XmpButton'
+
 export default {
     name: 'CopyTools',
-    components: { CopyTypeSwitch },
+    components: { CopyTypeSwitch, XmpButton },
     props: {
         clipboardTarget: {
             type: String,

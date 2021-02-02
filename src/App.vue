@@ -72,7 +72,6 @@ import { mapMutations } from 'vuex'
 import ChooserModal from './components/ChooserModal'
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
-import LicenseUseCard from './components/LicenseUseCard'
 import HeaderSection from './components/HeaderSection'
 import FooterSection from './components/FooterSection'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
@@ -83,7 +82,7 @@ export default {
         HelpSection,
         Stepper,
         LicenseDetailsCard,
-        LicenseUseCard,
+        LicenseUseCard: () => import('@/components/LicenseUseCard'),
         HeaderSection,
         FooterSection,
         ChooserModal
