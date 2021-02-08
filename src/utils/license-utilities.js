@@ -135,7 +135,7 @@ function updateVisibleEnabledStatus(stepStatusData) {
             // User selects an ND license: SA step is disabled
             visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
             enabled = ['FS', 'BY', 'NC', 'ND', 'AD']
-            stepsDisabledDue = 'CC0'
+            stepsDisabledDue = 'ND'
         } else {
             // User selects a non-ND BY license from the stepper
             visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']

@@ -34,7 +34,7 @@
                         @restart="restart"
                         @done="done"
                     />
-                    <help-section />
+                    <help-section @change="openChooserModal" />
                 </div>
                 <div class="column right-column">
                     <!-- The right column with the recommended license should be fixed until
@@ -58,6 +58,10 @@
             </div>
         </div>
         <footer-section />
+        <chooser-modal
+            :active-modal="openModal"
+            @close="closeChooserModal"
+        />
     </div>
 </template>
 
@@ -65,9 +69,9 @@
 // TODO Reduce custom styling in favour of Vocabulary styles
 import { mapMutations } from 'vuex'
 
+import ChooserModal from './components/ChooserModal'
 import HelpSection from './components/HelpSection'
 import Stepper from './components/Stepper'
-import LicenseUseCard from './components/LicenseUseCard'
 import HeaderSection from './components/HeaderSection'
 import FooterSection from './components/FooterSection'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
@@ -78,13 +82,15 @@ export default {
         HelpSection,
         Stepper,
         LicenseDetailsCard,
-        LicenseUseCard,
+        LicenseUseCard: () => import('@/components/LicenseUseCard'),
         HeaderSection,
-        FooterSection
+        FooterSection,
+        ChooserModal
     },
     data() {
         return {
             currentStepId: 0,
+            openModal: null,
             showLicense: false,
             shouldShake: false,
             windowWidth: window.innerWidth
@@ -103,14 +109,13 @@ export default {
          * When the new step opens, the page is scrolled to the top of the
          * previous step. When the 'Back' button is clicked, the page is
          * scrolled to the previous step.
-         * If the user chooses No attribution, the page is scrolled to the top
-         * of the disabled steps, i.e. step 2.
+         * When the user chooses No attribution, the page is scrolled to the first
+         * of the following disabled steps, i.e. step 2 (NC).
          */
         async currentStepId(newId, oldId) {
-            let stepToScroll = newId === 6 ? 2 : Math.min(newId, oldId)
-            if (newId === 6) {
-                stepToScroll = 2
-            }
+            const stepToScroll = newId === 6 && oldId === 1
+                ? 2
+                : Math.min(newId, oldId)
             await this.$nextTick()
             // By default, scroll is cancelled when the user clicks enter. We want to override that
             // so that the stepper scrolls for users using keyboard navigation.
@@ -165,6 +170,12 @@ export default {
         },
         onResize() {
             this.windowWidth = window.innerWidth
+        },
+        openChooserModal(modal) {
+            this.openModal = modal
+        },
+        closeChooserModal() {
+            this.openModal = null
         }
     }
 }
