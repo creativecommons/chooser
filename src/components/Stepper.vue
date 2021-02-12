@@ -40,6 +40,7 @@ import StepHeader from './StepHeader'
 import StepNavigation from './StepNavigation'
 import { updateVisibleEnabledStatus } from '@/utils/license-utilities'
 import { initialSteps } from '@/utils/steps'
+import AppropriateLicenseStep from './AppropriateLicenseStep'
 
 export default {
     name: 'Stepper',
@@ -49,7 +50,8 @@ export default {
         CopyrightWaiverStep,
         DropdownStep,
         StepHeader,
-        StepNavigation
+        StepNavigation,
+        AppropriateLicenseStep
     },
     props: {
         value: {
@@ -91,6 +93,7 @@ export default {
         stepActionComponent({ name }) {
             switch (name) {
             case 'CW': return CopyrightWaiverStep
+            case 'AL': return AppropriateLicenseStep
             case 'DD': return DropdownStep
             case 'AD': return AttributionDetailsStep
             default: return ChooserStep
