@@ -1,41 +1,41 @@
 <template>
-    <div>
-        <b-field
-            :label="this.$t('locale-selector.label')"
-            :class="'locale-chooser-field'"
+  <div>
+    <b-field
+      :label="this.$t('locale-selector.label')"
+      :class="'locale-chooser-field'"
+    >
+      <b-select v-model="$i18n.locale">
+        <option
+          v-for="lang in availableLocaleNames"
+          :key="lang.eng"
+          :value="lang.name"
         >
-            <b-select v-model="$i18n.locale">
-                <option
-                    v-for="lang in availableLocaleNames"
-                    :key="lang.eng"
-                    :value="lang.name"
-                >
-                    {{ lang.eng }} - {{ lang.native }}
-                </option>
-            </b-select>
-        </b-field>
-    </div>
+          {{ lang.eng }} - {{ lang.native }}
+        </option>
+      </b-select>
+    </b-field>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'LocaleChooser',
-    data() {
-        return {
-            localeList: this.$i18n.availableLocales,
-            localeNamesList: require('../utils/locales.json'),
-            currentLanguage: 'English'
-        }
-    },
-    computed: {
-        availableLocaleNames() {
-            const localeNames = []
-            for (const locale of this.localeList) {
-                localeNames.push(this.localeNamesList[locale])
-            }
-            return localeNames
-        }
+  name: 'LocaleChooser',
+  data() {
+    return {
+      localeList: this.$i18n.availableLocales,
+      localeNamesList: require('../utils/locales.json'),
+      currentLanguage: 'English'
     }
+  },
+  computed: {
+    availableLocaleNames() {
+      const localeNames = []
+      for (const locale of this.localeList) {
+        localeNames.push(this.localeNamesList[locale])
+      }
+      return localeNames
+    }
+  }
 }
 </script>
 

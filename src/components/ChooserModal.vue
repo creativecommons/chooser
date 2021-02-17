@@ -1,178 +1,178 @@
 <template>
-    <app-modal
-        v-if="activeModal!==null"
-        :title="$t(`help.${modals[activeModal]}.heading`)"
-        @close="closeModal"
-    >
-        <section class="modal-body">
-            <section
-                v-if="isSimpleModal(activeModal)"
-                :class="['modal-content', `modal-${activeModal}`]"
-            >
-                <article
-                    v-html="$t(`help.${modals[activeModal]}.text`)"
-                />
-            </section>
+  <app-modal
+    v-if="activeModal!==null"
+    :title="$t(`help.${modals[activeModal]}.heading`)"
+    @close="closeModal"
+  >
+    <section class="modal-body">
+      <section
+        v-if="isSimpleModal(activeModal)"
+        :class="['modal-content', `modal-${activeModal}`]"
+      >
+        <article
+          v-html="$t(`help.${modals[activeModal]}.text`)"
+        />
+      </section>
 
-            <section
-                v-if="activeModal === 2"
-                class="modal-content modal-2"
+      <section
+        v-if="activeModal === 2"
+        class="modal-content modal-2"
+      >
+        <p>
+          {{ $t('help.what-icons-mean.text') }}
+        </p>
+        <div class="icons-section">
+          <div class="icon-item">
+            <img
+              src="../assets/license-icons/by.svg"
+              :alt="$t('help.what-icons-mean.BY.icon-alt-text')"
             >
-                <p>
-                    {{ $t('help.what-icons-mean.text') }}
-                </p>
-                <div class="icons-section">
-                    <div class="icon-item">
-                        <img
-                            src="../assets/license-icons/by.svg"
-                            :alt="$t('help.what-icons-mean.BY.icon-alt-text')"
-                        >
-                        <h6 class="b-header">
-                            {{ $t('help.what-icons-mean.BY.long-name') }}
-                        </h6>
-                        <p class="icon-caption">
-                            {{ $t('help.what-icons-mean.BY.short-name') }}
-                        </p>
-                        <p class="icon-text">
-                            {{ $t('help.what-icons-mean.BY.text') }}
-                        </p>
-                    </div>
-                    <div class="icon-item">
-                        <img
-                            src="../assets/license-icons/nd.svg"
-                            :alt="$t('help.what-icons-mean.ND.icon-alt-text')"
-                        >
-                        <h6 class="b-header">
-                            {{ $t('help.what-icons-mean.ND.long-name') }}
-                        </h6>
-                        <p class="icon-caption">
-                            {{ $t('help.what-icons-mean.ND.short-name') }}
-                        </p>
-                        <p class="icon-text">
-                            {{ $t('help.what-icons-mean.ND.text') }}
-                        </p>
-                    </div>
-                    <div class="icon-item">
-                        <img
-                            src="../assets/license-icons/nc.svg"
-                            :alt="$t('help.what-icons-mean.NC.icon-alt-text')"
-                        >
-                        <h6 class="b-header">
-                            {{ $t('help.what-icons-mean.NC.long-name') }}
-                        </h6>
-                        <p class="icon-caption">
-                            {{ $t('help.what-icons-mean.NC.short-name') }}
-                        </p>
-                        <p class="icon-text">
-                            {{ $t('help.what-icons-mean.NC.text') }}
-                        </p>
-                    </div>
-                    <div class="icon-item">
-                        <img
-                            src="../assets/license-icons/sa.svg"
-                            :alt="$t('help.what-icons-mean.SA.icon-alt-text')"
-                        >
-                        <h6 class="b-header">
-                            {{ $t('help.what-icons-mean.SA.long-name') }}
-                        </h6>
-                        <p class="icon-caption">
-                            {{ $t('help.what-icons-mean.SA.short-name') }}
-                        </p>
-                        <p class="icon-text">
-                            {{ $t('help.what-icons-mean.SA.text') }}
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section
-                v-if="activeModal === 5"
-                class="modal-content modal-5"
+            <h6 class="b-header">
+              {{ $t('help.what-icons-mean.BY.long-name') }}
+            </h6>
+            <p class="icon-caption">
+              {{ $t('help.what-icons-mean.BY.short-name') }}
+            </p>
+            <p class="icon-text">
+              {{ $t('help.what-icons-mean.BY.text') }}
+            </p>
+          </div>
+          <div class="icon-item">
+            <img
+              src="../assets/license-icons/nd.svg"
+              :alt="$t('help.what-icons-mean.ND.icon-alt-text')"
             >
-                <article class="columns-auto">
-                    <div
-                        v-html="$t('help.six-cc-licenses.text')"
-                    />
-                    <img
-                        alt="license openness scale"
-                        src="../assets/license-openness-scale.png"
-                    >
-                </article>
-            </section>
-            <section
-                v-if="activeModal === 6"
-                class="modal-content modal-6"
+            <h6 class="b-header">
+              {{ $t('help.what-icons-mean.ND.long-name') }}
+            </h6>
+            <p class="icon-caption">
+              {{ $t('help.what-icons-mean.ND.short-name') }}
+            </p>
+            <p class="icon-text">
+              {{ $t('help.what-icons-mean.ND.text') }}
+            </p>
+          </div>
+          <div class="icon-item">
+            <img
+              src="../assets/license-icons/nc.svg"
+              :alt="$t('help.what-icons-mean.NC.icon-alt-text')"
             >
-                <article>
-                    <p v-html="$t('help.how-licenses-communicated.text')" />
-                    <div class="license-communication">
-                        <div class="info-row">
-                            <h6 class="b-header">
-                                {{ $t('help.how-licenses-communicated.full-name') }}
-                            </h6>
-                            <p>{{ $t('help.how-licenses-communicated.CC-BY-NC') }}</p>
-                        </div>
+            <h6 class="b-header">
+              {{ $t('help.what-icons-mean.NC.long-name') }}
+            </h6>
+            <p class="icon-caption">
+              {{ $t('help.what-icons-mean.NC.short-name') }}
+            </p>
+            <p class="icon-text">
+              {{ $t('help.what-icons-mean.NC.text') }}
+            </p>
+          </div>
+          <div class="icon-item">
+            <img
+              src="../assets/license-icons/sa.svg"
+              :alt="$t('help.what-icons-mean.SA.icon-alt-text')"
+            >
+            <h6 class="b-header">
+              {{ $t('help.what-icons-mean.SA.long-name') }}
+            </h6>
+            <p class="icon-caption">
+              {{ $t('help.what-icons-mean.SA.short-name') }}
+            </p>
+            <p class="icon-text">
+              {{ $t('help.what-icons-mean.SA.text') }}
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        v-if="activeModal === 5"
+        class="modal-content modal-5"
+      >
+        <article class="columns-auto">
+          <div
+            v-html="$t('help.six-cc-licenses.text')"
+          />
+          <img
+            alt="license openness scale"
+            src="../assets/license-openness-scale.png"
+          >
+        </article>
+      </section>
+      <section
+        v-if="activeModal === 6"
+        class="modal-content modal-6"
+      >
+        <article>
+          <p v-html="$t('help.how-licenses-communicated.text')" />
+          <div class="license-communication">
+            <div class="info-row">
+              <h6 class="b-header">
+                {{ $t('help.how-licenses-communicated.full-name') }}
+              </h6>
+              <p>{{ $t('help.how-licenses-communicated.CC-BY-NC') }}</p>
+            </div>
 
-                        <div class="info-row">
-                            <h6 class="b-header">
-                                {{ $t('help.how-licenses-communicated.short-name') }}
-                            </h6>
-                            <p>CC BY-NC 4.0</p>
-                        </div>
-                        <div class="info-row">
-                            <h6 class="b-header">
-                                {{ $t('help.how-licenses-communicated.license-icons') }}
-                            </h6>
-                            <div><license-icons :icons-arr="['by', 'nc']" /></div>
-                        </div>
-                    </div>
-                </article>
-            </section>
-            <footer
-                class="modal-footer modal-card-foot"
-                v-html="$t(`help.${modals[activeModal]}.footer`)"
-            />
-        </section>
-    </app-modal>
+            <div class="info-row">
+              <h6 class="b-header">
+                {{ $t('help.how-licenses-communicated.short-name') }}
+              </h6>
+              <p>CC BY-NC 4.0</p>
+            </div>
+            <div class="info-row">
+              <h6 class="b-header">
+                {{ $t('help.how-licenses-communicated.license-icons') }}
+              </h6>
+              <div><license-icons :icons-arr="['by', 'nc']" /></div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <footer
+        class="modal-footer modal-card-foot"
+        v-html="$t(`help.${modals[activeModal]}.footer`)"
+      />
+    </section>
+  </app-modal>
 </template>
 
 <script>
 import LicenseIcons from './LicenseIcons'
 
 export default {
-    name: 'ChooserModal',
-    components: {
-        LicenseIcons
-    },
-    props: {
-        activeModal: {
-            type: [String, Number, null],
-            default: null
-        }
-    },
-    data() {
-        return {
-            modals: [
-                'what-are-cc-licenses',
-                'how-licenses-work',
-                'what-icons-mean',
-                'considerations-before-licensing',
-                'how-formally-license',
-                'six-cc-licenses',
-                'how-licenses-communicated',
-                'what-free-culture-license',
-                'look-earlier-license-ver'
-            ]
-        }
-    },
-    methods: {
-        isSimpleModal(number) {
-            return ![2, 5, 6].includes(number)
-        },
-        closeModal() {
-            this.openModal = null
-            this.$emit('close')
-        }
+  name: 'ChooserModal',
+  components: {
+    LicenseIcons
+  },
+  props: {
+    activeModal: {
+      type: [String, Number, null],
+      default: null
     }
+  },
+  data() {
+    return {
+      modals: [
+        'what-are-cc-licenses',
+        'how-licenses-work',
+        'what-icons-mean',
+        'considerations-before-licensing',
+        'how-formally-license',
+        'six-cc-licenses',
+        'how-licenses-communicated',
+        'what-free-culture-license',
+        'look-earlier-license-ver'
+      ]
+    }
+  },
+  methods: {
+    isSimpleModal(number) {
+      return ![2, 5, 6].includes(number)
+    },
+    closeModal() {
+      this.openModal = null
+      this.$emit('close')
+    }
+  }
 }
 </script>
 
