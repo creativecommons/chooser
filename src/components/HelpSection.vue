@@ -1,8 +1,8 @@
 <template>
     <div class="help-section">
-        <h3>
+        <h2 class="title is-3">
             {{ $t('help.heading') }}
-        </h3>
+        </h2>
         <ul class="help-links">
             <li
                 v-for="(modal, idx) in modals"
