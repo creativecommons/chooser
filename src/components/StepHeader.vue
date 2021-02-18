@@ -92,6 +92,9 @@ export default {
     }
 
 }
+.step-header__title.b-header {
+        letter-spacing: normal;
+}
 .step-header__title {
     margin-bottom: 0.25rem;
 }
