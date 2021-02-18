@@ -207,13 +207,6 @@ export default {
             text-decoration: none;
         }
     }
-    .main-footer .donate-section .donate svg {
-        margin-right: 0;
-    }
-    .social-icons {
-        display: flex;
-        align-items: center;
-    }
     .icon {
         width: var(--icon-size);
         height: var(--icon-size);
@@ -223,6 +216,14 @@ export default {
             height: auto;
         }
     }
+    .main-footer .donate-section .donate svg {
+        margin-right: 0;
+    }
+    .social-icons {
+        display: flex;
+        align-items: center;
+    }
+    
     @media screen and (min-width: 1023px) {
         // All columns are set the same width on 'tablet'-sized screen
         // Half-sized middle column makes the last column too small for

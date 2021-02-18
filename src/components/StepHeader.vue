@@ -84,11 +84,11 @@ export default {
     position:relative;
     padding: 1.5625rem 1.5rem 0.5rem var(--step-left-padding);
     cursor: default;
-    &.completed:not(.disabled):hover {
-        cursor: pointer;
-    }
     &.completed, &.inactive {
         padding-bottom: 1.5rem;
+    }
+    &.completed:not(.disabled):hover {
+        cursor: pointer;
     }
 
 }
@@ -110,7 +110,7 @@ export default {
     background: rgb(0, 128, 0);
     border-radius: 50%;
     text-align: center;
-    color: #fff;
+    color: #ffffff;
 }
 .step-header__title.completed.disabled::before,
 .step-header__title.inactive::before {
@@ -120,8 +120,8 @@ export default {
 .step-header__caption {
     color: #333333;
 }
-.completed.disabled .step-header__title,
-.inactive .step-header__title {
+.inactive .step-header__title,
+.completed.disabled .step-header__title {
         color: #b0b0b0;
     }
 @media only screen and (max-width: 768px) {

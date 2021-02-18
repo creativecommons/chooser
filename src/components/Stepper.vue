@@ -258,10 +258,10 @@ export default {
     .step-container {
         background-color: white;
         border: var(--border-width) solid #d8d8d8;
-
         border-bottom: none;
         max-width: 100%;
         position: relative;
+
         --counter-size: 1.875rem;
         --h-padding: 1.5rem;
         --step-left-padding: calc(var(--h-padding) + var(--counter-size) + 1rem);
@@ -275,6 +275,9 @@ export default {
             border-bottom-right-radius: 0.25rem;
         }
     }
+    .step-content {
+        padding: 0.5rem 1.5rem 0.5rem var(--step-left-padding);
+    }
     .step-container.completed:not(.disabled):hover,
     .step-container.completed:not(.disabled):focus-within {
         border-color: #b0b0b0;
@@ -286,13 +289,10 @@ export default {
     .step-container.completed:not(.disabled):hover + .step-container {
         border-top: none;
     }
-    .step-content {
-        padding: 0.5rem 1.5rem 0.5rem var(--step-left-padding);
-    }
     .step__container.completed {
         .step-header__title {
             color: black;
-            background-color: #fff;
+            background-color: #ffffff;
         }
     }
     .inactive {
@@ -328,14 +328,17 @@ export default {
             transform: translateY(-100px);
         }
 
-        /*50% {*/
-        /*    transform: scaleY(0.5);*/
-        /*}*/
+        /* 50% { */
+
+        /*    transform: scaleY(0.5); */
+
+        /* } */
 
         100% {
             opacity: 1;
-            transform: translateY(0px);
-            /*transform: scaleY(1);*/
+            transform: translateY(0);
+
+            /* transform: scaleY(1); */
         }
     }
     @media only screen and (max-width: 768px) {

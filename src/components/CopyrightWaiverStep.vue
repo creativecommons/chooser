@@ -121,7 +121,7 @@ input[type='checkbox'] {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 0.4rem!important;
+        padding: 0.4rem !important;
         h3 {
             flex: 1;
             text-align: center;

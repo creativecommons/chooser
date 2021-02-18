@@ -143,13 +143,6 @@ export default {
     }
 }
 
-label {
-    &.is-medium {
-        .label, .description {
-            font-size: $font-size-body-bigger;
-        }
-    }
-}
 .label, .description {
     display: block;
     margin-bottom: 0.5rem;
@@ -160,7 +153,35 @@ label {
 .description {
     font-weight: normal;
 }
+label {
+    &.is-medium {
+        .label, .description {
+            font-size: $font-size-body-bigger;
+        }
+    }
+}
 .control {
+  .icon {
+        position: static;
+        height: 1.25rem;
+        width: 1.25rem;
+        &.left-icon {
+            margin-left: 1rem;
+        }
+        &.right-icon {
+            margin-right: 1rem;
+        }
+        .icon-img {
+            height: auto;
+            width: 100%;
+            pointer-events: none;
+            cursor: unset;
+            &.clickable {
+                pointer-events: auto;
+                cursor: pointer;
+            }
+        }
+    }
     .control-inner {
         border: 0.125rem solid $color-light-gray;
         border-radius: 4px;
@@ -192,27 +213,7 @@ label {
         margin-top: 0;
     }
 
-    .icon {
-        position: static;
-        height: 1.25rem;
-        width: 1.25rem;
-        &.left-icon {
-            margin-left: 1rem;
-        }
-        &.right-icon {
-            margin-right: 1rem;
-        }
-        .icon-img {
-            height: auto;
-            width: 100%;
-            pointer-events: none;
-            cursor: unset;
-            &.clickable {
-                pointer-events: auto;
-                cursor: pointer;
-            }
-        }
-    }
+    
 
 }
 .control.is-large {

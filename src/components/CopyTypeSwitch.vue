@@ -106,7 +106,7 @@ export default {
     font-weight: 600;
     color: #d8d8d8;
     &.selected {
-        color: #333;
+        color: #333333;
     }
     @media only screen and (max-width: 768px) {
         font-size: 0.6875rem;

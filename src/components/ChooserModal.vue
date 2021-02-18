@@ -181,6 +181,7 @@ export default {
 .modal {
     --h-padding: 2rem;
     --v-padding: 2.5rem;
+
     display: block;
     overflow-y: hidden;
 
@@ -200,24 +201,21 @@ export default {
         justify-content: flex-start;
         padding-top: 1rem;
         padding-bottom: 1rem;
+        padding-left: var(--h-padding);
+        padding-right: var(--h-padding);
+        width: 100%;
     }
-    .modal-body {
-        max-height: 80vh;
-        overflow-y: auto;
-    }
+    
     .modal-content {
         padding-left: var(--h-padding);
         padding-right: var(--h-padding);
         padding-bottom: var(--v-padding);
         width: 100%;
     }
-    .modal-card-foot {
-        padding-left: var(--h-padding);
-        padding-right: var(--h-padding);
-        width: 100%;
-    }
-
+    
     .modal-body {
+      max-height: 80vh;
+        overflow-y: auto;
         padding-top: var(--h-padding);
         margin: 0;
         color: #333333;
@@ -239,17 +237,15 @@ export default {
     }
 }
 
+
 .icon-item {
-    display: grid;
+  display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr 1fr;
     grid-template-areas: "icon title"
                      "icon caption"
                      "text text";
     column-gap: 1rem;
-}
-
-.icon-item {
     img {
         grid-area: icon;
         width: 45px;
@@ -293,13 +289,13 @@ export default {
     margin-bottom: 0.5rem;
 }
 
+.modal-body p:not(:last-child) {
+    margin-bottom: 1rem;
+}
 .modal-body .license-communication p:not(:last-child) {
     margin-bottom: 0;
 }
 
-.modal-body p:not(:last-child) {
-    margin-bottom: 1rem;
-}
 
 .columns-auto {
     display: grid;
@@ -313,9 +309,10 @@ export default {
             --h-padding: 1rem;
             --v-padding: 1.5rem;
             .modal-header {
-                padding-top: 1.5rem!important;
-                padding-left: 1rem!important;
+                padding-top: 1.5rem !important;
+                padding-left: 1rem !important;
             }
+
             max-height: unset;
         }
         .modal-title {

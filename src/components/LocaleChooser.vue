@@ -68,12 +68,12 @@ export default {
         line-height: 2.25rem;
         margin-bottom: 0;
     }
-    @media only screen and (min-width:769px) {
+    @media only screen and (min-width: 769px) {
         .locale-chooser {
             justify-self: end;
         }
     }
-    @media only screen and (min-width:1024px) {
+    @media only screen and (min-width: 1024px) {
         .locale-chooser-field {
             padding-top:0.5rem;
             display: grid;
