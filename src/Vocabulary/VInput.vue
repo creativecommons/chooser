@@ -213,8 +213,6 @@ label {
         margin-top: 0;
     }
 
-    
-
 }
 .control.is-large {
     .left-icon {

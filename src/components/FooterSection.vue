@@ -223,7 +223,7 @@ export default {
         display: flex;
         align-items: center;
     }
-    
+
     @media screen and (min-width: 1023px) {
         // All columns are set the same width on 'tablet'-sized screen
         // Half-sized middle column makes the last column too small for

@@ -205,14 +205,14 @@ export default {
         padding-right: var(--h-padding);
         width: 100%;
     }
-    
+
     .modal-content {
         padding-left: var(--h-padding);
         padding-right: var(--h-padding);
         padding-bottom: var(--v-padding);
         width: 100%;
     }
-    
+
     .modal-body {
       max-height: 80vh;
         overflow-y: auto;
@@ -236,7 +236,6 @@ export default {
         grid-template-columns: 100%;
     }
 }
-
 
 .icon-item {
   display: grid;
@@ -295,7 +294,6 @@ export default {
 .modal-body .license-communication p:not(:last-child) {
     margin-bottom: 0;
 }
-
 
 .columns-auto {
     display: grid;

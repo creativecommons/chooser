@@ -193,7 +193,7 @@ export default {
     }
     #site-container {
         padding: 0.75rem;
-        
+
         --border-width: 0.125rem;
     }
     #site-container .breadcrumb {
