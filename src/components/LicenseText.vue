@@ -46,7 +46,7 @@
             <span v-else>{{ licenseName }}.</span>
         </template>
         <template #print-instructions>
-            <span v-if="!isWeb">{{ $t('license-use.print.text', { linkToLicenseDeed: licenseUrl('print') }) }}</span>
+            <span v-if="!isWeb">{{ $t('license-use.print.label', { linkToLicenseDeed: licenseUrl('print') }) }}</span>
         </template>
     </i18n>
 </template>

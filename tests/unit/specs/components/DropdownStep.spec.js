@@ -1,12 +1,10 @@
 import { createLocalVue, mount } from '@vue/test-utils'
-import Buefy from 'buefy'
 import Vuex from 'vuex'
 import DropdownStep from '@/components/DropdownStep'
 
 const localVue = createLocalVue()
 
 localVue.use(Vuex)
-localVue.use(Buefy)
 
 describe('DropdownStep', () => {
     let wrapper, store, getters, mutations
