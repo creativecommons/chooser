@@ -9,11 +9,8 @@
     "build": "vue-cli-service build && shx rm -rf ./docs && shx cp -r ./dist ./docs",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint && npx stylelint ./src/**/*.{vue,css} --fix",
     "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json",
-    "lint:js": "vue-cli-service lint",
-    "stylelint": "stylelint \"**/*.{vue,css}\"",
-    "stylelint:fix": "stylelint \"**/*.{vue,css}\" --fix",
     "test": "vue-cli-service test:unit --coverage && vue-cli-service test:e2e && npm run test:cypress",
     "test:cypress": "node_modules/.bin/cypress open"
   },
