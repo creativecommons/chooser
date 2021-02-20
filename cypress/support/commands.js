@@ -50,3 +50,30 @@ Cypress.Commands.add('hasLicenseInAttributionCode', (license) => {
 Cypress.Commands.add('hasStepsCount', (stepsCount) => {
     cy.get('.stepper__container').find('.step-container').should('have.lengthOf', stepsCount)
 })
+Cypress.Commands.add('missingLicenseInAttributionCode', () => {
+    cy.get('.license-use-card').should('not.exist')
+})
+Cypress.Commands.add('headerTitle', (license) => {
+    cy.get('.license-short-name > .b-header').contains(license)
+})
+Cypress.Commands.add('readableStringTitle', (license) => {
+    cy.get('b').contains(license)
+})
+Cypress.Commands.add('licenseText', (license) => {
+    cy.get('.license-text > a').contains(license)
+})
+Cypress.Commands.add('copyButton', (text) => {
+    cy.get('.donate').contains(text).click()
+})
+Cypress.Commands.add('selectInputField', (id, text) => {
+    cy.get(`:nth-child(${id}) > label.is-normal > .control-inner > .input`).type(text)
+})
+Cypress.Commands.add('valueOfInputField', (id, attr) => {
+    cy.get(`:nth-child(${id}) > label.is-normal > .control-inner > .input`).invoke('val')
+        .then((text) => {
+            cy.get(`${attr}`).contains(text)
+        })
+})
+Cypress.Commands.add('toggleButton', () => {
+    cy.get('#copy-type').click()
+})
