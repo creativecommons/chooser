@@ -166,7 +166,9 @@
                 </div>
                 <div class="column">
                     <section class="donate-section">
-                        <h5>{{ $t('footer.donation.header') }} </h5>
+                        <h2 class="title is-5">
+                            {{ $t('footer.donation.header') }}
+                        </h2>
                         <p>{{ $t('footer.donation.call') }}</p>
                         <a
                             class="button small donate"
