@@ -135,9 +135,9 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
     test('empty object', () => {
         const attr = {}
         expect(updateVisibleEnabledStatus(attr)).toEqual({
-            enabled: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
+            enabled: ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
             stepsDisabledDue: '',
-            visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+            visible: ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'AD']
         })
     })
     test('FS: true, BY: false', () => {
@@ -159,25 +159,25 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
     test('FS: false, BY: false', () => {
         const attr = { FS: false, BY: false }
         expect(updateVisibleEnabledStatus(attr)).toEqual({
-            enabled: ['FS', 'BY', 'CW', 'AD'],
+            enabled: ['AL', 'FS', 'BY', 'CW', 'AD'],
             stepsDisabledDue: 'CC0',
-            visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
+            visible: ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
         })
     })
     test('FS: false, BY: true, ND: true', () => {
         const attr = { FS: false, BY: true, ND: true }
         expect(updateVisibleEnabledStatus(attr)).toEqual({
-            enabled: ['FS', 'BY', 'NC', 'ND', 'AD'],
+            enabled: ['AL', 'FS', 'BY', 'NC', 'ND', 'AD'],
             stepsDisabledDue: 'ND',
-            visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+            visible: ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'AD']
         })
     })
     test('FS: false, BY: true, ND: false', () => {
         const attr = { FS: false, BY: true, ND: false }
         expect(updateVisibleEnabledStatus(attr)).toEqual({
-            enabled: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
+            enabled: ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
             stepsDisabledDue: '',
-            visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+            visible: ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'AD']
         })
     })
 })

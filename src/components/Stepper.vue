@@ -103,7 +103,7 @@ export default {
             return { ...step }
         },
         isLicenseAttribute(stepName) {
-            return ['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1
+            return ['AL', 'BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1
         },
         /**
          * Checks if the Next button should be disabled. Next button is enabled only
