@@ -5,9 +5,9 @@
         @click="activate"
         @keyup.13="activate"
     >
-        <h5 class="step-header__title b-header">
+        <h2 class="step-header__title b-header title is-5">
             {{ $t(stepHeaderText) }}
-        </h5>
+        </h2>
         <div
             v-if="step.status === 'completed'"
             class="step-header__caption"
@@ -91,6 +91,9 @@ export default {
         padding-bottom: 1.5rem;
     }
 
+}
+.step-header__title.b-header {
+        letter-spacing: normal;
 }
 .step-header__title {
     margin-bottom: 0.25rem;
