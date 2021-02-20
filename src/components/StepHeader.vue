@@ -12,7 +12,15 @@
       v-if="step.status === 'completed'"
       class="step-header__caption"
     >
-      {{ completedStepCaption }}
+      <h2 class="step-header__title b-header title is-5">
+        {{ $t(stepHeaderText) }}
+      </h2>
+      <div
+        v-if="step.status === 'completed'"
+        class="step-header__caption"
+      >
+        {{ completedStepCaption }}
+      </div>
     </div>
   </div>
 </template>
@@ -91,6 +99,9 @@ export default {
         cursor: pointer;
     }
 
+}
+.step-header__title.b-header {
+        letter-spacing: normal;
 }
 .step-header__title {
     margin-bottom: 0.25rem;

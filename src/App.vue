@@ -20,9 +20,9 @@
         </ul>
       </nav>
 
-      <h2>
+      <h1 class="title is-2">
         {{ $t('chooser.heading') }}
-      </h2>
+      </h1>
       <p class="stepper-instructions body-bigger">
         {{ $t('chooser.instructions') }}
       </p>
