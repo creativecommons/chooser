@@ -6,7 +6,6 @@ import Vocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common'
 import VueScrollTo from 'vue-scrollto'
 import createStore from '@/store'
 import App from '@/App'
-import Stepper from '@/components/Stepper'
 
 describe('App.vue', () => {
     let wrapper
@@ -49,11 +48,5 @@ describe('App.vue', () => {
         expect(rightColumn.find('licensedetailscard-stub').exists()).toBe(false)
         await wrapper.vm.$store.commit('setSelected', { name: 'BY', selected: false })
         expect(rightColumn.find('licensedetailscard-stub').exists()).toBe(true)
-    })
-
-    it('Check that showLicenseUse returns true if currentStepId is equal to 7', async() => {
-        expect(wrapper.find('licenseusecard-stub').exists()).toBe(false)
-        await wrapper.findComponent(Stepper).vm.$emit('input', 7)
-        expect(wrapper.find('licenseusecard-stub').exists()).toBe(true)
     })
 })

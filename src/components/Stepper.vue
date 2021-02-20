@@ -309,9 +309,6 @@ export default {
         background: #d8d8d8;
         color: #333333;
     }
-    .step-header__title.b-header {
-        letter-spacing: normal;
-    }
     .slide-fade-enter-active {
         transition: translate .5s ease, opacity 0.3s ease-in;
     }
