@@ -85,6 +85,9 @@ const createStore = (state) => {
             setWorkUrl(state, newName) {
                 state.attributionDetails.workUrl = newName
             },
+            setYearOfCreation(state, newName) {
+                state.attributionDetails.yearOfCreation = newName
+            },
             setAttributionType(state, attrType) {
                 state.attributionType = attrType
             },

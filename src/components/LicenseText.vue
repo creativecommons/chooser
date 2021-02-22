@@ -15,7 +15,7 @@
             </component>
         </template>
         <template #yearOfCreation>
-            © {{ $t(yearOfCreation) }}
+            © {{ yearOfCreation }}
         </template>
         <template #creator>
             <component
