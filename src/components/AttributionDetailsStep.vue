@@ -24,6 +24,11 @@
                 :label="$t('stepper.AD.form.creator-profile.label')"
                 :placeholder="$t('stepper.AD.form.creator-profile.placeholder')"
             />
+            <v-input
+                v-model="yearOfCreation"
+                :label="$t('stepper.AD.form.year-of-creation.label')"
+                :placeholder="$t('stepper.AD.form.year-of-creation.placeholder')"
+            />
         </form>
     </div>
 </template>
@@ -68,10 +73,16 @@ export default {
             set(newVal) {
                 this.setWorkUrl(newVal)
             }
+        },
+        yearOfCreation: {
+            get() { return this.attributionDetails.yearOfCreation },
+            set(newVal) {
+                this.setYearOfCreation(newVal)
+            }
         }
     },
     methods: {
-        ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl'])
+        ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl', 'setYearOfCreation'])
     }
 
 }

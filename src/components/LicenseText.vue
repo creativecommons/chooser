@@ -14,6 +14,9 @@
                 {{ workTitle }}
             </component>
         </template>
+        <template #yearOfCreation>
+            © {{ $t(yearOfCreation) }}
+        </template>
         <template #creator>
             <component
                 :is="isCreatorLink ? 'a' : 'span'"
@@ -107,6 +110,11 @@ export default {
             return this.attributionDetails.workTitle
                 ? this.attributionDetails.workTitle
                 : this.$t('license-use.richtext.workTitle')
+        },
+        yearOfCreation() {
+            return this.attributionDetails.yearOfCreation
+                ? this.attributionDetails.yearOfCreation
+                : this.$t('license-use.richtext.yearOfCreation')
         },
         workUrl() {
             const { workUrl } = this.attributionDetails
