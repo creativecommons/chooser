@@ -15,7 +15,11 @@
             </component>
         </template>
         <template #yearOfCreation>
-            © {{ yearOfCreation }}
+            <component
+                :is="'span'"
+            >
+                {{ yearOfCreation }}
+            </component>
         </template>
         <template #creator>
             <component
@@ -112,9 +116,10 @@ export default {
                 : this.$t('license-use.richtext.workTitle')
         },
         yearOfCreation() {
+            console.log(this.attributionDetails.yearOfCreation)
             return this.attributionDetails.yearOfCreation
                 ? this.attributionDetails.yearOfCreation
-                : this.$t('license-use.richtext.yearOfCreation')
+                : ''
         },
         workUrl() {
             const { workUrl } = this.attributionDetails

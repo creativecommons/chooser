@@ -10,7 +10,8 @@ export const defaultState = {
         creatorName: '',
         creatorProfileUrl: '',
         workTitle: '',
-        workUrl: ''
+        workUrl: '',
+        yearOfCreation: ''
     },
     attributionType: 'short'
 }
