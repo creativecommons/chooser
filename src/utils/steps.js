@@ -20,7 +20,7 @@
  */
 export const initialSteps = [
     { id: 0, name: 'FS', visible: true, enabled: true, status: 'active', selected: undefined },
-    { id: 1, name: 'AL', visible: true, enabled: true, status: 'inactive', selected: true },
+    { id: 1, name: 'AL', visible: true, enabled: true, status: 'inactive', selected: undefined },
     { id: 2, name: 'BY', visible: true, enabled: true, status: 'inactive', selected: undefined },
     { id: 3, name: 'NC', visible: true, enabled: true, status: 'inactive', selected: undefined },
     { id: 4, name: 'ND', visible: true, enabled: true, status: 'inactive', selected: undefined },
