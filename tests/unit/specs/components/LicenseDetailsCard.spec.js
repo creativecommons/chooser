@@ -54,7 +54,7 @@ describe('LicenseDetailsCard.vue', () => {
 
     it('Check if the license description is displayed correctly', () => {
         const fullDescription = wrapper.find('.license-full-description')
-        expect(fullDescription.text()).toEqual('license-details-card.full-description.cc-by-nd')
+        expect(fullDescription.text()).toEqual('license-details-card.full-description.cc-by-nc-nd')
     })
 
     it('Check if the license description is displayed correctly', () => {

@@ -79,7 +79,7 @@ export const LICENSES = {
         },
         FULL: 'Attribution-NonCommercial-NoDerivatives 4.0 International',
         SHORT: 'CC BY-NC-ND 4.0',
-        SLUG: 'cc-by-nd',
+        SLUG: 'cc-by-nc-nd',
         URL: 'http://creativecommons.org/licenses/by-nc-nd/4.0/',
         ICONS: ['cc', 'by', 'nc', 'nd']
     },
