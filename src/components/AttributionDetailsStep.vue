@@ -25,6 +25,7 @@
                 :placeholder="$t('stepper.AD.form.creator-profile.placeholder')"
             />
             <v-input
+                v-if="currentLicenseAttributes.BY"
                 v-model="yearOfCreation"
                 :label="$t('stepper.AD.form.year-of-creation.label')"
                 :placeholder="$t('stepper.AD.form.year-of-creation.placeholder')"
@@ -49,7 +50,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['attributionDetails']),
+        ...mapState(['attributionDetails', 'currentLicenseAttributes']),
         creatorName: {
             get() { return this.attributionDetails.creatorName },
             set(newVal) {
