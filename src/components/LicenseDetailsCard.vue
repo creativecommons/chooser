@@ -50,7 +50,7 @@
             target="_blank"
             rel="noopener noreferrer"
         >
-            See the License Deed
+            {{ $t(textKey) }}
             <span class="icon external-link">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -83,6 +83,11 @@ export default {
             return this.shortName === LICENSES.CC0.SHORT
                 ? this.$t('license-details-card.heading-cc0')
                 : this.$t('license-details-card.heading')
+        },
+        textKey() {
+            return this.shortName === LICENSES.CC0.SHORT
+                ? this.$t('license-details-card.cc0-deed')
+                : this.$t('license-details-card.license-deed')
         }
 
     }
