@@ -198,7 +198,6 @@ function generateWorkCode(title, workUrl, isTitleDefault) {
     if (isTitleDefault && !workUrl) {
         return title
     }
-
     const titleMeta = 'property="dct:title"'
     if (!workUrl) {
         return `<span ${titleMeta}>${title}</span>`
@@ -208,6 +207,15 @@ function generateWorkCode(title, workUrl, isTitleDefault) {
     return `<a ${isTitleDefault ? '' : titleMeta} rel="cc:attributionURL" href="${absoluteUrl}">${title}</a>`
 }
 
+/**
+ * Generates the HTML for the rich text Year of Creation , including the year of Creation
+ * @param {number} yearOfCreation
+ * @returns {string}
+ */
+function generateYearOfCreation(yearOfCreation) {
+    const yearMeta = 'property="dct:title"'
+    return `<span ${yearMeta}> © ${yearOfCreation}</span>`
+}
 /**
  * Generates the html for the rich text license information, including license name,
  * link to the license deed, and license icons
@@ -235,11 +243,11 @@ function generateLicenseLink(licenseIcons, licenseUrl, licenseName) {
  * @param {ShortLicenseName} shortLicenseName
  * @param {Boolean} useFullName - Should the license name be full (short by default)
  * @param {Boolean} isTitleDefault
- * @returns {{creator: string, work: string, license: string}}
+ * @returns {{creator: string, work: string, license: string, year: string}}
  */
 function generateHTML(attributionDetails, shortLicenseName, useFullName = false, isTitleDefault = true) {
     const data = {}
-    const { creatorName, creatorProfileUrl, workUrl, workTitle } = attributionDetails
+    const { creatorName, creatorProfileUrl, workUrl, workTitle, yearOfCreation } = attributionDetails
 
     const licenseSlug = slugFromShort(shortLicenseName)
     const { ICONS: icons, URL: url, FULL: fullLicenseName } = LICENSES[licenseSlug]
@@ -248,6 +256,7 @@ function generateHTML(attributionDetails, shortLicenseName, useFullName = false,
     data.license = generateLicenseLink(icons, url, licenseName)
     data.creator = generateCreatorCode(creatorName, creatorProfileUrl)
     data.work = generateWorkCode(workTitle, workUrl, isTitleDefault)
+    data.year = generateYearOfCreation(yearOfCreation)
     return data
 }
 

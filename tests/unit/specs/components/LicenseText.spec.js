@@ -70,7 +70,7 @@ describe('LicenseText.vue', () => {
 
     it('has correct information all data are provided', async() => {
         await wrapper.vm.$store.commit('setCreatorName', TEST_DATA.creatorName)
-        await wrapper.vm.$store.commit('setWorkTitle', TEST_DATA.workTitle)
+        await wrapper.vm.$store.commit('setWorkTitle', `${TEST_DATA.workTitle}`)
         await wrapper.vm.$store.commit('setCreatorProfileUrl', TEST_DATA.creatorProfileUrl)
         await wrapper.vm.$store.commit('setWorkUrl', TEST_DATA.workUrl)
         const titleElement = wrapper.find('[property="dct:title"]')

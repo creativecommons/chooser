@@ -21,7 +21,8 @@ describe('AttributionDetailsStep Component Rendering', () => {
                             creatorProfileUrl: '',
                             workTitle: '',
                             workUrl: ''
-                        }
+                        },
+                        currentLicenseAttributes: {}
                     }
                 }
             }
@@ -51,7 +52,8 @@ describe('Store is updated when a user provides input', () => {
                 creatorProfileUrl: '',
                 workTitle: '',
                 workUrl: ''
-            }
+            },
+            currentLicenseAttributes: {}
         }
 
         store = new Vuex.Store({
