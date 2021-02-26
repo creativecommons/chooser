@@ -19,12 +19,12 @@
  * user selects radio buttons/ checkboxes/ etc.
  */
 export const initialSteps = [
-    { id: 0, name: 'FS', visible: true, enabled: true, status: 'active', selected: undefined },
-    { id: 1, name: 'BY', visible: true, enabled: true, status: 'inactive', selected: undefined },
-    { id: 2, name: 'NC', visible: true, enabled: true, status: 'inactive', selected: undefined },
-    { id: 3, name: 'ND', visible: true, enabled: true, status: 'inactive', selected: undefined },
-    { id: 4, name: 'SA', visible: true, enabled: true, status: 'inactive', selected: undefined },
-    { id: 5, name: 'DD', visible: false, enabled: true, status: 'inactive', selected: undefined },
-    { id: 6, name: 'CW', visible: false, enabled: true, status: 'inactive', selected: undefined },
-    { id: 7, name: 'AD', visible: true, enabled: true, status: 'inactive', selected: undefined }
+  { id: 0, name: 'FS', visible: true, enabled: true, status: 'active', selected: undefined },
+  { id: 1, name: 'BY', visible: true, enabled: true, status: 'inactive', selected: undefined },
+  { id: 2, name: 'NC', visible: true, enabled: true, status: 'inactive', selected: undefined },
+  { id: 3, name: 'ND', visible: true, enabled: true, status: 'inactive', selected: undefined },
+  { id: 4, name: 'SA', visible: true, enabled: true, status: 'inactive', selected: undefined },
+  { id: 5, name: 'DD', visible: false, enabled: true, status: 'inactive', selected: undefined },
+  { id: 6, name: 'CW', visible: false, enabled: true, status: 'inactive', selected: undefined },
+  { id: 7, name: 'AD', visible: true, enabled: true, status: 'inactive', selected: undefined },
 ]

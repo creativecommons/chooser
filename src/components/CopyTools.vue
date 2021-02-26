@@ -1,19 +1,19 @@
 <template>
-    <div class="copy-tools">
-        <copy-type-switch
-            v-if="clipboardTarget!=='.xmp'"
-            @change-copy-type="changeCopyType"
-        />
-        <v-button
-            v-if="clipboardTarget!=='.xmp'"
-            class="donate small copy-button"
-            :data-clipboard-target="clipboardTarget"
-            @click="handleCopy"
-        >
-            {{ copyLabel }}
-        </v-button>
-        <xmp-button v-if="clipboardTarget==='.xmp'" />
-    </div>
+  <div class="copy-tools">
+    <copy-type-switch
+      v-if="clipboardTarget!=='.xmp'"
+      @change-copy-type="changeCopyType"
+    />
+    <v-button
+      v-if="clipboardTarget!=='.xmp'"
+      class="donate small copy-button"
+      :data-clipboard-target="clipboardTarget"
+      @click="handleCopy"
+    >
+      {{ copyLabel }}
+    </v-button>
+    <xmp-button v-if="clipboardTarget==='.xmp'" />
+  </div>
 </template>
 
 <script>
@@ -22,73 +22,73 @@ import Clipboard from 'clipboard'
 import XmpButton from '@/components/XmpButton'
 
 export default {
-    name: 'CopyTools',
-    components: { CopyTypeSwitch, XmpButton },
-    props: {
-        clipboardTarget: {
-            type: String,
-            default: '.license-text'
-        }
+  name: 'CopyTools',
+  components: { CopyTypeSwitch, XmpButton },
+  props: {
+    clipboardTarget: {
+      type: String,
+      default: '.license-text',
     },
-    data() {
-        return {
-            copyType: 'short',
-            copyLabel: this.$t('license-use.copy-label'),
-            xmpLabel: this.$t('license-use.xmp-label')
-        }
-    },
-    mounted() {
-        this.clipboard = new Clipboard('.copy-button')
-        this.clipboard.on('success', this.onCopySuccess)
-        this.clipboard.on('error', this.onCopyError)
-    },
-    destroyed() {
-        this.clipboard.destroy()
-    },
-    methods: {
-        changeCopyType() {
-            this.copyType = this.copyType === 'short' ? 'full' : 'short'
-            this.$emit('change-copy-type', this.copyType)
-        },
-        handleCopy() {
-            this.copyLabel = this.$t('license-use.copied-label')
-            setTimeout(() => {
-                this.copyLabel = this.$t('license-use.copy-label')
-            }, 2000)
-        },
-        onCopySuccess(e) {
-            this.success = true
-
-            if (process.env.NODE_ENV === 'production') {
-                const { attributionDetails } = this.$store.state
-                const shortName = this.$store.getters.shortName
-                // codeType is the class of the copy button, we remove the leading dot
-                // Can be 'html', 'richtext', 'plaintext'
-                const codeType = this.clipboardTarget.slice(1)
-                const fieldsFilled = {}
-                Object.keys(attributionDetails).forEach((detail) => {
-                    fieldsFilled[detail] = !!attributionDetails[detail]
-                })
-                const copiedLicense = {
-                    license: shortName,
-                    codeType: codeType,
-                    fieldsFilled: fieldsFilled
-                }
-                this.$ga.event({
-                    eventCategory: 'Attribution',
-                    eventAction: 'copied',
-                    eventLabel: JSON.stringify(copiedLicense)
-                })
-            }
-            setTimeout(() => {
-                this.success = false
-            }, 2000)
-            e.clearSelection()
-        },
-        onCopyError(e) {
-            e.clearSelection()
-        }
+  },
+  data() {
+    return {
+      copyType: 'short',
+      copyLabel: this.$t('license-use.copy-label'),
+      xmpLabel: this.$t('license-use.xmp-label'),
     }
+  },
+  mounted() {
+    this.clipboard = new Clipboard('.copy-button')
+    this.clipboard.on('success', this.onCopySuccess)
+    this.clipboard.on('error', this.onCopyError)
+  },
+  destroyed() {
+    this.clipboard.destroy()
+  },
+  methods: {
+    changeCopyType() {
+      this.copyType = this.copyType === 'short' ? 'full' : 'short'
+      this.$emit('change-copy-type', this.copyType)
+    },
+    handleCopy() {
+      this.copyLabel = this.$t('license-use.copied-label')
+      setTimeout(() => {
+        this.copyLabel = this.$t('license-use.copy-label')
+      }, 2000)
+    },
+    onCopySuccess(e) {
+      this.success = true
+
+      if (process.env.NODE_ENV === 'production') {
+        const { attributionDetails } = this.$store.state
+        const shortName = this.$store.getters.shortName
+        // codeType is the class of the copy button, we remove the leading dot
+        // Can be 'html', 'richtext', 'plaintext'
+        const codeType = this.clipboardTarget.slice(1)
+        const fieldsFilled = {}
+        Object.keys(attributionDetails).forEach((detail) => {
+          fieldsFilled[detail] = !!attributionDetails[detail]
+        })
+        const copiedLicense = {
+          license: shortName,
+          codeType: codeType,
+          fieldsFilled: fieldsFilled,
+        }
+        this.$ga.event({
+          eventCategory: 'Attribution',
+          eventAction: 'copied',
+          eventLabel: JSON.stringify(copiedLicense),
+        })
+      }
+      setTimeout(() => {
+        this.success = false
+      }, 2000)
+      e.clearSelection()
+    },
+    onCopyError(e) {
+      e.clearSelection()
+    },
+  },
 }
 </script>
 

@@ -1,68 +1,68 @@
 <template>
-    <div id="app">
-        <header-section />
-        <div
-            id="site-container"
-            class="container"
-        >
-            <nav
-                class="breadcrumb caption bold"
-                aria-label="breadcrumbs"
-            >
-                <ul>
-                    <li><a href="https://creativecommons.org/">Home</a></li>
-                    <li class="is-active">
-                        <a
-                            href="#"
-                            aria-current="page"
-                        >{{ $t('app.page-title') }}</a>
-                    </li>
-                </ul>
-            </nav>
+  <div id="app">
+    <header-section />
+    <div
+      id="site-container"
+      class="container"
+    >
+      <nav
+        class="breadcrumb caption bold"
+        aria-label="breadcrumbs"
+      >
+        <ul>
+          <li><a href="https://creativecommons.org/">Home</a></li>
+          <li class="is-active">
+            <a
+              href="#"
+              aria-current="page"
+            >{{ $t('app.page-title') }}</a>
+          </li>
+        </ul>
+      </nav>
 
-            <h1 class="title is-2">
-                {{ $t('chooser.heading') }}
-            </h1>
-            <p class="stepper-instructions body-bigger">
-                {{ $t('chooser.instructions') }}
-            </p>
+      <h1 class="title is-2">
+        {{ $t('chooser.heading') }}
+      </h1>
+      <p class="stepper-instructions body-bigger">
+        {{ $t('chooser.instructions') }}
+      </p>
 
-            <div class="columns wider-gap">
-                <div class="column">
-                    <Stepper
-                        v-model="currentStepId"
-                        @restart="restart"
-                        @done="done"
-                    />
-                    <help-section @change="openChooserModal" />
-                </div>
-                <div class="column right-column">
-                    <!-- The right column with the recommended license should be fixed until
+      <div class="columns wider-gap">
+        <div class="column">
+          <Stepper
+            v-model="currentStepId"
+            @restart="restart"
+            @done="done"
+          />
+          <help-section @change="openChooserModal" />
+        </div>
+        <div class="column right-column">
+          <!-- The right column with the recommended license should be fixed until
                      the 'LicenseUseCard' appears, when the column should scroll to make the
                      'LicenseUseCard' visible -->
-                    <div :class="{ 'fixed-right-column': !showLicenseUse }">
-                        <transition name="appear">
-                            <LicenseDetailsCard
-                                v-if="showLicense"
-                            />
-                        </transition>
-                        <transition name="appear">
-                            <LicenseUseCard
-                                v-if="showLicenseUse"
-                                ref="licenseUseCard"
-                                :class="{ 'shake' : shouldShake}"
-                            />
-                        </transition>
-                    </div>
-                </div>
-            </div>
+          <div :class="{ 'fixed-right-column': !showLicenseUse }">
+            <transition name="appear">
+              <LicenseDetailsCard
+                v-if="showLicense"
+              />
+            </transition>
+            <transition name="appear">
+              <LicenseUseCard
+                v-if="showLicenseUse"
+                ref="licenseUseCard"
+                :class="{ 'shake' : shouldShake}"
+              />
+            </transition>
+          </div>
         </div>
-        <footer-section />
-        <chooser-modal
-            :active-modal="openModal"
-            @close="closeChooserModal"
-        />
+      </div>
     </div>
+    <footer-section />
+    <chooser-modal
+      :active-modal="openModal"
+      @close="closeChooserModal"
+    />
+  </div>
 </template>
 
 <script>
@@ -77,107 +77,107 @@ import FooterSection from './components/FooterSection'
 import LicenseDetailsCard from './components/LicenseDetailsCard'
 
 export default {
-    name: 'App',
-    components: {
-        HelpSection,
-        Stepper,
-        LicenseDetailsCard,
-        LicenseUseCard: () => import('@/components/LicenseUseCard'),
-        HeaderSection,
-        FooterSection,
-        ChooserModal
+  name: 'App',
+  components: {
+    HelpSection,
+    Stepper,
+    LicenseDetailsCard,
+    LicenseUseCard: () => import('@/components/LicenseUseCard'),
+    HeaderSection,
+    FooterSection,
+    ChooserModal,
+  },
+  data() {
+    return {
+      currentStepId: 0,
+      openModal: null,
+      showLicense: false,
+      shouldShake: false,
+      windowWidth: window.innerWidth,
+    }
+  },
+  computed: {
+    showLicenseUse() {
+      return this.currentStepId === 7
     },
-    data() {
-        return {
-            currentStepId: 0,
-            openModal: null,
-            showLicense: false,
-            shouldShake: false,
-            windowWidth: window.innerWidth
-        }
+    isBelowTabletWidth() {
+      return this.windowWidth < 769
     },
-    computed: {
-        showLicenseUse() {
-            return this.currentStepId === 7
-        },
-        isBelowTabletWidth() {
-            return this.windowWidth < 769
-        }
-    },
-    watch: {
-        /**
+  },
+  watch: {
+    /**
          * When the new step opens, the page is scrolled to the top of the
          * previous step. When the 'Back' button is clicked, the page is
          * scrolled to the previous step.
          * When the user chooses No attribution, the page is scrolled to the first
          * of the following disabled steps, i.e. step 2 (NC).
          */
-        async currentStepId(newId, oldId) {
-            const stepToScroll = newId === 6 && oldId === 1
-                ? 2
-                : Math.min(newId, oldId)
-            await this.$nextTick()
-            // By default, scroll is cancelled when the user clicks enter. We want to override that
-            // so that the stepper scrolls for users using keyboard navigation.
-            this.$scrollTo(`.step-${stepToScroll}`, { cancelable: false })
-        }
+    async currentStepId(newId, oldId) {
+      const stepToScroll = newId === 6 && oldId === 1
+        ? 2
+        : Math.min(newId, oldId)
+      await this.$nextTick()
+      // By default, scroll is cancelled when the user clicks enter. We want to override that
+      // so that the stepper scrolls for users using keyboard navigation.
+      this.$scrollTo(`.step-${stepToScroll}`, { cancelable: false })
     },
-    mounted() {
-        this.$nextTick(() => {
-            window.addEventListener('resize', this.onResize)
-        })
-    },
-    beforeDestroy() {
-        window.removeEventListener('resize', this.onResize)
-    },
-    created: function() {
-        // send home to google analytics
-        if (process.env.NODE_ENV === 'production') {
-            this.$ga.page('/')
-        }
-        this.$store.subscribe((mutation) => {
-            if (mutation.type === 'updateAttributesFromShort' || mutation.type === 'setSelected') {
-                this.showLicense = true
-            }
-        })
-    },
-    methods: {
-        ...mapMutations(['setAttributionType']),
-        /**
+  },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize)
+    })
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
+  },
+  created: function() {
+    // send home to google analytics
+    if (process.env.NODE_ENV === 'production') {
+      this.$ga.page('/')
+    }
+    this.$store.subscribe((mutation) => {
+      if (mutation.type === 'updateAttributesFromShort' || mutation.type === 'setSelected') {
+        this.showLicense = true
+      }
+    })
+  },
+  methods: {
+    ...mapMutations(['setAttributionType']),
+    /**
         *  When user clicks restart, we set the active step to 0, so the stepper opens
         *  the first step. We don't, however, delete the information the user entered,
         *  so all the steps have previously selected options, and attribution information
          *  is filled as it was previously.
          */
-        restart() {
-            this.currentStepId = 0
-            this.showLicense = 0
-            this.setAttributionType('short')
-        },
-        /**
+    restart() {
+      this.currentStepId = 0
+      this.showLicense = 0
+      this.setAttributionType('short')
+    },
+    /**
          * When the user clicks `Done`, we scroll to the 'Mark your work' section ('LicenseUseCard')
          * and shake it. Shaking animation is triggered by adding 'shake' class to the section, and removing it
          * after a timeout. On mobile, we add a timeout for shaking because the page will first to make the
          * section visible.
          */
-        done() {
-            const scrollDuration = this.isBelowTabletWidth ? 3000 : 800
-            const shakeDuration = 3000 + scrollDuration
-            const comp = this
-            setTimeout(() => { comp.shouldShake = true }, scrollDuration - 400)
-            setTimeout(() => { comp.shouldShake = false }, shakeDuration)
-            this.$scrollTo(this.$refs.licenseUseCard.$el, scrollDuration, { cancelable: false })
-        },
-        onResize() {
-            this.windowWidth = window.innerWidth
-        },
-        openChooserModal(modal) {
-            this.openModal = modal
-        },
-        closeChooserModal() {
-            this.openModal = null
-        }
-    }
+    done() {
+      const scrollDuration = this.isBelowTabletWidth ? 3000 : 800
+      const shakeDuration = 3000 + scrollDuration
+      const comp = this
+      setTimeout(() => { comp.shouldShake = true }, scrollDuration - 400)
+      setTimeout(() => { comp.shouldShake = false }, shakeDuration)
+      this.$scrollTo(this.$refs.licenseUseCard.$el, scrollDuration, { cancelable: false })
+    },
+    onResize() {
+      this.windowWidth = window.innerWidth
+    },
+    openChooserModal(modal) {
+      this.openModal = modal
+    },
+    closeChooserModal() {
+      this.openModal = null
+    },
+  },
 }
 </script>
 <style lang="scss">
@@ -193,6 +193,7 @@ export default {
     }
     #site-container {
         padding: 0.75rem;
+
         --border-width: 0.125rem;
     }
     #site-container .breadcrumb {

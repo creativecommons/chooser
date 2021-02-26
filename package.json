@@ -1,79 +1,99 @@
 {
-    "name": "chooser",
-    "version": "1.0.0",
-    "description": "The new and improved Creative Commons License Chooser",
-    "author": "akmadian <akmadian@gmail.com>",
-    "private": false,
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/creativecommons/chooser.git"
+  "name": "chooser",
+  "version": "1.0.0",
+  "private": false,
+  "description": "The new and improved Creative Commons License Chooser",
+  "author": "akmadian <akmadian@gmail.com>",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build && shx rm -rf ./docs && shx cp -r ./dist ./docs",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "lint": "vue-cli-service lint && npx stylelint ./src/**/*.{vue,css} --fix",
+    "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json",
+    "test": "vue-cli-service test:unit --coverage && vue-cli-service test:e2e && npm run test:cypress",
+    "test:cypress": "node_modules/.bin/cypress open"
+  },
+  "dependencies": {
+    "@creativecommons/vocabulary": "^2020.11.3",
+    "@creativecommons/vue-vocabulary": "^2020.11.3",
+    "@sentry/vue": "^5.29.2",
+    "bulma": "^0.9.1",
+    "clipboard": "^2.0.6",
+    "core-js": "^3.6.5",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "vue": "^2.6.10",
+    "vue-analytics": "^5.22.1",
+    "vue-hotjar": "^1.2.0",
+    "vue-i18n": "^8.20.0",
+    "vue-scrollto": "^2.20.0",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^3.1.3",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-e2e-nightwatch": "^4.4.6",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "^4.4.6",
+    "@vue/cli-service": "^4.4.6",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/test-utils": "^1.1.2",
+    "babel-eslint": "^10.1.0",
+    "chromedriver": "^87.0.0",
+    "clipboardy": "^2.3.0",
+    "cypress": "^6.3.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "geckodriver": "^1.19.1",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "shx": "^0.3.3",
+    "stylelint": "^13.10.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "vue-cli-plugin-i18n": "^0.6.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
     },
-    "license": "MIT",
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build && shx rm -rf ./docs && shx cp -r ./dist ./docs",
-        "test:unit": "vue-cli-service test:unit",
-        "test:e2e": "vue-cli-service test:e2e",
-        "lint": "vue-cli-service lint",
-        "test": "vue-cli-service test:unit --coverage && vue-cli-service test:e2e && npm run test:cypress",
-        "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json",
-        "test:cypress": "node_modules/.bin/cypress open"
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+      "^.+\\.(svg|png)$": "<rootDir>/tests/unit/svgTransform.js"
     },
-    "dependencies": {
-        "@creativecommons/vocabulary": "^2020.11.3",
-        "@creativecommons/vue-vocabulary": "^2020.11.3",
-        "@sentry/vue": "^5.29.2",
-        "bulma": "^0.9.1",
-        "clipboard": "^2.0.6",
-        "core-js": "^3.6.5",
-        "node-sass": "^4.14.1",
-        "sass-loader": "^8.0.2",
-        "vue": "^2.6.10",
-        "vue-analytics": "^5.22.1",
-        "vue-hotjar": "^1.2.0",
-        "vue-i18n": "^8.20.0",
-        "vue-scrollto": "^2.20.0",
-        "vuex": "^3.5.1"
-    },
-    "devDependencies": {
-        "@fullhuman/postcss-purgecss": "^3.1.3",
-        "@vue/cli-plugin-babel": "^4.4.6",
-        "@vue/cli-plugin-e2e-nightwatch": "^4.4.6",
-        "@vue/cli-plugin-eslint": "^4.4.6",
-        "@vue/cli-plugin-unit-jest": "^4.4.6",
-        "@vue/cli-service": "^4.4.6",
-        "@vue/eslint-config-standard": "^5.1.2",
-        "@vue/test-utils": "^1.1.2",
-        "babel-eslint": "^10.1.0",
-        "chromedriver": "^87.0.0",
-        "clipboardy": "^2.3.0",
-        "cypress": "^6.3.0",
-        "eslint": "^6.8.0",
-        "eslint-plugin-import": "^2.22.0",
-        "eslint-plugin-node": "^10.0.0",
-        "eslint-plugin-promise": "^4.2.1",
-        "eslint-plugin-standard": "^4.0.1",
-        "eslint-plugin-vue": "^6.2.2",
-        "geckodriver": "^1.19.1",
-        "shx": "^0.3.3",
-        "vue-cli-plugin-i18n": "^0.6.1",
-        "vue-template-compiler": "^2.6.10"
-    },
-    "jest": {
-        "moduleFileExtensions": [
-            "js",
-            "vue"
-        ],
-        "moduleNameMapper": {
-            "^@/(.*)$": "<rootDir>/src/$1"
-        },
-        "transform": {
-            "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-            ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
-            "^.+\\.(svg|png)$": "<rootDir>/tests/unit/svgTransform.js"
-        },
-        "snapshotSerializers": [
-            "<rootDir>/node_modules/jest-serializer-vue"
-        ]
-    }
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-vue"
+    ]
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.{css,vue}": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creativecommons/chooser.git"
+  }
 }

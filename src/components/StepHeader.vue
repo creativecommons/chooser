@@ -1,78 +1,77 @@
 <template>
+  <div
+    :class="['step-header', step.status]"
+    v-bind="tabIndex"
+    @click="activate"
+    @keyup.13="activate"
+  >
+    <h2 class="step-header__title b-header title is-5">
+      {{ $t(stepHeaderText) }}
+    </h2>
     <div
-        :class="['step-header', step.status]"
-        v-bind="tabIndex"
-        @click="activate"
-        @keyup.13="activate"
+      v-if="step.status === 'completed'"
+      class="step-header__caption"
     >
-        <h2 class="step-header__title b-header title is-5">
-            {{ $t(stepHeaderText) }}
-        </h2>
-        <div
-            v-if="step.status === 'completed'"
-            class="step-header__caption"
-        >
-            {{ completedStepCaption }}
-        </div>
+      {{ completedStepCaption }}
     </div>
+  </div>
 </template>
-
 <script>
 import { mapGetters } from 'vuex'
 
 export default {
-    name: 'StepHeader',
-    props: {
-        step: {
-            type: Object,
-            required: true
-        }
+  name: 'StepHeader',
+  props: {
+    step: {
+      type: Object,
+      required: true,
     },
-    computed: {
-        ...mapGetters(['fullName']),
-        tabIndex() {
-            return this.step.status === 'completed'
-                ? { tabindex: 0 }
-                : {}
-        },
+  },
+  computed: {
+    ...mapGetters(['fullName']),
+    tabIndex() {
+      return this.step.status === 'completed'
+        ? { tabindex: 0 }
+        : {}
+    },
 
-        /**
+    /**
          * stepHeader shows step 'question' for active step, and step 'heading' for others
          * @returns {string} key for i18n message
          */
-        stepHeaderText() {
-            const { name, status } = this.step
-            const prefix = `stepper.${name}`
-            if (name === 'AD') {
-                return prefix + '.heading'
-            }
-            return status === 'active' ? `${prefix}.question` : `${prefix}.heading`
-        },
-        completedStepCaption() {
-            const { name, enabled, selected, disabledDue = null } = this.step
-            const reversed = (name) => (['NC', 'ND', 'SA'].indexOf(name) > -1)
-            let captionKey
-            if (name === 'DD') {
-                return this.fullName
-            } else if (['FS', 'CW'].includes(name)) {
-                captionKey = selected ? `stepper.${name}.selected` : `stepper.${name}.not-selected`
-            } else if (enabled === false) {
-                captionKey = (disabledDue === 'ND')
-                    ? 'stepper.disabled-text-ND'
-                    : 'stepper.disabled-text'
-            } else {
-                const qualifier = reversed ? !selected : selected
-                const prefix = `stepper.${name}.${qualifier ? '' : 'not-'}`
-                captionKey = `${prefix}selected`
-            }
-            return this.$t(captionKey)
-        }
+    stepHeaderText() {
+      const { name, status } = this.step
+      const prefix = `stepper.${name}`
+      if (name === 'AD') {
+        return prefix + '.heading'
+      }
+      return status === 'active' ? `${prefix}.question` : `${prefix}.heading`
     },
-    methods: {
-        activate() {
-            this.$emit('activate', this.step.id)
-        }
-    }
+    completedStepCaption() {
+      const { name, enabled, selected, disabledDue = null } = this.step
+      const reversed = (name) => (['NC', 'ND', 'SA'].indexOf(name) > -1)
+      let captionKey
+      if (name === 'DD') {
+        return this.fullName
+      } else if (['FS', 'CW'].includes(name)) {
+        captionKey = selected ? `stepper.${name}.selected` : `stepper.${name}.not-selected`
+      } else if (enabled === false) {
+        captionKey = (disabledDue === 'ND')
+          ? 'stepper.disabled-text-ND'
+          : 'stepper.disabled-text'
+      } else {
+        const qualifier = reversed ? !selected : selected
+        const prefix = `stepper.${name}.${qualifier ? '' : 'not-'}`
+        captionKey = `${prefix}selected`
+      }
+      return this.$t(captionKey)
+    },
+  },
+  methods: {
+    activate() {
+      this.$emit('activate', this.step.id)
+    },
+  },
 }
 </script>
 
@@ -84,11 +83,11 @@ export default {
     position:relative;
     padding: 1.5625rem 1.5rem 0.5rem var(--step-left-padding);
     cursor: default;
-    &.completed:not(.disabled):hover {
-        cursor: pointer;
-    }
     &.completed, &.inactive {
         padding-bottom: 1.5rem;
+    }
+    &.completed:not(.disabled):hover {
+        cursor: pointer;
     }
 
 }
@@ -113,7 +112,7 @@ export default {
     background: rgb(0, 128, 0);
     border-radius: 50%;
     text-align: center;
-    color: #fff;
+    color: #ffffff;
 }
 .step-header__title.completed.disabled::before,
 .step-header__title.inactive::before {
@@ -123,8 +122,8 @@ export default {
 .step-header__caption {
     color: #333333;
 }
-.completed.disabled .step-header__title,
-.inactive .step-header__title {
+.inactive .step-header__title,
+.completed.disabled .step-header__title {
         color: #b0b0b0;
     }
 @media only screen and (max-width: 768px) {
