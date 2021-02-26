@@ -20,12 +20,14 @@
         :title="$t(`help.context-for-creator-name.heading`)"
         @close="openModal=false"
       >
-        <section
-          :class="['modal-content', `modal-0`]"
-        >
-          <article
-            v-html="$t(`help.context-for-creator-name.text`)"
-          />
+        <section class="modal-body">
+          <section
+            :class="['modal-content','modal-']"
+          >
+            <article
+              v-html="$t(`help.context-for-creator-name.text`)">
+            </article>
+          </section>
         </section>
       </app-modal>
       <v-input
