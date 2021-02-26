@@ -217,6 +217,11 @@
       "heading": "Looking for Earlier License Versions, including Ports?",
       "text": "<p>The most recent license version is 4.0, which can be used internationally. Earlier versions of licenses, including 3.0 international and ports localized to particular jurisdictions, can still be used on the legacy version of the <a href=\"https://creativecommons.org/choose/\">License Chooser</a></p>\n<p>Click on the link at the top of the page <strong>&quot;Looking for earlier license versions, including ports?&quot;</strong> and follow the prompts to use earlier license versions.</p>",
       "footer": ""
+    },
+    "context-for-creator-name": {
+      "heading": "Additional Attribution",
+      "text": "<p>In addition to the creator of the work, include here any others who should receive attribution. For example, if you created a work on behalf of your employer who owns copyright in the work, you may want to include your employer’s name as one of the attribution parties.</p>",
+      "footer": ""
     }
   },
   "alt": {

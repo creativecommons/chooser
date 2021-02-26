@@ -13,7 +13,21 @@
         class="info"
         src="../assets/info.svg"
         alt="Info"
+        @click="openModal=true"
       >
+      <app-modal
+        v-if="openModal==true"
+        :title="$t(`help.context-for-creator-name.heading`)"
+        @close="openModal=false"
+      >
+        <section
+          :class="['modal-content', `modal-0`]"
+        >
+          <article
+            v-html="$t(`help.context-for-creator-name.text`)"
+          />
+        </section>
+      </app-modal>
       <v-input
         v-model="creatorName"
         :label="$t('stepper.AD.form.creator-name.label')"
@@ -53,6 +67,11 @@ export default {
         return ['active', 'previous', 'inactive'].includes(value)
       },
     },
+  },
+  data() {
+    return {
+      openModal: false,
+    }
   },
   computed: {
     ...mapState(['attributionDetails', 'currentLicenseAttributes']),
@@ -94,19 +113,44 @@ export default {
 }
 </script>
 <style lang="scss">
+.modal {
+    --h-padding: 2rem;
+    --v-padding: 2.5rem;
+
+    display: block;
+    overflow-y: hidden;
+    .modal-content {
+        padding-left: var(--h-padding);
+        padding-right: var(--h-padding);
+        padding-bottom: var(--v-padding);
+    }
+
+    .modal-body {
+      max-height: 80vh;
+        overflow-y: auto;
+        padding-top: var(--h-padding);
+        margin: 0;
+        color: #333333;
+
+        article {
+            max-width: 85ch;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+}
 .attribution-details-form {
     margin-top: 1.5rem;
     .control + .control {
         margin-top: 1rem;
     }
-    .attribution-details-form:nth-child(2) {
-      margin-top: 16px;
-    }
 }
 .info {
   width: 20px;
   height: 20px;
-  position: absolute;
-  right: 20px;
+  margin-top: 15px;
+}
+.info:hover{
+  cursor: pointer;
 }
 </style>
