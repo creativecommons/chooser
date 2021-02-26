@@ -9,6 +9,11 @@
         :label="$t('stepper.AD.form.work-title.label')"
         :placeholder="$t('stepper.AD.form.work-title.placeholder')"
       />
+      <img
+        class="info"
+        src="../assets/info.svg"
+        alt="Info"
+      >
       <v-input
         v-model="creatorName"
         :label="$t('stepper.AD.form.creator-name.label')"
@@ -94,5 +99,14 @@ export default {
     .control + .control {
         margin-top: 1rem;
     }
+    .attribution-details-form:nth-child(2) {
+      margin-top: 16px;
+    }
+}
+.info {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px;
 }
 </style>
