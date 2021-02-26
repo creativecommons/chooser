@@ -24,3 +24,5 @@ jobs:
               run: npm run test:unit
               env:
                   CI: true
+            - name: Cypress run
+              uses: cypress-io/github-action@v2

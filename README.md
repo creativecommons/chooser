@@ -40,7 +40,6 @@ You can run tests by executing:
 ```bash
 $ npm run test
 ```
-To run e2e tests, you must have Java installed. [[download Java here](https://java.com/download/)]
 
 ## CSS Build
 The Chooser uses PostCSS plugin for PurgeCSS to make CSS bundle size smaller. It automatically removes unused CSS based on the classes found in the final built bundle. Some styles for dynamic components or dynamically-imported files can also be removed. If you find that the built site misses some styles, you can manually add the necessary classes or Regex expressions to the `safelist` array in the `postcss.config.js` file.
