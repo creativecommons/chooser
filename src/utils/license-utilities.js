@@ -10,13 +10,13 @@ const CCBYAttributes = LICENSES.CC_BY.ATTRIBUTES
 const defaultAttributes = { BY: undefined, NC: undefined, ND: undefined, SA: undefined }
 
 const shortToSlug = {
-    'CC0 1.0': 'CC0',
-    'CC BY 4.0': 'CC_BY',
-    'CC BY-ND 4.0': 'CC_BY_ND',
-    'CC BY-SA 4.0': 'CC_BY_SA',
-    'CC BY-NC 4.0': 'CC_BY_NC',
-    'CC BY-NC-ND 4.0': 'CC_BY_NC_ND',
-    'CC BY-NC-SA 4.0': 'CC_BY_NC_SA'
+  'CC0 1.0': 'CC0',
+  'CC BY 4.0': 'CC_BY',
+  'CC BY-ND 4.0': 'CC_BY_ND',
+  'CC BY-SA 4.0': 'CC_BY_SA',
+  'CC BY-NC 4.0': 'CC_BY_NC',
+  'CC BY-NC-ND 4.0': 'CC_BY_NC_ND',
+  'CC BY-NC-SA 4.0': 'CC_BY_NC_SA'
 }
 
 /**
@@ -26,7 +26,7 @@ const shortToSlug = {
  * @returns {string}
  */
 const slugFromShort = (short) => {
-    return shortToSlug[short]
+  return shortToSlug[short]
 }
 
 /**
@@ -35,17 +35,17 @@ const slugFromShort = (short) => {
  * @returns {ShortLicenseName}
  */
 function attrToShort(attr) {
-    if (attr.BY === undefined) return undefined
-    if (!attr.BY) { return 'CC0 1.0' }
-    let base = 'CC BY'
-    if (attr.NC) { base += '-NC' }
-    if (!attr.ND && attr.SA) {
-        base += '-SA'
-    } else if (attr.ND) {
-        base += '-ND'
-    }
-    base += ' 4.0'
-    return base
+  if (attr.BY === undefined) return undefined
+  if (!attr.BY) { return 'CC0 1.0' }
+  let base = 'CC BY'
+  if (attr.NC) { base += '-NC' }
+  if (!attr.ND && attr.SA) {
+    base += '-SA'
+  } else if (attr.ND) {
+    base += '-ND'
+  }
+  base += ' 4.0'
+  return base
 }
 
 /**
@@ -54,9 +54,9 @@ function attrToShort(attr) {
  * @returns {string|null}
  */
 function attrToFull(attr) {
-    const slug = slugFromShort(attrToShort(attr))
-    if (!slug) return null
-    return LICENSES[slug].FULL
+  const slug = slugFromShort(attrToShort(attr))
+  if (!slug) return null
+  return LICENSES[slug].FULL
 }
 
 const chooserRef = '?ref=chooser-v1'
@@ -68,11 +68,11 @@ const chooserRef = '?ref=chooser-v1'
  * @returns {string} url of the license information page
  */
 function licenseURL(attr, mode = 'web') {
-    if (attr.BY === undefined) throw new Error('Cannot return URL when BY attribute is undefined')
-    const slug = slugFromShort(attrToShort(attr))
-    const url = LICENSES[slug].URL
-    const linkRef = mode === 'web' ? chooserRef : ''
-    return `${url}${linkRef}`
+  if (attr.BY === undefined) throw new Error('Cannot return URL when BY attribute is undefined')
+  const slug = slugFromShort(attrToShort(attr))
+  const url = LICENSES[slug].URL
+  const linkRef = mode === 'web' ? chooserRef : ''
+  return `${url}${linkRef}`
 }
 
 /**
@@ -81,11 +81,11 @@ function licenseURL(attr, mode = 'web') {
  * @returns {string}
  */
 function licenseSlug(shortLicenseName) {
-    const currentLicense = Object.values(LICENSES).find(license => {
-        return license.SHORT === shortLicenseName
-    })
-    if (!currentLicense) throw new Error(`Cannot create slug from string "${shortLicenseName}"`)
-    return currentLicense.SLUG
+  const currentLicense = Object.values(LICENSES).find(license => {
+    return license.SHORT === shortLicenseName
+  })
+  if (!currentLicense) throw new Error(`Cannot create slug from string "${shortLicenseName}"`)
+  return currentLicense.SLUG
 }
 
 /**
@@ -94,64 +94,64 @@ function licenseSlug(shortLicenseName) {
  * @returns {string[]} Array with slugified names of icons, eg. ['cc', 'by']
  */
 function licenseIconsArr(licenseAttributes) {
-    if (!licenseAttributes.BY) {
-        return ['zero']
+  if (!licenseAttributes.BY) {
+    return ['zero']
+  }
+  const iconsArray = []
+  for (const key in licenseAttributes) {
+    if (licenseAttributes[key]) {
+      iconsArray.push(key.toLowerCase())
     }
-    const iconsArray = []
-    for (const key in licenseAttributes) {
-        if (licenseAttributes[key]) {
-            iconsArray.push(key.toLowerCase())
-        }
-    }
-    return iconsArray
+  }
+  return iconsArray
 }
 
 function updateVisibleEnabledStatus(stepStatusData) {
-    let visible
-    let enabled
-    let stepsDisabledDue = ''
-    if (stepStatusData.FS) {
-        // User will select from the dropdown
-        if (stepStatusData.BY === false) {
-            // User selected a license from the dropdown a CC0 license
-            // First step, dropdown and attribution details should be visible and enabled
-            visible = ['FS', 'DD', 'CW', 'AD']
-            enabled = ['FS', 'DD', 'CW', 'AD']
-            stepsDisabledDue = 'CC0'
-        } else {
-            // User hasn't selected anything yet, or selected a BY license
-            // First step, dropdown and attribution details should be visible and enabled
-            visible = ['FS', 'DD', 'AD']
-            enabled = ['FS', 'DD', 'AD']
-        }
+  let visible
+  let enabled
+  let stepsDisabledDue = ''
+  if (stepStatusData.FS) {
+    // User will select from the dropdown
+    if (stepStatusData.BY === false) {
+      // User selected a license from the dropdown a CC0 license
+      // First step, dropdown and attribution details should be visible and enabled
+      visible = ['FS', 'DD', 'CW', 'AD']
+      enabled = ['FS', 'DD', 'CW', 'AD']
+      stepsDisabledDue = 'CC0'
     } else {
-        // User uses the stepper for license selection
-        if (stepStatusData.BY === false) {
-            // User selects a CC0 license
-            visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
-            enabled = ['FS', 'BY', 'CW', 'AD']
-            stepsDisabledDue = 'CC0'
-        } else if (stepStatusData.ND) {
-            // User selects an ND license: SA step is disabled
-            visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
-            enabled = ['FS', 'BY', 'NC', 'ND', 'AD']
-            stepsDisabledDue = 'ND'
-        } else {
-            // User selects a non-ND BY license from the stepper
-            visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
-            enabled = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
-        }
+      // User hasn't selected anything yet, or selected a BY license
+      // First step, dropdown and attribution details should be visible and enabled
+      visible = ['FS', 'DD', 'AD']
+      enabled = ['FS', 'DD', 'AD']
     }
-    return { visible, enabled, stepsDisabledDue }
+  } else {
+    // User uses the stepper for license selection
+    if (stepStatusData.BY === false) {
+      // User selects a CC0 license
+      visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
+      enabled = ['FS', 'BY', 'CW', 'AD']
+      stepsDisabledDue = 'CC0'
+    } else if (stepStatusData.ND) {
+      // User selects an ND license: SA step is disabled
+      visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+      enabled = ['FS', 'BY', 'NC', 'ND', 'AD']
+      stepsDisabledDue = 'ND'
+    } else {
+      // User selects a non-ND BY license from the stepper
+      visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+      enabled = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+    }
+  }
+  return { visible, enabled, stepsDisabledDue }
 }
 
 const CC_NAMESPACE = {
-    NAME: 'xmlns:cc',
-    URI: 'http://creativecommons.org/ns#'
+  NAME: 'xmlns:cc',
+  URI: 'http://creativecommons.org/ns#'
 }
 const DCT_NAMESPACE = {
-    NAME: 'xmlns:dct',
-    URI: 'http://purl.org/dc/terms/'
+  NAME: 'xmlns:dct',
+  URI: 'http://purl.org/dc/terms/'
 }
 const ICON_STYLE = 'height:22px!important;margin-left:3px;vertical-align:text-bottom;'
 const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons'
@@ -166,16 +166,16 @@ const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons'
  * @returns {string}
  */
 function generateCreatorCode(creatorName, creatorProfileUrl) {
-    if (!creatorName) {
-        return ''
-    }
-    if (creatorProfileUrl) {
-        const absoluteUrl = creatorProfileUrl.startsWith('http') ? creatorProfileUrl : `http://${creatorProfileUrl}`
-        const linkMeta = 'rel="cc:attributionURL dct:creator" property="cc:attributionName"'
-        return `<a ${linkMeta} href="${absoluteUrl}">${creatorName}</a>`
-    } else {
-        return `<span property="cc:attributionName">${creatorName}</span>`
-    }
+  if (!creatorName) {
+    return ''
+  }
+  if (creatorProfileUrl) {
+    const absoluteUrl = creatorProfileUrl.startsWith('http') ? creatorProfileUrl : `http://${creatorProfileUrl}`
+    const linkMeta = 'rel="cc:attributionURL dct:creator" property="cc:attributionName"'
+    return `<a ${linkMeta} href="${absoluteUrl}">${creatorName}</a>`
+  } else {
+    return `<span property="cc:attributionName">${creatorName}</span>`
+  }
 }
 
 /**
@@ -195,16 +195,16 @@ function generateCreatorCode(creatorName, creatorProfileUrl) {
  * @returns {string}
  */
 function generateWorkCode(title, workUrl, isTitleDefault) {
-    if (isTitleDefault && !workUrl) {
-        return title
-    }
-    const titleMeta = 'property="dct:title"'
-    if (!workUrl) {
-        return `<span ${titleMeta}>${title}</span>`
-    }
+  if (isTitleDefault && !workUrl) {
+    return title
+  }
+  const titleMeta = 'property="dct:title"'
+  if (!workUrl) {
+    return `<span ${titleMeta}>${title}</span>`
+  }
 
-    const absoluteUrl = workUrl.startsWith('http') ? workUrl : `http://${workUrl}`
-    return `<a ${isTitleDefault ? '' : titleMeta} rel="cc:attributionURL" href="${absoluteUrl}">${title}</a>`
+  const absoluteUrl = workUrl.startsWith('http') ? workUrl : `http://${workUrl}`
+  return `<a ${isTitleDefault ? '' : titleMeta} rel="cc:attributionURL" href="${absoluteUrl}">${title}</a>`
 }
 
 /**
@@ -213,8 +213,8 @@ function generateWorkCode(title, workUrl, isTitleDefault) {
  * @returns {string}
  */
 function generateYearOfCreation(yearOfCreation) {
-    const yearMeta = 'property="dct:title"'
-    return `<span ${yearMeta}> © ${yearOfCreation}</span>`
+  const yearMeta = 'property="dct:title"'
+  return `<span ${yearMeta}> © ${yearOfCreation}</span>`
 }
 /**
  * Generates the html for the rich text license information, including license name,
@@ -225,16 +225,16 @@ function generateYearOfCreation(yearOfCreation) {
  * @returns {string} HTML code for the license
  */
 function generateLicenseLink(licenseIcons, licenseUrl, licenseName) {
-    const iconStyle = `style="${ICON_STYLE}"`
-    const assetPathRef = '?ref=chooser-v1'
-    const iconSrc = (attr) => `${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}`
-    const icons = licenseIcons
-        .map(attr => `<img ${iconStyle} src="${iconSrc(attr)}">`).join('')
+  const iconStyle = `style="${ICON_STYLE}"`
+  const assetPathRef = '?ref=chooser-v1'
+  const iconSrc = (attr) => `${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}`
+  const icons = licenseIcons
+    .map(attr => `<img ${iconStyle} src="${iconSrc(attr)}">`).join('')
 
-    const linkHref = `href="${licenseUrl}${assetPathRef}"`
-    const linkAttributes = 'target="_blank" rel="license noopener noreferrer"'
-    const linkStyle = 'style="display:inline-block;"'
-    return `<a ${linkHref} ${linkAttributes} ${linkStyle}>${licenseName}${icons}</a>`
+  const linkHref = `href="${licenseUrl}${assetPathRef}"`
+  const linkAttributes = 'target="_blank" rel="license noopener noreferrer"'
+  const linkStyle = 'style="display:inline-block;"'
+  return `<a ${linkHref} ${linkAttributes} ${linkStyle}>${licenseName}${icons}</a>`
 }
 
 /**
@@ -246,22 +246,22 @@ function generateLicenseLink(licenseIcons, licenseUrl, licenseName) {
  * @returns {{creator: string, work: string, license: string, year: string}}
  */
 function generateHTML(attributionDetails, shortLicenseName, useFullName = false, isTitleDefault = true) {
-    const data = {}
-    const { creatorName, creatorProfileUrl, workUrl, workTitle, yearOfCreation } = attributionDetails
+  const data = {}
+  const { creatorName, creatorProfileUrl, workUrl, workTitle, yearOfCreation } = attributionDetails
 
-    const licenseSlug = slugFromShort(shortLicenseName)
-    const { ICONS: icons, URL: url, FULL: fullLicenseName } = LICENSES[licenseSlug]
-    const licenseName = useFullName ? fullLicenseName : shortLicenseName
+  const licenseSlug = slugFromShort(shortLicenseName)
+  const { ICONS: icons, URL: url, FULL: fullLicenseName } = LICENSES[licenseSlug]
+  const licenseName = useFullName ? fullLicenseName : shortLicenseName
 
-    data.license = generateLicenseLink(icons, url, licenseName)
-    data.creator = generateCreatorCode(creatorName, creatorProfileUrl)
-    data.work = generateWorkCode(workTitle, workUrl, isTitleDefault)
-    data.year = generateYearOfCreation(yearOfCreation)
-    return data
+  data.license = generateLicenseLink(icons, url, licenseName)
+  data.creator = generateCreatorCode(creatorName, creatorProfileUrl)
+  data.work = generateWorkCode(workTitle, workUrl, isTitleDefault)
+  data.year = generateYearOfCreation(yearOfCreation)
+  return data
 }
 
 export {
-    defaultAttributes, CC0Attributes, CCBYAttributes, attrToShort, slugFromShort,
-    attrToFull, licenseURL, chooserRef, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus,
-    CC_NAMESPACE, DCT_NAMESPACE, LICENSES, ICON_STYLE, ICON_BASE_URL
+  defaultAttributes, CC0Attributes, CCBYAttributes, attrToShort, slugFromShort,
+  attrToFull, licenseURL, chooserRef, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus,
+  CC_NAMESPACE, DCT_NAMESPACE, LICENSES, ICON_STYLE, ICON_BASE_URL
 }
