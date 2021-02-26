@@ -26,5 +26,5 @@ export const initialSteps = [
   { id: 4, name: 'SA', visible: true, enabled: true, status: 'inactive', selected: undefined },
   { id: 5, name: 'DD', visible: false, enabled: true, status: 'inactive', selected: undefined },
   { id: 6, name: 'CW', visible: false, enabled: true, status: 'inactive', selected: undefined },
-  { id: 7, name: 'AD', visible: true, enabled: true, status: 'inactive', selected: undefined }
+  { id: 7, name: 'AD', visible: true, enabled: true, status: 'inactive', selected: undefined },
 ]

@@ -24,8 +24,8 @@ export default {
   props: {
     step: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     ...mapGetters(['fullName']),
@@ -65,13 +65,13 @@ export default {
         captionKey = `${prefix}selected`
       }
       return this.$t(captionKey)
-    }
+    },
   },
   methods: {
     activate() {
       this.$emit('activate', this.step.id)
-    }
-  }
+    },
+  },
 }
 </script>
 

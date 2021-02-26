@@ -10,7 +10,7 @@ import {
   LICENSES,
   ICON_BASE_URL,
   ICON_STYLE,
-  chooserRef
+  chooserRef,
 } from '@/utils/license-utilities'
 import { mount } from '@vue/test-utils'
 import TestComponent from './TestComponent'
@@ -18,23 +18,23 @@ import TestComponent from './TestComponent'
 const attributesToTest = [
   {
     attr: {},
-    fullResult: null
+    fullResult: null,
   },
   {
     attr: { BY: false },
     fullResult: LICENSES.CC0.FULL,
-    shortResult: LICENSES.CC0.SHORT
+    shortResult: LICENSES.CC0.SHORT,
   },
   {
     attr: { SA: false, BY: false },
     fullResult: LICENSES.CC0.FULL,
-    shortResult: LICENSES.CC0.SHORT
+    shortResult: LICENSES.CC0.SHORT,
   },
   {
     attr: { BY: true },
     fullResult: LICENSES.CC_BY.FULL,
-    shortResult: LICENSES.CC_BY.SHORT
-  }
+    shortResult: LICENSES.CC_BY.SHORT,
+  },
 
 ]
 describe('attrToFull edge cases', function testAttrToFull() {
@@ -137,7 +137,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
     expect(updateVisibleEnabledStatus(attr)).toEqual({
       enabled: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
       stepsDisabledDue: '',
-      visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+      visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
     })
   })
   test('FS: true, BY: false', () => {
@@ -145,7 +145,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
     expect(updateVisibleEnabledStatus(attr)).toEqual({
       enabled: ['FS', 'DD', 'CW', 'AD'],
       stepsDisabledDue: 'CC0',
-      visible: ['FS', 'DD', 'CW', 'AD']
+      visible: ['FS', 'DD', 'CW', 'AD'],
     })
   })
   test('FS: true, BY: true ', () => {
@@ -153,7 +153,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
     expect(updateVisibleEnabledStatus(attr)).toEqual({
       enabled: ['FS', 'DD', 'AD'],
       stepsDisabledDue: '',
-      visible: ['FS', 'DD', 'AD']
+      visible: ['FS', 'DD', 'AD'],
     })
   })
   test('FS: false, BY: false', () => {
@@ -161,7 +161,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
     expect(updateVisibleEnabledStatus(attr)).toEqual({
       enabled: ['FS', 'BY', 'CW', 'AD'],
       stepsDisabledDue: 'CC0',
-      visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
+      visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD'],
     })
   })
   test('FS: false, BY: true, ND: true', () => {
@@ -169,7 +169,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
     expect(updateVisibleEnabledStatus(attr)).toEqual({
       enabled: ['FS', 'BY', 'NC', 'ND', 'AD'],
       stepsDisabledDue: 'ND',
-      visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+      visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
     })
   })
   test('FS: false, BY: true, ND: false', () => {
@@ -177,7 +177,7 @@ describe('updateVisibleEnabledStatus', function testUpdateVisibleEnabledStatus()
     expect(updateVisibleEnabledStatus(attr)).toEqual({
       enabled: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
       stepsDisabledDue: '',
-      visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+      visible: ['FS', 'BY', 'NC', 'ND', 'SA', 'AD'],
     })
   })
 })
@@ -187,7 +187,7 @@ describe('generateHTML', function testGenerateHTML() {
     CREATOR: 'John',
     WORK_TITLE: 'Foo',
     PROFILE_URL: 'www.john.com',
-    WORK_URL: 'www.john.com/foo.jpg'
+    WORK_URL: 'www.john.com/foo.jpg',
   }
   const DEFAULT_TITLE = 'This work'
   // For each kind of Attribution data present, check:
@@ -227,8 +227,8 @@ describe('generateHTML', function testGenerateHTML() {
       creatorName: TEST_DATA.CREATOR,
       workUrl: TEST_DATA.WORK_URL,
       workTitle: TEST_DATA.WORK_TITLE,
-      creatorProfileUrl: TEST_DATA.PROFILE_URL
-    }
+      creatorProfileUrl: TEST_DATA.PROFILE_URL,
+    },
   }
   const licenseArray = [LICENSES.CC0, LICENSES.CC_BY, LICENSES.CC_BY_NC_ND]
   licenseArray.forEach((currentLicense) => {
@@ -243,7 +243,7 @@ describe('generateHTML', function testGenerateHTML() {
 
           const attributionDetails = {
             ...currentAttributionOptions,
-            workTitle: workTitle || DEFAULT_TITLE
+            workTitle: workTitle || DEFAULT_TITLE,
           }
           const generatedHtml = generateHTML(attributionDetails, currentLicense.SHORT, useFullName, isTitleDefault)
           const wrapper = mount(TestComponent, { propsData: { attribution: generatedHtml } })

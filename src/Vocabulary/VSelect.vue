@@ -38,15 +38,15 @@ export default {
   props: {
     value: {
       type: [String, Number],
-      default: null
+      default: null,
     },
     placeholder: String,
-    expanded: Boolean
+    expanded: Boolean,
   },
   data() {
     return {
       selected: this.value,
-      elementRef: 'select'
+      elementRef: 'select',
     }
   },
   computed: {
@@ -57,14 +57,14 @@ export default {
       set(value) {
         this.selected = value
         this.$emit('input', value)
-      }
+      },
     },
     spanClasses() {
       return [this.size, this.statusType, {
         'is-fullwidth': this.expanded,
-        'is-empty': this.selected === null
+        'is-empty': this.selected === null,
       }]
-    }
+    },
   },
   watch: {
     /**
@@ -74,7 +74,7 @@ export default {
          */
     value(value) {
       this.selected = value
-    }
-  }
+    },
+  },
 }
 </script>

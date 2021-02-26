@@ -14,7 +14,7 @@ const messages = {}
 messages.en = require('@/locales/en.json')
 const i18n = new VueI18n({
   locale: 'en',
-  messages: messages
+  messages: messages,
 })
 
 describe('Test the functionality of Computed properties', () => {
@@ -27,18 +27,18 @@ describe('Test the functionality of Computed properties', () => {
       data() {
         return {
           agreed: false,
-          confirmed: false
+          confirmed: false,
         }
       },
       propsData: {
         selected: true,
         status: 'active',
         id: 6,
-        name: 'CW'
+        name: 'CW',
       },
       mocks: {
-        $t: key => key
-      }
+        $t: key => key,
+      },
     })
   })
 

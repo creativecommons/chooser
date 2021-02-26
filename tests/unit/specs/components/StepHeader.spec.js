@@ -15,11 +15,11 @@ describe('StepHeader.vue', () => {
     wrapper = shallowMount(StepHeader, {
       localVue,
       propsData: {
-        step: steps[0]
+        step: steps[0],
       },
       mocks: {
-        $t: key => key
-      }
+        $t: key => key,
+      },
     })
   })
   describe('renders correctly', () => {

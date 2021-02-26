@@ -80,11 +80,11 @@ export default {
   components: {
     LicenseHTML,
     LicenseText,
-    CopyTools
+    CopyTools,
   },
   data() {
     return {
-      copyTarget: '.richtext'
+      copyTarget: '.richtext',
     }
   },
   methods: {
@@ -96,8 +96,8 @@ export default {
       } else {
         this.copyTarget = '.plaintext'
       }
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">

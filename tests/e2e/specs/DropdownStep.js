@@ -14,5 +14,5 @@ module.exports = {
       .assert.visible('.DD .step-header__caption')
       .assert.containsText('.DD .step-header__caption', 'Attribution 4.0 International')
       .end()
-  }
+  },
 }

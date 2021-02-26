@@ -128,5 +128,5 @@ module.exports = {
       .clickPrevious()
       .assertStepName('FS')
     chooser.assert.elementPresent('@selectedLicenseCard')
-  }
+  },
 }

@@ -27,13 +27,13 @@ export default {
   name: 'CopyTypeSwitch',
   data() {
     return {
-      selected: 'short'
+      selected: 'short',
     }
   },
   computed: {
     currentLabel() {
       return `label-${this.selected}`
-    }
+    },
   },
   methods: {
     ...mapMutations(['setAttributionType']),
@@ -43,8 +43,8 @@ export default {
       this.$refs.full.classList.toggle('selected')
       this.$refs.short.classList.toggle('selected')
       this.setAttributionType(copyType)
-    }
-  }
+    },
+  },
 }
 </script>
 

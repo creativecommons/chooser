@@ -30,7 +30,7 @@ export default {
     selected: Boolean,
     id: Number,
     enabled: Boolean,
-    disabledDue: String
+    disabledDue: String,
   },
   computed: {
     /**
@@ -59,7 +59,7 @@ export default {
         let selected = newVal === 'yes'
         selected = this.reversed ? !selected : selected
         this.$emit('change', { name: this.$props.name, id: this.$props.id, selected })
-      }
+      },
     },
     tPrefix() {
       return `stepper.${this.$props.name}`
@@ -75,7 +75,7 @@ export default {
     },
     noSelected() {
       return !this.selected ? 'selected' : 'not-selected'
-    }
-  }
+    },
+  },
 }
 </script>

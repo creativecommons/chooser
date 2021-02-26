@@ -27,14 +27,14 @@ export default {
   props: {
     clipboardTarget: {
       type: String,
-      default: '.license-text'
-    }
+      default: '.license-text',
+    },
   },
   data() {
     return {
       copyType: 'short',
       copyLabel: this.$t('license-use.copy-label'),
-      xmpLabel: this.$t('license-use.xmp-label')
+      xmpLabel: this.$t('license-use.xmp-label'),
     }
   },
   mounted() {
@@ -72,12 +72,12 @@ export default {
         const copiedLicense = {
           license: shortName,
           codeType: codeType,
-          fieldsFilled: fieldsFilled
+          fieldsFilled: fieldsFilled,
         }
         this.$ga.event({
           eventCategory: 'Attribution',
           eventAction: 'copied',
-          eventLabel: JSON.stringify(copiedLicense)
+          eventLabel: JSON.stringify(copiedLicense),
         })
       }
       setTimeout(() => {
@@ -87,8 +87,8 @@ export default {
     },
     onCopyError(e) {
       e.clearSelection()
-    }
-  }
+    },
+  },
 }
 </script>
 

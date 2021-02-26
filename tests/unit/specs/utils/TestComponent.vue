@@ -24,8 +24,8 @@ export default {
   props: {
     attribution: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

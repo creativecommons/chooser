@@ -12,28 +12,28 @@ describe('DropdownStep', () => {
   beforeEach(() => {
     getters = {
       fullName: jest.fn().mockReturnValue(undefined),
-      shortName: jest.fn().mockReturnValue(undefined)
+      shortName: jest.fn().mockReturnValue(undefined),
     }
 
     mutations = {
-      updateAttributesFromShort: jest.fn()
+      updateAttributesFromShort: jest.fn(),
     }
 
     store = new Vuex.Store({
       getters,
-      mutations
+      mutations,
     })
 
     wrapper = mount(DropdownStep, {
       localVue,
       propsData: {
         stepId: 5,
-        status: 'active'
+        status: 'active',
       },
       mocks: {
-        $t: key => key
+        $t: key => key,
       },
-      store
+      store,
     })
   })
 

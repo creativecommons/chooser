@@ -88,9 +88,9 @@ export default {
       return this.shortName === LICENSES.CC0.SHORT
         ? this.$t('license-details-card.cc0-deed')
         : this.$t('license-details-card.license-deed')
-    }
+    },
 
-  }
+  },
 }
 </script>
 

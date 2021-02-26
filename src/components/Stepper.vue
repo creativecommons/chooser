@@ -49,17 +49,17 @@ export default {
     CopyrightWaiverStep,
     DropdownStep,
     StepHeader,
-    StepNavigation
+    StepNavigation,
   },
   props: {
     value: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
-      steps: [...initialSteps]
+      steps: [...initialSteps],
     }
   },
   computed: {
@@ -67,8 +67,8 @@ export default {
       get() { return this.$props.value },
       set(newVal) {
         this.$emit('input', newVal)
-      }
-    }
+      },
+    },
   },
   created: function() {
     /**
@@ -249,8 +249,8 @@ export default {
       return this.steps.filter(step => {
         return step.visible
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

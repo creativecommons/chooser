@@ -51,14 +51,14 @@ const stepperCommands = {
   assertStepName: function(stepName) {
     this.expect.element('@currentStep').to.have.property('classList').contain(stepName)
     return this
-  }
+  },
 }
 const chooserCommands = {
   assertSelectedLicenseDisplayed: function(licenseName) {
     this
       .assert.containsText('.license-short-name', licenseName)
     return this
-  }
+  },
 }
 module.exports = {
   url: '/',
@@ -68,7 +68,7 @@ module.exports = {
     appContainer: '#app',
     stepper: '.stepper__container',
     selectedLicenseCard: '.recommended-card',
-    licenseUseCard: '.license-use-card'
+    licenseUseCard: '.license-use-card',
   },
 
   sections: {
@@ -76,17 +76,17 @@ module.exports = {
       selector: '.stepper__container',
       elements: {
         currentStep: {
-          selector: '.step-container.active'
-        }
+          selector: '.step-container.active',
+        },
       },
-      commands: [stepperCommands]
+      commands: [stepperCommands],
     },
     selectedLicenseCard: {
-      selector: '.recommended-card'
+      selector: '.recommended-card',
     },
     licenseUseCard: {
-      selector: '.license-use-card'
-    }
-  }
+      selector: '.license-use-card',
+    },
+  },
 
 }

@@ -25,13 +25,13 @@ describe('LicenseHTML.vue', () => {
     store = createStore(state)
     const i18n = new VueI18n({
       locale: 'en',
-      messages: messages
+      messages: messages,
     })
 
     wrapper = mount(LicenseHTMLTester, {
       localVue,
       store,
-      i18n
+      i18n,
     })
   })
 

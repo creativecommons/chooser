@@ -85,7 +85,7 @@ export default {
     LicenseUseCard: () => import('@/components/LicenseUseCard'),
     HeaderSection,
     FooterSection,
-    ChooserModal
+    ChooserModal,
   },
   data() {
     return {
@@ -93,7 +93,7 @@ export default {
       openModal: null,
       showLicense: false,
       shouldShake: false,
-      windowWidth: window.innerWidth
+      windowWidth: window.innerWidth,
     }
   },
   computed: {
@@ -102,7 +102,7 @@ export default {
     },
     isBelowTabletWidth() {
       return this.windowWidth < 769
-    }
+    },
   },
   watch: {
     /**
@@ -120,7 +120,7 @@ export default {
       // By default, scroll is cancelled when the user clicks enter. We want to override that
       // so that the stepper scrolls for users using keyboard navigation.
       this.$scrollTo(`.step-${stepToScroll}`, { cancelable: false })
-    }
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -176,8 +176,8 @@ export default {
     },
     closeChooserModal() {
       this.openModal = null
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">

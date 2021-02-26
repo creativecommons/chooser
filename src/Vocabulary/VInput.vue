@@ -57,47 +57,47 @@ export default {
   props: {
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     type: {
       type: String,
-      default: 'text'
+      default: 'text',
     },
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     description: {
       type: String,
-      default: ''
+      default: '',
     },
     placeholder: {
       type: String,
-      default: ''
+      default: '',
     },
     isTextArea: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isReadonly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isDisabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     size: {
       type: String,
       default: 'is-normal',
       validate: function(value) {
         return ['is-normal', 'is-medium', 'is-large'].indexOf(value) > -1
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      localValue: this.value
+      localValue: this.value,
     }
   },
   computed: {
@@ -108,7 +108,7 @@ export default {
       set(newVal) {
         this.localValue = newVal
         this.$emit('input', newVal)
-      }
+      },
     },
     sizeClass() {
       return this.size === 'normal' ? '' : this.size
@@ -120,14 +120,14 @@ export default {
     hasRightIcon() {
       // Check if the 'right-icon' slot has content, return a boolean value
       return !!this.$slots['right-icon']
-    }
+    },
   },
   methods: {
     onInput(event) {
       this.localValue = event.target.value
       this.computedValue = event.target.value
-    }
-  }
+    },
+  },
 }
 // <!--'', is-medium, is-large in vocabulary; normal, big, huge in DL-->
 

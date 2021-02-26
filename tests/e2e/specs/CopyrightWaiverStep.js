@@ -25,5 +25,5 @@ module.exports = {
       .assert.attributeEquals('.next-button', 'disabled', null, 'Next Button enabled when user re-checks agreed')
       .click('.v-checkbox:nth-child(2) input[type="checkbox"]')
       .assert.attributeEquals('.next-button', 'disabled', 'true', 'Next button disabled when user unchecks confirmed')
-  }
+  },
 }

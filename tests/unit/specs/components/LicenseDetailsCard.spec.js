@@ -8,7 +8,7 @@ const getters = (slug) => ({
   fullName: jest.fn().mockReturnValue(LICENSES[slug].FULL),
   shortName: jest.fn().mockReturnValue(LICENSES[slug].SHORT),
   licenseUrl: jest.fn().mockReturnValue(() => LICENSES[slug].URL),
-  iconsList: jest.fn().mockReturnValue(LICENSES[slug].ICONS.slice(1))
+  iconsList: jest.fn().mockReturnValue(LICENSES[slug].ICONS.slice(1)),
 })
 
 describe('LicenseDetailsCard.vue', () => {
@@ -24,15 +24,15 @@ describe('LicenseDetailsCard.vue', () => {
     const currentLicenseSlug = 'CC_BY_NC_ND'
     currentLicense = LICENSES[currentLicenseSlug]
     store = new Vuex.Store({
-      getters: getters(currentLicenseSlug)
+      getters: getters(currentLicenseSlug),
     })
 
     wrapper = shallowMount(LicenseDetailsCard, {
       localVue,
       mocks: {
         $t: key => key,
-        $store: store
-      }
+        $store: store,
+      },
     })
   })
 
@@ -75,15 +75,15 @@ describe('LicenseDetailsCard.vue', () => {
     localVue.use(Vuex)
     const currentLicense = LICENSES.CC0
     const store = new Vuex.Store({
-      getters: getters('CC0')
+      getters: getters('CC0'),
     })
 
     const wrapper = shallowMount(LicenseDetailsCard, {
       localVue,
       mocks: {
         $t: key => key,
-        $store: store
-      }
+        $store: store,
+      },
     })
     const shortNameElement = wrapper.find('.license-short-name')
     expect(shortNameElement.text()).toEqual(currentLicense.SHORT)

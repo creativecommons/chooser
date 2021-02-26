@@ -27,7 +27,7 @@ export default {
 
       const attributionDetails = {
         ...this.attributionDetails,
-        workTitle: workTitle || this.$t('license-use.richtext.workTitle')
+        workTitle: workTitle || this.$t('license-use.richtext.workTitle'),
       }
       const { work, creator, license } = generateHTML(attributionDetails, this.shortName, useFullName, isTitleDefault)
 
@@ -38,14 +38,14 @@ export default {
         by: creator ? this.$t('license-use.richtext.by') : '',
         licenseMark: this.shortName === LICENSES.CC0.SHORT
           ? this.$t('license-use.richtext.marked-text')
-          : this.$t('license-use.richtext.licensed-text')
+          : this.$t('license-use.richtext.licensed-text'),
       })
       const metadata = `xmlns:cc="http://creativecommons.org/ns#" ${isTitleDefault
         ? ''
         : 'xmlns:dct="http://purl.org/dc/terms/"'}`
       return `<p ${metadata}>${licenseCodeSpan}</p>`
-    }
-  }
+    },
+  },
 }
 </script>
 

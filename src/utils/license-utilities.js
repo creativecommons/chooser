@@ -16,7 +16,7 @@ const shortToSlug = {
   'CC BY-SA 4.0': 'CC_BY_SA',
   'CC BY-NC 4.0': 'CC_BY_NC',
   'CC BY-NC-ND 4.0': 'CC_BY_NC_ND',
-  'CC BY-NC-SA 4.0': 'CC_BY_NC_SA'
+  'CC BY-NC-SA 4.0': 'CC_BY_NC_SA',
 }
 
 /**
@@ -147,11 +147,11 @@ function updateVisibleEnabledStatus(stepStatusData) {
 
 const CC_NAMESPACE = {
   NAME: 'xmlns:cc',
-  URI: 'http://creativecommons.org/ns#'
+  URI: 'http://creativecommons.org/ns#',
 }
 const DCT_NAMESPACE = {
   NAME: 'xmlns:dct',
-  URI: 'http://purl.org/dc/terms/'
+  URI: 'http://purl.org/dc/terms/',
 }
 const ICON_STYLE = 'height:22px!important;margin-left:3px;vertical-align:text-bottom;'
 const ICON_BASE_URL = 'https://mirrors.creativecommons.org/presskit/icons'
@@ -263,5 +263,5 @@ function generateHTML(attributionDetails, shortLicenseName, useFullName = false,
 export {
   defaultAttributes, CC0Attributes, CCBYAttributes, attrToShort, slugFromShort,
   attrToFull, licenseURL, chooserRef, licenseSlug, licenseIconsArr, generateHTML, updateVisibleEnabledStatus,
-  CC_NAMESPACE, DCT_NAMESPACE, LICENSES, ICON_STYLE, ICON_BASE_URL
+  CC_NAMESPACE, DCT_NAMESPACE, LICENSES, ICON_STYLE, ICON_BASE_URL,
 }

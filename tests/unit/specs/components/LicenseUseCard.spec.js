@@ -13,9 +13,9 @@ describe('LicenseUseCard.vue', () => {
       mocks: {
         $t: key => key,
         $store: {
-          commit: jest.fn()
-        }
-      }
+          commit: jest.fn(),
+        },
+      },
     })
   })
 

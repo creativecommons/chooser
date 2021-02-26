@@ -43,7 +43,7 @@
 
 <script>
 export default {
-  name: 'HeaderSection'
+  name: 'HeaderSection',
 }
 </script>
 

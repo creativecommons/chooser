@@ -9,7 +9,7 @@ const TEST_DATA = {
   creatorName: 'Jane Doe',
   creatorProfileUrl: 'https://janedoe.com',
   workTitle: 'My work',
-  workUrl: 'https://janedoe.com/best-photo-ever.jpg'
+  workUrl: 'https://janedoe.com/best-photo-ever.jpg',
 }
 
 describe('LicenseText.vue', () => {
@@ -31,13 +31,13 @@ describe('LicenseText.vue', () => {
     const store = createStore(state)
     const i18n = new VueI18n({
       locale: 'en',
-      messages: messages
+      messages: messages,
     })
 
     wrapper = mount(LicenseText, {
       localVue,
       store,
-      i18n
+      i18n,
     })
   })
 

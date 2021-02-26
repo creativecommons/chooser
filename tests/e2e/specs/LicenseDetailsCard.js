@@ -18,5 +18,5 @@ module.exports = {
       .getAttribute('a[class="license-deed-link"]', 'href', function(result) {
         this.assert.equal(result.value, 'http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1')
       })
-  }
+  },
 }

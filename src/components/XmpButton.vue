@@ -28,7 +28,7 @@ export default {
       const xmp = createXMP({ shortName, workUrl, workTitle, creatorName })
       const xmpBlob = new Blob([xmp], { type: 'text/xml;charset=utf-8' })
       return URL.createObjectURL(xmpBlob)
-    }
-  }
+    },
+  },
 }
 </script>

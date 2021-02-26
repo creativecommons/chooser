@@ -35,8 +35,8 @@ export default {
         'six-cc-licenses',
         'how-licenses-communicated',
         'what-free-culture-license',
-        'look-earlier-license-ver'
-      ]
+        'look-earlier-license-ver',
+      ],
     }
   },
   computed: {
@@ -44,7 +44,7 @@ export default {
       return this.openModal !== null
         ? this.modals[this.openModal]
         : null
-    }
+    },
   },
   methods: {
     async clickHandler(modalNumber) {
@@ -54,7 +54,7 @@ export default {
         this.$ga.event({
           eventCategory: 'HelpSection',
           eventAction: 'clicked',
-          eventLabel: this.modals[modalNumber]
+          eventLabel: this.modals[modalNumber],
         })
       }
       await this.$nextTick()
@@ -65,8 +65,8 @@ export default {
           link.rel = 'noopener noreferrer'
         })
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">

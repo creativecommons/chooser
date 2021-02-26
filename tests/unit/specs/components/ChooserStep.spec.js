@@ -13,8 +13,8 @@ describe('ChooserStep.vue', () => {
     wrapper = shallowMount(ChooserStep, {
       localVue,
       mocks: {
-        $t: key => key
-      }
+        $t: key => key,
+      },
     })
   })
 
@@ -27,7 +27,7 @@ describe('ChooserStep.vue', () => {
       selected: undefined,
       status: 'active',
       id: 1,
-      name: 'BY'
+      name: 'BY',
     })
 
     expect(wrapper.vm.noSelected).toBe('selected')
@@ -45,7 +45,7 @@ describe('ChooserStep.vue', () => {
       selected: true,
       status: 'active',
       id: 1,
-      name: 'BY'
+      name: 'BY',
     })
 
     expect(wrapper.vm.radio).toBe('yes')
@@ -64,7 +64,7 @@ describe('ChooserStep.vue', () => {
       selected: false,
       status: 'active',
       id: 1,
-      name: 'BY'
+      name: 'BY',
     })
 
     expect(wrapper.vm.radio).toBe('no')
@@ -80,7 +80,7 @@ describe('ChooserStep.vue', () => {
       selected: false,
       name: 'FS',
       id: 0,
-      status: 'active'
+      status: 'active',
     })
     expect(wrapper.vm.radio).toBe('no')
   })
@@ -90,7 +90,7 @@ describe('ChooserStep.vue', () => {
       selected: true,
       name: 'FS',
       id: 0,
-      status: 'active'
+      status: 'active',
     })
 
     expect(wrapper.vm.radio).toBe('yes')

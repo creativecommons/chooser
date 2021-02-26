@@ -20,12 +20,12 @@ describe('AttributionDetailsStep Component Rendering', () => {
               creatorName: '',
               creatorProfileUrl: '',
               workTitle: '',
-              workUrl: ''
+              workUrl: '',
             },
-            currentLicenseAttributes: {}
-          }
-        }
-      }
+            currentLicenseAttributes: {},
+          },
+        },
+      },
 
     })
   })
@@ -43,7 +43,7 @@ describe('Store is updated when a user provides input', () => {
       setCreatorName: jest.fn(),
       setCreatorProfileUrl: jest.fn(),
       setWorkTitle: jest.fn(),
-      setWorkUrl: jest.fn()
+      setWorkUrl: jest.fn(),
     }
 
     state = {
@@ -51,25 +51,25 @@ describe('Store is updated when a user provides input', () => {
         creatorName: '',
         creatorProfileUrl: '',
         workTitle: '',
-        workUrl: ''
+        workUrl: '',
       },
-      currentLicenseAttributes: {}
+      currentLicenseAttributes: {},
     }
 
     store = new Vuex.Store({
       state,
-      mutations
+      mutations,
     })
 
     wrapper = mount(AttributionDetailsStep, {
       propsData: {
-        status: 'active'
+        status: 'active',
       },
       mocks: {
-        $t: key => key
+        $t: key => key,
       },
       store,
-      localVue
+      localVue,
     })
   })
 

@@ -15,23 +15,23 @@ export default {
   props: {
     size: {
       type: [Number, String],
-      default: 20
+      default: 20,
     },
     iconsArr: {
       type: Array,
-      required: true
+      required: true,
     },
     // Icons for rich text need to be in .png format to enable pasting
     isPng: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     filename(icon) {
       return `${icon.toLowerCase()}.${this.isPng ? 'png' : 'svg'}`
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>

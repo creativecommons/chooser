@@ -46,8 +46,8 @@ export default {
       type: String,
       validator(value) {
         return ['active', 'previous', 'inactive'].includes(value)
-      }
-    }
+      },
+    },
   },
   computed: {
     ...mapState(['attributionDetails', 'currentLicenseAttributes']),
@@ -55,36 +55,36 @@ export default {
       get() { return this.attributionDetails.creatorName },
       set(newVal) {
         this.setCreatorName(newVal)
-      }
+      },
     },
     creatorProfileUrl: {
       get() { return this.attributionDetails.creatorProfileUrl },
       set(newVal) {
         this.setCreatorProfileUrl(newVal)
-      }
+      },
     },
     workTitle: {
       get() { return this.attributionDetails.workTitle },
       set(newVal) {
         this.setWorkTitle(newVal)
-      }
+      },
     },
     workUrl: {
       get() { return this.attributionDetails.workUrl },
       set(newVal) {
         this.setWorkUrl(newVal)
-      }
+      },
     },
     yearOfCreation: {
       get() { return this.attributionDetails.yearOfCreation },
       set(newVal) {
         this.setYearOfCreation(newVal)
-      }
-    }
+      },
+    },
   },
   methods: {
-    ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl', 'setYearOfCreation'])
-  }
+    ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl', 'setYearOfCreation']),
+  },
 
 }
 </script>

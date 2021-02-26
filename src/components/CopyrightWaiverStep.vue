@@ -41,13 +41,13 @@ export default {
   props: {
     id: Number,
     name: String,
-    selected: Boolean
+    selected: Boolean,
   },
   data() {
     return {
       agreed: false,
       confirmed: false,
-      openModal: false
+      openModal: false,
     }
   },
   computed: {
@@ -64,7 +64,7 @@ export default {
           payload.selected = undefined
         }
         this.$emit('change', payload)
-      }
+      },
     },
     copyrightWaiverConfirmed: {
       get() {
@@ -79,14 +79,14 @@ export default {
           payload.selected = undefined
         }
         this.$emit('change', payload)
-      }
-    }
+      },
+    },
   },
   methods: {
     closeModal() {
       this.openModal = false
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">

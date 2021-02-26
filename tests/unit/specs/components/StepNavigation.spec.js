@@ -11,11 +11,11 @@ describe('StepNavigation.vue', () => {
     wrapper = mount(StepNavigation, {
       localVue,
       propsData: {
-        stepName: 'FS'
+        stepName: 'FS',
       },
       mocks: {
-        $t: key => key
-      }
+        $t: key => key,
+      },
     })
   })
   describe('renders correctly', () => {
@@ -29,7 +29,7 @@ describe('StepNavigation.vue', () => {
     it('has correct buttons for SA with next button enabled', async() => {
       await wrapper.setProps({
         stepName: 'SA',
-        isNextEnabled: true
+        isNextEnabled: true,
       })
       const buttons = wrapper.findAll('button')
       expect(buttons.length).toEqual(2)
@@ -39,7 +39,7 @@ describe('StepNavigation.vue', () => {
     })
     it('has correct buttons for Attribution Details step', async() => {
       await wrapper.setProps({
-        stepName: 'AD'
+        stepName: 'AD',
       })
       const buttons = wrapper.findAll('button')
       expect(buttons.length).toEqual(3)
@@ -66,7 +66,7 @@ describe('StepNavigation.vue', () => {
     it('handles clicks correctly in the middle step', async() => {
       const stepName = 'ND'
       await wrapper.setProps({
-        stepName: stepName
+        stepName: stepName,
       })
       const buttons = wrapper.findAll('button')
       const backButton = buttons.at(0)

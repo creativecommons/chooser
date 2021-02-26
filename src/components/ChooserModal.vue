@@ -141,13 +141,13 @@ import LicenseIcons from './LicenseIcons'
 export default {
   name: 'ChooserModal',
   components: {
-    LicenseIcons
+    LicenseIcons,
   },
   props: {
     activeModal: {
       type: [String, Number, null],
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -160,8 +160,8 @@ export default {
         'six-cc-licenses',
         'how-licenses-communicated',
         'what-free-culture-license',
-        'look-earlier-license-ver'
-      ]
+        'look-earlier-license-ver',
+      ],
     }
   },
   methods: {
@@ -171,8 +171,8 @@ export default {
     closeModal() {
       this.openModal = null
       this.$emit('close')
-    }
-  }
+    },
+  },
 }
 </script>
 

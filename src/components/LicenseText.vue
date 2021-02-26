@@ -65,7 +65,7 @@ import LicenseIcons from './LicenseIcons'
 export default {
   name: 'LicenseText',
   components: {
-    LicenseIcons
+    LicenseIcons,
   },
   props: {
     textFor: {
@@ -73,8 +73,8 @@ export default {
       default: 'web',
       validate: function(val) {
         return ['web', 'print'].indexOf(val) > -1
-      }
-    }
+      },
+    },
   },
   computed: {
     ...mapGetters(['shortName', 'fullName', 'licenseUrl', 'iconsList']),
@@ -142,7 +142,7 @@ export default {
     },
     isWeb() {
       return this.textFor === 'web'
-    }
-  }
+    },
+  },
 }
 </script>

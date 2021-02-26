@@ -19,5 +19,5 @@ module.exports = {
 
     const result = await this.elements('css selector', '#app ul')
     this.assert.strictEqual(result.value.length, 3)
-  }
+  },
 }

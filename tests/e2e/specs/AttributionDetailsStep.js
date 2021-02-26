@@ -35,5 +35,5 @@ module.exports = {
       .assert.visible(backBtn, 'Back button is visible')
       .assert.visible(doneBtn, 'Done button is visible')
       .assert.visible(restartBtn, 'Start again button is visible')
-  }
+  },
 }

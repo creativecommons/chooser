@@ -28,9 +28,9 @@ export default {
       type: String,
       validator(value) {
         return ['active', 'previous', 'inactive'].includes(value)
-      }
+      },
     },
-    id: Number
+    id: Number,
   },
   data() {
     return {
@@ -41,13 +41,13 @@ export default {
         'CC BY-ND 4.0',
         'CC BY-NC 4.0',
         'CC BY-NC-SA 4.0',
-        'CC BY-NC-ND 4.0'
+        'CC BY-NC-ND 4.0',
       ],
-      currentLicense: undefined
+      currentLicense: undefined,
     }
   },
   computed: {
-    ...mapGetters(['shortName', 'fullName'])
+    ...mapGetters(['shortName', 'fullName']),
   },
   methods: {
     setCurrentLicense(currentLicense) {
@@ -56,12 +56,12 @@ export default {
         this.$ga.event({
           eventCategory: 'LicenseDropdown',
           eventAction: 'licenseSelected',
-          eventLabel: currentLicense
+          eventLabel: currentLicense,
         })
       }
       this.$emit('change', { name: 'DD', id: this.$props.id, selected: true })
-    }
-  }
+    },
+  },
 }
 </script>
 

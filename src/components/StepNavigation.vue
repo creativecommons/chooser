@@ -38,12 +38,12 @@ export default {
   props: {
     stepName: {
       type: String,
-      required: true
+      required: true,
     },
     isNextEnabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     handleNavigation(direction) {
@@ -54,8 +54,8 @@ export default {
     },
     handleRestart() {
       this.$emit('restart')
-    }
-  }
+    },
+  },
 }
 </script>
 

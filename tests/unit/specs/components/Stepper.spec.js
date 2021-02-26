@@ -46,11 +46,11 @@ function setUp() {
     store,
     localVue,
     mocks: {
-      $t: key => key
+      $t: key => key,
     },
     propsData: {
-      value: 0
-    }
+      value: 0,
+    },
   })
   wrapper.vm.$on('input', (newVal) => {
     wrapper.setProps({ value: newVal })
@@ -72,7 +72,7 @@ describe('Stepper.vue', () => {
       expect(activeStep.length).toEqual(1)
     })
     it('has expected UI on CW step after DD', async() => {
-      await advanceStep(wrapper, { FS: true, DD: [true, 'CC0 1.0'] }
+      await advanceStep(wrapper, { FS: true, DD: [true, 'CC0 1.0'] },
       )
     })
   })

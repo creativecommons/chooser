@@ -11,9 +11,9 @@ export const defaultState = {
     creatorProfileUrl: '',
     workTitle: '',
     workUrl: '',
-    yearOfCreation: ''
+    yearOfCreation: '',
   },
-  attributionType: 'short'
+  attributionType: 'short',
 }
 
 const createStore = (state) => {
@@ -40,7 +40,7 @@ const createStore = (state) => {
       },
       iconsList: state => {
         return licenseIconsArr(state.currentLicenseAttributes)
-      }
+      },
     },
     mutations: {
       /**
@@ -55,12 +55,12 @@ const createStore = (state) => {
           state.currentLicenseAttributes = {
             ...state.currentLicenseAttributes,
             SA: false,
-            ND: true
+            ND: true,
           }
         } else if (['BY', 'NC', 'ND', 'SA'].indexOf(name) > -1) {
           state.currentLicenseAttributes = {
             ...state.currentLicenseAttributes,
-            [name]: selected
+            [name]: selected,
           }
         }
       },
@@ -94,8 +94,8 @@ const createStore = (state) => {
       },
       restoreLicenseAttr(state) {
         state.currentLicenseAttributes = defaultAttributes
-      }
-    }
+      },
+    },
   })
 }
 
