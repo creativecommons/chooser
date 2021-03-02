@@ -162,7 +162,7 @@ export default {
     },
     closeModalFunction() {
       this.openModal = false
-      return this.openModal
+      return this.$emit('close')
     },
   },
 }

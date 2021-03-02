@@ -125,7 +125,7 @@ export default {
 .info {
   width: 1.15rem;
   height: 1.15rem;
-  margin-left: 1rem;
+  margin-left: 0.3rem;
 }
 .info:hover{
   cursor: pointer;
