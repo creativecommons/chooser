@@ -11,6 +11,31 @@
         class="label"
       >{{ label }}
         <span
+          v-if="rightIcon"
+        >
+          <img
+            class="info"
+            src="../assets/info.svg"
+            alt="Info"
+            @click="openModal=true"
+          >
+          <app-modal
+            v-if="openModal==true"
+            :title="$t(`help.context-for-creator-name.heading`)"
+            @close="openModal=false"
+          >
+            <section class="modal-body">
+              <section
+                :class="['modal-content','modal-']"
+              >
+                <article
+                  v-html="$t(`help.context-for-creator-name.text`)">
+                </article>
+              </section>
+            </section>
+          </app-modal>
+        </span>
+        <span
           v-if="description"
           class="description"
         >{{ description }}</span>
@@ -84,6 +109,10 @@ export default {
       default: false,
     },
     isDisabled: {
+      type: Boolean,
+      default: false,
+    },
+    rightIcon : {
       type: Boolean,
       default: false,
     },

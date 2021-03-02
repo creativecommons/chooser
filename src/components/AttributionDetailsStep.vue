@@ -9,12 +9,6 @@
         :label="$t('stepper.AD.form.work-title.label')"
         :placeholder="$t('stepper.AD.form.work-title.placeholder')"
       />
-      <img
-        class="info"
-        src="../assets/info.svg"
-        alt="Info"
-        @click="openModal=true"
-      >
       <app-modal
         v-if="openModal==true"
         :title="$t(`help.context-for-creator-name.heading`)"
@@ -34,6 +28,7 @@
         v-model="creatorName"
         :label="$t('stepper.AD.form.creator-name.label')"
         :placeholder="$t('stepper.AD.form.creator-name.placeholder')"
+        :right-icon="true"
       />
       <v-input
         v-model="workUrl"
@@ -148,9 +143,9 @@ export default {
     }
 }
 .info {
-  width: 20px;
-  height: 20px;
-  margin-top: 15px;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-left: 1rem;
 }
 .info:hover{
   cursor: pointer;
