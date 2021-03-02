@@ -9,21 +9,6 @@
         :label="$t('stepper.AD.form.work-title.label')"
         :placeholder="$t('stepper.AD.form.work-title.placeholder')"
       />
-      <app-modal
-        v-if="openModal==true"
-        :title="$t(`help.context-for-creator-name.heading`)"
-        @close="openModal=false"
-      >
-        <section class="modal-body">
-          <section
-            :class="['modal-content','modal-']"
-          >
-            <article
-              v-html="$t(`help.context-for-creator-name.text`)">
-            </article>
-          </section>
-        </section>
-      </app-modal>
       <v-input
         v-model="creatorName"
         :label="$t('stepper.AD.form.creator-name.label')"
