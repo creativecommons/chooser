@@ -50,11 +50,6 @@ export default {
       },
     },
   },
-  data() {
-    return {
-      openModal: false,
-    }
-  },
   computed: {
     ...mapState(['attributionDetails', 'currentLicenseAttributes']),
     creatorName: {

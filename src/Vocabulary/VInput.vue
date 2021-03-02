@@ -12,21 +12,21 @@
       >{{ label }}
         <span
           v-if="rightIcon"
+          @click="openModalFunction"
         >
           <img
             class="info"
             src="../assets/info.svg"
             alt="Info"
-            @click="openModal=true"
           >
           <app-modal
             v-if="openModal==true"
             :title="$t(`help.context-for-creator-name.heading`)"
-            @close="openModal=false"
+            @close="closeModalFunction"
           >
             <section class="modal-body">
               <section
-                :class="['modal-content','modal-']"
+                :class="['modal-content','modal-0']"
               >
                 <article
                   v-html="$t(`help.context-for-creator-name.text`)">
@@ -127,6 +127,7 @@ export default {
   data() {
     return {
       localValue: this.value,
+      openModal: false,
     }
   },
   computed: {
@@ -155,6 +156,13 @@ export default {
     onInput(event) {
       this.localValue = event.target.value
       this.computedValue = event.target.value
+    },
+    openModalFunction() {
+      this.openModal=true
+    },
+    closeModalFunction() {
+      this.openModal = false
+      return this.openModal
     },
   },
 }
