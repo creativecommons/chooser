@@ -13,8 +13,19 @@
         v-model="creatorName"
         :label="$t('stepper.AD.form.creator-name.label')"
         :placeholder="$t('stepper.AD.form.creator-name.placeholder')"
-        :right-icon="true"
-      />
+      >
+        <template #after-label>
+          <span
+            @click="toggleInfoModal"
+          >
+            <img
+              class="info"
+              src="../assets/info.svg"
+              alt="Info"
+            >
+          </span>
+        </template>
+      </v-input>
       <v-input
         v-model="workUrl"
         :label="$t('stepper.AD.form.work-url.label')"
@@ -32,6 +43,23 @@
         :placeholder="$t('stepper.AD.form.year-of-creation.placeholder')"
       />
     </form>
+
+    <app-modal
+      v-if="showInfoModal"
+      :title="$t(`help.context-for-creator-name.heading`)"
+      @close="toggleInfoModal"
+    >
+      <section class="modal-body">
+        <section
+          :class="['modal-content','modal-0']"
+        >
+          <article
+            v-html="$t(`help.context-for-creator-name.text`)">
+          </article>
+        </section>
+      </section>
+    </app-modal>
+
   </div>
 </template>
 <script>
@@ -49,6 +77,11 @@ export default {
         return ['active', 'previous', 'inactive'].includes(value)
       },
     },
+  },
+  data() {
+    return {
+      showInfoModal: false,
+    }
   },
   computed: {
     ...mapState(['attributionDetails', 'currentLicenseAttributes']),
@@ -84,6 +117,9 @@ export default {
     },
   },
   methods: {
+    toggleInfoModal() {
+      this.showInfoModal = !this.showInfoModal
+    },
     ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl', 'setYearOfCreation']),
   },
 

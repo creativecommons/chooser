@@ -10,31 +10,7 @@
         v-if="label"
         class="label"
       >{{ label }}
-        <span
-          v-if="rightIcon"
-          @click="openModalFunction"
-        >
-          <img
-            class="info"
-            src="../assets/info.svg"
-            alt="Info"
-          >
-          <app-modal
-            v-if="openModal==true"
-            :title="$t(`help.context-for-creator-name.heading`)"
-            @close="closeModalFunction"
-          >
-            <section class="modal-body">
-              <section
-                :class="['modal-content','modal-0']"
-              >
-                <article
-                  v-html="$t(`help.context-for-creator-name.text`)">
-                </article>
-              </section>
-            </section>
-          </app-modal>
-        </span>
+        <slot v-if="hasAfterLabel" name="after-label"></slot>
         <span
           v-if="description"
           class="description"
@@ -112,10 +88,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    rightIcon : {
-      type: Boolean,
-      default: false,
-    },
     size: {
       type: String,
       default: 'is-normal',
@@ -127,7 +99,6 @@ export default {
   data() {
     return {
       localValue: this.value,
-      openModal: false,
     }
   },
   computed: {
@@ -143,6 +114,9 @@ export default {
     sizeClass() {
       return this.size === 'normal' ? '' : this.size
     },
+    hasAfterLabel() {
+      return !!this.$slots['after-label']
+    },
     hasLeftIcon() {
       // Check if the 'left-icon' slot has content, return a boolean value
       return !!this.$slots['left-icon']
@@ -156,13 +130,6 @@ export default {
     onInput(event) {
       this.localValue = event.target.value
       this.computedValue = event.target.value
-    },
-    openModalFunction() {
-      this.openModal=true
-    },
-    closeModalFunction() {
-      this.openModal = false
-      this.$emit('close')
     },
   },
 }
