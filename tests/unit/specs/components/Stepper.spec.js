@@ -85,10 +85,10 @@ describe('Stepper.vue', () => {
       expect(steps.at(0).classes('completed')).toBe(true)
       expect(wrapper.find('.active').classes('DD')).toBe(true)
     })
-    it('choosing No sets 6 steps visible: FS, BY, NC, ND, SA and AttributionDetails, opens BY', () => {
+    it('choosing No sets 6 steps visible: FS, BY, NC, ND, SA and AttributionDetails, opens BY', async () => {
       setStepSelected(wrapper, 'FS', false)
       wrapper.find('stepnavigation-stub').vm.$emit('navigate', { direction: 'next', name: 'FS' })
-      Vue.nextTick()
+      await Vue.nextTick()
       const steps = wrapper.findAll('.step-container')
       expect(steps.length).toEqual(6)
       expect(wrapper.vm.activeStepId).toEqual(1)

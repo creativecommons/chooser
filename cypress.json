@@ -1,4 +1,8 @@
 {
     "project": "creativecommons-chooser",
-    "baseUrl": "http://localhost:8080/"
+    "baseUrl": "http://localhost:8080/",
+    "integrationFolder":  "tests/cypress/integration/",
+    "fixturesFolder": "tests/cypress/fixtures",
+    "pluginsFile": "tests/cypress/plugins/index.js",
+    "supportFile": "tests/cypress/support/index.js"
 }
