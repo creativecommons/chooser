@@ -24,12 +24,6 @@ describe('Test the functionality of Computed properties', () => {
     wrapper = mount(CopyrightWaiverStep, {
       localVue,
       i18n,
-      data() {
-        return {
-          agreed: false,
-          confirmed: false,
-        }
-      },
       propsData: {
         selected: true,
         status: 'active',
@@ -44,26 +38,6 @@ describe('Test the functionality of Computed properties', () => {
 
   afterEach(() => {
     wrapper.destroy()
-  })
-
-  it('Step Actions block mounted if status is active', () => {
-    wrapper.setProps({ status: 'active', id: 6, name: 'CW' })
-
-    expect(wrapper.find('.step-actions').exists()).toBeTruthy()
-    expect(wrapper.vm.copyrightWaiverAgreed).toBe(false)
-  })
-
-  it('User checks confirmed then checks agreed', () => {
-    const checkbox1 = wrapper.findAll('input[type="checkbox"]').at(1)
-    checkbox1.setChecked()
-
-    const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-    checkbox.setChecked()
-    Vue.nextTick()
-    const emittedChange = wrapper.emitted().change[0][0]
-    expect(emittedChange.id).toEqual(6)
-    expect(emittedChange.name).toEqual('CW')
-    expect(wrapper.vm.copyrightWaiverAgreed).toBe(true)
   })
 
   it('User checks agreed and then checks confirmed', () => {
