@@ -3,24 +3,30 @@ import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common
 import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
 import CopyrightWaiverStep from '@/components/CopyrightWaiverStep'
-import Vue from 'vue'
+import { defaultState, toggleCopyrightCheckbox, allCopyrightClausesChecked } from '../../../../src/store'
 
 const localVue = createLocalVue()
 
 localVue.use(Vuex)
 localVue.use(VueVocabulary)
-Vue.use(VueI18n)
-const messages = {}
-messages.en = require('@/locales/en.json')
+localVue.use(VueI18n)
+
 const i18n = new VueI18n({
   locale: 'en',
-  messages: messages,
+  messages: {en: require('@/locales/en.json')},
 })
 
 describe('Test the functionality of Computed properties', () => {
+  /** @type {import('@vue/test-utils').Wrapper<Vue>} */
   let wrapper
+  let store
 
   beforeEach(() => {
+    store = new Vuex.Store({
+      state: defaultState,
+      mutations: {toggleCopyrightCheckbox},
+      getters: {allCopyrightClausesChecked},
+    })
     wrapper = mount(CopyrightWaiverStep, {
       localVue,
       i18n,
@@ -32,6 +38,7 @@ describe('Test the functionality of Computed properties', () => {
       },
       mocks: {
         $t: key => key,
+        $store: store,
       },
     })
   })
@@ -40,46 +47,21 @@ describe('Test the functionality of Computed properties', () => {
     wrapper.destroy()
   })
 
-  it('User checks agreed and then checks confirmed', () => {
-    const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-    checkbox.setChecked()
+  it(`Emits the step "change" event with selected: true when all checkboxes are checked.`, async() => {
+    const checkboxes = wrapper.findAll('input[type="checkbox"]')
+    await checkboxes.trigger('click')
+    const changeEvent = wrapper.emitted().change.pop().pop() // Get the last change event
 
-    const checkbox1 = wrapper.findAll('input[type="checkbox"]').at(1)
-    checkbox1.setChecked()
-    Vue.nextTick()
-    const emittedChange = wrapper.emitted().change[1][0]
-
-    expect(emittedChange.name).toEqual('CW')
-    expect(emittedChange.id).toEqual(6)
-    expect(emittedChange.selected).toEqual(true)
-
-    expect(wrapper.vm.copyrightWaiverConfirmed).toBe(true)
+    expect(changeEvent.selected).toBeTruthy()
   })
 
-  it('User unchecks agreed', () => {
-    const checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
-    checkbox.setChecked()
-    checkbox.setChecked(false)
-    Vue.nextTick()
+  it(`Doesn't emit the step "change" event with selected: true when only some checkboxes are checked.`, async() => {
+    // we're only checking the first checkbox here
+    const checkbox = wrapper.find('input[type="checkbox"]')
+    await checkbox.trigger('click')
 
-    const emittedChange = wrapper.emitted().change[1][0]
-    expect(emittedChange.name).toEqual('CW')
-    expect(emittedChange.id).toEqual(6)
-    expect(emittedChange.selected).toEqual(undefined)
-    expect(wrapper.vm.copyrightWaiverAgreed).toBe(false)
+    const changeEvent = wrapper.emitted().change.pop().pop() // Get the last change event
+    expect(changeEvent.selected).toBeUndefined()
   })
 
-  it('User unchecks confirmed', () => {
-    const checkbox = wrapper.findAll('input[type="checkbox"]').at(1)
-
-    checkbox.setChecked()
-    checkbox.setChecked(false)
-    Vue.nextTick()
-
-    const emittedChange = wrapper.emitted().change[1][0]
-    expect(emittedChange.name).toEqual('CW')
-    expect(emittedChange.id).toEqual(6)
-    expect(emittedChange.selected).toEqual(undefined)
-    expect(wrapper.vm.copyrightWaiverConfirmed).toBe(false)
-  })
 })
