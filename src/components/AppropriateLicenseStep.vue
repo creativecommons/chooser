@@ -1,17 +1,28 @@
 <template>
     <div class="step-actions">
-        <v-checkbox v-model="ownupagreed">
+        <v-checkbox
+            :value="appropriate.ownupagreed"
+            @input="toggle('ownupagreed')"
+        >
             {{ $t('stepper.AL.own-up-agreement') }}
         </v-checkbox>
-        <v-checkbox v-model="termsagreed">
+        <v-checkbox
+            :value="appropriate.termsagreed"
+            @input="toggle('termsagreed')"
+        >
             {{ $t('stepper.AL.terms-agreement') }}
         </v-checkbox>
-        <v-checkbox v-model="nonrevocableagreed">
+        <v-checkbox
+            :value="appropriate.nonrevocableagreed"
+            @input="toggle('nonrevocableagreed')"
+        >
             {{ $t('stepper.AL.non-revocable-agreement') }}
         </v-checkbox>
     </div>
 </template>
 <script>
+import { mapGetters, mapState } from 'vuex'
+
 export default {
     name: 'AppropraitLicenseStep',
     inheritAttrs: false,
@@ -20,58 +31,18 @@ export default {
         name: String,
         selected: Boolean
     },
-    data() {
-        return {
-            ownup_agreed: false,
-            terms_agreed: false,
-            nonrevocable_agreed: false
+    computed: {
+        ...mapState(['appropriate']),
+        ...mapGetters(['allAppropriatenessQualificationsMet'])
+    },
+    watch: {
+        allAppropriatenessQualificationsMet(newValue) {
+            this.$emit('change', { name: this.$props.name, id: this.$props.id, selected: newValue ? true : undefined })
         }
     },
-    computed: {
-        ownupagreed: {
-            get() {
-                return this.ownup_agreed
-            },
-            set() {
-                this.ownup_agreed = !this.ownup_agreed
-                const payload = { name: this.$props.name, id: this.$props.id }
-                if (this.ownup_agreed && this.terms_agreed && this.nonrevocable_agreed) {
-                    payload.selected = true
-                } else if (!this.ownup_agreed) {
-                    payload.selected = undefined
-                }
-                this.$emit('change', payload)
-            }
-        },
-        termsagreed: {
-            get() {
-                return this.terms_agreed
-            },
-            set() {
-                this.terms_agreed = !this.terms_agreed
-                const payload = { name: this.$props.name, id: this.$props.id }
-                if (this.terms_agreed && this.ownup_agreed && this.nonrevocable_agreed) {
-                    payload.selected = true
-                } else if (!this.terms_agreed) {
-                    payload.selected = undefined
-                }
-                this.$emit('change', payload)
-            }
-        },
-        nonrevocableagreed: {
-            get() {
-                return this.nonrevocable_agreed
-            },
-            set() {
-                this.nonrevocable_agreed = !this.nonrevocable_agreed
-                const payload = { name: this.$props.name, id: this.$props.id }
-                if (this.nonrevocable_agreed && this.terms_agreed && this.ownup_agreed) {
-                    payload.selected = true
-                } else if (!this.nonrevocable_agreed) {
-                    payload.selected = undefined
-                }
-                this.$emit('change', payload)
-            }
+    methods: {
+        toggle(key) {
+            this.$store.commit('toggleAppropriatenessValue', { key })
         }
     }
 }

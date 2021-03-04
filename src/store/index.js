@@ -12,7 +12,17 @@ export const defaultState = {
         workTitle: '',
         workUrl: ''
     },
+    // confirm that cc licenses are appropriate for the user
+    appropriate: {
+        ownupagreed: false,
+        termsagreed: false,
+        nonrevocableagreed: false
+    },
     attributionType: 'short'
+}
+
+export const toggleAppropriatenessValue = (state, { key }) => {
+    state.appropriate[key] = !state.appropriate[key]
 }
 
 const createStore = (state) => {
@@ -39,6 +49,9 @@ const createStore = (state) => {
             },
             iconsList: state => {
                 return licenseIconsArr(state.currentLicenseAttributes)
+            },
+            allAppropriatenessQualificationsMet: state => {
+                return Object.values(state.appropriate).every(i => i === true)
             }
         },
         mutations: {
@@ -90,7 +103,8 @@ const createStore = (state) => {
             },
             restoreLicenseAttr(state) {
                 state.currentLicenseAttributes = defaultAttributes
-            }
+            },
+            toggleAppropriatenessValue
         }
     })
 }
