@@ -1,14 +1,12 @@
 <template>
   <div class="step-actions">
     <v-checkbox
-      name="waive copyright"
       :value="copyright.agreed"
       @input="toggle('agreed')"
     >
       {{ $t('stepper.CW.copyright-waive-agreement') }}
     </v-checkbox>
     <v-checkbox
-      name="confirm waive copyright"
       :value="copyright.confirmed"
       @input="toggle('confirmed')"
     >
