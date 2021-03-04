@@ -47,8 +47,9 @@ const createStore = (state) => {
              * Updates current license attributes when user selects radio option.
              * Edge case: If user selects ND, SA should be set to false
              * @param state
-             * @param {string} name
-             * @param {Boolean} selected
+             * @param {Object} payload
+             * @param {string} payload.name
+             * @param {Boolean} payload.selected
              */
       setSelected(state, { name, selected }) {
         if (name === 'ND' && selected && state.currentLicenseAttributes.SA) {
