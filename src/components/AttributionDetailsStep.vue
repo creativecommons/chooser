@@ -13,7 +13,19 @@
         v-model="creatorName"
         :label="$t('stepper.AD.form.creator-name.label')"
         :placeholder="$t('stepper.AD.form.creator-name.placeholder')"
-      />
+      >
+        <template #after-label>
+          <span
+            @click="toggleInfoModal"
+          >
+            <img
+              class="info"
+              src="../assets/info.svg"
+              alt="Info"
+            >
+          </span>
+        </template>
+      </v-input>
       <v-input
         v-model="workUrl"
         :label="$t('stepper.AD.form.work-url.label')"
@@ -31,6 +43,23 @@
         :placeholder="$t('stepper.AD.form.year-of-creation.placeholder')"
       />
     </form>
+
+    <app-modal
+      v-if="showInfoModal"
+      :title="$t(`help.context-for-creator-name.heading`)"
+      @close="toggleInfoModal"
+    >
+      <section class="modal-body">
+        <section
+          :class="['modal-content','modal-0']"
+        >
+          <article
+            v-html="$t(`help.context-for-creator-name.text`)">
+          </article>
+        </section>
+      </section>
+    </app-modal>
+
   </div>
 </template>
 <script>
@@ -48,6 +77,11 @@ export default {
         return ['active', 'previous', 'inactive'].includes(value)
       },
     },
+  },
+  data() {
+    return {
+      showInfoModal: false,
+    }
   },
   computed: {
     ...mapState(['attributionDetails', 'currentLicenseAttributes']),
@@ -83,16 +117,53 @@ export default {
     },
   },
   methods: {
+    toggleInfoModal() {
+      this.showInfoModal = !this.showInfoModal
+    },
     ...mapMutations(['setCreatorName', 'setCreatorProfileUrl', 'setWorkTitle', 'setWorkUrl', 'setYearOfCreation']),
   },
 
 }
 </script>
 <style lang="scss">
+.modal {
+    --h-padding: 2rem;
+    --v-padding: 2.5rem;
+
+    display: block;
+    overflow-y: hidden;
+    .modal-content {
+        padding-left: var(--h-padding);
+        padding-right: var(--h-padding);
+        padding-bottom: var(--v-padding);
+    }
+
+    .modal-body {
+      max-height: 80vh;
+        overflow-y: auto;
+        padding-top: var(--h-padding);
+        margin: 0;
+        color: #333333;
+
+        article {
+            max-width: 85ch;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+}
 .attribution-details-form {
     margin-top: 1.5rem;
     .control + .control {
         margin-top: 1rem;
     }
+}
+.info {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-left: 0.3rem;
+}
+.info:hover{
+  cursor: pointer;
 }
 </style>

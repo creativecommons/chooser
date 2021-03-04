@@ -10,6 +10,7 @@
         v-if="label"
         class="label"
       >{{ label }}
+        <slot v-if="hasAfterLabel" name="after-label"></slot>
         <span
           v-if="description"
           class="description"
@@ -112,6 +113,9 @@ export default {
     },
     sizeClass() {
       return this.size === 'normal' ? '' : this.size
+    },
+    hasAfterLabel() {
+      return !!this.$slots['after-label']
     },
     hasLeftIcon() {
       // Check if the 'left-icon' slot has content, return a boolean value
