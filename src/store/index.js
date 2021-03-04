@@ -14,6 +14,24 @@ export const defaultState = {
     yearOfCreation: '',
   },
   attributionType: 'short',
+  copyright: {
+    agreed: false,
+    confirmed: false,
+  },
+}
+
+/**
+ * Updates copyright checkboxes
+ * @param state
+ * @param {Object} payload
+ * @param {string} payload.key The name of the copyright checkbox
+ */
+export const toggleCopyrightCheckbox = (state, { key }) => {
+  state.copyright[key] = !state.copyright[key]
+}
+
+export const allCopyrightClausesChecked = (state) => {
+  return Object.values(state.copyright).every(i => i === true)
 }
 
 const createStore = (state) => {
@@ -23,10 +41,10 @@ const createStore = (state) => {
     getters: {
       isLicenseSelected: state => {
         /**
-                 * By default, all four license attributes are undefined
-                 * As soon as the first attribute(BY) is selected (true/false),
-                 * we can show the recommended license
-                 */
+         * By default, all four license attributes are undefined
+         * As soon as the first attribute(BY) is selected (true/false),
+         * we can show the recommended license
+         */
         return state.currentLicenseAttributes.BY !== undefined
       },
       shortName: state => {
@@ -41,14 +59,16 @@ const createStore = (state) => {
       iconsList: state => {
         return licenseIconsArr(state.currentLicenseAttributes)
       },
+      allCopyrightClausesChecked,
     },
     mutations: {
       /**
              * Updates current license attributes when user selects radio option.
              * Edge case: If user selects ND, SA should be set to false
              * @param state
-             * @param {string} name
-             * @param {Boolean} selected
+             * @param {Object} payload
+             * @param {string} payload.name
+             * @param {Boolean} payload.selected
              */
       setSelected(state, { name, selected }) {
         if (name === 'ND' && selected && state.currentLicenseAttributes.SA) {
@@ -95,6 +115,7 @@ const createStore = (state) => {
       restoreLicenseAttr(state) {
         state.currentLicenseAttributes = defaultAttributes
       },
+      toggleCopyrightCheckbox,
     },
   })
 }

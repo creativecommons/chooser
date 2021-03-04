@@ -1,9 +1,15 @@
 <template>
   <div class="step-actions">
-    <v-checkbox v-model="copyrightWaiverAgreed">
+    <v-checkbox
+      :value="copyright.agreed"
+      @input="toggle('agreed')"
+    >
       {{ $t('stepper.CW.copyright-waive-agreement') }}
     </v-checkbox>
-    <v-checkbox v-model="copyrightWaiverConfirmed">
+    <v-checkbox
+      :value="copyright.confirmed"
+      @input="toggle('confirmed')"
+    >
       <i18n
         path="stepper.CW.copyright-waive-confirmation"
         tag="span"
@@ -35,6 +41,8 @@
   </div>
 </template>
 <script>
+import { mapGetters, mapState } from 'vuex'
+
 export default {
   name: 'CopyrightWaiverStep',
   inheritAttrs: false,
@@ -45,44 +53,23 @@ export default {
   },
   data() {
     return {
-      agreed: false,
-      confirmed: false,
       openModal: false,
     }
   },
   computed: {
-    copyrightWaiverAgreed: {
-      get() {
-        return this.agreed
-      },
-      set() {
-        this.agreed = !this.agreed
-        const payload = { name: this.$props.name, id: this.$props.id }
-        if (this.agreed && this.confirmed) {
-          payload.selected = true
-        } else if (!this.agreed) {
-          payload.selected = undefined
-        }
-        this.$emit('change', payload)
-      },
-    },
-    copyrightWaiverConfirmed: {
-      get() {
-        return this.confirmed
-      },
-      set() {
-        this.confirmed = !this.confirmed
-        const payload = { name: this.$props.name, id: this.$props.id }
-        if (this.agreed && this.confirmed) {
-          payload.selected = true
-        } else if (!this.confirmed) {
-          payload.selected = undefined
-        }
-        this.$emit('change', payload)
-      },
+    ...mapGetters(['allCopyrightClausesChecked']),
+    ...mapState(['copyright']),
+  },
+  watch: {
+    // Watch for all copyright checkboxes being checked and enable the next button if they are
+    allCopyrightClausesChecked(newValue) {
+      this.$emit('change', { name: this.$props.name, id: this.$props.id, selected: newValue ? true : undefined })
     },
   },
   methods: {
+    toggle(key) {
+      this.$store.commit('toggleCopyrightCheckbox', { key })
+    },
     closeModal() {
       this.openModal = false
     },

@@ -11,7 +11,7 @@
         @activate="setActiveStep(step.id)"
       />
       <div
-        v-if="step.status==='active'"
+        v-if="step.status === 'active'"
         class="step-content"
       >
         <component
