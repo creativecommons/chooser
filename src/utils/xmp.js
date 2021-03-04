@@ -29,7 +29,7 @@ export const createXMP = ({ shortName, workUrl = '', workTitle = '', creatorName
     const ccLicenseNotice = `This work is licensed under <a href="${licenseUrl}">${licenseFullName}</a>`
         .replace(/</gi, '&lt;')
         .replace(/>/gi, '&gt;')
-        .replace(/"/gi, '&#34;')
+        .replace(/"/gi, '&quot;')
 
     const isLicensed = shortName !== LICENSES.CC0.SHORT ? 'True' : 'False'
 

@@ -1,50 +1,50 @@
 <template>
-    <div class="toggle">
-        <span
-            id="label-short"
-            ref="short"
-            class="toggle-label selected"
-        >license abbreviation</span>
-        <input
-            id="copy-type"
-            :aria-labelledby="currentLabel"
-            type="checkbox"
-            name="copy-type"
-            class="toggle-input"
-            @input="onInput"
-        >
-        <span
-            id="label-full"
-            ref="full"
-            class="toggle-label"
-        >full license name</span>
-    </div>
+  <div class="toggle">
+    <span
+      id="label-short"
+      ref="short"
+      class="toggle-label selected"
+    >license abbreviation</span>
+    <input
+      id="copy-type"
+      :aria-labelledby="currentLabel"
+      type="checkbox"
+      name="copy-type"
+      class="toggle-input"
+      @input="onInput"
+    >
+    <span
+      id="label-full"
+      ref="full"
+      class="toggle-label"
+    >full license name</span>
+  </div>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
 export default {
-    name: 'CopyTypeSwitch',
-    data() {
-        return {
-            selected: 'short'
-        }
-    },
-    computed: {
-        currentLabel() {
-            return `label-${this.selected}`
-        }
-    },
-    methods: {
-        ...mapMutations(['setAttributionType']),
-        onInput(event) {
-            const copyType = event.target.checked ? 'full' : 'short'
-            this.selected = copyType
-            this.$refs.full.classList.toggle('selected')
-            this.$refs.short.classList.toggle('selected')
-            this.setAttributionType(copyType)
-        }
+  name: 'CopyTypeSwitch',
+  data() {
+    return {
+      selected: 'short',
     }
+  },
+  computed: {
+    currentLabel() {
+      return `label-${this.selected}`
+    },
+  },
+  methods: {
+    ...mapMutations(['setAttributionType']),
+    onInput(event) {
+      const copyType = event.target.checked ? 'full' : 'short'
+      this.selected = copyType
+      this.$refs.full.classList.toggle('selected')
+      this.$refs.short.classList.toggle('selected')
+      this.setAttributionType(copyType)
+    },
+  },
 }
 </script>
 
@@ -106,7 +106,7 @@ export default {
     font-weight: 600;
     color: #d8d8d8;
     &.selected {
-        color: #333;
+        color: #333333;
     }
     @media only screen and (max-width: 768px) {
         font-size: 0.6875rem;

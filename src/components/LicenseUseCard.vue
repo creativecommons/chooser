@@ -1,103 +1,103 @@
 <template>
-    <div
-        class="license-use-card"
-        @click="updateCopyTarget"
+  <div
+    class="license-use-card"
+    @click="updateCopyTarget"
+  >
+    <h3>
+      {{ $t('license-use.heading') }}
+    </h3>
+    <p class="license-use-instructions">
+      {{ $t('license-use.common-instructions') }}
+    </p>
+    <tabs
+      ref="alltabs"
+      class="top-tabs"
     >
-        <h3>
-            {{ $t('license-use.heading') }}
-        </h3>
-        <p class="license-use-instructions">
-            {{ $t('license-use.common-instructions') }}
-        </p>
+      <!-- Website: Richtext, HTML, XMP -->
+      <tab
+        ref="web"
+        class="main-tabs"
+        :title="$t('license-use.web-tab-heading')"
+      >
+        {{ $t('license-use.web-instructions') }}
         <tabs
-            ref="alltabs"
-            class="top-tabs"
+          ref="web"
+          class="attribution-tabs"
+          :boxed="true"
         >
-            <!-- Website: Richtext, HTML, XMP -->
-            <tab
-                ref="web"
-                class="main-tabs"
-                :title="$t('license-use.web-tab-heading')"
-            >
-                {{ $t('license-use.web-instructions') }}
-                <tabs
-                    ref="web"
-                    class="attribution-tabs"
-                    :boxed="true"
-                >
-                    <tab
-                        ref="richtext"
-                        :title="$t('license-use.rich-text-label')"
-                    >
-                        <license-text
-                            class="richtext"
-                            text-for="web"
-                        />
-                    </tab>
-                    <tab
-                        ref="html"
-                        :title="$t('license-use.html-label')"
-                    >
-                        <license-h-t-m-l class="html" />
-                    </tab>
-                    <tab
-                        ref="xmp"
-                        title="XMP"
-                    />
-                </tabs>
-            </tab>
-            <!-- Print work or media -->
-            <tab
-                ref="printmedia"
-                :title="$t('license-use.print-media-tab-heading')"
-            >
-                {{ $t('license-use.print-media-instructions') }}
-                <tabs
-                    class="attribution-tabs"
-                    :boxed="true"
-                >
-                    <tab
-                        ref="plaintext"
-                        :title="$t('license-use.plain-text-label')"
-                    >
-                        <license-text
-                            class="plaintext"
-                            text-for="print"
-                        />
-                    </tab>
-                </tabs>
-            </tab>
+          <tab
+            ref="richtext"
+            :title="$t('license-use.rich-text-label')"
+          >
+            <license-text
+              class="richtext"
+              text-for="web"
+            />
+          </tab>
+          <tab
+            ref="html"
+            :title="$t('license-use.html-label')"
+          >
+            <license-h-t-m-l class="html" />
+          </tab>
+          <tab
+            ref="xmp"
+            title="XMP"
+          />
         </tabs>
-        <copy-tools :clipboard-target="copyTarget" />
-    </div>
+      </tab>
+      <!-- Print work or media -->
+      <tab
+        ref="printmedia"
+        :title="$t('license-use.print-media-tab-heading')"
+      >
+        {{ $t('license-use.print-media-instructions') }}
+        <tabs
+          class="attribution-tabs"
+          :boxed="true"
+        >
+          <tab
+            ref="plaintext"
+            :title="$t('license-use.plain-text-label')"
+          >
+            <license-text
+              class="plaintext"
+              text-for="print"
+            />
+          </tab>
+        </tabs>
+      </tab>
+    </tabs>
+    <copy-tools :clipboard-target="copyTarget" />
+  </div>
 </template>
 <script>
 import CopyTools from '@/components/CopyTools'
 import LicenseHTML from '@/components/LicenseHTML'
 import LicenseText from '@/components/LicenseText'
 export default {
-    name: 'LicenseUseCard',
-    components: {
-        LicenseHTML,
-        LicenseText,
-        CopyTools
-    },
-    data() {
-        return {
-            copyTarget: '.richtext'
-        }
-    },
-    methods: {
-        updateCopyTarget() {
-            const activeTab = this.$refs.alltabs.$data.activeTabIndex === 0 ? 'web' : 'print'
-            if (activeTab === 'web') {
-                const activeWebTabIndex = Number.parseInt(this.$refs.web.$data.activeTabIndex)
-                this.copyTarget = `.${['richtext', 'html', 'xmp'][activeWebTabIndex]}`
-            } else {
-                this.copyTarget = '.plaintext'
-            }
-        }
+  name: 'LicenseUseCard',
+  components: {
+    LicenseHTML,
+    LicenseText,
+    CopyTools,
+  },
+  data() {
+    return {
+      copyTarget: '.richtext',
     }
+  },
+  methods: {
+    updateCopyTarget() {
+      const activeTab = this.$refs.alltabs.$data.activeTabIndex === 0 ? 'web' : 'print'
+      if (activeTab === 'web') {
+        const activeWebTabIndex = Number.parseInt(this.$refs.web.$data.activeTabIndex)
+        this.copyTarget = `.${['richtext', 'html', 'xmp'][activeWebTabIndex]}`
+      } else {
+        this.copyTarget = '.plaintext'
+      }
+    },
+  },
 }
 </script>
 <style lang="scss">

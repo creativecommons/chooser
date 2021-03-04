@@ -93,6 +93,10 @@
         "work-url": {
           "label": "Link to Work",
           "placeholder": "https://janedoe.com/best-photo-ever.jpg"
+        },
+        "year-of-creation": {
+            "label": "Year Of Creation",
+            "placeholder": "YYYY"
         }
       }
     }
@@ -101,13 +105,13 @@
     "heading": "RECOMMENDED LICENSE",
     "heading-cc0": "RECOMMENDED",
     "full-description": {
-      "cc0": "By marking your work with a CC0 public domain dedication, you are giving up your copyright and allowing reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.",
+      "cc0": "By marking the work with a  CC0 public domain dedication, the creator is giving up their copyright and allowing reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.",
       "cc-by": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.",
       "cc-by-sa": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes. If others remix, adapt, or build upon the material, they must license the modified material under identical terms. ",
       "cc-by-nd": "This license requires that reusers give credit to the creator. It allows reusers to copy and distribute the material in any medium or format in unadapted form only, even for commercial purposes. ",
       "cc-by-nc": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, for noncommercial purposes only.",
       "cc-by-nc-sa": "This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, for noncommercial purposes only. If others modify or adapt the material, they must license the modified material under identical terms.",
-      "cc-by-nc-nd": "This license requires that reusers give credit to the creator. It allows reusers to copy and distribute the material in any medium or format, for noncommercial purposes only. If others remix, adapt, or build upon the material, they may not distribute the modified material."
+      "cc-by-nc-nd": "This license requires that reusers give credit to the creator. It allows reusers to copy and distribute the material in any medium or format in unadapted form and for noncommercial purposes only."
     },
     "item-description": {
       "zero": "This work has been marked as dedicated to the public domain.",
@@ -118,7 +122,9 @@
     },
     "caption": {
       "nc": "Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation."
-    }
+    },
+    "license-deed": "See the License Deed",
+    "cc0-deed": "See the CC0 Deed"
   },
   "license-use": {
     "heading": "Mark your work",
@@ -134,12 +140,13 @@
     "copy-label": "Copy",
     "copied-label": "Copied!",
     "richtext": {
-      "full-text": "{workTitle}{by}{creator}{licenseMark} {license}{print-instructions}",
+      "full-text": "{workTitle}{yearOfCreation}{by}{creator}{licenseMark} {license}{print-instructions}",
       "workTitle": "This work",
       "by": " by ",
       "licensed-text": " is licensed under",
       "marked-text": " is marked with",
-      "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}"
+      "print-instructions": ". To view a copy of this license, visit {linkToLicenseDeed}",
+      "yearOfCreation": ""
     },
     "print": {
       "label": " To view a copy of this license, visit {linkToLicenseDeed}"
@@ -218,6 +225,11 @@
     "look-earlier-license-ver": {
       "heading": "Looking for Earlier License Versions, including Ports?",
       "text": "<p>The most recent license version is 4.0, which can be used internationally. Earlier versions of licenses, including 3.0 international and ports localized to particular jurisdictions, can still be used on the legacy version of the <a href=\"https://creativecommons.org/choose/\">License Chooser</a></p>\n<p>Click on the link at the top of the page <strong>&quot;Looking for earlier license versions, including ports?&quot;</strong> and follow the prompts to use earlier license versions.</p>",
+      "footer": ""
+    },
+    "context-for-creator-name": {
+      "heading": "Additional Attribution",
+      "text": "<p>In addition to the creator of the work, include here any others who should receive attribution. For example, if you created a work on behalf of your employer who owns copyright in the work, you may want to include your employer’s name as one of the attribution parties.</p>",
       "footer": ""
     }
   },

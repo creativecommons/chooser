@@ -7,98 +7,100 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 
 describe('AttributionDetailsStep Component Rendering', () => {
-    let wrapper
+  let wrapper
 
-    beforeEach(() => {
-        wrapper = mount(AttributionDetailsStep, {
-            localVue,
-            mocks: {
-                $t: key => key,
-                $store: {
-                    state: {
-                        attributionDetails: {
-                            creatorName: '',
-                            creatorProfileUrl: '',
-                            workTitle: '',
-                            workUrl: ''
-                        }
-                    }
-                }
-            }
+  beforeEach(() => {
+    wrapper = mount(AttributionDetailsStep, {
+      localVue,
+      mocks: {
+        $t: key => key,
+        $store: {
+          state: {
+            attributionDetails: {
+              creatorName: '',
+              creatorProfileUrl: '',
+              workTitle: '',
+              workUrl: '',
+            },
+            currentLicenseAttributes: {},
+          },
+        },
+      },
 
-        })
     })
+  })
 
-    afterEach(() => {
-        wrapper.destroy()
-    })
+  afterEach(() => {
+    wrapper.destroy()
+  })
 })
 
 describe('Store is updated when a user provides input', () => {
-    let mutations, state, wrapper, store
+  let mutations, state, wrapper, store
 
-    beforeEach(() => {
-        mutations = {
-            setCreatorName: jest.fn(),
-            setCreatorProfileUrl: jest.fn(),
-            setWorkTitle: jest.fn(),
-            setWorkUrl: jest.fn()
-        }
+  beforeEach(() => {
+    mutations = {
+      setCreatorName: jest.fn(),
+      setCreatorProfileUrl: jest.fn(),
+      setWorkTitle: jest.fn(),
+      setWorkUrl: jest.fn(),
+    }
 
-        state = {
-            attributionDetails: {
-                creatorName: '',
-                creatorProfileUrl: '',
-                workTitle: '',
-                workUrl: ''
-            }
-        }
+    state = {
+      attributionDetails: {
+        creatorName: '',
+        creatorProfileUrl: '',
+        workTitle: '',
+        workUrl: '',
+      },
+      currentLicenseAttributes: {},
+    }
 
-        store = new Vuex.Store({
-            state,
-            mutations
-        })
-
-        wrapper = mount(AttributionDetailsStep, {
-            propsData: {
-                status: 'active'
-            },
-            mocks: {
-                $t: key => key
-            },
-            store,
-            localVue
-        })
+    store = new Vuex.Store({
+      state,
+      mutations,
     })
 
-    afterEach(() => {
-        wrapper.destroy()
+    wrapper = mount(AttributionDetailsStep, {
+      propsData: {
+        status: 'active',
+      },
+      mocks: {
+        $t: key => key,
+      },
+      store,
+      localVue,
     })
+  })
 
-    it('Creator Name is updated', async() => {
-        const input = wrapper.find('input[placeholder="stepper.AD.form.creator-name.placeholder"]')
-        await input.setValue('Jane Bar')
-        expect(mutations.setCreatorName).toHaveBeenCalled()
-    })
+  afterEach(() => {
+    wrapper.destroy()
+  })
 
-    // CreatorProfile URL
-    it('Profile Url is updated', async() => {
-        const input = wrapper.find('input[placeholder="stepper.AD.form.creator-profile.placeholder"]')
-        await input.setValue('jane@bar.com')
-        expect(mutations.setCreatorProfileUrl).toHaveBeenCalled()
-    })
+  it('Creator Name is updated', async() => {
+    const input = wrapper.find('input[placeholder="stepper.AD.form.creator-name.placeholder"]')
+    await input.setValue('Jane Bar')
+    expect(mutations.setCreatorName).toHaveBeenCalled()
+  })
 
-    // Work URL
-    it('Work Url is updated', async() => {
-        const input = wrapper.find('input[placeholder="stepper.AD.form.work-url.placeholder"]')
-        await input.setValue('jane@bar.com/kitty.jpeg')
-        expect(mutations.setWorkUrl).toHaveBeenCalled()
-    })
+  // CreatorProfile URL
+  it('Profile Url is updated', async() => {
+    const input = wrapper.find('input[placeholder="stepper.AD.form.creator-profile.placeholder"]')
+    await input.setValue('jane@bar.com')
+    expect(mutations.setCreatorProfileUrl).toHaveBeenCalled()
+  })
 
-    // Work Title
-    it('Work Title is updated', async() => {
-        const input = wrapper.find('input[placeholder="stepper.AD.form.work-title.placeholder"]')
-        await input.setValue('illustrator')
-        expect(mutations.setWorkTitle).toHaveBeenCalled()
-    })
+  // Work URL
+  it('Work Url is updated', async() => {
+    const input = wrapper.find('input[placeholder="stepper.AD.form.work-url.placeholder"]')
+    await input.setValue('jane@bar.com/kitty.jpeg')
+    expect(mutations.setWorkUrl).toHaveBeenCalled()
+  })
+
+  // Work Title
+  it('Work Title is updated', async() => {
+    const input = wrapper.find('input[placeholder="stepper.AD.form.work-title.placeholder"]')
+    await input.setValue('illustrator')
+    expect(mutations.setWorkTitle).toHaveBeenCalled()
+  })
 })
