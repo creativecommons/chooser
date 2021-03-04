@@ -28,6 +28,15 @@
       "selected": "I know the license I need.",
       "not-selected": "I need help selecting a license."
     },
+    "AL": {
+      "heading": "Confirm that CC licensing is appropriate",
+      "question": "Confirm that CC licensing is appropriate",
+      "selected": "I confirmed the appropriateness of CC licensing.",
+      "own-up-agreement": "I own or have authority to license the work.",
+      "terms-agreement": "I have read and understand the terms of the license.",
+      "non-revocable-agreement": "I understand that CC licensing is not revocable."
+     
+    },
     "BY": {
       "heading": "Attribution",
       "question": "Do you want attribution for your work?",

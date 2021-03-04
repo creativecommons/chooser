@@ -98,7 +98,7 @@ export default {
   },
   computed: {
     showLicenseUse() {
-      return this.currentStepId === 7
+      return this.currentStepId === 8
     },
     isBelowTabletWidth() {
       return this.windowWidth < 769

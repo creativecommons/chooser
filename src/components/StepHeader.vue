@@ -53,7 +53,7 @@ export default {
       let captionKey
       if (name === 'DD') {
         return this.fullName
-      } else if (['FS', 'CW'].includes(name)) {
+      } else if (['FS', 'CW', 'AL'].includes(name)) {
         captionKey = selected ? `stepper.${name}.selected` : `stepper.${name}.not-selected`
       } else if (enabled === false) {
         captionKey = (disabledDue === 'ND')

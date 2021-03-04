@@ -40,6 +40,7 @@ import StepHeader from './StepHeader'
 import StepNavigation from './StepNavigation'
 import { updateVisibleEnabledStatus } from '@/utils/license-utilities'
 import { initialSteps } from '@/utils/steps'
+import AppropriateLicenseStep from './AppropriateLicenseStep'
 
 export default {
   name: 'Stepper',
@@ -50,6 +51,7 @@ export default {
     DropdownStep,
     StepHeader,
     StepNavigation,
+    AppropriateLicenseStep,
   },
   props: {
     value: {
@@ -91,6 +93,7 @@ export default {
     stepActionComponent({ name }) {
       switch (name) {
       case 'CW': return CopyrightWaiverStep
+      case 'AL': return AppropriateLicenseStep
       case 'DD': return DropdownStep
       case 'AD': return AttributionDetailsStep
       default: return ChooserStep
@@ -100,14 +103,14 @@ export default {
       return { ...step }
     },
     isLicenseAttribute(stepName) {
-      return ['BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1
+      return ['AL', 'BY', 'NC', 'ND', 'SA'].indexOf(stepName) > -1
     },
     /**
-         * Checks if the Next button should be disabled. Next button is enabled only
-         * after the user has interacted with the step (selected radio or checked a checkbox)
-         * @param {number} id
-         * @returns {Boolean} next button's disabled status
-         */
+     * Checks if the Next button should be disabled. Next button is enabled only
+     * after the user has interacted with the step (selected radio or checked a checkbox)
+     * @param {number} id
+     * @returns {Boolean} next button's disabled status
+     */
     isNextEnabled(id) {
       return this.steps[id].selected !== undefined
     },

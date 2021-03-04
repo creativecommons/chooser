@@ -128,18 +128,31 @@ function updateVisibleEnabledStatus(stepStatusData) {
     // User uses the stepper for license selection
     if (stepStatusData.BY === false) {
       // User selects a CC0 license
-      visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
-      enabled = ['FS', 'BY', 'CW', 'AD']
+      visible = ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
+      enabled = ['AL', 'FS', 'BY', 'CW', 'AD']
       stepsDisabledDue = 'CC0'
     } else if (stepStatusData.ND) {
       // User selects an ND license: SA step is disabled
-      visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
-      enabled = ['FS', 'BY', 'NC', 'ND', 'AD']
+      visible = ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+      enabled = ['AL', 'FS', 'BY', 'NC', 'ND', 'AD']
       stepsDisabledDue = 'ND'
     } else {
-      // User selects a non-ND BY license from the stepper
-      visible = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
-      enabled = ['FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+      // User uses the stepper for license selection
+      if (stepStatusData.BY === false) {
+        // User selects a CC0 license
+        visible = ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'CW', 'AD']
+        enabled = ['AL', 'FS', 'BY', 'CW', 'AD']
+        stepsDisabledDue = 'CC0'
+      } else if (stepStatusData.ND) {
+        // User selects an ND license: SA step is disabled
+        visible = ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+        enabled = ['AL', 'FS', 'BY', 'NC', 'ND', 'AD']
+        stepsDisabledDue = 'ND'
+      } else {
+        // User selects a non-ND BY license from the stepper
+        visible = ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+        enabled = ['AL', 'FS', 'BY', 'NC', 'ND', 'SA', 'AD']
+      }
     }
   }
   return { visible, enabled, stepsDisabledDue }

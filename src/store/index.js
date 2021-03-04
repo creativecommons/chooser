@@ -18,6 +18,12 @@ export const defaultState = {
     agreed: false,
     confirmed: false,
   },
+  // confirm that cc licenses are appropriate for the user
+  appropriate: {
+    ownupagreed: false,
+    termsagreed: false,
+    nonrevocableagreed: false,
+  },
 }
 
 /**
@@ -32,6 +38,14 @@ export const toggleCopyrightCheckbox = (state, { key }) => {
 
 export const allCopyrightClausesChecked = (state) => {
   return Object.values(state.copyright).every(i => i === true)
+}
+
+export const toggleAppropriatenessValue = (state, { key }) => {
+  state.appropriate[key] = !state.appropriate[key]
+}
+
+export const allAppropriatenessQualificationsMet =  state => {
+  return Object.values(state.appropriate).every(i => i === true)
 }
 
 const createStore = (state) => {
@@ -60,6 +74,7 @@ const createStore = (state) => {
         return licenseIconsArr(state.currentLicenseAttributes)
       },
       allCopyrightClausesChecked,
+      allAppropriatenessQualificationsMet,
     },
     mutations: {
       /**
@@ -116,6 +131,7 @@ const createStore = (state) => {
         state.currentLicenseAttributes = defaultAttributes
       },
       toggleCopyrightCheckbox,
+      toggleAppropriatenessValue,
     },
   })
 }

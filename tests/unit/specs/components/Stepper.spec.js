@@ -67,7 +67,7 @@ describe('Stepper.vue', () => {
     it('has expected UI on ND step', async() => {
       await advanceStep(wrapper, { FS: false, BY: true, NC: false })
       const stepContainers = wrapper.findAll('.step-container')
-      expect(stepContainers.length).toEqual(6)
+      expect(stepContainers.length).toEqual(7)
       const activeStep = wrapper.findAll('.step-container.active')
       expect(activeStep.length).toEqual(1)
     })
@@ -75,6 +75,10 @@ describe('Stepper.vue', () => {
       await advanceStep(wrapper, { FS: true, DD: [true, 'CC0 1.0'] },
       )
     })
+  })
+  it('has expected UI on CW step after DD', async() => {
+    await advanceStep(wrapper, { FS: true, DD: [true, 'CC0 1.0'] },
+    )
   })
 
   describe('FirstStep interactions', () => {
@@ -85,19 +89,19 @@ describe('Stepper.vue', () => {
       expect(steps.at(0).classes('completed')).toBe(true)
       expect(wrapper.find('.active').classes('DD')).toBe(true)
     })
-    it('choosing No sets 6 steps visible: FS, BY, NC, ND, SA and AttributionDetails, opens BY', async () => {
+    it('choosing No sets 7 steps visible: AL, FS, BY, NC, ND, SA and AttributionDetails, opens BY', () => {
       setStepSelected(wrapper, 'FS', false)
       wrapper.find('stepnavigation-stub').vm.$emit('navigate', { direction: 'next', name: 'FS' })
-      await Vue.nextTick()
+      Vue.nextTick()
       const steps = wrapper.findAll('.step-container')
-      expect(steps.length).toEqual(6)
+      expect(steps.length).toEqual(7)
       expect(wrapper.vm.activeStepId).toEqual(1)
     })
   })
 
   describe('DropdownStep interactions', () => {
     beforeEach(async() => {
-      // setUp()
+    // setUp()
       await advanceStep(wrapper, { FS: true })
     })
     it('selecting CC0 makes 4 steps visible and opens Copyright Waiver step', async() => {
@@ -120,18 +124,19 @@ describe('Stepper.vue', () => {
       await advanceStep(wrapper, { FS: false, BY: false })
 
       const steps = wrapper.findAll('.step-container')
-      expect(steps.length).toEqual(7)
+      expect(steps.length).toEqual(8)
       const disabledSteps = wrapper.findAll('.step-container.disabled')
       expect(disabledSteps.length).toEqual(3)
       expect(wrapper.find('.NC').classes()).toContain('disabled')
       expect(wrapper.find('.ND').classes()).toContain('disabled')
       expect(wrapper.find('.SA').classes()).toContain('disabled')
     })
+
     it('selecting ND makes SA  license and clicking Next makes 3 steps visible and opens AttributionDetails step', async() => {
       await advanceStep(wrapper, { FS: false, BY: true, NC: true, ND: true })
 
       const steps = wrapper.findAll('.step-container')
-      expect(steps.length).toEqual(6)
+      expect(steps.length).toEqual(7)
       const disabledSteps = wrapper.findAll('.step-container.disabled')
       expect(disabledSteps.length).toEqual(1)
       expect(wrapper.find('.SA').classes()).toContain('disabled')
