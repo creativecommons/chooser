@@ -1,6 +1,8 @@
 module.exports = {
   root: true,
 
+  plugins: ['cypress'],
+
   env: {
     node: true,
     browser: true,
@@ -39,5 +41,6 @@ module.exports = {
     '@vue/standard',
     'prettier',
     'prettier/vue',
+    "plugin:cypress/recommended"
   ],
 }
