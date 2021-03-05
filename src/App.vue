@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header-section />
+    <header-section v-if="!isEmbedded" />
     <div
       id="site-container"
       class="container"
@@ -57,7 +57,7 @@
         </div>
       </div>
     </div>
-    <footer-section />
+    <footer-section v-if="!isEmbedded" />
     <chooser-modal
       :active-modal="openModal"
       @close="closeChooserModal"
@@ -89,6 +89,7 @@ export default {
   },
   data() {
     return {
+      isEmbedded: process.env.VUE_APP_CC_OUTPUT === 'embedded' ?? false,
       currentStepId: 0,
       openModal: null,
       showLicense: false,
