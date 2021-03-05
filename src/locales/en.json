@@ -35,7 +35,7 @@
       "own-up-agreement": "I own or have authority to license the work.",
       "terms-agreement": "I have read and understand the terms of the license.",
       "non-revocable-agreement": "I understand that CC licensing is not revocable."
-     
+
     },
     "BY": {
       "heading": "Attribution",
@@ -166,27 +166,27 @@
     },
     "what-icons-mean": {
       "heading": "What do the Icons Mean?",
-      "text": "<p>The icons represent key features of the different CC license options:</p>",
+      "text": "The icons represent key features of the different CC license options:",
       "BY": {
-        "text": "<p>Credit must be given to you, the creator.</p>",
+        "text": "Credit must be given to you, the creator.",
         "long-name": "Attribution Required",
         "icon-alt-text": "Attribution Required Icon",
         "short-name": "(BY)"
       },
       "ND": {
-        "text": "<p>No derivatives or adaptations of your work are permitted.</p>",
+        "text": "No derivatives or adaptations of your work are permitted.",
         "long-name": "Modifying Not Allowed",
         "icon-alt-text": "Modifying Not Allowed Icon",
         "short-name": "(ND/ NoDerivatives)"
       },
       "NC": {
-        "text": "<p>Only noncommercial use of your work is permitted.</p>",
+        "text": "Only noncommercial use of your work is permitted.",
         "long-name": "Commercial Use Not Allowed",
         "icon-alt-text": "Commercial Use Not Allowed Icon",
         "short-name": "(NC/ NonCommercial)"
       },
       "SA": {
-        "text": "<p>Adaptations must be shared under the same terms.</p>",
+        "text": "Adaptations must be shared under the same terms.",
         "long-name": "Distributed on Same Terms",
         "icon-alt-text": "Distributed on Same Terms Icon",
         "short-name": "(SA/ ShareAlike)"
