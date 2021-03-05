@@ -1,3 +1,9 @@
+// type definitions for Cypress object "cy"
+/// <reference types="cypress" />
+
+// type definitions for custom commands like "createDefaultTodos"
+/// <reference types="../support/commands.js" />
+
 /* This Source Code Form is subject to the terms of the Creative Commons
  * License Chooser
 */
@@ -47,9 +53,14 @@ describe('Attribution Details Step.vue', () => {
       cy.visit('/')
       cy.makeAChoice('.FS', 'no')
       cy.clickNext()
+
+      // Appropriate license step
+      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
+      cy.clickNext()
+
       cy.makeAChoice('.BY', 'yes')
       cy.hasRecommendedLicense('CC BY 4.0')
-      cy.hasStepsCount(6)
+      cy.hasStepsCount(7)
       cy.clickNext()
       cy.makeAChoice('.NC', 'yes')
       cy.clickNext()
@@ -68,6 +79,7 @@ describe('Attribution Details Step.vue', () => {
       cy.visit('/')
       cy.makeAChoice('.FS', 'yes')
       cy.clickNext()
+
       cy.get('select').select('CC0 1.0')
       cy.hasRecommendedLicense('CC0 1.0 Universal')
       cy.hasStepsCount(4)
