@@ -57,7 +57,7 @@ To update the dist bundle, run ```$ npm run build```. This will also automatical
 
 ## Output Modes
 
-The site can be built in two different modes: `embedded` and `standalone`. `Embedded` mode removes the header and foter from the application, resulting in the following appearance:
+The site can be built in two different modes: `embedded` and `standalone`. `Embedded` mode removes the header and footer from the application, resulting in the following appearance:
 
 <img src="static/embedded-screenshot.png" alt="Application built in embedded mode">
 
