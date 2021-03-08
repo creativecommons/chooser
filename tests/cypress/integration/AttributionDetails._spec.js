@@ -109,6 +109,31 @@ describe('Attribution Details Step.vue', () => {
     })
   })
 
+  describe('Year Of Creation Input field available or not', () => {
+    it('not visible if the license is not CC-BY type', () => {
+      cy.visit('/')
+      cy.makeAChoice('.FS', 'yes')
+      cy.clickNext()
+      cy.get('select').select('CC0 1.0')
+      cy.hasRecommendedLicense('CC0 1.0 Universal')
+      cy.hasStepsCount(4)
+      cy.clickNext()
+      cy.waiveCopyright()
+      cy.clickNext()
+      cy.missingInputField(5)
+    })
+    it('visible if the license is of type CC-BY', () => {
+      cy.visit('/')
+      cy.makeAChoice('.FS', 'yes')
+      cy.clickNext()
+      cy.get('select').select('CC BY 4.0')
+      cy.hasRecommendedLicense('Attribution 4.0 International')
+      cy.hasStepsCount(3)
+      cy.clickNext()
+      cy.visibleInputField(5)
+    })
+  })
+
   describe('Attribution details are updated correctly', () => {
     it('When the user adds information in the attribution details, the license code is updated accordingly', () => {
       cy.visit('/')
@@ -126,6 +151,16 @@ describe('Attribution Details Step.vue', () => {
       cy.selectInputField(4, 'https://creativecommons.org ')
       cy.valueOfInputField(1, '[property="dct:title"]')
       cy.valueOfInputField(2, '[property="cc:attributionName"]')
+    })
+    it('When the user adds information in the attribution details, the year of Creation field is updated accordingly', () => {
+      cy.clickBack()
+      cy.clickBack()
+      cy.get('select').select('CC BY 4.0')
+      cy.hasRecommendedLicense('Attribution 4.0 International')
+      cy.hasStepsCount(3)
+      cy.clickNext()
+      cy.selectInputField(5, '2021')
+      cy.valueOfInputField(5, '.license-text > :nth-child(2)')
     })
   })
 })
