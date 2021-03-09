@@ -3,6 +3,23 @@
 */
 
 describe('Stepper.vue', () => {
+  it('Clicking the info button', () => {
+    cy.visit('/')
+    cy.makeAChoice('.FS', 'yes')
+    cy.clickNext()
+    cy.get('select').select('CC0 1.0')
+    cy.hasRecommendedLicense('CC0 1.0 Universal')
+    cy.hasStepsCount(4)
+    cy.clickNext()
+    cy.waiveCopyright()
+    cy.clickNext()
+    cy.hasLicenseInAttributionCode(' CC0 1.0 ')
+    cy.missingModal()
+    cy.clickInfo()
+    cy.openModal()
+    cy.clickClose()
+    cy.missingModal()
+  })
   describe('User can select licenses using the dropdown', () => {
     it('Selecting CC0', () => {
       cy.visit('/')
