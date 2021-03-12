@@ -19,6 +19,10 @@ project documentation. If you cannot find the documentation you're
 looking for, please file a GitHub issue with details of what
 you'd like to see documented.
 
+## Workflow of the App
+
+![Workflow Diagram](docs/img/workflow.jpeg)
+
 ## How to Contribute
 
 Please follow the processes in our general [Contributing Code][contributing]
