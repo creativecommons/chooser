@@ -19,7 +19,7 @@ describe('ChooserStep.vue', () => {
   })
 
   // It's only for one state, but this should be enough to test if the logic works properly
-  it('Check that all computed i18n props return correct values', async () => {
+  it('Check that all computed i18n props return correct values', async() => {
     await wrapper.setProps({
       disabledDue: '',
       enabled: true,
@@ -37,7 +37,7 @@ describe('ChooserStep.vue', () => {
     expect(wrapper.vm.yesText).toBe('stepper.BY.selected')
   })
 
-  it('Check that all computed i18n props return correct values after true selected', async () => {
+  it('Check that all computed i18n props return correct values after true selected', async() => {
     await wrapper.setProps({
       disabledDue: undefined,
       enabled: true,
@@ -56,7 +56,7 @@ describe('ChooserStep.vue', () => {
     expect(wrapper.vm.yesText).toBe('stepper.BY.selected')
   })
 
-  it('Check that all computed i18n props return correct values after false selected', async () => {
+  it('Check that all computed i18n props return correct values after false selected', async() => {
     await wrapper.setProps({
       disabledDue: undefined,
       enabled: true,
@@ -85,7 +85,7 @@ describe('ChooserStep.vue', () => {
     expect(wrapper.vm.radio).toBe('no')
   })
 
-  it('props:selected true', async () => {
+  it('props:selected true', async() => {
     await wrapper.setProps({
       selected: true,
       name: 'FS',
