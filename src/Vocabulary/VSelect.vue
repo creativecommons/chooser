@@ -1,12 +1,6 @@
 <template>
-  <div
-    class="control"
-    :class="{ 'is-expanded': expanded }"
-  >
-    <span
-      class="select"
-      :class="spanClasses"
-    >
+  <div class="control" :class="{ 'is-expanded': expanded }">
+    <span class="select" :class="spanClasses">
       <select
         ref="select"
         v-model="computedValue"
@@ -15,12 +9,7 @@
         @focus="$emit('focus', $event)"
       >
         <template v-if="placeholder">
-          <option
-            v-if="computedValue == null"
-            :value="null"
-            disabled
-            hidden
-          >
+          <option v-if="computedValue == null" :value="null" disabled hidden>
             {{ placeholder }}
           </option>
         </template>
@@ -47,34 +36,38 @@ export default {
     return {
       selected: this.value,
       elementRef: 'select',
-    }
+    };
   },
   computed: {
     computedValue: {
       get() {
-        return this.selected
+        return this.selected;
       },
       set(value) {
-        this.selected = value
-        this.$emit('input', value)
+        this.selected = value;
+        this.$emit('input', value);
       },
     },
     spanClasses() {
-      return [this.size, this.statusType, {
-        'is-fullwidth': this.expanded,
-        'is-empty': this.selected === null,
-      }]
+      return [
+        this.size,
+        this.statusType,
+        {
+          'is-fullwidth': this.expanded,
+          'is-empty': this.selected === null,
+        },
+      ];
     },
   },
   watch: {
     /**
-         * When v-model is changed:
-         *   1. Set the selected option.
-         *   2. If it's invalid, validate again.
-         */
+     * When v-model is changed:
+     *   1. Set the selected option.
+     *   2. If it's invalid, validate again.
+     */
     value(value) {
-      this.selected = value
+      this.selected = value;
     },
   },
-}
+};
 </script>

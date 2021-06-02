@@ -7,17 +7,12 @@
     class="license-text"
   >
     <template #workTitle>
-      <component
-        :is="workUrl && isWeb ? 'a' : 'span'"
-        v-bind="workProps"
-      >
+      <component :is="workUrl && isWeb ? 'a' : 'span'" v-bind="workProps">
         {{ workTitle }}
       </component>
     </template>
     <template #yearOfCreation>
-      <component
-        :is="'span'"
-      >
+      <component :is="'span'">
         {{ yearOfCreation }}
       </component>
     </template>
@@ -44,23 +39,22 @@
         rel="license noopener noreferrer"
       >
         {{ attributionType === 'short' ? shortName : fullName }}
-        <LicenseIcons
-          :icons-arr="iconsList"
-          :size="20"
-          :is-png="true"
-        />
+        <LicenseIcons :icons-arr="iconsList" :size="20" :is-png="true" />
       </a>
       <span v-else>{{ licenseName }}.</span>
     </template>
     <template #print-instructions>
-      <span v-if="!isWeb">{{ $t('license-use.print.label', { linkToLicenseDeed: licenseUrl('print') }) }}</span>
+      <span v-if="!isWeb">{{
+        $t('license-use.print.label', {
+          linkToLicenseDeed: licenseUrl('print'),
+        })
+      }}</span>
     </template>
   </i18n>
 </template>
 <script>
-
-import { mapGetters, mapState } from 'vuex'
-import LicenseIcons from './LicenseIcons'
+import { mapGetters, mapState } from 'vuex';
+import LicenseIcons from './LicenseIcons';
 
 export default {
   name: 'LicenseText',
@@ -72,7 +66,7 @@ export default {
       type: String,
       default: 'web',
       validate: function(val) {
-        return ['web', 'print'].indexOf(val) > -1
+        return ['web', 'print'].indexOf(val) > -1;
       },
     },
   },
@@ -80,69 +74,71 @@ export default {
     ...mapGetters(['shortName', 'fullName', 'licenseUrl', 'iconsList']),
     ...mapState(['attributionDetails', 'attributionType']),
     licensedMarkedString() {
-      return this.shortName === 'CC0 1.0' ? 'license-use.richtext.marked-text' : 'license-use.richtext.licensed-text'
+      return this.shortName === 'CC0 1.0'
+        ? 'license-use.richtext.marked-text'
+        : 'license-use.richtext.licensed-text';
     },
     isCreatorLink() {
-      return this.creatorName && this.creatorProfileUrl && this.isWeb
+      return this.creatorName && this.creatorProfileUrl && this.isWeb;
     },
     licenseName() {
-      return this.attributionType === 'short' ? this.shortName : this.fullName
+      return this.attributionType === 'short' ? this.shortName : this.fullName;
     },
     byString() {
-      return this.creatorName ? this.$t('license-use.richtext.by') : ''
+      return this.creatorName ? this.$t('license-use.richtext.by') : '';
     },
     creatorProps() {
-      const creatorAttrs = { property: 'cc:attributionName' }
+      const creatorAttrs = { property: 'cc:attributionName' };
       if (this.isCreatorLink) {
-        creatorAttrs.href = this.creatorProfileUrl
-        creatorAttrs.rel = 'cc:attributionURL noopener noreferrer'
-        creatorAttrs.target = '_blank'
+        creatorAttrs.href = this.creatorProfileUrl;
+        creatorAttrs.rel = 'cc:attributionURL noopener noreferrer';
+        creatorAttrs.target = '_blank';
       }
-      return creatorAttrs
+      return creatorAttrs;
     },
     creatorName() {
-      return this.attributionDetails.creatorName
+      return this.attributionDetails.creatorName;
     },
     creatorProfileUrl() {
-      const { creatorProfileUrl } = this.attributionDetails
+      const { creatorProfileUrl } = this.attributionDetails;
       if (creatorProfileUrl && !creatorProfileUrl.startsWith('http')) {
-        return `http://${creatorProfileUrl}`
+        return `http://${creatorProfileUrl}`;
       }
-      return this.attributionDetails.creatorProfileUrl
+      return this.attributionDetails.creatorProfileUrl;
     },
     workTitle() {
       return this.attributionDetails.workTitle
         ? `${this.attributionDetails.workTitle}`
-        : this.$t('license-use.richtext.workTitle')
+        : this.$t('license-use.richtext.workTitle');
     },
     yearOfCreation() {
       return this.attributionDetails.yearOfCreation
         ? `© ${this.attributionDetails.yearOfCreation}`
-        : ''
+        : '';
     },
     workUrl() {
-      const { workUrl } = this.attributionDetails
+      const { workUrl } = this.attributionDetails;
       if (workUrl && !workUrl.startsWith('http')) {
-        return `http://${workUrl}`
+        return `http://${workUrl}`;
       }
-      return workUrl
+      return workUrl;
     },
     workProps() {
-      const workAttrs = {}
-      const { workTitle } = this.attributionDetails
+      const workAttrs = {};
+      const { workTitle } = this.attributionDetails;
       if (workTitle) {
-        workAttrs.property = 'dct:title'
+        workAttrs.property = 'dct:title';
       }
       if (this.workUrl) {
-        workAttrs.href = this.workUrl
-        workAttrs.rel = 'cc:attributionURL noopener noreferrer'
-        workAttrs.target = '_blank'
+        workAttrs.href = this.workUrl;
+        workAttrs.rel = 'cc:attributionURL noopener noreferrer';
+        workAttrs.target = '_blank';
       }
-      return workAttrs
+      return workAttrs;
     },
     isWeb() {
-      return this.textFor === 'web'
+      return this.textFor === 'web';
     },
   },
-}
+};
 </script>

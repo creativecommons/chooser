@@ -1,28 +1,28 @@
-import { createLocalVue, mount } from '@vue/test-utils'
-import Vuex from 'vuex'
-import DropdownStep from '@/components/DropdownStep'
+import { createLocalVue, mount } from '@vue/test-utils';
+import Vuex from 'vuex';
+import DropdownStep from '@/components/DropdownStep';
 
-const localVue = createLocalVue()
+const localVue = createLocalVue();
 
-localVue.use(Vuex)
+localVue.use(Vuex);
 
 describe('DropdownStep', () => {
-  let wrapper, store, getters, mutations
+  let wrapper, store, getters, mutations;
 
   beforeEach(() => {
     getters = {
       fullName: jest.fn().mockReturnValue(undefined),
       shortName: jest.fn().mockReturnValue(undefined),
-    }
+    };
 
     mutations = {
       updateAttributesFromShort: jest.fn(),
-    }
+    };
 
     store = new Vuex.Store({
       getters,
       mutations,
-    })
+    });
 
     wrapper = mount(DropdownStep, {
       localVue,
@@ -34,23 +34,23 @@ describe('DropdownStep', () => {
         $t: key => key,
       },
       store,
-    })
-  })
+    });
+  });
 
   afterEach(() => {
-    wrapper.destroy()
-  })
+    wrapper.destroy();
+  });
 
   it('Checks conditional rendering of markup: status is active', () => {
-    expect(wrapper.find('.step-actions').exists()).toBeTruthy()
-  })
+    expect(wrapper.find('.step-actions').exists()).toBeTruthy();
+  });
 
   it('Checks methods: updateSelected', () => {
-    const options = wrapper.find('select').findAll('option')
+    const options = wrapper.find('select').findAll('option');
 
-    options.at(1).setSelected()
-    const emittedChange = wrapper.emitted().change[0][0]
-    expect(emittedChange.name).toEqual('DD')
-    expect(emittedChange.selected).toEqual(true)
-  })
-})
+    options.at(1).setSelected();
+    const emittedChange = wrapper.emitted().change[0][0];
+    expect(emittedChange.name).toEqual('DD');
+    expect(emittedChange.selected).toEqual(true);
+  });
+});
