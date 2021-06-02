@@ -8,17 +8,16 @@ module.exports = {
     browser: true,
   },
 
-  ignorePatterns: ['docs/',],
+  ignorePatterns: ['docs/'],
 
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     indent: ['error', 2],
-    'comma-dangle': ["error", "always-multiline"],
+    'comma-dangle': ['error', 'always-multiline'],
     'space-before-function-paren': ['warn', 'never'],
     'vue/require-default-prop': 'off',
     'vue/no-v-html': 'off',
-    'vue/html-indent': ['error', 2],
   },
 
   parserOptions: {
@@ -26,7 +25,6 @@ module.exports = {
   },
 
   overrides: [
-
     {
       files: [
         '**/__tests__/*.{j,t}s?(x)',
@@ -43,6 +41,6 @@ module.exports = {
     '@vue/standard',
     'prettier',
     'prettier/vue',
-    "plugin:cypress/recommended"
+    'plugin:cypress/recommended',
   ],
-}
+};
