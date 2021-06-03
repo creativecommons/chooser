@@ -3,17 +3,13 @@
     <nav class="navbar">
       <div class="container">
         <div class="navbar-brand">
-          <a
-            class="logo"
-            aria-current="page"
-            href="/"
-          >
+          <a class="logo" aria-current="page" href="/">
             <img
               src="../assets/chooser.svg"
               alt="Creative Commons License chooser"
               height="40"
               width="169"
-            >
+            />
           </a>
           <a
             role="button"
@@ -44,24 +40,24 @@
 <script>
 export default {
   name: 'HeaderSection',
-}
+};
 </script>
 
 <style lang="scss">
 #app .navbar {
-    padding: 0.5rem 0 0;
+  padding: 0.5rem 0 0;
 }
 .navbar-burger {
-    background-color:white;
+  background-color: white;
 }
 .navbar-item.navbar-item-feedback {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #787878;
-    transition: color 300ms ease;
-    &:hover {
-        color: #fb7729;
-        background-color: white;
-    }
+  font-size: 1rem;
+  font-weight: bold;
+  color: #787878;
+  transition: color 300ms ease;
+  &:hover {
+    color: #fb7729;
+    background-color: white;
+  }
 }
 </style>

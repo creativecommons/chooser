@@ -1,56 +1,56 @@
 /* This Source Code Form is subject to the terms of the Creative Commons
  * License Chooser
-*/
+ */
 
 describe('Stepper.vue', () => {
   it('Clicking the info button', () => {
-    cy.visit('/')
-    cy.makeAChoice('.FS', 'yes')
-    cy.clickNext()
-    cy.get('select').select('CC0 1.0')
-    cy.hasRecommendedLicense('CC0 1.0 Universal')
-    cy.hasStepsCount(4)
-    cy.clickNext()
-    cy.waiveCopyright()
-    cy.clickNext()
-    cy.hasLicenseInAttributionCode(' CC0 1.0 ')
-    cy.missingModal()
-    cy.clickInfo()
-    cy.openModal()
-    cy.clickClose()
-    cy.missingModal()
-  })
+    cy.visit('/');
+    cy.makeAChoice('.FS', 'yes');
+    cy.clickNext();
+    cy.get('select').select('CC0 1.0');
+    cy.hasRecommendedLicense('CC0 1.0 Universal');
+    cy.hasStepsCount(4);
+    cy.clickNext();
+    cy.waiveCopyright();
+    cy.clickNext();
+    cy.hasLicenseInAttributionCode(' CC0 1.0 ');
+    cy.missingModal();
+    cy.clickInfo();
+    cy.openModal();
+    cy.clickClose();
+    cy.missingModal();
+  });
   describe('User can select licenses using the dropdown', () => {
     it('Selecting CC0', () => {
-      cy.visit('/')
-      cy.makeAChoice('.FS', 'yes')
-      cy.clickNext()
-      cy.get('select').select('CC0 1.0')
-      cy.hasRecommendedLicense('CC0 1.0 Universal')
-      cy.hasStepsCount(4)
-      cy.clickNext()
-      cy.waiveCopyright()
-      cy.clickNext()
-      cy.hasLicenseInAttributionCode(' CC0 1.0 ')
-    })
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'yes');
+      cy.clickNext();
+      cy.get('select').select('CC0 1.0');
+      cy.hasRecommendedLicense('CC0 1.0 Universal');
+      cy.hasStepsCount(4);
+      cy.clickNext();
+      cy.waiveCopyright();
+      cy.clickNext();
+      cy.hasLicenseInAttributionCode(' CC0 1.0 ');
+    });
 
     it('Selecting CC BY-NC-ND', () => {
-      cy.visit('/')
-      cy.makeAChoice('.FS', 'yes')
-      cy.clickNext()
-      cy.get('select').select('CC BY-NC-ND 4.0')
-      cy.hasRecommendedLicense('CC BY-NC-ND 4.0')
-      cy.hasStepsCount(3)
-      cy.clickNext()
-      cy.hasLicenseInAttributionCode('CC BY-NC-ND 4.0')
-    })
-  })
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'yes');
+      cy.clickNext();
+      cy.get('select').select('CC BY-NC-ND 4.0');
+      cy.hasRecommendedLicense('CC BY-NC-ND 4.0');
+      cy.hasStepsCount(3);
+      cy.clickNext();
+      cy.hasLicenseInAttributionCode('CC BY-NC-ND 4.0');
+    });
+  });
 
   describe('User can select a license using the steps', () => {
     it('Selecting CC0', () => {
-      cy.visit('/')
-      cy.makeAChoice('.FS', 'no')
-      cy.clickNext()
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'no');
+      cy.clickNext();
 
       cy.makeAChoice('.BY', 'no')
       cy.hasRecommendedLicense('CC0 1.0 Universal')
@@ -70,9 +70,9 @@ describe('Stepper.vue', () => {
     })
 
     it('Selecting CC BY', () => {
-      cy.visit('/')
-      cy.makeAChoice('.FS', 'no')
-      cy.clickNext()
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'no');
+      cy.clickNext();
 
       cy.makeAChoice('.BY', 'yes')
       cy.hasRecommendedLicense('CC BY 4.0')
@@ -98,9 +98,9 @@ describe('Stepper.vue', () => {
     })
 
     it('Selecting CC BY-NC-ND', () => {
-      cy.visit('/')
-      cy.makeAChoice('.FS', 'no')
-      cy.clickNext()
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'no');
+      cy.clickNext();
 
       cy.makeAChoice('.BY', 'yes')
       cy.hasRecommendedLicense('CC BY 4.0')
@@ -123,9 +123,9 @@ describe('Stepper.vue', () => {
     })
 
     it('Can select CC BY-ND', () => {
-      cy.visit('/')
-      cy.makeAChoice('.FS', 'no')
-      cy.clickNext()
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'no');
+      cy.clickNext();
 
 
       cy.makeAChoice('.BY', 'yes')
@@ -190,20 +190,20 @@ describe('Stepper.vue', () => {
     })
 
     it('User can select CCO using the License Dropdown, go back and select CC BY-NC-SA using steps', () => {
-      cy.visit('/')
-      cy.makeAChoice('.FS', 'yes')
-      cy.clickNext()
-      cy.get('select').select('CC0 1.0')
-      cy.hasRecommendedLicense('CC0 1.0 Universal')
-      cy.clickNext()
-      cy.waiveCopyright()
-      cy.clickNext()
-      cy.hasLicenseInAttributionCode(' CC0 1.0 ')
-      cy.clickBack()
-      cy.clickBack()
-      cy.clickBack()
-      cy.makeAChoice('.FS', 'no')
-      cy.clickNext()
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'yes');
+      cy.clickNext();
+      cy.get('select').select('CC0 1.0');
+      cy.hasRecommendedLicense('CC0 1.0 Universal');
+      cy.clickNext();
+      cy.waiveCopyright();
+      cy.clickNext();
+      cy.hasLicenseInAttributionCode(' CC0 1.0 ');
+      cy.clickBack();
+      cy.clickBack();
+      cy.clickBack();
+      cy.makeAChoice('.FS', 'no');
+      cy.clickNext();
 
       // Attribution
       cy.makeAChoice('.BY', 'yes')
@@ -231,20 +231,26 @@ describe('Stepper.vue', () => {
     })
 
     it('User can start the selection process over by clicking "Start again" Button', () => {
-      cy.get('button').contains('Start again').click()
-      cy.get('.right-column').find('.recommended-card').should('not.exist')
-      cy.get('.right-column').find('.license-use-card').should('not.exist')
-      cy.get('.BY').should('have.class', 'inactive')
-      cy.get('.NC').should('have.class', 'inactive')
-      cy.get('.ND').should('have.class', 'inactive')
-      cy.get('.SA').should('have.class', 'inactive')
-    })
+      cy.get('button')
+        .contains('Start again')
+        .click();
+      cy.get('.right-column')
+        .find('.recommended-card')
+        .should('not.exist');
+      cy.get('.right-column')
+        .find('.license-use-card')
+        .should('not.exist');
+      cy.get('.BY').should('have.class', 'inactive');
+      cy.get('.NC').should('have.class', 'inactive');
+      cy.get('.ND').should('have.class', 'inactive');
+      cy.get('.SA').should('have.class', 'inactive');
+    });
 
     it('Chooser auto-scrolls to "Mark Your Work" section when "Done" is clicked', () => {
-      cy.visit('/')
-      cy.viewport('iphone-x')
-      cy.makeAChoice('.FS', 'no')
-      cy.clickNext()
+      cy.visit('/');
+      cy.viewport('iphone-x');
+      cy.makeAChoice('.FS', 'no');
+      cy.clickNext();
 
       // Attribution
       cy.makeAChoice('.BY', 'yes')
