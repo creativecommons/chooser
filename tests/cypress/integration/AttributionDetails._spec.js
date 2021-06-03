@@ -51,39 +51,39 @@ describe('Attribution Details Step.vue', () => {
   describe('Mark Your Work section correctly shows the license in the correct format:', () => {
     it('When the user selects "CC BY", the license is shown correctly in all tabs', () => {
       // First step
-      cy.visit('/')
-      cy.makeAChoice('.FS', 'no')
-      cy.clickNext()
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'no');
+      cy.clickNext();
 
       // Attribution step
-      cy.makeAChoice('.BY', 'yes')
-      cy.hasRecommendedLicense('CC BY 4.0')
-      cy.hasStepsCount(7)
-      cy.clickNext()
-      
+      cy.makeAChoice('.BY', 'yes');
+      cy.hasRecommendedLicense('CC BY 4.0');
+      cy.hasStepsCount(7);
+      cy.clickNext();
+
       // Non-commercial step
-      cy.makeAChoice('.NC', 'yes')
-      cy.clickNext()
+      cy.makeAChoice('.NC', 'yes');
+      cy.clickNext();
 
       // No-derivatives step
-      cy.makeAChoice('.ND', 'yes')
-      cy.clickNext()
+      cy.makeAChoice('.ND', 'yes');
+      cy.clickNext();
 
       // Share-alike step
-      cy.makeAChoice('.SA', 'yes')
-      cy.get('.AD').should('be.visible')
-      cy.clickNext()
+      cy.makeAChoice('.SA', 'yes');
+      cy.get('.AD').should('be.visible');
+      cy.clickNext();
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
-      cy.clickNext()
+      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.clickNext();
 
       // Ensure license is correct
-      cy.hasLicenseInAttributionCode('CC BY 4.0')
-      cy.headerTitle('CC BY 4.0')
-      cy.readableStringTitle('BY')
-      cy.licenseText(' CC BY 4.0')
-    })
+      cy.hasLicenseInAttributionCode('CC BY 4.0');
+      cy.headerTitle('CC BY 4.0');
+      cy.readableStringTitle('BY');
+      cy.licenseText(' CC BY 4.0');
+    });
 
     it('When the user changes attribution type, the license changes from Short to Full, accordingly', () => {
       cy.visit('/');
