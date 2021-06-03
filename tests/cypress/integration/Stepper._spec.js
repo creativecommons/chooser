@@ -52,11 +52,6 @@ describe('Stepper.vue', () => {
       cy.makeAChoice('.FS', 'no')
       cy.clickNext()
 
-      // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
-      cy.clickNext()
-
-
       cy.makeAChoice('.BY', 'no')
       cy.hasRecommendedLicense('CC0 1.0 Universal')
       cy.hasStepsCount(8)
@@ -66,6 +61,11 @@ describe('Stepper.vue', () => {
       cy.get('.SA').should('have.class', 'disabled')
       cy.waiveCopyright()
       cy.clickNext()
+
+      // Appropriate license step
+      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
+      cy.clickNext()
+
       cy.hasLicenseInAttributionCode(' CC0 1.0 ')
     })
 
@@ -74,21 +74,26 @@ describe('Stepper.vue', () => {
       cy.makeAChoice('.FS', 'no')
       cy.clickNext()
 
-      // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
-      cy.clickNext()
-
       cy.makeAChoice('.BY', 'yes')
       cy.hasRecommendedLicense('CC BY 4.0')
       cy.hasStepsCount(7)
       cy.clickNext()
+
       cy.makeAChoice('.NC', 'yes')
       cy.clickNext()
+
       cy.makeAChoice('.ND', 'yes')
       cy.clickNext()
+
       cy.makeAChoice('.SA', 'yes')
+
       cy.get('.AD').should('be.visible')
       cy.clickNext()
+
+      // Appropriate license step
+      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
+      cy.clickNext()
+
       cy.hasLicenseInAttributionCode('CC BY 4.0')
     })
 
@@ -97,19 +102,22 @@ describe('Stepper.vue', () => {
       cy.makeAChoice('.FS', 'no')
       cy.clickNext()
 
+      cy.makeAChoice('.BY', 'yes')
+      cy.hasRecommendedLicense('CC BY 4.0')
+      cy.clickNext()
+
+      cy.makeAChoice('.NC', 'no')
+      cy.hasRecommendedLicense('CC BY-NC 4.0')
+      cy.clickNext()
+
+      cy.makeAChoice('.ND', 'no')
+      cy.hasRecommendedLicense('CC BY-NC-ND 4.0')
+      cy.clickNext()
+
       // Appropriate license step
       cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
       cy.clickNext()
 
-      cy.makeAChoice('.BY', 'yes')
-      cy.hasRecommendedLicense('CC BY 4.0')
-      cy.clickNext()
-      cy.makeAChoice('.NC', 'no')
-      cy.hasRecommendedLicense('CC BY-NC 4.0')
-      cy.clickNext()
-      cy.makeAChoice('.ND', 'no')
-      cy.hasRecommendedLicense('CC BY-NC-ND 4.0')
-      cy.clickNext()
       cy.get('.SA').should('have.class', 'disabled')
       cy.hasLicenseInAttributionCode('CC BY-NC-ND 4.0')
     })
@@ -119,18 +127,22 @@ describe('Stepper.vue', () => {
       cy.makeAChoice('.FS', 'no')
       cy.clickNext()
 
-      // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
-      cy.clickNext()
 
       cy.makeAChoice('.BY', 'yes')
       cy.hasRecommendedLicense('CC BY 4.0')
       cy.clickNext()
+
       cy.makeAChoice('.NC', 'yes')
       cy.clickNext()
+
       cy.makeAChoice('.ND', 'no')
       cy.hasRecommendedLicense('CC BY-ND 4.0')
       cy.clickNext()
+
+      // Appropriate license step
+      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
+      cy.clickNext()
+
       cy.get('.SA').should('have.class', 'disabled')
       cy.hasLicenseInAttributionCode('CC BY-ND 4.0')
     })
