@@ -97,16 +97,16 @@ export default {
   methods: {
     stepActionComponent({ name }) {
       switch (name) {
-        case 'CW':
-          return CopyrightWaiverStep;
-        case 'AL':
-          return AppropriateLicenseStep;
-        case 'DD':
-          return DropdownStep;
-        case 'AD':
-          return AttributionDetailsStep;
-        default:
-          return ChooserStep;
+      case 'CW':
+        return CopyrightWaiverStep;
+      case 'AL':
+        return AppropriateLicenseStep;
+      case 'DD':
+        return DropdownStep;
+      case 'AD':
+        return AttributionDetailsStep;
+      default:
+        return ChooserStep;
       }
     },
     stepActionProps(step) {
