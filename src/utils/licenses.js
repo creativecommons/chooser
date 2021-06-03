@@ -96,4 +96,4 @@ export const LICENSES = {
     URL: 'http://creativecommons.org/licenses/by-nd/4.0/',
     ICONS: ['cc', 'by', 'nd'],
   },
-}
+};

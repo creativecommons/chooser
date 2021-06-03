@@ -1,6 +1,6 @@
 <template>
   <app-modal
-    v-if="activeModal!==null"
+    v-if="activeModal !== null"
     :title="$t(`help.${modals[activeModal]}.heading`)"
     @close="closeModal"
   >
@@ -9,15 +9,10 @@
         v-if="isSimpleModal(activeModal)"
         :class="['modal-content', `modal-${activeModal}`]"
       >
-        <article
-          v-html="$t(`help.${modals[activeModal]}.text`)"
-        />
+        <article v-html="$t(`help.${modals[activeModal]}.text`)" />
       </section>
 
-      <section
-        v-if="activeModal === 2"
-        class="modal-content modal-2"
-      >
+      <section v-if="activeModal === 2" class="modal-content modal-2">
         <p>
           {{ $t('help.what-icons-mean.text') }}
         </p>
@@ -26,7 +21,7 @@
             <img
               src="../assets/license-icons/by.svg"
               :alt="$t('help.what-icons-mean.BY.icon-alt-text')"
-            >
+            />
             <h6 class="b-header">
               {{ $t('help.what-icons-mean.BY.long-name') }}
             </h6>
@@ -41,7 +36,7 @@
             <img
               src="../assets/license-icons/nd.svg"
               :alt="$t('help.what-icons-mean.ND.icon-alt-text')"
-            >
+            />
             <h6 class="b-header">
               {{ $t('help.what-icons-mean.ND.long-name') }}
             </h6>
@@ -56,7 +51,7 @@
             <img
               src="../assets/license-icons/nc.svg"
               :alt="$t('help.what-icons-mean.NC.icon-alt-text')"
-            >
+            />
             <h6 class="b-header">
               {{ $t('help.what-icons-mean.NC.long-name') }}
             </h6>
@@ -71,7 +66,7 @@
             <img
               src="../assets/license-icons/sa.svg"
               :alt="$t('help.what-icons-mean.SA.icon-alt-text')"
-            >
+            />
             <h6 class="b-header">
               {{ $t('help.what-icons-mean.SA.long-name') }}
             </h6>
@@ -84,24 +79,16 @@
           </div>
         </div>
       </section>
-      <section
-        v-if="activeModal === 5"
-        class="modal-content modal-5"
-      >
+      <section v-if="activeModal === 5" class="modal-content modal-5">
         <article class="columns-auto">
-          <div
-            v-html="$t('help.six-cc-licenses.text')"
-          />
+          <div v-html="$t('help.six-cc-licenses.text')" />
           <img
             alt="license openness scale"
             src="../assets/license-openness-scale.png"
-          >
+          />
         </article>
       </section>
-      <section
-        v-if="activeModal === 6"
-        class="modal-content modal-6"
-      >
+      <section v-if="activeModal === 6" class="modal-content modal-6">
         <article>
           <p v-html="$t('help.how-licenses-communicated.text')" />
           <div class="license-communication">
@@ -136,7 +123,7 @@
 </template>
 
 <script>
-import LicenseIcons from './LicenseIcons'
+import LicenseIcons from './LicenseIcons';
 
 export default {
   name: 'ChooserModal',
@@ -162,167 +149,168 @@ export default {
         'what-free-culture-license',
         'look-earlier-license-ver',
       ],
-    }
+    };
   },
   methods: {
     isSimpleModal(number) {
-      return ![2, 5, 6].includes(number)
+      return ![2, 5, 6].includes(number);
     },
     closeModal() {
-      this.openModal = null
-      this.$emit('close')
+      this.openModal = null;
+      this.$emit('close');
     },
   },
-}
+};
 </script>
 
 <style lang="scss">
-
 .modal {
-    --h-padding: 2rem;
-    --v-padding: 2.5rem;
+  --h-padding: 2rem;
+  --v-padding: 2.5rem;
 
-    display: block;
-    overflow-y: hidden;
+  display: block;
+  overflow-y: hidden;
 
-    .modal-header {
-        background-color: #f5f5f5;
-        color: #333333;
-        font-size: 1.5rem;
-        border-bottom: 1px solid #dbdbdb;
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
+  .modal-header {
+    background-color: #f5f5f5;
+    color: #333333;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #dbdbdb;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .modal-card-foot {
+    align-items: center;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: var(--h-padding);
+    padding-right: var(--h-padding);
+    width: 100%;
+  }
+
+  .modal-content {
+    padding-left: var(--h-padding);
+    padding-right: var(--h-padding);
+    padding-bottom: var(--v-padding);
+    width: 100%;
+  }
+
+  .modal-body {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-top: var(--h-padding);
+    margin: 0;
+    color: #333333;
+
+    article {
+      max-width: 85ch;
+      margin-right: auto;
+      margin-left: auto;
     }
-    .modal-card-foot {
-        align-items: center;
-        background-color: #f5f5f5;
-        display: flex;
-        flex-shrink: 0;
-        justify-content: flex-start;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-left: var(--h-padding);
-        padding-right: var(--h-padding);
-        width: 100%;
-    }
-
-    .modal-content {
-        padding-left: var(--h-padding);
-        padding-right: var(--h-padding);
-        padding-bottom: var(--v-padding);
-        width: 100%;
-    }
-
-    .modal-body {
-      max-height: 80vh;
-        overflow-y: auto;
-        padding-top: var(--h-padding);
-        margin: 0;
-        color: #333333;
-
-        article {
-            max-width: 85ch;
-            margin-right: auto;
-            margin-left: auto;
-        }
-    }
+  }
 }
 
 .icons-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 2rem;
-    @media only screen and (max-width: 768px) {
-        grid-template-columns: 100%;
-    }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 2rem;
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 100%;
+  }
 }
 
 .icon-item {
   display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr 1fr;
-    grid-template-areas: "icon title"
-                     "icon caption"
-                     "text text";
-    column-gap: 1rem;
-    img {
-        grid-area: icon;
-        width: 45px;
-    }
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+    'icon title'
+    'icon caption'
+    'text text';
+  column-gap: 1rem;
+  img {
+    grid-area: icon;
+    width: 45px;
+  }
 
-    h6 {
-        grid-area: title;
-    }
+  h6 {
+    grid-area: title;
+  }
 
-    .icon-caption {
-        grid-area: caption;
-    }
+  .icon-caption {
+    grid-area: caption;
+  }
 
-    .icon-text {
-        grid-area: text;
-    }
+  .icon-text {
+    grid-area: text;
+  }
 }
 
-    .license-communication {
-        display: flex;
-        flex-direction: column;
+.license-communication {
+  display: flex;
+  flex-direction: column;
 
-    .info-row {
-        display: flex;
-        flex-direction: row;
-        padding-bottom: 1rem;
-        padding-top: 1rem;
-        h6 {
-            flex: 1;
-        }
-        p, div {
-            flex: 3;
-        }
-        &:not(:last-child) {
-            border-bottom: 1px solid rgb(219, 219, 219);
-        }
+  .info-row {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    h6 {
+      flex: 1;
     }
+    p,
+    div {
+      flex: 3;
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid rgb(219, 219, 219);
+    }
+  }
 }
 
 .modal-body .icon-item .icon-caption {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .modal-body p:not(:last-child) {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 .modal-body .license-communication p:not(:last-child) {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .columns-auto {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: var(--h-padding);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--h-padding);
 }
 
 @media only screen and (max-width: 768px) {
-    .app-modal {
-        .modal {
-            --h-padding: 1rem;
-            --v-padding: 1.5rem;
-            .modal-header {
-                padding-top: 1.5rem !important;
-                padding-left: 1rem !important;
-            }
+  .app-modal {
+    .modal {
+      --h-padding: 1rem;
+      --v-padding: 1.5rem;
+      .modal-header {
+        padding-top: 1.5rem !important;
+        padding-left: 1rem !important;
+      }
 
-            max-height: unset;
-        }
-        .modal-title {
-            font-size: 2.125rem;
-        }
-        .modal.is-active .modal-body {
-            max-height: calc(100vh - 20px);
-        }
+      max-height: unset;
     }
-    .columns-auto {
-        display: flex;
-        flex-direction: column;
+    .modal-title {
+      font-size: 2.125rem;
     }
+    .modal.is-active .modal-body {
+      max-height: calc(100vh - 20px);
+    }
+  }
+  .columns-auto {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>
