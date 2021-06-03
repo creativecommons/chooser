@@ -49,7 +49,7 @@ describe('Attribution Details Step.vue', () => {
   })
 
   describe('Mark Your Work section correctly shows the license in the correct format:', () => {
-    it.only('When the user selects "CC BY", the license is shown correctly in all tabs', () => {
+    it('When the user selects "CC BY", the license is shown correctly in all tabs', () => {
       // First step
       cy.visit('/')
       cy.makeAChoice('.FS', 'no')
