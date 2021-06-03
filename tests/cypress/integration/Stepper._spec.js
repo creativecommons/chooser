@@ -150,14 +150,42 @@ describe('Stepper.vue', () => {
 
   describe('"Back", "Done" and "Start again" buttons work correctly', () => {
     it('User can select CC BY-ND, go back and change selection to CC BY-SA', () => {
+      // Front screen
+      cy.visit('/')
+      cy.makeAChoice('.FS', 'yes')
+      cy.clickNext()
+
+      // Choose own license
+      cy.get('select').select('CC BY-ND 4.0')
+      cy.hasRecommendedLicense('CC BY-ND 4.0')
       cy.clickBack()
+      
+      // Front screen
+      cy.makeAChoice('.FS', 'no')
+      cy.clickNext()
+
+      // Attribution
+      cy.makeAChoice('.BY', 'yes')
+      cy.hasRecommendedLicense('CC BY-ND 4.0')
+      cy.clickNext()
+
+      // Non-commercial
+      cy.makeAChoice('.NC', 'yes')
+      cy.clickNext()
+
+      // No-derivs
       cy.makeAChoice('.ND', 'yes')
       cy.clickNext()
-      cy.makeAChoice('.SA', 'yes') // @todo Fix this bug, must click yes before no to get it to switch
+
+      // Share-alike
       cy.makeAChoice('.SA', 'no')
-      cy.clickNext()
       cy.hasRecommendedLicense('CC BY-SA 4.0')
-      cy.get('.AD').should('be.visible')
+      cy.clickNext()
+
+      // Appropriate license step
+      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
+      cy.clickNext()
+
       cy.hasLicenseInAttributionCode('CC BY-SA 4.0')
     })
 
@@ -177,21 +205,28 @@ describe('Stepper.vue', () => {
       cy.makeAChoice('.FS', 'no')
       cy.clickNext()
 
+      // Attribution
+      cy.makeAChoice('.BY', 'yes')
+      cy.hasRecommendedLicense('CC BY 4.0')
+      cy.clickNext()
+
+      // Non-commercial
+      cy.makeAChoice('.NC', 'yes')
+      cy.clickNext()
+
+      // No-derivs
+      cy.makeAChoice('.ND', 'yes')
+      cy.clickNext()
+
+      // Share-alike
+      cy.makeAChoice('.SA', 'no')
+      cy.hasRecommendedLicense('CC BY-SA 4.0')
+      cy.clickNext()
+
       // Appropriate license step
       cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
       cy.clickNext()
 
-
-      cy.makeAChoice('.BY', 'yes')
-      cy.hasRecommendedLicense('CC BY 4.0')
-      cy.clickNext()
-      cy.makeAChoice('.NC', 'yes')
-      cy.clickNext()
-      cy.makeAChoice('.ND', 'yes')
-      cy.clickNext()
-      cy.makeAChoice('.SA', 'no')
-      cy.hasRecommendedLicense('CC BY-SA 4.0')
-      cy.clickNext()
       cy.hasLicenseInAttributionCode('CC BY-SA 4.0')
     })
 
@@ -211,19 +246,26 @@ describe('Stepper.vue', () => {
       cy.makeAChoice('.FS', 'no')
       cy.clickNext()
 
+      // Attribution
+      cy.makeAChoice('.BY', 'yes')
+      cy.clickNext()
+
+      // Commercial uses
+      cy.makeAChoice('.NC', 'yes')
+      cy.clickNext()
+
+      // Derivative-works
+      cy.makeAChoice('.ND', 'no')
+      cy.clickNext()
+
+      // Share-alike
+      cy.get('.SA').should('have.class', 'disabled')
+      cy.hasRecommendedLicense('CC BY-ND 4.0')
+
       // Appropriate license step
       cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check())
       cy.clickNext()
 
-
-      cy.makeAChoice('.BY', 'yes')
-      cy.clickNext()
-      cy.makeAChoice('.NC', 'yes')
-      cy.clickNext()
-      cy.makeAChoice('.ND', 'no')
-      cy.clickNext()
-      cy.get('.SA').should('have.class', 'disabled')
-      cy.hasRecommendedLicense('CC BY-ND 4.0')
       cy.window().then(($window) => {
         expect($window.scrollY).to.be.closeTo(800, 500)
       })
