@@ -8,7 +8,7 @@ Repository containing the source code for the new Creative Commons License Choos
 
 This site is built using [Vue.js](https://vuejs.org/) (and vue-cli).
 
-#### Roadmap
+### Roadmap
 
 Tasks, issues, and discussion related to the release of the new chooser are tracked with the [`Launch Milestone`](https://github.com/creativecommons/chooser/milestone/1).
 
@@ -17,13 +17,16 @@ Tasks, issues, and discussion related to the release of the new chooser are trac
 Run the following commands in order to have the code up and running on your machine:
 
 ``` bash
-# installs dependencies
-$ npm install
-
-# Builds and serves assets with hot-reload
-$ npm run serve
+# install dependencies
+npm install
 ```
-You should now have the application running and accessible at http://localhost:8080 (note: will run on a different port if 8080 is occupied, most common alternative port is 8081).
+
+```bash
+# Build and serve assets with hot-reload
+npm run serve
+```
+
+You should now have the application running and accessible at <http://localhost:8080> (note: will run on a different port if 8080 is occupied, most common alternative port is 8081).
 
 ## Contributing
 
@@ -42,7 +45,7 @@ If it says "No results matched your search", then there are no issues currently 
 You can run tests by executing:
 
 ```bash
-$ npm run test
+npm run test
 ```
 
 ## CSS Build
