@@ -3,7 +3,6 @@ import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common
 import App from './App.vue';
 import './styles/vocab.scss';
 import VueScrollTo from 'vue-scrollto';
-import wrap from "@vue/web-component-wrapper";
 
 // Analytics
 import * as Sentry from '@sentry/vue';
@@ -40,5 +39,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-const wrappedElement = wrap(Vue, App);
-window.customElements.define("license-chooser", wrappedElement);
+export default App;
