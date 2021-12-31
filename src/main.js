@@ -38,5 +38,8 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+new Vue({
+  render: h => h(App),
+}).$mount('#app');
 
 export default App;
