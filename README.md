@@ -28,6 +28,20 @@ npm run serve
 
 You should now have the application running and accessible at <http://localhost:8080> (note: will run on a different port if 8080 is occupied, most common alternative port is 8081).
 
+## Building as web component
+To build the project as a web component, run the command `npm run build-component`. This will create a file in the `dist` folder named `license-chooser.min.js`. It can be used to load the web-component in any JS project. There is also a sample `demo.html` created.
+To be able to use the file it should either be rendered statically from the integrater's web-app or be published on a CDN. Following code can be used to integrate this in other apps:
+
+```
+<script src="https://unpkg.com/vue"></script>
+<!-- If the licenser-chooser file is hosted on http://127.0.0.1:8081 -->
+<script src="http://127.0.0.1:8081/license-chooser.js"></script>
+
+<license-chooser></license-chooser>
+```
+
+If the web component is intended to be built without header and footer, run `VUE_APP_CC_OUTPUT=embedded npm run build-component`
+
 ## Contributing
 
 For information on contributing, please see [Creative Commons' Contribution Guidelines](https://opensource.creativecommons.org/contributing-code/)
@@ -47,6 +61,8 @@ You can run tests by executing:
 ```bash
 npm run test
 ```
+For running tests on a web-component build, run `npm run test-component`. It starts a server with the  `dist/demo.html` on which tests can be run.
+
 
 ## CSS Build
 
