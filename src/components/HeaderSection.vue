@@ -29,7 +29,7 @@
             title="Feedback"
           >
             {{ $t('header.nav-feedback') }}
-            <i class="icon external-link" />
+            <font-awesome-icon class="icon" icon="fa-solid fa-external-link-alt" />
           </a>
         </div>
       </div>
@@ -38,8 +38,16 @@
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+library.add(faExternalLinkAlt);
+
 export default {
   name: 'HeaderSection',
+  components: {
+    FontAwesomeIcon,
+  },
 };
 </script>
 
