@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common';
+import VueVocabulary from '@creativecommons/vocabulary-components';
 import Vuex from 'vuex';
 import VueI18n from 'vue-i18n';
 import CopyrightWaiverStep from '@/components/CopyrightWaiverStep';

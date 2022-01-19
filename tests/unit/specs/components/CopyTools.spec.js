@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import CopyTools from '@/components/CopyTools.vue';
-import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common';
+import VueVocabulary from '@creativecommons/vocabulary-components';
 
 describe('CopyTools.vue', () => {
   let wrapper;

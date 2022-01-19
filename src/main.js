@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common.js';
 import App from './App.vue';
 import './styles/vocab.scss';
 import VueScrollTo from 'vue-scrollto';
+import VueVocabulary from '@creativecommons/vocabulary-components';
 
 // Analytics
 import * as Sentry from '@sentry/vue';
@@ -38,8 +38,10 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app');
+if(process.env.VUE_APP_CC_OUTPUT!=='embedded') {
+  new Vue({
+    render: h => h(App),
+  }).$mount('#app');
+}
 
 export default App;
