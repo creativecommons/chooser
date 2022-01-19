@@ -57,9 +57,14 @@ import Stepper from './components/Stepper';
 import HeaderSection from './components/HeaderSection';
 import FooterSection from './components/FooterSection';
 import LicenseDetailsCard from './components/LicenseDetailsCard';
+import i18n from './i18n';
+import createStore from './store';
+const store = createStore({});
 
 export default {
   name: 'App',
+  store,
+  i18n,
   components: {
     HelpSection,
     Stepper,
