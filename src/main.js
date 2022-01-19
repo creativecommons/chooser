@@ -1,10 +1,9 @@
 import Vue from 'vue';
 import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common.js';
-import i18n from './i18n';
 import App from './App.vue';
-import createStore from './store';
 import './styles/vocab.scss';
 import VueScrollTo from 'vue-scrollto';
+import wrap from "@vue/web-component-wrapper";
 
 // Analytics
 import * as Sentry from '@sentry/vue';
@@ -40,9 +39,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const store = createStore({});
-new Vue({
-  store,
-  i18n,
-  render: h => h(App),
-}).$mount('#app');
+
+const wrappedElement = wrap(Vue, App);
+window.customElements.define("license-chooser", wrappedElement);
