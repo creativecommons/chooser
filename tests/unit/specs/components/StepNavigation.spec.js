@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import StepNavigation from '@/components/StepNavigation';
-import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common';
+import VueVocabulary from '@creativecommons/vocabulary-components';
 
 describe('StepNavigation.vue', () => {
   let wrapper;

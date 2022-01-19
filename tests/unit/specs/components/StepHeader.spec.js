@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import StepHeader from '@/components/StepHeader';
-import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common';
+import VueVocabulary from '@creativecommons/vocabulary-components';
 import Vue from 'vue';
 import { initialSteps } from '@/utils/steps';
 

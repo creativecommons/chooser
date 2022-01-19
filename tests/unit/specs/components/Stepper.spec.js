@@ -1,7 +1,7 @@
 import Vuex from 'vuex';
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Stepper from '@/components/Stepper';
-import VueVocabulary from '@creativecommons/vue-vocabulary/vue-vocabulary.common';
+import VueVocabulary from '@creativecommons/vocabulary-components';
 import Vue from 'vue';
 import store from '@/store';
 import VueScrollTo from 'vue-scrollto';
