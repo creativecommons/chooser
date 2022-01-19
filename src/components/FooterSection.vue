@@ -33,16 +33,10 @@
               target="_blank"
               rel="noopener"
             >
-              <span class="icon instagram margin-right-small">
-                <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M15 30C6.716 30 0 23.284 0 15 0 6.716 6.716 0 15 0c8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15zM11.29 6.054C12.25 6.01 12.557 6 15 6c2.445 0 2.751.01 3.711.054.958.044 1.613.196 2.185.419.592.23 1.094.537 1.594 1.038.5.5.809 1.002 1.039 1.594.222.573.374 1.227.418 2.185.044.96.054 1.267.054 3.711 0 2.445-.01 2.751-.054 3.711-.044.958-.196 1.613-.418 2.185a4.412 4.412 0 01-1.039 1.594c-.5.5-1.002.809-1.594 1.039-.572.222-1.227.374-2.185.418-.96.044-1.266.054-3.71.054-2.446 0-2.752-.01-3.712-.054-.958-.044-1.612-.196-2.185-.418a4.412 4.412 0 01-1.594-1.039c-.5-.5-.808-1.002-1.038-1.594-.223-.572-.375-1.227-.419-2.185-.044-.96-.054-1.266-.054-3.71 0-2.446.01-2.752.054-3.712.044-.958.196-1.612.419-2.185A4.412 4.412 0 017.51 7.511c.5-.5 1.002-.808 1.594-1.038.573-.223 1.227-.375 2.185-.419zm7.348 1.62c-.949-.043-1.234-.052-3.637-.052s-2.688.009-3.637.052c-.878.04-1.354.187-1.671.31-.42.164-.72.359-1.035.674-.315.315-.51.614-.674 1.035-.123.317-.27.793-.31 1.67-.043.95-.052 1.235-.052 3.638 0 2.403.009 2.688.052 3.637.04.878.187 1.354.31 1.672.164.42.359.72.674 1.035.315.315.614.51 1.035.673.317.123.793.27 1.67.31.95.043 1.235.052 3.638.052 2.404 0 2.688-.009 3.637-.052.878-.04 1.354-.187 1.672-.31.42-.163.72-.358 1.035-.673.315-.315.51-.615.673-1.035.123-.317.27-.794.31-1.672.043-.949.052-1.234.052-3.637s-.009-2.688-.052-3.637c-.04-.878-.187-1.354-.31-1.671a2.788 2.788 0 00-.673-1.035 2.788 2.788 0 00-1.035-.674c-.317-.123-.794-.27-1.672-.31zm-6.637 7.327a3 3 0 106.001 0 3 3 0 00-6 0zm-1.621 0a4.622 4.622 0 119.244 0 4.622 4.622 0 01-9.244 0zm10.506-4.805a1.08 1.08 0 11-2.16 0 1.08 1.08 0 012.16 0z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
+              <font-awesome-layers class="fa-2x margin-right-small">
+                <font-awesome-icon icon="fa-solid fa-circle" />
+                <font-awesome-icon icon="fa-brands fa-instagram" transform="shrink-6" :style="{ color: 'black' }" />
+              </font-awesome-layers>
             </a>
             <a
               href="https://www.twitter.com/creativecommons"
@@ -50,16 +44,10 @@
               target="_blank"
               rel="noopener"
             >
-              <span class="icon twitter margin-right-small">
-                <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M15 30C6.71573 30 0 23.2843 0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30ZM22.4625 11.6774C22.4625 16.7549 18.5925 22.6199 11.52 22.6199C9.35248 22.6199 7.32748 21.9824 5.63248 20.9024C5.93248 20.9399 6.23998 20.9549 6.54748 20.9549C8.34748 20.9549 10.005 20.3399 11.325 19.3049C9.64498 19.2749 8.21998 18.1649 7.73248 16.6349C7.96498 16.6799 8.20498 16.7024 8.45248 16.7024C8.80498 16.7024 9.14248 16.6574 9.46498 16.5674C7.70998 16.2149 6.38248 14.6549 6.38248 12.7949V12.7424C6.89998 13.0274 7.49248 13.1999 8.12248 13.2224C7.09498 12.5324 6.41248 11.3549 6.41248 10.0199C6.41248 9.31488 6.59998 8.65488 6.92998 8.08488C8.82748 10.4099 11.6625 11.9474 14.8575 12.1049C14.7975 11.8199 14.76 11.5274 14.76 11.2274C14.76 9.10488 16.485 7.37988 18.6075 7.37988C19.71 7.37988 20.7075 7.84488 21.4125 8.59488C22.29 8.42238 23.115 8.10738 23.8575 7.66488C23.565 8.56488 22.9575 9.32238 22.1625 9.79488C22.9425 9.69738 23.685 9.49488 24.375 9.18738C23.8575 9.95988 23.205 10.6424 22.455 11.1824C22.4625 11.3474 22.4625 11.5124 22.4625 11.6774Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
+              <font-awesome-layers class="fa-2x margin-right-small">
+                <font-awesome-icon icon="fa-solid fa-circle" />
+                <font-awesome-icon icon="fa-brands fa-twitter" transform="shrink-6" :style="{ color: 'black' }" />
+              </font-awesome-layers>
             </a>
             <a
               href="https://www.facebook.com/creativecommons"
@@ -67,16 +55,10 @@
               target="_blank"
               rel="noopener"
             >
-              <span class="icon facebook margin-right-small">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                  <path
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M30.003 15.092c0-8.335-6.715-15.092-15-15.092-8.284 0-15 6.757-15 15.092C.004 22.624 5.49 28.868 12.66 30V19.454H8.85v-4.362h3.809v-3.325c0-3.783 2.24-5.872 5.666-5.872 1.64 0 3.357.295 3.357.295v3.714h-1.891c-1.864 0-2.445 1.163-2.445 2.357v2.83h4.16l-.665 4.363h-3.495V30c7.171-1.132 12.656-7.376 12.656-14.908z"
-                  />
-                </svg>
-              </span>
+              <font-awesome-layers class="fa-2x margin-right-small">
+                <font-awesome-icon icon="fa-solid fa-circle" />
+                <font-awesome-icon icon="fa-brands fa-facebook-f" transform="shrink-6" :style="{ color: 'black' }" />
+              </font-awesome-layers>
             </a>
             <a
               href="https://www.linkedin.com/company/creative-commons/"
@@ -84,16 +66,10 @@
               target="_blank"
               rel="noopener"
             >
-              <span class="icon linkedin margin-right-small">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M27.777.002H2.214A2.19 2.19 0 000 2.165v25.67A2.19 2.19 0 002.214 30h25.563A2.195 2.195 0 0030 27.835V2.163A2.195 2.195 0 0027.777 0v.002zm-23.33 25.56h4.45V11.246h-4.45v14.316zM6.674 9.29a2.58 2.58 0 110-5.16 2.58 2.58 0 010 5.16zm18.887 16.272h-4.445v-6.961c0-1.66-.03-3.797-2.311-3.797-2.316 0-2.67 1.809-2.67 3.676v7.082H11.69V11.246h4.267v1.957h.06a4.677 4.677 0 014.21-2.312c4.506 0 5.336 2.963 5.336 6.818l-.002 7.853z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
+              <font-awesome-layers class="fa-2x margin-right-small">
+                <font-awesome-icon icon="fa-solid fa-circle" />
+                <font-awesome-icon icon="fa-brands fa-linkedin-in" transform="shrink-6" :style="{ color: 'black' }" />
+              </font-awesome-layers>
             </a>
           </div>
         </div>
@@ -185,8 +161,18 @@
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTwitter, faFacebookF, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome';
+library.add(faTwitter, faFacebookF, faLinkedinIn, faInstagram, faCircle);
+
 export default {
   name: 'FooterSection',
+  components: {
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+  },
 };
 </script>
 
