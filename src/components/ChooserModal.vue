@@ -109,7 +109,7 @@
               <h6 class="b-header">
                 {{ $t('help.how-licenses-communicated.license-icons') }}
               </h6>
-              <div><license-icons :icons-arr="['by', 'nc']" /></div>
+              <div><license-icons :icons-arr="['logo', 'by', 'nc']" /></div>
             </div>
           </div>
         </article>
