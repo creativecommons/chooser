@@ -19,7 +19,7 @@
         <div class="icons-section">
           <div class="icon-item">
             <img
-              src="../assets/license-icons/by.svg"
+              src="@creativecommons/cc-assets/icons/cc-by.svg"
               :alt="$t('help.what-icons-mean.BY.icon-alt-text')"
             />
             <h6 class="b-header">
@@ -34,7 +34,7 @@
           </div>
           <div class="icon-item">
             <img
-              src="../assets/license-icons/nd.svg"
+              src="@creativecommons/cc-assets/icons/cc-nd.svg"
               :alt="$t('help.what-icons-mean.ND.icon-alt-text')"
             />
             <h6 class="b-header">
@@ -49,7 +49,7 @@
           </div>
           <div class="icon-item">
             <img
-              src="../assets/license-icons/nc.svg"
+              src="@creativecommons/cc-assets/icons/cc-nc.svg"
               :alt="$t('help.what-icons-mean.NC.icon-alt-text')"
             />
             <h6 class="b-header">
@@ -64,7 +64,7 @@
           </div>
           <div class="icon-item">
             <img
-              src="../assets/license-icons/sa.svg"
+              src="@creativecommons/cc-assets/icons/cc-sa.svg"
               :alt="$t('help.what-icons-mean.SA.icon-alt-text')"
             />
             <h6 class="b-header">
