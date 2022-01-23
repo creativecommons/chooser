@@ -1,7 +1,7 @@
 <template>
   <span>
     <img
-      v-for="(icon, index) in ['logo', ...iconsArr]"
+      v-for="(icon, index) in [...iconsArr]"
       :key="index"
       :width="size"
       :height="size"
