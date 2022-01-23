@@ -3,10 +3,11 @@
     <h3>{{ cardHeading }}</h3>
     <div class="license-short-name">
       <span class="license-icons">
-        <i
-          v-for="icon in ['logo', ...iconsList]"
+        <license-icons  
+          v-for="icon in ['logo', ...iconsList]" :icons-arr="[icon]" 
           :key="icon"
-          :class="['icon', 'has-background-white', `cc-${icon}`]"
+          :size="50"
+          :class="['icon']"
         />
       </span>
       <h4 class="b-header">
@@ -28,7 +29,11 @@
             :class="['license-list-item', item]"
           >
             <span class="readable-string">
-              <i :class="['icon', 'has-background-white', `cc-${item}`]" />
+              <license-icons  
+                :icons-arr="[item]" 
+                :size="30"
+                :class="['icon']"
+              />
               <span>
                 <b>{{ item === 'zero' ? 'CC0' : item.toUpperCase() }}:</b>
                 {{ $t(`license-details-card.item-description.${item}`) }}
@@ -53,6 +58,7 @@
   </div>
 </template>
 <script>
+import LicenseIcons from './LicenseIcons';
 import { LICENSES, licenseSlug } from '../utils/license-utilities';
 import { mapGetters } from 'vuex';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -64,6 +70,7 @@ export default {
   name: 'LicenseDetailsCard',
   components: {
     FontAwesomeIcon,
+    LicenseIcons,
   },
   computed: {
     ...mapGetters(['shortName', 'fullName', 'iconsList', 'licenseUrl']),
