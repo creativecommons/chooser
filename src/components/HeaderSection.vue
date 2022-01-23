@@ -5,7 +5,7 @@
         <div class="navbar-brand">
           <a class="logo" aria-current="page" href="/">
             <img
-              src="../assets/chooser.svg"
+              src="@creativecommons/cc-assets/logos/products/chooser.svg"
               alt="Creative Commons License chooser"
               height="40"
               width="169"
