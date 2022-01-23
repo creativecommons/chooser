@@ -1,11 +1,11 @@
 <template>
   <span>
     <img
-      v-for="(icon, index) in ['cc', ...iconsArr]"
+      v-for="(icon, index) in ['logo', ...iconsArr]"
       :key="index"
       :width="size"
       :height="size"
-      :src="require(`../assets/license-icons/${filename(icon)}`)"
+      :src="require(`@creativecommons/cc-assets/icons/cc-${filename(icon)}`)"
     />
   </span>
 </template>
