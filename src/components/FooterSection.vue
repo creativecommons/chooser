@@ -8,7 +8,7 @@
             class="main-logo margin-bottom-bigger has-text-white"
           >
             <img
-              src="@creativecommons/vocabulary/assets/logos/cc/logomark.svg"
+              src="@creativecommons/cc-assets/logos/cc/logomark.svg"
               alt="Creative Commons License chooser"
               width="220"
               class="img-invert"
