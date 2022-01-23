@@ -39,7 +39,10 @@
         rel="license noopener noreferrer"
       >
         {{ attributionType === 'short' ? shortName : fullName }}
-        <LicenseIcons :icons-arr="iconsList" :size="20" :is-png="true" />
+        <license-icons  
+          :icons-arr="['logo', iconsList]" 
+          :class="['icon']"
+        />
       </a>
       <span v-else>{{ licenseName }}.</span>
     </template>
