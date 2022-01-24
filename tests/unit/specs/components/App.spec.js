@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import VueI18n from 'vue-i18n';
-import Vocabulary from '@creativecommons/vocabulary-components';
+import VueVocabulary from '@creativecommons/vocabulary-components';
 import VueScrollTo from 'vue-scrollto';
 import createStore from '@/store';
 import App from '@/App';
@@ -14,7 +14,7 @@ describe('App.vue', () => {
   beforeEach(() => {
     localVue = createLocalVue();
     localVue.use(Vuex);
-    localVue.use(Vocabulary);
+    localVue.use(VueVocabulary);
     Vue.use(VueScrollTo);
     Vue.use(VueI18n);
     wrapper = shallowMount(App, {
