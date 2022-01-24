@@ -16,7 +16,7 @@
       >
         <template #after-label>
           <span @click="toggleInfoModal">
-            <img class="info" src="../assets/info.svg" alt="Info" />
+            <font-awesome-icon class="icon" icon="fa-solid fa-info-circle" />
           </span>
         </template>
       </v-input>
@@ -54,10 +54,14 @@
 <script>
 import { mapMutations, mapState } from 'vuex';
 import VInput from '@/Vocabulary/VInput';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+library.add(faInfoCircle);
 
 export default {
   name: 'AttributionDetails',
-  components: { VInput },
+  components: { VInput, FontAwesomeIcon },
   inheritAttrs: false,
   props: {
     status: {
