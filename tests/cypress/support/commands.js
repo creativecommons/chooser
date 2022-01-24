@@ -38,7 +38,7 @@ Cypress.Commands.add('clickBack', () => {
 });
 
 Cypress.Commands.add('clickInfo', () => {
-  getIFrame().get('.info').click();
+  getIFrame().get('.fa-circle-info').click();
 });
 
 Cypress.Commands.add('makeAChoice', (stepId, choice) => {
