@@ -84,7 +84,7 @@
           <div v-html="$t('help.six-cc-licenses.text')" />
           <img
             alt="license openness scale"
-            src="../assets/license-openness-scale.png"
+            src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Ordering_of_Creative_Commons_licenses_from_most_to_least_permissive.png"
           />
         </article>
       </section>
