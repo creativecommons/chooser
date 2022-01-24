@@ -34,7 +34,6 @@ To be able to use the file it should either be rendered statically from the inte
 
 ```
 <script src="https://unpkg.com/vue"></script>
-<!-- If the licenser-chooser file is hosted on http://127.0.0.1:8081 -->
 <script src="https://unpkg.com/@creativecommons/chooser/dist/license-chooser.js"></script>
 
 <license-chooser></license-chooser>

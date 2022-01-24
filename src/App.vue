@@ -177,7 +177,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import '~@creativecommons/vocabulary/scss/vocabulary.scss';
+@import '~@creativecommons/vocabulary-styles';
 
 #app {
   -webkit-font-smoothing: antialiased;
