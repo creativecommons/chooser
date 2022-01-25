@@ -3,9 +3,10 @@
     <h3>{{ cardHeading }}</h3>
     <div class="license-short-name">
       <span class="license-icons">
-        <license-icons  
-          v-for="icon in ['logo', ...iconsList]" :icons-arr="[icon]" 
+        <license-icons
+          v-for="icon in ['logo', ...iconsList]"
           :key="icon"
+          :icons-arr="[icon]"
           :size="50"
           :class="['icon']"
         />
@@ -29,11 +30,7 @@
             :class="['license-list-item', item]"
           >
             <span class="readable-string">
-              <license-icons  
-                :icons-arr="[item]" 
-                :size="30"
-                :class="['icon']"
-              />
+              <license-icons :icons-arr="[item]" :size="30" :class="['icon']" />
               <span>
                 <b>{{ item === 'zero' ? 'CC0' : item.toUpperCase() }}:</b>
                 {{ $t(`license-details-card.item-description.${item}`) }}
@@ -46,22 +43,27 @@
         </transition-group>
       </ul>
     </section>
-    <a
-      class="license-deed-link"
-      :href="licenseUrl()"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {{ $t(textKey) }}
-      <font-awesome-icon class="icon" icon="fa-solid fa-external-link-alt" />
-    </a>
+    <div>
+      <a
+        class="license-deed-link"
+        :href="licenseUrl()"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ $t(textKey) }}
+        <font-awesome-icon
+          class="icon icon-size"
+          icon="fa-solid fa-external-link-alt"
+        />
+      </a>
+    </div>
   </div>
 </template>
 <script>
 import LicenseIcons from './LicenseIcons';
 import { LICENSES, licenseSlug } from '../utils/license-utilities';
 import { mapGetters } from 'vuex';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 library.add(faExternalLinkAlt);
@@ -149,5 +151,8 @@ export default {
 .description-caption {
   padding-left: 3.1875rem;
   font-weight: 600;
+}
+.icon-size {
+  height: 1em;
 }
 </style>
