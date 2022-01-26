@@ -1,5 +1,6 @@
 {
   "name": "@creativecommons/chooser",
+  "version": "0.1.0",
   "description": "The new and improved Creative Commons License Chooser",
   "author": {
     "name": "Creative Commons",
