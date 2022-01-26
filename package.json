@@ -1,6 +1,5 @@
 {
-  "name": "chooser",
-  "version": "1.0.0",
+  "name": "@creativecommons/chooser",
   "description": "The new and improved Creative Commons License Chooser",
   "author": "akmadian <akmadian@gmail.com>",
   "private": false,
