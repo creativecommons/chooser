@@ -2,7 +2,7 @@
   <div id="app">
     <header-section v-if="!isEmbedded" />
     <div id="site-container" class="container">
-      <nav class="breadcrumb caption bold" aria-label="breadcrumbs">
+      <nav v-if="!isEmbedded" class="breadcrumb caption bold" aria-label="breadcrumbs">
         <ul>
           <li><a href="https://creativecommons.org/">Home</a></li>
           <li class="is-active">
@@ -11,10 +11,10 @@
         </ul>
       </nav>
 
-      <h1 class="title is-2">
+      <h1 v-if="!isEmbedded" class="title is-2">
         {{ $t('chooser.heading') }}
       </h1>
-      <p class="stepper-instructions body-bigger">
+      <p v-if="!isEmbedded" class="stepper-instructions body-bigger">
         {{ $t('chooser.instructions') }}
       </p>
 
