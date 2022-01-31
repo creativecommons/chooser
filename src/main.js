@@ -6,21 +6,11 @@ import VueVocabulary from '@creativecommons/vocabulary-components';
 
 // Analytics
 import * as Sentry from '@sentry/vue';
-import Hotjar from 'vue-hotjar';
-import VueAnalytics from 'vue-analytics';
 
 Vue.config.productionTip = false;
 Vue.use(VueVocabulary);
 Vue.use(VueScrollTo);
 
-if (process.env.NODE_ENV === 'production') {
-  Vue.use(VueAnalytics, {
-    id: 'UA-2010376-41',
-    autoTracking: {
-      screenview: true,
-    },
-  });
-}
 
 Sentry.init({
   dsn:
@@ -30,13 +20,6 @@ Sentry.init({
   logErrors: process.env.NODE_ENV !== 'production', // Only log errors in dev env
 });
 
-// Production only since we only have a prod id
-if (process.env.NODE_ENV === 'production') {
-  Vue.use(Hotjar, {
-    id: '1803702',
-    isProduction: true,
-  });
-}
 
 if(process.env.VUE_APP_CC_OUTPUT!=='embedded') {
   new Vue({
