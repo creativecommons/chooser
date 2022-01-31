@@ -67,7 +67,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^9.5.0",
     "live-server": "^1.2.1",
-    "prettier": "^1.19.1",
+    "prettier": "^2.5.1",
     "shx": "^0.3.3",
     "stylelint": "^13.10.0",
     "stylelint-config-prettier": "^8.0.2",
