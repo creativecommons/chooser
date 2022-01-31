@@ -135,8 +135,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@creativecommons/vocabulary/scss/color.scss';
-@import '~@creativecommons/vocabulary/scss/typography.scss';
+@import '~@creativecommons/vocabulary-styles/dist/scss/color.scss';
+@import '~@creativecommons/vocabulary-styles/dist/scss/typography.scss';
 .input,
 .textarea {
   border: none;

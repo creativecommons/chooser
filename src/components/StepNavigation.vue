@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@creativecommons/vocabulary/scss/color';
+@import '~@creativecommons/vocabulary-styles/dist/scss/color';
 .step-navigation {
   display: flex;
   flex-direction: row;
