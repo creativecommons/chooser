@@ -74,11 +74,6 @@ export default {
           codeType: codeType,
           fieldsFilled: fieldsFilled,
         };
-        this.$ga.event({
-          eventCategory: 'Attribution',
-          eventAction: 'copied',
-          eventLabel: JSON.stringify(copiedLicense),
-        });
       }
       setTimeout(() => {
         this.success = false;

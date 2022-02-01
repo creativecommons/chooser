@@ -118,10 +118,6 @@ export default {
     window.removeEventListener('resize', this.onResize);
   },
   created: function() {
-    // send home to google analytics
-    if (process.env.NODE_ENV === 'production') {
-      this.$ga.page('/');
-    }
     this.$store.subscribe(mutation => {
       if (
         mutation.type === 'updateAttributesFromShort' ||
