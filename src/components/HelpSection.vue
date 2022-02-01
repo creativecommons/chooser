@@ -39,13 +39,6 @@ export default {
     async clickHandler(modalNumber) {
       this.$emit('change', modalNumber);
       this.openModal = parseInt(modalNumber);
-      if (process.env.NODE_ENV === 'production') {
-        this.$ga.event({
-          eventCategory: 'HelpSection',
-          eventAction: 'clicked',
-          eventLabel: this.modals[modalNumber],
-        });
-      }
       await this.$nextTick();
       this.$nextTick(function() {
         const modalLinks = document.querySelectorAll('.modal a');
