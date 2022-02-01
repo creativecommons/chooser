@@ -12,6 +12,14 @@
     "url": "git+https://github.com/creativecommons/chooser.git"
   },
   "license": "MIT",
+  "main": "dist/license-chooser.min.js",
+  "browser": "dist/license-chooser.min.js",
+  "module": "dist/license-chooser.min.js",
+  "unpkg": "dist/license-chooser.min.js",
+  "files": [
+    "dist/*.{js,map}",
+    "dist/img/*.svg"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && shx rm -rf ./docs && shx cp -r ./dist ./docs",
