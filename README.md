@@ -1,4 +1,14 @@
-# chooser
+![GitHub contributors](https://img.shields.io/github/contributors/creativecommons/chooser)
+![GitHub Sponsors](https://img.shields.io/github/sponsors/creativecommons)
+![GitHub](https://img.shields.io/github/license/creativecommons/chooser)
+![npm](https://img.shields.io/npm/v/@creativecommons/chooser)
+![Libraries.io dependency status for latest release, scoped npm package](https://img.shields.io/librariesio/release/npm/@creativecommons/chooser)
+![npm](https://img.shields.io/npm/dm/@creativecommons/chooser)
+![GitHub issues](https://img.shields.io/github/issues-raw/creativecommons/chooser)
+![GitHub Repo stars](https://img.shields.io/github/stars/creativecommons/chooser?style=social)
+![GitHub forks](https://img.shields.io/github/forks/creativecommons/chooser?style=social)
+
+# Chooser
 
 The Creative Commons License Chooser is meant to help people learn about CC licenses, and select the license that best fits their needs. The new version in this repo places greater importance on usability, and an educational experience of the six CC licenses.
 
