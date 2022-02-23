@@ -43,7 +43,7 @@ To build the project as a web component, run the command `npm run build-componen
 To be able to use the file it should either be rendered statically from the integrater's web-app or be published on a CDN. Following code can be used to integrate this in other apps:
 
 ```
-<script src="https://unpkg.com/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
 <script src="https://unpkg.com/@creativecommons/chooser/dist/license-chooser.js"></script>
 
 <license-chooser></license-chooser>
