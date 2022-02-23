@@ -39,11 +39,15 @@ npm run serve
 You should now have the application running and accessible at <http://localhost:8080> (note: will run on a different port if 8080 is occupied, most common alternative port is 8081).
 
 ## Building as web component
+
 To build the project as a web component, run the command `npm run build-component`. This will create a file in the `dist` folder named `license-chooser.min.js`. It can be used to load the web-component in any JS project. There is also a sample `demo.html` created.
-To be able to use the file it should either be rendered statically from the integrater's web-app or be published on a CDN. Following code can be used to integrate this in other apps:
+
+To be able to use the file it should either be rendered statically from the integrater's web-app or be published on a CDN. Following code can be used to integrate this in other apps.
+
+Note: the Chooser component depends on Vue 2.x, as can be seen in the following example.
 
 ```
-<script src="https://unpkg.com/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x.x"></script>
 <script src="https://unpkg.com/@creativecommons/chooser/dist/license-chooser.js"></script>
 
 <license-chooser></license-chooser>
