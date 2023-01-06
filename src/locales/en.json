@@ -197,6 +197,11 @@
       },
       "footer": ""
     },
+    "what-if-other-questions": {
+      "heading": "What if I have other questions?",
+      "text": "<p>You can find a full list of our <a href='https://creativecommons.org/faq/'>frequently asked questions</a> on our site. If your questions or concerns are not answered there, you can email us at <a href='mailto:legal@creativecommons.org'>legal@creativecommons.org</a>.</p>",
+      "footer": ""
+    },
     "how-licenses-communicated": {
       "heading": "How are Licenses Communicated?",
       "text": "<p>Creative Commons licenses can be represented by their names, their associated icons, or both. For example, a CC BY-NC license, which requires attribution, and prohibits commercial use could be represented by its:</p>",

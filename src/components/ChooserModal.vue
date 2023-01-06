@@ -13,7 +13,7 @@
       </section>
 
       <section v-if="activeModal === 2" class="modal-content modal-2">
-      <article v-html="$t(`help.what-should-i-consider.text`)" />
+        <article v-html="$t(`help.what-should-i-consider.text`)" />
       </section>
 
       <section v-if="activeModal === 3" class="modal-content modal-2">
@@ -147,12 +147,7 @@ export default {
         'how-to-apply-cc-license',
         'what-should-i-consider',
         'what-icons-mean',
-        'considerations-before-licensing',
-        'how-formally-license',
-        'six-cc-licenses',
-        'how-licenses-communicated',
-        'what-free-culture-license',
-        'look-earlier-license-ver',
+        'what-if-other-questions',
       ],
     };
   },
