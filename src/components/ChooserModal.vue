@@ -12,13 +12,9 @@
         <article v-html="$t(`help.${modals[activeModal]}.text`)" />
       </section>
 
-      <section v-if="activeModal === 2" class="modal-content modal-2">
-        <article v-html="$t(`help.what-should-i-consider.text`)" />
-      </section>
-
-      <section v-if="activeModal === 3" class="modal-content modal-2">
+      <section v-if="activeModal === 3" class="modal-content modal-3">
         <p>
-          
+          {{ $t('help.what-icons-mean.text') }}
         </p>
         <div class="icons-section">
           <div class="icon-item">
@@ -153,7 +149,7 @@ export default {
   },
   methods: {
     isSimpleModal(number) {
-      return ![2, 5, 6].includes(number);
+      return ![3].includes(number);
     },
     closeModal() {
       this.openModal = null;
