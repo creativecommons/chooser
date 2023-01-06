@@ -13,7 +13,7 @@
       </section>
 
       <section v-if="activeModal === 2" class="modal-content modal-2">
-      {{ $t('help.what-should-i-consider.text') }}
+      <article v-html="$t(`help.what-should-i-consider.text`)" />
       </section>
 
       <section v-if="activeModal === 3" class="modal-content modal-2">
