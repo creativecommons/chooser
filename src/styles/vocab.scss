@@ -2,11 +2,9 @@
     border: none;
 }
 
-
-@media only screen and (max-width: 400px) {
-
-    
-
+// adds correct bullet styling to item 3(index2) in the ChooserModal.vue 
+.modal .modal-body .modal-2 ul {
+    list-style: circle; 
 }
 
 @media only screen and (max-width: 1023px) {
