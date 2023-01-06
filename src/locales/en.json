@@ -152,7 +152,7 @@
     }
   },
   "help": {
-    "heading": "CONFUSED? NEED HELP? ",
+    "heading": "CONFUSED? NEED HELP?",
     "what-are-cc-licenses": {
       "heading": "What Are Creative Commons Licenses?",
       "text": "<p>Creative Commons licenses are legal tools that help you grant copyright permissions to the general public. Our CC legal tools include <a href='https://creativecommons.org/licenses/'>six different licenses</a> and <a href='https://creativecommons.org/share-your-work/public-domain/cc0/'>one public domain dedication tool</a>. It is important to specify which one of the 7 legal tools you are applying to your material. The license chooser can help you decide which license is right for you.</p> <p>CC licenses may be applied to any type of copyrightable work. The only types of works for which CC does not recommend its licenses are computer software and hardware, where we recommend a standard free software license instead. For works that are already in the public domain we recommend that you mark them with the <a href='https://creativecommons.org/about/pdm'>Public Domain Mark</a>). If you hold the rights to a work but would like to place it into the public domain, you can use the Chooser to select CC0.</p>",
