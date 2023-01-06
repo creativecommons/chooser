@@ -71,17 +71,7 @@
           </div>
         </div>
         <div class="column">
-          <nav class="footer-navigation">
-            <ul class="menu">
-              <li>
-                <a
-                  class="menu-item"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSfF7MCKxlPsPuMn17v_sLYWMkxBkudQSPXCXoJKjh5GCtx63g/viewform"
-                  >Feedback</a
-                >
-              </li>
-            </ul>
-          </nav>
+          
           <div class="attribution margin-top-bigger">
             <p class="caption">
               Except where otherwise

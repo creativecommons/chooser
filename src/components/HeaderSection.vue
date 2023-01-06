@@ -23,14 +23,7 @@
           </a>
         </div>
         <div class="navbar-menu navbar-end">
-          <a
-            class="navbar-item navbar-item-feedback"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfF7MCKxlPsPuMn17v_sLYWMkxBkudQSPXCXoJKjh5GCtx63g/viewform"
-            title="Feedback"
-          >
-            {{ $t('header.nav-feedback') }}
-            <font-awesome-icon class="icon" icon="fa-solid fa-external-link-alt" />
-          </a>
+         
         </div>
       </div>
     </nav>
