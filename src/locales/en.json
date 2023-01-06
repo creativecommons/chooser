@@ -152,16 +152,21 @@
     }
   },
   "help": {
-    "heading": "CONFUSED? NEED HELP?",
+    "heading": "CONFUSED? NEED HELP? ",
     "what-are-cc-licenses": {
       "heading": "What Are Creative Commons Licenses?",
-      "text": "<p>Creative Commons legal tools give everyone from individual creators to large companies a simple, standardized way to grant copyright permissions to their creative work. They are designed to forge a balance inside the traditional &quot;all rights reserved&quot; setting that copyright law creates.</p>",
-      "footer": "<p>For more information, please see <a href=\"https://creativecommons.org/licenses/\">About the Licenses</a>.</p>"
+      "text": "<p>Creative Commons licenses are legal tools that help you grant copyright permissions to other people. Our CC legal tools include <a href='https://creativecommons.org/licenses/'>six different licenses</a> and <a href='https://creativecommons.org/share-your-work/public-domain/cc0/'>one public domain dedication tool</a>. It is important to specify which one of the 7 legal tools you are applying to your material. The license chooser can help you decide which license is right for you.</p> <p>CC licenses may be applied to any type of work. The only types of works for which CC does not recommend its licenses are computer software and hardware, and works that are in the public domain (we recommend that you mark them with the <a href='https://creativecommons.org/about/pdm'>Public Domain Mark</a>).</p>",
+      "footer": ""
     },
-    "how-licenses-work": {
-      "heading": "How do the Licenses Work?",
-      "text": "<p>There are six different Creative Commons licenses, as well as one public domain dedication tool. Creators choose the option that is right for them, and then apply that license to their copyrighted work. Anyone who wants to reuse the work of the creator in a manner that requires permission under copyright must comply with the terms of the license.</p>",
-      "footer": "<p>For more information, please see <a href=\"https://creativecommons.org/licenses/\">About the Licenses</a></p>"
+    "how-to-apply-cc-license": {
+      "heading": "How to apply a Creative Commons license?",
+      "text": "<p>You can license your work by marking it with the specific CC license you choose. This marking can be as simple as a bit of text stating the license in a copyright notice, or as complex as embedding the license information on your website using the HTML code associated with the particular license. We strongly recommend including a link to the applicable license (e.g., <a href='https://creativecommons.org/licenses/by/4.0/'>https://creativecommons.org/licenses/by/4.0/</a>).</p>",
+      "footer": ""
+    },
+    "what-should-i-consider": {
+      "heading": "What should I consider?",
+      "text": "<p>As a creator licensing a work, among <a href=''>other considerations</a>, you should:</p><ul><li><a href='https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Remember_the_license_may_not_be_revoked.'>Remember the license may not be revoked</a>.</li><li><a href='https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Think_about_how_you_want_the_material_to_be_used.'>Think about how you want the material to be used</a>.</li><li><a href='https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Specify_attribution_information_if_desired.'>Specify attribution information if desired</a>.</li></ul>",
+      "footer": ""
     },
     "what-icons-mean": {
       "heading": "What do the Icons Mean?",

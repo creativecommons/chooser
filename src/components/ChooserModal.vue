@@ -13,8 +13,12 @@
       </section>
 
       <section v-if="activeModal === 2" class="modal-content modal-2">
+      {{ $t('help.what-should-i-consider.text') }}
+      </section>
+
+      <section v-if="activeModal === 3" class="modal-content modal-2">
         <p>
-          {{ $t('help.what-icons-mean.text') }}
+          
         </p>
         <div class="icons-section">
           <div class="icon-item">
@@ -140,7 +144,8 @@ export default {
     return {
       modals: [
         'what-are-cc-licenses',
-        'how-licenses-work',
+        'how-to-apply-cc-license',
+        'what-should-i-consider',
         'what-icons-mean',
         'considerations-before-licensing',
         'how-formally-license',

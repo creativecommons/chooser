@@ -19,7 +19,8 @@ export default {
       openModal: null,
       modals: [
         'what-are-cc-licenses',
-        'how-licenses-work',
+        'how-to-apply-cc-license',
+        'what-should-i-consider',
         'what-icons-mean',
         'considerations-before-licensing',
         'how-formally-license',
