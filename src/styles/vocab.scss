@@ -1,10 +1,35 @@
 .select:not(.is-multiple):not(.is-loading)::after {
     border: none;
 }
+
+
+@media only screen and (max-width: 400px) {
+
+    
+
+}
+
+@media only screen and (max-width: 1023px) {
+    .navbar-brand .logo {
+        margin-left: 20px;
+    }
+
+}
+
 @media only screen and (max-width: 768px) {
     h3 {
         font-size: 1.25rem;
     }
+
+    .navbar-brand .navbar-burger {
+        display: none;
+
+    }
+
+    .navbar-brand .logo {
+        margin-left: 20px;
+    }
+
     #site-container {
         h3 {
             font-size: 1.25rem;
