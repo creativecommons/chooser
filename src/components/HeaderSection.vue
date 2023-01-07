@@ -23,14 +23,7 @@
           </a>
         </div>
         <div class="navbar-menu navbar-end">
-          <a
-            class="navbar-item navbar-item-feedback"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfF7MCKxlPsPuMn17v_sLYWMkxBkudQSPXCXoJKjh5GCtx63g/viewform"
-            title="Feedback"
-          >
-            {{ $t('header.nav-feedback') }}
-            <font-awesome-icon class="icon" icon="fa-solid fa-external-link-alt" />
-          </a>
+         
         </div>
       </div>
     </nav>
@@ -38,17 +31,7 @@
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faExternalLinkAlt);
 
-export default {
-  name: 'HeaderSection',
-  components: {
-    FontAwesomeIcon,
-  },
-};
 </script>
 
 <style lang="scss">
