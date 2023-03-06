@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VeeValidate from 'vee-validate';
+
+
 import {
   defaultAttributes,
   CC0Attributes,
@@ -10,6 +13,7 @@ import {
 } from '../utils/license-utilities.js';
 
 Vue.use(Vuex);
+Vue.use(VeeValidate);
 
 export const defaultState = {
   currentLicenseAttributes: { ...defaultAttributes },

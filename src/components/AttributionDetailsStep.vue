@@ -22,14 +22,17 @@
       </v-input>
       <v-input
         v-model="workUrl"
+        v-validate="{ url: { require_protocol: true } }"
         :label="$t('stepper.AD.form.work-url.label')"
         :placeholder="$t('stepper.AD.form.work-url.placeholder')"
       />
+      <span v-if="msg.workUrlError">{{ msg.workUrlError }}</span>
       <v-input
         v-model="creatorProfileUrl"
         :label="$t('stepper.AD.form.creator-profile.label')"
         :placeholder="$t('stepper.AD.form.creator-profile.placeholder')"
       />
+      <span v-if="msg.creatorProfileUrlError">{{ msg.creatorProfileUrlError }}</span>
       <v-input
         v-if="currentLicenseAttributes.BY"
         v-model="yearOfCreation"
@@ -74,6 +77,7 @@ export default {
   data() {
     return {
       showInfoModal: false,
+      msg: [],
     };
   },
   computed: {
@@ -119,9 +123,39 @@ export default {
       },
     },
   },
+  watch: {
+    creatorProfileUrl(value){
+      this.attributionDetails.creatorProfileUrl = value;
+      this.validateCreatorProfileUrl(value);
+    },
+    workUrl(value){
+      this.attributionDetails.workUrl = value;
+      this.validateWorkUrl(value);
+    },
+  },
   methods: {
     toggleInfoModal() {
       this.showInfoModal = !this.showInfoModal;
+    },
+    validateCreatorProfileUrl(value) {
+      if(value.length === 0){
+        this.msg.creatorProfileUrlError = '';
+      }
+      else if (/[(http(s)?):(www)?a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(value)) {
+        this.msg.creatorProfileUrlError = '';
+      } else {
+        this.msg.creatorProfileUrlError = 'Please enter a valid URL.';
+      }
+    },
+    validateWorkUrl(value) {
+      if(value.length === 0){
+        this.msg.workUrlError = '';
+      }
+      else if (/[(http(s)?):(www)?a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(value)) {
+        this.msg.workUrlError = '';
+      } else {
+        this.msg.workUrlError = 'Please enter a valid URL.';
+      }
     },
     ...mapMutations([
       'setCreatorName',
