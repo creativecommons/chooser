@@ -39,6 +39,7 @@
         :label="$t('stepper.AD.form.year-of-creation.label')"
         :placeholder="$t('stepper.AD.form.year-of-creation.placeholder')"
       />
+      <span v-if="msg.yearOfCreationError">{{ msg.yearOfCreationError }}</span>
     </form>
 
     <app-modal
@@ -132,6 +133,10 @@ export default {
       this.attributionDetails.workUrl = value;
       this.validateWorkUrl(value);
     },
+    yearOfCreation(value){
+      this.attributionDetails.yearOfCreation = value;
+      this.validateYearOfCreation(value);
+    },
   },
   methods: {
     toggleInfoModal() {
@@ -155,6 +160,17 @@ export default {
         this.msg.workUrlError = '';
       } else {
         this.msg.workUrlError = 'Please enter a valid URL.';
+      }
+    },
+    validateYearOfCreation(value){
+      if(value.length === 0){
+        this.msg.yearOfCreationError = '';
+      }
+      else if(Number(value)>= 1000 && Number(value)<=9999){
+        this.msg.yearOfCreationError = '';
+      }
+      else {
+        this.msg.yearOfCreationError = 'Please enter a valid year';
       }
     },
     ...mapMutations([
