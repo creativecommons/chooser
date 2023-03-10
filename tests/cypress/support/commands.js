@@ -27,109 +27,292 @@
 const getIFrame = () => cy.get('iframe').its('0.contentDocument').should('exist').its('body').should('not.be.undefined').then(cy.wrap)
 
 Cypress.Commands.add('clickNext', () => {
-  getIFrame().get('button')
-    .contains('NEXT')
-    .click();
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('button')
+        .contains('NEXT')
+        .click();
+    })
 });
 Cypress.Commands.add('clickBack', () => {
-  getIFrame().get('button')
-    .contains('BACK')
-    .click();
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('button')
+        .contains('BACK')
+        .click();
+    })
 });
 
 Cypress.Commands.add('clickInfo', () => {
-  getIFrame().get('.fa-circle-info').click();
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.fa-circle-info').click();
+    })
 });
 
 Cypress.Commands.add('makeAChoice', (stepId, choice) => {
-  getIFrame().get(stepId)
-    .find(`[value="${choice}"]`)
-    .check();
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get(stepId)
+        .find(`[value="${choice}"]`)
+        .check();
+    })
 });
 
 Cypress.Commands.add('waiveCopyright', () => {
-  getIFrame().get('.v-checkbox:nth-child(1) > input').check();
-  getIFrame().get('.v-checkbox:nth-child(2) > input').check();
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.v-checkbox:nth-child(1) > input').check();
+      startingCommand.get('.v-checkbox:nth-child(2) > input').check();
+    })
 });
 
 Cypress.Commands.add('hasRecommendedLicense', license => {
-  getIFrame().get('.recommended-card')
-    .should('be.visible')
-    .contains(license);
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.recommended-card')
+        .should('be.visible')
+        .contains(license);
+    })
 });
 
 Cypress.Commands.add('hasLicenseInAttributionCode', license => {
-  getIFrame().get('.license-use-card')
-    .should('be.visible')
-    .contains(license);
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.license-use-card')
+        .should('be.visible')
+        .contains(license);
+    })
 });
 
 Cypress.Commands.add('hasStepsCount', stepsCount => {
-  getIFrame().get('.stepper__container')
-    .find('.step-container')
-    .should('have.lengthOf', stepsCount);
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.stepper__container')
+        .find('.step-container')
+        .should('have.lengthOf', stepsCount);
+    })
 });
 
 Cypress.Commands.add('missingLicenseInAttributionCode', () => {
-  getIFrame().get('.license-use-card').should('not.exist');
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.license-use-card').should('not.exist');
+    })
 });
 
 Cypress.Commands.add('headerTitle', license => {
-  getIFrame().get('.license-short-name > .b-header').contains(license);
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.license-short-name > .b-header').contains(license);
+    })
 });
 
 Cypress.Commands.add('readableStringTitle', license => {
-  getIFrame().get('b').contains(license);
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('b').contains(license);
+    })
 });
 
 Cypress.Commands.add('licenseText', license => {
-  getIFrame().get('.license-text > a').contains(license);
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.license-text > a').contains(license);
+    })
 });
 
 Cypress.Commands.add('copyButton', text => {
-  getIFrame().get('.donate')
-    .contains(text)
-    .click();
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.donate')
+        .contains(text)
+        .click();
+    })
 });
 
 Cypress.Commands.add('missingInputField', id => {
-  getIFrame().get(
-    `:nth-child(${id}) > label.is-normal > .control-inner > .input`,
-  ).should('not.exist');
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get(`:nth-child(${id}) > label.is-normal > .control-inner > .input`, ).should('not.exist');
+    })
 });
 
 Cypress.Commands.add('visibleInputField', id => {
-  getIFrame().get(
-    `:nth-child(${id}) > label.is-normal > .control-inner > .input`,
-  ).should('exist');
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get(`:nth-child(${id}) > label.is-normal > .control-inner > .input`, ).should('exist');
+    })
 });
 
 Cypress.Commands.add('selectInputField', (id, text) => {
-  getIFrame().get(`:nth-child(${id}) > label.is-normal > .control-inner > .input`).type(
-    text,
-  );
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get(`:nth-child(${id}) > label.is-normal > .control-inner > .input`).type(text);
+    })
 });
 
 Cypress.Commands.add('valueOfInputField', (id, attr) => {
-  getIFrame().get(`:nth-child(${id}) > label.is-normal > .control-inner > .input`)
-    .invoke('val')
-    .then(text => {
-      getIFrame().get(`${attr}`).contains(text);
-    });
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get(`:nth-child(${id}) > label.is-normal > .control-inner > .input`)
+        .invoke('val')
+        .then(text => {
+          startingCommand.get(`${attr}`).contains(text);
+        });
+    })
 });
 
 Cypress.Commands.add('toggleButton', () => {
-  getIFrame().get('#copy-type').click();
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('#copy-type').click();
+    })
 });
 
 Cypress.Commands.add('openModal', () => {
-  getIFrame().get('.modal').should('exist');
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.modal').should('exist');
+    })
 });
 
 Cypress.Commands.add('missingModal', () => {
-  getIFrame().get('.modal').should('not.exist');
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.modal').should('not.exist');
+    })
 });
 
 Cypress.Commands.add('clickClose', () => {
-  getIFrame().get('.close-button').click();
+  let startingCommand;
+  cy.get('body')
+    .then($body => {
+      if ($body.find('iframe').length != 0) {
+        startingCommand = getIFrame();
+      } else
+        startingCommand = cy;
+    }).then(() => {
+      startingCommand.get('.close-button').click();
+    })
 });
