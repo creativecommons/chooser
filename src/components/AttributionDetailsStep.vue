@@ -18,7 +18,7 @@
           <span @click="toggleInfoModal">
             <font-awesome-icon class="icon" icon="fa-solid fa-info-circle" />
           </span>
-        </template>
+        </template>bottom
       </v-input>
       <v-input
         v-model="workUrl"
@@ -26,20 +26,20 @@
         :label="$t('stepper.AD.form.work-url.label')"
         :placeholder="$t('stepper.AD.form.work-url.placeholder')"
       />
-      <span v-if="msg.workUrlError">{{ msg.workUrlError }}</span>
+      <span v-if="attributionErrorMsg.workUrlError">{{ attributionErrorMsg.workUrlError }}</span>
       <v-input
         v-model="creatorProfileUrl"
         :label="$t('stepper.AD.form.creator-profile.label')"
         :placeholder="$t('stepper.AD.form.creator-profile.placeholder')"
       />
-      <span v-if="msg.creatorProfileUrlError">{{ msg.creatorProfileUrlError }}</span>
+      <span v-if="attributionErrorMsg.creatorProfileUrlError">{{ attributionErrorMsg.creatorProfileUrlError }}</span>
       <v-input
         v-if="currentLicenseAttributes.BY"
         v-model="yearOfCreation"
         :label="$t('stepper.AD.form.year-of-creation.label')"
         :placeholder="$t('stepper.AD.form.year-of-creation.placeholder')"
       />
-      <span v-if="msg.yearOfCreationError">{{ msg.yearOfCreationError }}</span>
+      <span v-if="attributionErrorMsg.yearOfCreationError">{{ attributionErrorMsg.yearOfCreationError }}</span>
     </form>
 
     <app-modal
@@ -78,7 +78,7 @@ export default {
   data() {
     return {
       showInfoModal: false,
-      msg: [],
+      attributionErrorMsg: [],
     };
   },
   computed: {
@@ -144,33 +144,33 @@ export default {
     },
     validateCreatorProfileUrl(value) {
       if(value.length === 0){
-        this.msg.creatorProfileUrlError = '';
+        this.attributionErrorMsg.creatorProfileUrlError = '';
       }
       else if (/[(http(s)?):(www)?a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(value)) {
-        this.msg.creatorProfileUrlError = '';
+        this.attributionErrorMsg.creatorProfileUrlError = '';
       } else {
-        this.msg.creatorProfileUrlError = 'Please enter a valid URL.';
+        this.attributionErrorMsg.creatorProfileUrlError = 'Please enter a valid URL.';
       }
     },
     validateWorkUrl(value) {
       if(value.length === 0){
-        this.msg.workUrlError = '';
+        this.attributionErrorMsg.workUrlError = '';
       }
       else if (/[(http(s)?):(www)?a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(value)) {
-        this.msg.workUrlError = '';
+        this.attributionErrorMsg.workUrlError = '';
       } else {
-        this.msg.workUrlError = 'Please enter a valid URL.';
+        this.attributionErrorMsg.workUrlError = 'Please enter a valid URL.';
       }
     },
     validateYearOfCreation(value){
       if(value.length === 0){
-        this.msg.yearOfCreationError = '';
+        this.attributionErrorMsg.yearOfCreationError = '';
       }
-      else if(Number(value)>= 1000 && Number(value)<=9999){
-        this.msg.yearOfCreationError = '';
+      else if(Number(value)>= 1000 && Number(value)<=9999 && !value.includes('.')){
+        this.attributionErrorMsg.yearOfCreationError = '';
       }
       else {
-        this.msg.yearOfCreationError = 'Please enter a valid year';
+        this.attributionErrorMsg.yearOfCreationError = 'Please enter a valid year';
       }
     },
     ...mapMutations([
