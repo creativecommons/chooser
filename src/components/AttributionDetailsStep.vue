@@ -18,7 +18,7 @@
           <span @click="toggleInfoModal">
             <font-awesome-icon class="icon" icon="fa-solid fa-info-circle" />
           </span>
-        </template>bottom
+        </template>
       </v-input>
       <v-input
         v-model="workUrl"
