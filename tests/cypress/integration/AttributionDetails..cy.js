@@ -29,11 +29,33 @@ describe('Attribution Details Step.vue', () => {
     });
 
     it('It should disappear when the user clicks Back.', () => {
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'yes');
+      cy.clickNext();
+      cy.get('select').select('CC0 1.0');
+      cy.hasRecommendedLicense('CC0 1.0 Universal');
+      cy.hasStepsCount(4);
+      cy.clickNext();
+      cy.waiveCopyright();
+      cy.clickNext();
+      cy.hasLicenseInAttributionCode(' CC0 1.0 ');
       cy.clickBack();
       cy.missingLicenseInAttributionCode();
     });
 
     it('When the user clicks back again, and then uses the steps (i.e. clicking I need help on the first step) to choose the license, the "Mark Your Work" section should appear again when the last step is selected.', () => {
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'yes');
+      cy.clickNext();
+      cy.get('select').select('CC0 1.0');
+      cy.hasRecommendedLicense('CC0 1.0 Universal');
+      cy.hasStepsCount(4);
+      cy.clickNext();
+      cy.waiveCopyright();
+      cy.clickNext();
+      cy.hasLicenseInAttributionCode(' CC0 1.0 ');
+      cy.clickBack();
+      cy.missingLicenseInAttributionCode();
       cy.clickBack();
       cy.clickBack();
       cy.makeAChoice('.FS', 'yes');
@@ -163,6 +185,21 @@ describe('Attribution Details Step.vue', () => {
       cy.valueOfInputField(2, '[property="cc:attributionName"]');
     });
     it('When the user adds information in the attribution details, the year of Creation field is updated accordingly', () => {
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'yes');
+      cy.clickNext();
+      cy.get('select').select('CC0 1.0');
+      cy.hasRecommendedLicense('CC0 1.0 Universal');
+      cy.hasStepsCount(4);
+      cy.clickNext();
+      cy.waiveCopyright();
+      cy.clickNext();
+      cy.selectInputField(1, 'foo');
+      cy.selectInputField(2, 'bar');
+      cy.selectInputField(3, 'https://creativecommons.org ');
+      cy.selectInputField(4, 'https://creativecommons.org ');
+      cy.valueOfInputField(1, '[property="dct:title"]');
+      cy.valueOfInputField(2, '[property="cc:attributionName"]');
       cy.clickBack();
       cy.clickBack();
       cy.get('select').select('CC BY 4.0');

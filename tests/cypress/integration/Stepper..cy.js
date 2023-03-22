@@ -230,6 +230,44 @@ describe('Stepper.vue', () => {
     });
 
     it('User can start the selection process over by clicking "Start again" Button', () => {
+      cy.visit('/');
+      cy.makeAChoice('.FS', 'yes');
+      cy.clickNext();
+      cy.get('select').select('CC0 1.0');
+      cy.hasRecommendedLicense('CC0 1.0 Universal');
+      cy.clickNext();
+      cy.waiveCopyright();
+      cy.clickNext();
+      cy.hasLicenseInAttributionCode(' CC0 1.0 ');
+      cy.clickBack();
+      cy.clickBack();
+      cy.clickBack();
+      cy.makeAChoice('.FS', 'no');
+      cy.clickNext();
+
+      // Attribution
+      cy.makeAChoice('.BY', 'yes');
+      cy.hasRecommendedLicense('CC BY 4.0');
+      cy.clickNext();
+
+      // Non-commercial
+      cy.makeAChoice('.NC', 'yes');
+      cy.clickNext();
+
+      // No-derivs
+      cy.makeAChoice('.ND', 'yes');
+      cy.clickNext();
+
+      // Share-alike
+      cy.makeAChoice('.SA', 'no');
+      cy.hasRecommendedLicense('CC BY-SA 4.0');
+      cy.clickNext();
+
+      // Appropriate license step
+      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.clickNext();
+
+      cy.hasLicenseInAttributionCode('CC BY-SA 4.0');
       cy.get('button')
         .contains('Start again')
         .click();
