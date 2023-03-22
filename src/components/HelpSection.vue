@@ -78,9 +78,8 @@ export default {
   .help-section .help-links .help-link .help-link-a {
     width: 90%;
   }
+
   
-  a{
-    font-size: 15px;
-  }
+
 }
 </style>
