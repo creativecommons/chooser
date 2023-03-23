@@ -209,6 +209,9 @@ export default {
   padding-right: var(--outer-padding);
   padding-left: var(--inner-padding);
 }
+.column.right-column{
+  overflow: auto;
+}
 .fixed-right-column {
   position: sticky;
   top: 10px;

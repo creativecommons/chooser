@@ -145,3 +145,9 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.license-text{
+  word-wrap: break-word;
+}
+</style>
+
