@@ -62,7 +62,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 library.add(faInfoCircle);
-
+const regexTestString= /[(http(s)?):(www)?a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 export default {
   name: 'AttributionDetails',
   components: { VInput, FontAwesomeIcon },
@@ -146,7 +146,7 @@ export default {
       if(value.length === 0){
         this.attributionErrorMsg.creatorProfileUrlError = '';
       }
-      else if (/[(http(s)?):(www)?a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(value)) {
+      else if (regexTestString.test(value)) {
         this.attributionErrorMsg.creatorProfileUrlError = '';
       } else {
         this.attributionErrorMsg.creatorProfileUrlError = 'Please enter a valid URL.';
@@ -156,7 +156,7 @@ export default {
       if(value.length === 0){
         this.attributionErrorMsg.workUrlError = '';
       }
-      else if (/[(http(s)?):(www)?a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(value)) {
+      else if (regexTestString.test(value)) {
         this.attributionErrorMsg.workUrlError = '';
       } else {
         this.attributionErrorMsg.workUrlError = 'Please enter a valid URL.';

@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
-
 import {
   defaultAttributes,
   CC0Attributes,
