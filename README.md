@@ -24,6 +24,10 @@ Tasks, issues, and discussion related to the release of the new chooser are trac
 
 ## Getting Started
 
+### Prerequisite
+[nodeJS](https://nodejs.org/en/blog/release/v14.17.3) version 14 or below, as the version above 14 may give error.
+
+### Commands
 Run the following commands in order to have the code up and running on your machine:
 
 ``` bash
