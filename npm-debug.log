@@ -1,0 +1,87 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   '/home/ayuzz/.nvm/versions/node/v14.21.3/bin/node',
+1 verbose cli   '/home/ayuzz/.nvm/versions/node/v14.21.3/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'npm@7.24.2'
+1 verbose cli ]
+2 info using npm@3.10.10
+3 info using node@v14.21.3
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData npm@7.24.2
+8 silly fetchNamedPackageData npm
+9 silly mapToRegistry name npm
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'npm',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'npm',
+12 silly mapToRegistry   name: 'npm',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag'
+12 silly mapToRegistry }
+13 silly mapToRegistry uri https://registry.npmjs.org/npm
+14 verbose request uri https://registry.npmjs.org/npm
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 11:49:27 PM
+17 verbose request id cffcc6c451a85f50
+18 http request GET https://registry.npmjs.org/npm
+19 http 200 https://registry.npmjs.org/npm
+20 verbose headers {
+20 verbose headers   date: 'Thu, 23 Mar 2023 18:19:27 GMT',
+20 verbose headers   'content-type': 'application/json',
+20 verbose headers   'transfer-encoding': 'chunked',
+20 verbose headers   connection: 'keep-alive',
+20 verbose headers   'cf-ray': '7ac8aecae91d1bdf-BOM',
+20 verbose headers   'access-control-allow-origin': '*',
+20 verbose headers   age: '259',
+20 verbose headers   'cache-control': 'public, max-age=300',
+20 verbose headers   etag: 'W/"3388ce1e61d50a61488fb1798198eda6"',
+20 verbose headers   'last-modified': 'Wed, 15 Mar 2023 17:25:36 GMT',
+20 verbose headers   vary: 'accept-encoding, accept',
+20 verbose headers   'cf-cache-status': 'HIT',
+20 verbose headers   'x-amz-replication-status': 'COMPLETED',
+20 verbose headers   'x-amz-server-side-encryption': 'AES256',
+20 verbose headers   server: 'cloudflare',
+20 verbose headers   'content-encoding': 'gzip'
+20 verbose headers }
+21 silly get cb [
+21 silly get   200,
+21 silly get   {
+21 silly get     date: 'Thu, 23 Mar 2023 18:19:27 GMT',
+21 silly get     'content-type': 'application/json',
+21 silly get     'transfer-encoding': 'chunked',
+21 silly get     connection: 'keep-alive',
+21 silly get     'cf-ray': '7ac8aecae91d1bdf-BOM',
+21 silly get     'access-control-allow-origin': '*',
+21 silly get     age: '259',
+21 silly get     'cache-control': 'public, max-age=300',
+21 silly get     etag: 'W/"3388ce1e61d50a61488fb1798198eda6"',
+21 silly get     'last-modified': 'Wed, 15 Mar 2023 17:25:36 GMT',
+21 silly get     vary: 'accept-encoding, accept',
+21 silly get     'cf-cache-status': 'HIT',
+21 silly get     'x-amz-replication-status': 'COMPLETED',
+21 silly get     'x-amz-server-side-encryption': 'AES256',
+21 silly get     server: 'cloudflare',
+21 silly get     'content-encoding': 'gzip'
+21 silly get   }
+21 silly get ]
+22 verbose get saving npm to /home/ayuzz/.npm/registry.npmjs.org/npm/.cache.json
+23 verbose correctMkdir /home/ayuzz/.npm correctMkdir not in flight; initializing
+24 verbose stack TypeError: cb.apply is not a function
+24 verbose stack     at /home/ayuzz/.nvm/versions/node/v14.21.3/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:267:18
+24 verbose stack     at FSReqCallback.oncomplete (fs.js:193:5)
+25 verbose cwd /home/ayuzz/Ayush/Programming/WebDev/creativeCommonsv2/chooser
+26 error Linux 5.19.0-35-generic
+27 error argv "/home/ayuzz/.nvm/versions/node/v14.21.3/bin/node" "/home/ayuzz/.nvm/versions/node/v14.21.3/bin/npm" "install" "-g" "npm@7.24.2"
+28 error node v14.21.3
+29 error npm  v3.10.10
+30 error cb.apply is not a function
+31 error If you need help, you may report this error at:
+31 error     <https://github.com/npm/npm/issues>
+32 verbose exit [ 1, true ]
