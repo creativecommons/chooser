@@ -288,7 +288,7 @@ export default {
 @media only screen and (max-width: 768px) {
   .app-modal {
     .modal {
-      --h-padding: 1rem;
+      --h-padding: 2rem;
       --v-padding: 1.5rem;
       .modal-header {
         padding-top: 1.5rem !important;
