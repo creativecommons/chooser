@@ -2,7 +2,11 @@
   <div id="app">
     <header-section v-if="!isEmbedded" />
     <div id="site-container" class="container">
-      <nav v-if="!isEmbedded" class="breadcrumb caption bold" aria-label="breadcrumbs">
+      <nav
+        v-if="!isEmbedded"
+        class="breadcrumb caption bold"
+        aria-label="breadcrumbs"
+      >
         <ul>
           <li><a href="https://creativecommons.org/">Home</a></li>
           <li class="is-active">
@@ -118,7 +122,7 @@ export default {
     window.removeEventListener('resize', this.onResize);
   },
   created: function() {
-    this.$store.subscribe(mutation => {
+    this.$store.subscribe((mutation) => {
       if (
         mutation.type === 'updateAttributesFromShort' ||
         mutation.type === 'setSelected'
@@ -165,9 +169,16 @@ export default {
     },
     openChooserModal(modal) {
       this.openModal = modal;
+      const htmlTag = this.getHtmlTag();
+      htmlTag.classList.add('no-scroll');
     },
     closeChooserModal() {
+      const htmlTag = this.getHtmlTag();
+      htmlTag.classList.remove('no-scroll');
       this.openModal = null;
+    },
+    getHtmlTag() {
+      return document.getElementsByTagName('html')[0];
     },
   },
 };
@@ -265,5 +276,9 @@ footer.main-footer {
 .appear-enter,
 .appear-leave-to {
   opacity: 0;
+}
+
+.no-scroll {
+  overflow: hidden !important;
 }
 </style>
