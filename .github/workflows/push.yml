@@ -25,7 +25,7 @@ jobs:
               env:
                   CI: true
             - name: Cypress run
-              uses: cypress-io/github-action@v2
+              uses: cypress-io/github-action@v5.1.0
               with:
                 start: npm run serve
                 wait-on: 'http://localhost:8080'
