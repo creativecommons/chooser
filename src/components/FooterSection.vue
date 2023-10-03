@@ -43,7 +43,7 @@
             >
               <font-awesome-layers class="fa-2x margin-right-small">
                 <font-awesome-icon icon="fa-solid fa-circle" />
-                <font-awesome-icon icon="fa-brands fa-twitter" transform="shrink-6" :style="{ color: 'black' }" />
+                <font-awesome-icon :icon="['fab', 'x-twitter']" transform="shrink-6" :style="{ color: 'black' }" />
               </font-awesome-layers>
             </a>
             <a
