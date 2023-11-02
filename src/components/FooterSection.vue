@@ -1,185 +1,71 @@
 <template>
-  <footer class="main-footer">
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <a
-            href="https://creativecommons.org"
-            class="main-logo margin-bottom-bigger has-text-white"
-          >
-            <img
-              src="@creativecommons/cc-assets/logos/cc/logomark.svg"
-              alt="Creative Commons License chooser"
-              width="220"
-              class="img-invert"
-            />
-          </a>
-          <address class="margin-bottom-normal">
-            <span class="is-block">Creative Commons</span>
-            <span>PO Box 1866, Mountain View CA 94042</span>
-          </address>
-          <a href="mailto:info@creativecommons.org" class="mail is-block">
-            info@creativecommons.org
-          </a>
-          <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+  <footer>
+     <a class="identity-logo" href="#">Creative Commons</a>
 
-          <div class="social-icons margin-vertical-large">
-            <a
-              href="https://www.instagram.com/creativecommons"
-              class="social has-text-white"
-              target="_blank"
-              rel="noopener"
-            >
-              <font-awesome-layers class="fa-2x margin-right-small">
-                <font-awesome-icon icon="fa-solid fa-circle" />
-                <font-awesome-icon icon="fa-brands fa-instagram" transform="shrink-6" :style="{ color: 'black' }" />
-              </font-awesome-layers>
-            </a>
-            <a
-              href="https://www.twitter.com/creativecommons"
-              class="social has-text-white"
-              target="_blank"
-              rel="noopener"
-            >
-              <font-awesome-layers class="fa-2x margin-right-small">
-                <font-awesome-icon icon="fa-solid fa-circle" />
-                <font-awesome-icon icon="fa-brands fa-twitter" transform="shrink-6" :style="{ color: 'black' }" />
-              </font-awesome-layers>
-            </a>
-            <a
-              href="https://www.facebook.com/creativecommons"
-              class="social has-text-white"
-              target="_blank"
-              rel="noopener"
-            >
-              <font-awesome-layers class="fa-2x margin-right-small">
-                <font-awesome-icon icon="fa-solid fa-circle" />
-                <font-awesome-icon icon="fa-brands fa-facebook-f" transform="shrink-6" :style="{ color: 'black' }" />
-              </font-awesome-layers>
-            </a>
-            <a
-              href="https://www.linkedin.com/company/creative-commons/"
-              class="social has-text-white"
-              target="_blank"
-              rel="noopener"
-            >
-              <font-awesome-layers class="fa-2x margin-right-small">
-                <font-awesome-icon icon="fa-solid fa-circle" />
-                <font-awesome-icon icon="fa-brands fa-linkedin-in" transform="shrink-6" :style="{ color: 'black' }" />
-              </font-awesome-layers>
-            </a>
-          </div>
+    <nav class="footer-menu">
+        <ul>
+            <li><a href="/about/contact">Contact</a></li>
+            <li><a href="https://mail.creativecommons.org/subscribe" target="_blank">Newsletter</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/policies">Policies</a></li>
+            <li><a href="/terms">Terms</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact">
+    <!-- this area lacks a heading? -->
+    <h2>Contact Us</h2>
+    <p>Creative Commons <br> PO Box 1866, Mountain View, CA 94042</p>
+    <p><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>
+    <p><a href="tel:+14154296753">+1-415-429-6753</a></p>
+
+    <nav class="social-menu">
+        <ul>
+            <!-- <li><a class="icon-replace fa-instagram" href="#">Instagram</a></li> -->
+            <li><a class="icon-replace fa-twitter" href="https://twitter.com/creativecommons" target="_blank">Twitter</a></li>
+            <li><a class="icon-replace fa-mastodon" href="https://mastodon.social/@creativecommons" target="_blank">Mastodon</a></li>
+            <li><a class="icon-replace fa-facebook" href="https://www.facebook.com/creativecommons" target="_blank">Facebook</a></li>
+            <li><a class="icon-replace fa-linkedin" href="https://www.linkedin.com/company/creative-commons/" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class="subscribe">
+    <h2>Subscribe to our Newsletter</h2>
+    <form id="mc-embedded-subscribe-form" action="https://creativecommons.us4.list-manage.com/subscribe/post?u=fd30364b6577b471373d6076c&amp;id=4603fe102a" method="post"  name="mc-embedded-subscribe-form" class="validate newsletter" target="_blank" novalidate="">
+        <input id="mce-EMAIL" type="email"  value="" name="EMAIL" class="email input"  placeholder="Your email" required="">
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px" aria-hidden="true">
+          <input type="text" name="b_fd30364b6577b471373d6076c_4603fe102a" tabindex="-1" value="">
         </div>
-        <div class="column">
-          
-          <div class="attribution margin-top-bigger">
-            <p class="caption">
-              Except where otherwise
-              <a
-                href="https://creativecommons.org/policies#license"
-                target="_blank"
-                rel="noopener"
-                >noted</a
-              >, content on this site is licensed under the
-              <a
-                href="https://creativecommons.org/licenses/by/4.0/"
-                target="_blank"
-                rel="noopener"
-              >
-                Creative Commons Attribution 4.0 International license </a
-              >.
-              <a
-                href="https://fontawesome.com/"
-                target="_blank"
-                rel="noopener"
-                class="has-text-white"
-              >
-                Icons by Font Awesome.
-              </a>
-            </p>
-            <div class="margin-top-smaller"><license-icons class="img-invert" :icons-arr="['logo','by']" /></div>
-          </div>
-        </div>
-        <div class="column">
-          <section class="donate-section">
-            <h2 class="title is-5">
-              {{ $t('footer.donation.header') }}
-            </h2>
-            <p>{{ $t('footer.donation.call') }}</p>
-            <a
-              class="button small donate"
-              href="http://creativecommons.org/donate"
-            >
-              <span class="icon cc-heart margin-right-small">
-                <license-icons :icons-arr="['heart']" />
-              </span>
-              Donate now
-            </a>
-          </section>
-        </div>
-      </div>
+        <input id="mc-embedded-subscribe" type="submit" value="subscribe" class="button small">
+      </form>
+    </div>
+
+    <div class="donate">
+        <h2>Support Our Work</h2>
+        <p>Our work relies on you! Help us keep the Internet free and open.</p>
+        <a class="donate icon-attach cc-heart-filled" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate Now</a>
+    </div>
+
+
+    <div class="license">
+        <p>Except where otherwise <a href="/policies/#license">noted</a>, content on this site is licensed under a <a href="/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
+
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
+        </svg>
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
+        </svg>
     </div>
   </footer>
 </template>
 
 <script>
-import LicenseIcons from './LicenseIcons';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTwitter, faFacebookF, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome';
-library.add(faTwitter, faFacebookF, faLinkedinIn, faInstagram, faCircle);
 
-export default {
-  name: 'FooterSection',
-  components: {
-    FontAwesomeIcon,
-    FontAwesomeLayers,
-    LicenseIcons,
-  },
-};
 </script>
 
 <style lang="scss" scoped>
-.main-footer {
-  --icon-size: 30px;
-}
-.donate,
-.social {
-  &:hover {
-    text-decoration: none;
-  }
-}
-.icon {
-  width: var(--icon-size);
-  height: var(--icon-size);
-  display: inline-flex;
-  svg {
-    width: 100%;
-    height: auto;
-  }
-}
-.donate-section h2 {
-  color: white;
-}
-.main-footer .donate-section .donate svg {
-  margin-right: 0;
-}
-.social-icons {
-  display: flex;
-  align-items: center;
-}
-.img-invert {
-  filter: invert(100%);
-}
 
-@media screen and (min-width: 1023px) {
-  // All columns are set the same width on 'tablet'-sized screen
-  // Half-sized middle column makes the last column too small for
-  // the 'Donate' button and breaks the layout
-  .column:nth-child(2) {
-    flex: none;
-    width: 50%;
-  }
-}
 </style>
