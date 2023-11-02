@@ -1,6 +1,6 @@
 <template>
   <footer>
-     <a class="identity-logo" href="#">Creative Commons</a>
+     <a class="identity-logo" href="/">Creative Commons</a>
 
     <nav class="footer-menu">
         <ul>
@@ -59,10 +59,12 @@
             <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
         </svg>
     </div>
+
   </footer>
 </template>
 
 <script>
+
 
 </script>
 

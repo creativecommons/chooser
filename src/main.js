@@ -28,3 +28,10 @@ if(process.env.VUE_APP_CC_OUTPUT!=='embedded') {
 }
 
 export default App;
+
+const exploreButton = document.querySelector('button.explore');
+const explorePanel = document.querySelector('.explore-panel');
+
+exploreButton.addEventListener('click', (event) => {
+  explorePanel.classList.toggle('expand');
+});

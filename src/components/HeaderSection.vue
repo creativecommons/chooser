@@ -1,25 +1,21 @@
 <template>
 <header>
     <div class="masthead">
-        <h1><a class="identity-logo" href="#">Creative Commons</a></h1>
+        <h1><a class="identity-logo" href="/">Creative Commons</a></h1>
         <button class="expand-menu">Menu</button>
         <nav class="primary-menu">
             <ul>
-                <li><a href="#">Who We Are</a></li>
-                <li><a href="#">What We Do</a></li>
-                <li><a href="#">Licenses and Tools</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Support Us</a></li>
-                <li><a class="attention" href="https://summit.creativecommons.org/">Global Summit 2023</a></li>
+                <li><a href="/about/mission">Who We Are</a></li>
+                <li><a href="/about">What We Do</a></li>
+                <li><a href="/share-your-work">Licenses and Tools</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about/support-cc/">Support Us</a></li>
             </ul>
         </nav>
 
         <nav class="ancilliary-menu">
             <ul>
-                <!-- uncomment below line, if translation functionality is present on site -->
-                <!-- <li><button class="locale icon-attach fa-globe">English</button></li> -->
-                <!-- uncomment below line, if search functionality is present on site -->
-                <li><a class="search icon-attach fa-search" href="#">Search</a></li>
+                <li><a class="search icon-attach fa-search" href="/?s">Search</a></li>
                 <li><a class="donate icon-attach fa-heart" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate</a></li>
                 <li><button class="explore">Explore CC</button></li>
             </ul>
@@ -74,6 +70,7 @@
 </template>
 
 <script>
+
 
 </script>
 
