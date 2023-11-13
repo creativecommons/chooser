@@ -26,7 +26,7 @@
           <!-- The right column with the recommended license should be fixed until
                      the 'LicenseUseCard' appears, when the column should scroll to make the
                      'LicenseUseCard' visible -->
-          <div :class="{ 'fixed-right-column': !showLicenseUse }">
+          <div :class="{ 'right-column': !showLicenseUse }">
             <transition name="appear">
               <LicenseDetailsCard v-if="showLicense" />
             </transition>
