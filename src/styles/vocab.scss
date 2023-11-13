@@ -56,7 +56,7 @@
 }
 
 
-@import 'https://creativecommons.org/wp-content/themes/vocabulary-theme/vocabulary/css/vocabulary.css';
+@import '../../static/vocabulary/css/vocabulary.css';
 
 #app > header {
     display: flex;
@@ -146,8 +146,8 @@
 
     /* allows for color manipulation of svg */
     background-color: white;
-    -webkit-mask-image: url('https://creativecommons.org/wp-content/themes/vocabulary-theme/vocabulary/svg/cc/logos/cc/logomark.svg');
-    mask-image: url('https://creativecommons.org/wp-content/themes/vocabulary-theme/vocabulary/svg/cc/logos/cc/logomark.svg');
+    -webkit-mask-image: url('../../static/vocabulary/svg/cc/logos/cc/logomark.svg');
+    mask-image: url('../../static/vocabulary/svg/cc/logos/cc/logomark.svg');
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     cursor: pointer;
