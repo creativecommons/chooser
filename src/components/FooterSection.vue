@@ -53,10 +53,10 @@
         <p>Except where otherwise <a href="/policies/#license">noted</a>, content on this site is licensed under a <a href="/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
 
         <svg>
-            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
+            <use href="../../static/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
         </svg>
         <svg>
-            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
+            <use href="../../static/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
         </svg>
     </div>
 
