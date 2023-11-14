@@ -113,20 +113,6 @@ export default {
     this.$nextTick(() => {
       window.addEventListener('resize', this.onResize);
     });
-
-    const exploreButton = document.querySelector('button.explore');
-    const explorePanel = document.querySelector('.explore-panel');
-
-    exploreButton.addEventListener('click', (event) => {
-      explorePanel.classList.toggle('expand');
-    });
-
-    const menuButton = document.querySelector('button.expand-menu');
-    const menuPanel = document.querySelector('.primary-menu');
-
-    menuButton.addEventListener('click', (event) => {
-      menuPanel.classList.toggle('expand');
-    });
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize);

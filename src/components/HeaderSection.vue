@@ -70,8 +70,24 @@
 </template>
 
 <script>
+export default {
+  name: 'HeaderSection',
+  mounted() {
+    const exploreButton = document.querySelector('button.explore');
+    const explorePanel = document.querySelector('.explore-panel');
 
+    exploreButton.addEventListener('click', (event) => {
+      explorePanel.classList.toggle('expand');
+    });
 
+    const menuButton = document.querySelector('button.expand-menu');
+    const menuPanel = document.querySelector('.primary-menu');
+
+    menuButton.addEventListener('click', (event) => {
+      menuPanel.classList.toggle('expand');
+    });
+  },
+};
 </script>
 
 
