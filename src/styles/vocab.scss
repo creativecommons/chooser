@@ -1,4 +1,5 @@
 
+/* add legacy-vocabulary styling */
 @import '../../static/vocabulary-legacy/legacy-vocabulary.css';    
 
 .select:not(.is-multiple):not(.is-loading)::after {
@@ -51,10 +52,10 @@
     }
 }
 
-
+/* add new Vocabulary styling */
 @import '../../static/vocabulary/css/vocabulary.css';
 
-/* localizes path styles to get new Vocabulary to apply correctly */
+/* localized patch styles to get new Vocabulary to apply correctly */
 #app > header {
     display: flex;
     flex-wrap: wrap;
@@ -343,8 +344,3 @@
         display: block;
     }
 }
-
-
-
-
-
