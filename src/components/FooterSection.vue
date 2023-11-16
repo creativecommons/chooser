@@ -4,11 +4,11 @@
 
     <nav class="footer-menu">
         <ul>
-            <li><a href="/about/contact">Contact</a></li>
+            <li><a href="https://creativecommons.org/about/contact">Contact</a></li>
             <li><a href="https://mail.creativecommons.org/subscribe" target="_blank">Newsletter</a></li>
-            <li><a href="/privacy">Privacy</a></li>
-            <li><a href="/policies">Policies</a></li>
-            <li><a href="/terms">Terms</a></li>
+            <li><a href="https://creativecommons.org/privacy">Privacy</a></li>
+            <li><a href="https://creativecommons.org/policies">Policies</a></li>
+            <li><a href="https://creativecommons.org/terms">Terms</a></li>
         </ul>
     </nav>
 
@@ -50,7 +50,7 @@
 
 
     <div class="license">
-        <p>Except where otherwise <a href="/policies/#license">noted</a>, content on this site is licensed under a <a href="/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
+        <p>Except where otherwise <a href="https://creativecommons.org/policies/#license">noted</a>, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
 
         <svg>
             <use href="../../static/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
