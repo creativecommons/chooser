@@ -5,17 +5,17 @@
         <button class="expand-menu">Menu</button>
         <nav class="primary-menu">
             <ul>
-                <li><a href="/about/mission">Who We Are</a></li>
-                <li><a href="/about">What We Do</a></li>
-                <li><a href="/share-your-work">Licenses and Tools</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about/support-cc/">Support Us</a></li>
+                <li><a href="https://creativecommons.org/about/mission">Who We Are</a></li>
+                <li><a href="https://creativecommons.org/about">What We Do</a></li>
+                <li><a href="https://creativecommons.org/share-your-work">Licenses and Tools</a></li>
+                <li><a href="https://creativecommons.org/blog">Blog</a></li>
+                <li><a href="https://creativecommons.org/about/support-cc/">Support Us</a></li>
             </ul>
         </nav>
 
         <nav class="ancilliary-menu">
             <ul>
-                <li><a class="search icon-attach fa-search" href="/?s">Search</a></li>
+                <li><a class="search icon-attach fa-search" href="https://creativecommons.org/?s">Search</a></li>
                 <li><a class="donate icon-attach fa-heart" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate</a></li>
                 <li><button class="explore">Explore CC</button></li>
             </ul>
@@ -46,10 +46,6 @@
             <li>
                 <a href="https://summit.creativecommons.org/" target="_blank">Global Summit</a>
                 <p>Attend our annual event, promoting the power of open licensing</p>
-            </li>
-            <li>
-                <a href="/choose" target="_blank">Chooser</a>
-                <p>Get help choosing the appropriate license for your work</p>
             </li>
             <li>
                 <a href="https://search.creativecommons.org/"  target="_blank">Search Portal</a>
