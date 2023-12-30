@@ -17,8 +17,22 @@ RUN apt-get update && apt-get install -y \
 # Set up Cypress environment variables
 ENV DISPLAY=:99
 
+# Copy only the package.json for faster builds when only dependencies change
+# This helps to cache npm install step
+COPY package*.json ./
+
+# Install project dependencies
+RUN npm install
+
+# Create a directory for the source code
+WORKDIR /app/src
+
 # Copy the application code to the container
 COPY . .
 
-# Run Vue.js project and Cypress tests
-CMD ["bash", "-c", "Xvfb :99 -screen 0 1024x768x16 & npx cypress run & npm run serve"]
+# Expose the necessary ports for the Vue.js app and Cypress
+EXPOSE 8080
+EXPOSE 3000
+
+# Run Vue.js project
+CMD ["npm", "run", "serve"]
