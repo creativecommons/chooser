@@ -22,6 +22,18 @@ This site is built using [Vue.js](https://vuejs.org/) (and vue-cli).
 
 Tasks, issues, and discussion related to the release of the new chooser are tracked with the [`Launch Milestone`](https://github.com/creativecommons/chooser/milestone/1).
 
+## Code of conduct
+
+[`CODE_OF_CONDUCT.md`][org-coc]:
+> The Creative Commons team is committed to fostering a welcoming community.
+> This project and all other Creative Commons open source projects are governed
+> by our [Code of Conduct][code_of_conduct]. Please report unacceptable
+> behavior to [conduct@creativecommons.org](mailto:conduct@creativecommons.org)
+> per our [reporting guidelines][reporting_guide].
+[org-coc]: https://github.com/creativecommons/.github/blob/main/CODE_OF_CONDUCT.md
+[code_of_conduct]: https://opensource.creativecommons.org/community/code-of-conduct/
+[reporting_guide]: https://opensource.creativecommons.org/community/code-of-conduct/enforcement/
+
 ## Getting Started
 
 ### Prerequisite
@@ -70,6 +82,10 @@ All issues in this list are up for grabs!
 If it says "No results matched your search", then there are no issues currently up for grabs.
 
 *If no progress has been made on an issue for seven days after assignment, the assignment will be removed to allow others to contribute.*
+
+See [`CONTRIBUTING.md`][org-contrib].
+
+[org-contrib]: https://github.com/creativecommons/.github/blob/main/CONTRIBUTING.md
 
 ## Running Tests
 
