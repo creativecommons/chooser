@@ -5,11 +5,11 @@
         <button class="expand-menu">Menu</button>
         <nav class="primary-menu">
             <ul>
-                <li><a href="https://creativecommons.org/about/mission">Who We Are</a></li>
-                <li><a href="https://creativecommons.org/about">What We Do</a></li>
-                <li><a href="https://creativecommons.org/share-your-work">Licenses and Tools</a></li>
-                <li><a href="https://creativecommons.org/blog">Blog</a></li>
-                <li><a href="https://creativecommons.org/about/support-cc/">Support Us</a></li>
+                <li><a :class="{ active: activeLink === 'whoWeAre' }" @click.prevent="setActive('whoWeAre')">Who We Are</a></li>
+                <li><a :class="{ active: activeLink === 'whatWeDo' }" @click.prevent="setActive('whatWeDo')">What We Do</a></li>
+                <li><a :class="{ active: activeLink === 'licensesAndTools' }" @click.prevent="setActive('licensesAndTools')">Licenses and Tools</a></li>
+                <li><a :class="{ active: activeLink === 'blog' }" @click.prevent="setActive('blog')">Blog</a></li>
+                <li><a :class="{ active: activeLink === 'supportUs' }" @click.prevent="setActive('supportUs')">Support Us</a></li>
             </ul>
         </nav>
 
@@ -68,6 +68,18 @@
 <script>
 export default {
   name: 'HeaderSection',
+  data() {
+    return {
+      links: {
+        whoWeAre: 'https://creativecommons.org/about/mission',
+        whatWeDo: 'https://creativecommons.org/about',
+        licensesAndTools: 'https://creativecommons.org/share-your-work',
+        blog: 'https://creativecommons.org/blog',
+        supportUs: 'https://creativecommons.org/about/support-cc/',
+      },
+      activeLink: null,
+    };
+  },
   mounted() {
     const exploreButton = document.querySelector('button.explore');
     const explorePanel = document.querySelector('.explore-panel');
@@ -83,7 +95,35 @@ export default {
       menuPanel.classList.toggle('expand');
     });
   },
+  methods: {
+    setActive(linkName) {
+      this.activeLink = linkName;
+
+      switch (linkName) {
+      case 'whoWeAre':
+        window.location.href = this.links.whoWeAre;
+        break;
+      case 'whatWeDo':
+        window.location.href = this.links.whatWeDo;
+        break;
+      case 'licensesAndTools':
+        window.location.href = this.links.licensesAndTools;
+        break;
+      case 'blog':
+        window.location.href = this.links.blog;
+        break;
+      case 'supportUs':
+        window.location.href = this.links.supportUs;
+        break;
+      }
+    },
+  },
 };
 </script>
 
+<style>
+.active {
+  color: #000000;
+}
+</style>
 
