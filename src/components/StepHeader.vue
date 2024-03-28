@@ -94,6 +94,7 @@ export default {
 }
 .step-header__title {
   margin-bottom: 0.25rem;
+  
 }
 .step-header__title::before {
   content: counter(step-counter);
@@ -130,7 +131,7 @@ export default {
     padding-left: calc(var(--step-left-padding) + var(--counter-size));
     margin-bottom: 0.5rem;
     &::before {
-      top: 1rem;
+      top: 1.2rem;
     }
   }
   .step-header__caption {
