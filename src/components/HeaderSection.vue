@@ -2,7 +2,7 @@
 <header>
     <div class="masthead">
         <h1><a class="identity-logo" href="https://creativecommons.org">Creative Commons</a></h1>
-        <button class="expand-menu">Menu</button>
+        <button class="expand-menu"><span class="material-symbols-rounded">menu</span></button>
         <nav class="primary-menu">
             <ul>
                 <li><a href="https://creativecommons.org/about/mission">Who We Are</a></li>
