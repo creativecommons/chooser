@@ -1,11 +1,31 @@
-version: '3'
+# Docker Compose configuration file
+
+# Use Compose file format version 2.4
+# Since we are not using swarm mode, Compose file version 2 is preferred.
+version: '2.4'
+
+# Define services
 services:
+
+  # Service named 'web'
   web:
+    # Build configuration
     build: .
+
+    # Keep stdin open even if not attached
     stdin_open: true
+
+    # Restart policy: Restart the container only on failure
+    restart: on-failure
+
+    # Allocate a pseudo-TTY
     tty: true
+
+    # Port mapping: Map host port 8080 to container port 8080
     ports:
       - "8080:8080"
+
+    # Volume mounting: Mount host directories or volumes to container
     volumes:
-      - "/app/node_modules"
-      - ".:/app"
+      - "/app/node_modules" # Mount the /app/node_modules directory from the host
+      - ".:/app" # Mount the current directory from the host to /app in the container

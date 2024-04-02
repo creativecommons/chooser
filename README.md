@@ -66,7 +66,6 @@ Once the container is running, you can access the Creative Commons Chooser appli
 http://localhost:8080
 ```
 
-#
 ## Manual Setup
 
 ### Prerequisite
