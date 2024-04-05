@@ -22,10 +22,10 @@ services:
 
     # Port mapping: Map host port 8080 to container port 8080
     ports:
-      - "8080:8080"
+      - '8080:8080'
 
     volumes:
       # Mount the current directory from the host to /app in the container
-      - ".:/app"
+      - '.:/app'
       # Mount the /app/node_modules directory from the host
-      - "/app/node_modules"
+      - '/app/node_modules'
