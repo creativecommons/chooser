@@ -10,9 +10,6 @@ COPY package.json package-lock.json ./
 # Install npm dependencies
 RUN npm install
 
-# Copy all files from the current directory to the working directory
-COPY . .
-
 # Expose port 8080
 EXPOSE 8080
 
