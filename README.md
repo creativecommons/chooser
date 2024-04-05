@@ -37,6 +37,50 @@ Tasks, issues, and discussion related to the release of the new chooser are trac
 
 ## Getting Started
 
+## Using Docker
+
+Before proceeding, ensure you have Docker installed on your local machine. If not, download and install Docker Desktop by visiting [Docker's official website](https://www.docker.com/products/docker-desktop) and follow the installation instructions.
+
+To deploy the Creative Commons Chooser application using Docker, follow these steps:
+
+### Step 1: Install Docker Desktop
+
+First, ensure you have Docker Desktop installed on your local machine. Open Docker Desktop app on your local machine and follow the installation instructions.
+
+### Step 2: Clone the Repository
+
+Clone the Creative Commons Chooser repository to your local machine:
+
+```bash
+git clone https://github.com/creativecommons/chooser.git
+```
+
+### Step 3: Navigate to the Project Directory
+
+Navigate into the project directory:
+
+```bash
+cd chooser
+```
+
+### Step 4: Build and Run the Docker Container
+
+In order to have the code up and running on your machine, build the Docker container using docker-compose:
+
+```bash
+docker-compose up
+```
+
+### Step 5: Access the Application
+
+Once the container is running, you can access the Creative Commons Chooser application by navigating to the following URL in your web browser:
+
+```
+http://localhost:8080
+```
+
+## Manual Setup
+
 ### Prerequisite
 [nodeJS](https://nodejs.org/en/blog/release/v14.17.3) version 14 or below, as the version above 14 may give error.
 
