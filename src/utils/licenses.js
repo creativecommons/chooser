@@ -15,7 +15,7 @@ export const LICENSES = {
     FULL: 'CC0 1.0 Universal',
     SHORT: 'CC0 1.0',
     SLUG: 'cc0',
-    URL: 'https://creativecommons.org/publicdomain/zero/1.0',
+    URL: 'https://creativecommons.org/publicdomain/zero/1.0/',
     ICONS: ['cc', 'zero'],
   },
   CC_BY: {
