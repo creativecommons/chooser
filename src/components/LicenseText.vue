@@ -40,7 +40,7 @@
       >
         {{ attributionType === 'short' ? shortName : fullName }}
         <license-icons  
-          :icons-arr="['logo', iconsList]" 
+          :icons-arr="['logo', ...iconsList]" 
           :class="['icon']"
         />
       </a>

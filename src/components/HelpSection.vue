@@ -19,14 +19,10 @@ export default {
       openModal: null,
       modals: [
         'what-are-cc-licenses',
-        'how-licenses-work',
+        'how-to-apply-cc-license',
+        'what-should-i-consider',
         'what-icons-mean',
-        'considerations-before-licensing',
-        'how-formally-license',
-        'six-cc-licenses',
-        'how-licenses-communicated',
-        'what-free-culture-license',
-        'look-earlier-license-ver',
+        'what-if-other-questions',
       ],
     };
   },

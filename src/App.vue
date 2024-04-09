@@ -21,13 +21,12 @@
       <div class="columns wider-gap">
         <div class="column">
           <Stepper v-model="currentStepId" @restart="restart" @done="done" />
-          <help-section @change="openChooserModal" />
         </div>
         <div class="column right-column">
           <!-- The right column with the recommended license should be fixed until
                      the 'LicenseUseCard' appears, when the column should scroll to make the
                      'LicenseUseCard' visible -->
-          <div :class="{ 'fixed-right-column': !showLicenseUse }">
+          <div :class="{ 'right-column': !showLicenseUse }">
             <transition name="appear">
               <LicenseDetailsCard v-if="showLicense" />
             </transition>
@@ -41,6 +40,7 @@
           </div>
         </div>
       </div>
+      <help-section @change="openChooserModal" />
     </div>
     <footer-section v-if="!isEmbedded" />
     <chooser-modal :active-modal="openModal" @close="closeChooserModal" />
@@ -173,7 +173,6 @@ export default {
 };
 </script>
 <style lang="scss">
-@import '~@creativecommons/vocabulary-styles';
 
 #app {
   -webkit-font-smoothing: antialiased;
@@ -248,7 +247,7 @@ footer.main-footer {
     font-size: 1rem;
   }
   .stepper-instructions {
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
   }
   .columns.wider-gap .column:first-child,
   .columns.wider-gap .column:last-child {

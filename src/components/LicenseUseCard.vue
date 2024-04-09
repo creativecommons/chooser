@@ -106,6 +106,8 @@ export default {
 }
 .attribution-tabs {
   margin-top: 1.25rem;
+  word-wrap: break-word;
+  max-width: 46vw;
   .tabs-content.is-boxed {
     padding: 1.5rem;
     border-bottom: none;
@@ -123,6 +125,7 @@ export default {
   }
   .attribution-tabs {
     margin-top: 1.25rem;
+    max-width: 100vw;
     .tabs-content.is-boxed {
       padding: 1rem;
       border-bottom: none;

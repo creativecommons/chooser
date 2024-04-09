@@ -12,7 +12,7 @@
         <article v-html="$t(`help.${modals[activeModal]}.text`)" />
       </section>
 
-      <section v-if="activeModal === 2" class="modal-content modal-2">
+      <section v-if="activeModal === 3" class="modal-content modal-3">
         <p>
           {{ $t('help.what-icons-mean.text') }}
         </p>
@@ -140,20 +140,16 @@ export default {
     return {
       modals: [
         'what-are-cc-licenses',
-        'how-licenses-work',
+        'how-to-apply-cc-license',
+        'what-should-i-consider',
         'what-icons-mean',
-        'considerations-before-licensing',
-        'how-formally-license',
-        'six-cc-licenses',
-        'how-licenses-communicated',
-        'what-free-culture-license',
-        'look-earlier-license-ver',
+        'what-if-other-questions',
       ],
     };
   },
   methods: {
     isSimpleModal(number) {
-      return ![2, 5, 6].includes(number);
+      return ![3].includes(number);
     },
     closeModal() {
       this.openModal = null;
@@ -292,7 +288,7 @@ export default {
 @media only screen and (max-width: 768px) {
   .app-modal {
     .modal {
-      --h-padding: 1rem;
+      --h-padding: 2rem;
       --v-padding: 1.5rem;
       .modal-header {
         padding-top: 1.5rem !important;

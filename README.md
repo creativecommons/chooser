@@ -22,8 +22,69 @@ This site is built using [Vue.js](https://vuejs.org/) (and vue-cli).
 
 Tasks, issues, and discussion related to the release of the new chooser are tracked with the [`Launch Milestone`](https://github.com/creativecommons/chooser/milestone/1).
 
+## Code of conduct
+
+[`CODE_OF_CONDUCT.md`][org-coc]:
+> The Creative Commons team is committed to fostering a welcoming community.
+> This project and all other Creative Commons open source projects are governed
+> by our [Code of Conduct][code_of_conduct]. Please report unacceptable
+> behavior to [conduct@creativecommons.org](mailto:conduct@creativecommons.org)
+> per our [reporting guidelines][reporting_guide].
+
+[org-coc]: https://github.com/creativecommons/.github/blob/main/CODE_OF_CONDUCT.md
+[code_of_conduct]: https://opensource.creativecommons.org/community/code-of-conduct/
+[reporting_guide]: https://opensource.creativecommons.org/community/code-of-conduct/enforcement/
+
 ## Getting Started
 
+## Using Docker
+
+Before proceeding, ensure you have Docker installed on your local machine. If not, download and install Docker Desktop by visiting [Docker's official website](https://www.docker.com/products/docker-desktop) and follow the installation instructions.
+
+To deploy the Creative Commons Chooser application using Docker, follow these steps:
+
+### Step 1: Install Docker Desktop
+
+First, ensure you have Docker Desktop installed on your local machine. Open Docker Desktop app on your local machine and follow the installation instructions.
+
+### Step 2: Clone the Repository
+
+Clone the Creative Commons Chooser repository to your local machine:
+
+```bash
+git clone https://github.com/creativecommons/chooser.git
+```
+
+### Step 3: Navigate to the Project Directory
+
+Navigate into the project directory:
+
+```bash
+cd chooser
+```
+
+### Step 4: Build and Run the Docker Container
+
+In order to have the code up and running on your machine, build the Docker container using docker-compose:
+
+```bash
+docker-compose up
+```
+
+### Step 5: Access the Application
+
+Once the container is running, you can access the Creative Commons Chooser application by navigating to the following URL in your web browser:
+
+```
+http://localhost:8080
+```
+
+## Manual Setup
+
+### Prerequisite
+[nodeJS](https://nodejs.org/en/blog/release/v14.17.3) version 14 or below, as the version above 14 may give error.
+
+### Commands
 Run the following commands in order to have the code up and running on your machine:
 
 ``` bash
@@ -66,6 +127,10 @@ All issues in this list are up for grabs!
 If it says "No results matched your search", then there are no issues currently up for grabs.
 
 *If no progress has been made on an issue for seven days after assignment, the assignment will be removed to allow others to contribute.*
+
+See [`CONTRIBUTING.md`][org-contrib].
+
+[org-contrib]: https://github.com/creativecommons/.github/blob/main/CONTRIBUTING.md
 
 ## Running Tests
 
