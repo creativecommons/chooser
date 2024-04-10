@@ -7,19 +7,11 @@ services:
   web:
     # Build configuration in Dockerfile
     build: .
-
-    # Keep stdin open even if not attached
-    stdin_open: true
-
-    restart: on-failure
-
-    # Allocate a pseudo-TTY
-    tty: true
-
-    # Port mapping: Map host port 8080 to container port 8080
     ports:
       - '8080:8080'
-
+    restart: on-failure
+    stdin_open: true
+    tty: true
     volumes:
       # Mount the current directory from the host to /app in the container
       - '.:/app'
