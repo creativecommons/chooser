@@ -33,9 +33,9 @@
   },
   "dependencies": {
     "@creativecommons/cc-assets": "^0.1.0",
-    "@creativecommons/vocabulary-components": "^0.2.0",
+    "@creativecommons/vocabulary-components": "^0.3.0",
     "@creativecommons/vocabulary-fonts": "^0.1.1",
-    "@creativecommons/vocabulary-styles": "^0.2.1",
+    "@creativecommons/vocabulary-styles": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.3.0-beta3",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
