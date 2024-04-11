@@ -47,77 +47,103 @@ See [`CONTRIBUTING.md`][org-contrib].
 [org-contrib]: https://github.com/creativecommons/.github/blob/main/CONTRIBUTING.md
 
 
-## Getting Started
-
-
 ## Using Docker
+
+
+### Containers
+
+The [`docker-compose.yml`](docker-compose.yml) file defines the following
+containers:
+1. **chooser-web** - simple NGINX container serving [`docs/`](docs)
+   - [localhost:8888](http://localhost:8888/)
+2. **chooser-node** - Node14 container
+   - [localhost:8080](http://localhost:8080/)
+     - (requires **Run Node development server**, below)
+
+
+### Docker desktop required
 
 Before proceeding, ensure you have Docker installed on your local machine. If
 not, download and install Docker Desktop by visiting [Docker's official
 website](https://www.docker.com/products/docker-desktop) and follow the
 installation instructions.
 
-To deploy the Creative Commons Chooser application using Docker, follow these
-steps:
+
+### Run Node development server
+
+1. Perform a clean install of NPM packages from `package-lock.json`
+    ```shell
+    docker compose exec chooser-node npm ci
+    ```
+   - (this initial step can be skipped if previously completed)
+2. Run Node development server
+    ```shell
+    docker compose exec chooser-node npm run serve
+    ```
+   - [localhost:8080](http://localhost:8080/)
 
 
-### Step 1: Install Docker Desktop
+### Create production (standalone) build
 
-First, ensure you have Docker Desktop installed on your local machine. Open
-Docker Desktop app on your local machine and follow the installation
-instructions.
+1. Perform a clean install of NPM packages from `package-lock.json`
+    ```shell
+    docker compose exec chooser-node npm ci
+    ```
+   - (this initial step can be skipped if previously completed)
+2. Run Node development server
+    ```shell
+    docker compose exec chooser-node npm run build
+    ```
+    - (this automatically copies the generated files from [`dist/`](dist) to
+      [`docs/`](docs))
+
+The chooser is deployed to GitHub Pages. The source files for the beta
+deployment are contained in the `./docs/` dir, and are live. Any changes to
+this directory's contents will be automatically deployed, so please take care
+when making modifications to this location.
 
 
-### Step 2: Clone the Repository
+### Create standalone (production) build
 
-Clone the Creative Commons Chooser repository to your local machine:
+1. Perform a clean install of NPM packages from `package-lock.json`
+    ```shell
+    docker compose exec chooser-node npm ci
+    ```
+   - (this initial step can be skipped if previously completed)
+2. Run Node development server
+    ```shell
+    docker compose exec chooser-node npm run build
+    ```
+    - (this automatically copies the generated files from [`dist/`](dist) to
+      [`docs/`](docs))
 
+The chooser is deployed to GitHub Pages. The source files for the beta
+deployment are contained in the `./docs/` dir, and are live. Any changes to
+this directory's contents will be automatically deployed, so please take care
+when making modifications to this location.
+
+For an embedded standalone build (no header nor footer), run:
 ```shell
-git clone https://github.com/creativecommons/chooser.git
+docker compose exec chooser-node VUE_APP_CC_OUTPUT=embedded npm run build
 ```
+**(please _don't_ commit embedded builds to `docs/`)**
 
 
-### Step 3: Navigate to the Project Directory
+### Create a web component build
 
-Navigate into the project directory:
+1. Perform a clean install of NPM packages from `package-lock.json`
+    ```shell
+    docker compose exec chooser-node npm ci
+    ```
+   - (this initial step can be skipped if previously completed)
+2. Run Node development server
+    ```shell
+    docker compose exec chooser-node npm run build-component
+    ```
 
-```shell
-cd chooser
-```
-
-
-### Step 4: Build and Run the Docker Container
-
-In order to have the code up and running on your machine, build the Docker
-container using docker-compose:
-
-```shell
-docker compose up
-```
-
-If there is `node_modules` directory, it will perform a clean install from
-`package-lock.json`.
-
-
-### Step 5: Access the Application
-
-Once the container is running, you can access the Creative Commons Chooser application by navigating to the following URL in your web browser:
-
-```
-http://localhost:8080
-```
-
-
-### Building as web component
-
-To build the project as a web component, run:
-```shell
-docker compose exec web npm run build-component
-```
-
-This will create a file in the `dist` folder named `license-chooser.min.js`. It
-can be used to load the web-component in any JS project. There is also a sample
-`demo.html` created.
+This will create a file in the [`dist/`](dist) folder named
+`license-chooser.min.js`. It can be used to load the web-component in any JS
+project. There is also a sample `demo.html` created.
 
 To be able to use the file it should either be rendered statically from the
 integrater's web-app or be published on a CDN. Following code can be used to
@@ -133,9 +159,9 @@ example.
 <license-chooser></license-chooser>
 ```
 
-If the web component is intended to be built without header and footer, run
+For an embedded web component build (no header nor footer), run:
 ```shell
-docker compose exec web VUE_APP_CC_OUTPUT=embedded npm run build-component
+docker compose exec chooser-node VUE_APP_CC_OUTPUT=embedded npm run build-component
 ```
 
 
@@ -143,12 +169,12 @@ docker compose exec web VUE_APP_CC_OUTPUT=embedded npm run build-component
 
 You can run tests by executing:
 ```shell
-docker compose exec web npm run test
+docker compose exec chooser-node npm run test
 ```
 
 For running tests on a web-component build, run:
 ```shell
-docker compose exec npm run test-component
+docker compose exec chooser-node npm run test-component
 ```
 
 It starts a server with the `dist/demo.html` on which tests can be run.
@@ -164,22 +190,7 @@ can manually add the necessary classes or Regex expressions to the `safelist`
 array in the `postcss.config.js` file.
 
 
-## Deployment
-
-The chooser is deployed to GitHub Pages. The source files for the beta
-deployment are contained in the `./docs/` dir, and are live. Any changes to
-this directory's contents will be automatically deployed, so please take care
-when making modifications to this location.
-
-To update the dist bundle, run:
-```shell
-docker compose exec npm run build
-```
-This will also automatically copy the generated files from `./dist/` to
-`./docs/`.
-
-
-## Output Modes
+## Embedded screenshot
 
 The site can be built in two different modes: `embedded` and `standalone`.
 `Embedded` mode removes the header and footer from the application, resulting
@@ -187,7 +198,7 @@ in the following appearance:
 
 <img src="static/embedded-screenshot.png" alt="Application built in embedded mode">
 
-To build into embedded mode, set the environment variable
+To build into _embedded_ mode, set the environment variable
 `VUE_APP_CC_OUTPUT=embedded` on your server before building. If
 `VUE_APP_CC_OUTPUT` is unset or set to a different value, the app will build in
-the default `standalone` mode, with its own header and footer.
+the default _standalone_ mode, with its own header and footer.
