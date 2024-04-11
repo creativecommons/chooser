@@ -1,31 +1,39 @@
 name: Lint and Test
 
-on: pull_request
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - name: Use Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: '12.x'
-            - name: Run npm install
-              run: npm ci
+      # https://github.com/actions/setup-node
+      - name: Use Node.js 14
+        uses: actions/setup-node@v4
+        with:
+            node-version: '14'
 
-            - name: Lint
-              run: npm run lint
+      - name: Clean install NPM packages from package-lock.json
+        run: npm ci
 
-            - name: Test
-              run: npm run test:unit
-              env:
-                  CI: true
-            - name: Cypress run
-              uses: cypress-io/github-action@v5.1.0
-              with:
-                start: npm run serve
-                wait-on: 'http://localhost:8080'
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test:unit
+        env:
+            CI: true
+
+      # https://github.com/cypress-io/github-action
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run serve
+          wait-on: 'http://localhost:8080'
