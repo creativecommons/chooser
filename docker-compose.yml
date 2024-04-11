@@ -5,15 +5,12 @@ version: '2.4'
 services:
 
   web:
-    # Build configuration in Dockerfile
-    build: .
+    # Build configuration in dev/Dockerfile
+    build: dev
     ports:
       - '8080:8080'
     restart: on-failure
     stdin_open: true
     tty: true
     volumes:
-      # Mount the current directory from the host to /app in the container
       - '.:/app'
-      # Mount the /app/node_modules directory from the host
-      - '/app/node_modules'

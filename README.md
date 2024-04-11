@@ -71,6 +71,9 @@ In order to have the code up and running on your machine, build the Docker conta
 docker-compose up
 ```
 
+If there is `node_modules` directory, it will perform a clean install from
+`package-lock.json`.
+
 ### Step 5: Access the Application
 
 Once the container is running, you can access the Creative Commons Chooser application by navigating to the following URL in your web browser:
@@ -87,13 +90,13 @@ http://localhost:8080
 ### Commands
 Run the following commands in order to have the code up and running on your machine:
 
+Clean install dependencies from package-lock.json:
 ``` bash
-# install dependencies
-npm install
+npm ci
 ```
 
+Build and serve assets with hot-reload
 ```bash
-# Build and serve assets with hot-reload
 npm run serve
 ```
 
