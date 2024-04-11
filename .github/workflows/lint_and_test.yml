@@ -1,7 +1,6 @@
 name: Lint and Test
 
 on:
-  pull_request:
   push:
   workflow_dispatch:
 
