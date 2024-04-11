@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -o errexit
 set -o errtrace
 set -o nounset
@@ -12,10 +11,13 @@ trap '_es=${?};
 
 echo "Deleting contents of dist folder"
 rm -rf dist/*
+echo
 
 echo "Starting build"
-npm run build-component
+docker compose exec web npm run build-component
 echo "Finished build"
+echo
 
 echo "Starting publish"
-npm publish --access public
+docker compose exec web npm publish --access public
+echo
