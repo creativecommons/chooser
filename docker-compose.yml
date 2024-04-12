@@ -5,18 +5,22 @@ version: '2.4'
 services:
 
   chooser-web:
-    # https://hub.docker.com/_/nginx/
-    image: 'nginx:latest'
+    build: .
     ports:
       - '8888:80'
     restart: on-failure
     volumes:
-      - './docs:/usr/share/nginx/html:ro'
+      - '.:/app:ro'
 
   chooser-node:
     # continue running until shutdown (allows docker compose exec which is much
     # faster than docker compose run) per https://serverfault.com/a/1084975
     command: sh -c 'trap "exit" TERM; while true; do sleep 1; done'
+    environment:
+      # Store caches in repository directory. This save time across container
+      # runs.
+      npm_config_cache: /app/.npm
+      npm_config_devdir: /app/.cache/node-gyp
     image: 'node:14'
     ports:
       - '8080:8080'
