@@ -55,6 +55,11 @@ describe('LicenseHTML.vue', () => {
 
     const licenseIcons = wrapper.findAll('img');
     expect(licenseIcons.length).toBe(2);
+    // Icon img elements should have the following attributes: source, style and alt
+    const licenseIconsArray = licenseIcons.wrappers;
+    licenseIconsArray.forEach((img) => {
+      expect(Object.keys(img.attributes()).length).toBe(3);
+    });
   });
 
   it('has correct information when all attribution data is provided', async () => {
@@ -96,5 +101,10 @@ describe('LicenseHTML.vue', () => {
 
     const licenseIcons = wrapper.findAll('img');
     expect(licenseIcons.length).toBe(2);
+    // Icon img elements should have the following attributes: source, style and alt
+    const licenseIconsArray = licenseIcons.wrappers;
+    licenseIconsArray.forEach((img) => {
+      expect(Object.keys(img.attributes()).length).toBe(3);
+    });
   });
 });
