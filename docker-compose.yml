@@ -18,8 +18,7 @@ services:
     command: sh -c 'trap "exit" TERM; while true; do sleep 1; done'
     environment:
       # Store caches in repository directory. This save time across container
-      # runs. NOTE: cypress is not supported in this container--see README.md
-      CYPRESS_CACHE_FOLDER: /app/.cache/Cypress
+      # runs.
       npm_config_cache: /app/.npm
       npm_config_devdir: /app/.cache/node-gyp
     image: 'node:14'
