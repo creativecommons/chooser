@@ -130,7 +130,7 @@ export default {
     padding-left: calc(var(--step-left-padding) + var(--counter-size));
     margin-bottom: 0.5rem;
     &::before {
-      top: 1rem;
+      top: 1.2rem;
     }
   }
   .step-header__caption {
