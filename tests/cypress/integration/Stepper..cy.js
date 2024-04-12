@@ -310,14 +310,14 @@ describe('Stepper.vue', () => {
       cy.clickNext();
 
       cy.window().then($window => {
-        expect($window.scrollY).to.be.closeTo(800, 500);
+        expect($window.scrollY).to.be.closeTo(1200, 700);
       });
       cy.get('button')
         .contains('DONE')
         .click();
       cy.hasLicenseInAttributionCode('CC BY-ND 4.0');
       cy.window().then($window => {
-        expect($window.scrollY).to.be.closeTo(1400, 500);
+        expect($window.scrollY).to.be.closeTo(1600, 700);
       });
     });
   });

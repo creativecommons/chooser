@@ -28,3 +28,4 @@ if(process.env.VUE_APP_CC_OUTPUT!=='embedded') {
 }
 
 export default App;
+

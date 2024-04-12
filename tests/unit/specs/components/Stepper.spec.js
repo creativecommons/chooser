@@ -89,12 +89,8 @@ describe('Stepper.vue', () => {
       expect(steps.at(0).classes('completed')).toBe(true);
       expect(wrapper.find('.active').classes('DD')).toBe(true);
     });
-    it('choosing No sets 7 steps visible: AL, FS, BY, NC, ND, SA and AttributionDetails, opens BY', () => {
-      setStepSelected(wrapper, 'FS', false);
-      wrapper
-        .find('stepnavigation-stub')
-        .vm.$emit('navigate', { direction: 'next', name: 'FS' });
-      Vue.nextTick();
+    it('choosing No sets 7 steps visible: AL, FS, BY, NC, ND, SA and AttributionDetails, opens BY', async () => {
+      await advanceStep(wrapper, { FS: false });
       const steps = wrapper.findAll('.step-container');
       expect(steps.length).toEqual(7);
       expect(wrapper.vm.activeStepId).toEqual(1);
@@ -103,12 +99,10 @@ describe('Stepper.vue', () => {
 
   describe('DropdownStep interactions', () => {
     beforeEach(async () => {
-      // setUp()
       await advanceStep(wrapper, { FS: true });
     });
     it('selecting CC0 makes 4 steps visible and opens Copyright Waiver step', async () => {
-      const shortName = 'CC0 1.0';
-      await advanceStep(wrapper, { DD: [true, shortName] });
+      await advanceStep(wrapper, { DD: [true, 'CC0 1.0'] });
       const steps = wrapper.findAll('.step-container');
       expect(steps.length).toEqual(4);
       expect(wrapper.find('.active').classes()).toContain('CW');
