@@ -28,7 +28,9 @@
     "test:unit": "vue-cli-service test:unit",
     "build-component": "rm -rf dist && VUE_APP_CC_OUTPUT=embedded vue-cli-service build --target wc --name license-chooser src/main.js",
     "test:cypress": "node_modules/.bin/cypress open",
-    "lint": "prettier ./src/**/*.{css,js,vue} --write && vue-cli-service lint src/**/*.{vue,js} --fix && npx stylelint ./src/**/*.{vue,css} --fix",
+    "lint": "vue-cli-service lint src/**/*.{vue,js} --fix && npx stylelint ./src/**/*.{vue,css} --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json",
     "prepare": "husky install"
   },
