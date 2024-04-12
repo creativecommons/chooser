@@ -39,10 +39,7 @@
         rel="license noopener noreferrer"
       >
         {{ attributionType === 'short' ? shortName : fullName }}
-        <license-icons  
-          :icons-arr="['logo', iconsList]" 
-          :class="['icon']"
-        />
+        <license-icons :icons-arr="['logo', ...iconsList]" :class="['icon']" />
       </a>
       <span v-else>{{ licenseName }}.</span>
     </template>
@@ -68,7 +65,7 @@ export default {
     textFor: {
       type: String,
       default: 'web',
-      validate: function(val) {
+      validate: function (val) {
         return ['web', 'print'].indexOf(val) > -1;
       },
     },

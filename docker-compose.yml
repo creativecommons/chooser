@@ -4,24 +4,25 @@ version: '2.4'
 
 services:
 
-  web:
-    # Build configuration in Dockerfile
-    build: .
-
-    # Keep stdin open even if not attached
-    stdin_open: true
-
+  chooser-web:
+    # https://hub.docker.com/_/nginx/
+    image: 'nginx:latest'
+    ports:
+      - '8888:80'
     restart: on-failure
+    volumes:
+      - './docs:/usr/share/nginx/html:ro'
 
-    # Allocate a pseudo-TTY
-    tty: true
-
-    # Port mapping: Map host port 8080 to container port 8080
+  chooser-node:
+    # continue running until shutdown (allows docker compose exec which is much
+    # faster than docker compose run) per https://serverfault.com/a/1084975
+    command: sh -c 'trap "exit" TERM; while true; do sleep 1; done'
+    image: 'node:14'
     ports:
       - '8080:8080'
-
+    restart: on-failure
+    stdin_open: true
+    tty: true
     volumes:
-      # Mount the current directory from the host to /app in the container
       - '.:/app'
-      # Mount the /app/node_modules directory from the host
-      - '/app/node_modules'
+    working_dir: /app
