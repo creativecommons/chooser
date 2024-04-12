@@ -13,7 +13,6 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    indent: ['error', 2],
     'comma-dangle': ['error', 'always-multiline'],
     'space-before-function-paren': ['warn', 'never'],
     'vue/require-default-prop': 'off',
