@@ -262,7 +262,7 @@ function generateLicenseLink(licenseIcons, licenseUrl, licenseName) {
   const iconSrc = attr =>
     `${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}`;
   const icons = licenseIcons
-    .map(attr => `<img ${iconStyle} src="${iconSrc(attr)}">`)
+    .map(attr => `<img ${iconStyle} src="${iconSrc(attr)}" alt="">`)
     .join('');
 
   const linkHref = `href="${licenseUrl}${assetPathRef}"`;

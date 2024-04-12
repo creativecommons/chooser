@@ -1,0 +1,28 @@
+# Use docker compose v2 for non swarm deployments
+# https://docs.docker.com/compose/compose-file/compose-file-v2/
+version: '2.4'
+
+services:
+
+  chooser-web:
+    # https://hub.docker.com/_/nginx/
+    image: 'nginx:latest'
+    ports:
+      - '8888:80'
+    restart: on-failure
+    volumes:
+      - './docs:/usr/share/nginx/html:ro'
+
+  chooser-node:
+    # continue running until shutdown (allows docker compose exec which is much
+    # faster than docker compose run) per https://serverfault.com/a/1084975
+    command: sh -c 'trap "exit" TERM; while true; do sleep 1; done'
+    image: 'node:14'
+    ports:
+      - '8080:8080'
+    restart: on-failure
+    stdin_open: true
+    tty: true
+    volumes:
+      - '.:/app'
+    working_dir: /app

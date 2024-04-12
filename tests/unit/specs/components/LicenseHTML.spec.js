@@ -46,7 +46,7 @@ describe('LicenseHTML.vue', () => {
 
     const licenseLink = wrapper.find('a');
     expect(licenseLink.attributes().href).toBe(
-      'http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1',
+      'https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1',
     );
     // License link should have the following attributes: href, target, rel and style
     expect(Object.keys(licenseLink.attributes()).length).toBe(4);
@@ -55,6 +55,11 @@ describe('LicenseHTML.vue', () => {
 
     const licenseIcons = wrapper.findAll('img');
     expect(licenseIcons.length).toBe(2);
+    // Icon img elements should have the following attributes: source, style and alt
+    const licenseIconsArray = licenseIcons.wrappers;
+    licenseIconsArray.forEach((img) => {
+      expect(Object.keys(img.attributes()).length).toBe(3);
+    });
   });
 
   it('has correct information when all attribution data is provided', async () => {
@@ -88,7 +93,7 @@ describe('LicenseHTML.vue', () => {
 
     const licenseLink = wrapper.find('a[rel="license noopener noreferrer"]');
     expect(licenseLink.attributes().href).toBe(
-      'http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1',
+      'https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1',
     );
     // License link should have the following attributes: href, target, rel and style
     expect(Object.keys(licenseLink.attributes()).length).toBe(4);
@@ -96,5 +101,10 @@ describe('LicenseHTML.vue', () => {
 
     const licenseIcons = wrapper.findAll('img');
     expect(licenseIcons.length).toBe(2);
+    // Icon img elements should have the following attributes: source, style and alt
+    const licenseIconsArray = licenseIcons.wrappers;
+    licenseIconsArray.forEach((img) => {
+      expect(Object.keys(img.attributes()).length).toBe(3);
+    });
   });
 });
