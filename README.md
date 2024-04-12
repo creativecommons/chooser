@@ -69,14 +69,31 @@ website](https://www.docker.com/products/docker-desktop) and follow the
 installation instructions.
 
 
+### Startup containers
+
+The containers can be started with:
+```shell
+docker compose up
+```
+(See [Docker Compose overview | Docker Docs](https://docs.docker.com/compose/)
+for more information on managing containes with `docker compose`.)
+
+
+### Initial setup
+
+Before the chooser-node container can be used effectively, a clean install of
+NPM packages from `package-lock.json` is required:
+```shell
+docker compose exec chooser-node npm ci
+```
+**This step generally only needs to be done once.**
+
+
 ### Run Node development server
 
-1. Perform a clean install of NPM packages from `package-lock.json`
-    ```shell
-    docker compose exec chooser-node npm ci
-    ```
-   - (this initial step can be skipped if previously completed)
-2. Run Node development server
+1. Startup containers (see above)
+2. Complete initial setup (see above)
+3. Run Node development server
     ```shell
     docker compose exec chooser-node npm run serve
     ```
@@ -85,12 +102,9 @@ installation instructions.
 
 ### Create production (standalone) build
 
-1. Perform a clean install of NPM packages from `package-lock.json`
-    ```shell
-    docker compose exec chooser-node npm ci
-    ```
-   - (this initial step can be skipped if previously completed)
-2. Run Node development server
+1. Startup containers (see above)
+2. Complete initial setup (see above)
+3. Run Node development server
     ```shell
     docker compose exec chooser-node npm run build
     ```
@@ -105,12 +119,9 @@ when making modifications to this location.
 
 ### Create standalone (production) build
 
-1. Perform a clean install of NPM packages from `package-lock.json`
-    ```shell
-    docker compose exec chooser-node npm ci
-    ```
-   - (this initial step can be skipped if previously completed)
-2. Run Node development server
+1. Startup containers (see above)
+2. Complete initial setup (see above)
+3. Run Node development server
     ```shell
     docker compose exec chooser-node npm run build
     ```
@@ -131,12 +142,9 @@ docker compose exec chooser-node VUE_APP_CC_OUTPUT=embedded npm run build
 
 ### Create a web component build
 
-1. Perform a clean install of NPM packages from `package-lock.json`
-    ```shell
-    docker compose exec chooser-node npm ci
-    ```
-   - (this initial step can be skipped if previously completed)
-2. Run Node development server
+1. Startup containers (see above)
+2. Complete initial setup (see above)
+3. Run Node development server
     ```shell
     docker compose exec chooser-node npm run build-component
     ```
@@ -165,19 +173,35 @@ docker compose exec chooser-node VUE_APP_CC_OUTPUT=embedded npm run build-compon
 ```
 
 
-## Running Tests
+## Perform unit tests on standalone or embedded build
 
-You can run tests by executing:
-```shell
-docker compose exec chooser-node npm run test
-```
+1. Startup containers (see above)
+2. Complete initial setup (see above)
+2. Run unit tests
+    ```shell
+    docker compose exec chooser-node npm run test:unit
+    ```
 
-For running tests on a web-component build, run:
-```shell
-docker compose exec chooser-node npm run test-component
-```
+## Perform unit tests on web-component build
 
-It starts a server with the `dist/demo.html` on which tests can be run.
+1. Startup containers (see above)
+2. Complete initial setup (see above)
+3. Create a web component build (see above)
+2. Run unit tests
+    ```shell
+    docker compose exec chooser-node npm run test-component
+    ```
+   - It starts a server with the `dist/demo.html` on which tests can be run.
+
+
+## Perform Cypress tests
+
+1. Startup containers (see above)
+2. Run Cypress tests
+    ```shell
+    docker run -it -v $PWD:/e2e -w /e2e -e CYPRESS_baseUrl=http://host.docker.internal:8888 cypress/included:latest
+    ```
+   - (This will download the cypress/included image when first run) 
 
 
 ## CSS Build

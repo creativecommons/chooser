@@ -1,4 +1,6 @@
+.cache/
 .idea/
+.npm/
 chromedriver.log
 coverage/
 dist/
