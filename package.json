@@ -89,7 +89,7 @@
       "prettier --write",
       "git add"
     ],
-    "*.{css,vue}": [
+    "src/*.{css,vue}": [
       "stylelint --fix",
       "prettier --write",
       "git add"
