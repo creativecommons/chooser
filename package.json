@@ -83,9 +83,6 @@
     "vue-cli-plugin-i18n": "^2.3.2",
     "vue-template-compiler": "=2.7.16"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "lint-staged": {
     "src/*.{js,vue}": [
       "vue-cli-service lint",
