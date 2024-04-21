@@ -29,6 +29,8 @@
     "build-component": "rm -rf dist && VUE_APP_CC_OUTPUT=embedded vue-cli-service build --target wc --name license-chooser src/main.js",
     "test:cypress": "node_modules/.bin/cypress open",
     "lint": "vue-cli-service lint src/**/*.{vue,js} --fix && npx stylelint ./src/**/*.{vue,css} --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "i18n:report": "vue-cli-service i18n:report -v --src src/**/*.vue --locales src/locales/**.json -o output.json",
     "prepare": "husky install"
   },
@@ -63,7 +65,7 @@
     "babel-plugin-transform-require-context": "^0.1.1",
     "cypress": "^12.17.4",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-node": "^11.1.0",
@@ -73,7 +75,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^9.5.0",
     "live-server": "^1.2.2",
-    "prettier": "^2.8.8",
+    "prettier": "^3.2.5",
     "shx": "^0.3.4",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
@@ -87,10 +89,12 @@
   "lint-staged": {
     "src/*.{js,vue}": [
       "vue-cli-service lint",
+      "prettier --write",
       "git add"
     ],
     "*.{css,vue}": [
       "stylelint --fix",
+      "prettier --write",
       "git add"
     ]
   },
