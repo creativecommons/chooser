@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     filename(icon) {
-      return `${(Array.isArray(icon)? icon[0] : icon).toLowerCase() }.${this.isPng ? 'png' : 'svg'}`;
+      return `${(Array.isArray(icon) ? icon[0] : icon).toLowerCase()}.${this.isPng ? 'png' : 'svg'}`;
     },
   },
 };

@@ -4,7 +4,7 @@ import { LICENSES } from '@/utils/license-utilities';
 import VueI18n from 'vue-i18n';
 import Vuex from 'vuex';
 
-const getters = slug => ({
+const getters = (slug) => ({
   fullName: jest.fn().mockReturnValue(LICENSES[slug].FULL),
   shortName: jest.fn().mockReturnValue(LICENSES[slug].SHORT),
   licenseUrl: jest.fn().mockReturnValue(() => LICENSES[slug].URL),
@@ -30,7 +30,7 @@ describe('LicenseDetailsCard.vue', () => {
     wrapper = shallowMount(LicenseDetailsCard, {
       localVue,
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
         $store: store,
       },
     });
@@ -87,7 +87,7 @@ describe('LicenseDetailsCard.vue', () => {
     const wrapper = shallowMount(LicenseDetailsCard, {
       localVue,
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
         $store: store,
       },
     });

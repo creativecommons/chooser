@@ -18,7 +18,7 @@ describe('StepHeader.vue', () => {
         step: steps[0],
       },
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
       },
     });
   });

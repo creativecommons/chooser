@@ -2,7 +2,11 @@
   <div id="app">
     <header-section v-if="!isEmbedded" />
     <div id="site-container" class="container">
-      <nav v-if="!isEmbedded" class="breadcrumb caption bold" aria-label="breadcrumbs">
+      <nav
+        v-if="!isEmbedded"
+        class="breadcrumb caption bold"
+        aria-label="breadcrumbs"
+      >
         <ul>
           <li><a href="https://creativecommons.org/">Home</a></li>
           <li class="is-active">
@@ -117,8 +121,8 @@ export default {
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize);
   },
-  created: function() {
-    this.$store.subscribe(mutation => {
+  created: function () {
+    this.$store.subscribe((mutation) => {
       if (
         mutation.type === 'updateAttributesFromShort' ||
         mutation.type === 'setSelected'
@@ -173,7 +177,6 @@ export default {
 };
 </script>
 <style lang="scss">
-
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

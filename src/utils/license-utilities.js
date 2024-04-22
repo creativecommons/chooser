@@ -30,7 +30,7 @@ const shortToSlug = {
  * @param short
  * @returns {string}
  */
-const slugFromShort = short => {
+const slugFromShort = (short) => {
   return shortToSlug[short];
 };
 
@@ -91,7 +91,7 @@ function licenseURL(attr, mode = 'web') {
  * @returns {string}
  */
 function licenseSlug(shortLicenseName) {
-  const currentLicense = Object.values(LICENSES).find(license => {
+  const currentLicense = Object.values(LICENSES).find((license) => {
     return license.SHORT === shortLicenseName;
   });
   if (!currentLicense)
@@ -259,10 +259,10 @@ function generateYearOfCreation(yearOfCreation) {
 function generateLicenseLink(licenseIcons, licenseUrl, licenseName) {
   const iconStyle = `style="${ICON_STYLE}"`;
   const assetPathRef = '?ref=chooser-v1';
-  const iconSrc = attr =>
+  const iconSrc = (attr) =>
     `${ICON_BASE_URL}/${attr.toLowerCase()}.svg${assetPathRef}`;
   const icons = licenseIcons
-    .map(attr => `<img ${iconStyle} src="${iconSrc(attr)}" alt="">`)
+    .map((attr) => `<img ${iconStyle} src="${iconSrc(attr)}" alt="">`)
     .join('');
 
   const linkHref = `href="${licenseUrl}${assetPathRef}"`;
@@ -286,18 +286,15 @@ function generateHTML(
   isTitleDefault = true,
 ) {
   const data = {};
-  const {
-    creatorName,
-    creatorProfileUrl,
-    workUrl,
-    workTitle,
-    yearOfCreation,
-  } = attributionDetails;
+  const { creatorName, creatorProfileUrl, workUrl, workTitle, yearOfCreation } =
+    attributionDetails;
 
   const licenseSlug = slugFromShort(shortLicenseName);
-  const { ICONS: icons, URL: url, FULL: fullLicenseName } = LICENSES[
-    licenseSlug
-  ];
+  const {
+    ICONS: icons,
+    URL: url,
+    FULL: fullLicenseName,
+  } = LICENSES[licenseSlug];
   const licenseName = useFullName ? fullLicenseName : shortLicenseName;
 
   data.license = generateLicenseLink(icons, url, licenseName);

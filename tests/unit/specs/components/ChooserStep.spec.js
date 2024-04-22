@@ -13,7 +13,7 @@ describe('ChooserStep.vue', () => {
     wrapper = shallowMount(ChooserStep, {
       localVue,
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
       },
     });
   });

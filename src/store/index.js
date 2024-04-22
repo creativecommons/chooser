@@ -43,24 +43,24 @@ export const toggleCopyrightCheckbox = (state, { key }) => {
   state.copyright[key] = !state.copyright[key];
 };
 
-export const allCopyrightClausesChecked = state => {
-  return Object.values(state.copyright).every(i => i === true);
+export const allCopyrightClausesChecked = (state) => {
+  return Object.values(state.copyright).every((i) => i === true);
 };
 
 export const toggleAppropriatenessValue = (state, { key }) => {
   state.appropriate[key] = !state.appropriate[key];
 };
 
-export const allAppropriatenessQualificationsMet = state => {
-  return Object.values(state.appropriate).every(i => i === true);
+export const allAppropriatenessQualificationsMet = (state) => {
+  return Object.values(state.appropriate).every((i) => i === true);
 };
 
-const createStore = state => {
+const createStore = (state) => {
   const initialState = { ...defaultState, ...state };
   return new Vuex.Store({
     state: initialState,
     getters: {
-      isLicenseSelected: state => {
+      isLicenseSelected: (state) => {
         /**
          * By default, all four license attributes are undefined
          * As soon as the first attribute(BY) is selected (true/false),
@@ -68,16 +68,18 @@ const createStore = state => {
          */
         return state.currentLicenseAttributes.BY !== undefined;
       },
-      shortName: state => {
+      shortName: (state) => {
         return attrToShort(state.currentLicenseAttributes);
       },
-      fullName: state => {
+      fullName: (state) => {
         return attrToFull(state.currentLicenseAttributes);
       },
-      licenseUrl: state => (mode = 'web') => {
-        return licenseURL(state.currentLicenseAttributes, mode);
-      },
-      iconsList: state => {
+      licenseUrl:
+        (state) =>
+        (mode = 'web') => {
+          return licenseURL(state.currentLicenseAttributes, mode);
+        },
+      iconsList: (state) => {
         return licenseIconsArr(state.currentLicenseAttributes);
       },
       allCopyrightClausesChecked,
