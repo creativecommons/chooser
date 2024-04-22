@@ -97,7 +97,7 @@ describe('Attribution Details Step.vue', () => {
       cy.clickNext();
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.get('.AL [type="checkbox"]').each(($el) => cy.wrap($el).check());
       cy.clickNext();
 
       // Ensure license is correct

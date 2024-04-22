@@ -21,10 +21,10 @@ describe('App.vue', () => {
       store: createStore({}),
       localVue,
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
       },
     });
-    wrapper.vm.$on('input', newVal => {
+    wrapper.vm.$on('input', (newVal) => {
       wrapper.setProps({ value: newVal });
     });
   });

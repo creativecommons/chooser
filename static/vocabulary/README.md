@@ -3,29 +3,26 @@
 WordPress Theme implementation of the Vocabulary design system
 ([creativecommons/vocabulary](https://github.com/creativecommons/vocabulary)).
 
-
 ## Development
 
 The theme development work should be done within the `src/` directory.
 
-
 ### Setup
 
 1. Create the `.env` file:
-    ```shell
-    cp .env.example .env
-    ```
+   ```shell
+   cp .env.example .env
+   ```
 2. Update `.env` to set desired values for variables (`WP_VERSION`,
    `WP_MOD_TYPE`, `WP_MOD_NAME`, etc.)
 3. Build/start Docker:
-    ```shell
-    docker compose up
-    ```
+   ```shell
+   docker compose up
+   ```
 4. Wait for build and initialization to complete
 5. Install WordPress initially through the GUI
    ([localhost:8080](http://localhost:8080/))
    - TODO: automate this step
-
 
 ### Docker containers
 
@@ -38,11 +35,9 @@ containers:
 4. vocabtheme-phpmyadmin ([localhost:8003](http://localhost:8003/))
 5. vocabtheme-wpcli
 
-
 ### Releases
 
 See [scripts/README.md](scripts/README.md).
-
 
 ## Cache warning
 
@@ -59,9 +54,7 @@ docs][cloudflare-caching-wp]).
 
 [cloudflare-caching-wp]: https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/caching-static-html-with-wordpresswoocommerce/
 
-
 ## Copyright and trademarks
-
 
 ### CC Badge, Icons, Images, and Logos
 
@@ -75,15 +68,12 @@ docs][cloudflare-caching-wp]).
 [ccpolicies]: https://creativecommons.org/policies
 [tmfaq]: https://creativecommons.org/faq/#could-i-use-a-cc-license-to-share-my-logo-or-trademark
 
-
 ### Code
 
 Vocabulary Theme code is licensed under the [GNU General Public License
 v2.0][gpl] or later.
 
-
-[gpl]: https://gnu.org/licenses/gpl-2.0.html "The GPL License"
-
+[gpl]: https://gnu.org/licenses/gpl-2.0.html 'The GPL License'
 
 ### Vocabulary
 
@@ -94,9 +84,8 @@ button][cc-zero-png]][cc-zero]
 the public domain under the [CC0 1.0 Universal (CC0 1.0) Public Domain
 Dedication][cc-zero].
 
-[cc-zero-png]: https://licensebuttons.net/l/zero/1.0/88x31.png "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication button"
-[cc-zero]: https://creativecommons.org/publicdomain/zero/1.0/ "Creative Commons — CC0 1.0 Universal"
-
+[cc-zero-png]: https://licensebuttons.net/l/zero/1.0/88x31.png 'CC0 1.0 Universal (CC0 1.0) Public Domain Dedication button'
+[cc-zero]: https://creativecommons.org/publicdomain/zero/1.0/ 'Creative Commons — CC0 1.0 Universal'
 
 ### Normalize.css
 
@@ -104,9 +93,7 @@ normalize.css is licensed under the Expat/[MIT][mit] License.
 
 [mit]: https://opensource.org/license/mit/
 
-
 ### Fonts
-
 
 #### Accidenz Commons
 
@@ -117,14 +104,12 @@ License][ccbysa40].
 [accidenzcommons]: https://creativecommons.org/2019/10/28/accidenz-commons-open-licensed-font/
 [ccbysa40]: https://creativecommons.org/licenses/by-sa/4.0/
 
-
 #### JetBrains Mono
 
 [JetBrains Mono][jetbrainsmono] is licensed under the [OFL-1.1 License][ofl].
 
 [jetbrainsmono]: https://www.jetbrains.com/lp/mono/
 [ofl]: https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt
-
 
 #### Roboto Condensed
 
@@ -134,7 +119,6 @@ the [Apache License, Version 2.0][apache20].
 [robotocondensed]: https://fonts.google.com/specimen/Roboto+Condensed
 [apache20]: http://www.apache.org/licenses/LICENSE-2.0
 
-
 #### Source Sans Pro
 
 [Source Sans Pro][sourcesanspro] by Paul D. Hunt is licensed under the [Open
@@ -142,7 +126,6 @@ Font License][oflsil].
 
 [sourcesanspro]: https://fonts.adobe.com/fonts/source-sans
 [oflsil]: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
-
 
 #### Vocabulary Icons
 

@@ -37,7 +37,7 @@ const attributesToTest = [
   },
 ];
 describe('attrToFull edge cases', function testAttrToFull() {
-  attributesToTest.forEach(option => {
+  attributesToTest.forEach((option) => {
     const { attr, fullResult } = option;
     it(`Attributes ${JSON.stringify(
       attr,
@@ -47,7 +47,7 @@ describe('attrToFull edge cases', function testAttrToFull() {
   });
 });
 describe('attrToFull all licenses', () => {
-  Object.values(LICENSES).forEach(license => {
+  Object.values(LICENSES).forEach((license) => {
     const { ATTRIBUTES: attr, FULL: result } = license;
     it(`${JSON.stringify(attr)} should return <${result}>`, () => {
       expect(attrToFull(attr)).toEqual(result);
@@ -55,7 +55,7 @@ describe('attrToFull all licenses', () => {
   });
 });
 describe('attrToShort all licenses', () => {
-  Object.values(LICENSES).forEach(license => {
+  Object.values(LICENSES).forEach((license) => {
     const { ATTRIBUTES: attr, SHORT: result } = license;
     it(`${JSON.stringify(attr)} should return <${result}>`, () => {
       expect(attrToShort(attr)).toEqual(result);
@@ -64,7 +64,7 @@ describe('attrToShort all licenses', () => {
 });
 
 describe('license slug', () => {
-  Object.values(LICENSES).forEach(license => {
+  Object.values(LICENSES).forEach((license) => {
     const { SHORT: short, SLUG: slug } = license;
     it(`<${short}> should return ${slug}`, () => {
       expect(licenseSlug(short)).toEqual(slug);
@@ -114,7 +114,7 @@ describe('licenseIconsArr', function testLicenseIconsArr() {
 });
 
 describe('license url', () => {
-  Object.values(LICENSES).forEach(license => {
+  Object.values(LICENSES).forEach((license) => {
     const { ATTRIBUTES: attr, URL: url } = license;
     it(`${JSON.stringify(attr)} should return ${url} for print mode`, () => {
       expect(licenseURL(attr, 'print')).toEqual(url);
@@ -208,7 +208,7 @@ describe('generateHTML', function testGenerateHTML() {
     if (sources.length !== licenses.length) {
       return `Incorrect number of licenses, expected ${licenses.length}, got ${sources.length}`;
     }
-    sources.forEach(source => {
+    sources.forEach((source) => {
       if (!source.startsWith(urlRef)) {
         return `${source} doesn't start with correct base`;
       }
@@ -237,9 +237,9 @@ describe('generateHTML', function testGenerateHTML() {
     },
   };
   const licenseArray = [LICENSES.CC0, LICENSES.CC_BY, LICENSES.CC_BY_NC_ND];
-  licenseArray.forEach(currentLicense => {
+  licenseArray.forEach((currentLicense) => {
     describe(`Attribution for ${currentLicense.SHORT} should return correct HTML`, () => {
-      Object.keys(attributionOptions).forEach(option => {
+      Object.keys(attributionOptions).forEach((option) => {
         describe(`${option} with should return correct HTML`, () => {
           const currentAttributionOptions = attributionOptions[option];
           const useFullName = false;
@@ -270,7 +270,7 @@ describe('generateHTML', function testGenerateHTML() {
 
           it(`has correct license link ${currentLicense.SHORT} and license icons `, () => {
             const licenseLinkElement = wrapper.find('.license-link').find('a');
-            const licenseImages = wrapper => wrapper.findAll('img');
+            const licenseImages = (wrapper) => wrapper.findAll('img');
 
             expect(licenseLinkElement.attributes('rel')).toBe(
               'license noopener noreferrer',
@@ -280,13 +280,11 @@ describe('generateHTML', function testGenerateHTML() {
             );
             expect(licenseLinkElement.text()).toBe(currentLicense.SHORT);
 
-            expect(
-              licenseImages(wrapper)
-                .at(0)
-                .attributes().style,
-            ).toBe(ICON_STYLE);
+            expect(licenseImages(wrapper).at(0).attributes().style).toBe(
+              ICON_STYLE,
+            );
             const iconSources = licenseImages(wrapper).wrappers.map(
-              img => img.attributes().src,
+              (img) => img.attributes().src,
             );
             expect(
               hasIconSourcesErrors(iconSources, currentLicense.ICONS),
@@ -297,8 +295,9 @@ describe('generateHTML', function testGenerateHTML() {
             expect(workTitle.text()).toBe(expectedWorkTitle);
             if (isTitleDefault) return;
             if (!expectedWorkUrl) {
-              const titleMetaAttribute = workTitle.find('span').attributes()
-                .property;
+              const titleMetaAttribute = workTitle
+                .find('span')
+                .attributes().property;
               expect(titleMetaAttribute).toEqual('dct:title');
             } else {
               const titleLink = workTitle.find('a');

@@ -12,7 +12,7 @@ describe('CopyTools.vue', () => {
     wrapper = mount(CopyTools, {
       localVue,
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
         $store: {
           commit: jest.fn(),
         },
