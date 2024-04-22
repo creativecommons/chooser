@@ -11,7 +11,6 @@ Vue.config.productionTip = false;
 Vue.use(VueVocabulary);
 Vue.use(VueScrollTo);
 
-
 Sentry.init({
   dsn:
     process.env.NODE_ENV === 'production'
@@ -20,12 +19,10 @@ Sentry.init({
   logErrors: process.env.NODE_ENV !== 'production', // Only log errors in dev env
 });
 
-
-if(process.env.VUE_APP_CC_OUTPUT!=='embedded') {
+if (process.env.VUE_APP_CC_OUTPUT !== 'embedded') {
   new Vue({
-    render: h => h(App),
+    render: (h) => h(App),
   }).$mount('#app');
 }
 
 export default App;
-

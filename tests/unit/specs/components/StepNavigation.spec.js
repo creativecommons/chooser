@@ -14,7 +14,7 @@ describe('StepNavigation.vue', () => {
         stepName: 'FS',
       },
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
       },
     });
   });

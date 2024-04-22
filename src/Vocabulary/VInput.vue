@@ -89,7 +89,7 @@ export default {
     size: {
       type: String,
       default: 'is-normal',
-      validate: function(value) {
+      validate: function (value) {
         return ['is-normal', 'is-medium', 'is-large'].indexOf(value) > -1;
       },
     },

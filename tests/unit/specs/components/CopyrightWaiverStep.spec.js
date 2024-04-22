@@ -41,7 +41,7 @@ describe('Test the functionality of Computed properties', () => {
         name: 'CW',
       },
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
         $store: store,
       },
     });
@@ -54,10 +54,7 @@ describe('Test the functionality of Computed properties', () => {
   it(`Emits the step "change" event with selected: true when all checkboxes are checked.`, async () => {
     const checkboxes = wrapper.findAll('input[type="checkbox"]');
     await checkboxes.trigger('click');
-    const changeEvent = wrapper
-      .emitted()
-      .change.pop()
-      .pop(); // Get the last change event
+    const changeEvent = wrapper.emitted().change.pop().pop(); // Get the last change event
 
     expect(changeEvent.selected).toBeTruthy();
   });
@@ -67,10 +64,7 @@ describe('Test the functionality of Computed properties', () => {
     const checkbox = wrapper.find('input[type="checkbox"]');
     await checkbox.trigger('click');
 
-    const changeEvent = wrapper
-      .emitted()
-      .change.pop()
-      .pop(); // Get the last change event
+    const changeEvent = wrapper.emitted().change.pop().pop(); // Get the last change event
     expect(changeEvent.selected).toBeUndefined();
   });
 });

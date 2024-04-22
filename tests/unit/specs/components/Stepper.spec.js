@@ -7,7 +7,7 @@ import store from '@/store';
 import VueScrollTo from 'vue-scrollto';
 
 function getStepId(wrapper, name) {
-  return wrapper.vm.steps.filter(step => {
+  return wrapper.vm.steps.filter((step) => {
     return step.name === name;
   })[0].id;
 }
@@ -48,13 +48,13 @@ function setUp() {
     store,
     localVue,
     mocks: {
-      $t: key => key,
+      $t: (key) => key,
     },
     propsData: {
       value: 0,
     },
   });
-  wrapper.vm.$on('input', newVal => {
+  wrapper.vm.$on('input', (newVal) => {
     wrapper.setProps({ value: newVal });
   });
 }

@@ -36,9 +36,9 @@ export default {
       this.$emit('change', modalNumber);
       this.openModal = parseInt(modalNumber);
       await this.$nextTick();
-      this.$nextTick(function() {
+      this.$nextTick(function () {
         const modalLinks = document.querySelectorAll('.modal a');
-        modalLinks.forEach(function(link) {
+        modalLinks.forEach(function (link) {
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
         });

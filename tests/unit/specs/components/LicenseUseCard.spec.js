@@ -11,7 +11,7 @@ describe('LicenseUseCard.vue', () => {
     wrapper = shallowMount(LicenseUseCard, {
       localVue,
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
         $store: {
           commit: jest.fn(),
         },
