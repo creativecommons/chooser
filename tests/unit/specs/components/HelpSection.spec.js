@@ -11,7 +11,7 @@ describe('HelpSection.vue', () => {
     wrapper = mount(HelpSection, {
       localVue,
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
       },
       data: () => ({
         sixLicensesImg: '',

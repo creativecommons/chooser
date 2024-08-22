@@ -74,7 +74,7 @@ export default {
       },
     },
   },
-  created: function() {
+  created: function () {
     /**
      * Updates the steps array when license is changed in store through dropdown selection
      */
@@ -97,16 +97,16 @@ export default {
   methods: {
     stepActionComponent({ name }) {
       switch (name) {
-      case 'CW':
-        return CopyrightWaiverStep;
-      case 'AL':
-        return AppropriateLicenseStep;
-      case 'DD':
-        return DropdownStep;
-      case 'AD':
-        return AttributionDetailsStep;
-      default:
-        return ChooserStep;
+        case 'CW':
+          return CopyrightWaiverStep;
+        case 'AL':
+          return AppropriateLicenseStep;
+        case 'DD':
+          return DropdownStep;
+        case 'AD':
+          return AttributionDetailsStep;
+        default:
+          return ChooserStep;
       }
     },
     stepActionProps(step) {
@@ -173,7 +173,7 @@ export default {
       if (stepSelected === undefined && id <= 6) return;
       const nextStep = this.steps
         .slice(id + 1)
-        .find(step => step.visible && step.enabled).id;
+        .find((step) => step.visible && step.enabled).id;
       this.$set(this.steps, id, { ...this.steps[id], status: 'completed' });
       if (nextStep - id > 1) {
         for (let i = id + 1; i < nextStep; i++) {
@@ -243,7 +243,7 @@ export default {
     },
     setStepsVisible(stepsToSetVisible) {
       // sets steps in stepsToSetVisible array visible properties to true
-      this.steps.forEach(step => {
+      this.steps.forEach((step) => {
         if (stepsToSetVisible.indexOf(step.name) > -1 && !step.visible) {
           this.$set(this.steps, step.id, { ...step, visible: true });
         } else if (
@@ -256,11 +256,11 @@ export default {
     },
     setStepsEnabled(stepsToSetEnabled, disabledDue) {
       // sets steps in stepsToSetDisabled array enabled properties to false
-      const shouldSetEnabled = step =>
+      const shouldSetEnabled = (step) =>
         stepsToSetEnabled.indexOf(step.name) > -1 && !step.enabled;
-      const shouldSetDisabled = step =>
+      const shouldSetDisabled = (step) =>
         stepsToSetEnabled.indexOf(step.name) === -1 && step.enabled;
-      this.steps.forEach(step => {
+      this.steps.forEach((step) => {
         // step is currently enabled, but should be disabled
         if (shouldSetDisabled(step)) {
           this.$set(this.steps, step.id, {
@@ -285,17 +285,16 @@ export default {
        */
       const stepsStatusData = {};
 
-      this.steps.forEach(step => {
+      this.steps.forEach((step) => {
         stepsStatusData[step.name] = step.selected;
       });
-      const { visible, enabled, disabledDue } = updateVisibleEnabledStatus(
-        stepsStatusData,
-      );
+      const { visible, enabled, disabledDue } =
+        updateVisibleEnabledStatus(stepsStatusData);
       this.setStepsVisible(visible);
       this.setStepsEnabled(enabled, disabledDue);
     },
     visibleSteps() {
-      return this.steps.filter(step => {
+      return this.steps.filter((step) => {
         return step.visible;
       });
     },
@@ -356,7 +355,9 @@ export default {
   color: #333333;
 }
 .slide-fade-enter-active {
-  transition: translate 0.5s ease, opacity 0.3s ease-in;
+  transition:
+    translate 0.5s ease,
+    opacity 0.3s ease-in;
 }
 .slide-fade-enter,
 .slide-fade-leave-to {

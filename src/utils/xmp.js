@@ -27,17 +27,16 @@ export const createXMP = ({
   creatorName = '',
   lang = 'en-US',
 }) => {
-  const slug = licenseSlug(shortName)
-    .replace(/-/gi, '_')
-    .toUpperCase();
+  const slug = licenseSlug(shortName).replace(/-/gi, '_').toUpperCase();
 
   const licenseUrl = LICENSES[slug].URL;
   const licenseFullName = LICENSES[slug].FULL;
 
-  const ccLicenseNotice = `This work is licensed under <a href="${licenseUrl}">${licenseFullName}</a>`
-    .replace(/</gi, '&lt;')
-    .replace(/>/gi, '&gt;')
-    .replace(/"/gi, '&quot;');
+  const ccLicenseNotice =
+    `This work is licensed under <a href="${licenseUrl}">${licenseFullName}</a>`
+      .replace(/</gi, '&lt;')
+      .replace(/>/gi, '&gt;')
+      .replace(/"/gi, '&quot;');
 
   const isLicensed = shortName !== LICENSES.CC0.SHORT ? 'True' : 'False';
 
@@ -50,20 +49,20 @@ export const createXMP = ({
              }>
         <rdf:Description rdf:about=''>
             ${`<xapRights:Marked>${isLicensed}</xapRights:Marked>`}${
-    creatorName
-      ? `
+              creatorName
+                ? `
             <xapRights:Owner>
                 <rdf:Bag>
                     <rdf:li>${creatorName}</rdf:li>
                 </rdf:Bag>
             </xapRights:Owner>`
-      : ''
-  }${
-    workUrl
-      ? `
+                : ''
+            }${
+              workUrl
+                ? `
             <xapRights:WebStatement rdf:resource='${workUrl}'/>`
-      : ''
-  }
+                : ''
+            }
             <xapRights:UsageTerms>
                 <rdf:Alt>
                   <rdf:li xml:lang='x-default'>${ccLicenseNotice}</rdf:li>
@@ -71,21 +70,21 @@ export const createXMP = ({
                 </rdf:Alt>
             </xapRights:UsageTerms>
             <cc:license rdf:resource='${licenseUrl}'/>${
-    creatorName
-      ? `
+              creatorName
+                ? `
             <cc:attributionName>${creatorName}</cc:attributionName>`
-      : ''
-  }${
-    workTitle
-      ? `
+                : ''
+            }${
+              workTitle
+                ? `
             <dc:title>
                 <rdf:Alt>
                   <rdf:li xml:lang='x-default'>${workTitle}</rdf:li>
                   <rdf:li xml:lang='${lang}'>${workTitle}</rdf:li>
                 </rdf:Alt>
             </dc:title>`
-      : ''
-  }
+                : ''
+            }
         </rdf:Description>
     </rdf:RDF>
 </x:xmpmeta>

@@ -13,7 +13,7 @@ describe('AttributionDetailsStep Component Rendering', () => {
     wrapper = mount(AttributionDetailsStep, {
       localVue,
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
         $store: {
           state: {
             attributionDetails: {
@@ -65,7 +65,7 @@ describe('Store is updated when a user provides input', () => {
         status: 'active',
       },
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
       },
       store,
       localVue,

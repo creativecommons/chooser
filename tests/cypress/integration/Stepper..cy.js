@@ -63,7 +63,7 @@ describe('Stepper.vue', () => {
       cy.clickNext();
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.get('.AL [type="checkbox"]').each(($el) => cy.wrap($el).check());
       cy.clickNext();
 
       cy.hasLicenseInAttributionCode(' CC0 1.0 ');
@@ -91,7 +91,7 @@ describe('Stepper.vue', () => {
       cy.clickNext();
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.get('.AL [type="checkbox"]').each(($el) => cy.wrap($el).check());
       cy.clickNext();
 
       cy.hasLicenseInAttributionCode('CC BY 4.0');
@@ -115,7 +115,7 @@ describe('Stepper.vue', () => {
       cy.clickNext();
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.get('.AL [type="checkbox"]').each(($el) => cy.wrap($el).check());
       cy.clickNext();
 
       cy.get('.SA').should('have.class', 'disabled');
@@ -139,7 +139,7 @@ describe('Stepper.vue', () => {
       cy.clickNext();
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.get('.AL [type="checkbox"]').each(($el) => cy.wrap($el).check());
       cy.clickNext();
 
       cy.get('.SA').should('have.class', 'disabled');
@@ -182,7 +182,7 @@ describe('Stepper.vue', () => {
       cy.clickNext();
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.get('.AL [type="checkbox"]').each(($el) => cy.wrap($el).check());
       cy.clickNext();
 
       cy.hasLicenseInAttributionCode('CC BY-SA 4.0');
@@ -223,7 +223,7 @@ describe('Stepper.vue', () => {
       cy.clickNext();
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.get('.AL [type="checkbox"]').each(($el) => cy.wrap($el).check());
       cy.clickNext();
 
       cy.hasLicenseInAttributionCode('CC BY-SA 4.0');
@@ -264,19 +264,13 @@ describe('Stepper.vue', () => {
       cy.clickNext();
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.get('.AL [type="checkbox"]').each(($el) => cy.wrap($el).check());
       cy.clickNext();
 
       cy.hasLicenseInAttributionCode('CC BY-SA 4.0');
-      cy.get('button')
-        .contains('Start again')
-        .click();
-      cy.get('.right-column')
-        .find('.recommended-card')
-        .should('not.exist');
-      cy.get('.right-column')
-        .find('.license-use-card')
-        .should('not.exist');
+      cy.get('button').contains('Start again').click();
+      cy.get('.right-column').find('.recommended-card').should('not.exist');
+      cy.get('.right-column').find('.license-use-card').should('not.exist');
       cy.get('.BY').should('have.class', 'inactive');
       cy.get('.NC').should('have.class', 'inactive');
       cy.get('.ND').should('have.class', 'inactive');
@@ -306,17 +300,15 @@ describe('Stepper.vue', () => {
       cy.hasRecommendedLicense('CC BY-ND 4.0');
 
       // Appropriate license step
-      cy.get('.AL [type="checkbox"]').each($el => cy.wrap($el).check());
+      cy.get('.AL [type="checkbox"]').each(($el) => cy.wrap($el).check());
       cy.clickNext();
 
-      cy.window().then($window => {
+      cy.window().then(($window) => {
         expect($window.scrollY).to.be.closeTo(1200, 700);
       });
-      cy.get('button')
-        .contains('DONE')
-        .click();
+      cy.get('button').contains('DONE').click();
       cy.hasLicenseInAttributionCode('CC BY-ND 4.0');
-      cy.window().then($window => {
+      cy.window().then(($window) => {
         expect($window.scrollY).to.be.closeTo(1600, 700);
       });
     });

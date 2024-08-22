@@ -94,8 +94,8 @@
           "placeholder": "https://janedoe.com/best-photo-ever.jpg"
         },
         "year-of-creation": {
-            "label": "Year Of Creation",
-            "placeholder": "YYYY"
+          "label": "Year Of Creation",
+          "placeholder": "YYYY"
         }
       }
     }

@@ -31,7 +31,7 @@ describe('DropdownStep', () => {
         status: 'active',
       },
       mocks: {
-        $t: key => key,
+        $t: (key) => key,
       },
       store,
     });
