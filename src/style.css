@@ -1,1 +1,10 @@
 @import 'vocabulary/css/vocabulary.css' layer(vocabulary);
+
+/* 
+ ol li:has(#require-attribution, #allow-commercial-use, #allow-derivatives, #share-alike, #waive-your-copyright, #confirmation) {
+    display: none;
+} */
+
+ol li:has(.disable) {
+    display: none;
+}

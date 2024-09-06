@@ -90,12 +90,222 @@
 
 <h1>Choose a License for Your Work</h1>
 
+<p>Follow the steps to select the appropriate license for your work. <br /> This site does not store any information.</p>
+
+
 </header>
 
 
 <div class="content">
 
-    <p>[form here]</p>
+
+
+    <form id="license-chooser">
+
+        <ol>
+         
+        <li>
+        <fieldset id="do-you-know-which-license-you-need">
+            <legend>Do you know which license you need?</legend>
+            <!-- <legend>Choose a License</legend> -->
+
+        
+            <div>
+                <input type="radio" id="yes-choose" name="choose" value="yes" checked />
+                <label for="yes-choose">Yes</label>
+            </div>
+        
+            <div>
+                <input type="radio" id="no-choose" name="choose" value="no" />
+                <label for="no-choose">No</label>
+            </div>
+<!-- 
+            <div>
+                <input type="radio" id="choose" name="choose" value="choose" />
+                <label for="choose">Choose</label>
+            </div>
+        
+            <div>
+                <input type="radio" id="help" name="help" value="help" />
+                <label for="help">Help me choose</label>
+            </div> -->
+        </fieldset>
+        </li>
+
+        <li>
+        <fieldset id="which-license-do-you-need">
+            <!-- <legend>Choose a License</legend> -->
+            <legend>Which license do you need?</legend>
+
+            <label for="license">License</label>
+            <select name="license" id="license">
+                <option value="cc-0">CC0 1.0</option>
+                <option value="cc-by" selected>CC-BY 4.0</option>
+                <option value="cc-by-sa">CC-BY-SA 4.0</option>
+                <option value="cc-by-nd">CC-BY-ND 4.0</option>
+                <option value="cc-by-nc">CC-BY-NC 4.0</option>
+                <option value="cc-by-nc-sa">CC-BY-NC-SA 4.0</option>
+                <option value="cc-by-nc-nd">CC-BY-NC-ND 4.0</option>
+            </select>
+
+            <!-- <p>OR</p>
+
+            <div></div>
+                <input type="checkbox" id="help" name="help" value="help" />
+                <label for="help">Help me choose</label>
+            </div> -->
+
+        </fieldset>
+        </li>
+
+        <li>
+        <fieldset id="require-attribution">
+            <legend>Attribution?</legend>
+
+            <div>
+                <input type="radio" id="yes-attribution" name="attribution" value="yes" checked />
+                <label for="yes-attribution">Yes</label>
+            </div>
+        
+            <div>
+                <input type="radio" id="no-attribution" name="attribution" value="no" />
+                <label for="no-attribution">No</label>
+            </div>
+
+        </fieldset>
+        </li>
+
+
+        <li>
+        <fieldset id="allow-commercial-use">
+            <legend>Commercial Use?</legend>
+
+            <div>
+                <input type="radio" id="yes-commercial" name="commercial" value="yes" />
+                <label for="yes-commercial">Yes</label>
+            </div>
+        
+            <div>
+                <input type="radio" id="no-commercial" name="commercial" value="no" />
+                <label for="no-commercial">No</label>
+            </div>
+
+        </fieldset>
+        </li>
+
+        <li>
+        <fieldset id="allow-derivatives">
+            <legend>Derivative Works?</legend>
+
+            <div>
+                <input type="radio" id="yes-derivatives" name="derivatives" value="yes" />
+                <label for="yes-derivatives">Yes</label>
+            </div>
+        
+            <div>
+                <input type="radio" id="no-derivatives" name="derivatives" value="no" />
+                <label for="no-derivatives">No</label>
+            </div>
+
+        </fieldset>
+        </li>
+
+        <li>
+        <fieldset id="share-alike">
+            <legend>Sharing Requirements?</legend>
+
+            <div>
+                <input type="radio" id="yes-sharing-requirements" name="sharing-requirements" value="yes" />
+                <label for="yes-sharing-requirements">Yes</label>
+            </div>
+        
+            <div>
+                <input type="radio" id="no-sharing-requirements" name="sharing-requirements" value="no" />
+                <label for="sharing-requirements">No</label>
+            </div>
+
+        </fieldset>
+        </li>
+
+        <!-- <hr /> -->
+
+        <li>
+        <fieldset id="waive-your-copyright">
+            <legend>Waive your copyright</legend>
+
+            <div>
+                <input type="checkbox" id="waive" name="waive" value="waive" />
+                <label for="waive">I hereby waive all copyright and related or neighboring rights together with all associated claims and causes of action with respect to this work to the extent possible under the law.</label>
+            </div>
+        
+            <div>
+                <input type="checkbox" id="read" name="read" value="read" />
+                <label for="read">I have read and understand the terms and intended legal effect of CC0, and hereby voluntarily elect to apply it to this work.</label>
+            </div>
+
+        </fieldset>
+        </li>
+
+        <li>
+        <fieldset id="confirmation">
+            <legend>Confirm that CC Licensing is appropriate</legend>
+
+            <div>
+                <input type="checkbox" id="ownership" name="ownership" value="ownership" />
+                <label for="ownership">I own or have authority to license the work.</label>
+            </div>
+        
+            <div>
+                <input type="checkbox" id="read" name="read" value="read" />
+                <label for="read">I have read and understand the terms of the license.</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="revocation" name="revocation" value="revocation" />
+                <label for="revocation">I understand that CC licensing is not revocable.</label>
+            </div>
+
+        </fieldset>
+        </li>
+
+        <!-- <hr /> -->
+
+        <li>
+        <fieldset id="attribution-details">
+            <legend>Attribution details (optional)</legend>
+
+            <div>
+                <label for="title">Title of work</label>
+                <input type="text" id="title" name="title" value="title" />
+            </div>
+
+            <div>
+                <label for="creator">Creator of work</label>
+                <input type="text" id="creator" name="creator" value="creator" />
+            </div>
+
+            <div>
+                <label for="work-link">Link to work</label>
+                <input type="text" id="work-link" name="work-link" value="work link" />
+            </div>
+
+            <div>
+                <label for="creator-link">Title of work</label>
+                <input type="text" id="creator-link" name="creator-link" value="creator link" />
+            </div>
+
+        </fieldset>
+        </li>
+
+        </ol>
+    </form>
+
+    <!-- <button>submit</button> -->
+
+    <aside>
+        <p>[license recommendation info here]</p>
+        <p>[attribution info here]</p>
+    </aside>
 
 </div>
 
