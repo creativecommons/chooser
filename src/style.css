@@ -8,3 +8,51 @@
 ol li:has(.disable) {
     display: none;
 }
+
+.chooser-mini label {
+    display: none;
+}
+
+.chooser-mini .explainer {
+    margin-top: 2em;
+    padding: 1em;
+    position: relative;
+
+    background: var(--vocabulary-neutral-color-lighter-gray);
+    border-radius: 3px;
+}
+
+.chooser-mini .explainer:before {
+    content: '';
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    top: -15px;
+    left: 50px;
+    transform: rotateZ(45deg);
+
+    background: var(--vocabulary-neutral-color-lighter-gray);
+
+}
+
+.chooser-mini a {
+    --underline-background-color: var(--vocabulary-neutral-color-lighter-gray);
+}
+
+.chooser-mini .license-nav ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+body.mini-chooser > header, body.mini-chooser main > header {
+    display: none;
+}
+
+
+body.mini-chooser > footer {
+    display: none;
+}
