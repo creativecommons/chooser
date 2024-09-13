@@ -24,9 +24,25 @@ ol li:has(.disable) {
     display: none;
 }
 
+.chooser-mini select {
+    padding: .8em .5em;
+
+    appearance: none;
+    border: 1px solid var(--vocabulary-neutral-color-dark-gray);
+    border-radius: 5px;
+}
+
 .chooser-mini .license-menu {
     display: flex;
     justify-content: space-between;
+
+    font-size: 1.5em;
+}
+
+.chooser-mini .license-menu a {
+    margin-top: .7em;
+    display: inline-block;
+    height: min-content;
 }
 
 .chooser-mini .explainer {
