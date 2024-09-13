@@ -13,6 +13,11 @@ ol li:has(.disable) {
     display: none;
 }
 
+.chooser-mini .license-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
 .chooser-mini .explainer {
     margin-top: 2em;
     padding: 1em;
@@ -32,14 +37,13 @@ ol li:has(.disable) {
     transform: rotateZ(45deg);
 
     background: var(--vocabulary-neutral-color-lighter-gray);
-
 }
 
-.chooser-mini a {
+.chooser-mini .explainer a {
     --underline-background-color: var(--vocabulary-neutral-color-lighter-gray);
 }
 
-.chooser-mini .license-nav ul {
+.chooser-mini .explainer .license-info-nav ul {
     display: flex;
     justify-content: space-between;
     margin: 0;
