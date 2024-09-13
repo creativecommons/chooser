@@ -9,6 +9,17 @@ ol li:has(.disable) {
     display: none;
 }
 
+.chooser-mini {
+    width: 80%;
+    margin: 0 auto;
+
+    font-size: .8em;
+}
+
+.chooser-mini header h2 {
+    text-align: center;
+}
+
 .chooser-mini label {
     display: none;
 }
@@ -20,11 +31,11 @@ ol li:has(.disable) {
 
 .chooser-mini .explainer {
     margin-top: 2em;
-    padding: 1em;
+    padding: 2em;
     position: relative;
 
     background: var(--vocabulary-neutral-color-lighter-gray);
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 .chooser-mini .explainer:before {
@@ -41,6 +52,7 @@ ol li:has(.disable) {
 
 .chooser-mini .explainer a {
     --underline-background-color: var(--vocabulary-neutral-color-lighter-gray);
+    font-size: .8em;
 }
 
 .chooser-mini .explainer .license-info-nav ul {
