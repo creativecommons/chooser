@@ -112,7 +112,7 @@
         <!-- <fieldset id="choose-a-license"> -->
             <!-- <legend>Choose a License</legend> -->
             <!-- <legend>Which license do you need?</legend> -->
-            <div>
+            <div class="icon-attach fa-angle-down">
             <label for="license">License</label>
             <select name="license" id="license">
                 <option value="cc-0">CC0</option>
@@ -138,14 +138,28 @@
 
     <!-- <button>submit</button> -->
 
-    <a href="/">Need help choosing a license?</a>
+    <a class="need-help-choosing" href="/">Need help choosing a license?</a>
 
     </div> 
 
     <div class="explainer">
         <h3>Attribution ShareAlike (CC-BY-SA)</h3>
 
-        <p>[icons here]</p>
+       <div class="license-graphics">
+            <div class="license-icons">
+                <svg>
+                    <use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
+                </svg>
+
+                <svg>
+                    <use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-sa"></use>
+                </svg>
+            </div>
+
+            <img class="license-badge" src="vocabulary/svg/cc/license_badges/big/by_sa.svg">
+        
+        </div>
+
 
         <p><strong>This license lets others remix, tweak, and build upon your work even for commercial purposes, as long as credit you and license their new creations under the identical terms.</strong> This license is often compared to "copyleft" free and open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use. This is the license used by Wikipedia, and is recommended for materials that would benefit from incorporating content form Wikipedia and similarly licensed projects.</p>
 
