@@ -24,6 +24,7 @@ ol li:has(.disable) {
 .chooser-mini header h2 {
     text-align: center;
     color: #324c7f;
+    /* color: #414040; */
     font-family: "DM Serif Display", serif;
     font-weight: 400;
     font-style: normal;
@@ -202,6 +203,7 @@ body > header .masthead h1 a:before {
 
 body > header .masthead .identity-logo.product {
     color: #324c7f;
+    color: #414040;
 }
 
 body > header .masthead .identity-logo.product:hover {
@@ -212,6 +214,7 @@ body > header .masthead .identity-logo.product:hover {
 
 body > header .masthead .identity-logo.product:before {
     background-color: #324c7f;
+    background-color: #414040;
 }
 
 
@@ -232,6 +235,7 @@ body > header .masthead .primary-menu ul li a {
     font-size: 1.4em;
 
     color: #324c7f;
+    color: #414040;
 
 }
 
