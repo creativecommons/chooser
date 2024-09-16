@@ -12,6 +12,7 @@ ol li:has(.disable) {
 .chooser-mini {
     width: 80%;
     margin: 0 auto;
+    margin-top: 3em;
 
     font-size: .8em;
 }
@@ -23,6 +24,10 @@ ol li:has(.disable) {
 .chooser-mini header h2 {
     text-align: center;
     color: #324c7f;
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4em;
 }
 
 .chooser-mini label {
@@ -103,6 +108,8 @@ ol li:has(.disable) {
 
 .chooser-mini .explainer h3 {
     margin-top: 0;
+
+    font-family: 'Source Sans Pro';
 }
 
 .chooser-mini .explainer a {
@@ -146,8 +153,133 @@ ol li:has(.disable) {
     list-style: none;
 }
 
+
+
+body {
+    /* grid-template-columns: 2% 6% 6% 6% 15% 30% 15% 6% 6% 6% 2%; */
+}
+
+
+body > header .masthead {
+    --vocabulary-page-edges-space: 2%;
+    padding-top: 20px;
+
+}
+
+body > header .masthead h1 {
+    font-size: 2em;
+}
+
+body > header .masthead .identity-logo.product {
+    /* text-indent: 84px; */
+    /* line-height: 72px; */
+    line-height: 50px;
+    text-indent: 65px;
+
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+}
+
+body > header .masthead .identity-logo.product .slash {
+    padding: 0 .2em;
+
+    font-family: Times;
+    font-size: .7em;
+    line-height: 1em;
+
+  
+}
+
+body > header .masthead h1 a:before {
+    /* width: 80px;
+    height: 80px;    */
+
+    width: 60px;
+    height: 60px;
+}
+
+
+
+body > header .masthead .identity-logo.product {
+    color: #324c7f;
+}
+
+body > header .masthead .identity-logo.product:hover {
+    color: purple;
+    /* text-decoration: underline; */
+}
+
+
+body > header .masthead .identity-logo.product:before {
+    background-color: #324c7f;
+}
+
+
 body.mini-chooser > header, body.mini-chooser main > header {
+    /* display: none; */
+}
+
+body > header .masthead .primary-menu ul li {
+    margin-left: 3em;
+}
+
+body > header .masthead .primary-menu ul li a {
+    font-family: 'Source Sans Pro';
+    text-transform: capitalize;
+    text-transform: lowercase;
+    font-weight: 600;
+    color: black;
+    font-size: 1.4em;
+
+    color: #324c7f;
+
+}
+
+body > header .masthead .primary-menu ul li a:hover {
+    color: purple;
+    text-decoration: underline;
+}
+
+body > header .masthead .primary-menu ul li a.donate {
+    padding: .5em .7em;
+
+    color: #62327F;
+    color: #bb377e;
+    background: #E4CBF3;
+    background: #fee9f9;
+    border-radius: 5px;
+}
+
+body > header .masthead .primary-menu ul li a.donate:hover {
+    color: white;
+    background: #bb377e;
+    text-decoration: none;
+
+}
+
+body > header .masthead .primary-menu ul li a.donate:before {
+    --icon-sprite-color: #62327F;
+    --icon-sprite-color: #bb377e;
+    --icon-sprite-size: .7em;
+    
+    margin-right: .3em;
+
+    /* margin-top: 6px; */
+}
+
+body > header .masthead .primary-menu ul li a.donate:hover:before{
+    --icon-sprite-color: white;
+}
+
+body.mini-chooser main > header {
     display: none;
+}
+
+body.mini-chooser main > header h1 {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    /* font-size: 4em; */
 }
 
 
