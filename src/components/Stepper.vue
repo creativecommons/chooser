@@ -1,34 +1,35 @@
 <template>
-  <div class="stepper__container">
-    <div
-      v-for="(step, idx) in visibleSteps()"
-      :key="idx"
-      :ref="`step-${idx}`"
-      :class="[
+  <div>
+    <div v-if="isCompleted" class="completion-message">
+      Congratulations, you’ve successfully chosen a [CC-XX] license. Add the above code next to your work, or at the bottom of your page to indicate this.
+    </div>
+    <div :class="{ 'disabled': isCompleted }" class="stepper__container">
+      <div v-for="(step, idx) in visibleSteps()" :key="idx" :ref="`step-${idx}`" :class="[
         'step-container',
         `step-${step.id}`,
         step.name,
         step.status,
         { disabled: !step.enabled },
-      ]"
-    >
-      <step-header :step="step" @activate="setActiveStep(step.id)" />
-      <div v-if="step.status === 'active'" class="step-content">
-        <component
-          :is="stepActionComponent(step)"
-          v-bind="stepActionProps(step)"
-          @change="changeStepSelected"
-        />
-        <StepNavigation
-          :step-name="step.name"
-          :is-next-enabled="isNextEnabled(step.id)"
+      ]">
+        <step-header :step="step" @activate="setActiveStep(step.id)" />
+        <div v-if="step.status === 'active'" class="step-content">
+          <component :is="stepActionComponent(step)" v-bind="stepActionProps(step)" @change="changeStepSelected" />
+          <StepNavigation 
+          :step-name="step.name" 
+          :is-next-enabled="isNextEnabled(step.id)" 
           @navigate="navigate"
-          @restart="restart"
-          @done="done"
-        />
+          @restart="restart" 
+          @done="done"/>
+    <v-button
+      v-if="isCompleted"
+      class="restart-button is-text"
+      @click="handleRestart"
+    ></v-button>
+        </div>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -62,6 +63,8 @@ export default {
   data() {
     return {
       steps: [...initialSteps],
+      isCompleted: false, 
+
     };
   },
   computed: {
@@ -122,20 +125,23 @@ export default {
      * @returns {Boolean} next button's disabled status
      */
     isNextEnabled(id) {
-      return this.steps[id].selected !== undefined;
+      return this.steps[id].selected !== undefined ;
     },
     navigate({ direction, name }) {
       // Back and next
       direction === 'next' ? this.handleNext(name) : this.handlePrevious();
     },
     restart() {
-      this.steps = [...initialSteps];
+      this.steps = [...initialSteps.map(step => ({ ...step, selected: undefined }))];
       this.$store.commit('restoreLicenseAttr');
+      this.isCompleted = false
       this.$emit('restart');
     },
     done() {
+      this.isCompleted = true;
       this.$emit('done');
     },
+
     /**
      * When a user interacts with a step, updates:
      * 1. 'selected' property for the step in steps array
@@ -314,39 +320,48 @@ export default {
   --counter-size: 1.875rem;
   --h-padding: 1.5rem;
   --step-left-padding: calc(var(--h-padding) + var(--counter-size) + 1rem);
+
   &:first-child {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
   }
+
   &:last-child {
     border-bottom: 2px solid #d8d8d8;
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
   }
 }
+
 .step-content {
   padding: 0.5rem 1.5rem 0.5rem var(--step-left-padding);
 }
+
 .step-container.completed:not(.disabled):hover,
 .step-container.completed:not(.disabled):focus-within {
   border-color: #b0b0b0;
   border-bottom: 0.125rem solid #b0b0b0;
+
   & .step-content {
     cursor: pointer;
   }
 }
-.step-container.completed:not(.disabled):hover + .step-container {
+
+.step-container.completed:not(.disabled):hover+.step-container {
   border-top: none;
 }
+
 .step__container.completed {
   .step-header__title {
     color: black;
     background-color: #ffffff;
   }
 }
+
 .inactive {
   background-color: #f5f5f5;
 }
+
 .completed.disabled {
   color: #b0b0b0;
 }
@@ -355,20 +370,41 @@ export default {
   background: #d8d8d8;
   color: #333333;
 }
+
 .slide-fade-enter-active {
   transition: translate 0.5s ease, opacity 0.3s ease-in;
 }
+
 .slide-fade-enter,
 .slide-fade-leave-to {
   transform: translateY(-50px);
   opacity: 0;
 }
+
 .slide-enter-active {
   animation: slide-down 0.4s;
 }
+
 .slide-leave-active {
   animation: slide-down 0.3s reverse;
 }
+
+//added disabled 
+.disabled {
+  opacity: 0.5; 
+  pointer-events: none;
+}
+
+.restart-button {
+  position: absolute; 
+  bottom: 4px; 
+  left: 0;  /* Adjust this to ensure it's placed correctly */
+  padding-right: 5px;
+  pointer-events: auto !important;  // Allow interaction on the restart button
+}
+
+
+
 @keyframes slide-down {
   0% {
     opacity: 0;
@@ -388,16 +424,22 @@ export default {
     /* transform: scaleY(1); */
   }
 }
+
 @media only screen and (max-width: 768px) {
   .step-container {
     --h-padding: 1rem;
     --step-left-padding: 1rem;
     --counter-size: 1.4375rem;
+
+    position: relative; /* Set position to enable absolute positioning */
+
+
     &:last-child {
       border-bottom: 2px solid #d8d8d8;
       margin-bottom: 1rem;
     }
   }
+
   .step-content {
     padding-right: 0.5rem;
   }
