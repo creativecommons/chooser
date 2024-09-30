@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-if="isCompleted" class="completion-message">
+    <!-- <div v-if="isCompleted" class="completion-message">
         {{ completionMessage }}
-    </div>
-
+    </div> -->
+    
     <div :class="{ 'disabled': isCompleted }" class="stepper__container">
       <div v-for="(step, idx) in visibleSteps()" :key="idx" :ref="`step-${idx}`" :class="[
         'step-container',
@@ -140,12 +140,7 @@ export default {
     },
     done() {
       this.isCompleted = true;
-      this.completionMessage = "Congratulations, you've chosen a [CC-XX] license. You can indicate this by adding the above code next to your work, on a license page, or at the bottom of a web page.";
       this.$emit('done');
-
-      setTimeout(() => {
-        this.isCompleted = false;
-      }, 2000);
 
     },
   
@@ -409,12 +404,12 @@ export default {
 .restart-button {
   position: absolute; 
   bottom: 4px; 
-  left: 0;  /* Adjust this to ensure it's placed correctly */
+  left: 0;  
   padding-right: 5px;
-  pointer-events: auto !important;  // Allow interaction on the restart button
+  pointer-events: auto !important; 
 }
 
-.completion-message {
+/* .completion-message {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -424,7 +419,7 @@ export default {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-}
+} */
 
 
 @keyframes slide-down {
