@@ -1,8 +1,9 @@
 <template>
   <div>
     <div v-if="isCompleted" class="completion-message">
-      Congratulations, you’ve successfully chosen a [CC-XX] license. Add the above code next to your work, or at the bottom of your page to indicate this.
+        {{ completionMessage }}
     </div>
+
     <div :class="{ 'disabled': isCompleted }" class="stepper__container">
       <div v-for="(step, idx) in visibleSteps()" :key="idx" :ref="`step-${idx}`" :class="[
         'step-container',
@@ -125,7 +126,7 @@ export default {
      * @returns {Boolean} next button's disabled status
      */
     isNextEnabled(id) {
-      return this.steps[id].selected !== undefined ;
+      return this.steps[id].selected !== undefined && this.isCompleted === false;
     },
     navigate({ direction, name }) {
       // Back and next
@@ -139,7 +140,17 @@ export default {
     },
     done() {
       this.isCompleted = true;
+      this.completionMessage = "Congratulations, you've chosen a [CC-XX] license. You can indicate this by adding the above code next to your work, on a license page, or at the bottom of a web page.";
       this.$emit('done');
+
+      setTimeout(() => {
+        this.isCompleted = false;
+      }, 2000);
+
+    },
+  
+    handleRestart() {
+      this.restart(); // Call the restart method when button is clicked
     },
 
     /**
@@ -403,6 +414,17 @@ export default {
   pointer-events: auto !important;  // Allow interaction on the restart button
 }
 
+.completion-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #d8d8d8;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
 
 
 @keyframes slide-down {
