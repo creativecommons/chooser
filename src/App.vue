@@ -38,6 +38,11 @@
               />
             </transition>
           </div>
+          <transition name="fade">
+            <div v-if="showCongratulations" class="floating-message">
+              Congratulations 🎉, you’ve successfully chosen a license. 
+            </div>
+          </transition>
         </div>
       </div>
       <help-section @change="openChooserModal" />
@@ -82,6 +87,8 @@ export default {
       showLicense: false,
       shouldShake: false,
       windowWidth: window.innerWidth,
+      showCongratulations: false,  // State to control visibility of the message
+
     };
   },
   computed: {
@@ -140,6 +147,7 @@ export default {
       this.showLicense = 0;
       this.setAttributionType('short');
     },
+
     /**
      * When the user clicks `Done`, we scroll to the 'Mark your work' section ('LicenseUseCard')
      * and shake it. Shaking animation is triggered by adding 'shake' class to the section, and removing it
@@ -150,6 +158,13 @@ export default {
       const scrollDuration = this.isBelowTabletWidth ? 3000 : 800;
       const shakeDuration = 3000 + scrollDuration;
       const comp = this;
+
+      this.showCongratulations = true;
+
+      setTimeout(() => {
+        this.showCongratulations = false;
+      }, 2000);
+
       setTimeout(() => {
         comp.shouldShake = true;
       }, scrollDuration - 400);
@@ -220,6 +235,31 @@ export default {
 footer.main-footer {
   margin-top: 2rem;
 }
+//changes
+
+.floating-message {
+  background-color: #f5f5f5;
+  color: #333333;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 @media only screen and (min-width: 769px) {
   #site-container {
     padding-top: 2rem;

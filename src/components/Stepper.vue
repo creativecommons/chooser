@@ -1,9 +1,5 @@
 <template>
-  <div>
-    <!-- <div v-if="isCompleted" class="completion-message">
-        {{ completionMessage }}
-    </div> -->
-    
+  <div> 
     <div :class="{ 'disabled': isCompleted }" class="stepper__container">
       <div v-for="(step, idx) in visibleSteps()" :key="idx" :ref="`step-${idx}`" :class="[
         'step-container',
