@@ -344,3 +344,72 @@
         display: block;
     }
 }
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#app > footer {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "logo"
+        "nav"
+        "contact"
+        "subscribe"
+        "donate"
+        "license";
+    gap: 20px;
+}
+
+#app > footer .footer-menu ul {
+    flex-direction: column;
+}
+
+#app > footer .footer-menu ul li {
+    margin-bottom: 10px;
+}
+
+#app > footer .subscribe form {
+    flex-direction: column;
+}
+
+#app > footer .subscribe form input.input,
+#app > footer .subscribe form input.button {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+#app > footer .donate {
+    text-align: center;
+}
+
+#app > footer .donate a.donate {
+    width: 100%;
+    justify-content: center;
+}
+
+
+@media only screen and (min-width: 376px) and (max-width: 768px) {
+/* Adjustments for devices above 375px but below or equal to 768px */
+.container {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#app > footer {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#app > footer .identity-logo {
+    margin-bottom: 20px;
+}
+
+#app > footer .footer-menu ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+}
