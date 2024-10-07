@@ -44,7 +44,7 @@ export default {
     },
     completedStepCaption() {
       const { name, enabled, selected, disabledDue = null } = this.step;
-      const reversed = name => ['NC', 'ND', 'SA'].indexOf(name) > -1;
+      const reversed = ['NC', 'ND', 'SA'].indexOf(name) > -1;
       let captionKey;
       if (name === 'DD') {
         return this.fullName;
