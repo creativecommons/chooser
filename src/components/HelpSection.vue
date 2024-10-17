@@ -5,9 +5,9 @@
     </h2>
     <ul class="help-links">
       <li v-for="(modal, idx) in modals" :key="idx" class="help-link">
-        <v-button theme="text" class="help-link-a" @click="clickHandler(idx)">
+        <a theme="text" class="help-link-a" @click="clickHandler(idx)">
           {{ $t(`help.${modal}.heading`) }}
-        </v-button>
+        </a>
       </li>
     </ul>
   </div>
