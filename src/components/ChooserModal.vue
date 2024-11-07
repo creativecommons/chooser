@@ -1,5 +1,5 @@
 <template>
-  <app-modal
+  <AppModal
     v-if="activeModal !== null"
     :title="$t(`help.${modals[activeModal]}.heading`)"
     @close="closeModal"
@@ -119,15 +119,17 @@
         v-html="$t(`help.${modals[activeModal]}.footer`)"
       />
     </section>
-  </app-modal>
+  </AppModal>
 </template>
 
 <script>
 import LicenseIcons from './LicenseIcons';
+import AppModal from './AppModal.vue';
 
 export default {
   name: 'ChooserModal',
   components: {
+    AppModal,
     LicenseIcons,
   },
   props: {
