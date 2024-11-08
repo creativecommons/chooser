@@ -23,8 +23,8 @@
       {{ $t('stepper.nav.done-label') }}
     </v-button>
     <v-button
-      v-if="stepName === 'AD'"
-      class="restart-button is-text"
+    v-if="stepName == 'AD'"
+    class="restart-button is-text"
       @click="handleRestart"
     >
       {{ $t('stepper.nav.restart-label') }}
