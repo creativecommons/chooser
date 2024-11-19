@@ -25,18 +25,70 @@ let last = statePath[statePath.length - 1].split("&")
 let license = last[1].split("=");
 
 
+/////////////////////////////////////////////////////////////
 
+let state = {};
+state.parts = [];
+// temp defaults
+state.parts[0] = 'do-you-know-which-license-you-need/yes/';
+state.parts[1] = 'which-license-do-you-need/cc-by';
+console.log(state.parts);
 
-const fieldsets = document.querySelectorAll('fieldset');
+const fieldsets = document.querySelectorAll('fieldset'); 
+// [T]: filter this down to ones not currently set to disable?
+
+// set default disabled pathways
+
+let applyDefaults = {};
+applyDefaults.elements = [
+    '#require-attribution',
+    '#allow-commercial-use',
+    '#allow-derivatives',
+    '#share-alike',
+    '#waive-your-copyright',
+    '#confirmation'
+];
+applyDefaults.elements.forEach((element) => {
+    document.querySelector(element).classList.toggle('disable');
+});
+
+//document.querySelector('#require-attribution').classList.toggle('disable');
+//document.querySelector('#allow-commercial-use').classList.toggle('disable');
+//document.querySelector('#allow-derivatives').classList.toggle('disable');
+//document.querySelector('#share-alike').classList.toggle('disable');
+//document.querySelector('#waive-your-copyright').classList.toggle('disable');
+//document.querySelector('#confirmation').classList.toggle('disable');
 
 fieldsets.forEach((element, index) => {
 
+    // [T]: set defaults here first in state.parts dynamically
+
     element.addEventListener("change", (event) => {
-        console.log(index);
+        //console.log(index);
         //console.log(element.id);
         //console.log(event.target.value);
        
-        console.log(element.id + '/' + event.target.value + '/' );
+        //console.log(element.id + '/' + event.target.value + '/' );
+
+        state.parts[index] = element.id + '/' + event.target.value + '/';
+        
+        state.parts.forEach((element, i) => {
+            if (i > index) {
+                state.parts.splice(i);  
+            }
+        });
+
+        state.current = state.parts.join('');
+
+        //console.log(state.parts);
+        console.log(state.current);
+
+        
+        // if (state.current == 'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-0/') {
+        //     let chosenLicense = 'cc-0';
+        //     console.log(chosenLicense);
+        // }
+        
 
     });
 
