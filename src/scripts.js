@@ -26,6 +26,9 @@ state.parts[0] = 'do-you-know-which-license-you-need/yes/';
 state.parts[1] = 'which-license-do-you-need/cc-by';
 console.log(state.parts);
 
+state.current = state.parts.join('');
+console.log(state.current);
+
 // create state possibilities from possible licenses with adjoining statePaths
 state.possibilities = [];
 rawStatePathRoutes.forEach((path, index) => {
@@ -58,8 +61,14 @@ applyDefaults.elements = [
     '#confirmation'
 ];
 applyDefaults.elements.forEach((element) => {
-    document.querySelector(element).classList.toggle('disable');
+    //document.querySelector(element).classList.toggle('disable');
 });
+
+if (state.parts[0] == 'do-you-know-which-license-you-need/yes/' ) {
+    applyDefaults.elements.forEach((element) => {
+        document.querySelector(element).classList.add('disable');
+    });
+}
 
 fieldsets.forEach((element, index) => {
 
@@ -95,7 +104,44 @@ fieldsets.forEach((element, index) => {
         //     let chosenLicense = 'cc-0';
         //     console.log(chosenLicense);
         // }
+
+
+/////////////////////////////////////////////////////////////
+
+
+        if (state.current == 'do-you-know-which-license-you-need/no/' ) {
+
+            applyDefaults.elements.forEach((element) => {
+                document.querySelector(element).classList.toggle('disable');
+            });
+            document.querySelector('#which-license-do-you-need').classList.toggle('disable');
+        
+        }
+
+        if (state.current == 'do-you-know-which-license-you-need/yes/' ) {
+
+            applyDefaults.elements.forEach((element) => {
+                document.querySelector(element).classList.toggle('disable');
+            });
+            document.querySelector('#which-license-do-you-need').classList.toggle('disable');
+
+        
+        }
+
         
     });
 
 });
+
+
+
+/////////////////////////////////////////////////////////////
+
+// starting assumption
+
+
+
+
+
+
+
