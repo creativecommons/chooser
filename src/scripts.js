@@ -10,9 +10,9 @@ let rawStatePathRoutes = [
     
     'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/yes/share-alike/no/confirmation+ownership+read+revocation/attribution-details&license=cc-by',
     'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/yes/share-alike/yes/confirmation+ownership+read+revocation/attribution-details&license=cc-by-sa',
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/no/confirmation+ownership+read+revocation/attribution-details&license=cc-by-nd',
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/yes/confirmation+ownership+read+revocation/attribution-details&license=cc-by-nc',
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/no/confirmation+ownership+read+revocation/attribution-details&license=cc-by-nc-sa',
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/no/share-alike/no/confirmation+ownership+read+revocation/attribution-details&license=cc-by-nd',
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/no/confirmation+ownership+read+revocation/attribution-details&license=cc-by-nc',
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/yes/confirmation+ownership+read+revocation/attribution-details&license=cc-by-nc-sa',
     'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/no/confirmation+ownership+read+revocation/attribution-details&license=cc-by-nc-nd',
     'do-you-know-which-license-you-need/no/require-attribution/no/waive-your-copyright+waive+read/attribution-details&license=cc-0'
 ];
@@ -23,7 +23,8 @@ let state = {};
 state.parts = [];
 // temp defaults
 state.parts[0] = 'do-you-know-which-license-you-need/yes/';
-state.parts[1] = 'which-license-do-you-need/cc-by';
+state.parts[1] = 'which-license-do-you-need/cc-by/';
+state.parts[8] = 'attribution-details/';
 console.log(state.parts);
 
 //state.possibilities = [];
@@ -44,7 +45,7 @@ rawStatePathRoutes.forEach((path, index) => {
         state.possibilities[license] = [];
     }
 
-    state.possibilities[license].push(statePath[0]);
+    state.possibilities[license].push(statePath[0]+ '/');
     
  });
  //console.log(state.possibilities);
@@ -83,7 +84,7 @@ fieldsets.forEach((element, index) => {
        
         //console.log(element.id + '/' + event.target.value + '/' );
 
-        state.parts[index] = element.id + '/' + event.target.value;
+        state.parts[index] = element.id + '/' + event.target.value + '/';;
 
 
         // check if checkbox, with siblings
@@ -105,23 +106,29 @@ fieldsets.forEach((element, index) => {
 
             let joinedCheckboxes = checkboxes.filter(Boolean).join('+');
 
-            state.parts[index] = element.id + '+' + joinedCheckboxes;
+            state.parts[index] = element.id + '+' + joinedCheckboxes + '/';;
         }
 
         if (event.target.getAttribute('type') == 'text') {
 
-            state.parts[index] = element.id;
+            state.parts[index] = element.id + '/';
 
         }
 
+        // [T]: check if there are fieldsets with checkboxes, if val set assign state.parts[index] = element.id + '/';
+
+
         // borked!
-        if (index + 1 != state.parts.length - 1) {
+        //if (index = state.parts.length - 1) {
 
             //state.parts[index] = state.parts[index] + '/';
             //console.log(index);
             //console.log(state.parts.length - 1);
+            //console.log('last');
 
-        }
+        //}
+
+        //console.log(index);
         
         
       
@@ -130,17 +137,17 @@ fieldsets.forEach((element, index) => {
         // [T]: discern if checkboxes, change value
         if (element.id == 'waive-your-copyright') {
             //state.parts[index] = element.id + '+' + event.target.value;
-            console.log('waive-your-copyright');
+            //console.log('waive-your-copyright');
         }
         // [T]: discern if checkboxes, change value
         if (element.id == 'confirmation') {
             //state.parts[index] = element.id + '+' + event.target.value;
-            console.log('confirmation');
+            //console.log('confirmation');
         }
         // [T]: discern if checkboxes, change value
         if (element.id == 'attribution-details') {
             //state.parts[index] = element.id + '+' + event.target.value;
-            console.log('attribution-details');
+            //console.log('attribution-details');
         }
         
         state.parts.forEach((element, i) => {
@@ -150,7 +157,7 @@ fieldsets.forEach((element, index) => {
         });
         // [T]: also reset value to nothing each time
 
-        state.current = state.parts.join('');
+        state.current = state.parts.join('') //.slice(0, -1);
 
         state.props = {};
         state.props.license = 'unknown';
