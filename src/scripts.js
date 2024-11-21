@@ -83,20 +83,46 @@ fieldsets.forEach((element, index) => {
 
         state.parts[index] = element.id + '/' + event.target.value + '/';
 
+      
+        // [T]: refactor three below as element.id instead?
+
         // [T]: discern if checkboxes, change value
+        if (element.id == 'waive-your-copyright') {
+            //state.parts[index] = element.id + '+' + event.target.value;
+            console.log('waive-your-copyright');
+        }
+        // [T]: discern if checkboxes, change value
+        if (element.id == 'confirmation') {
+            //state.parts[index] = element.id + '+' + event.target.value;
+            console.log('confirmation');
+        }
+        // [T]: discern if checkboxes, change value
+        if (element.id == 'attribution-details') {
+            //state.parts[index] = element.id + '+' + event.target.value;
+            console.log('attribution-details');
+        }
         
         state.parts.forEach((element, i) => {
             if (i > index) {
                 state.parts.splice(i);  
             }
         });
+        // [T]: also reset value to nothing each time
 
         state.current = state.parts.join('');
 
         state.props = {};
         state.props.license = 'unknown';
 
-        //console.log(state.parts);
+        // check and match possibilities
+        state.possibilities.forEach ((possibility, index) => { 
+            if(possibility.includes(state.current)) {
+                //state.props.license = state.possibilities[index];
+                console.log('at:'+ state.possibilities[index]);
+            }
+        });
+
+        console.log(state.parts);
         console.log(state.current);
         console.log(state.props.license);
 
@@ -108,26 +134,37 @@ fieldsets.forEach((element, index) => {
 
 /////////////////////////////////////////////////////////////
 
-
+        // check if visitor needs help, start help pathways
         if (state.current == 'do-you-know-which-license-you-need/no/' ) {
 
             applyDefaults.elements.forEach((element) => {
                 document.querySelector(element).classList.toggle('disable');
             });
             document.querySelector('#which-license-do-you-need').classList.toggle('disable');
+            document.querySelector('#waive-your-copyright').classList.add('disable');
         
         }
 
+        // if visitor doesn't need help
         if (state.current == 'do-you-know-which-license-you-need/yes/' ) {
 
             applyDefaults.elements.forEach((element) => {
                 document.querySelector(element).classList.toggle('disable');
             });
             document.querySelector('#which-license-do-you-need').classList.toggle('disable');
+            document.querySelector('#waive-your-copyright').classList.add('disable');
 
-        
         }
 
+        // check if cc0
+        if (state.parts[2] == 'require-attribution/no/' || state.parts[1] == 'which-license-do-you-need/cc-0/' ) {
+
+            applyDefaults.elements.forEach((element) => {
+                document.querySelector(element).classList.add('disable');
+            });
+            document.querySelector('#waive-your-copyright').classList.remove('disable');
+        
+        }
         
     });
 
