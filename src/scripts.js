@@ -246,6 +246,7 @@ fieldsets.forEach((element, index) => {
         }
         if (state.parts[2] == 'require-attribution/no/') {
             document.querySelector('#require-attribution').classList.remove('disable');
+            //document.querySelector('#confirmation').classList.remove('disable');
         }
         
     });
