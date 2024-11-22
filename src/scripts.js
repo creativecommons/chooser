@@ -248,6 +248,17 @@ fieldsets.forEach((element, index) => {
             document.querySelector('#require-attribution').classList.remove('disable');
             //document.querySelector('#confirmation').classList.remove('disable');
         }
+
+        // walk away from cc-0, reset attribution choice point
+        if (state.parts[2] == 'require-attribution/yes/') {
+            applyDefaults.elements.forEach((element) => {
+                document.querySelector(element).classList.remove('disable');
+            });
+            document.querySelector('#require-attribution').classList.remove('disable');
+            document.querySelector('#waive-your-copyright').classList.add('disable');
+
+            //document.querySelector('#confirmation').classList.remove('disable');
+        }
         
     });
 
