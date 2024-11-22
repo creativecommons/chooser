@@ -10,7 +10,7 @@ let rawStatePathRoutes = [
     
     'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/yes/share-alike/no/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by',
     'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/yes/share-alike/yes/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-sa',
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/no/share-alike/no/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-nd',
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/no/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-nd',
     'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/no/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-nc',
     'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/yes/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-nc-sa',
     'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/no/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-nc-nd',
@@ -261,6 +261,11 @@ fieldsets.forEach((element, index) => {
             document.querySelector('#waive-your-copyright').classList.add('disable');
 
             //document.querySelector('#confirmation').classList.remove('disable');
+        }
+
+        // tie SA to ND choice
+        if (state.parts[4] == 'allow-derivatives/no/') {
+            document.querySelector('#share-alike').classList.add('disable');
         }
         
     });
