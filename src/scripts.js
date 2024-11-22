@@ -199,6 +199,9 @@ fieldsets.forEach((element, index) => {
         console.log(state.props.license);
         console.log(state.possibilities);
 
+        // rough output of license in body
+        document.querySelector('#license-recommendation p').textContent = state.props.license;
+
         // if (state.current == 'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-0/') {
         //     let chosenLicense = 'cc-0';
         //     console.log(chosenLicense);
