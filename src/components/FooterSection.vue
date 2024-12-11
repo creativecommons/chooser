@@ -17,12 +17,11 @@
     <h2>Contact Us</h2>
     <p>Creative Commons <br> PO Box 1866, Mountain View, CA 94042</p>
     <p><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>
-    <p><a href="tel:+14154296753">+1-415-429-6753</a></p>
 
     <nav class="social-menu">
         <ul>
             <!-- <li><a class="icon-replace fa-instagram" href="#">Instagram</a></li> -->
-            <li><a class="icon-replace fa-twitter" href="https://twitter.com/creativecommons" target="_blank">Twitter</a></li>
+            <li><a class="icon-replace fa-bluesky" href="https://bsky.app/profile/creativecommons.bsky.social" target="_blank">Bluesky</a></li>
             <li><a class="icon-replace fa-mastodon" href="https://mastodon.social/@creativecommons" target="_blank">Mastodon</a></li>
             <li><a class="icon-replace fa-facebook" href="https://www.facebook.com/creativecommons" target="_blank">Facebook</a></li>
             <li><a class="icon-replace fa-linkedin" href="https://www.linkedin.com/company/creative-commons/" target="_blank">LinkedIn</a></li>
