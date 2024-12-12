@@ -7,4 +7,8 @@ module.exports = {
       enableInSFC: false,
     },
   },
+  devServer: {
+    host: '0.0.0.0', 
+    allowedHosts: ['.gitpod.io'],
+  },
 };
