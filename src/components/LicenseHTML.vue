@@ -38,8 +38,8 @@ export default {
 
       const licenseCodeSpan = this.$t('license-use.richtext.full-text', {
         workTitle: work,
-        creator: creator,
-        license: license,
+        creator,
+        license,
         by: creator ? this.$t('license-use.richtext.by') : '',
         licenseMark:
           this.shortName === LICENSES.CC0.SHORT
