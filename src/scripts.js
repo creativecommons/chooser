@@ -18,13 +18,56 @@ let rawStatePathRoutes = [
     'do-you-know-which-license-you-need/no/require-attribution/no/waive-your-copyright+waive+read/(attribution-details)&license=cc-0'
 ];
 
+// empty state obj
+let state = {};
+
 // function to parse and build state.possibilities
 // from rawStatePathRoutes
+function setStatePossibilities(state) {
 
-// function to track state.parts
+    // create state possibilities from possible licenses with adjoining statePaths
+    state.possibilities = [];
+    rawStatePathRoutes.forEach((path, index) => {
 
-// function to update and track state.current
-// this is a full combo of all set state.parts
+        statePath = path.split("&");
+        statepath = statePath;
+        license = statePath[statePath.length - 1].split("=");
+        license = license[1];
+
+        regEx = /\(([^)]+)\)/g;
+        optionals = statePath[0].match(regEx);
+
+        optionals.forEach ((optional) => {
+
+            noOptionalsPath = statePath[0].replace(optional,'');
+
+        });
+
+        fullPath = statePath[0].replace(/[{()}]/g, '') + '/';
+    
+        if (state.possibilities[license] == undefined) {
+            state.possibilities[license] = [];
+        }
+        state.possibilities[license].push(fullPath);
+        state.possibilities[license].push(noOptionalsPath);
+        
+    });
+}
+
+// function to establish state.parts
+function setStateParts(state) {
+    state.parts = [];
+
+    // temp defaults
+    state.parts[0] = 'do-you-know-which-license-you-need/yes/';
+    state.parts[1] = 'which-license-do-you-need/cc-by/';
+    state.parts[8] = 'attribution-details/';
+}
+
+// function to update and track state.parts 
+
+// function to combine current tracked 
+// state.parts into state.current
 
 // function to compare state.possibilities to state.current, 
 // determine if valid license, or error
@@ -43,3 +86,12 @@ let rawStatePathRoutes = [
 // if valid license from state.parts and/or state.current
 
 // function to handle error state
+
+
+// full flow logic 
+setStateParts(state);
+console.log(state.parts);
+
+setStatePossibilities(state);
+ console.log(state.possibilities);
+
