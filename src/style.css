@@ -5,14 +5,12 @@
 
     /* localized cc sprite names */
     --cc-by: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-by');
-    --cc-by: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-nc');
-    --cc-by: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-nd');
-    --cc-by: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-pd');
-    --cc-by: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-pdm');
-    --cc-by: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-sa');
-    --cc-by: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-zero');
-    
-    
+    --cc-nc: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-nc');
+    --cc-nd: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-nd');
+    --cc-pd: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-pd');
+    --cc-pdm: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-pdm');
+    --cc-sa: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-sa');
+    --cc-zero: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-zero');
 }
 
 .icon-attach.cc-by:before {
@@ -62,4 +60,8 @@
     /* --icon-sprite-size: 2em; */
     margin-right: .2em;
     margin-bottom: -.125em;
+}
+
+dt, dd {
+    display: inline-block;
 }
