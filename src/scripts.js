@@ -154,8 +154,6 @@ function watchFieldsets(fieldsets, state) {
     });
 }
 
-
-
 // stepper logic here for what parts of form are 
 // displayed/hidden, as state.parts and state.current 
 // are updated
