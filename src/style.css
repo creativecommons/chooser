@@ -65,3 +65,33 @@
 dt, dd {
     display: inline-block;
 }
+
+dt:after {
+    content: ':';
+}
+
+dd {
+    margin-left: .2em;
+}
+
+
+.license header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.license header > h4 {
+    width: 100%;
+}
+
+.license header > .license-icons {
+    order: -1;
+    margin: 1.8em 1em 0 0;
+}
+
+.license .license-icons svg {
+    display: inline;
+    width: 1.9em;
+    height: 1.9em;
+    margin-right: .3em;
+}
