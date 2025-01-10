@@ -113,6 +113,7 @@ function setStateCurrent(element, index,  state) {
 
 // function to set state.props
 // including setting state.props.license (if valid)
+// or error
 function setStateProps(state) {
 
     state.props = {};
@@ -146,16 +147,12 @@ function watchFieldsets(fieldsets, state) {
             setStateProps(state);
             console.log("state.props (after change)");
             console.log(state.props);
-  
+
+            renderLicenseRec(state);
         });
 
     });
 }
-
-
-
-// function to compare state.possibilities to state.current, 
-// determine if valid license, or error
 
 
 
@@ -165,6 +162,9 @@ function watchFieldsets(fieldsets, state) {
 
 // function to render "license recommendation",
 // if valid license from state.parts and/or state.current
+function renderLicenseRec(state) {
+    document.querySelector('#license-recommendation header h3').textContent = state.props.license;
+}
 
 // function to render "mark your work", from attribution fields
 // if valid license from state.parts and/or state.current
