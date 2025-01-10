@@ -19,10 +19,9 @@ let rawStatePathRoutes = [
 ];
 
 // function to parse and build state.possibilities
+// from rawStatePathRoutes
 
 // function to track state.parts
-// [T]: should this be a part of state.current
-// as in: state.current.parts ?
 
 // function to update and track state.current
 // this is a full combo of all set state.parts
@@ -33,13 +32,14 @@ let rawStatePathRoutes = [
 // function to set state.props
 // including setting state.props.license (if valid)
 
-// stepper logic here for what parts are displayed,
+// stepper logic here for what parts of form are 
+// displayed/hidden, as state.parts and state.current 
+// are updated
+
+// function to render "license recommendation",
 // if valid license from state.parts and/or state.current
 
-// function to render license recommendation,
-// if valid license from state.parts and/or state.current
-
-// function to render mark your work, from attribution fields
+// function to render "mark your work", from attribution fields
 // if valid license from state.parts and/or state.current
 
 // function to handle error state
