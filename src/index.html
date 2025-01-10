@@ -19,7 +19,7 @@
 
 <header>
     <div class="masthead">
-        <h1><a class="identity-logo product" href="#">Vocabulary</a></h1>
+        <h1><a class="identity-logo product" href="#">Chooser</a></h1>
         <button class="expand-menu">Menu</button>
         <nav class="primary-menu" aria-label="Primary navigation">
             <ul>
@@ -309,9 +309,32 @@
 
     <aside>
         <div id="license-recommendation">
-            <p>[license recommendation info here]</p>
+            <h2>Recommended License</h2>
+
+            <article class="license">
+
+                <header>
+                    <h3>CC-BY 4.0</h3>
+                    <h4>Creative Commons Attribution 4.0 International</h4>
+                </header>
+
+                <div class="description">
+                    <p>This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.</p>
+                </div>
+
+                <dl class="conditions-definitions">
+                    <dt class="icon-attach cc-by">BY</dt>
+                    <dd>Credit must be given to you, the creator.</dd>
+                </dl>
+
+            <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v2">See the License Deed</a>
+
+            </article>
         </div>
-        <p>[attribution info here]</p>
+
+        <div id="attribution-information">
+            <p>[attribution info here]</p>
+        </div>
     </aside>
 
 </div>
@@ -371,10 +394,10 @@
         <p>Except where otherwise <a href="/policies/#license">noted</a>, content on this site is licensed under a <a href="/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
 
         <svg>
-            <use href="../../src/svg/cc/icons/cc-icons.svg#cc-logo"></use>
+            <use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
         </svg>
         <svg>
-            <use href="../../src/svg/cc/icons/cc-icons.svg#cc-by"></use>
+            <use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
         </svg>
     </div>
 
@@ -382,6 +405,11 @@
 
 <script src="vocabulary/js/vocabulary.js"></script>
 <script src="scripts.js"></script>
+
+
+<template id="license">
+    <!-- placeholder for swapping out content later with JS -->
+</template>
 
 </body>
 </html>

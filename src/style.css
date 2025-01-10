@@ -1,1 +1,67 @@
 @import 'vocabulary/css/vocabulary.css' layer(vocabulary);
+
+
+:root {
+
+    /* localized cc sprite names */
+    --cc-by: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-by');
+    --cc-nc: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-nc');
+    --cc-nd: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-nd');
+    --cc-pd: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-pd');
+    --cc-pdm: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-pdm');
+    --cc-sa: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-sa');
+    --cc-zero: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-zero');
+}
+
+.icon-attach.cc-by:before {
+    --icon-sprite: var(--cc-by);
+    /* --icon-sprite-size: 2em; */
+    margin-right: .2em;
+    margin-bottom: -.125em;
+}
+
+.icon-attach.cc-nc:before {
+    --icon-sprite: var(--cc-nc);
+    /* --icon-sprite-size: 2em; */
+    margin-right: .2em;
+    margin-bottom: -.125em;
+}
+
+.icon-attach.cc-nd:before {
+    --icon-sprite: var(--cc-nd);
+    /* --icon-sprite-size: 2em; */
+    margin-right: .2em;
+    margin-bottom: -.125em;
+}
+
+.icon-attach.cc-pd:before {
+    --icon-sprite: var(--cc-pd);
+    /* --icon-sprite-size: 2em; */
+    margin-right: .2em;
+    margin-bottom: -.125em;
+}
+
+.icon-attach.cc-pdm:before {
+    --icon-sprite: var(--cc-pdm);
+    /* --icon-sprite-size: 2em; */
+    margin-right: .2em;
+    margin-bottom: -.125em;
+}
+
+.icon-attach.cc-sa:before {
+    --icon-sprite: var(--cc-sa);
+    /* --icon-sprite-size: 2em; */
+    margin-right: .2em;
+    margin-bottom: -.125em;
+}
+
+.icon-attach.cc-zero:before {
+    --icon-sprite: var(--cc-zero);
+    /* --icon-sprite-size: 2em; */
+    margin-right: .2em;
+    margin-bottom: -.125em;
+}
+
+dt, dd {
+    display: inline-block;
+}
