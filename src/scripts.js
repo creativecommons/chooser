@@ -18,5 +18,28 @@ let rawStatePathRoutes = [
     'do-you-know-which-license-you-need/no/require-attribution/no/waive-your-copyright+waive+read/(attribution-details)&license=cc-0'
 ];
 
+// function to parse and build state.possibilities
 
-// stepper logic here
+// function to track state.parts
+// [T]: should this be a part of state.current
+// as in: state.current.parts ?
+
+// function to update and track state.current
+// this is a full combo of all set state.parts
+
+// function to compare state.possibilities to state.current, 
+// determine if valid license, or error
+
+// function to set state.props
+// including setting state.props.license (if valid)
+
+// stepper logic here for what parts are displayed,
+// if valid license from state.parts and/or state.current
+
+// function to render license recommendation,
+// if valid license from state.parts and/or state.current
+
+// function to render mark your work, from attribution fields
+// if valid license from state.parts and/or state.current
+
+// function to handle error state
