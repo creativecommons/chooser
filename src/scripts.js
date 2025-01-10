@@ -21,6 +21,9 @@ let rawStatePathRoutes = [
 // empty state obj
 let state = {};
 
+// all found fieldsets
+const fieldsets = document.querySelectorAll('fieldset'); 
+
 // function to parse and build state.possibilities
 // from rawStatePathRoutes
 function setStatePossibilities(state) {
@@ -63,17 +66,98 @@ function setStateParts(state) {
     state.parts[1] = 'which-license-do-you-need/cc-by/';
     state.parts[8] = 'attribution-details/';
 }
+// function to update state.parts
+function updateStateParts(element, index, event, state) {
 
-// function to update and track state.parts 
+    state.parts[index] = element.id + '/' + event.target.value + '/';
+
+    // check if checkbox, with siblings
+    if (event.target.getAttribute('type') == 'checkbox') {        
+        let checkboxElements = element.querySelectorAll('input[type="checkbox"]');
+        let checkboxes = [];
+        checkboxElements.forEach((checkbox, index) => { 
+            if (checkbox.checked) {
+                checkboxes[index] = checkbox.value;
+            }
+        });
+
+
+        let joinedCheckboxes = checkboxes.filter(Boolean).join('+');
+
+        state.parts[index] = element.id + '+' + joinedCheckboxes + '/';;
+    }
+
+    // check if text input
+    if (event.target.getAttribute('type') == 'text') {
+
+        state.parts[index] = element.id + '/';
+
+    }
+
+    console.log("state.parts (after change)");
+    console.log(state.parts);
+}
 
 // function to combine current tracked 
 // state.parts into state.current
+function setStateCurrent(element, index,  state) {
+    state.parts.forEach((element, i) => {
+        if (i > index) {
+            state.parts.splice(i);  
+        }
+    });
+    // [T]: also reset value to nothing each time
+
+    state.current = state.parts.join('') //.slice(0, -1);
+}
+
+// function to set state.props
+// including setting state.props.license (if valid)
+function setStateProps(state) {
+
+    state.props = {};
+    state.props.license = 'unknown';
+
+    // check and match possibilities
+    Object.keys(state.possibilities).forEach((possibility) => {
+        if(state.possibilities[possibility].includes(state.current)) {
+            state.props.license = possibility;
+            console.log('matched');
+        }
+    });
+
+}
+
+// function to watch for fieldset changes 
+function watchFieldsets(fieldsets, state) {
+    fieldsets.forEach((element, index) => {
+
+        // [T]: set defaults here first in state.parts dynamically
+
+        element.addEventListener("change", (event) => {
+
+            console.log("something changed!");
+            updateStateParts(element, index, event, state);
+
+            setStateCurrent(element, index, state);
+            console.log("state.current (after change)");
+            console.log(state.current);
+
+            setStateProps(state);
+            console.log("state.props (after change)");
+            console.log(state.props);
+  
+        });
+
+    });
+}
+
+
 
 // function to compare state.possibilities to state.current, 
 // determine if valid license, or error
 
-// function to set state.props
-// including setting state.props.license (if valid)
+
 
 // stepper logic here for what parts of form are 
 // displayed/hidden, as state.parts and state.current 
@@ -90,10 +174,11 @@ function setStateParts(state) {
 
 // full flow logic 
 setStateParts(state);
-console.log('state.parts (at default)');
+console.log("state.parts (at default)");
 console.log(state.parts);
 
 setStatePossibilities(state);
-console.log('state.possibilities');
+console.log("state.possibilities");
 console.log(state.possibilities);
 
+watchFieldsets(fieldsets, state);
