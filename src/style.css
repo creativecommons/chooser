@@ -1,1 +1,18 @@
 @import 'vocabulary/css/vocabulary.css' layer(vocabulary);
+
+
+:root {
+
+    /* localized cc sprite names */
+    --cc-by: url('/vocabulary/svg/cc/icons/cc-icons.svg#cc-by');
+    
+}
+
+.icon-attach.cc-by:before {
+    --icon-sprite: var(--cc-by);
+    /* --icon-sprite-size: 2em; */
+    margin-right: .2em;
+    margin-bottom: -.125em;
+}
+
+
