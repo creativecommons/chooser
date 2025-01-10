@@ -90,8 +90,10 @@ function setStateParts(state) {
 
 // full flow logic 
 setStateParts(state);
+console.log('state.parts (at default)');
 console.log(state.parts);
 
 setStatePossibilities(state);
- console.log(state.possibilities);
+console.log('state.possibilities');
+console.log(state.possibilities);
 
