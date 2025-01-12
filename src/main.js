@@ -7,10 +7,13 @@ import VueVocabulary from '@creativecommons/vocabulary-components';
 // Analytics
 import * as Sentry from '@sentry/vue';
 
+// Router setup
+import router from './router'; // Import the router configuration
+
 Vue.config.productionTip = false;
+
 Vue.use(VueVocabulary);
 Vue.use(VueScrollTo);
-
 
 Sentry.init({
   dsn:
@@ -20,12 +23,11 @@ Sentry.init({
   logErrors: process.env.NODE_ENV !== 'production', // Only log errors in dev env
 });
 
-
-if(process.env.VUE_APP_CC_OUTPUT!=='embedded') {
+if (process.env.VUE_APP_CC_OUTPUT !== 'embedded') {
   new Vue({
     render: h => h(App),
+    router, // Add the router to the Vue instance
   }).$mount('#app');
 }
 
 export default App;
-
