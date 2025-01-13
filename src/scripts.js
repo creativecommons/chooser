@@ -24,6 +24,20 @@ let state = {};
 // all found fieldsets
 const fieldsets = document.querySelectorAll('fieldset'); 
 
+// empty defaults obj
+let applyDefaults = {};
+
+// set elemnts which need defaults
+// on initial page load
+applyDefaults.elements = [
+    '#require-attribution',
+    '#allow-commercial-use',
+    '#allow-derivatives',
+    '#share-alike',
+    '#waive-your-copyright',
+    '#confirmation'
+];
+
 // function to parse and build state.possibilities
 // from rawStatePathRoutes
 function setStatePossibilities(state) {
@@ -129,6 +143,100 @@ function setStateProps(state) {
 
 }
 
+// function to render "license recommendation",
+// if valid license from state.parts and/or state.current
+function renderLicenseRec(state) {
+    document.querySelector('#license-recommendation header h3').textContent = state.props.license;
+}
+
+// function to set default UX states on Steps
+// set default visibly disabled pathways
+
+function setDefaults(applyDefaults) {
+
+    applyDefaults.elements.forEach((element) => {
+        document.querySelector(element).classList.toggle('disable');
+    });
+
+    if (state.parts[0] == 'do-you-know-which-license-you-need/yes/' ) {
+        applyDefaults.elements.forEach((element) => {
+            document.querySelector(element).classList.add('disable');
+        });
+    }
+}
+
+// stepper logic here for what parts of form are 
+// displayed/hidden, as state.parts and state.current 
+// are updated
+function renderSteps(applyDefaults, state) {
+
+    // check if visitor needs help, start help pathways
+    if (state.current == 'do-you-know-which-license-you-need/no/' ) {
+
+        applyDefaults.elements.forEach((element) => {
+            document.querySelector(element).classList.remove('disable');
+        });
+        document.querySelector('#which-license-do-you-need').classList.toggle('disable');
+        document.querySelector('#waive-your-copyright').classList.add('disable');
+        
+        console.log("pass one");
+    
+    }
+
+    // if visitor doesn't need help
+    if (state.current == 'do-you-know-which-license-you-need/yes/' ) {
+
+        applyDefaults.elements.forEach((element) => {
+            document.querySelector(element).classList.add('disable');
+        });
+        document.querySelector('#which-license-do-you-need').classList.toggle('disable');
+        document.querySelector('#waive-your-copyright').classList.add('disable');
+
+    }
+
+    // check if cc0
+    if (state.parts[2] == 'require-attribution/no/' || state.parts[1] == 'which-license-do-you-need/cc-0/' ) {
+
+        applyDefaults.elements.forEach((element) => {
+            document.querySelector(element).classList.add('disable');
+        });
+
+        //if (state.parts[0] == 'do-you-know-which-license-you-need/no/') {
+            //document.querySelector('#require-attribution').classList.remove('disable');
+        //}
+        document.querySelector('#waive-your-copyright').classList.remove('disable');
+    
+    } else {
+        document.querySelector('#waive-your-copyright').classList.add('disable');
+    }
+    if (state.parts[2] == 'require-attribution/no/') {
+        document.querySelector('#require-attribution').classList.remove('disable');
+        //document.querySelector('#confirmation').classList.remove('disable');
+    }
+
+    // walk away from cc-0, reset attribution choice point
+    if (state.parts[2] == 'require-attribution/yes/') {
+        applyDefaults.elements.forEach((element) => {
+            document.querySelector(element).classList.remove('disable');
+        });
+        document.querySelector('#require-attribution').classList.remove('disable');
+        document.querySelector('#waive-your-copyright').classList.add('disable');
+
+        //document.querySelector('#confirmation').classList.remove('disable');
+    }
+
+    // tie SA to ND choice
+    if (state.parts[4] == 'allow-derivatives/no/') {
+        document.querySelector('#share-alike').classList.add('disable');
+    }
+    
+}
+
+// function to render "mark your work", from attribution fields
+// if valid license from state.parts and/or state.current
+
+// function to handle error state
+
 // function to watch for fieldset changes 
 function watchFieldsets(fieldsets, state) {
     fieldsets.forEach((element, index) => {
@@ -148,27 +256,13 @@ function watchFieldsets(fieldsets, state) {
             console.log("state.props (after change)");
             console.log(state.props);
 
+            renderSteps(applyDefaults, state);
+
             renderLicenseRec(state);
         });
 
     });
 }
-
-// stepper logic here for what parts of form are 
-// displayed/hidden, as state.parts and state.current 
-// are updated
-
-// function to render "license recommendation",
-// if valid license from state.parts and/or state.current
-function renderLicenseRec(state) {
-    document.querySelector('#license-recommendation header h3').textContent = state.props.license;
-}
-
-// function to render "mark your work", from attribution fields
-// if valid license from state.parts and/or state.current
-
-// function to handle error state
-
 
 // full flow logic 
 setStateParts(state);
@@ -178,5 +272,8 @@ console.log(state.parts);
 setStatePossibilities(state);
 console.log("state.possibilities");
 console.log(state.possibilities);
+
+setDefaults(applyDefaults);
+console.log("initial defaults applied");
 
 watchFieldsets(fieldsets, state);
