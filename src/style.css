@@ -74,6 +74,10 @@ dd {
     margin-left: .2em;
 }
 
+ol li:has(.disable) {
+    display: none;
+}
+
 
 .license header {
     display: flex;
