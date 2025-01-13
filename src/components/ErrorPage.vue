@@ -9,7 +9,7 @@
               </div>
   
               <div class="contant_box_404">
-                <h3 class="h2">
+                <h2 class="h2">
                   Look like you're lost
                 </h3>
   
