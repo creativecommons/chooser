@@ -99,3 +99,9 @@ ol li:has(.disable) {
     height: 1.9em;
     margin-right: .3em;
 }
+
+
+/* debug styles */
+#mark-your-work, .help {
+    display: none;
+}
