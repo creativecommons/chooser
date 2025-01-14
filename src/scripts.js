@@ -146,7 +146,15 @@ function setStateProps(state) {
 // function to render "license recommendation",
 // if valid license from state.parts and/or state.current
 function renderLicenseRec(state) {
-    document.querySelector('#license-recommendation header h3').textContent = state.props.license;
+    // document.querySelector('#license-recommendation header h3').textContent = state.props.license;
+
+    if (state.props.license != 'unknown' ) {
+        let license = state.props.license;
+        let template = document.getElementById(license);
+        let templateContent = template.content;
+        document.querySelector('#license-recommendation .license').textContent = '';
+        document.querySelector('#license-recommendation .license').appendChild(templateContent);
+    }
 }
 
 // function to set default UX states on Steps
