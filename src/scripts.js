@@ -149,11 +149,17 @@ function renderLicenseRec(state) {
     // document.querySelector('#license-recommendation header h3').textContent = state.props.license;
 
     if (state.props.license != 'unknown' ) {
+        document.querySelector('#license-recommendation').classList.remove('disable');
+
         let license = state.props.license;
         let template = document.getElementById(license);
         let templateContent = template.content;
         document.querySelector('#license-recommendation .license').textContent = '';
         document.querySelector('#license-recommendation .license').appendChild(templateContent);
+    }
+    else if (state.props.license == 'unknown') {
+        document.querySelector('#license-recommendation').classList.add('disable');
+        document.querySelector('#license-recommendation .license').textContent = '';
     }
 }
 
@@ -171,6 +177,8 @@ function setDefaults(applyDefaults) {
             document.querySelector(element).classList.add('disable');
         });
     }
+
+    document.querySelector('#license-recommendation').classList.add('disable');
 }
 
 // stepper logic here for what parts of form are 
