@@ -147,6 +147,7 @@ function setStateProps(index, state) {
 }
 
 // function to reset values beyond current fieldset
+// [T] this could potentially do with a refactor
 function clearStepsAfter(fieldsets, state) {
     fieldsets.forEach((element, index) => {
         if (index > state.props.cursor) {
