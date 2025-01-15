@@ -118,17 +118,16 @@ function setStateCurrent(element, index,  state) {
     state.parts.forEach((element, i) => {
         if (i > index) {
             state.parts.splice(i);  
-        }
+        } 
     });
-    // [T]: also reset value to nothing each time
-
+    
     state.current = state.parts.join('') //.slice(0, -1);
 }
 
 // function to set state.props
 // including setting state.props.license (if valid)
 // or error
-function setStateProps(state) {
+function setStateProps(index, state) {
 
     state.props = {};
     state.props.license = 'unknown';
@@ -139,6 +138,33 @@ function setStateProps(state) {
             state.props.license = possibility;
             console.log('matched');
         }
+    });
+
+    state.props.cursor = index;
+    console.log('cursor at:');
+    console.log(index);
+
+}
+
+// function to reset values beyond current fieldset
+function clearStepsAfter(fieldsets, state) {
+    // get current fieldset.element index onchange,
+    // then use loop through all fieldset.elements > index
+    // use querySelector to set all child inputs to
+    // empty default values
+
+    // might need a prop of "cursor" which marks where
+    // in the steps we are, do this in state.props
+
+    fieldsets.forEach((element, index) => {
+        if (index > state.props.cursor) {
+            console.log('clear at:');
+            console.log(index);
+
+            // change to querySelectorAll and then loop through to reset where appropriate
+            element.querySelector('input').checked = false;
+        }
+
     });
 
 }
@@ -268,9 +294,14 @@ function watchFieldsets(fieldsets, state) {
             console.log("state.current (after change)");
             console.log(state.current);
 
-            setStateProps(state);
+            setStateProps(index, state);
             console.log("state.props (after change)");
             console.log(state.props);
+
+            // [T]: also reset values beyond current changed fieldset to nothing each time
+            //element.checked = false;
+            //console.log('reset values beyond current fieldset to nothing');
+            clearStepsAfter(fieldsets, state);
 
             renderSteps(applyDefaults, state);
 
