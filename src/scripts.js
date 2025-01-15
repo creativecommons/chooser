@@ -144,6 +144,13 @@ function setStateProps(index, state) {
     console.log('cursor at:');
     console.log(index);
 
+    state.props.attribution = [];
+    state.props.attribution.title = document.querySelector('#attribution-details #title').value;
+    state.props.attribution.creator = document.querySelector('#attribution-details #creator').value;
+    state.props.attribution.workLink = document.querySelector('#attribution-details #work-link').value;
+    state.props.attribution.creatorLink = document.querySelector('#attribution-details #creator-link').value;
+    state.props.attribution.workCreationYear = document.querySelector('#attribution-details #work-creation-year').value;
+
 }
 
 // function to reset values beyond current fieldset
@@ -199,6 +206,31 @@ function renderLicenseRec(state) {
     }
 }
 
+// function to render "mark your work",
+// if valid license from state.parts and/or state.current
+// if attribution details input(s) filled out
+function renderMarkYourWork(state) {
+    if (state.props.license != 'unknown' ) {
+        // load attribution details template, 
+        // populate from attribution text values
+        document.querySelector('#mark-your-work').classList.remove('disable');
+
+        //state.props.attribution.title
+        let title = state.props.attribution.title;
+        let workCreationYear = state.props.attribution.workCreationYear;
+
+        let phrase = '(c) ' + workCreationYear + ' ' + title + ' is licensed under ';
+        
+        document.querySelector('#mark-your-work .mark-holder').textContent = phrase + state.props.license;
+
+    }
+    
+    else if (state.props.license == 'unknown') {
+        // set to empty
+    }
+
+}
+
 // function to set default UX states on Steps
 // set default visibly disabled pathways
 
@@ -215,6 +247,7 @@ function setDefaults(applyDefaults) {
     }
 
     document.querySelector('#license-recommendation').classList.add('disable');
+    document.querySelector('#mark-your-work').classList.add('disable');
 }
 
 // stepper logic here for what parts of form are 
@@ -316,6 +349,8 @@ function watchFieldsets(fieldsets, state) {
             renderSteps(applyDefaults, state);
 
             renderLicenseRec(state);
+
+            renderMarkYourWork(state);
         });
 
     });
