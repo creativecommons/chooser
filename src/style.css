@@ -78,6 +78,9 @@ ol li:has(.disable) {
     display: none;
 }
 
+.disable {
+    display: none;
+}
 
 .license header {
     display: flex;
@@ -98,4 +101,16 @@ ol li:has(.disable) {
     width: 1.9em;
     height: 1.9em;
     margin-right: .3em;
+}
+
+.content {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/* debug styles */
+#mark-your-work, .help {
+    display: none;
 }

@@ -77,7 +77,7 @@ function setStateParts(state) {
 
     // temp defaults
     state.parts[0] = 'do-you-know-which-license-you-need/yes/';
-    state.parts[1] = 'which-license-do-you-need/cc-by/';
+    //state.parts[1] = 'which-license-do-you-need/cc-by/';
     state.parts[8] = 'attribution-details/';
 }
 // function to update state.parts
@@ -120,15 +120,14 @@ function setStateCurrent(element, index,  state) {
             state.parts.splice(i);  
         }
     });
-    // [T]: also reset value to nothing each time
-
+    
     state.current = state.parts.join('') //.slice(0, -1);
 }
 
 // function to set state.props
 // including setting state.props.license (if valid)
 // or error
-function setStateProps(state) {
+function setStateProps(index, state) {
 
     state.props = {};
     state.props.license = 'unknown';
@@ -141,12 +140,63 @@ function setStateProps(state) {
         }
     });
 
+    state.props.cursor = index;
+    console.log('cursor at:');
+    console.log(index);
+
+}
+
+// function to reset values beyond current fieldset
+// [T] this could potentially do with a refactor
+// check for input type, and them perform 
+// contextual resets to universal defaults
+// unchecked for radio/checkbox, noselect for 
+// selection dropdown, etc.
+function clearStepsAfterCursor(fieldsets, state) {
+    fieldsets.forEach((element, index) => {
+        if (index > state.props.cursor) {
+
+            if (index == 1) {
+                element.querySelector("#license").value = "noselect";
+            }
+
+            // if (index = 8) {
+
+            // }
+
+            if (index != 1 | index != 8) {
+                console.log('clear at:');
+                console.log(index);
+
+                let inputs = element.querySelectorAll('input');
+                inputs.forEach((input, i) => {
+                    input.checked = false;
+                    console.log('uncheck!');
+                });
+            }
+        }
+    });
 }
 
 // function to render "license recommendation",
 // if valid license from state.parts and/or state.current
 function renderLicenseRec(state) {
-    document.querySelector('#license-recommendation header h3').textContent = state.props.license;
+    // document.querySelector('#license-recommendation header h3').textContent = state.props.license;
+
+    if (state.props.license != 'unknown' ) {
+        document.querySelector('#license-recommendation').classList.remove('disable');
+
+        let license = state.props.license;
+        let template = document.getElementById(license);
+        let templateContent = template.content.cloneNode(true);
+        document.querySelector('#license-recommendation .license').textContent = '';
+        document.querySelector('#license-recommendation .license').appendChild(templateContent);
+        console.log('license set to: ' + license);
+    }
+    else if (state.props.license == 'unknown') {
+        document.querySelector('#license-recommendation').classList.add('disable');
+        document.querySelector('#license-recommendation .license').textContent = '';
+    }
 }
 
 // function to set default UX states on Steps
@@ -163,6 +213,8 @@ function setDefaults(applyDefaults) {
             document.querySelector(element).classList.add('disable');
         });
     }
+
+    document.querySelector('#license-recommendation').classList.add('disable');
 }
 
 // stepper logic here for what parts of form are 
@@ -252,9 +304,14 @@ function watchFieldsets(fieldsets, state) {
             console.log("state.current (after change)");
             console.log(state.current);
 
-            setStateProps(state);
+            setStateProps(index, state);
             console.log("state.props (after change)");
             console.log(state.props);
+
+            // [T]: also reset values beyond current changed fieldset to nothing each time
+            //element.checked = false;
+            //console.log('reset values beyond current fieldset to nothing');
+            clearStepsAfterCursor(fieldsets, state);
 
             renderSteps(applyDefaults, state);
 
