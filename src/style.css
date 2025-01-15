@@ -82,7 +82,6 @@ ol li:has(.disable) {
     display: none;
 }
 
-
 .license header {
     display: flex;
     flex-wrap: wrap;
