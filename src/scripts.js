@@ -152,7 +152,7 @@ function setStateProps(index, state) {
 // contextual resets to universal defaults
 // unchecked for radio/checkbox, noselect for 
 // selection dropdown, etc.
-function clearStepsAfter(fieldsets, state) {
+function clearStepsAfterCursor(fieldsets, state) {
     fieldsets.forEach((element, index) => {
         if (index > state.props.cursor) {
 
@@ -311,7 +311,7 @@ function watchFieldsets(fieldsets, state) {
             // [T]: also reset values beyond current changed fieldset to nothing each time
             //element.checked = false;
             //console.log('reset values beyond current fieldset to nothing');
-            clearStepsAfter(fieldsets, state);
+            clearStepsAfterCursor(fieldsets, state);
 
             renderSteps(applyDefaults, state);
 
