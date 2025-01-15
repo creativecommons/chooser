@@ -148,21 +148,30 @@ function setStateProps(index, state) {
 
 // function to reset values beyond current fieldset
 function clearStepsAfter(fieldsets, state) {
-    // get current fieldset.element index onchange,
-    // then use loop through all fieldset.elements > index
-    // use querySelector to set all child inputs to
-    // empty default values
-
-    // might need a prop of "cursor" which marks where
-    // in the steps we are, do this in state.props
-
     fieldsets.forEach((element, index) => {
         if (index > state.props.cursor) {
-            console.log('clear at:');
-            console.log(index);
 
-            // change to querySelectorAll and then loop through to reset where appropriate
-            element.querySelector('input').checked = false;
+            if (index == 1) {
+                element.querySelector("#license").value = "noselect";
+            }
+
+            // if (index = 8) {
+
+            // }
+
+            if (index != 1 | index != 8) {
+                console.log('clear at:');
+                console.log(index);
+
+                // change to querySelectorAll and then loop through to reset where appropriate
+                let inputs = element.querySelectorAll('input');
+                inputs.forEach((input, i) => {
+                    input.checked = false;
+                    console.log('uncheck!');
+
+                });
+
+            }
         }
 
     });
@@ -179,9 +188,10 @@ function renderLicenseRec(state) {
 
         let license = state.props.license;
         let template = document.getElementById(license);
-        let templateContent = template.content;
+        let templateContent = template.content.cloneNode(true);
         document.querySelector('#license-recommendation .license').textContent = '';
         document.querySelector('#license-recommendation .license').appendChild(templateContent);
+        console.log('license set to: ' + license);
     }
     else if (state.props.license == 'unknown') {
         document.querySelector('#license-recommendation').classList.add('disable');
