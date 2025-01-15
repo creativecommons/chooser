@@ -77,7 +77,7 @@ function setStateParts(state) {
 
     // temp defaults
     state.parts[0] = 'do-you-know-which-license-you-need/yes/';
-    state.parts[1] = 'which-license-do-you-need/cc-by/';
+    //state.parts[1] = 'which-license-do-you-need/cc-by/';
     state.parts[8] = 'attribution-details/';
 }
 // function to update state.parts
@@ -148,6 +148,10 @@ function setStateProps(index, state) {
 
 // function to reset values beyond current fieldset
 // [T] this could potentially do with a refactor
+// check for input type, and them perform 
+// contextual resets to universal defaults
+// unchecked for radio/checkbox, noselect for 
+// selection dropdown, etc.
 function clearStepsAfter(fieldsets, state) {
     fieldsets.forEach((element, index) => {
         if (index > state.props.cursor) {
