@@ -118,7 +118,7 @@ function setStateCurrent(element, index,  state) {
     state.parts.forEach((element, i) => {
         if (i > index) {
             state.parts.splice(i);  
-        } 
+        }
     });
     
     state.current = state.parts.join('') //.slice(0, -1);
