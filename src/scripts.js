@@ -164,19 +164,14 @@ function clearStepsAfter(fieldsets, state) {
                 console.log('clear at:');
                 console.log(index);
 
-                // change to querySelectorAll and then loop through to reset where appropriate
                 let inputs = element.querySelectorAll('input');
                 inputs.forEach((input, i) => {
                     input.checked = false;
                     console.log('uncheck!');
-
                 });
-
             }
         }
-
     });
-
 }
 
 // function to render "license recommendation",
