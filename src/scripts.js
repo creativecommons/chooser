@@ -140,6 +140,26 @@ function setStateProps(index, state) {
         }
     });
 
+    // set full license human readable name && full license URL
+    if (state.props.license != 'unknown' | state.props.license != 'cc-0' ) {
+
+        formattedLicense = state.props.license.replace(/-/, ' ').toUpperCase();
+        state.props.licenseFull = formattedLicense + ' 4.0';
+
+        shortName = state.props.license.replace(/cc-/, '');
+        state.props.licenseURL = 'https://creativecommons.org/licenses/'+ shortName +'/4.0/'; 
+    }
+
+    if (state.props.license == 'cc-0') {
+
+        state.props.licenseFull = 'CC0 1.0';
+
+        state.props.licenseURL = 'https://creativecommons.org/publicdomain/zero/1.0/';
+    }
+
+
+
+
     state.props.cursor = index;
     console.log('cursor at:');
     console.log(index);
@@ -219,12 +239,21 @@ function renderMarkingFormats(state) {
 
     setStatePropsAttribution(state);
 
-    let title = state.props.attribution.title;
-    let workCreationYear = state.props.attribution.workCreationYear;
+    //let title = state.props.attribution.title;
+    //let workCreationYear = state.props.attribution.workCreationYear;
 
-    let phrase = '(c) ' + workCreationYear + ' ' + title + ' is licensed under ';
+    //let phrase = '(c) ' + workCreationYear + ' ' + title + ' is licensed under ';
+
+    let attribution = state.props.attribution;
+
+    let type = "licensed under";
+    if (state.props.license == 'cc-0') {
+        type = "marked";
+    }
+
+    let mark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + type  + ' ' + state.props.licenseFull + '. To view a copy of this license, visit ' + state.props.licenseURL;
     
-    document.querySelector('#mark-your-work .plain-text.mark').textContent = phrase + state.props.license;
+    document.querySelector('#mark-your-work .plain-text.mark').textContent = mark;
 }
 
 
@@ -375,6 +404,8 @@ function watchFieldsets(fieldsets, state) {
             renderLicenseRec(state);
 
             renderMarkYourWork(state);
+
+            console.log(state.props.licenseFull);
 
         });
 
