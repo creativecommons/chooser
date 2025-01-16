@@ -145,12 +145,17 @@ function setStateProps(index, state) {
     console.log(index);
 
     state.props.attribution = [];
+    setStatePropsAttribution(state);
+}
+
+// isolated function to just set the attribution 
+// subset of state.props (for use other places)
+function setStatePropsAttribution(state) {
     state.props.attribution.title = document.querySelector('#attribution-details #title').value;
     state.props.attribution.creator = document.querySelector('#attribution-details #creator').value;
     state.props.attribution.workLink = document.querySelector('#attribution-details #work-link').value;
     state.props.attribution.creatorLink = document.querySelector('#attribution-details #creator-link').value;
     state.props.attribution.workCreationYear = document.querySelector('#attribution-details #work-creation-year').value;
-
 }
 
 // function to reset values beyond current fieldset
@@ -206,6 +211,24 @@ function renderLicenseRec(state) {
     }
 }
 
+// render specifically the mark formats subsections
+function renderMarkingFormats(state) {
+
+
+    if (state.props.license != 'unknown' ) {}
+
+    setStatePropsAttribution(state);
+
+    let title = state.props.attribution.title;
+    let workCreationYear = state.props.attribution.workCreationYear;
+
+    let phrase = '(c) ' + workCreationYear + ' ' + title + ' is licensed under ';
+    
+    document.querySelector('#mark-your-work .plain-text.mark').textContent = phrase + state.props.license;
+}
+
+
+
 // function to render "mark your work",
 // if valid license from state.parts and/or state.current
 // if attribution details input(s) filled out
@@ -216,17 +239,18 @@ function renderMarkYourWork(state) {
         document.querySelector('#mark-your-work').classList.remove('disable');
 
         //state.props.attribution.title
-        let title = state.props.attribution.title;
-        let workCreationYear = state.props.attribution.workCreationYear;
+        // let title = state.props.attribution.title;
+        // let workCreationYear = state.props.attribution.workCreationYear;
 
-        let phrase = '(c) ' + workCreationYear + ' ' + title + ' is licensed under ';
+        // let phrase = '(c) ' + workCreationYear + ' ' + title + ' is licensed under ';
         
-        document.querySelector('#mark-your-work .mark-holder').textContent = phrase + state.props.license;
+        // document.querySelector('#mark-your-work .mark-holder').textContent = phrase + state.props.license;
+        renderMarkingFormats(state);
 
     }
     
     else if (state.props.license == 'unknown') {
-        // set to empty
+        document.querySelector('#mark-your-work').classList.add('disable');
     }
 
 }
@@ -351,6 +375,22 @@ function watchFieldsets(fieldsets, state) {
             renderLicenseRec(state);
 
             renderMarkYourWork(state);
+
+        });
+
+    });
+}
+
+function watchAttributionDetails(fieldsets, state) {
+
+    let textFields = fieldsets[8].querySelectorAll('input');
+
+    textFields.forEach((element, index) => {
+
+        element.addEventListener("keyup", (event) => {
+            console.log('typing is happening');
+
+            renderMarkingFormats(state);
         });
 
     });
@@ -368,4 +408,8 @@ console.log(state.possibilities);
 setDefaults(applyDefaults);
 console.log("initial defaults applied");
 
+setStateProps(0, state);
+console.log("initial defaults applied");
+
 watchFieldsets(fieldsets, state);
+watchAttributionDetails(fieldsets, state);
