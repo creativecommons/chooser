@@ -111,6 +111,6 @@ ol li:has(.disable) {
 
 
 /* debug styles */
-#mark-your-work, .help {
+.help {
     display: none;
 }

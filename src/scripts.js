@@ -140,10 +140,46 @@ function setStateProps(index, state) {
         }
     });
 
+    // set licenseFull, licenseShort, licenseURL
+    if (state.props.license != 'unknown' | state.props.license != 'cc-0' ) {
+
+        formattedLicense = state.props.license.replace(/-/, ' ').toUpperCase();
+        state.props.licenseShort = formattedLicense + ' 4.0';
+
+        // set licenseFhort
+
+        shortName = state.props.license.replace(/cc-/, '');
+        state.props.licenseURL = 'https://creativecommons.org/licenses/'+ shortName +'/4.0/'; 
+    }
+
+    if (state.props.license == 'cc-0') {
+
+        state.props.licenseShort = 'CC0 1.0';
+
+        // set licenseFull
+
+        state.props.licenseURL = 'https://creativecommons.org/publicdomain/zero/1.0/';
+    }
+
+
+
+
     state.props.cursor = index;
     console.log('cursor at:');
     console.log(index);
 
+    state.props.attribution = [];
+    setStatePropsAttribution(state);
+}
+
+// isolated function to just set the attribution 
+// subset of state.props (for use other places)
+function setStatePropsAttribution(state) {
+    state.props.attribution.title = document.querySelector('#attribution-details #title').value;
+    state.props.attribution.creator = document.querySelector('#attribution-details #creator').value;
+    state.props.attribution.workLink = document.querySelector('#attribution-details #work-link').value;
+    state.props.attribution.creatorLink = document.querySelector('#attribution-details #creator-link').value;
+    state.props.attribution.workCreationYear = document.querySelector('#attribution-details #work-creation-year').value;
 }
 
 // function to reset values beyond current fieldset
@@ -199,6 +235,59 @@ function renderLicenseRec(state) {
     }
 }
 
+// render specifically the mark formats subsections
+function renderMarkingFormats(state) {
+
+
+    if (state.props.license != 'unknown' ) {}
+
+    setStatePropsAttribution(state);
+
+    //let title = state.props.attribution.title;
+    //let workCreationYear = state.props.attribution.workCreationYear;
+
+    //let phrase = '(c) ' + workCreationYear + ' ' + title + ' is licensed under ';
+
+    let attribution = state.props.attribution;
+
+    let type = "licensed under";
+    if (state.props.license == 'cc-0') {
+        type = "marked";
+    }
+
+    let mark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + type  + ' ' + state.props.licenseShort + '. To view a copy of this license, visit ' + state.props.licenseURL;
+    
+    document.querySelector('#mark-your-work .plain-text.mark').textContent = mark;
+}
+
+
+
+// function to render "mark your work",
+// if valid license from state.parts and/or state.current
+// if attribution details input(s) filled out
+function renderMarkYourWork(state) {
+    if (state.props.license != 'unknown' ) {
+        // load attribution details template, 
+        // populate from attribution text values
+        document.querySelector('#mark-your-work').classList.remove('disable');
+
+        //state.props.attribution.title
+        // let title = state.props.attribution.title;
+        // let workCreationYear = state.props.attribution.workCreationYear;
+
+        // let phrase = '(c) ' + workCreationYear + ' ' + title + ' is licensed under ';
+        
+        // document.querySelector('#mark-your-work .mark-holder').textContent = phrase + state.props.license;
+        renderMarkingFormats(state);
+
+    }
+    
+    else if (state.props.license == 'unknown') {
+        document.querySelector('#mark-your-work').classList.add('disable');
+    }
+
+}
+
 // function to set default UX states on Steps
 // set default visibly disabled pathways
 
@@ -215,6 +304,7 @@ function setDefaults(applyDefaults) {
     }
 
     document.querySelector('#license-recommendation').classList.add('disable');
+    document.querySelector('#mark-your-work').classList.add('disable');
 }
 
 // stepper logic here for what parts of form are 
@@ -316,6 +406,26 @@ function watchFieldsets(fieldsets, state) {
             renderSteps(applyDefaults, state);
 
             renderLicenseRec(state);
+
+            renderMarkYourWork(state);
+
+            console.log(state.props.licenseShort);
+
+        });
+
+    });
+}
+
+function watchAttributionDetails(fieldsets, state) {
+
+    let textFields = fieldsets[8].querySelectorAll('input');
+
+    textFields.forEach((element, index) => {
+
+        element.addEventListener("keyup", (event) => {
+            console.log('typing is happening');
+
+            renderMarkingFormats(state);
         });
 
     });
@@ -333,4 +443,8 @@ console.log(state.possibilities);
 setDefaults(applyDefaults);
 console.log("initial defaults applied");
 
+setStateProps(0, state);
+console.log("initial defaults applied");
+
 watchFieldsets(fieldsets, state);
+watchAttributionDetails(fieldsets, state);
