@@ -144,9 +144,9 @@ function setStateProps(index, state) {
     if (state.props.license != 'unknown' | state.props.license != 'cc-0' ) {
 
         formattedLicense = state.props.license.replace(/-/, ' ').toUpperCase();
-        state.props.licenseFull = formattedLicense + ' 4.0';
+        state.props.licenseShort = formattedLicense + ' 4.0';
 
-        // set licenseShort
+        // set licenseFhort
 
         shortName = state.props.license.replace(/cc-/, '');
         state.props.licenseURL = 'https://creativecommons.org/licenses/'+ shortName +'/4.0/'; 
@@ -154,9 +154,9 @@ function setStateProps(index, state) {
 
     if (state.props.license == 'cc-0') {
 
-        state.props.licenseFull = 'CC0 1.0';
+        state.props.licenseShort = 'CC0 1.0';
 
-        // set licenseShort
+        // set licenseFull
 
         state.props.licenseURL = 'https://creativecommons.org/publicdomain/zero/1.0/';
     }
@@ -255,7 +255,7 @@ function renderMarkingFormats(state) {
         type = "marked";
     }
 
-    let mark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + type  + ' ' + state.props.licenseFull + '. To view a copy of this license, visit ' + state.props.licenseURL;
+    let mark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + type  + ' ' + state.props.licenseShort + '. To view a copy of this license, visit ' + state.props.licenseURL;
     
     document.querySelector('#mark-your-work .plain-text.mark').textContent = mark;
 }
@@ -409,7 +409,7 @@ function watchFieldsets(fieldsets, state) {
 
             renderMarkYourWork(state);
 
-            console.log(state.props.licenseFull);
+            console.log(state.props.licenseShort);
 
         });
 
