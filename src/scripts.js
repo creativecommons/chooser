@@ -214,24 +214,24 @@ function clearStepsAfterCursor(fieldsets, state) {
     });
 }
 
-// function to render "license recommendation",
+// function to render "tool recommendation",
 // if valid tool from state.parts and/or state.current
-function renderLicenseRec(state) {
-    // document.querySelector('#license-recommendation header h3').textContent = state.props.tool;
+function renderToolRec(state) {
+    // document.querySelector('#tool-recommendation header h3').textContent = state.props.tool;
 
     if (state.props.tool != 'unknown' ) {
-        document.querySelector('#license-recommendation').classList.remove('disable');
+        document.querySelector('#tool-recommendation').classList.remove('disable');
 
         let tool = state.props.tool;
         let template = document.getElementById(tool);
         let templateContent = template.content.cloneNode(true);
-        document.querySelector('#license-recommendation .tool').textContent = '';
-        document.querySelector('#license-recommendation .tool').appendChild(templateContent);
+        document.querySelector('#tool-recommendation .tool').textContent = '';
+        document.querySelector('#tool-recommendation .tool').appendChild(templateContent);
         console.log('tool set to: ' + tool);
     }
     else if (state.props.tool == 'unknown') {
-        document.querySelector('#license-recommendation').classList.add('disable');
-        document.querySelector('#license-recommendation .tool').textContent = '';
+        document.querySelector('#tool-recommendation').classList.add('disable');
+        document.querySelector('#tool-recommendation .tool').textContent = '';
     }
 }
 
@@ -405,7 +405,7 @@ function watchFieldsets(fieldsets, state) {
 
             renderSteps(applyDefaults, state);
 
-            renderLicenseRec(state);
+            renderToolRec(state);
 
             renderMarkYourWork(state);
 
