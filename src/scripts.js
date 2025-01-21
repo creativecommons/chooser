@@ -215,19 +215,19 @@ function clearStepsAfterCursor(fieldsets, state) {
 }
 
 // function to render "license recommendation",
-// if valid license from state.parts and/or state.current
+// if valid tool from state.parts and/or state.current
 function renderLicenseRec(state) {
-    // document.querySelector('#license-recommendation header h3').textContent = state.props.license;
+    // document.querySelector('#license-recommendation header h3').textContent = state.props.tool;
 
     if (state.props.tool != 'unknown' ) {
         document.querySelector('#license-recommendation').classList.remove('disable');
 
         let tool = state.props.tool;
-        let template = document.getElementById(license);
+        let template = document.getElementById(tool);
         let templateContent = template.content.cloneNode(true);
         document.querySelector('#license-recommendation .license').textContent = '';
         document.querySelector('#license-recommendation .license').appendChild(templateContent);
-        console.log('license set to: ' + tool);
+        console.log('tool set to: ' + tool);
     }
     else if (state.props.tool == 'unknown') {
         document.querySelector('#license-recommendation').classList.add('disable');
@@ -277,7 +277,7 @@ function renderMarkYourWork(state) {
 
         // let phrase = '(c) ' + workCreationYear + ' ' + title + ' is licensed under ';
         
-        // document.querySelector('#mark-your-work .mark-holder').textContent = phrase + state.props.license;
+        // document.querySelector('#mark-your-work .mark-holder').textContent = phrase + state.props.tool;
         renderMarkingFormats(state);
 
     }
