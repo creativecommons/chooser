@@ -193,7 +193,7 @@ function clearStepsAfterCursor(fieldsets, state) {
         if (index > state.props.cursor) {
 
             if (index == 1) {
-                element.querySelector("#license").value = "noselect";
+                element.querySelector("#tool").value = "noselect";
             }
 
             // if (index = 8) {
