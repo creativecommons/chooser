@@ -303,7 +303,7 @@ function setDefaults(applyDefaults) {
         });
     }
 
-    document.querySelector('#license-recommendation').classList.add('disable');
+    document.querySelector('#tool-recommendation').classList.add('disable');
     document.querySelector('#mark-your-work').classList.add('disable');
 }
 
