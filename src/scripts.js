@@ -225,13 +225,13 @@ function renderLicenseRec(state) {
         let tool = state.props.tool;
         let template = document.getElementById(tool);
         let templateContent = template.content.cloneNode(true);
-        document.querySelector('#license-recommendation .license').textContent = '';
-        document.querySelector('#license-recommendation .license').appendChild(templateContent);
+        document.querySelector('#license-recommendation .tool').textContent = '';
+        document.querySelector('#license-recommendation .tool').appendChild(templateContent);
         console.log('tool set to: ' + tool);
     }
     else if (state.props.tool == 'unknown') {
         document.querySelector('#license-recommendation').classList.add('disable');
-        document.querySelector('#license-recommendation .license').textContent = '';
+        document.querySelector('#license-recommendation .tool').textContent = '';
     }
 }
 
