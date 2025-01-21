@@ -1,21 +1,21 @@
 
 // all possible State Path Routes
 let rawStatePathRoutes = [
-    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-0/waive-your-copyright+waive+read/(attribution-details)&license=cc-0',
-    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by/(attribution-details)&license=cc-by',
-    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-sa/(attribution-details)&license=cc-by-sa',
-    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-nd/(attribution-details)&license=cc-by-nd',
-    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-nc/(attribution-details)&license=cc-by-nc',
-    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-nc-sa/(attribution-details)&license=cc-by-nc-sa',
-    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-nc-nd/(attribution-details)&license=cc-by-nc-nd',
+    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-0/waive-your-copyright+waive+read/(attribution-details)&tool=cc-0',
+    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by/(attribution-details)&tool=cc-by',
+    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-sa/(attribution-details)&tool=cc-by-sa',
+    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-nd/(attribution-details)&tool=cc-by-nd',
+    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-nc/(attribution-details)&tool=cc-by-nc',
+    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-nc-sa/(attribution-details)&tool=cc-by-nc-sa',
+    'do-you-know-which-license-you-need/yes/which-license-do-you-need/cc-by-nc-nd/(attribution-details)&tool=cc-by-nc-nd',
     
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/yes/share-alike/no/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by',
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/yes/share-alike/yes/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-sa',
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/no/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-nd',
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/no/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-nc',
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/yes/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-nc-sa',
-    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/no/confirmation+ownership+read+revocation/(attribution-details)&license=cc-by-nc-nd',
-    'do-you-know-which-license-you-need/no/require-attribution/no/waive-your-copyright+waive+read/(attribution-details)&license=cc-0'
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/yes/share-alike/no/confirmation+ownership+read+revocation/(attribution-details)&tool=cc-by',
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/yes/share-alike/yes/confirmation+ownership+read+revocation/(attribution-details)&tool=cc-by-sa',
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/yes/allow-derivatives/no/confirmation+ownership+read+revocation/(attribution-details)&tool=cc-by-nd',
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/no/confirmation+ownership+read+revocation/(attribution-details)&tool=cc-by-nc',
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/yes/share-alike/yes/confirmation+ownership+read+revocation/(attribution-details)&tool=cc-by-nc-sa',
+    'do-you-know-which-license-you-need/no/require-attribution/yes/allow-commercial-use/no/allow-derivatives/no/confirmation+ownership+read+revocation/(attribution-details)&tool=cc-by-nc-nd',
+    'do-you-know-which-license-you-need/no/require-attribution/no/waive-your-copyright+waive+read/(attribution-details)&tool=cc-0'
 ];
 
 // empty state obj
@@ -42,14 +42,14 @@ applyDefaults.elements = [
 // from rawStatePathRoutes
 function setStatePossibilities(state) {
 
-    // create state possibilities from possible licenses with adjoining statePaths
+    // create state possibilities from possible tools with adjoining statePaths
     state.possibilities = [];
     rawStatePathRoutes.forEach((path, index) => {
 
         statePath = path.split("&");
         statepath = statePath;
-        license = statePath[statePath.length - 1].split("=");
-        license = license[1];
+        tool = statePath[statePath.length - 1].split("=");
+        tool = tool[1];
 
         regEx = /\(([^)]+)\)/g;
         optionals = statePath[0].match(regEx);
@@ -62,11 +62,11 @@ function setStatePossibilities(state) {
 
         fullPath = statePath[0].replace(/[{()}]/g, '') + '/';
     
-        if (state.possibilities[license] == undefined) {
-            state.possibilities[license] = [];
+        if (state.possibilities[tool] == undefined) {
+            state.possibilities[tool] = [];
         }
-        state.possibilities[license].push(fullPath);
-        state.possibilities[license].push(noOptionalsPath);
+        state.possibilities[tool].push(fullPath);
+        state.possibilities[tool].push(noOptionalsPath);
         
     });
 }
@@ -125,40 +125,40 @@ function setStateCurrent(element, index,  state) {
 }
 
 // function to set state.props
-// including setting state.props.license (if valid)
+// including setting state.props.tool (if valid)
 // or error
 function setStateProps(index, state) {
 
     state.props = {};
-    state.props.license = 'unknown';
+    state.props.tool = 'unknown';
 
     // check and match possibilities
     Object.keys(state.possibilities).forEach((possibility) => {
         if(state.possibilities[possibility].includes(state.current)) {
-            state.props.license = possibility;
+            state.props.tool = possibility;
             console.log('matched');
         }
     });
 
-    // set licenseFull, licenseShort, licenseURL
-    if (state.props.license != 'unknown' | state.props.license != 'cc-0' ) {
+    // set toolFull, toolShort, toolURL
+    if (state.props.tool != 'unknown' | state.props.tool != 'cc-0' ) {
 
-        formattedLicense = state.props.license.replace(/-/, ' ').toUpperCase();
-        state.props.licenseShort = formattedLicense + ' 4.0';
+        formattedTool = state.props.tool.replace(/-/, ' ').toUpperCase();
+        state.props.toolShort = formattedTool + ' 4.0';
 
-        // set licenseFhort
+        // set toolFhort
 
-        shortName = state.props.license.replace(/cc-/, '');
-        state.props.licenseURL = 'https://creativecommons.org/licenses/'+ shortName +'/4.0/'; 
+        shortName = state.props.tool.replace(/cc-/, '');
+        state.props.toolURL = 'https://creativecommons.org/licenses/'+ shortName +'/4.0/'; 
     }
 
-    if (state.props.license == 'cc-0') {
+    if (state.props.tool == 'cc-0') {
 
-        state.props.licenseShort = 'CC0 1.0';
+        state.props.toolShort = 'CC0 1.0';
 
-        // set licenseFull
+        // set toolFull
 
-        state.props.licenseURL = 'https://creativecommons.org/publicdomain/zero/1.0/';
+        state.props.toolURL = 'https://creativecommons.org/publicdomain/zero/1.0/';
     }
 
 
@@ -219,17 +219,17 @@ function clearStepsAfterCursor(fieldsets, state) {
 function renderLicenseRec(state) {
     // document.querySelector('#license-recommendation header h3').textContent = state.props.license;
 
-    if (state.props.license != 'unknown' ) {
+    if (state.props.tool != 'unknown' ) {
         document.querySelector('#license-recommendation').classList.remove('disable');
 
-        let license = state.props.license;
+        let tool = state.props.tool;
         let template = document.getElementById(license);
         let templateContent = template.content.cloneNode(true);
         document.querySelector('#license-recommendation .license').textContent = '';
         document.querySelector('#license-recommendation .license').appendChild(templateContent);
-        console.log('license set to: ' + license);
+        console.log('license set to: ' + tool);
     }
-    else if (state.props.license == 'unknown') {
+    else if (state.props.tool == 'unknown') {
         document.querySelector('#license-recommendation').classList.add('disable');
         document.querySelector('#license-recommendation .license').textContent = '';
     }
@@ -239,7 +239,7 @@ function renderLicenseRec(state) {
 function renderMarkingFormats(state) {
 
 
-    if (state.props.license != 'unknown' ) {}
+    if (state.props.tool != 'unknown' ) {}
 
     setStatePropsAttribution(state);
 
@@ -251,11 +251,11 @@ function renderMarkingFormats(state) {
     let attribution = state.props.attribution;
 
     let type = "licensed under";
-    if (state.props.license == 'cc-0') {
+    if (state.props.tool == 'cc-0') {
         type = "marked";
     }
 
-    let mark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + type  + ' ' + state.props.licenseShort + '. To view a copy of this license, visit ' + state.props.licenseURL;
+    let mark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + type  + ' ' + state.props.toolShort + '. To view a copy of this license, visit ' + state.props.toolURL;
     
     document.querySelector('#mark-your-work .plain-text.mark').textContent = mark;
 }
@@ -263,10 +263,10 @@ function renderMarkingFormats(state) {
 
 
 // function to render "mark your work",
-// if valid license from state.parts and/or state.current
+// if valid tool from state.parts and/or state.current
 // if attribution details input(s) filled out
 function renderMarkYourWork(state) {
-    if (state.props.license != 'unknown' ) {
+    if (state.props.tool != 'unknown' ) {
         // load attribution details template, 
         // populate from attribution text values
         document.querySelector('#mark-your-work').classList.remove('disable');
@@ -282,7 +282,7 @@ function renderMarkYourWork(state) {
 
     }
     
-    else if (state.props.license == 'unknown') {
+    else if (state.props.tool == 'unknown') {
         document.querySelector('#mark-your-work').classList.add('disable');
     }
 
@@ -375,7 +375,7 @@ function renderSteps(applyDefaults, state) {
 }
 
 // function to render "mark your work", from attribution fields
-// if valid license from state.parts and/or state.current
+// if valid tool from state.parts and/or state.current
 
 // function to handle error state
 
@@ -409,7 +409,7 @@ function watchFieldsets(fieldsets, state) {
 
             renderMarkYourWork(state);
 
-            console.log(state.props.licenseShort);
+            console.log(state.props.toolShort);
 
         });
 
