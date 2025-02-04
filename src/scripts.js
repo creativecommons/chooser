@@ -146,7 +146,7 @@ function setStateProps(index, state) {
         formattedTool = state.props.tool.replace(/-/, ' ').toUpperCase();
         state.props.toolShort = formattedTool + ' 4.0';
 
-        // set toolFhort
+        // set toolShort
 
         shortName = state.props.tool.replace(/cc-/, '');
         state.props.toolURL = 'https://creativecommons.org/licenses/'+ shortName +'/4.0/'; 
@@ -260,6 +260,28 @@ function renderMarkingFormats(state) {
     document.querySelector('#mark-your-work .plain-text.mark').textContent = mark;
 }
 
+
+// function to replace placeholders with values 
+// for mark format constriction
+// lots of TODOs here (just for testing)
+// can use this to build out string replacement when
+// swapping in html from a <template> element
+// this will enable, controlling the markup, in markup
+// and then JS is only having to do logic replacement
+// of the token placeholders, rather than storing strings 
+// within the JS unnecessarily.
+
+
+function parseTokens(name, value, str){
+    return str.replaceAll("{{"+name+"}}", value);
+}
+  
+  const mark = 'test {{title}} {{year}} by {{author}}';
+
+  parsedMark = parseTokens("year", "2025", mark);
+  parsedMark = parseTokens("title", "cool work", parsedMark);
+  parsedMark = parseTokens("author", "jane mayer", parsedMark);
+  console.log(parsedMark);
 
 
 // function to render "mark your work",
