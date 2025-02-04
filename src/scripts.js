@@ -250,14 +250,45 @@ function renderMarkingFormats(state) {
 
     let attribution = state.props.attribution;
 
-    let type = "licensed under";
+    let type = "license";
+    let typeAsVerb = "licensed under";
     if (state.props.tool == 'cc-0') {
-        type = "marked";
+        type = "mark";
+        typeAsVerb = "marked";
     }
 
-    let mark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + type  + ' ' + state.props.toolShort + '. To view a copy of this license, visit ' + state.props.toolURL;
-    
-    document.querySelector('#mark-your-work .plain-text.mark').textContent = mark;
+    //let mark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + type  + ' ' + state.props.toolShort + '. To view a copy of this license, visit ' + state.props.toolURL;
+    //document.querySelector('#mark-your-work .plain-text.mark').textContent = mark;
+
+    let template = document.getElementById('plain-text');
+    let templateContent = template.content.cloneNode(true);
+    document.querySelector('#mark-your-work .plain-text.mark').textContent = '';
+
+    function parseTokens(name, value, str){
+        return str.replaceAll("{{"+name+"}}", value);
+    }
+
+    let markProps = {};
+    markProps.title = attribution.title;
+    markProps.year = attribution.workCreationYear;
+    markProps.creator = attribution.creator;
+    markProps.type = type;
+    markProps.typeAsVerb = typeAsVerb;
+    markProps.toolShort = state.props.toolShort;
+    markProps.toolURL = state.props.toolURL;
+
+    // could carve out separate sections for different mark formats here
+    // only handles plain text at the moment
+    for (const [key, value] of Object.entries(markProps)) {
+        templateContent.textContent = parseTokens(key, value, templateContent.textContent);
+        console.log(`${key}: ${value}`);
+    }
+
+    document.querySelector('#mark-your-work .plain-text.mark').appendChild(templateContent);
+
+
+    //templateContent.textContent = parseTokens("year", attribution.workCreationYear, templateContent.textContent);
+    //document.querySelector('#mark-your-work .plain-text.mark').appendChild(templateContent);
 }
 
 
@@ -272,16 +303,16 @@ function renderMarkingFormats(state) {
 // within the JS unnecessarily.
 
 
-function parseTokens(name, value, str){
-    return str.replaceAll("{{"+name+"}}", value);
-}
+// function parseTokens(name, value, str){
+//     return str.replaceAll("{{"+name+"}}", value);
+// }
   
-  const mark = 'test {{title}} {{year}} by {{author}}';
+//   const mark = 'test {{title}} {{year}} by {{author}}';
 
-  parsedMark = parseTokens("year", "2025", mark);
-  parsedMark = parseTokens("title", "cool work", parsedMark);
-  parsedMark = parseTokens("author", "jane mayer", parsedMark);
-  console.log(parsedMark);
+//   parsedMark = parseTokens("year", "2025", mark);
+//   parsedMark = parseTokens("title", "cool work", parsedMark);
+//   parsedMark = parseTokens("author", "jane mayer", parsedMark);
+//   console.log(parsedMark);
 
 
 // function to render "mark your work",
