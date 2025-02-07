@@ -282,6 +282,7 @@ function renderMarkingFormats(state) {
     for (const [key, value] of Object.entries(markProps)) {
         templateContent.textContent = parseTokens(key, value, templateContent.textContent);
         console.log(`${key}: ${value}`);
+        console.log(templateContent);
     }
 
     document.querySelector('#mark-your-work .plain-text.mark').appendChild(templateContent);
