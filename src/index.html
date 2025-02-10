@@ -350,11 +350,31 @@
             <h3>Website</h3>
             <p>If you are licensing or marking one work, paste the code next to it. If you are licensing or marking the whole page or blog, you can paste the code at the bottom of the page.</p>
 
-            <h4>Rich Text</h4>
-            <p>[contextually formatted mark here]</p>
+            <article>
+                <h4>Rich Text</h4>
+                <p>[contextually formatted mark here]</p>
 
-            <h4>HTML</h4>
-            <p>[contextually formatted mark here]</p>
+                <footer>
+                    <div>
+                        <input type="checkbox" id="rich-text-full-name" name="rich-text-full-name" value="rich-text-full-name" />
+                        <label for="rich-text-full-name">full tool name</label>
+                    </div>
+                    <button id="copy-rich-text-mark">Copy</button>
+                </footer>
+            </article>
+
+            <article>
+                <h4>HTML</h4>
+                <p>[contextually formatted mark here]</p>
+
+                <footer>
+                    <div>
+                        <input type="checkbox" id="html-full-name" name="html-full-name" value="html-full-name" />
+                        <label for="html-full-name">full tool name</label>
+                    </div>
+                    <button id="copy-html-mark">Copy</button>
+                </footer>
+            </article>
 
             <!-- <h4>XMP</h4>
             <p>[contextually formatted mark here]</p> -->
@@ -362,14 +382,19 @@
             <h3>Print Work or Media</h3>
             <p>Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.</p>
 
-            <h4>Plain Text</h4>
-            <p class="plain-text mark">[contextually formatted mark here]</p>
+            <article>
+                <h4>Plain Text</h4>
 
-            <footer>
-                <p>[toggle: (license abbreviation) | (full license name)]</p>
-                <button>Copy</button>
-                <button>Download</button>
-            </footer>
+                <p class="plain-text mark">[contextually formatted mark here]</p>
+
+                <footer>
+                    <div>
+                        <input type="checkbox" id="plain-text-full-name" name="plain-text-full-name" value="plain-text-full-name" />
+                        <label for="plain-text-full-name">full tool name</label>
+                    </div>
+                    <button id="copy-plain-text-mark">Copy</button>
+                </footer>
+            </article>
 
         </div>
 
