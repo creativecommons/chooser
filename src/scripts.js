@@ -285,11 +285,24 @@ function renderMarkingFormats(state) {
         console.log(templateContent);
     }
 
+    // set contents of plain text mark
+    // TODO: reverse use of <template> since it has limits on tokenization capacity, even if
+    // it allows more dev readability.
     document.querySelector('#mark-your-work .plain-text.mark').appendChild(templateContent);
 
 
     //templateContent.textContent = parseTokens("year", attribution.workCreationYear, templateContent.textContent);
     //document.querySelector('#mark-your-work .plain-text.mark').appendChild(templateContent);
+
+
+    // set contents of rich text mark
+    let richTextMark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + typeAsVerb  + ' ' + '<a href="#">' + state.props.toolShort + '</a> <svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use></svg> <svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use></svg> <svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-sa"></use></svg> ';
+    document.querySelector('#mark-your-work .rich-text.mark').innerHTML = richTextMark;
+
+
+    // set contents of HTML mark
+    let htmlMark = '<textarea readonly="true">' + attribution.title + '</textarea>';
+    document.querySelector('#mark-your-work .html.mark').innerHTML = htmlMark;
 }
 
 
