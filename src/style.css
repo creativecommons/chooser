@@ -82,21 +82,21 @@ ol li:has(.disable) {
     display: none;
 }
 
-.license header {
+.tool header {
     display: flex;
     flex-wrap: wrap;
 }
 
-.license header > h4 {
+.tool header > h4 {
     width: 100%;
 }
 
-.license header > .license-icons {
+.tool header > .tool-icons {
     order: -1;
     margin: 1.8em 1em 0 0;
 }
 
-.license .license-icons svg {
+.tool .tool-icons svg {
     display: inline;
     width: 1.9em;
     height: 1.9em;
