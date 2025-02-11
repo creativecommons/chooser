@@ -5,13 +5,14 @@
     </h2>
     <ul class="help-links">
       <li v-for="(modal, idx) in modals" :key="idx" class="help-link">
-        <v-button theme="text" class="help-link-a" @click="clickHandler(idx)">
+        <a :href="'#' + modal" class="help-link-a" @click.prevent="clickHandler(idx)">
           {{ $t(`help.${modal}.heading`) }}
-        </v-button>
+        </a>
       </li>
     </ul>
   </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -36,9 +37,11 @@ export default {
       this.$emit('change', modalNumber);
       this.openModal = parseInt(modalNumber);
       await this.$nextTick();
-      this.$nextTick(function() {
+
+      // Ensure modal links open in a new tab
+      this.$nextTick(() => {
         const modalLinks = document.querySelectorAll('.modal a');
-        modalLinks.forEach(function(link) {
+        modalLinks.forEach(link => {
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
         });
@@ -47,6 +50,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .help-section {
   margin-top: 3rem;
@@ -65,6 +69,8 @@ export default {
       .help-link-a {
         color: #c74200;
         font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
 
         &:hover {
           text-decoration: underline;
@@ -77,6 +83,7 @@ export default {
 @media only screen and (max-width: 768px) {
   .help-section .help-links .help-link .help-link-a {
     width: 90%;
+    display: block;
   }
 }
 </style>
