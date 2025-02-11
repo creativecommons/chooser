@@ -239,7 +239,6 @@ function renderToolRec(state) {
 // render specifically the mark formats subsections
 function renderMarkingFormats(state) {
 
-
     if (state.props.tool != 'unknown' ) {}
 
     setStatePropsAttribution(state);
@@ -261,6 +260,10 @@ function renderMarkingFormats(state) {
     //let mark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + type  + ' ' + state.props.toolShort + '. To view a copy of this license, visit ' + state.props.toolURL;
     //document.querySelector('#mark-your-work .plain-text.mark').textContent = mark;
 
+
+    // set contents of plain text mark
+    // TODO: reverse use of <template> since it has limits on tokenization capacity, even if
+    // it allows more dev readability.
     let template = document.getElementById('plain-text');
     let templateContent = template.content.cloneNode(true);
     document.querySelector('#mark-your-work .plain-text.mark').textContent = '';
@@ -286,9 +289,6 @@ function renderMarkingFormats(state) {
         console.log(templateContent);
     }
 
-    // set contents of plain text mark
-    // TODO: reverse use of <template> since it has limits on tokenization capacity, even if
-    // it allows more dev readability.
     document.querySelector('#mark-your-work .plain-text.mark').appendChild(templateContent);
 
 
@@ -330,12 +330,13 @@ function renderMarkingFormats(state) {
             currentTool = '';
     }
 
-    let richTextMark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + typeAsVerb  + ' ' + '<a href="#">' + state.props.toolShort + '</a>' + ccIconSet;
+    let richTextMark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + typeAsVerb  + ' ' + '<a href="' + state.props.toolURL + '">' + state.props.toolShort + '</a>' + ccIconSet;
     document.querySelector('#mark-your-work .rich-text.mark').innerHTML = richTextMark;
 
 
     // set contents of HTML mark
-    let htmlMark = '<textarea readonly="true">' + attribution.title + '</textarea>';
+    defaultHTML = '<p xmlns:cc="http://creativecommons.org/ns#">This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-SA 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt=""></a></p>';
+    let htmlMark = '<textarea readonly="true">' + defaultHTML + '</textarea>';
     document.querySelector('#mark-your-work .html.mark').innerHTML = htmlMark;
 }
 

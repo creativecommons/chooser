@@ -116,6 +116,10 @@ ol li:has(.disable) {
     height: 1.3em;
 }
 
+.mark svg:first-of-type {
+    margin-left: .5em;
+}
+
 
 /* debug styles */
 .help {
