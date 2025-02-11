@@ -172,14 +172,15 @@ function setStateProps(index, state) {
     setStatePropsAttribution(state);
 }
 
+
 // isolated function to just set the attribution 
 // subset of state.props (for use other places)
 function setStatePropsAttribution(state) {
-    state.props.attribution.title = document.querySelector('#attribution-details #title').value;
-    state.props.attribution.creator = document.querySelector('#attribution-details #creator').value;
-    state.props.attribution.workLink = document.querySelector('#attribution-details #work-link').value;
-    state.props.attribution.creatorLink = document.querySelector('#attribution-details #creator-link').value;
-    state.props.attribution.workCreationYear = document.querySelector('#attribution-details #work-creation-year').value;
+    state.props.attribution.title = document.querySelector('#attribution-details #title').value.replace(/(<([^>]+)>)/gi, "");
+    state.props.attribution.creator = document.querySelector('#attribution-details #creator').value.replace(/(<([^>]+)>)/gi, "");
+    state.props.attribution.workLink = document.querySelector('#attribution-details #work-link').value.replace(/(<([^>]+)>)/gi, "");
+    state.props.attribution.creatorLink = document.querySelector('#attribution-details #creator-link').value.replace(/(<([^>]+)>)/gi, "");
+    state.props.attribution.workCreationYear = document.querySelector('#attribution-details #work-creation-year').value.replace(/(<([^>]+)>)/gi, "");
 }
 
 // function to reset values beyond current fieldset
@@ -294,9 +295,42 @@ function renderMarkingFormats(state) {
     //templateContent.textContent = parseTokens("year", attribution.workCreationYear, templateContent.textContent);
     //document.querySelector('#mark-your-work .plain-text.mark').appendChild(templateContent);
 
-
     // set contents of rich text mark
-    let richTextMark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + typeAsVerb  + ' ' + '<a href="#">' + state.props.toolShort + '</a> <svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use></svg> <svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use></svg> <svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-sa"></use></svg> ';
+    let ccSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use></svg>';
+    let bySVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use></svg>';
+    let saSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-sa"></use></svg>';
+    let ncSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-nc"></use></svg>';
+    let ndSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-nd"></use></svg>';
+    let zeroSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-zero"></use></svg>';
+
+    const currentTool = state.props.tool;
+    switch (currentTool) {
+        case 'cc-0':
+            ccIconSet = ccSVG + zeroSVG;
+            break;
+        case 'cc-by':
+            ccIconSet = ccSVG + bySVG;
+            break;
+        case 'cc-by-sa':
+            ccIconSet = ccSVG + bySVG + saSVG;
+            break;
+        case 'cc-by-nd':
+            ccIconSet = ccSVG + bySVG + ndSVG;
+            break;
+        case 'cc-by-nc':
+            ccIconSet = ccSVG + bySVG + ncSVG;
+            break;
+        case 'cc-by-nc-sa':
+            ccIconSet = ccSVG + bySVG + ncSVG + saSVG;
+            break;
+        case 'cc-by-nc-nd':
+            ccIconSet = ccSVG + bySVG + ncSVG + ndSVG;
+            break;
+        default:
+            currentTool = '';
+    }
+
+    let richTextMark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + typeAsVerb  + ' ' + '<a href="#">' + state.props.toolShort + '</a>' + ccIconSet;
     document.querySelector('#mark-your-work .rich-text.mark').innerHTML = richTextMark;
 
 

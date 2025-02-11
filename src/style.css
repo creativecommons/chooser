@@ -109,6 +109,13 @@ ol li:has(.disable) {
     grid-template-columns: 1fr 1fr;
 }
 
+.mark svg {
+    display: inline;
+    /* font-size: 1em; */
+    width: 1.3em;
+    height: 1.3em;
+}
+
 
 /* debug styles */
 .help {
