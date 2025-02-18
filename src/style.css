@@ -125,3 +125,12 @@ ol li:has(.disable) {
 .help {
     display: none;
 }
+
+
+.panel {
+    display: none;
+}
+
+.panel.expand {
+    display: initial;
+}

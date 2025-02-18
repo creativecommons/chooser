@@ -550,3 +550,19 @@ console.log("initial defaults applied");
 
 watchFieldsets(fieldsets, state);
 watchAttributionDetails(fieldsets, state);
+
+
+
+// rough panel expansion test
+let expandButtons = document.querySelectorAll('button.expandPanel');
+
+expandButtons.forEach((element, index) => { 
+    element.addEventListener("click", (event) => {
+
+        parent = event.target.parentNode.parentNode;
+        parent.querySelector('.panel').classList.toggle('expand');
+        console.log('expanded!');
+    
+    });
+});
+
