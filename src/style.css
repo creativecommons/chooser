@@ -82,6 +82,10 @@ ol li:has(.disable) {
     display: none;
 }
 
+.hide {
+    display: none;
+}
+
 .tool header {
     display: flex;
     flex-wrap: wrap;
@@ -118,6 +122,10 @@ ol li:has(.disable) {
 
 .mark svg:first-of-type {
     margin-left: .5em;
+}
+
+.tool-rec-details input {
+    color: lightgray;
 }
 
 

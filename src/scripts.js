@@ -407,6 +407,7 @@ function setDefaults(applyDefaults) {
 
     document.querySelector('#tool-recommendation').classList.add('disable');
     document.querySelector('#mark-your-work').classList.add('disable');
+    document.querySelector('#tool-rec-details').classList.add('hide');
 }
 
 // stepper logic here for what parts of form are 
