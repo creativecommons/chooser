@@ -110,7 +110,7 @@ ol li:has(.disable) {
 .content {
     display: grid;
     gap: 2em;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
 }
 
 .mark svg {
@@ -126,6 +126,70 @@ ol li:has(.disable) {
 
 .tool-rec-details input {
     color: lightgray;
+}
+
+#tool-recommendation p {
+    font-size: 1.4em;
+}
+
+#mark-your-work p {
+    font-size: 1.4em;
+}
+
+details { 
+    font-family: 'Source Sans Pro';
+
+    border: 2px solid var(--vocabulary-neutral-color-lighter-gray);
+    border-radius: 5px;
+}
+
+details details {
+    margin: 1em;
+}
+
+details.medium {
+    margin-bottom: 1em;
+}
+  
+details.medium:open > summary {
+    /* margin-bottom: 1em; */
+}
+  
+details summary {
+    padding: .2em .5em;
+
+    background: var(--vocabulary-neutral-color-lighter-gray);
+    font-size: 1.6em;
+}
+
+details.format summary {
+    font-size: 1.3em;
+}
+
+  
+summary:hover {
+    cursor: pointer;
+}
+  
+summary::marker {
+    font-size: .8em;
+}
+
+details p {
+    padding: 0 1em;
+
+    font-size: 1em;
+}
+
+body.chooser-page .content {
+    grid-column: 3 / 10;
+
+}
+
+@media (max-width: 705px) {
+    .content {
+        display: block;
+    }
 }
 
 

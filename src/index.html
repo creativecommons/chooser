@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body class="chooser-page">
 <a class="skip-to-content" href="#main-content-marker">Skip to content</a>
 
 <header>
@@ -327,7 +327,7 @@
 
     <aside>
         <div id="tool-recommendation">
-            <h2>Recommended</h2>
+            <h2>Recommended Choice</h2>
 
             <article class="tool">
 
@@ -364,17 +364,16 @@
                 <p>Choose the kind of work to get appropriate license code or public domain marking.</p>
             </header>
 
-            <section>
+            <details class="medium">
 
-            <h3><button class="expandPanel">Website</button></h3>
+            <summary>Website</summary>
 
-            <div class="panel">
                 <p>If you are licensing or marking one work, paste the code next to it. If you are licensing or marking the whole page or blog, you can paste the code at the bottom of the page.</p>
 
                 <article>
-                    <h4><button class="expandPanel">Rich Text</button></h4>
+                    <details class="format">
+                    <summary>Rich Text</summary>
 
-                    <div class="panel">
                         <p class="rich-text mark">[contextually formatted mark here]</p>
 
                         <footer>
@@ -384,13 +383,13 @@
                             </div>
                             <button id="copy-rich-text-mark">Copy</button>
                         </footer>
-                    </div>
+                    </details>
                 </article>
 
                 <article>
-                    <h4><button class="expandPanel">HTML</button></h4>
+                    <details class="format">
+                    <summary>HTML</summary>
 
-                    <div class="panel">
                         <p class="html mark">[contextually formatted mark here]</p>
 
                         <footer>
@@ -400,26 +399,23 @@
                             </div>
                             <button id="copy-html-mark">Copy</button>
                         </footer>
-                    </div>
+                    </details>
                 </article>
 
                 <!-- <h4>XMP</h4>
                 <p>[contextually formatted mark here]</p> -->
-            </div>
 
-            </section>
+            </details>
             
-            <section>
+            <details class="medium">
+            <summary>Print Work or Media</summary>
 
-            <h3><button class="expandPanel">Print Work or Media</button></h3>
-
-            <div class="panel">
                 <p>Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.</p>
 
                 <article>
-                    <h4><button class="expandPanel">Plain Text</button></h4>
+                <details class="format">
+                    <summary>Plain Text</summary>
 
-                    <div class="panel">
                         <p class="plain-text mark">[contextually formatted mark here]</p>
 
                         <footer>
@@ -429,10 +425,9 @@
                             </div>
                             <button id="copy-plain-text-mark">Copy</button>
                         </footer>
-                    </div>
+                </details>
                 </article>
-            </div>
-            </section>
+            </details>
 
         </div>
 
