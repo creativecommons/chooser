@@ -133,6 +133,43 @@ ol li:has(.disable) {
     color: lightgray;
 }
 
+form#chooser > ol {
+    position: relative;
+
+    list-style: none;
+    counter-reset: chooser-counter;
+}
+
+form#chooser > ol li {
+counter-increment: chooser-counter;
+}
+form#chooser > ol li::before {
+position: absolute;
+--size: 32px;
+left: calc(-1 * var(--size) - 25px);
+min-height: 2em;
+min-width: 2em;
+padding-top: .4em;
+box-sizing: border-box;
+
+content: counter(chooser-counter);
+font-weight: bold;
+border-radius: 200px;
+background: var(--vocabulary-neutral-color-lighter-gray);
+color: black;
+text-align: center;
+vertical-align: middle;
+
+}
+
+form#chooser legend {
+    font-weight: bold;
+}
+
+form#chooser fieldset {
+    margin-bottom: 1em;
+}
+
 #tool-recommendation {
     margin-bottom: 4em;
 
@@ -147,6 +184,10 @@ ol li:has(.disable) {
 
 #tool-recommendation .tool a {
     --underline-background-color: var(--vocabulary-brand-color-soft-turquoise);
+}
+
+#tool-recommendation h2 {
+    /* font-size: 1.8em; */
 }
 
 #tool-recommendation h3 {
