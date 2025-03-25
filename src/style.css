@@ -97,7 +97,8 @@ ol li:has(.disable) {
 
 .tool header > .tool-icons {
     order: -1;
-    margin: 1.8em 1em 0 0;
+    /* margin: 1.8em 1em 0 0; */
+    margin: 0 1em 0 0;
 }
 
 .tool .tool-icons svg {
@@ -128,12 +129,60 @@ ol li:has(.disable) {
     color: lightgray;
 }
 
-#tool-recommendation p {
+#tool-recommendation {
+    margin-bottom: 4em;
+
+    font-family: 'Source Sans Pro';
+}
+
+#tool-recommendation .tool {
+    padding: 2em;
+
+    background: var(--vocabulary-brand-color-soft-turquoise);
+}
+
+#tool-recommendation .tool a {
+    --underline-background-color: var(--vocabulary-brand-color-soft-turquoise);
+}
+
+#tool-recommendation h3 {
+    margin: 0;
+
+    font-family: 'Source Sans Pro';
     font-size: 1.4em;
 }
 
-#mark-your-work p {
+#tool-recommendation h4 {
+    margin: .2em;
+
+    font-family: 'Source Sans Pro';
     font-size: 1.4em;
+}
+
+#tool-recommendation p {
+    font-size: 1.2em;
+}
+
+#tool-recommendation a {
+    font-weight: 700;
+}
+
+#tool-recommendation .conditions-definitions {
+    margin-bottom: 2em;
+
+    font-family: 'Source Sans Pro';
+}
+
+#tool-recommendation .conditions-definitions dt {
+    font-weight: 700;
+}
+
+#mark-your-work {
+    /* border-top: 1px solid var(--vocabulary-neutral-color-lighter-gray); */
+}
+
+#mark-your-work p {
+    font-size: 1.2em;
 }
 
 details { 
@@ -185,6 +234,8 @@ body.chooser-page .content {
     grid-column: 3 / 10;
 
 }
+
+
 
 @media (max-width: 705px) {
     .content {
