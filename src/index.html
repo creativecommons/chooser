@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body class="chooser-page">
 <a class="skip-to-content" href="#main-content-marker">Skip to content</a>
 
 <header>
@@ -220,8 +220,8 @@
             </div>
         
             <div>
-                <input type="radio" id="no-sharing-requirements" name="sharing-requirements" value="no" />
-                <label for="sharing-requirements">No</label>
+                <input type="radio" id="no-sharing-requirements" name="no-sharing-requirements" value="no" />
+                <label for="no-sharing-requirements">No</label>
             </div>
 
         </fieldset>
@@ -300,6 +300,23 @@
                 <input type="text" id="work-creation-year" name="work-creation-year" value="1999" />
             </div>
 
+            <div id="tool-rec-details">
+
+                <hr />
+
+                <div>
+                    <label for="tool-title">Title of recommended tool (read only)</label>
+                    <input type="text" id="tool-title" name="tool-title" value="recommended tool title" readonly="true" />
+                </div>
+
+                <div>
+                    <label for="tool-url">URL of recommended tool (read only)</label>
+                    <input type="text" id="tool-url" name="tool-url" value="https://creativecommons.org/licenses/by/4.0/" readonly="true" />
+                </div>
+
+            </div>
+   
+
         </fieldset>
         </li>
 
@@ -310,7 +327,7 @@
 
     <aside>
         <div id="tool-recommendation">
-            <h2>Recommended</h2>
+            <h2>Recommended Choice</h2>
 
             <article class="tool">
 
@@ -347,29 +364,70 @@
                 <p>Choose the kind of work to get appropriate license code or public domain marking.</p>
             </header>
 
-            <!-- <h3>Website</h3>
-            <p>If you are licensing or marking one work, paste the code next to it. If you are licensing or marking the whole page or blog, you can paste the code at the bottom of the page.</p>
+            <details class="medium">
 
-            <h4>Rich Text</h4>
-            <p>[contextually formatted mark here]</p>
+            <summary>Website</summary>
 
-            <h4>HTML</h4>
-            <p>[contextually formatted mark here]</p>
+                <p>If you are licensing or marking one work, paste the code next to it. If you are licensing or marking the whole page or blog, you can paste the code at the bottom of the page.</p>
 
-            <h4>XMP</h4>
-            <p>[contextually formatted mark here]</p> -->
+                <article>
+                    <details class="format">
+                    <summary>Rich Text</summary>
 
-            <h3>Print Work or Media</h3>
-            <p>Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.</p>
+                        <p class="rich-text mark">[contextually formatted mark here]</p>
 
-            <h4>Plain Text</h4>
-            <p class="plain-text mark">[contextually formatted mark here]</p>
+                        <footer>
+                            <div>
+                                <input type="checkbox" id="rich-text-full-name" name="rich-text-full-name" value="rich-text-full-name" />
+                                <label for="rich-text-full-name">full tool name</label>
+                            </div>
+                            <button id="copy-rich-text-mark">Copy</button>
+                        </footer>
+                    </details>
+                </article>
 
-            <footer>
-                <p>[toggle: (license abbreviation) | (full license name)]</p>
-                <button>Copy</button>
-                <button>Download</button>
-            </footer>
+                <article>
+                    <details class="format">
+                    <summary>HTML</summary>
+
+                        <p class="html mark">[contextually formatted mark here]</p>
+
+                        <footer>
+                            <div>
+                                <input type="checkbox" id="html-full-name" name="html-full-name" value="html-full-name" />
+                                <label for="html-full-name">full tool name</label>
+                            </div>
+                            <button id="copy-html-mark">Copy</button>
+                        </footer>
+                    </details>
+                </article>
+
+                <!-- <h4>XMP</h4>
+                <p>[contextually formatted mark here]</p> -->
+
+            </details>
+            
+            <details class="medium">
+            <summary>Print Work or Media</summary>
+
+                <p>Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.</p>
+
+                <article>
+                <details class="format">
+                    <summary>Plain Text</summary>
+
+                        <p class="plain-text mark">[contextually formatted mark here]</p>
+
+                        <footer>
+                            <div>
+                                <input type="checkbox" id="plain-text-full-name" name="plain-text-full-name" value="plain-text-full-name" />
+                                <label for="plain-text-full-name">full tool name</label>
+                            </div>
+                            <button id="copy-plain-text-mark">Copy</button>
+                        </footer>
+                </details>
+                </article>
+            </details>
 
         </div>
 

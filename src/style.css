@@ -82,6 +82,10 @@ ol li:has(.disable) {
     display: none;
 }
 
+.hide {
+    display: none;
+}
+
 .tool header {
     display: flex;
     flex-wrap: wrap;
@@ -106,11 +110,99 @@ ol li:has(.disable) {
 .content {
     display: grid;
     gap: 2em;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+}
+
+.mark svg {
+    display: inline;
+    /* font-size: 1em; */
+    width: 1.3em;
+    height: 1.3em;
+}
+
+.mark svg:first-of-type {
+    margin-left: .5em;
+}
+
+.tool-rec-details input {
+    color: lightgray;
+}
+
+#tool-recommendation p {
+    font-size: 1.4em;
+}
+
+#mark-your-work p {
+    font-size: 1.4em;
+}
+
+details { 
+    font-family: 'Source Sans Pro';
+
+    border: 2px solid var(--vocabulary-neutral-color-lighter-gray);
+    border-radius: 5px;
+}
+
+details details {
+    margin: 1em;
+}
+
+details.medium {
+    margin-bottom: 1em;
+}
+  
+details.medium:open > summary {
+    /* margin-bottom: 1em; */
+}
+  
+details summary {
+    padding: .2em .5em;
+
+    background: var(--vocabulary-neutral-color-lighter-gray);
+    font-size: 1.6em;
+}
+
+details.format summary {
+    font-size: 1.3em;
+}
+
+  
+summary:hover {
+    cursor: pointer;
+}
+  
+summary::marker {
+    font-size: .8em;
+}
+
+details p {
+    padding: 0 1em;
+
+    font-size: 1em;
+}
+
+body.chooser-page .content {
+    grid-column: 3 / 10;
+
+}
+
+@media (max-width: 705px) {
+    .content {
+        display: block;
+    }
 }
 
 
 /* debug styles */
 .help {
     display: none;
+}
+
+
+.panel {
+    display: none;
+}
+
+.panel.expand {
+    display: initial;
 }
