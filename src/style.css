@@ -62,6 +62,10 @@
     margin-bottom: -.125em;
 }
 
+dl div {
+    margin-bottom: .8em;
+}
+
 dt, dd {
     display: inline-block;
 }
