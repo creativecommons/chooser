@@ -27,6 +27,9 @@ const fieldsets = document.querySelectorAll('fieldset');
 // all found toggles
 const toggles = document.querySelectorAll('#mark-your-work footer input');
 
+// all found copiers
+const copiers = document.querySelectorAll('#mark-your-work footer button');
+
 // empty defaults obj
 let applyDefaults = {};
 
@@ -582,6 +585,19 @@ function watchMarkToggles(toggles, state) {
     });
 }
 
+function watchMarkCopiers(copiers, state) {
+
+    copiers.forEach((element, index) => {
+
+        element.addEventListener("click", (event) => {
+            console.log('copying is happening');
+
+            //perform copy
+        });
+
+    });
+}
+
 
 
 
@@ -604,6 +620,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     watchFieldsets(fieldsets, state);
     watchAttributionDetails(fieldsets, state);
     watchMarkToggles(toggles, state);
+    watchMarkCopiers(copiers, state);
 
     console.log("DOM fully loaded and parsed");
 });
