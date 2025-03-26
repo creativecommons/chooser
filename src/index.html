@@ -277,27 +277,27 @@
 
             <div>
                 <label for="title">Title of work</label>
-                <input type="text" id="title" name="title" value="title" />
+                <input type="text" id="title" name="title" placeholder="title" />
             </div>
 
             <div>
                 <label for="creator">Creator of work</label>
-                <input type="text" id="creator" name="creator" value="creator" />
+                <input type="text" id="creator" name="creator" placeholder="creator" />
             </div>
 
             <div>
                 <label for="work-link">Link to work</label>
-                <input type="text" id="work-link" name="work-link" value="work link" />
+                <input type="text" id="work-link" name="work-link" placeholder="work link" />
             </div>
 
             <div>
                 <label for="creator-link">Title of work</label>
-                <input type="text" id="creator-link" name="creator-link" value="creator link" />
+                <input type="text" id="creator-link" name="creator-link" placeholder="creator link" />
             </div>
 
             <div>
                 <label for="work-creation-year">Year of creation</label>
-                <input type="text" id="work-creation-year" name="work-creation-year" value="1999" />
+                <input type="text" id="work-creation-year" name="work-creation-year" placeholder="1999" />
             </div>
 
             <div id="tool-rec-details">
@@ -331,6 +331,8 @@
 
             <article class="tool">
 
+                <p>Please complete the form, to get a choice!</p>
+
                 <!-- <header>
                     <h3>CC-BY 4.0</h3>
                     <span class="license-icons">
@@ -360,7 +362,7 @@
 
         <div id="mark-your-work">
             <header>
-                <h2>Mark Your Work</h2>
+                <h3>Mark Your Work</h3>
                 <p>Choose the kind of work to get appropriate license code or public domain marking.</p>
             </header>
 
@@ -390,7 +392,7 @@
                     <details class="format">
                     <summary>HTML</summary>
 
-                        <p class="html mark">[contextually formatted mark here]</p>
+                        <textarea class="html mark" readonly="true">[contextually formatted mark here]</textarea>
 
                         <footer>
                             <div>
@@ -413,7 +415,7 @@
                 <p>Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.</p>
 
                 <article>
-                <details class="format">
+                <details class="format" open>
                     <summary>Plain Text</summary>
 
                         <p class="plain-text mark">[contextually formatted mark here]</p>
@@ -553,8 +555,10 @@
     </div>
 
     <dl class="conditions-definitions">
-        <dt class="icon-attach cc-zero">CC0</dt>
-        <dd>This work has been marked as dedicated to the public domain.</dd>
+        <div>
+            <dt class="icon-attach cc-zero">CC0</dt>
+            <dd>This work has been marked as dedicated to the public domain.</dd>
+        </div>
     </dl>
 
     <a href="https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v2">See the License Deed</a>
@@ -579,8 +583,10 @@
     </div>
 
     <dl class="conditions-definitions">
-        <dt class="icon-attach cc-by">BY</dt>
-        <dd>Credit must be given to you, the creator.</dd>
+        <div>
+            <dt class="icon-attach cc-by">BY</dt>
+            <dd>Credit must be given to you, the creator.</dd>
+        </div>
     </dl>
 
     <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v2">See the License Deed</a>
@@ -608,11 +614,15 @@
     </div>
 
     <dl class="conditions-definitions">
-        <dt class="icon-attach cc-by">BY</dt>
-        <dd>Credit must be given to you, the creator.</dd>
+        <div>
+            <dt class="icon-attach cc-by">BY</dt>
+            <dd>Credit must be given to you, the creator.</dd>
+        </div>
 
-        <dt class="icon-attach cc-sa">SA</dt>
-        <dd>Adaptations must be shared under the same terms.</dd>
+        <div>
+            <dt class="icon-attach cc-sa">SA</dt>
+            <dd>Adaptations must be shared under the same terms.</dd>
+        </div>
     </dl>
 
     <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v2">See the License Deed</a>
@@ -640,11 +650,16 @@
     </div>
 
     <dl class="conditions-definitions">
-        <dt class="icon-attach cc-by">BY</dt>
-        <dd>Credit must be given to you, the creator.</dd>
 
-        <dt class="icon-attach cc-nd">ND</dt>
-        <dd>No derivatives or adaptations of your work are permitted.</dd>
+        <div>
+            <dt class="icon-attach cc-by">BY</dt>
+            <dd>Credit must be given to you, the creator.</dd>
+        </div>
+
+        <div>
+            <dt class="icon-attach cc-nd">ND</dt>
+            <dd>No derivatives or adaptations of your work are permitted.</dd>
+        </div>
     </dl>
 
     <a href="https://creativecommons.org/licenses/by-nd/4.0/?ref=chooser-v2">See the License Deed</a>
@@ -672,14 +687,18 @@
     </div>
 
     <dl class="conditions-definitions">
-        <dt class="icon-attach cc-by">BY</dt>
-        <dd>Credit must be given to you, the creator.</dd>
+        <div>
+            <dt class="icon-attach cc-by">BY</dt>
+            <dd>Credit must be given to you, the creator.</dd>
+        </div>
 
-        <dt class="icon-attach cc-nc">NC</dt>
-        <dd>
-            Only noncommercial use of your work is permitted.
-            <span>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</span>
-        </dd>
+        <div>
+            <dt class="icon-attach cc-nc">NC</dt>
+            <dd>
+                Only noncommercial use of your work is permitted.
+                <span>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</span>
+            </dd>
+        </div>
 
 
     </dl>
@@ -712,17 +731,23 @@
     </div>
 
     <dl class="conditions-definitions">
-        <dt class="icon-attach cc-by">BY</dt>
-        <dd>Credit must be given to you, the creator.</dd>
+        <div>
+            <dt class="icon-attach cc-by">BY</dt>
+            <dd>Credit must be given to you, the creator.</dd>
+        </div>
 
-        <dt class="icon-attach cc-nc">NC</dt>
-        <dd>
-            Only noncommercial use of your work is permitted.
-            <span>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</span>
-        </dd>
+        <div>
+            <dt class="icon-attach cc-nc">NC</dt>
+            <dd>
+                Only noncommercial use of your work is permitted.
+                <span>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</span>
+            </dd>
+        </div>
 
-        <dt class="icon-attach cc-sa">SA</dt>
-        <dd>Adaptations must be shared under the same terms.</dd>
+        <div>
+            <dt class="icon-attach cc-sa">SA</dt>
+            <dd>Adaptations must be shared under the same terms.</dd>
+        </div>
     </dl>
 
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v2">See the License Deed</a>
@@ -753,24 +778,30 @@
     </div>
 
     <dl class="conditions-definitions">
-        <dt class="icon-attach cc-by">BY</dt>
-        <dd>Credit must be given to you, the creator.</dd>
+        <div>
+            <dt class="icon-attach cc-by">BY</dt>
+            <dd>Credit must be given to you, the creator.</dd>
+        </div>
 
-        <dt class="icon-attach cc-nc">NC</dt>
-        <dd>
-            Only noncommercial use of your work is permitted.
-            <span>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</span>
-        </dd>
+        <div>
+            <dt class="icon-attach cc-nc">NC</dt>
+            <dd>
+                Only noncommercial use of your work is permitted.
+                <span>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</span>
+            </dd>
+        </div>
 
-        <dt class="icon-attach cc-nd">ND</dt>
-        <dd>No derivatives or adaptations of your work are permitted.</dd>
+        <div>
+            <dt class="icon-attach cc-nd">ND</dt>
+            <dd>No derivatives or adaptations of your work are permitted.</dd>
+        </div>
     </dl>
 
     <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v2">See the License Deed</a>
 </template>
 
 <template id="plain-text" class="mark">
-    <p>{{title}} © {{year}} by {{creator}} is {{typeAsVerb}} {{toolShort}}. To view a copy of this {{type}}, visit {{toolURL}}</p>
+    <p>{{title}} © {{year}} by {{creator}} is {{typeAsVerb}} {{toolName}}. To view a copy of this {{type}}, visit {{toolURL}}</p>
 </template>
 
 </body>

@@ -62,6 +62,10 @@
     margin-bottom: -.125em;
 }
 
+dl div {
+    margin-bottom: .8em;
+}
+
 dt, dd {
     display: inline-block;
 }
@@ -97,7 +101,8 @@ ol li:has(.disable) {
 
 .tool header > .tool-icons {
     order: -1;
-    margin: 1.8em 1em 0 0;
+    /* margin: 1.8em 1em 0 0; */
+    margin: 0 1em 0 0;
 }
 
 .tool .tool-icons svg {
@@ -128,12 +133,130 @@ ol li:has(.disable) {
     color: lightgray;
 }
 
-#tool-recommendation p {
+form#chooser > ol {
+    position: relative;
+
+    list-style: none;
+    counter-reset: chooser-counter;
+}
+
+form#chooser > ol li {
+    counter-increment: chooser-counter;
+}
+form#chooser > ol li::before {
+    position: absolute;
+    --size: 32px;
+    left: calc(-1 * var(--size) - 25px);
+    min-height: 2em;
+    min-width: 2em;
+    padding-top: .4em;
+    box-sizing: border-box;
+
+    content: counter(chooser-counter);
+    font-weight: bold;
+    border-radius: 200px;
+    background: var(--vocabulary-neutral-color-lighter-gray);
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+form#chooser legend {
+    font-weight: bold;
+}
+
+form#chooser fieldset {
+    margin-bottom: 1em;
+}
+
+
+form#chooser label {
+    font-size: .7em;
+    font-weight: 400;
+}
+
+
+form#chooser #atrribution-details div, form#chooser #waive-your-copyright div {
+    margin-bottom: 1em;
+}
+
+form#chooser #attribution-details input {
+    padding: .2em .2em;
+
+    font-size: 1em;
+}
+
+
+form#chooser #atrribution-details input::placeholder {
+    opacity: .5;
+}
+
+#tool-recommendation {
+    margin-bottom: 4em;
+
+    font-family: 'Source Sans Pro';
+}
+
+#tool-recommendation .tool {
+    padding: 2em;
+
+    background: var(--vocabulary-brand-color-soft-turquoise);
+}
+
+#tool-recommendation .tool a {
+    --underline-background-color: var(--vocabulary-brand-color-soft-turquoise);
+}
+
+#tool-recommendation h2 {
+    /* font-size: 1.8em; */
+}
+
+#tool-recommendation h3 {
+    margin: 0;
+
+    font-family: 'Source Sans Pro';
     font-size: 1.4em;
 }
 
-#mark-your-work p {
+#tool-recommendation h4 {
+    margin: .2em;
+
+    font-family: 'Source Sans Pro';
     font-size: 1.4em;
+}
+
+#tool-recommendation p {
+    font-size: 1.2em;
+}
+
+#tool-recommendation a {
+    font-weight: 700;
+}
+
+#tool-recommendation .conditions-definitions {
+    margin-bottom: 2em;
+
+    font-family: 'Source Sans Pro';
+}
+
+#tool-recommendation .conditions-definitions dt {
+    font-weight: 700;
+}
+
+#mark-your-work {
+    /* border-top: 1px solid var(--vocabulary-neutral-color-lighter-gray); */
+}
+
+#mark-your-work textarea {
+    min-height: 9em;
+    width: 90%;
+    margin: 1em;
+    box-sizing: border-box;
+}
+
+#mark-your-work p {
+    font-size: 1.2em;
 }
 
 details { 
@@ -181,10 +304,28 @@ details p {
     font-size: 1em;
 }
 
+details.format footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+
+details.format footer label {
+    margin-left: .2em;
+
+}
+
+details.format footer button:hover {
+    cursor: pointer;
+}
+
 body.chooser-page .content {
     grid-column: 3 / 10;
 
 }
+
+
 
 @media (max-width: 705px) {
     .content {
