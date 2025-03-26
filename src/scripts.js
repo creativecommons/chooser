@@ -24,6 +24,9 @@ let state = {};
 // all found fieldsets
 const fieldsets = document.querySelectorAll('fieldset'); 
 
+// all found toggles
+const toggles = document.querySelectorAll('#mark-your-work footer input');
+
 // empty defaults obj
 let applyDefaults = {};
 
@@ -141,15 +144,22 @@ function setStateProps(index, state) {
     });
 
     // set toolFull, toolShort, toolURL
-    if (state.props.tool != 'unknown' | state.props.tool != 'cc-0' ) {
+    if (state.props.tool != 'unknown' && state.props.tool != 'cc-0' ) { // was OR, changes to AND
 
         formattedTool = state.props.tool.replace(/-/, ' ').toUpperCase();
         state.props.toolShort = formattedTool + ' 4.0';
 
-        // set toolShort
-
+        // set shortName
         shortName = state.props.tool.replace(/cc-/, '');
         state.props.toolURL = 'https://creativecommons.org/licenses/'+ shortName +'/4.0/'; 
+    }
+
+    if (state.props.tool != 'unknown' ) {
+        //set longName
+        let tool = state.props.tool;
+        let template = document.getElementById(tool);
+        let templateContent = template.content.cloneNode(true);
+        state.props.toolLong = templateContent.querySelector('header h4').textContent;
     }
 
     if (state.props.tool == 'cc-0') {
@@ -157,12 +167,8 @@ function setStateProps(index, state) {
         state.props.toolShort = 'CC0 1.0';
 
         // set toolFull
-
         state.props.toolURL = 'https://creativecommons.org/publicdomain/zero/1.0/';
     }
-
-
-
 
     state.props.cursor = index;
     console.log('cursor at:');
@@ -170,6 +176,7 @@ function setStateProps(index, state) {
 
     state.props.attribution = [];
     setStatePropsAttribution(state);
+
 }
 
 
@@ -279,7 +286,19 @@ function renderMarkingFormats(state) {
     markProps.type = type;
     markProps.typeAsVerb = typeAsVerb;
     markProps.toolShort = state.props.toolShort;
+    markProps.toolLong = state.props.toolLong;
     markProps.toolURL = state.props.toolURL;
+
+
+    // set contents of plain text mark
+    plainTextFullName = document.querySelector('#plain-text-full-name').checked;
+
+    if (plainTextFullName == true) {
+        markProps.toolName = state.props.toolLong;
+
+    } else {
+        markProps.toolName = state.props.toolShort;
+    }
 
     // could carve out separate sections for different mark formats here
     // only handles plain text at the moment
@@ -288,7 +307,6 @@ function renderMarkingFormats(state) {
         console.log(`${key}: ${value}`);
         console.log(templateContent);
     }
-
     document.querySelector('#mark-your-work .plain-text.mark').appendChild(templateContent);
 
 
@@ -296,12 +314,12 @@ function renderMarkingFormats(state) {
     //document.querySelector('#mark-your-work .plain-text.mark').appendChild(templateContent);
 
     // set contents of rich text mark
-    let ccSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use></svg>';
-    let bySVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use></svg>';
-    let saSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-sa"></use></svg>';
-    let ncSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-nc"></use></svg>';
-    let ndSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-nd"></use></svg>';
-    let zeroSVG = '<svg><use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-zero"></use></svg>';
+    let ccSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
+    let bySVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
+    let saSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
+    let ncSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
+    let ndSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/nd.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
+    let zeroSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/cc-zero.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
 
     const currentTool = state.props.tool;
     switch (currentTool) {
@@ -330,11 +348,28 @@ function renderMarkingFormats(state) {
             currentTool = '';
     }
 
-    let richTextMark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + typeAsVerb  + ' ' + '<a href="' + state.props.toolURL + '">' + state.props.toolShort + '</a>' + ccIconSet;
+    richTextFullName = document.querySelector('#rich-text-full-name').checked;
+
+    if (richTextFullName == true) {
+        markProps.toolName = state.props.toolLong;
+
+    } else {
+        markProps.toolName = state.props.toolShort;
+    }
+
+    let richTextMark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + typeAsVerb  + ' ' + '<a href="' + state.props.toolURL + '">' + markProps.toolName + '</a>' + ccIconSet;
     document.querySelector('#mark-your-work .rich-text.mark').innerHTML = richTextMark;
 
 
     // set contents of HTML mark
+    htmlFullName = document.querySelector('#html-full-name').checked;
+
+    if (htmlFullName == true) {
+        markProps.toolName = state.props.toolLong;
+
+    } else {
+        markProps.toolName = state.props.toolShort;
+    }
     defaultHTML = '<p xmlns:cc="http://creativecommons.org/ns#">This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-SA 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt=""></a></p>';
     let htmlMark = '<textarea readonly="true">' + defaultHTML + '</textarea>';
     document.querySelector('#mark-your-work .html.mark').innerHTML = htmlMark;
@@ -534,24 +569,44 @@ function watchAttributionDetails(fieldsets, state) {
     });
 }
 
-// full flow logic 
-setStateParts(state);
-console.log("state.parts (at default)");
-console.log(state.parts);
+function watchMarkToggles(toggles, state) {
 
-setStatePossibilities(state);
-console.log("state.possibilities");
-console.log(state.possibilities);
+    toggles.forEach((element, index) => {
 
-setDefaults(applyDefaults);
-console.log("initial defaults applied");
+        element.addEventListener("click", (event) => {
+            console.log('toggling is happening');
 
-setStateProps(0, state);
-console.log("initial defaults applied");
+            renderMarkingFormats(state);
+        });
 
-watchFieldsets(fieldsets, state);
-watchAttributionDetails(fieldsets, state);
+    });
+}
 
+
+
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    // full flow logic 
+    setStateParts(state);
+    console.log("state.parts (at default)");
+    console.log(state.parts);
+
+    setStatePossibilities(state);
+    console.log("state.possibilities");
+    console.log(state.possibilities);
+
+    setDefaults(applyDefaults);
+    console.log("initial defaults applied");
+
+    setStateProps(0, state);
+    console.log("initial defaults applied");
+
+    watchFieldsets(fieldsets, state);
+    watchAttributionDetails(fieldsets, state);
+    watchMarkToggles(toggles, state);
+
+    console.log("DOM fully loaded and parsed");
+});
 
 
 // rough panel expansion test
