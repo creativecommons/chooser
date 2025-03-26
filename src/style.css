@@ -170,6 +170,28 @@ form#chooser fieldset {
     margin-bottom: 1em;
 }
 
+
+form#chooser label {
+    font-size: .7em;
+    font-weight: 400;
+}
+
+
+form#chooser #atrribution-details div, form#chooser #waive-your-copyright div {
+    margin-bottom: 1em;
+}
+
+form#chooser #attribution-details input {
+    padding: .2em .2em;
+
+    font-size: 1em;
+}
+
+
+form#chooser #atrribution-details input::placeholder {
+    opacity: .5;
+}
+
 #tool-recommendation {
     margin-bottom: 4em;
 
@@ -226,6 +248,13 @@ form#chooser fieldset {
     /* border-top: 1px solid var(--vocabulary-neutral-color-lighter-gray); */
 }
 
+#mark-your-work textarea {
+    min-height: 9em;
+    width: 90%;
+    margin: 1em;
+    box-sizing: border-box;
+}
+
 #mark-your-work p {
     font-size: 1.2em;
 }
@@ -273,6 +302,22 @@ details p {
     padding: 0 1em;
 
     font-size: 1em;
+}
+
+details.format footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+
+details.format footer label {
+    margin-left: .2em;
+
+}
+
+details.format footer button:hover {
+    cursor: pointer;
 }
 
 body.chooser-page .content {

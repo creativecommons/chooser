@@ -186,11 +186,45 @@ function setStateProps(index, state) {
 // isolated function to just set the attribution 
 // subset of state.props (for use other places)
 function setStatePropsAttribution(state) {
-    state.props.attribution.title = document.querySelector('#attribution-details #title').value.replace(/(<([^>]+)>)/gi, "");
-    state.props.attribution.creator = document.querySelector('#attribution-details #creator').value.replace(/(<([^>]+)>)/gi, "");
-    state.props.attribution.workLink = document.querySelector('#attribution-details #work-link').value.replace(/(<([^>]+)>)/gi, "");
-    state.props.attribution.creatorLink = document.querySelector('#attribution-details #creator-link').value.replace(/(<([^>]+)>)/gi, "");
-    state.props.attribution.workCreationYear = document.querySelector('#attribution-details #work-creation-year').value.replace(/(<([^>]+)>)/gi, "");
+
+    if (document.querySelector('#attribution-details #title').value == '') {
+        state.props.attribution.title = document.querySelector('#attribution-details #title').placeholder.replace(/(<([^>]+)>)/gi, "");
+    } else {
+        state.props.attribution.title = document.querySelector('#attribution-details #title').value.replace(/(<([^>]+)>)/gi, "");
+    }
+
+
+    if (document.querySelector('#attribution-details #creator').value == '') {
+        state.props.attribution.creator = document.querySelector('#attribution-details #creator').placeholder.replace(/(<([^>]+)>)/gi, "");
+    } else {
+        state.props.attribution.creator = document.querySelector('#attribution-details #creator').value.replace(/(<([^>]+)>)/gi, "");
+    }
+
+
+    if (document.querySelector('#attribution-details #work-link').value == '') {
+        state.props.attribution.workLink = document.querySelector('#attribution-details #work-link').placeholder.replace(/(<([^>]+)>)/gi, "");
+    } else {
+        state.props.attribution.workLink = document.querySelector('#attribution-details #work-link').value.replace(/(<([^>]+)>)/gi, "");
+    }
+
+
+    if (document.querySelector('#attribution-details #creator-link').value == '') {
+        state.props.attribution.creatorLink = document.querySelector('#attribution-details #creator-link').placeholder.replace(/(<([^>]+)>)/gi, "");
+    } else {
+        state.props.attribution.creatorLink = document.querySelector('#attribution-details #creator-link').value.replace(/(<([^>]+)>)/gi, "");
+    }
+
+    if (document.querySelector('#attribution-details #work-creation-year').value == '') {
+        state.props.attribution.workCreationYear = document.querySelector('#attribution-details #work-creation-year').placeholder.replace(/(<([^>]+)>)/gi, "");
+    } else {
+        state.props.attribution.workCreationYear = document.querySelector('#attribution-details #work-creation-year').value.replace(/(<([^>]+)>)/gi, "");
+    }
+
+    // state.props.attribution.title = document.querySelector('#attribution-details #title').value.replace(/(<([^>]+)>)/gi, "");
+    // state.props.attribution.creator = document.querySelector('#attribution-details #creator').value.replace(/(<([^>]+)>)/gi, "");
+    // state.props.attribution.workLink = document.querySelector('#attribution-details #work-link').value.replace(/(<([^>]+)>)/gi, "");
+    // state.props.attribution.creatorLink = document.querySelector('#attribution-details #creator-link').value.replace(/(<([^>]+)>)/gi, "");
+    // state.props.attribution.workCreationYear = document.querySelector('#attribution-details #work-creation-year').value.replace(/(<([^>]+)>)/gi, "");
 }
 
 // function to reset values beyond current fieldset
@@ -322,7 +356,7 @@ function renderMarkingFormats(state) {
     let saSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
     let ncSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
     let ndSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/nd.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
-    let zeroSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/cc-zero.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
+    let zeroSVG = '<img src="https://mirrors.creativecommons.org/presskit/icons/zero.svg" style="max-width: 1em;max-height:1em;margin-left: .2em;">';
 
     const currentTool = state.props.tool;
     switch (currentTool) {
@@ -374,7 +408,7 @@ function renderMarkingFormats(state) {
         markProps.toolName = state.props.toolShort;
     }
     defaultHTML = '<p xmlns:cc="http://creativecommons.org/ns#">This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-SA 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt=""></a></p>';
-    let htmlMark = '<textarea readonly="true">' + defaultHTML + '</textarea>';
+    let htmlMark = defaultHTML;
     document.querySelector('#mark-your-work .html.mark').innerHTML = htmlMark;
 }
 
@@ -586,13 +620,28 @@ function watchMarkToggles(toggles, state) {
 }
 
 function watchMarkCopiers(copiers, state) {
+    
+    function copyToClipboard (text) {
+        let temp = document.createElement("textarea");
+        document.body.appendChild(temp);
+        temp.value = text;
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+    }
 
     copiers.forEach((element, index) => {
 
         element.addEventListener("click", (event) => {
             console.log('copying is happening');
 
-            //perform copy
+            if (element.parentNode.parentNode.querySelector('.mark').value != null) {
+                copyToClipboard(element.parentNode.parentNode.querySelector('.mark').value);
+                console.log('copying value');
+            } else {
+                copyToClipboard(element.parentNode.parentNode.querySelector('.mark').innerHTML);
+                console.log('copying innerHTML');
+            }
         });
 
     });
