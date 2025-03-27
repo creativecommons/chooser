@@ -208,7 +208,7 @@ form#chooser #atrribution-details input::placeholder {
 }
 
 aside #empty {
-    min-height: 15em;
+    min-height: 10em;
     padding: 2em;
 
     background: var(--vocabulary-brand-color-soft-turquoise);
@@ -359,12 +359,25 @@ body.chooser-page .content {
 
 }
 
-.help {
+#help {
     margin-top: 4em;
  }
 
- .help details {
+ #help details {
     margin-bottom: 1em;
+ }
+
+ #help ul {
+    font-size: 1em;
+    padding: 0 1em;
+ }
+
+ #help ul li {
+    padding-bottom: .5em;
+ }
+
+ #help dl {
+    padding: 0 1em;
  }
 
 
