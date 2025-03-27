@@ -41,8 +41,8 @@ See [`CONTRIBUTING.md`][org-contrib].
 
 ## Development
 
-* `/src/index.html`: relevant markup, and makes use of the `template` element to load the main tool recommendation content via JavaScript.
-* `/src/style.css`: localized styles, built on to of [Vocabulary][vocabulary].
+* `/src/index.html`: relevant HTML markup.
+* `/src/style.css`: localized styles, built on top of [Vocabulary][vocabulary].
 * `/src/scripts.js`: relevant JavaScript logic.
 
 
