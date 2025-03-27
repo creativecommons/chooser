@@ -436,6 +436,23 @@ function renderMarkingFormats(state) {
 //   console.log(parsedMark);
 
 
+// function to render "empty area"
+// if no valid tool from state.parts and/or state/current
+
+function renderEmptyPlaceholder(state) { 
+
+    if (state.props.tool == 'unknown' ) {
+        document.querySelector('#empty').classList.remove('disable');
+        console.log('show empty');
+    }
+    
+    else if (state.props.tool != 'unknown') {
+        document.querySelector('#empty').classList.add('disable');
+        console.log('hide empty');
+    }
+
+}
+
 // function to render "mark your work",
 // if valid tool from state.parts and/or state.current
 // if attribution details input(s) filled out
@@ -579,6 +596,8 @@ function watchFieldsets(fieldsets, state) {
             clearStepsAfterCursor(fieldsets, state);
 
             renderSteps(applyDefaults, state);
+
+            renderEmptyPlaceholder(state);
 
             renderToolRec(state);
 

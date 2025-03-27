@@ -78,6 +78,10 @@ dd {
     margin-left: .2em;
 }
 
+dd span {
+    display: block;
+}
+
 ol li:has(.disable) {
     display: none;
 }
@@ -176,8 +180,19 @@ form#chooser label {
     font-weight: 400;
 }
 
+form#chooser #attribution-details span {
+    display: inline-block;
+    padding: .7em 0;
 
-form#chooser #atrribution-details div, form#chooser #waive-your-copyright div {
+    font-size: .8em;
+    line-height: 1.3;
+}
+
+form#chooser #attribution-details div {
+    margin-bottom: .5em;
+} 
+
+form#chooser #waive-your-copyright div {
     margin-bottom: 1em;
 }
 
@@ -190,6 +205,18 @@ form#chooser #attribution-details input {
 
 form#chooser #atrribution-details input::placeholder {
     opacity: .5;
+}
+
+aside #empty {
+    min-height: 15em;
+    padding: 2em;
+
+    background: var(--vocabulary-brand-color-soft-turquoise);
+    background: var(--vocabulary-neutral-color-lighter-gray);
+}
+
+aside #empty p {
+    font-size: 1.2em;
 }
 
 #tool-recommendation {
@@ -310,10 +337,17 @@ details.format footer {
     padding: 1em;
 }
 
-
 details.format footer label {
     margin-left: .2em;
+}
 
+details.format footer button {
+    padding: .5em 1em;
+
+    background: #324C7F;
+    color: white;
+    border-radius: 3px;
+    border: none;
 }
 
 details.format footer button:hover {
@@ -325,6 +359,14 @@ body.chooser-page .content {
 
 }
 
+.help {
+    margin-top: 4em;
+ }
+
+ .help details {
+    margin-bottom: 1em;
+ }
+
 
 
 @media (max-width: 705px) {
@@ -335,9 +377,9 @@ body.chooser-page .content {
 
 
 /* debug styles */
-.help {
+/* .help {
     display: none;
-}
+} */
 
 
 .panel {
