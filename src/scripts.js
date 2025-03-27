@@ -265,9 +265,11 @@ function renderMarkingFormats(state) {
 
     let type = "license";
     let typeAsVerb = "licensed under";
+    let copyright = ' © ' + attribution.workCreationYear;
     if (state.props.tool == 'cc-0') {
         type = "mark";
         typeAsVerb = "marked";
+        copyright = '';
     }
 
     // set contents of plain text mark
@@ -290,6 +292,7 @@ function renderMarkingFormats(state) {
     markProps.toolShort = state.props.toolShort;
     markProps.toolLong = state.props.toolLong;
     markProps.toolURL = state.props.toolURL;
+    markProps.copyright = copyright;
 
     // set contents of plain text mark
     plainTextFullName = document.querySelector('#plain-text-full-name').checked;
@@ -352,7 +355,7 @@ function renderMarkingFormats(state) {
         markProps.toolName = state.props.toolShort;
     }
 
-    let richTextMark = attribution.title + ' © ' + attribution.workCreationYear + ' by ' + attribution.creator + ' is ' + typeAsVerb  + ' ' + '<a href="' + state.props.toolURL + '">' + markProps.toolName + '</a>' + ccIconSet;
+    let richTextMark = '<a href="' + attribution.workLink + '">' + attribution.title + '</a>' + copyright + ' by ' + '<a href="' + attribution.creatorLink + '">' + attribution.creator + '</a>' + ' is ' + typeAsVerb  + ' ' + '<a href="' + state.props.toolURL + '">' + markProps.toolName + '</a>' + ccIconSet;
     document.querySelector('#mark-your-work .rich-text.mark').innerHTML = richTextMark;
 
 
@@ -365,8 +368,8 @@ function renderMarkingFormats(state) {
     } else {
         markProps.toolName = state.props.toolShort;
     }
-    defaultHTML = '<p xmlns:cc="http://creativecommons.org/ns#">This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-SA 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt=""></a></p>';
-    let htmlMark = defaultHTML;
+    //defaultHTML = '<p xmlns:cc="http://creativecommons.org/ns#">This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-SA 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt=""></a></p>';
+    let htmlMark = '<a href="' + attribution.workLink + '">' + attribution.title + '</a>' + copyright + ' by ' + '<a href="' + attribution.creatorLink + '">' + attribution.creator + '</a>' + ' is ' + typeAsVerb  + ' ' + '<a href="' + state.props.toolURL + '">' + markProps.toolName + '</a>' + ccIconSet;
     document.querySelector('#mark-your-work .html.mark').innerHTML = htmlMark;
 }
 

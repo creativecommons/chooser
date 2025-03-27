@@ -351,7 +351,7 @@
                 <p>If you are licensing or marking one work, paste the code next to it. If you are licensing or marking the whole page or blog, you can paste the code at the bottom of the page.</p>
 
                 <article>
-                    <details class="format">
+                    <details class="format" name="website" open>
                     <summary>Rich Text</summary>
 
                         <p class="rich-text mark">[contextually formatted mark here]</p>
@@ -367,7 +367,7 @@
                 </article>
 
                 <article>
-                    <details class="format">
+                    <details class="format" name="website">
                     <summary>HTML</summary>
 
                         <textarea class="html mark" readonly="true">[contextually formatted mark here]</textarea>
@@ -390,7 +390,7 @@
                 <p>Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.</p>
 
                 <article>
-                <details class="format" open>
+                <details class="format" name="print" open>
                     <summary>Plain Text</summary>
 
                         <p class="plain-text mark">[contextually formatted mark here]</p>
@@ -804,7 +804,7 @@
 </template>
 
 <template id="plain-text" class="mark">
-    <p>{{title}} © {{year}} by {{creator}} is {{typeAsVerb}} {{toolName}}. To view a copy of this {{type}}, visit {{toolURL}}</p>
+    <p>{{title}} {{copyright}} by {{creator}} is {{typeAsVerb}} {{toolName}}. To view a copy of this {{type}}, visit {{toolURL}}</p>
 </template>
 
 </body>
