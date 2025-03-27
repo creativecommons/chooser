@@ -97,8 +97,6 @@
 
 <div class="content">
 
-
-
     <form id="chooser">
 
         <ol>
@@ -220,7 +218,7 @@
             </div>
         
             <div>
-                <input type="radio" id="no-sharing-requirements" name="no-sharing-requirements" value="no" />
+                <input type="radio" id="no-sharing-requirements" name="sharing-requirements" value="no" />
                 <label for="no-sharing-requirements">No</label>
             </div>
 
@@ -275,24 +273,26 @@
         <fieldset id="attribution-details">
             <legend>Attribution details (optional)</legend>
 
+            <span>This helps others attribute your work to you, and fills in machine-readable code.</span>
+
             <div>
                 <label for="title">Title of work</label>
-                <input type="text" id="title" name="title" placeholder="title" />
+                <input type="text" id="title" name="title" placeholder="Untitled" />
             </div>
 
             <div>
                 <label for="creator">Creator of work</label>
-                <input type="text" id="creator" name="creator" placeholder="creator" />
+                <input type="text" id="creator" name="creator" placeholder="Jane Doe" />
             </div>
 
             <div>
                 <label for="work-link">Link to work</label>
-                <input type="text" id="work-link" name="work-link" placeholder="work link" />
+                <input type="url" id="work-link" name="work-link" placeholder="https://creativecommons.org" />
             </div>
 
             <div>
-                <label for="creator-link">Title of work</label>
-                <input type="text" id="creator-link" name="creator-link" placeholder="creator link" />
+                <label for="creator-link">Link to Creator Profile</label>
+                <input type="url" id="creator-link" name="creator-link" placeholder="https://creativecommons.org" />
             </div>
 
             <div>
@@ -326,36 +326,14 @@
     <!-- <button>submit</button> -->
 
     <aside>
+        <div id="empty">
+            <p>Waiting for required fields...</p>
+        </div>
+
         <div id="tool-recommendation">
             <h2>Recommended Choice</h2>
 
             <article class="tool">
-
-                <p>Please complete the form, to get a choice!</p>
-
-                <!-- <header>
-                    <h3>CC-BY 4.0</h3>
-                    <span class="license-icons">
-                        <svg>
-                            <use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
-                        </svg>
-                        <svg>
-                            <use href="vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
-                        </svg>
-                    </span>
-                    <h4>Creative Commons Attribution 4.0 International</h4>
-                </header>
-
-                <div class="description">
-                    <p>This license requires that reusers give credit to the creator. It allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, even for commercial purposes.</p>
-                </div>
-
-                <dl class="conditions-definitions">
-                    <dt class="icon-attach cc-by">BY</dt>
-                    <dd>Credit must be given to you, the creator.</dd>
-                </dl>
-
-                <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v2">See the License Deed</a> -->
 
             </article>
         </div>
@@ -373,7 +351,7 @@
                 <p>If you are licensing or marking one work, paste the code next to it. If you are licensing or marking the whole page or blog, you can paste the code at the bottom of the page.</p>
 
                 <article>
-                    <details class="format">
+                    <details class="format" name="website" open>
                     <summary>Rich Text</summary>
 
                         <p class="rich-text mark">[contextually formatted mark here]</p>
@@ -389,7 +367,7 @@
                 </article>
 
                 <article>
-                    <details class="format">
+                    <details class="format" name="website">
                     <summary>HTML</summary>
 
                         <textarea class="html mark" readonly="true">[contextually formatted mark here]</textarea>
@@ -404,9 +382,6 @@
                     </details>
                 </article>
 
-                <!-- <h4>XMP</h4>
-                <p>[contextually formatted mark here]</p> -->
-
             </details>
             
             <details class="medium">
@@ -415,7 +390,7 @@
                 <p>Copy the text below and paste it on the title and/or copyright page of your print work or presentation, or in the credits of your media.</p>
 
                 <article>
-                <details class="format" open>
+                <details class="format" name="print" open>
                     <summary>Plain Text</summary>
 
                         <p class="plain-text mark">[contextually formatted mark here]</p>
@@ -433,36 +408,64 @@
 
         </div>
 
-        <div class="help">
+        <div id="help">
             <h2>Confused? Need Help?</h2>
 
-            <h3>What are Creative Commons licenses?</h3>
-            <p>Creative Commons licenses are legal tools that help you grant copyright permissions to the general public. Our CC legal tools include <a href="https://creativecommons.org/licenses/" target="_blank" rel="noopener noreferrer">six different licenses</a> and <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener noreferrer">one public domain dedication tool</a>. It is important to specify which one of the 7 legal tools you are applying to your material. The license chooser can help you decide which license is right for you.</p> 
-            <p>CC licenses may be applied to any type of copyrightable work. The only types of works for which CC does not recommend its licenses are computer software and hardware, where we recommend a standard free software license instead. For works that are already in the public domain we recommend that you mark them with the <a href="https://creativecommons.org/about/pdm" target="_blank" rel="noopener noreferrer">Public Domain Mark</a>. If you hold the rights to a work but would like to place it into the public domain, you can use the Chooser to select CC0.</p>
+            <details name="help">
+                <summary>What are Creative Commons licenses?</summary>
+                <p>Creative Commons licenses are legal tools that help you grant copyright permissions to the general public. Our CC legal tools include <a href="https://creativecommons.org/licenses/" target="_blank" rel="noopener noreferrer">six different licenses</a> and <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener noreferrer">one public domain dedication tool</a>. It is important to specify which one of the 7 legal tools you are applying to your material. The license chooser can help you decide which license is right for you.</p> 
+                <p>CC licenses may be applied to any type of copyrightable work. The only types of works for which CC does not recommend its licenses are computer software and hardware, where we recommend a standard free software license instead. For works that are already in the public domain we recommend that you mark them with the <a href="https://creativecommons.org/about/pdm" target="_blank" rel="noopener noreferrer">Public Domain Mark</a>. If you hold the rights to a work but would like to place it into the public domain, you can use the Chooser to select CC0.</p>
+            </details>
 
+            <details name="help">
+                <summary>How to apply a Creative Commons license</summary>
+                <p>You can license your work by marking it with the specific CC license you choose. This marking can be as simple as a bit of text stating the license in a copyright notice, or as complex as embedding the license information on your website using the HTML code associated with the particular license. We strongly recommend including a link to the applicable license (e.g., <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">https://creativecommons.org/licenses/by/4.0/</a>).</p>
+            </details>
 
-            <h3>How to apply a Creative Commons license</h3>
-            <p>You can license your work by marking it with the specific CC license you choose. This marking can be as simple as a bit of text stating the license in a copyright notice, or as complex as embedding the license information on your website using the HTML code associated with the particular license. We strongly recommend including a link to the applicable license (e.g., <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">https://creativecommons.org/licenses/by/4.0/</a>).</p>
-    
+            <details name="help">
+                <summary>What should I consider?</summary>
+                <p>As a creator licensing a work, among <a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors" target="_blank" rel="noopener noreferrer">other considerations</a>, you should:</p>
+                <ul>
+                    <li><a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Remember_the_license_may_not_be_revoked." target="_blank" rel="noopener noreferrer">Remember that once you have applied a CC license, you cannot revoke it</a>.</li>
+                    <li><a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Think_about_how_you_want_the_material_to_be_used." target="_blank" rel="noopener noreferrer">Choose your license based on how you want the material to be used</a>.</li>
+                    <li><a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Specify_attribution_information_if_desired." target="_blank" rel="noopener noreferrer">Let people know how to credit you (or whether you want credit at all)</a>.</li>
+                </ul>
+            </details>
 
-            <h3>What should I consider?</h3>
-            <p>As a creator licensing a work, among <a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Considerations_for_licensors" target="_blank" rel="noopener noreferrer">other considerations</a>, you should:</p>
-            <ul>
-                <li><a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Remember_the_license_may_not_be_revoked." target="_blank" rel="noopener noreferrer">Remember that once you have applied a CC license, you cannot revoke it</a>.</li>
-                <li><a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Think_about_how_you_want_the_material_to_be_used." target="_blank" rel="noopener noreferrer">Choose your license based on how you want the material to be used</a>.</li>
-                <li><a href="https://wiki.creativecommons.org/wiki/Considerations_for_licensors_and_licensees#Specify_attribution_information_if_desired." target="_blank" rel="noopener noreferrer">Let people know how to credit you (or whether you want credit at all)</a>.</li>
-            </ul>
+            <details name="help">
+                <summary>What do the icons mean?</summary>
+                <p> The icons represent key features of the different CC license options: </p>
+                <dl class="conditions-definitions">
+                    <div>
+                        <dt class="icon-attach cc-by">Attribution Required (BY)</dt>
+                        <dd>Credit must be given to you, the creator.</dd>
+                    </div>
+            
+                    <div>
+                        <dt class="icon-attach cc-nc">Commercial Use Not Allowed (NC/NonCommercial)</dt>
+                        <dd>
+                            Only noncommercial use of your work is permitted.
+                            <em>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</em>
+                        </dd>
+                    </div>
+            
+                    <div>
+                        <dt class="icon-attach cc-sa">Distributed on Same Terms (SA/ShareAlike)</dt>
+                        <dd>Adaptations must be shared under the same terms.</dd>
+                    </div>
 
+                    <div>
+                        <dt class="icon-attach cc-nd">Modifying Not Allowed (ND/NoDerivatives)</dt>
+                        <dd>No derivatives or adaptations of your work are permitted.</dd>
+                    </div>
+                </dl>
+            </details>
 
-            <h3>What do the icons mean?</h3>
-            <p> The icons represent key features of the different CC license options: </p>
-            <p>[grid of icons and defintions here]</p>
-    
+            <details name="help">
+                <summary>What if I have other questions?</summary>
+                <p>You can find a full list of our <a href="https://creativecommons.org/faq/" target="_blank" rel="noopener noreferrer">frequently asked questions</a> on our site. If your questions or concerns are not answered there, you can email us at <a href="mailto:legal@creativecommons.org" target="_blank" rel="noopener noreferrer">legal@creativecommons.org</a>.</p>
+            </details>
 
-            <h3>What if I have other questions?</h3>
-            <p>You can find a full list of our <a href="https://creativecommons.org/faq/" target="_blank" rel="noopener noreferrer">frequently asked questions</a> on our site. If your questions or concerns are not answered there, you can email us at <a href="mailto:legal@creativecommons.org" target="_blank" rel="noopener noreferrer">legal@creativecommons.org</a>.</p>
-    
-            </ul>        
         </div>
     </aside>
 
@@ -561,7 +564,7 @@
         </div>
     </dl>
 
-    <a href="https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v2">See the License Deed</a>
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/">See the License Deed</a>
 </template>
 
 <template id="cc-by" class="tool license">
@@ -589,7 +592,7 @@
         </div>
     </dl>
 
-    <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v2">See the License Deed</a>
+    <a href="https://creativecommons.org/licenses/by/4.0/">See the License Deed</a>
 </template>
 
 <template id="cc-by-sa" class="tool license">
@@ -625,7 +628,7 @@
         </div>
     </dl>
 
-    <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v2">See the License Deed</a>
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/">See the License Deed</a>
 </template>
 
 <template id="cc-by-nd" class="tool license">
@@ -662,7 +665,7 @@
         </div>
     </dl>
 
-    <a href="https://creativecommons.org/licenses/by-nd/4.0/?ref=chooser-v2">See the License Deed</a>
+    <a href="https://creativecommons.org/licenses/by-nd/4.0/">See the License Deed</a>
 </template>
 
 <template id="cc-by-nc" class="tool license">
@@ -696,14 +699,14 @@
             <dt class="icon-attach cc-nc">NC</dt>
             <dd>
                 Only noncommercial use of your work is permitted.
-                <span>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</span>
+                <em>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</em>
             </dd>
         </div>
 
 
     </dl>
 
-    <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v2">See the License Deed</a>
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/">See the License Deed</a>
 </template>
 
 <template id="cc-by-nc-sa" class="tool license">
@@ -740,7 +743,7 @@
             <dt class="icon-attach cc-nc">NC</dt>
             <dd>
                 Only noncommercial use of your work is permitted.
-                <span>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</span>
+                <em>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</em>
             </dd>
         </div>
 
@@ -750,7 +753,7 @@
         </div>
     </dl>
 
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v2">See the License Deed</a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">See the License Deed</a>
 </template>
 
 <template id="cc-by-nc-nd" class="tool license">
@@ -787,7 +790,7 @@
             <dt class="icon-attach cc-nc">NC</dt>
             <dd>
                 Only noncommercial use of your work is permitted.
-                <span>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</span>
+                <em>Noncommercial means not primarily intended for or directed towards commercial advantage or monetary compensation.</em>
             </dd>
         </div>
 
@@ -797,11 +800,11 @@
         </div>
     </dl>
 
-    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v2">See the License Deed</a>
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">See the License Deed</a>
 </template>
 
 <template id="plain-text" class="mark">
-    <p>{{title}} © {{year}} by {{creator}} is {{typeAsVerb}} {{toolName}}. To view a copy of this {{type}}, visit {{toolURL}}</p>
+    <p>{{title}} {{copyright}} by {{creator}} is {{typeAsVerb}} {{toolName}}. To view a copy of this {{type}}, visit {{toolURL}}</p>
 </template>
 
 </body>

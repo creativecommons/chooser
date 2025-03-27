@@ -1,6 +1,5 @@
 @import 'vocabulary/css/vocabulary.css' layer(vocabulary);
 
-
 :root {
 
     /* localized cc sprite names */
@@ -15,49 +14,42 @@
 
 .icon-attach.cc-by:before {
     --icon-sprite: var(--cc-by);
-    /* --icon-sprite-size: 2em; */
     margin-right: .2em;
     margin-bottom: -.125em;
 }
 
 .icon-attach.cc-nc:before {
     --icon-sprite: var(--cc-nc);
-    /* --icon-sprite-size: 2em; */
     margin-right: .2em;
     margin-bottom: -.125em;
 }
 
 .icon-attach.cc-nd:before {
     --icon-sprite: var(--cc-nd);
-    /* --icon-sprite-size: 2em; */
     margin-right: .2em;
     margin-bottom: -.125em;
 }
 
 .icon-attach.cc-pd:before {
     --icon-sprite: var(--cc-pd);
-    /* --icon-sprite-size: 2em; */
     margin-right: .2em;
     margin-bottom: -.125em;
 }
 
 .icon-attach.cc-pdm:before {
     --icon-sprite: var(--cc-pdm);
-    /* --icon-sprite-size: 2em; */
     margin-right: .2em;
     margin-bottom: -.125em;
 }
 
 .icon-attach.cc-sa:before {
     --icon-sprite: var(--cc-sa);
-    /* --icon-sprite-size: 2em; */
     margin-right: .2em;
     margin-bottom: -.125em;
 }
 
 .icon-attach.cc-zero:before {
     --icon-sprite: var(--cc-zero);
-    /* --icon-sprite-size: 2em; */
     margin-right: .2em;
     margin-bottom: -.125em;
 }
@@ -76,6 +68,10 @@ dt:after {
 
 dd {
     margin-left: .2em;
+}
+
+dd span {
+    display: block;
 }
 
 ol li:has(.disable) {
@@ -101,7 +97,6 @@ ol li:has(.disable) {
 
 .tool header > .tool-icons {
     order: -1;
-    /* margin: 1.8em 1em 0 0; */
     margin: 0 1em 0 0;
 }
 
@@ -120,7 +115,6 @@ ol li:has(.disable) {
 
 .mark svg {
     display: inline;
-    /* font-size: 1em; */
     width: 1.3em;
     height: 1.3em;
 }
@@ -159,7 +153,6 @@ form#chooser > ol li::before {
     color: black;
     text-align: center;
     vertical-align: middle;
-
 }
 
 form#chooser legend {
@@ -170,14 +163,24 @@ form#chooser fieldset {
     margin-bottom: 1em;
 }
 
-
 form#chooser label {
     font-size: .7em;
     font-weight: 400;
 }
 
+form#chooser #attribution-details span {
+    display: inline-block;
+    padding: .7em 0;
 
-form#chooser #atrribution-details div, form#chooser #waive-your-copyright div {
+    font-size: .8em;
+    line-height: 1.3;
+}
+
+form#chooser #attribution-details div {
+    margin-bottom: .5em;
+} 
+
+form#chooser #waive-your-copyright div {
     margin-bottom: 1em;
 }
 
@@ -190,6 +193,18 @@ form#chooser #attribution-details input {
 
 form#chooser #atrribution-details input::placeholder {
     opacity: .5;
+}
+
+aside #empty {
+    min-height: 10em;
+    padding: 2em;
+
+    background: var(--vocabulary-brand-color-soft-turquoise);
+    background: var(--vocabulary-neutral-color-lighter-gray);
+}
+
+aside #empty p {
+    font-size: 1.2em;
 }
 
 #tool-recommendation {
@@ -206,10 +221,6 @@ form#chooser #atrribution-details input::placeholder {
 
 #tool-recommendation .tool a {
     --underline-background-color: var(--vocabulary-brand-color-soft-turquoise);
-}
-
-#tool-recommendation h2 {
-    /* font-size: 1.8em; */
 }
 
 #tool-recommendation h3 {
@@ -244,10 +255,6 @@ form#chooser #atrribution-details input::placeholder {
     font-weight: 700;
 }
 
-#mark-your-work {
-    /* border-top: 1px solid var(--vocabulary-neutral-color-lighter-gray); */
-}
-
 #mark-your-work textarea {
     min-height: 9em;
     width: 90%;
@@ -274,10 +281,6 @@ details.medium {
     margin-bottom: 1em;
 }
   
-details.medium:open > summary {
-    /* margin-bottom: 1em; */
-}
-  
 details summary {
     padding: .2em .5em;
 
@@ -289,7 +292,6 @@ details.format summary {
     font-size: 1.3em;
 }
 
-  
 summary:hover {
     cursor: pointer;
 }
@@ -310,10 +312,17 @@ details.format footer {
     padding: 1em;
 }
 
-
 details.format footer label {
     margin-left: .2em;
+}
 
+details.format footer button {
+    padding: .5em 1em;
+
+    background: #324C7F;
+    color: white;
+    border-radius: 3px;
+    border: none;
 }
 
 details.format footer button:hover {
@@ -322,9 +331,28 @@ details.format footer button:hover {
 
 body.chooser-page .content {
     grid-column: 3 / 10;
-
 }
 
+#help {
+    margin-top: 4em;
+ }
+
+ #help details {
+    margin-bottom: 1em;
+ }
+
+ #help ul {
+    font-size: 1em;
+    padding: 0 1em;
+ }
+
+ #help ul li {
+    padding-bottom: .5em;
+ }
+
+ #help dl {
+    padding: 0 1em;
+ }
 
 
 @media (max-width: 705px) {
@@ -332,13 +360,6 @@ body.chooser-page .content {
         display: block;
     }
 }
-
-
-/* debug styles */
-.help {
-    display: none;
-}
-
 
 .panel {
     display: none;
