@@ -3,6 +3,6 @@ engineering_project: true
 # Name of the repository/project in English
 english_name: CC Chooser
 # All technologies used
-technologies: HTML, CSS, JS, Bulma, Vue, Jest
+technologies: HTML, CSS, JS
 # Whether this repository should be featured on the CC Open Source site
 featured: true
