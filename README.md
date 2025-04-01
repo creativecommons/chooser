@@ -67,10 +67,10 @@ Final production changes are deployed within vocabulary-theme Releases, updated 
 
 ## Structure
 
-The initial markup is rendered via the `index.html` file. Visual display is derived from the `style.css` rules.  
+The initial markup is rendered via the `index.html` file. Visual display is derived from the `style.css` rules. Styles extend from `src/vocabulary`.
 
 On initlialization the `scripts.js` functions set the correct fieldsets to default display; based on user provided actions through the stepper fieldsets will display or hide, exposing the relevant pathways to getting a `tool` recommendation. Correct pathways are located within the `rawStatePathRoutes` array. When a correct pathway matches the current `state`, the appropriate `tool` is matched and recommended, if the current state is not a known pathway the `tool` is set to `unknown` until the required input is given.
 
-The main `tool` recommendation content is pull via the appropriate `<template>` markup located within HTML. Additional information for the marking formats is also sourced from these `<template>` elements and the contents of the `Attribution Details` fields.
+The main `tool` recommendation content is pulled via the appropriate `<template>` markup located within HTML. Additional information for the marking formats is also sourced from these `<template>` elements and the contents of the `Attribution Details` fields.
 
 Marking formats are pulled from a combination of HTML markup and JS string interpolation found within the `scripts.js` file within the `renderMarkingFormats` function.
