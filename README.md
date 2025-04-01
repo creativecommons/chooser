@@ -51,7 +51,7 @@ The Chooser exists bundled within the [`vocabulary-theme`][vocabulary-theme] rep
 
 Once changes are implemented here, they need to be updated within the `/chooser` directory within `vocabulary-theme`. 
 
-Final production changes are deployed within vocabulary-theme Releases, updated within [`index-dev-env`][index-dev-env], and finally deployed to `index__stage` and then `index__prod` environments; going LIVE at `https://creativecommons.org/choose`.
+Final production changes are deployed within vocabulary-theme Releases, updated within [`index-dev-env`][index-dev-env], and finally deployed to `index__stage` and then `index__prod` environments; going LIVE at `https://creativecommons.org/chooser`.
 
 
 ## Setup
