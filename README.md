@@ -13,10 +13,9 @@ The Creative Commons License Chooser is meant to help people learn about CC lice
 
 ## About
 
-Repository containing the source code for the new Creative Commons License Chooser. The new chooser is still in beta, and a beta deployment can be found [here](https://chooser-beta.creativecommons.org/).
+Repository containing the source code for the new Creative Commons License Chooser.
 
 This site is built using HTML, CSS, and JS.
-
 
 
 ## Code of conduct
