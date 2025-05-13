@@ -1,9 +1,6 @@
-.cache/
-.idea/
-.npm/
-chromedriver.log
-coverage/
-dist/
-node_modules/
-tests/e2e/reports/
-yarn.lock
+# macOS general
+# https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
+.DS_Store
+.AppleDouble
+.LSOverride
+.vscode/
