@@ -53,6 +53,13 @@ Once changes are implemented here, they need to be updated within the `/chooser`
 
 Final production changes are deployed within vocabulary-theme Releases, updated within [`index-dev-env`][index-dev-env], and finally deployed to `index__stage` and then `index__prod` environments; going LIVE at `https://creativecommons.org/chooser`.
 
+### Code Formatting with Prettier
+
+We use [Prettier](https://prettier.io/) to enforce consistent formatting across the codebase.
+
+#### To check formatting (via Docker):
+```bash
+./docker/run-prettier.sh
 
 ## Setup
 1. open the `src/index.html` file within a browser to view the Chooser.
