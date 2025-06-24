@@ -54,22 +54,52 @@ Once changes are implemented here, they need to be updated within the `/chooser`
 Final production changes are deployed within vocabulary-theme Releases, updated within [`index-dev-env`][index-dev-env], and finally deployed to `index__stage` and then `index__prod` environments; going LIVE at `https://creativecommons.org/chooser`.
 
 
-## Setup
-1. open the `src/index.html` file within a browser to view the Chooser.
+### Setting up the Project
 
-[cc-legal-tools-app]: https://github.com/creativecommons/cc-legal-tools-app 
-[cc-legal-tools-data]: https://github.com/creativecommons/cc-legal-tools-data
-[index-dev-env]: https://github.com/creativecommons/index-dev-env
-[index-prototype]: https://github.com/creativecommons/index-prototype
-[vocabulary]: https://github.com/creativecommons/vocabulary
-[vocabulary-theme]: https://github.com/creativecommons/vocabulary-theme
+For information on learning and installing the prerequisite technologies for this project, please see [Foundational technologies — Creative Commons Open Source][found-tech].
 
+[found-tech]: https://opensource.creativecommons.org/contributing-code/foundational-tech/
+
+### Docker Compose Setup
+
+Use the following instructions to start the Project with docker compose.
+
+1. Navigate to the creativecommons/chooser Project that you have cloned
+2. **Run the containers**
+
+   ```shell
+   docker compose up
+   ```
+
+3. After running the above command, Docker will use the `docker-compose.yml` file and Build a local environment for you
+4. Navigate to http://localhost:8080 in your browser and the app would be running.
+5. **stop the containers**
+
+   To stop the app from running, simply open an another instance of terminal and type:
+
+   ```shell
+   docker compose down
+   ```
+
+   or
+
+   You can simply revisit the existing terminal which is running the container
+   and type `CTRL + C`
+
+
+### Format with Prettier
+
+Run the following command to format files with Prettier:
+
+```shell
+docker compose exec node prettier --write src/
+```
 
 ## Structure
 
 The initial markup is rendered via the `index.html` file. Visual display is derived from the `style.css` rules. Styles extend from `src/vocabulary`.
 
-On initlialization the `scripts.js` functions set the correct fieldsets to default display; based on user provided actions through the stepper fieldsets will display or hide, exposing the relevant pathways to getting a `tool` recommendation. Correct pathways are located within the `rawStatePathRoutes` array. When a correct pathway matches the current `state`, the appropriate `tool` is matched and recommended, if the current state is not a known pathway the `tool` is set to `unknown` until the required input is given.
+On initialization the `scripts.js` functions set the correct fieldsets to default display; based on user provided actions through the stepper fieldsets will display or hide, exposing the relevant pathways to getting a `tool` recommendation. Correct pathways are located within the `rawStatePathRoutes` array. When a correct pathway matches the current `state`, the appropriate `tool` is matched and recommended, if the current state is not a known pathway the `tool` is set to `unknown` until the required input is given.
 
 The main `tool` recommendation content is pulled via the appropriate `<template>` markup located within HTML. Additional information for the marking formats is also sourced from these `<template>` elements and the contents of the `Attribution Details` fields.
 
