@@ -53,6 +53,13 @@ Once changes are implemented here, they need to be updated within the `/chooser`
 
 Final production changes are deployed within vocabulary-theme Releases, updated within [`index-dev-env`][index-dev-env], and finally deployed to `index__stage` and then `index__prod` environments; going LIVE at `https://creativecommons.org/chooser`.
 
+[cc-legal-tools-app]: https://github.com/creativecommons/cc-legal-tools-app 
+[cc-legal-tools-data]: https://github.com/creativecommons/cc-legal-tools-data
+[index-dev-env]: https://github.com/creativecommons/index-dev-env
+[index-prototype]: https://github.com/creativecommons/index-prototype
+[vocabulary]: https://github.com/creativecommons/vocabulary
+[vocabulary-theme]: https://github.com/creativecommons/vocabulary-theme
+
 
 ### Setting up the Project
 
@@ -71,7 +78,7 @@ Use the following instructions to start the Project with docker compose.
    docker compose up
    ```
 
-3. After running the above command, Docker will use the `docker-compose.yml` file and Build a local environment for you
+3. After running the above command, Docker will use the [`docker-compose.yml`](docker-compose.yml) file and build a local environment for you
 4. Navigate to http://localhost:8080 in your browser and the app would be running.
 5. **stop the containers**
 
@@ -84,7 +91,7 @@ Use the following instructions to start the Project with docker compose.
    or
 
    You can simply revisit the existing terminal which is running the container
-   and type `CTRL + C`
+   and type <kbd>CTRL</kbd> + <kbd>C</kbd>
 
 
 ### Format with Prettier
