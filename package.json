@@ -1,0 +1,21 @@
+{
+  "name": "@creativecommons/chooser",
+  "version": "0.3.0",
+  "description": "Choose a Creative Commons license",
+  "author": "Creative Commons",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creativecommons/chooser.git"
+  },
+  "homepage": "https://chooser.creativecommons.org/",
+  "scripts": {
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "prettier": "^3.0.3"
+  }
+}

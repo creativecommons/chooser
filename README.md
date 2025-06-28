@@ -7,9 +7,7 @@
 
 # Chooser - v1.0
 
-
 The Creative Commons License Chooser is meant to help people learn about CC licenses, and select the license that best fits their needs. The new version in this repo places greater importance on usability, and an educational experience of the six CC licenses.
-
 
 ## About
 
@@ -17,10 +15,10 @@ Repository containing the source code for the new Creative Commons License Choos
 
 This site is built using HTML, CSS, and JS.
 
-
 ## Code of conduct
 
 [`CODE_OF_CONDUCT.md`][org-coc]:
+
 > The Creative Commons team is committed to fostering a welcoming community.
 > This project and all other Creative Commons open source projects are governed
 > by our [Code of Conduct][code_of_conduct]. Please report unacceptable
@@ -31,39 +29,36 @@ This site is built using HTML, CSS, and JS.
 [code_of_conduct]: https://opensource.creativecommons.org/community/code-of-conduct/
 [reporting_guide]: https://opensource.creativecommons.org/community/code-of-conduct/enforcement/
 
-
 ## Contributing
 
 See [`CONTRIBUTING.md`][org-contrib].
 
 [org-contrib]: https://github.com/creativecommons/.github/blob/main/CONTRIBUTING.md
 
-
 ## Development
 
 All necessary files to bundle or run the Chooser are located within the `/src` directory.
 
-* `/src/index.html`: relevant HTML markup.
-* `/src/style.css`: localized styles, built on top of [Vocabulary][vocabulary].
-* `/src/scripts.js`: relevant JavaScript logic.
+- `/src/index.html`: relevant HTML markup.
+- `/src/style.css`: localized styles, built on top of [Vocabulary][vocabulary].
+- `/src/scripts.js`: relevant JavaScript logic.
 
 The Chooser exists bundled within the [`vocabulary-theme`][vocabulary-theme] repository for production purposes. This repository is for isolated development purposes, similar to the setup followed by [`cc-legal-tools-app`][cc-legal-tools-app] + [`cc-legal-tools-data`][cc-legal-tools-data], and [`index-prototype`][index-prototype].
 
-Once changes are implemented here, they need to be updated within the `/chooser` directory within `vocabulary-theme`. 
+Once changes are implemented here, they need to be updated within the `/chooser` directory within `vocabulary-theme`.
 
 Final production changes are deployed within vocabulary-theme Releases, updated within [`index-dev-env`][index-dev-env], and finally deployed to `index__stage` and then `index__prod` environments; going LIVE at `https://creativecommons.org/chooser`.
 
-
 ## Setup
+
 1. open the `src/index.html` file within a browser to view the Chooser.
 
-[cc-legal-tools-app]: https://github.com/creativecommons/cc-legal-tools-app 
+[cc-legal-tools-app]: https://github.com/creativecommons/cc-legal-tools-app
 [cc-legal-tools-data]: https://github.com/creativecommons/cc-legal-tools-data
 [index-dev-env]: https://github.com/creativecommons/index-dev-env
 [index-prototype]: https://github.com/creativecommons/index-prototype
 [vocabulary]: https://github.com/creativecommons/vocabulary
 [vocabulary-theme]: https://github.com/creativecommons/vocabulary-theme
-
 
 ## Structure
 
