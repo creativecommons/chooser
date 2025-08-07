@@ -1,24 +1,5 @@
 name: chooser
 services:
-  web:
-    build:
-      context: .
-      dockerfile: dev/web/Dockerfile
-    # Use Bash instad of sh (Dash) for improved signal handling
-    command: /bin/bash -c "
-      echo 'Starting static webserver at http://127.0.0.1:8080/';
-      /usr/local/bin/httpd-foreground
-      "
-    container_name: cc-chooser-web
-    ports:
-      - "8080:80"
-    restart: on-failure
-    volumes:
-      # Mount site configuration directory
-      - "./config:/usr/local/apache2/conf/config:ro"
-      # Mount website directory
-      - "./src:/usr/local/apache2/htdocs:ro"
-
   node:
     build:
       context: .
