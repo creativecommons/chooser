@@ -67,39 +67,21 @@ For information on learning and installing the prerequisite technologies for thi
 
 [found-tech]: https://opensource.creativecommons.org/contributing-code/foundational-tech/
 
-### Docker Compose Setup
-
-Use the following instructions to start the Project with docker compose.
-
-1. Navigate to the creativecommons/chooser Project that you have cloned
-2. **Run the containers**
-
-   ```shell
-   docker compose up
-   ```
-
-3. After running the above command, Docker will use the [`docker-compose.yml`](docker-compose.yml) file and build a local environment for you
-4. Navigate to http://localhost:8080 in your browser and the app would be running.
-5. **stop the containers**
-
-   To stop the app from running, simply open an another instance of terminal and type:
-
-   ```shell
-   docker compose down
-   ```
-
-   or
-
-   You can simply revisit the existing terminal which is running the container
-   and type <kbd>CTRL</kbd> + <kbd>C</kbd>
-
+1. open the `src/index.html` file within a browser to view the Chooser.
 
 ### Format with Prettier
 
 Run the following command to format files with Prettier:
 
 ```shell
+docker compose run node prettier --write src/
+```
+
+```shell
+## Or alternatively, if docker compose run is slow to run
+docker compose up --detach
 docker compose exec node prettier --write src/
+docker compose down
 ```
 
 ## Structure
