@@ -53,10 +53,6 @@ Once changes are implemented here, they need to be updated within the `/chooser`
 
 Final production changes are deployed within vocabulary-theme Releases, updated within [`index-dev-env`][index-dev-env], and finally deployed to `index__stage` and then `index__prod` environments; going LIVE at `https://creativecommons.org/chooser`.
 
-
-## Setup
-1. open the `src/index.html` file within a browser to view the Chooser.
-
 [cc-legal-tools-app]: https://github.com/creativecommons/cc-legal-tools-app 
 [cc-legal-tools-data]: https://github.com/creativecommons/cc-legal-tools-data
 [index-dev-env]: https://github.com/creativecommons/index-dev-env
@@ -65,11 +61,34 @@ Final production changes are deployed within vocabulary-theme Releases, updated 
 [vocabulary-theme]: https://github.com/creativecommons/vocabulary-theme
 
 
+### Setting up the Project
+
+For information on learning and installing the prerequisite technologies for this project, please see [Foundational technologies — Creative Commons Open Source][found-tech].
+
+[found-tech]: https://opensource.creativecommons.org/contributing-code/foundational-tech/
+
+1. open the `src/index.html` file within a browser to view the Chooser.
+
+### Format with Prettier
+
+Run the following command to format files with Prettier:
+
+```shell
+docker compose run node prettier --write src/
+```
+
+```shell
+## Or alternatively, if docker compose run is slow to run
+docker compose up --detach
+docker compose exec node prettier --write src/
+docker compose down
+```
+
 ## Structure
 
 The initial markup is rendered via the `index.html` file. Visual display is derived from the `style.css` rules. Styles extend from `src/vocabulary`.
 
-On initlialization the `scripts.js` functions set the correct fieldsets to default display; based on user provided actions through the stepper fieldsets will display or hide, exposing the relevant pathways to getting a `tool` recommendation. Correct pathways are located within the `rawStatePathRoutes` array. When a correct pathway matches the current `state`, the appropriate `tool` is matched and recommended, if the current state is not a known pathway the `tool` is set to `unknown` until the required input is given.
+On initialization the `scripts.js` functions set the correct fieldsets to default display; based on user provided actions through the stepper fieldsets will display or hide, exposing the relevant pathways to getting a `tool` recommendation. Correct pathways are located within the `rawStatePathRoutes` array. When a correct pathway matches the current `state`, the appropriate `tool` is matched and recommended, if the current state is not a known pathway the `tool` is set to `unknown` until the required input is given.
 
 The main `tool` recommendation content is pulled via the appropriate `<template>` markup located within HTML. Additional information for the marking formats is also sourced from these `<template>` elements and the contents of the `Attribution Details` fields.
 

@@ -1,0 +1,20 @@
+name: chooser
+services:
+  node:
+    build:
+      context: .
+      dockerfile: dev/node/Dockerfile
+    # Continue running until shutdown (this allows docker compose exec which is
+    # much faster than docker compose run)
+    # Thank you: https://serverfault.com/a/1084975
+    command: /bin/sh -c "
+      trap 'exit' TERM;
+      echo 'Run the following command to format files with Prettier:';
+      echo '    docker compose exec node prettier --write src/';
+      while true; do sleep 1; done
+      "
+    container_name: cc-chooser-node
+    volumes:
+      # Mount repository to working directory
+      - "./:/opt"
+    working_dir: /opt
