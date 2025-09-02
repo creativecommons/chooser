@@ -164,9 +164,17 @@
 }
 
 .chooser-page form#chooser label {
+    /* display: block; */
+    font-size: .7em;
+    font-weight: 400;
+}
+
+.chooser-page form#chooser span[role=tooltip] {
     display: block;
     font-size: .7em;
     font-weight: 400;
+    opacity: .3;
+
 }
 
 .chooser-page form#chooser #attribution-details span {
