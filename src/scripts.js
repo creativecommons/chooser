@@ -299,11 +299,19 @@ function renderMarkingFormats(state) {
 
     if (plainTextFullName == true) {
         markProps.toolName = state.props.toolLong;
-
     } else {
         markProps.toolName = state.props.toolShort;
     }
 
+    // determine if generic mark is toggled.
+    plainTextGenericMark = document.querySelector('#plain-text-generic-mark').checked;
+
+    if (plainTextGenericMark == true) {
+        console.log('plain text generic mark true');
+    } else {
+        console.log('plain text generic mark false');
+    }
+    
     // [T]: could carve out separate sections for different mark formats here
     // only handles plain text at the moment
     for (const [key, value] of Object.entries(markProps)) {
