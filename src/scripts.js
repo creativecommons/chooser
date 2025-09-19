@@ -313,7 +313,7 @@ function renderMarkingFormats(state) {
     } else {
         markProps.toolName = state.props.toolShort;
     }
-    
+
     // [T]: could carve out separate sections for different mark formats here
     // only handles plain text at the moment
     for (const [key, value] of Object.entries(markProps)) {
