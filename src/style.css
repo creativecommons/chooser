@@ -377,20 +377,21 @@
     margin-top: .25em;
     margin-bottom: .5em;
     padding: .25em 0;
-    color: #d32f2f;
+
+    color: var(--vocabulary-brand-color-dark-tomato);
     font-size: .7em;
     line-height: 1.4;
     animation: slideDown 0.2s ease-out;
 }
 
 .chooser-page .input-error {
-    background-color: #ffebee;
-    border: 2px solid #d32f2f !important;
+    background-color: var(--vocabulary-brand-color-soft-tomato);
+    border: 2px solid var(--vocabulary-brand-color-tomato);
     outline: none;
 }
 
 .chooser-page .input-error:focus {
-    border-color: #b71c1c !important;
+    border-color: var(--vocabulary-brand-color-tomato);
     box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
 }
 
