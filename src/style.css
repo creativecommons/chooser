@@ -371,3 +371,46 @@
 .chooser-page .panel.expand {
     display: initial;
 }
+
+.chooser-page .error-message {
+    display: block;
+    margin-top: .25em;
+    margin-bottom: .5em;
+    padding: .25em 0;
+    color: #d32f2f;
+    font-size: .7em;
+    line-height: 1.4;
+    animation: slideDown 0.2s ease-out;
+}
+
+.chooser-page .input-error {
+    background-color: #ffebee;
+    border: 2px solid #d32f2f !important;
+    outline: none;
+}
+
+.chooser-page .input-error:focus {
+    border-color: #b71c1c !important;
+    box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chooser-page form#chooser #attribution-details input {
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .chooser-page .error-message {
+        font-size: .65em;
+    }
+}

@@ -573,16 +573,105 @@ function watchFieldsets(fieldsets, state) {
     });
 }
 
-function watchAttributionDetails(fieldsets, state) {
+// Validates URL format (http/https required)
+function isValidURL(url) {
+    if (!url || url.trim() === '') return true;
+    const urlPattern = /^https?:\/\/.+\..+/i;
+    return urlPattern.test(url);
+}
 
+// Validates year is 4 digits and not in the future
+function isValidYear(year) {
+    if (!year || year.trim() === '') return true;
+    const yearPattern = /^\d{4}$/;
+    if (!yearPattern.test(year)) return false;
+    const yearNum = parseInt(year, 10);
+    const currentYear = new Date().getFullYear();
+    return yearNum >= 1000 && yearNum <= currentYear;
+}
+
+// Displays error message below input field
+function showError(input, message) {
+    clearError(input);
+    input.classList.add('input-error');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    errorDiv.setAttribute('role', 'alert');
+    input.parentNode.insertBefore(errorDiv, input.nextSibling);
+}
+
+// Removes error message and styling from input
+function clearError(input) {
+    input.classList.remove('input-error');
+    const nextElement = input.nextSibling;
+    if (nextElement && nextElement.classList && nextElement.classList.contains('error-message')) {
+        nextElement.remove();
+    }
+}
+
+// Validates individual input based on field type
+function validateInput(input) {
+    const inputId = input.id;
+    const value = input.value.trim();
+    clearError(input);
+    
+    if (value === '') return true;
+    
+    switch(inputId) {
+        case 'work-link':
+            if (!isValidURL(value)) {
+                showError(input, 'Please enter a valid URL starting with http:// or https:// (e.g., https://example.com)');
+                return false;
+            }
+            break;
+            
+        case 'creator-link':
+            if (!isValidURL(value)) {
+                showError(input, 'Please enter a valid URL starting with http:// or https:// (e.g., https://example.com/profile)');
+                return false;
+            }
+            break;
+            
+        case 'work-creation-year':
+            if (!isValidYear(value)) {
+                const currentYear = new Date().getFullYear();
+                showError(input, `Please enter a valid 4-digit year between 1000 and ${currentYear} (e.g., ${currentYear})`);
+                return false;
+            }
+            break;
+    }
+    
+    return true;
+}
+
+// Validates all attribution detail inputs at once
+function validateAllAttributionInputs() {
+    const inputs = document.querySelectorAll('#attribution-details input[type="text"]');
+    let allValid = true;
+    inputs.forEach(input => {
+        if (!validateInput(input)) {
+            allValid = false;
+        }
+    });
+    return allValid;
+}
+
+// Watches attribution detail inputs for validation
+function watchAttributionDetails(fieldsets, state) {
     let textFields = fieldsets[8].querySelectorAll('input');
 
     textFields.forEach((element, index) => {
-
+        element.addEventListener("blur", (event) => {
+            validateInput(element);
+        });
+        
         element.addEventListener("keyup", (event) => {
+            if (element.classList.contains('input-error')) {
+                validateInput(element);
+            }
             renderMarkingFormats(state);
         });
-
     });
 }
 
