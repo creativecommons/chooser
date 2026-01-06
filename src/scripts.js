@@ -587,7 +587,7 @@ function isValidYear(year) {
     if (!yearPattern.test(year)) return false;
     const yearNum = parseInt(year, 10);
     const currentYear = new Date().getFullYear();
-    return yearNum >= 1000 && yearNum <= currentYear;
+    return yearNum >= 1000 && yearNum <= currentYear + 5;
 }
 
 // Displays error message below input field
@@ -636,7 +636,7 @@ function validateInput(input) {
         case 'work-creation-year':
             if (!isValidYear(value)) {
                 const currentYear = new Date().getFullYear();
-                showError(input, `Please enter a valid 4-digit year between 1000 and ${currentYear} (e.g., ${currentYear})`);
+                showError(input, `Please enter a valid 4-digit year between 1000 and ${currentYear + 5} (e.g., ${currentYear})`);
                 return false;
             }
             break;
