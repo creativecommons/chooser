@@ -5,7 +5,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/creativecommons/chooser?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/creativecommons/chooser?style=social)
 
-# Chooser - v1.2
+# Chooser - v1.3
 
 
 The Creative Commons License Chooser is meant to help people learn about CC licenses, and select the license that best fits their needs. The new version in this repo places greater importance on usability, and an educational experience of the six CC licenses.
