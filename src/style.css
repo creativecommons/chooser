@@ -85,6 +85,19 @@
 .chooser-page .hide {
     display: none;
 }
+
+.chooser-page > header p {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.chooser-page header p:nth-child(2) {
+  font-size: 1.3em;
+}
+
+.chooser-page > footer  {
+  margin-top: 8em;
+}
     
 .chooser-page > header p {
   text-align: left;
@@ -232,7 +245,7 @@
 .chooser-page #tool-recommendation {
     margin-bottom: 4em;
 
-    font-family: 'Source Sans Pro';
+    font-family: 'DM Sans';
 }
 
 .chooser-page #tool-recommendation .tool {
@@ -251,7 +264,7 @@
 .chooser-page #tool-recommendation h3 {
     margin: 0;
 
-    font-family: 'Source Sans Pro';
+    font-family: 'DM Sans';
     font-size: 1.4em;
 }
 
