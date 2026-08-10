@@ -86,6 +86,10 @@
     display: none;
 }
 
+.chooser-page .locale {
+    display: none;
+}
+
 .chooser-page > header p {
   text-align: left;
   margin-bottom: 0;
