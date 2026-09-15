@@ -722,6 +722,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     setStateProps(0, state);
 
     watchFieldsets(fieldsets, state);
+
+    const tool = document.querySelector('#tool');
+    if (tool.value !== 'noselect') {
+        tool.dispatchEvent(new Event('change', { bubbles: true }));
+    }
     watchAttributionDetails(fieldsets, state);
     watchMarkToggles(toggles, state);
     watchMarkCopiers(copiers, state);
