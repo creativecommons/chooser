@@ -82,7 +82,8 @@
     display: none;
 }
 
-.chooser-page .hide {
+/* avoid collisions with primary-nav, be more specific */
+.chooser-page main .hide {
     display: none;
 }
 
