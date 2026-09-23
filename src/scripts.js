@@ -543,6 +543,11 @@ function renderSteps(applyDefaults, state) {
 
 // [T]: function to handle error state
 
+// function to initialize state
+function initializeState(state) {
+    setStateProps(0, state);
+}
+
 // function to watch for fieldset changes 
 function watchFieldsets(fieldsets, state) {
     fieldsets.forEach((element, index) => {
@@ -719,7 +724,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     setDefaults(applyDefaults);
 
-    setStateProps(0, state);
+    initializeState(state);
 
     watchFieldsets(fieldsets, state);
 
