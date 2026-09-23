@@ -543,6 +543,11 @@ function renderSteps(applyDefaults, state) {
 
 // [T]: function to handle error state
 
+// function to initialize state
+function initializeState(state) {
+    setStateProps(0, state);
+}
+
 // function to watch for fieldset changes 
 function watchFieldsets(fieldsets, state) {
     fieldsets.forEach((element, index) => {
@@ -719,9 +724,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     setDefaults(applyDefaults);
 
-    setStateProps(0, state);
+    initializeState(state);
 
     watchFieldsets(fieldsets, state);
+
+    const tool = document.querySelector('#tool');
+    if (tool.value !== 'noselect') {
+        tool.dispatchEvent(new Event('change', { bubbles: true }));
+    }
     watchAttributionDetails(fieldsets, state);
     watchMarkToggles(toggles, state);
     watchMarkCopiers(copiers, state);
